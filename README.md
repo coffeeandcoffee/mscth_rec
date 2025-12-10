@@ -94,3 +94,8 @@ python scripts/post4_preprocess_eeg_v2.py --tsne --stats
   - Shows "⚠️ NO DATA" warning and "reconnect.. - scanning for devices..." status
 - **Added**: Real-time frequency monitoring during recording (green ✓ / red ✗ indicator)
 - **Fixed**: Recording output directory now correctly saves to `recordings/` folder regardless of CWD
+- **Fixed**: All post-processing scripts (`post1` through `post4`) now use absolute paths to find recordings folder
+
+## TODO
+
+- **Classification logic**: Review and fix `post2_classify_segments_and_cut.py` — current classification may not be correctly identifying TikTok segments

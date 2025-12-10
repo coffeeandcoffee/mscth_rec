@@ -20,7 +20,7 @@ from typing import Dict, List, Optional
 import numpy as np
 
 
-RECORDINGS_DIR = Path(__file__).parent / "recordings"
+RECORDINGS_DIR = Path(__file__).resolve().parent.parent / "recordings"
 
 
 @dataclass

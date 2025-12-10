@@ -634,8 +634,10 @@ class EEGBandExtractor:
         return results_df
 
 
-def find_latest_preprocessed_file(recordings_dir="recordings"):
+def find_latest_preprocessed_file(recordings_dir=None):
     """Find the most recently created preprocessed CSV file (searches recursively)."""
+    if recordings_dir is None:
+        recordings_dir = Path(__file__).resolve().parent.parent / "recordings"
     recordings_path = Path(recordings_dir)
     if not recordings_path.exists():
         raise FileNotFoundError(f"Recordings directory '{recordings_dir}' not found")
