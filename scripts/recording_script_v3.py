@@ -943,11 +943,15 @@ Examples:
         """
     )
     
+    # Default recordings folder is ../recordings relative to this script's location
+    script_dir = Path(__file__).resolve().parent
+    default_recordings_dir = script_dir.parent / 'recordings'
+    
     parser.add_argument(
         '--output_dir', '-o',
         type=str,
-        default='./recordings',
-        help='Output directory for recordings (default: ./recordings)'
+        default=str(default_recordings_dir),
+        help=f'Output directory for recordings (default: {default_recordings_dir})'
     )
     
     parser.add_argument(
