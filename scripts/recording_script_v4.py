@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """
-Muse S EEG + Video Recording Script
+Muse S EEG + Video Recording Script (v4 with Auto-Reconnect)
 
 This script simultaneously records:
 1. Raw EEG data from Muse S headband via Muse-LSL (Lab Streaming Layer)
 2. Video from webcam/camera using OpenCV
 
-The script ensures synchronization between EEG and video streams using timestamps.
+v4 Features:
+- Auto-reconnect on connection loss
+- Connection loss detection with terminal warnings
+- Creates new CSV files (_2.csv, _3.csv) on reconnect
+- Real-time frequency monitoring during recording
 
 Requirements:
 - Muse S headband paired and connected
@@ -15,8 +19,8 @@ Requirements:
 - pylsl for LSL stream handling
 
 Usage:
-    python recording_script.py --output_dir ./recordings --duration 1800
-    python recording_script.py --nocamera --duration 1800  # EEG only, no video
+    python recording_script_v4.py --duration 1800
+    python recording_script_v4.py --nocamera --duration 1800  # EEG only, no video
 
 Author: Generated for Muse S TikTok EEG Study
 """
@@ -197,51 +201,67 @@ class KeypressLogger:
         return len(keypresses) > 0
 
 
-class EEGRecorder:
-    """Records EEG data from Muse S via LSL stream."""
+class EEGRecorderWithReconnect:
+    """Records EEG data from Muse S via LSL stream with auto-reconnect capability."""
     
-    def __init__(self, output_file, stream_name="MuseS", keypress_logger=None, debug=False):
-        self.output_file = output_file
+    def __init__(self, recording_folder, base_filename, stream_name="MuseS", keypress_logger=None, debug=False):
+        self.recording_folder = Path(recording_folder)
+        self.base_filename = base_filename
         self.stream_name = stream_name
         self.is_recording = False
         self.data_queue = queue.Queue()
         self.thread = None
         self.inlet = None
         self.sample_count = 0
+        self.total_sample_count = 0  # Across all CSV files
         self.keypress_logger = keypress_logger
         self.debug = debug
-        self.time_offset = None  # For LSL-system time synchronization
+        self.time_offset = None
+        self.last_sample_time = None  # For connection loss detection
+        self.connection_lost = False
+        self.csv_file_count = 1  # Track number of CSV files
+        self.csv_files = []  # List of all CSV files created
+        self.current_output_file = None
+        self._lock = threading.Lock()
         
-    def find_stream(self, timeout=10.0):
+    def get_current_output_file(self):
+        """Get the current output file path."""
+        if self.csv_file_count == 1:
+            filename = f"{self.base_filename}.csv"
+        else:
+            filename = f"{self.base_filename}_{self.csv_file_count}.csv"
+        return self.recording_folder / filename
+        
+    def find_stream(self, timeout=10.0, quiet=False):
         """Find the Muse S LSL stream."""
-        print(f"Looking for LSL stream: {self.stream_name}...")
+        if not quiet:
+            print(f"Looking for LSL stream: {self.stream_name}...")
         try:
-            # Use resolve_byprop to find stream by name with timeout
             # First try exact name match
             streams = pylsl.resolve_byprop('name', self.stream_name, timeout=timeout)
             
             if len(streams) == 0:
                 # Try to find any Muse stream
-                print(f"Stream '{self.stream_name}' not found. Searching for any Muse stream...")
-                # Get all available streams (wait_time instead of timeout)
+                if not quiet:
+                    print(f"Stream '{self.stream_name}' not found. Searching for any Muse stream...")
                 all_streams = pylsl.resolve_streams(wait_time=timeout)
                 muse_streams = [s for s in all_streams if 'Muse' in s.name() or 'muse' in s.name().lower()]
                 if len(muse_streams) == 0:
-                    if len(all_streams) > 0:
-                        print(f"Available streams: {[s.name() for s in all_streams]}")
-                    raise RuntimeError("No Muse LSL stream found. Make sure Muse-LSL or uvicmuse is running.")
+                    return False
                 streams = muse_streams
             
             stream_info = streams[0]
-            print(f"Found stream: {stream_info.name()}")
-            print(f"  Type: {stream_info.type()}")
-            print(f"  Channels: {stream_info.channel_count()}")
-            print(f"  Sampling rate: {stream_info.nominal_srate()} Hz")
+            if not quiet:
+                print(f"Found stream: {stream_info.name()}")
+                print(f"  Type: {stream_info.type()}")
+                print(f"  Channels: {stream_info.channel_count()}")
+                print(f"  Sampling rate: {stream_info.nominal_srate()} Hz")
             
             self.inlet = pylsl.StreamInlet(stream_info)
             return True
         except Exception as e:
-            print(f"Error finding LSL stream: {e}")
+            if not quiet:
+                print(f"Error finding LSL stream: {e}")
             return False
     
     def record_loop(self):
@@ -255,14 +275,13 @@ class EEGRecorder:
         n_channels = info.channel_count()
         fs = info.nominal_srate()
         
-        # Channel names (Muse S typically has: TP9, AF7, AF8, TP10, plus AUX)
+        # Channel names
         channel_names = []
         ch = info.desc().child("channels").child("channel")
         for i in range(n_channels):
             channel_names.append(ch.child_value("label") or f"CH{i+1}")
             ch = ch.next_sibling()
         
-        # If no labels, use default Muse S channel names
         if not any(channel_names) or len(channel_names) != n_channels:
             default_names = ['TP9', 'AF7', 'AF8', 'TP10', 'AUX_RIGHT', 'AUX_LEFT']
             channel_names = default_names[:n_channels]
@@ -271,65 +290,65 @@ class EEGRecorder:
         print(f"Sampling rate: {fs} Hz")
         
         # Open CSV file for writing
-        with open(self.output_file, 'w', newline='') as csvfile:
+        self.current_output_file = self.get_current_output_file()
+        self.csv_files.append(str(self.current_output_file))
+        
+        with open(self.current_output_file, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            
-            # Write header
             header = ['timestamp', 'lsl_timestamp'] + channel_names + ['keypress_A', 'keypress_B']
             writer.writerow(header)
             
-            # Recording loop
             while self.is_recording:
                 try:
-                    # Pull sample (timeout in seconds)
                     sample, lsl_timestamp = self.inlet.pull_sample(timeout=1.0)
                     
                     if sample:
-                        # Get current system time for CSV logging
                         system_time = time.time()
                         
-                        # Calculate time offset on first sample for synchronization
+                        with self._lock:
+                            self.last_sample_time = system_time
+                            self.connection_lost = False
+                        
                         if self.time_offset is None:
                             self.time_offset = system_time - lsl_timestamp
-                            if self.debug:
-                                print(f"[DEBUG] Time offset calculated: {self.time_offset:.6f}s")
                         
-                        # Check for keypress events using LSL time reference
                         keypress_a_flag = 0
                         keypress_b_flag = 0
                         if self.keypress_logger and self.keypress_logger.is_active:
                             if self.keypress_logger.get_recent_keypresses(lsl_timestamp, 'a', time_offset=self.time_offset):
                                 keypress_a_flag = 1
-                                if self.debug:
-                                    print(f"[DEBUG] Keypress A detected for LSL time {lsl_timestamp:.4f}")
                             if self.keypress_logger.get_recent_keypresses(lsl_timestamp, 'b', time_offset=self.time_offset):
                                 keypress_b_flag = 1
-                                if self.debug:
-                                    print(f"[DEBUG] Keypress B detected for LSL time {lsl_timestamp:.4f}")
-                        elif self.debug and self.keypress_logger and not self.keypress_logger.is_active:
-                            print(f"[DEBUG] Keypress logger not active")
-                        elif self.debug and not self.keypress_logger:
-                            print(f"[DEBUG] No keypress logger available")
                         
-                        # Write sample
                         row = [system_time, lsl_timestamp] + list(sample) + [keypress_a_flag, keypress_b_flag]
                         writer.writerow(row)
                         
                         self.sample_count += 1
-                        
-                        # Store in queue for real-time monitoring (optional)
-                        self.data_queue.put({
-                            'system_time': system_time,
-                            'lsl_time': lsl_timestamp,
-                            'data': sample
-                        })
+                        self.total_sample_count += 1
                         
                 except Exception as e:
-                    if self.is_recording:  # Only print if we're still supposed to be recording
-                        print(f"Error in EEG recording loop: {e}")
+                    if self.is_recording:
+                        with self._lock:
+                            self.connection_lost = True
+                        if self.debug:
+                            print(f"Error in EEG recording loop: {e}")
                     break
         
-        print(f"EEG recording stopped. Total samples: {self.sample_count}")
+        print(f"EEG recording stopped. Samples in this file: {self.sample_count}")
+    
+    def is_connection_lost(self, timeout=5.0):
+        """Check if connection has been lost (no samples for timeout seconds)."""
+        with self._lock:
+            if self.last_sample_time is None:
+                return False
+            return (time.time() - self.last_sample_time) > timeout or self.connection_lost
+    
+    def get_time_since_last_sample(self):
+        """Get time since last sample was received."""
+        with self._lock:
+            if self.last_sample_time is None:
+                return 0
+            return time.time() - self.last_sample_time
     
     def start(self):
         """Start recording."""
@@ -340,6 +359,7 @@ class EEGRecorder:
             raise RuntimeError("Could not find LSL stream")
         
         self.is_recording = True
+        self.sample_count = 0
         self.thread = threading.Thread(target=self.record_loop, daemon=True)
         self.thread.start()
         print("EEG recording started...")
@@ -349,8 +369,74 @@ class EEGRecorder:
         self.is_recording = False
         if self.thread:
             self.thread.join(timeout=5.0)
-        print(f"EEG recording completed. Total samples: {self.sample_count}")
-        return self.sample_count
+        print(f"EEG recording completed. Total samples: {self.total_sample_count}")
+        return self.total_sample_count
+    
+    def reconnect(self, muselsl_process=None):
+        """Attempt to reconnect by restarting muselsl with any available device.
+        
+        Args:
+            muselsl_process: The current muselsl subprocess to terminate
+            
+        Returns:
+            tuple: (success: bool, new_muselsl_process: subprocess or None)
+        """
+        # Stop current recording thread
+        self.is_recording = False
+        if self.thread:
+            self.thread.join(timeout=2.0)
+        
+        # Kill old muselsl if provided
+        if muselsl_process:
+            try:
+                muselsl_process.terminate()
+                muselsl_process.wait(timeout=2)
+            except:
+                try:
+                    muselsl_process.kill()
+                except:
+                    pass
+        
+        # Scan for any Muse device
+        devices = scan_muse_devices()
+        if not devices:
+            return False, None
+        
+        # Use the first device found
+        device = devices[0]
+        device_name = device['name']
+        
+        # Start new muselsl stream
+        new_process = start_muselsl_stream(device_name)
+        if not new_process:
+            return False, None
+        
+        # Wait for LSL stream to become available
+        if not wait_for_lsl_stream(device_name, timeout=15):
+            # Try with generic "Muse" name
+            time.sleep(2)
+        
+        # Increment file counter for new CSV
+        self.csv_file_count += 1
+        self.sample_count = 0
+        self.inlet = None
+        self.time_offset = None
+        
+        # Try to find the new stream
+        if self.find_stream(timeout=10.0, quiet=False):
+            self.is_recording = True
+            with self._lock:
+                self.connection_lost = False
+                self.last_sample_time = None
+            self.thread = threading.Thread(target=self.record_loop, daemon=True)
+            self.thread.start()
+            return True, new_process
+        
+        return False, new_process
+
+
+# Keep the old class name as an alias for backwards compatibility
+EEGRecorder = EEGRecorderWithReconnect
 
 
 class VideoRecorder:
@@ -847,24 +933,37 @@ def record_synchronized(eeg_recorder, video_recorder, duration=None, show_video=
         print("="*60)
 
 
-def record_eeg_only(eeg_recorder, duration=None, keypress_logger=None):
+def record_eeg_only(eeg_recorder, duration=None, keypress_logger=None, muselsl_process=None):
     """
-    Record EEG data only (no video).
+    Record EEG data only (no video) with auto-reconnect capability.
     
     Parameters:
     -----------
-    eeg_recorder : EEGRecorder
-        EEG recorder instance
+    eeg_recorder : EEGRecorderWithReconnect
+        EEG recorder instance with reconnect capability
     duration : float, optional
         Recording duration in seconds. If None, record until interrupted.
     keypress_logger : KeypressLogger, optional
         Keypress logger instance for event marking
+    muselsl_process : subprocess, optional
+        The muselsl subprocess for reconnection management
     """
     print("\n" + "="*60)
     print("Starting EEG-only recording (no camera)...")
     print("="*60)
     
     start_time = time.time()
+    last_sample_count = 0
+    no_data_warning_shown = False
+    reconnect_attempts = 0
+    max_reconnect_wait = 30  # Max seconds to wait between reconnect attempts
+    current_muselsl = muselsl_process  # Track the current muselsl process
+    
+    # Color codes
+    RED = "\033[91m"
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    RESET = "\033[0m"
     
     try:
         # Start keypress logging if available
@@ -885,19 +984,57 @@ def record_eeg_only(eeg_recorder, duration=None, keypress_logger=None):
                 print(f"\nRecording duration ({duration}s) reached. Stopping...")
                 break
             
-            # Print status every 10 seconds
             current_time = time.time()
+            elapsed = current_time - start_time
+            
+            # Check for connection loss (no new samples for 3+ seconds)
+            time_since_last = eeg_recorder.get_time_since_last_sample()
+            current_sample_count = eeg_recorder.total_sample_count
+            
+            if time_since_last > 3.0 and current_sample_count == last_sample_count and current_sample_count > 0:
+                if not no_data_warning_shown:
+                    print(f"\n{RED}⚠️  NO DATA - Connection may be lost!{RESET}")
+                    no_data_warning_shown = True
+                
+                # Check if we should attempt reconnect (after 5 seconds of no data)
+                if time_since_last > 5.0 and eeg_recorder.is_connection_lost():
+                    reconnect_attempts += 1
+                    print(f"{YELLOW}reconnect.. (attempt {reconnect_attempts}) - scanning for devices...{RESET}")
+                    
+                    success, new_process = eeg_recorder.reconnect(current_muselsl)
+                    if success:
+                        if new_process:
+                            current_muselsl = new_process
+                        print(f"{GREEN}✓ Reconnected! Recording to new file: {eeg_recorder.current_output_file.name}{RESET}")
+                        no_data_warning_shown = False
+                        last_sample_count = eeg_recorder.total_sample_count
+                        reconnect_attempts = 0  # Reset attempts on success
+                    else:
+                        # Wait before next attempt (exponential backoff up to max)
+                        wait_time = min(2 ** reconnect_attempts, max_reconnect_wait)
+                        time.sleep(min(wait_time, 2))  # Sleep max 2s per iteration to stay responsive
+            else:
+                if no_data_warning_shown and current_sample_count > last_sample_count:
+                    print(f"{GREEN}✓ Data flowing again{RESET}")
+                    no_data_warning_shown = False
+                last_sample_count = current_sample_count
+            
+            # Print status every 10 seconds
             if current_time - last_status_time >= 10.0:
-                elapsed = current_time - start_time
-                # Calculate real-time frequency
-                actual_freq = eeg_recorder.sample_count / elapsed if elapsed > 0 else 0
+                # Calculate real-time frequency using total samples
+                actual_freq = eeg_recorder.total_sample_count / elapsed if elapsed > 0 else 0
                 expected_freq = 256.0
                 freq_ok = abs(actual_freq - expected_freq) <= expected_freq * 0.20
                 freq_indicator = "✓" if freq_ok else "✗"
-                freq_color = "\033[92m" if freq_ok else "\033[91m"  # Green or Red
-                reset_color = "\033[0m"
-                print(f"Recording... {elapsed:.1f}s | EEG: {eeg_recorder.sample_count} | "
-                      f"Freq: {freq_color}{actual_freq:.1f}Hz {freq_indicator}{reset_color}")
+                freq_color = GREEN if freq_ok else RED
+                
+                # Show file number if we've reconnected
+                file_info = ""
+                if eeg_recorder.csv_file_count > 1:
+                    file_info = f" | File #{eeg_recorder.csv_file_count}"
+                
+                print(f"Recording... {elapsed:.1f}s | EEG: {eeg_recorder.total_sample_count} | "
+                      f"Freq: {freq_color}{actual_freq:.1f}Hz {freq_indicator}{RESET}{file_info}")
                 last_status_time = current_time
             
             # Small sleep to avoid busy-waiting
@@ -929,12 +1066,18 @@ def record_eeg_only(eeg_recorder, duration=None, keypress_logger=None):
             
             # Color coding for frequency check
             if freq_min <= actual_freq <= freq_max:
-                freq_status = f"\033[92m✓ GOOD\033[0m"  # Green
+                freq_status = f"{GREEN}✓ GOOD{RESET}"
             else:
-                freq_status = f"\033[91m✗ BAD\033[0m"   # Red
+                freq_status = f"{RED}✗ BAD{RESET}"
             
             print(f"\nEEG Frequency Check: {actual_freq:.2f} Hz (expected: {expected_freq} Hz ±20%) - {freq_status}")
-            print(f"Samples: {total_samples}, Duration: {actual_duration:.2f}s")
+            print(f"Total samples: {total_samples}, Duration: {actual_duration:.2f}s")
+        
+        # List all CSV files created
+        if hasattr(eeg_recorder, 'csv_files') and len(eeg_recorder.csv_files) > 0:
+            print(f"\nCSV files created ({len(eeg_recorder.csv_files)}):")
+            for csv_file in eeg_recorder.csv_files:
+                print(f"  - {csv_file}")
         
         print("\n" + "="*60)
         print("Recording completed!")
@@ -1146,7 +1289,8 @@ Examples:
     keypress_logger = KeypressLogger(debug=args.debug) if HAS_PYNPUT else None
     
     # Create recorders
-    eeg_recorder = EEGRecorder(eeg_file, stream_name=stream_name, keypress_logger=keypress_logger, debug=args.debug)
+    base_filename = f"eeg_{timestamp}"
+    eeg_recorder = EEGRecorderWithReconnect(recording_folder, base_filename, stream_name=stream_name, keypress_logger=keypress_logger, debug=args.debug)
     
     if not args.nocamera:
         video_recorder = VideoRecorder(
@@ -1165,7 +1309,8 @@ Examples:
             record_eeg_only(
                 eeg_recorder,
                 duration=args.duration,
-                keypress_logger=keypress_logger
+                keypress_logger=keypress_logger,
+                muselsl_process=muselsl_process
             )
         else:
             record_synchronized(
@@ -1176,9 +1321,10 @@ Examples:
                 keypress_logger=keypress_logger
             )
         
-        print(f"\nFiles saved:")
-        print(f"  EEG: {eeg_file}")
+        
+        # Files saved message for video mode (EEG files are listed by record_eeg_only)
         if not args.nocamera:
+            print(f"\nFiles saved:")
             print(f"  Video: {video_file}")
         
         return 0
