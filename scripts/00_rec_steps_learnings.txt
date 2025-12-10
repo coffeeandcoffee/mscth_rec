@@ -1,0 +1,16 @@
+1. start new terminal:
+
+python recording_script.py --duration 60
+
+
+---
+
+(for debuging find in server home/lederer/mscth/recording_script.py and edit it with cursor and then download it to the folder in mac to run it.)
+
+
+--
+
+Learnings:
+
+1. TP electrodes may need 3+ minutes after onset OR start of recording?
+
