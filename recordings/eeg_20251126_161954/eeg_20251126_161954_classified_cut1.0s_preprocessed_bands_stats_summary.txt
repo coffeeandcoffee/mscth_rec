@@ -1,0 +1,51 @@
+======================================================================
+EEG STATISTICAL ANALYSIS SUMMARY
+======================================================================
+
+📊 QUICK OVERVIEW
+----------------------------------------------------------------------
+Total Comparisons:     20
+Significant Results:  0 (0.0%)
+Non-Significant:      20 (100.0%)
+
+🔬 TEST PARAMETERS
+----------------------------------------------------------------------
+Statistical Test:     Mann-Whitney U (non-parametric)
+Correction Method:    Bonferroni
+Number of Tests:       20
+Uncorrected α:        0.05
+Corrected α:          0.0025
+Effect Size Metric:   Rank-biserial correlation (r)
+
+👥 SAMPLE SIZES
+----------------------------------------------------------------------
+TikTok Over 4s:        n = 22
+TikTok Under 4s:      n = 35
+
+❌ NO SIGNIFICANT FINDINGS
+----------------------------------------------------------------------
+No significant differences found after Bonferroni correction.
+
+📈 TOP EFFECT SIZES (by rank-biserial correlation)
+----------------------------------------------------------------------
+1.   TP9_beta                   r=0.473  p=0.0029
+2.   TP10_beta                  r=0.382  p=0.0163
+3.   TP10_gamma                 r=0.340  p=0.0324
+4.   TP9_gamma                  r=0.270  p=0.0898
+5.   TP9_theta                  r=0.242  p=0.1295
+
+📋 METHOD DETAILS
+----------------------------------------------------------------------
+• Frequency Bands:     delta (1-4 Hz), theta (4-8 Hz), alpha (8-13 Hz), beta (13-30 Hz), gamma (30-40 Hz)
+• EEG Channels:       TP9, AF7, AF8, TP10
+• Preprocessing:       DC removal, bandpass (1-40 Hz), baseline normalization
+• Feature Extraction:  Welch PSD, baseline drift correction, z-score normalization
+• Assumptions Checked: Normality (D'Agostino-Pearson), Equal variance (Levene)
+
+💡 INTERPRETATION GUIDE
+----------------------------------------------------------------------
+Effect Size (r):       Small: <0.3, Medium: 0.3-0.5, Large: >0.5
+Effect Size (Cohen's d): Small: <0.2, Medium: 0.2-0.8, Large: >0.8
+Significance:          * p<0.05, ** p<0.01, *** p<0.001
+                      (after Bonferroni correction)
+======================================================================

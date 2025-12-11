@@ -3,9 +3,19 @@
 # =============================================================================
 
 # -----------------------------------------------------------------------------
-# Data & Recordings (large files, participant data)
+# Data & Recordings (large video files only - other files like .csv, .png, .pt, .npz are synced)
 # -----------------------------------------------------------------------------
-recordings/
+# Video files in recordings (large files)
+recordings/**/*.mp4
+recordings/**/*.avi
+recordings/**/*.mov
+recordings/**/*.mkv
+recordings/**/*.webm
+recordings/**/*.MP4
+recordings/**/*.AVI
+recordings/**/*.MOV
+
+# Entire data folder
 data/
 
 # -----------------------------------------------------------------------------
