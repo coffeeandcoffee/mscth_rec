@@ -1,0 +1,106 @@
+{
+  "final_metrics": {
+    "loss": 0.04301108419895172,
+    "accuracy": 0.5736434108527132,
+    "precision": 0.3,
+    "recall": 0.058823529411764705,
+    "f1": 0.09836065573770492,
+    "auc": 0.42760180995475117
+  },
+  "feature_importance": {
+    "TP9_delta": 78.02519226074219,
+    "TP9_theta": 83.98274230957031,
+    "TP9_alpha": 82.8371353149414,
+    "TP9_beta": 88.5444107055664,
+    "TP9_low_gamma": 81.747314453125,
+    "TP9_high_gamma": 78.42069244384766,
+    "TP9_very_high": 89.75471496582031,
+    "AF7_delta": 84.7878189086914,
+    "AF7_theta": 68.49751281738281,
+    "AF7_alpha": 91.69163513183594,
+    "AF7_beta": 88.17543029785156,
+    "AF7_low_gamma": 77.61194610595703,
+    "AF7_high_gamma": 74.33219909667969,
+    "AF7_very_high": 82.19322967529297,
+    "AF8_delta": 88.79063415527344,
+    "AF8_theta": 82.66166687011719,
+    "AF8_alpha": 85.91851043701172,
+    "AF8_beta": 79.24457550048828,
+    "AF8_low_gamma": 81.46116638183594,
+    "AF8_high_gamma": 80.82081604003906,
+    "AF8_very_high": 85.79569244384766,
+    "TP10_delta": 87.75970458984375,
+    "TP10_theta": 91.13700103759766,
+    "TP10_alpha": 100.0,
+    "TP10_beta": 86.81758880615234,
+    "TP10_low_gamma": 78.92048645019531,
+    "TP10_high_gamma": 87.94560241699219,
+    "TP10_very_high": 87.55654907226562
+  },
+  "electrode_band_importance": {
+    "TP9": {
+      "delta": 78.02519226074219,
+      "theta": 83.98274230957031,
+      "alpha": 82.8371353149414,
+      "beta": 88.5444107055664,
+      "low_gamma": 81.747314453125,
+      "high_gamma": 78.42069244384766,
+      "very_high": 89.75471496582031
+    },
+    "AF7": {
+      "delta": 84.7878189086914,
+      "theta": 68.49751281738281,
+      "alpha": 91.69163513183594,
+      "beta": 88.17543029785156,
+      "low_gamma": 77.61194610595703,
+      "high_gamma": 74.33219909667969,
+      "very_high": 82.19322967529297
+    },
+    "AF8": {
+      "delta": 88.79063415527344,
+      "theta": 82.66166687011719,
+      "alpha": 85.91851043701172,
+      "beta": 79.24457550048828,
+      "low_gamma": 81.46116638183594,
+      "high_gamma": 80.82081604003906,
+      "very_high": 85.79569244384766
+    },
+    "TP10": {
+      "delta": 87.75970458984375,
+      "theta": 91.13700103759766,
+      "alpha": 100.0,
+      "beta": 86.81758880615234,
+      "low_gamma": 78.92048645019531,
+      "high_gamma": 87.94560241699219,
+      "very_high": 87.55654907226562
+    }
+  },
+  "config": {
+    "file": null,
+    "epochs": 200,
+    "batch_size": 16,
+    "lr": 0.001,
+    "balanced": true,
+    "seed": 42,
+    "dropout": 0.3,
+    "weight_decay": 0.02,
+    "label_smoothing": 0.05,
+    "patience": 40,
+    "model": "hybrid",
+    "focal": true,
+    "augment": true,
+    "mixup": false,
+    "mixup_alpha": 0.2,
+    "kfold": 0
+  },
+  "enhancements": [
+    "data_augmentation",
+    null,
+    "60/40_split",
+    "dropout_0.3",
+    "weight_decay_0.02",
+    "label_smoothing_0.05",
+    "early_stopping"
+  ],
+  "timestamp": "2025-12-11T20:00:08.456114"
+}
