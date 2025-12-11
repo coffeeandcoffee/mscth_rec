@@ -10,10 +10,11 @@ EEG recording and ML pipeline for predicting TikTok engagement from brain signal
 │   ├── post1_check_eeg_quality.py      # Quality check
 │   ├── post2_classify_segments_and_cut.py  # Segment classification
 │   ├── post3_preprocess_eeg.py         # Signal preprocessing
-│   ├── post3v2_prep_for_ml.py          # ML preprocessing (NEW)
+│   ├── post3v2_prep_for_ml.py          # ML preprocessing
 │   ├── post4_preprocess_eeg_v2.py      # Feature extraction
-│   └── train_transformer.py            # Transformer training (NEW)
-├── recordings/                       # EEG data (videos gitignored, .csv/.png/.pt/.npz synced -- large file warning of 1H csv recording. for now ok.)
+│   ├── train_transformer.py            # Transformer training (V1)
+│   └── train_transformer_v2.py         # Model optimization experiments (V2)
+├── recordings/                       # EEG data (videos gitignored, data synced)
 │   └── eeg_*/model_output/             # Trained models & visualizations
 ├── mscth/                            # Python virtual environment
 └── old_delete/                       # Deprecated files
