@@ -13,7 +13,7 @@ EEG recording and ML pipeline for predicting TikTok engagement from brain signal
 │   ├── post3v2_prep_for_ml.py          # ML preprocessing (NEW)
 │   ├── post4_preprocess_eeg_v2.py      # Feature extraction
 │   └── train_transformer.py            # Transformer training (NEW)
-├── recordings/                       # EEG/video data (gitignored)
+├── recordings/                       # EEG data (videos gitignored, .csv/.png/.pt/.npz synced -- large file warning of 1H csv recording. for now ok.)
 │   └── eeg_*/model_output/             # Trained models & visualizations
 ├── mscth/                            # Python virtual environment
 └── old_delete/                       # Deprecated files
@@ -139,6 +139,8 @@ Generated in `recordings/eeg_*/model_output/`:
 ## Changelog
 
 ### 2025-12-11
+- **Updated**: `.gitignore` now excludes only video files in `recordings/`; data files (.csv, .png, .pt, .npz, .txt, .json) are synced to git
+
 - **Added**: `post3v2_prep_for_ml.py` — ML preprocessing pipeline:
   - Baseline normalization using baseline_1
   - 7 frequency band extraction (delta through 100Hz)
