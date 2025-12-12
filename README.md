@@ -36,7 +36,7 @@ pip install torch pandas scipy scikit-learn matplotlib
 |----------|----------------|------------------------|
 | **Target** | Predict if user watches >4s | Predict if user is about to skip |
 | **Data used** | First 0.5s after video start | 3s before each skip event |
-| **Best accuracy** | 62.8% (barely beats 60% baseline) | **69.65%** ✅ |
+| **Best accuracy** | 62.8% (barely beats 60% baseline) | **71.2%** ✅ |
 | **Status** | Signal too weak | **Promising** |
 
 ---
@@ -69,18 +69,19 @@ python scripts/prediction_2.py --window 3.0 --epochs 50
 
 **Pipeline:**
 1. Extract frequency bands (7 bands × 4 channels = 28 features)
-2. Create 3-second sample blocks:
-   - `about_to_skip`: 3s ending at each keypress_A (all 321 blocks)
-   - `not_about_to_skip`: Random windows with ~2s stride (<33% overlap)
+2. Create 3-second sample blocks
 3. Interpolate each block to 256Hz (768 samples)
 4. Balance dataset to 50/50
 5. Train transformer model
+6. Compute feature importance
 
 **Output:** `model_output_prediction_v2/`
 - `skip_prediction_model.pt` — Trained model
-- `training_results_v2.json` — Metrics
+- `training_results_v2.json` — Metrics + feature importance
 - `training_curves_v2.png` — Loss/accuracy plots
 - `confusion_matrix_v2.png` — Predictions breakdown
+- `feature_importance_v2.png` — Feature importance bar plot
+- `electrode_band_heatmap_v2.png` — Electrode × band importance matrix
 
 ---
 
@@ -88,25 +89,30 @@ python scripts/prediction_2.py --window 3.0 --epochs 50
 
 | Metric | Value |
 |--------|-------|
-| **Validation Accuracy** | **69.65%** |
-| Precision | 81.7% |
-| Recall | 45.3% |
-| F1 Score | 58.3% |
+| **Best Val Accuracy** | **71.2%** |
+| Precision | 85.9% |
+| Recall | 47.7% |
+| F1 Score | 61.3% |
 | Training Samples | 385 |
 | Validation Samples | 257 |
-| Data Loss | 0.0% |
+
+### Top Predictive Features
+
+| Rank | Feature | Importance |
+|------|---------|------------|
+| 1 | **AF8_high_gamma** | 100% |
+| 2 | **AF7_high_gamma** | 78% |
+| 3 | TP10_beta | 78% |
+| 4 | TP9_high_gamma | 74% |
+| 5 | TP10_very_high | 72% |
+
+**Key finding:** Frontal **high gamma (40-60Hz)** is most predictive for skip detection. This differs from V1 where temporal theta was highlighted, suggesting skip intent activates different brain regions than passive engagement.
 
 ### Interpretation
 
-- **High precision (82%)**: When model predicts "about to skip", it's correct 82% of the time
-- **Lower recall (45%)**: Model is conservative, catches ~half of actual skip events
-- **Beats baseline**: 70% accuracy vs 50% random chance
-
-### Why V2 Works Better
-
-1. **Different target**: Predicts "about to skip" intent vs engagement after the fact
-2. **More relevant data**: Uses 3s before skip (when brain is deciding) vs 0.5s after video start
-3. **No data loss**: Uses raw EEG without cutting, preserving continuity
+- **High precision (86%)**: When model predicts "about to skip", it's correct 86% of the time
+- **Lower recall (48%)**: Model is conservative, catches ~half of actual skip events
+- **Beats baseline**: 71% accuracy vs 50% random chance
 
 ---
 
@@ -120,11 +126,6 @@ python scripts/post2_classify_segments_and_cut.py
 python scripts/post3v2_prep_for_ml.py --duration 0.5
 python scripts/train_transformer.py --balanced --epochs 100
 ```
-
-**V1 Conclusions:**
-- 62.8% best accuracy (only 2.7% above majority baseline)
-- Multiple architectures and regularization techniques tried
-- Signal appears too weak for this prediction target
 
 ---
 
@@ -149,7 +150,7 @@ python scripts/recording_script_v4.py --nocamera --duration 1800
 | Alpha | 8-13 Hz | Relaxation |
 | Beta | 13-30 Hz | Active thinking |
 | Low Gamma | 30-40 Hz | Cognitive processing |
-| High Gamma | 40-60 Hz | Learning |
+| **High Gamma** | **40-60 Hz** | **Learning, decision-making** |
 | Very High | 60-100 Hz | Exploratory |
 
 ---
@@ -166,9 +167,9 @@ torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
 
 ### 2025-12-12 (Prediction V2)
 - **Added**: `post2v2_add_skip_classification.py` — Preprocesses raw EEG for skip prediction
-- **Added**: `prediction_2.py` — Full skip prediction training pipeline
-- **Result**: **69.65% validation accuracy** (significant improvement over V1)
-- **Key insight**: Predicting "about to skip" from 3s before skip event works better than predicting engagement from first 0.5s of viewing
+- **Added**: `prediction_2.py` — Full training pipeline with feature importance analysis
+- **Result**: **71.2% validation accuracy** with 85.9% precision
+- **Key finding**: Frontal high gamma (AF7, AF8) most predictive for skip intent
 
 ### 2025-12-11 (Model Optimization)
 - **Added**: `train_transformer_v2.py` with multiple architectures and regularization

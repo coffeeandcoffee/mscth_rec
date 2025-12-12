@@ -539,6 +539,157 @@ def plot_confusion_matrix(labels, preds, output_dir):
 
 
 # ============================================================================
+# FEATURE IMPORTANCE
+# ============================================================================
+
+def compute_feature_importance(model, X_val, y_val, feature_names, device):
+    """
+    Compute feature importance using gradient-based attribution.
+    Uses batched computation to avoid memory issues on MPS.
+    """
+    model.train()
+    
+    # Use smaller batch to avoid MPS memory issues
+    batch_size = min(32, len(X_val))
+    X_batch = X_val[:batch_size]
+    y_batch = y_val[:batch_size]
+    
+    try:
+        X_tensor = torch.tensor(X_batch, dtype=torch.float32, device=device, requires_grad=True)
+        y_tensor = torch.tensor(y_batch, dtype=torch.float32, device=device)
+        
+        outputs = model(X_tensor)
+        loss = nn.BCELoss()(outputs, y_tensor)
+        loss.backward()
+        
+        if X_tensor.grad is None:
+            raise RuntimeError("No gradients computed")
+        
+        gradients = X_tensor.grad.abs().mean(dim=(0, 1)).cpu().detach().numpy()
+        
+    except RuntimeError as e:
+        # Fallback to CPU if MPS runs out of memory
+        print(f"   ⚠ GPU memory issue, using CPU fallback...")
+        model_cpu = model.cpu()
+        
+        X_tensor = torch.tensor(X_batch, dtype=torch.float32, device='cpu', requires_grad=True)
+        y_tensor = torch.tensor(y_batch, dtype=torch.float32, device='cpu')
+        
+        outputs = model_cpu(X_tensor)
+        loss = nn.BCELoss()(outputs, y_tensor)
+        loss.backward()
+        
+        gradients = X_tensor.grad.abs().mean(dim=(0, 1)).detach().numpy()
+        model.to(device)  # Move model back to original device
+    
+    # Normalize to percentages
+    max_grad = gradients.max() if gradients.max() > 0 else 1.0
+    importance = (gradients / max_grad) * 100
+    
+    importance_dict = {name: float(imp) for name, imp in zip(feature_names, importance)}
+    
+    model.eval()
+    return importance_dict
+
+
+def compute_electrode_band_importance(importance_dict):
+    """Reorganize importance by electrode and band."""
+    electrodes = ['TP9', 'AF7', 'AF8', 'TP10']
+    bands = ['delta', 'theta', 'alpha', 'beta', 'low_gamma', 'high_gamma', 'very_high']
+    
+    electrode_importance = {elec: {} for elec in electrodes}
+    
+    for feature, importance in importance_dict.items():
+        for elec in electrodes:
+            if feature.startswith(elec):
+                band = feature.replace(f"{elec}_", "")
+                electrode_importance[elec][band] = importance
+                break
+    
+    return electrode_importance
+
+
+def plot_feature_importance(importance_dict, output_dir):
+    """Horizontal bar plot of feature importance."""
+    sorted_features = sorted(importance_dict.items(), key=lambda x: x[1], reverse=True)
+    names = [f[0] for f in sorted_features]
+    values = [f[1] for f in sorted_features]
+    
+    # Color by electrode
+    electrode_colors = {'TP9': '#4CAF50', 'AF7': '#2196F3', 'AF8': '#FF9800', 'TP10': '#9C27B0'}
+    colors = []
+    for name in names:
+        for elec, color in electrode_colors.items():
+            if name.startswith(elec):
+                colors.append(color)
+                break
+    
+    fig, ax = plt.subplots(figsize=(10, 8))
+    
+    y_pos = np.arange(len(names))
+    bars = ax.barh(y_pos, values, color=colors, alpha=0.8)
+    
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(names)
+    ax.invert_yaxis()
+    ax.set_xlabel('Relative Importance (%)')
+    ax.set_title('Feature Importance: Skip Prediction')
+    ax.set_xlim(0, 105)
+    
+    # Add value labels
+    for bar, val in zip(bars, values):
+        ax.text(val + 1, bar.get_y() + bar.get_height()/2, f'{val:.1f}%', 
+               va='center', fontsize=8)
+    
+    # Legend
+    legend_elements = [plt.Rectangle((0,0),1,1, facecolor=c, alpha=0.8, label=e) 
+                      for e, c in electrode_colors.items()]
+    ax.legend(handles=legend_elements, loc='lower right')
+    
+    plt.tight_layout()
+    plt.savefig(output_dir / 'feature_importance_v2.png', dpi=150)
+    plt.close()
+
+
+def plot_electrode_heatmap(electrode_importance, output_dir):
+    """Heatmap of importance by electrode (rows) and band (columns)."""
+    electrodes = ['TP9', 'AF7', 'AF8', 'TP10']
+    bands = ['delta', 'theta', 'alpha', 'beta', 'low_gamma', 'high_gamma', 'very_high']
+    band_labels = ['Delta\n1-4Hz', 'Theta\n4-8Hz', 'Alpha\n8-13Hz', 'Beta\n13-30Hz', 
+                   'Low γ\n30-40Hz', 'High γ\n40-60Hz', 'V.High\n60-100Hz']
+    
+    # Build matrix
+    matrix = np.zeros((len(electrodes), len(bands)))
+    for i, elec in enumerate(electrodes):
+        for j, band in enumerate(bands):
+            matrix[i, j] = electrode_importance.get(elec, {}).get(band, 0)
+    
+    fig, ax = plt.subplots(figsize=(12, 5))
+    
+    im = ax.imshow(matrix, cmap='YlOrRd', aspect='auto', vmin=0, vmax=100)
+    
+    ax.set_xticks(np.arange(len(bands)))
+    ax.set_yticks(np.arange(len(electrodes)))
+    ax.set_xticklabels(band_labels)
+    ax.set_yticklabels(electrodes)
+    
+    # Add value annotations
+    for i in range(len(electrodes)):
+        for j in range(len(bands)):
+            val = matrix[i, j]
+            color = 'white' if val > 50 else 'black'
+            ax.text(j, i, f'{val:.0f}%', ha='center', va='center', color=color, fontsize=10)
+    
+    ax.set_title('Feature Importance: Electrode × Frequency Band (Skip Prediction)')
+    
+    plt.colorbar(im, ax=ax, label='Relative Importance (%)')
+    
+    plt.tight_layout()
+    plt.savefig(output_dir / 'electrode_band_heatmap_v2.png', dpi=150)
+    plt.close()
+
+
+# ============================================================================
 # MAIN
 # ============================================================================
 
@@ -727,6 +878,35 @@ def main():
         # Plots
         plot_training_curves(history, output_dir)
         plot_confusion_matrix(final_metrics['labels'], final_metrics['predictions'], output_dir)
+        
+        # Feature importance analysis
+        print(f"\n{'='*60}")
+        print("STEP 7: FEATURE IMPORTANCE ANALYSIS")
+        print("=" * 60)
+        
+        importance_dict = compute_feature_importance(model, X_val, y_val, feature_names, device)
+        electrode_importance = compute_electrode_band_importance(importance_dict)
+        
+        # Print top 10 features
+        sorted_imp = sorted(importance_dict.items(), key=lambda x: x[1], reverse=True)
+        print(f"   Top 10 most predictive features for skip prediction:")
+        for i, (feat, imp) in enumerate(sorted_imp[:10], 1):
+            print(f"   {i:2d}. {feat}: {imp:.1f}%")
+        
+        # Save feature importance plots
+        plot_feature_importance(importance_dict, output_dir)
+        plot_electrode_heatmap(electrode_importance, output_dir)
+        
+        # Add feature importance to results
+        results['feature_importance'] = importance_dict
+        results['electrode_band_importance'] = electrode_importance
+        
+        # Re-save results with feature importance
+        with open(output_dir / "training_results_v2.json", 'w') as f:
+            json.dump(results, f, indent=2)
+        
+        print(f"\n   ✓ Feature importance bar plot saved")
+        print(f"   ✓ Electrode-band heatmap saved")
         
         print(f"\n{'='*60}")
         print("TRAINING COMPLETE")
