@@ -78,3 +78,5 @@ dist/
 build/
 *.egg-info/
 *.egg
+# Large skip labels CSVs (regenerate with post2v2_add_skip_classification.py)
+*_skip_labels_*.csv

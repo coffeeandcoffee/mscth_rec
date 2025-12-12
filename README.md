@@ -5,19 +5,20 @@ EEG recording and ML pipeline for predicting TikTok engagement from brain signal
 ## Project Structure
 
 ```
-├── scripts/                          # Processing scripts
-│   ├── recording_script_v4.py          # EEG + video recording (with auto-reconnect)
+├── scripts/
+│   ├── recording_script_v4.py          # EEG + video recording
 │   ├── post1_check_eeg_quality.py      # Quality check
-│   ├── post2_classify_segments_and_cut.py  # Segment classification
-│   ├── post3_preprocess_eeg.py         # Signal preprocessing
-│   ├── post3v2_prep_for_ml.py          # ML preprocessing
-│   ├── post4_preprocess_eeg_v2.py      # Feature extraction
-│   ├── train_transformer.py            # Transformer training (V1)
-│   └── train_transformer_v2.py         # Model optimization experiments (V2)
-├── recordings/                       # EEG data (videos gitignored, data synced)
-│   └── eeg_*/model_output/             # Trained models & visualizations
-├── mscth/                            # Python virtual environment
-└── old_delete/                       # Deprecated files
+│   ├── post2_classify_segments_and_cut.py  # Segment classification (V1)
+│   ├── post2v2_add_skip_classification.py  # Skip prediction preprocessing (V2) ⭐
+│   ├── post3v2_prep_for_ml.py          # ML preprocessing (V1)
+│   ├── train_transformer.py            # Engagement prediction (V1)
+│   ├── train_transformer_v2.py         # V1 optimization experiments
+│   └── prediction_2.py                 # Skip prediction training (V2) ⭐
+├── recordings/
+│   └── eeg_*/
+│       ├── model_output/               # V1 models
+│       └── model_output_prediction_v2/ # V2 models ⭐
+└── mscth/                              # Python virtual environment
 ```
 
 ## Setup
@@ -29,9 +30,105 @@ pip install torch pandas scipy scikit-learn matplotlib
 
 ---
 
-## Complete Pipeline
+## Two Prediction Approaches
 
-### 1. Recording
+| Approach | V1: Engagement | V2: Skip Prediction ⭐ |
+|----------|----------------|------------------------|
+| **Target** | Predict if user watches >4s | Predict if user is about to skip |
+| **Data used** | First 0.5s after video start | 3s before each skip event |
+| **Best accuracy** | 62.8% (barely beats 60% baseline) | **69.65%** ✅ |
+| **Status** | Signal too weak | **Promising** |
+
+---
+
+## Pipeline V2: Skip Prediction (Recommended)
+
+Predicts if user is "about to skip" based on 3 seconds of EEG data.
+
+### Step 1: Preprocessing
+
+```bash
+python scripts/post2v2_add_skip_classification.py --window 3.0
+```
+
+**What it does:**
+1. Loads RAW EEG CSV (not the cut/classified one)
+2. Classifies segments (baseline_1, baseline_2, tiktok_over_4s, tiktok_under_4s)
+3. Adds `classification_2` column:
+   - `about_to_skip`: 3 seconds before each keypress_A
+   - `not_about_to_skip`: All other TikTok data
+   - Baselines preserved (excluded from training)
+
+**Output:** `eeg_*_skip_labels_3_0s.csv`
+
+### Step 2: Train Skip Prediction Model
+
+```bash
+python scripts/prediction_2.py --window 3.0 --epochs 50
+```
+
+**Pipeline:**
+1. Extract frequency bands (7 bands × 4 channels = 28 features)
+2. Create 3-second sample blocks:
+   - `about_to_skip`: 3s ending at each keypress_A (all 321 blocks)
+   - `not_about_to_skip`: Random windows with ~2s stride (<33% overlap)
+3. Interpolate each block to 256Hz (768 samples)
+4. Balance dataset to 50/50
+5. Train transformer model
+
+**Output:** `model_output_prediction_v2/`
+- `skip_prediction_model.pt` — Trained model
+- `training_results_v2.json` — Metrics
+- `training_curves_v2.png` — Loss/accuracy plots
+- `confusion_matrix_v2.png` — Predictions breakdown
+
+---
+
+## V2 Results
+
+| Metric | Value |
+|--------|-------|
+| **Validation Accuracy** | **69.65%** |
+| Precision | 81.7% |
+| Recall | 45.3% |
+| F1 Score | 58.3% |
+| Training Samples | 385 |
+| Validation Samples | 257 |
+| Data Loss | 0.0% |
+
+### Interpretation
+
+- **High precision (82%)**: When model predicts "about to skip", it's correct 82% of the time
+- **Lower recall (45%)**: Model is conservative, catches ~half of actual skip events
+- **Beats baseline**: 70% accuracy vs 50% random chance
+
+### Why V2 Works Better
+
+1. **Different target**: Predicts "about to skip" intent vs engagement after the fact
+2. **More relevant data**: Uses 3s before skip (when brain is deciding) vs 0.5s after video start
+3. **No data loss**: Uses raw EEG without cutting, preserving continuity
+
+---
+
+## Pipeline V1: Engagement Prediction (Archived)
+
+> ⚠️ This approach had weak signal (~60% accuracy). See V2 instead.
+
+```bash
+# V1 Pipeline (for reference)
+python scripts/post2_classify_segments_and_cut.py
+python scripts/post3v2_prep_for_ml.py --duration 0.5
+python scripts/train_transformer.py --balanced --epochs 100
+```
+
+**V1 Conclusions:**
+- 62.8% best accuracy (only 2.7% above majority baseline)
+- Multiple architectures and regularization techniques tried
+- Signal appears too weak for this prediction target
+
+---
+
+## Recording
 
 ```bash
 python scripts/recording_script_v4.py --nocamera --duration 1800
@@ -41,30 +138,10 @@ python scripts/recording_script_v4.py --nocamera --duration 1800
 - `A` — TikTok video transition (swipe)
 - `B` — Baseline period marker
 
-### 2. Post-processing
+---
 
-```bash
-# Quality check
-python scripts/post1_check_eeg_quality.py
+## Frequency Bands
 
-# Classify segments (baseline vs TikTok, engaged vs skipped)
-python scripts/post2_classify_segments_and_cut.py
-```
-
-### 3. ML Preprocessing
-
-```bash
-python scripts/post3v2_prep_for_ml.py --duration 0.5 --verbose
-```
-
-**What it does:**
-1. Baseline normalization (z-score using baseline_1)
-2. Frequency band extraction (7 bands × 4 channels = 28 features)
-3. Timestamp-based segment extraction (first 0.5s after each video start)
-4. Interpolation to uniform 256 Hz
-5. Output: `*_ml_ready.npz` with shape `(n_videos, 128, 28)`
-
-**Frequency bands:**
 | Band | Range | Neural Correlate |
 |------|-------|------------------|
 | Delta | 1-4 Hz | Deep attention |
@@ -75,189 +152,29 @@ python scripts/post3v2_prep_for_ml.py --duration 0.5 --verbose
 | High Gamma | 40-60 Hz | Learning |
 | Very High | 60-100 Hz | Exploratory |
 
-### 4. Transformer Training
-
-```bash
-python scripts/train_transformer.py --balanced --epochs 100 --lr 0.003
-```
-
-**Architecture (per ML specialist):**
-- 28-dimensional input (4 channels × 7 bands)
-- 3 attention heads, 1 transformer layer
-- Fully connected → sigmoid output
-- Binary classification: engaged (>4s) vs skipped (<4s)
-
-**Features:**
-- Mac M1 MPS GPU acceleration
-- Class balancing via weighted sampling
-- 60/40 train/validation split
-- Feature importance analysis
-- Comprehensive visualizations
-
----
-
-## Results & Model Optimization Experiments
-
-### Initial Results (V1 Transformer)
-
-| Metric | Value |
-|--------|-------|
-| Dataset | 321 videos (128 engaged, 193 skipped) |
-| Best Val Accuracy | **62.8%** (but 79% train = overfitting) |
-| Majority Baseline | 60.1% (just predicting "skipped") |
-
-**Problem identified:** Model overfits severely with limited data. Val accuracy barely beats majority class baseline.
-
----
-
-### Optimization Experiments (V2)
-
-Created `train_transformer_v2.py` with multiple regularization and architecture options.
-
-#### Techniques Tried
-
-| Technique | What It Does | Result |
-|-----------|--------------|--------|
-| **Data Augmentation** | Noise, time shift, channel dropout, time masking | ❌ No improvement, sometimes worse |
-| **Label Smoothing** | Soft labels (0.05-0.1) to prevent overconfidence | ❌ Model collapsed to majority class |
-| **Higher Dropout** | 0.15-0.3 dropout throughout | ❌ Underfitting, stopped learning |
-| **Weight Decay** | L2 regularization (0.02-0.05) | ❌ No improvement |
-| **Early Stopping** | Stop when val accuracy stops improving | ⚠️ Stopped at ~60% (baseline) |
-| **Focal Loss** | Focus on hard examples for class imbalance | ❌ Still overfit or collapsed |
-| **Mixup** | Blend samples and labels | ❌ Worse performance |
-| **K-Fold CV** | 5-fold cross-validation | ⚠️ Confirmed ~60% across all folds |
-
-#### Architectures Tried
-
-| Model | Parameters | Val Accuracy | Notes |
-|-------|------------|--------------|-------|
-| Transformer | 48K | ~60-62% | Overfits to 80%+ train |
-| CNN | 23K | ~60% | Overfit to 100% train quickly |
-| LSTM | ~5K | ~57% | Couldn't converge well |
-| Hybrid CNN-LSTM | 19K | ~57% | Same issues |
-
-#### Sklearn Baselines (Sanity Check)
-
-```
-Model                5-Fold CV Accuracy
-LogisticRegression   0.495 ± 0.042
-RandomForest         0.554 ± 0.017
-GradientBoosting     0.561 ± 0.051  
-SVM                  0.492 ± 0.029
-```
-
-**Critical finding:** Even simple sklearn models with hand-crafted features perform at ~50-56%, barely above random chance.
-
----
-
-### Conclusions
-
-1. **The signal is very weak (or not present)** — No model architecture or regularization technique could reliably beat the 60% majority class baseline
-2. **Not an overfitting problem alone** — Even when preventing overfitting, models couldn't learn meaningful patterns
-3. **321 samples is too few** — But even with proper regularization, the underlying signal appears too weak
-4. **The 4-second threshold may not be optimal** — Binary engaged/skipped classification might not capture what EEG can actually predict
-
-### What We Learned
-
-- Temporal lobe theta/delta (TP9) showed highest feature importance in V1, but feature importance ≠ predictive power
-- First 0.5s of video viewing may not contain enough discriminative signal
-- The task (predicting if user will watch >4s) may not have a strong neural correlate detectable with consumer EEG
-
----
-
-## Recommended Next Steps
-
-### 1. Record More Data (Preferred)
-- Target: 1000+ video segments minimum
-- Consider longer recording sessions or multiple sessions
-- More data allows models to find subtle patterns
-
-### 2. Try Different Prediction Targets
-
-Instead of predicting engagement from the **first 0.5s of viewing**, try:
-
-| Alternative Target | Description | Why It Might Work |
-|--------------------|-------------|-------------------|
-| **Pre-skip brain state** | Use 2-4s EEG *before* the skip happens | Captures "thinking about skipping" neural state |
-| **Skip vs No-skip intent** | Binary: user is about to skip within 2s | More direct neural correlate |
-| **Continuous engagement** | Regression: predict watch duration | Avoids arbitrary threshold |
-| **Boredom detection** | Detect when attention drops (alpha increase) | Well-established EEG pattern |
-
-**Recommended experiment:**
-```python
-# Instead of: first 0.5s after video start → engaged/skipped
-# Try: 4s before skip event → "about to skip" vs "random baseline"
-```
-
-### 3. Preprocessing Experiments
-- Try longer segment durations (1s, 2s, 4s)
-- Different frequency band combinations
-- Raw EEG without frequency decomposition
-- Other engagement thresholds (2s, 6s, 10s)
-
-### 4. Feature Engineering
-- Add temporal derivatives (rate of change)
-- Asymmetry features (left vs right hemisphere)
-- Coherence between electrodes
-- Time-frequency spectrograms
-
----
-
-## Top Predictive Features (for reference)
-
-| Rank | Feature | Importance | Interpretation |
-|------|---------|------------|----------------|
-| 1 | **TP9_theta** | 100% | Temporal lobe, 4-8 Hz |
-| 2 | **TP9_delta** | 99.3% | Temporal lobe, 1-4 Hz |
-| 3 | AF8_alpha | 75.6% | Right frontal, 8-13 Hz |
-| 4 | AF8_theta | 67.2% | Right frontal, 4-8 Hz |
-| 5 | TP9_alpha | 64.0% | Temporal lobe, 8-13 Hz |
-
-*Note: High feature importance doesn't guarantee predictive power with current dataset size.*
-
-### Output Files
-
-Generated in `recordings/eeg_*/model_output/`:
-- `eeg_transformer.pt` / `eeg_transformer_v2.pt` — Trained models
-- `training_results.json` / `training_results_v2.json` — Metrics + config
-- `training_curves.png` — Loss/accuracy over epochs
-- `electrode_band_heatmap.png` — Electrode × band importance matrix
-- `confusion_matrix.png` — Prediction breakdown
-
 ---
 
 ## Dependencies
 
-- `torch` — Transformer model (MPS for M1 Mac)
-- `pylsl`, `muselsl` — Muse S streaming
-- `opencv-python` — Video recording
-- `scipy`, `numpy`, `pandas` — Signal processing
-- `scikit-learn`, `matplotlib` — ML & visualization
+```bash
+torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
+```
 
 ---
 
 ## Changelog
 
-### 2025-12-11 (Model Optimization)
-- **Added**: `train_transformer_v2.py` with:
-  - Multiple architectures: Transformer, CNN, LSTM, Hybrid
-  - Regularization: dropout, weight decay, label smoothing
-  - Focal Loss for class imbalance
-  - Data augmentation (noise, time shift, masking)
-  - Early stopping on validation accuracy
-  - K-fold cross-validation
-  - Model selection via `--model cnn/lstm/hybrid/transformer`
-- **Experimented**: 15+ configurations, none beat majority baseline reliably
-- **Conclusion**: Signal too weak with current setup, need more data or different prediction target
+### 2025-12-12 (Prediction V2)
+- **Added**: `post2v2_add_skip_classification.py` — Preprocesses raw EEG for skip prediction
+- **Added**: `prediction_2.py` — Full skip prediction training pipeline
+- **Result**: **69.65% validation accuracy** (significant improvement over V1)
+- **Key insight**: Predicting "about to skip" from 3s before skip event works better than predicting engagement from first 0.5s of viewing
 
-### 2025-12-11 (Earlier)
-- **Updated**: `.gitignore` now excludes only video files in `recordings/`
-- **Added**: `post3v2_prep_for_ml.py` — ML preprocessing pipeline
-- **Added**: `train_transformer.py` — Original transformer training
-- **First results**: 62.8% validation accuracy (overfitting)
+### 2025-12-11 (Model Optimization)
+- **Added**: `train_transformer_v2.py` with multiple architectures and regularization
+- **Experimented**: 15+ configurations, none beat majority baseline reliably
+- **Conclusion**: V1 approach has weak signal, need different prediction target
 
 ### 2025-12-10
 - **Added**: `recording_script_v4.py` with robust auto-reconnect
 - **Added**: Real-time frequency monitoring during recording
-- **Fixed**: All post-processing scripts use absolute paths
-
