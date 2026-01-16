@@ -237,6 +237,24 @@ python scripts/prediction_2.py --window 3.0 --epochs 50 --nonotch
 
 **Conclusion**: 80% overlap = **3x more data** → DT now **matches Transformer** (66.1% vs 66.0%).
 
+---
+
+## V3 Decision Tree Run-4 (Simpler)
+
+| Parameter | Run-3 | Run-4 |
+|-----------|-------|-------|
+| `max_depth` | 5 | **3** |
+| `min_samples_leaf` | 10 | **15** |
+
+| Participant | Run-3 | Run-4 | Δ |
+|-------------|-------|-------|---|
+| P1 | 66.5% | 64.2% | -2.3% |
+| P2 | 63.8% | 63.3% | -0.5% |
+| P3 | 67.9% | 63.1% | -4.8% |
+| **Mean** | **66.1%** | **63.5%** | **-2.6%** |
+
+**Conclusion**: depth=3 is **too simple** — loses predictive power. **Run-3 is optimal**.
+
 > ⚠️ This approach had weak signal (~60% accuracy). See V2 instead.
 
 ```bash

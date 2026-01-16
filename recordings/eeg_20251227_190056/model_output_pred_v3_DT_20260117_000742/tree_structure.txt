@@ -1,0 +1,13 @@
+|--- AF8_alpha_min <= -6.69
+|   |--- AF7_alpha_std <= 3.23
+|   |   |--- class: 1
+|   |--- AF7_alpha_std >  3.23
+|   |   |--- class: 1
+|--- AF8_alpha_min >  -6.69
+|   |--- TP10_high_gamma_mean <= -0.05
+|   |   |--- class: 1
+|   |--- TP10_high_gamma_mean >  -0.05
+|   |   |--- TP9_high_gamma_mean <= 0.38
+|   |   |   |--- class: 0
+|   |   |--- TP9_high_gamma_mean >  0.38
+|   |   |   |--- class: 1
