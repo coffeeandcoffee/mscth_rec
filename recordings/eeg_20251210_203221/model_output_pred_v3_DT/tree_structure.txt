@@ -1,0 +1,37 @@
+|--- AF8_high_gamma_mean <= 0.36
+|   |--- TP9_high_gamma_mean <= -0.59
+|   |   |--- AF8_high_gamma_max <= 537.48
+|   |   |   |--- class: 1
+|   |   |--- AF8_high_gamma_max >  537.48
+|   |   |   |--- AF7_alpha_mean <= -0.01
+|   |   |   |   |--- class: 1
+|   |   |   |--- AF7_alpha_mean >  -0.01
+|   |   |   |   |--- class: 1
+|   |--- TP9_high_gamma_mean >  -0.59
+|   |   |--- TP10_very_high_min <= -558.36
+|   |   |   |--- TP9_high_gamma_mean <= 0.63
+|   |   |   |   |--- TP9_low_gamma_std <= 1.77
+|   |   |   |   |   |--- TP9_theta_mean <= -0.06
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- TP9_theta_mean >  -0.06
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- TP9_low_gamma_std >  1.77
+|   |   |   |   |   |--- AF7_beta_mean <= -0.02
+|   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |--- AF7_beta_mean >  -0.02
+|   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |--- TP9_high_gamma_mean >  0.63
+|   |   |   |   |--- class: 1
+|   |   |--- TP10_very_high_min >  -558.36
+|   |   |   |--- TP9_delta_mean <= -0.26
+|   |   |   |   |--- class: 1
+|   |   |   |--- TP9_delta_mean >  -0.26
+|   |   |   |   |--- class: 1
+|--- AF8_high_gamma_mean >  0.36
+|   |--- TP9_high_gamma_min <= -827.93
+|   |   |--- class: 0
+|   |--- TP9_high_gamma_min >  -827.93
+|   |   |--- AF8_beta_mean <= -0.01
+|   |   |   |--- class: 1
+|   |   |--- AF8_beta_mean >  -0.01
+|   |   |   |--- class: 1

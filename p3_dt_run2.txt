@@ -1,0 +1,74 @@
+============================================================
+PREDICTION V3: SKIP PREDICTION (DECISION TREE)
+============================================================
+
+============================================================
+STEP 1: LOAD DATA
+============================================================
+   File: eeg_20251227_190056_skip_labels_3_0s.csv
+   ✓ All 7 required columns present
+   ✓ Classes valid: {'not_about_to_skip', 'about_to_skip', 'baseline_1'}
+   Total rows: 427465
+
+============================================================
+STEP 2: EXTRACT FREQUENCY BANDS
+============================================================
+   ⏭ Notch filter DISABLED (--nonotch flag)
+   ✓ Extracted 28 band features
+
+============================================================
+STEP 3: CREATE AGGREGATED SAMPLES
+============================================================
+   ✓ Created 104 about_to_skip samples
+   ✓ Created 542 not_about_to_skip samples
+   Feature vector size: 112 (28 bands × 4 stats)
+
+============================================================
+STEP 4: REBALANCE DATASET
+============================================================
+   Before: class_0=542, class_1=104
+   After: class_0=104, class_1=104
+   ✓ Exactly 50/50 balanced
+
+============================================================
+STEP 5: TRAIN DECISION TREE
+============================================================
+   Train: 124 samples
+   Val: 84 samples
+   Max depth: 5
+   Min samples/leaf: 10
+
+   Final Results:
+   ✓ Accuracy:  0.5357
+   ✓ Precision: 0.5366
+   ✓ Recall:    0.5238
+   ✓ F1:        0.5301
+   ⚠ Model close to random baseline
+
+============================================================
+STEP 6: SAVE RESULTS
+============================================================
+   ✓ Confusion matrix saved
+   ✓ Feature importance plot saved
+
+   Top 10 most predictive features:
+    1. AF8_high_gamma_mean: 26.4%
+    2. TP10_high_gamma_mean: 21.1%
+    3. AF8_very_high_max: 14.7%
+    4. AF8_low_gamma_max: 14.3%
+    5. AF7_delta_min: 11.2%
+    6. TP10_alpha_min: 8.9%
+    7. TP9_very_high_min: 1.9%
+    8. TP9_theta_mean: 1.6%
+    9. AF7_delta_std: 0.0%
+   10. AF7_delta_max: 0.0%
+   ✓ Tree structure saved
+   ✓ Tree visualization saved
+   ✓ Class distribution plot saved
+   ✓ Trained model saved (decision_tree_model.pkl)
+   ✓ Feature names saved
+
+============================================================
+TRAINING COMPLETE
+============================================================
+Outputs saved to: recordings/eeg_20251227_190056/model_output_pred_v3_DT_20260116_234217

@@ -1,0 +1,46 @@
+|--- AF7_high_gamma_max <= 73.89
+|   |--- TP10_beta_std <= 12.74
+|   |   |--- TP10_very_high_max <= 19.71
+|   |   |   |--- class: 1
+|   |   |--- TP10_very_high_max >  19.71
+|   |   |   |--- class: 1
+|   |--- TP10_beta_std >  12.74
+|   |   |--- AF8_high_gamma_min <= -53.78
+|   |   |   |--- class: 0
+|   |   |--- AF8_high_gamma_min >  -53.78
+|   |   |   |--- class: 1
+|--- AF7_high_gamma_max >  73.89
+|   |--- TP10_alpha_max <= 15.49
+|   |   |--- TP9_very_high_min <= -500.38
+|   |   |   |--- AF8_beta_mean <= -0.01
+|   |   |   |   |--- class: 1
+|   |   |   |--- AF8_beta_mean >  -0.01
+|   |   |   |   |--- class: 1
+|   |   |--- TP9_very_high_min >  -500.38
+|   |   |   |--- class: 0
+|   |--- TP10_alpha_max >  15.49
+|   |   |--- AF8_high_gamma_std <= 54.50
+|   |   |   |--- AF7_delta_min <= -9.45
+|   |   |   |   |--- TP10_delta_std <= 36.20
+|   |   |   |   |   |--- TP10_alpha_max <= 40.56
+|   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |--- TP10_alpha_max >  40.56
+|   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- TP10_delta_std >  36.20
+|   |   |   |   |   |--- AF8_delta_max <= 96.36
+|   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |--- AF8_delta_max >  96.36
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |--- AF7_delta_min >  -9.45
+|   |   |   |   |--- TP10_delta_std <= 9.37
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- TP10_delta_std >  9.37
+|   |   |   |   |   |--- TP9_low_gamma_min <= -210.85
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- TP9_low_gamma_min >  -210.85
+|   |   |   |   |   |   |--- class: 0
+|   |   |--- AF8_high_gamma_std >  54.50
+|   |   |   |--- AF7_alpha_min <= -134.84
+|   |   |   |   |--- class: 0
+|   |   |   |--- AF7_alpha_min >  -134.84
+|   |   |   |   |--- class: 0

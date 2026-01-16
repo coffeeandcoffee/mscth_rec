@@ -159,7 +159,68 @@ python scripts/prediction_2.py --window 3.0 --epochs 50 --nonotch
 
 **Recommendation:** For this dataset, **do not use the notch filter** — the 50Hz signal appears to be genuine neural activity from gamma oscillations, not power line contamination.
 
-## Pipeline V1: Engagement Prediction (Archived)
+---
+
+## V3 Decision Tree Run-1 (n=3)
+
+> Alternative model using Decision Tree for interpretability. See [`prediction_3_dt.py`](file:///Users/gregorlederer/Local_LifeAdmin_Files/MSc%20Thesis%20-%20EEG%20Neuroscience/Data%20Recording%20and%20Quality%20Tests/scripts/prediction_3_dt.py).
+
+### Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Model | `DecisionTreeClassifier` |
+| `max_depth` | 10 |
+| `min_samples_leaf` | 5 |
+| `class_weight` | 'balanced' |
+| `random_state` | 42 |
+| Features | 112 (28 bands × 4 stats: mean, std, min, max) |
+| Window | 3.0s |
+| Notch filter | Disabled (`--nonotch`) |
+
+### Results: V2 Transformer vs V3 Decision Tree
+
+| Participant | V2 Transformer | V3 Decision Tree | Δ |
+|-------------|----------------|------------------|---|
+| P1 | **71.2%** | 64.6% | -6.6% |
+| P2 | **62.3%** | 53.8% | -8.5% |
+| P3 | **64.3%** | 58.3% | -6.0% |
+| **Mean** | **66.0%** | **58.9%** | **-7.1%** |
+
+### Top Features (Decision Tree)
+
+| Rank | Feature | Importance |
+|------|---------|------------|
+| 1 | **TP9_high_gamma_mean** | 25.0% |
+| 2 | **AF8_high_gamma_mean** | 18.7% |
+| 3 | TP10_very_high_min | 8.0% |
+| 4 | TP9_very_high_min | 7.9% |
+| 5 | TP9_low_gamma_std | 6.5% |
+
+### Conclusion
+
+- **Transformer outperforms Decision Tree** by ~7%
+- DT provides interpretable decision rules (saved as `tree_structure.txt`)
+- **high_gamma_mean** remains most predictive feature in both models
+- Output: `model_output_pred_v3_DT_YYYYMMDD_HHMMSS/`
+
+---
+
+## V3 Decision Tree Run-2 (Regularized)
+
+| Parameter | Run-1 | Run-2 |
+|-----------|-------|-------|
+| `max_depth` | 10 | **5** |
+| `min_samples_leaf` | 5 | **10** |
+
+| Participant | Run-1 | Run-2 | Δ |
+|-------------|-------|-------|---|
+| P1 | 64.6% | **67.7%** | +3.1% ✅ |
+| P2 | 53.8% | 53.8% | 0% |
+| P3 | 58.3% | 53.6% | -4.7% |
+| **Mean** | **58.9%** | **58.4%** | -0.5% |
+
+**Conclusion**: Regularization improved P1 (79.2% precision) but not others. Transformer still best overall.
 
 > ⚠️ This approach had weak signal (~60% accuracy). See V2 instead.
 
@@ -209,6 +270,13 @@ torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
 ---
 
 ## Changelog
+
+### 2026-01-16 (V3 Decision Tree)
+- **Added**: [`prediction_3_dt.py`](file:///scripts/prediction_3_dt.py) — Decision Tree alternative to Transformer
+- **Params**: `max_depth=10`, `min_samples_leaf=5`, 112 aggregated features
+- **Result**: Mean **58.9%** accuracy (vs V2 Transformer 66.0%)
+- **Conclusion**: Transformer outperforms DT by ~7%, but DT provides interpretable rules
+- **See**: [V3 Decision Tree Run-1](#v3-decision-tree-run-1-n3)
 
 ### 2026-01-16 (50Hz Notch Filter Experiment)
 - **Added**: `--nonotch` flag in [`prediction_2.py`](file:///scripts/prediction_2.py) — notch filter ON by default

@@ -1,0 +1,34 @@
+|--- AF7_high_gamma_max <= 73.89
+|   |--- TP10_beta_std <= 12.74
+|   |   |--- TP10_very_high_max <= 24.75
+|   |   |   |--- class: 1
+|   |   |--- TP10_very_high_max >  24.75
+|   |   |   |--- class: 1
+|   |--- TP10_beta_std >  12.74
+|   |   |--- class: 1
+|--- AF7_high_gamma_max >  73.89
+|   |--- TP10_alpha_max <= 15.49
+|   |   |--- TP9_beta_min <= -198.79
+|   |   |   |--- AF7_delta_mean <= -0.26
+|   |   |   |   |--- class: 1
+|   |   |   |--- AF7_delta_mean >  -0.26
+|   |   |   |   |--- class: 1
+|   |   |--- TP9_beta_min >  -198.79
+|   |   |   |--- class: 0
+|   |--- TP10_alpha_max >  15.49
+|   |   |--- AF8_high_gamma_std <= 54.50
+|   |   |   |--- AF7_delta_min <= -9.45
+|   |   |   |   |--- TP10_delta_std <= 36.20
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- TP10_delta_std >  36.20
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- AF7_delta_min >  -9.45
+|   |   |   |   |--- TP9_alpha_std <= 70.56
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- TP9_alpha_std >  70.56
+|   |   |   |   |   |--- class: 0
+|   |   |--- AF8_high_gamma_std >  54.50
+|   |   |   |--- TP10_alpha_min <= -32.73
+|   |   |   |   |--- class: 0
+|   |   |   |--- TP10_alpha_min >  -32.73
+|   |   |   |   |--- class: 0
