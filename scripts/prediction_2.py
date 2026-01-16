@@ -241,7 +241,7 @@ def create_sample_blocks(df, feature_names, window_seconds=3.0, stride_seconds=1
                 continue
             
             # Sample windows with stride (ensuring <33% overlap = stride >= 2s for 3s window)
-            effective_stride = max(stride_seconds, window_seconds * 0.67)
+            effective_stride = window_seconds * 0.2  # 80% overlap
             t_start = region_timestamps[0]
             t_end = region_timestamps[-1] - window_seconds
             

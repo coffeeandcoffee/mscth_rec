@@ -205,7 +205,7 @@ def create_aggregated_samples(df, feature_names, window_seconds=3.0, stride_seco
             if region_duration < window_seconds:
                 continue
             
-            effective_stride = max(stride_seconds, window_seconds * 0.67)
+            effective_stride = window_seconds * 0.2  # 80% overlap
             t_start = region_timestamps[0]
             t_end = region_timestamps[-1] - window_seconds
             

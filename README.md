@@ -222,6 +222,21 @@ python scripts/prediction_2.py --window 3.0 --epochs 50 --nonotch
 
 **Conclusion**: Regularization improved P1 (79.2% precision) but not others. Transformer still best overall.
 
+---
+
+## V3 Decision Tree Run-3 (80% Overlap) ⭐
+
+> Changed overlap from 33% → **80%** (stride 0.6s). Data samples increased ~3x.
+
+| Participant | Run-2 | Run-3 | Δ | Precision | Recall | F1 |
+|-------------|-------|-------|---|-----------|--------|-----|
+| P1 | 67.7% | 66.5% | -1.2% | 67.2% | 64.1% | 65.6% |
+| P2 | 53.8% | **63.8%** | **+10.0%** ✅ | 69.6% | 48.5% | 57.1% |
+| P3 | 53.6% | **67.9%** | **+14.3%** ✅ | 69.2% | 64.3% | 66.7% |
+| **Mean** | **58.4%** | **66.1%** | **+7.7%** ✅ | 68.7% | 59.0% | 63.1% |
+
+**Conclusion**: 80% overlap = **3x more data** → DT now **matches Transformer** (66.1% vs 66.0%).
+
 > ⚠️ This approach had weak signal (~60% accuracy). See V2 instead.
 
 ```bash
@@ -272,11 +287,11 @@ torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
 ## Changelog
 
 ### 2026-01-16 (V3 Decision Tree)
-- **Added**: [`prediction_3_dt.py`](file:///scripts/prediction_3_dt.py) — Decision Tree alternative to Transformer
-- **Params**: `max_depth=10`, `min_samples_leaf=5`, 112 aggregated features
-- **Result**: Mean **58.9%** accuracy (vs V2 Transformer 66.0%)
-- **Conclusion**: Transformer outperforms DT by ~7%, but DT provides interpretable rules
-- **See**: [V3 Decision Tree Run-1](#v3-decision-tree-run-1-n3)
+- **Added**: [`prediction_3_dt.py`](file:///scripts/prediction_3_dt.py) — Decision Tree alternative
+- **Run-1**: `max_depth=10` → 58.9% mean
+- **Run-2**: `max_depth=5, min_samples=10` → 58.4% mean
+- **Run-3**: **80% overlap** (stride=0.6s) → **66.1% mean** ⭐ (matches Transformer)
+- **See**: [V3 Run-3](#v3-decision-tree-run-3-80-overlap-)
 
 ### 2026-01-16 (50Hz Notch Filter Experiment)
 - **Added**: `--nonotch` flag in [`prediction_2.py`](file:///scripts/prediction_2.py) — notch filter ON by default

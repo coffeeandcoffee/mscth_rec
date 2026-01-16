@@ -1,0 +1,22 @@
+|--- AF8_alpha_min <= -6.69
+|   |--- AF8_delta_min <= -14.26
+|   |   |--- class: 0
+|   |--- AF8_delta_min >  -14.26
+|   |   |--- TP9_delta_mean <= 0.02
+|   |   |   |--- class: 1
+|   |   |--- TP9_delta_mean >  0.02
+|   |   |   |--- class: 1
+|--- AF8_alpha_min >  -6.69
+|   |--- TP10_high_gamma_mean <= -0.05
+|   |   |--- class: 1
+|   |--- TP10_high_gamma_mean >  -0.05
+|   |   |--- AF8_high_gamma_mean <= 0.13
+|   |   |   |--- TP9_high_gamma_mean <= 0.50
+|   |   |   |   |--- AF8_low_gamma_mean <= -0.00
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- AF8_low_gamma_mean >  -0.00
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- TP9_high_gamma_mean >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- AF8_high_gamma_mean >  0.13
+|   |   |   |--- class: 1
