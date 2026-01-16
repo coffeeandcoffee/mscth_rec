@@ -1,0 +1,13 @@
+{
+  "experiment": "cross_participant_generalizability",
+  "timestamp": "2026-01-17T00:22:42.296237",
+  "model_path": "recordings/eeg_20251227_190056/model_output_pred_v4_RF_20260117_001841/random_forest_model.pkl",
+  "model_trained_on": "eeg_20251227_190056",
+  "test_file": "recordings/eeg_20251210_203221/eeg_20251210_203221_skip_labels_3_0s.csv",
+  "test_participant": "eeg_20251210_203221",
+  "test_samples": 642,
+  "accuracy": 0.5,
+  "precision": 0.5,
+  "recall": 1.0,
+  "f1": 0.6666666666666666
+}

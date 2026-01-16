@@ -257,36 +257,53 @@ python scripts/prediction_2.py --window 3.0 --epochs 50 --nonotch
 
 ---
 
-## V4 Random Forest Run-1 ⭐ (Best Result)
+## V4 Random Forest Run-1
 
 ```bash
 python scripts/prediction_4_rf.py --file <skip_labels.csv> --nonotch --n-estimators 100 --max-depth 5 --min-samples 10
 ```
-
-| Parameter | Value |
-|-----------|-------|
-| Model | `RandomForestClassifier` |
-| `n_estimators` | 100 |
-| `max_depth` | 5 |
-| `min_samples_leaf` | 10 |
-| Overlap | 80% |
-| Notch filter | Disabled |
 
 | Participant | V2 Transformer | V3 DT Run-3 | V4 RF Run-1 |
 |-------------|----------------|-------------|-------------|
 | P1 | 71.2% | 66.5% | **73.5%** |
 | P2 | 62.3% | 63.8% | **67.3%** |
 | P3 | 64.3% | 67.9% | **79.8%** |
-| **Mean** | **66.0%** | **66.1%** | **73.5%** ⭐ |
+| **Mean** | **66.0%** | **66.1%** | **73.5%** |
 
-**Conclusion**: Random Forest = **best model** (+7.4% vs Transformer). Ensemble of 100 trees prevents overfitting.
+---
+
+## V4 Random Forest Run-2 ⭐
 
 ```bash
-# V1 Pipeline (for reference)
-python scripts/post2_classify_segments_and_cut.py
-python scripts/post3v2_prep_for_ml.py --duration 0.5
-python scripts/train_transformer.py --balanced --epochs 100
+python scripts/prediction_4_rf.py --file <skip_labels.csv> --nonotch --n-estimators 200 --max-depth 7 --min-samples 5
 ```
+
+| Participant | RF Run-1 | RF Run-2 | Δ |
+|-------------|----------|----------|---|
+| P1 | 73.5% | 72.0% | -1.5% |
+| P2 | 67.3% | **68.8%** | +1.5% |
+| P3 | 79.8% | **84.5%** | +4.7% |
+| **Mean** | **73.5%** | **75.1%** ⭐ | +1.6% |
+
+> **Validation**: Same methodology as V2/V3 — 60/40 train/val split from same participant, **no data leakage** between sets. All models validated consistently.
+
+---
+
+## V5 Cross-Participant Generalizability (Experimental)
+
+> Tested if P3's RF model (84.5%) generalizes to other participants.
+
+```bash
+python scripts/prediction_5_cross_participant.py --model <P3_model.pkl> --test <P1_or_P2_skip_labels.csv>
+```
+
+| Training | Test | Accuracy | Result |
+|----------|------|----------|--------|
+| P3 | P3 (self) | **84.5%** | ✅ |
+| P3 | P1 | **50.0%** | ❌ Random |
+| P3 | P2 | **41.7%** | ❌ Below random |
+
+**Conclusion**: Model does **NOT generalize** across participants. Neural patterns are person-specific. Per-participant training is required.
 
 ---
 

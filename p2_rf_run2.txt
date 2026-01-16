@@ -1,0 +1,73 @@
+============================================================
+PREDICTION V4: SKIP PREDICTION (RANDOM FOREST)
+============================================================
+
+============================================================
+STEP 1: LOAD DATA
+============================================================
+   File: eeg_20251224_164549_skip_labels_3_0s.csv
+   ✓ All 7 required columns present
+   ✓ Classes valid: {'about_to_skip', 'baseline_2', 'not_about_to_skip', 'baseline_1'}
+   Total rows: 817608
+
+============================================================
+STEP 2: EXTRACT FREQUENCY BANDS
+============================================================
+   ⏭ Notch filter DISABLED (--nonotch flag)
+   ✓ Extracted 28 band features
+
+============================================================
+STEP 3: CREATE AGGREGATED SAMPLES
+============================================================
+   ✓ Created 248 about_to_skip samples
+   ✓ Created 3302 not_about_to_skip samples
+   Feature vector size: 112 (28 bands × 4 stats)
+
+============================================================
+STEP 4: REBALANCE DATASET
+============================================================
+   Before: class_0=3302, class_1=248
+   After: class_0=248, class_1=248
+   ✓ Exactly 50/50 balanced
+
+============================================================
+STEP 5: TRAIN RANDOM FOREST
+============================================================
+   Train: 297 samples
+   Val: 199 samples
+   N estimators: 200
+   Max depth: 7
+   Min samples/leaf: 5
+
+   Final Results:
+   ✓ Accuracy:  0.6884
+   ✓ Precision: 0.7284
+   ✓ Recall:    0.5960
+   ✓ F1:        0.6556
+   ✓ Model beats random baseline (50%)
+
+============================================================
+STEP 6: SAVE RESULTS
+============================================================
+   ✓ Confusion matrix saved
+   ✓ Feature importance plot saved
+
+   Top 10 most predictive features:
+    1. AF7_high_gamma_std: 2.5%
+    2. TP10_theta_max: 2.3%
+    3. AF7_high_gamma_min: 2.1%
+    4. TP10_alpha_min: 2.0%
+    5. TP9_delta_mean: 2.0%
+    6. AF7_low_gamma_min: 1.9%
+    7. TP10_theta_min: 1.9%
+    8. TP10_theta_std: 1.7%
+    9. TP10_alpha_max: 1.7%
+   10. TP10_low_gamma_std: 1.5%
+   ✓ Class distribution plot saved
+   ✓ Trained model saved (random_forest_model.pkl)
+   ✓ Feature names saved
+
+============================================================
+TRAINING COMPLETE
+============================================================
+Outputs saved to: recordings/eeg_20251224_164549/model_output_pred_v4_RF_20260117_001835
