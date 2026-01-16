@@ -255,7 +255,31 @@ python scripts/prediction_2.py --window 3.0 --epochs 50 --nonotch
 
 **Conclusion**: depth=3 is **too simple** — loses predictive power. **Run-3 is optimal**.
 
-> ⚠️ This approach had weak signal (~60% accuracy). See V2 instead.
+---
+
+## V4 Random Forest Run-1 ⭐ (Best Result)
+
+```bash
+python scripts/prediction_4_rf.py --file <skip_labels.csv> --nonotch --n-estimators 100 --max-depth 5 --min-samples 10
+```
+
+| Parameter | Value |
+|-----------|-------|
+| Model | `RandomForestClassifier` |
+| `n_estimators` | 100 |
+| `max_depth` | 5 |
+| `min_samples_leaf` | 10 |
+| Overlap | 80% |
+| Notch filter | Disabled |
+
+| Participant | V2 Transformer | V3 DT Run-3 | V4 RF Run-1 |
+|-------------|----------------|-------------|-------------|
+| P1 | 71.2% | 66.5% | **73.5%** |
+| P2 | 62.3% | 63.8% | **67.3%** |
+| P3 | 64.3% | 67.9% | **79.8%** |
+| **Mean** | **66.0%** | **66.1%** | **73.5%** ⭐ |
+
+**Conclusion**: Random Forest = **best model** (+7.4% vs Transformer). Ensemble of 100 trees prevents overfitting.
 
 ```bash
 # V1 Pipeline (for reference)
