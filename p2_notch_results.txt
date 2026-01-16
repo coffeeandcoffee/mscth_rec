@@ -1,0 +1,95 @@
+============================================================
+PREDICTION V2: SKIP PREDICTION TRAINING
+============================================================
+Device: MPS (Mac GPU)
+
+============================================================
+STEP 1: LOAD DATA
+============================================================
+   File: eeg_20251224_164549_skip_labels_3_0s.csv
+   ✓ All 7 required columns present
+   ✓ Classes valid: {'about_to_skip', 'baseline_2', 'baseline_1', 'not_about_to_skip'}
+   ✓ Timestamps monotonic
+   Total rows: 817608
+
+============================================================
+STEP 2: EXTRACT FREQUENCY BANDS
+============================================================
+   Applying 50.0Hz notch filter (power line removal)...
+   ✓ Notch filter applied to all channels
+   ✓ Extracted 28 band features
+   ✓ Band values verified (non-zero, finite)
+
+============================================================
+STEP 3: CREATE 3.0s SAMPLE BLOCKS
+============================================================
+
+   === DATA LOSS REPORT ===
+   Total keypresses (potential about_to_skip blocks): 248
+   Valid about_to_skip blocks created: 248
+   Skipped (too short): 0
+   DATA LOSS: 0.0%
+
+   ✓ Created 248 about_to_skip blocks
+   ✓ Created 1022 not_about_to_skip blocks
+   ✓ Chronology maintained within blocks
+   ✓ Overlap < 33% verified
+
+============================================================
+STEP 4: INTERPOLATE TO 256Hz
+============================================================
+   ✓ Shape: (1270, 768, 28) (blocks × 768 samples × 28 features)
+   ✓ All values finite
+
+============================================================
+STEP 5: REBALANCE DATASET
+============================================================
+   Before: class_0=1022, class_1=248
+   After: class_0=248, class_1=248
+   ✓ Exactly 50/50 balanced
+
+============================================================
+STEP 6: TRAIN TRANSFORMER
+============================================================
+   Train: 297 samples
+   Val: 199 samples
+   Model parameters: 107,909
+
+   Training for 50 epochs...
+   Epoch   1: Train=0.455, Val=0.508
+   Epoch  10: Train=0.626, Val=0.528
+   Epoch  20: Train=0.774, Val=0.573
+   Epoch  30: Train=0.848, Val=0.593
+   Epoch  40: Train=0.882, Val=0.588
+   Epoch  50: Train=0.923, Val=0.603
+
+   Final Results:
+   ✓ Accuracy:  0.6030
+   ✓ Precision: 0.6020
+   ✓ Recall:    0.5960
+   ✓ F1:        0.5990
+   ✓ Model beats random baseline (50%)
+
+============================================================
+STEP 7: FEATURE IMPORTANCE ANALYSIS
+============================================================
+   Top 10 most predictive features for skip prediction:
+    1. TP9_very_high: 100.0%
+    2. AF7_very_high: 82.9%
+    3. TP10_beta: 78.1%
+    4. TP9_low_gamma: 68.6%
+    5. TP9_beta: 66.3%
+    6. TP9_alpha: 66.2%
+    7. TP9_theta: 63.3%
+    8. TP9_high_gamma: 58.5%
+    9. AF7_alpha: 57.2%
+   10. AF7_theta: 57.2%
+
+   ✓ Feature importance bar plot saved
+   ✓ Electrode-band heatmap saved
+
+============================================================
+TRAINING COMPLETE
+============================================================
+Outputs saved to: recordings/eeg_20251224_164549/model_output_prediction_v2
+Best validation accuracy: 0.6231

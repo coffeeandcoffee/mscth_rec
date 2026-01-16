@@ -96,6 +96,18 @@ def load_and_verify_data(file_path):
 # STEP 2: EXTRACT FREQUENCY BANDS
 # ============================================================================
 
+def apply_notch_filter(data, fs, notch_freq=50.0, quality_factor=30.0):
+    """Apply notch filter to remove power line interference (50Hz in Europe, 60Hz in US)."""
+    if len(data) < 20:
+        return data
+    
+    try:
+        b, a = signal.iirnotch(notch_freq, quality_factor, fs)
+        return signal.filtfilt(b, a, data)
+    except Exception:
+        return data  # Return original if filter fails
+
+
 def extract_band_power(data, fs, low_freq, high_freq):
     """Extract power in a specific frequency band using bandpass filter."""
     nyquist = fs / 2
@@ -112,7 +124,7 @@ def extract_band_power(data, fs, low_freq, high_freq):
         return np.zeros_like(data)
 
 
-def extract_frequency_features(df, verbose=False):
+def extract_frequency_features(df, verbose=False, notch_freq=50.0):
     """Extract frequency band features from EEG data."""
     # Estimate actual sampling rate
     time_diffs = np.diff(df['lsl_timestamp'].values)
@@ -121,16 +133,23 @@ def extract_frequency_features(df, verbose=False):
     if verbose:
         print(f"   Estimated sampling rate: {actual_fs:.1f} Hz")
     
+    # Apply 50Hz notch filter to remove power line interference
+    print(f"   Applying {notch_freq}Hz notch filter (power line removal)...")
+    df_filtered = df.copy()
+    for ch in EEG_CHANNELS:
+        df_filtered[ch] = apply_notch_filter(df[ch].values, actual_fs, notch_freq)
+    print(f"   ✓ Notch filter applied to all channels")
+    
     # Extract bands for each channel
     band_features = {}
     for ch in EEG_CHANNELS:
-        channel_data = df[ch].values
+        channel_data = df_filtered[ch].values
         for band_name, low_freq, high_freq in FREQUENCY_BANDS:
             feature_name = f"{ch}_{band_name}"
             band_features[feature_name] = extract_band_power(channel_data, actual_fs, low_freq, high_freq)
     
     # Add to dataframe
-    df_bands = df.copy()
+    df_bands = df_filtered.copy()
     for name, data in band_features.items():
         df_bands[name] = data
     
