@@ -133,12 +133,16 @@ def extract_frequency_features(df, verbose=False, notch_freq=50.0):
     if verbose:
         print(f"   Estimated sampling rate: {actual_fs:.1f} Hz")
     
-    # Apply 50Hz notch filter to remove power line interference
-    print(f"   Applying {notch_freq}Hz notch filter (power line removal)...")
-    df_filtered = df.copy()
-    for ch in EEG_CHANNELS:
-        df_filtered[ch] = apply_notch_filter(df[ch].values, actual_fs, notch_freq)
-    print(f"   ✓ Notch filter applied to all channels")
+    # Apply 50Hz notch filter to remove power line interference (if enabled)
+    if notch_freq is not None:
+        print(f"   Applying {notch_freq}Hz notch filter (power line removal)...")
+        df_filtered = df.copy()
+        for ch in EEG_CHANNELS:
+            df_filtered[ch] = apply_notch_filter(df[ch].values, actual_fs, notch_freq)
+        print(f"   ✓ Notch filter applied to all channels")
+    else:
+        print(f"   ⏭ Notch filter DISABLED (--nonotch flag)")
+        df_filtered = df.copy()
     
     # Extract bands for each channel
     band_features = {}
@@ -721,6 +725,7 @@ def main():
     parser.add_argument('--lr', type=float, default=0.001, help='Learning rate')
     parser.add_argument('--seed', type=int, default=42, help='Random seed')
     parser.add_argument('--verbose', '-v', action='store_true', help='Verbose output')
+    parser.add_argument('--nonotch', action='store_true', help='Disable 50Hz notch filter (filter is ON by default)')
     
     args = parser.parse_args()
     
@@ -762,7 +767,8 @@ def main():
         print("STEP 2: EXTRACT FREQUENCY BANDS")
         print("=" * 60)
         
-        df_bands, feature_names, actual_fs = extract_frequency_features(df, verbose=args.verbose)
+        notch_freq = None if args.nonotch else 50.0
+        df_bands, feature_names, actual_fs = extract_frequency_features(df, verbose=args.verbose, notch_freq=notch_freq)
         
         # STEP 3: Create sample blocks
         print(f"\n{'='*60}")

@@ -65,16 +65,19 @@ python scripts/post2v2_add_skip_classification.py --window 3.0
 ### Step 2: Train Skip Prediction Model
 
 ```bash
-python scripts/prediction_2.py --window 3.0 --epochs 50
+python scripts/prediction_2.py --window 3.0 --epochs 50 --nonotch
 ```
 
+> 💡 Use `--nonotch` to disable 50Hz notch filter (recommended for this dataset, see [notch filter results](#v2-results-with-50hz-notch-filter-n3))
+
 **Pipeline:**
-1. Extract frequency bands (7 bands × 4 channels = 28 features)
-2. Create 3-second sample blocks
-3. Interpolate each block to 256Hz (768 samples)
-4. Balance dataset to 50/50
-5. Train transformer model
-6. Compute feature importance
+1. Apply 50Hz notch filter (unless `--nonotch`)
+2. Extract frequency bands (7 bands × 4 channels = 28 features)
+3. Create 3-second sample blocks
+4. Interpolate each block to 256Hz (768 samples)
+5. Balance dataset to 50/50
+6. Train transformer model
+7. Compute feature importance
 
 **Output:** `model_output_prediction_v2/`
 - `skip_prediction_model.pt` — Trained model
@@ -208,9 +211,10 @@ torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
 ## Changelog
 
 ### 2026-01-16 (50Hz Notch Filter Experiment)
-- **Added**: `apply_notch_filter()` in [`prediction_2.py`](file:///scripts/prediction_2.py) — 50Hz power line removal
+- **Added**: `--nonotch` flag in [`prediction_2.py`](file:///scripts/prediction_2.py) — notch filter ON by default
+- **Added**: `apply_notch_filter()` — 50Hz power line removal
 - **Result**: Accuracy **dropped** from 66.0% → 58.7% with filter
-- **Conclusion**: 50Hz gamma signal is **real neural activity**, not power line noise — do not filter
+- **Conclusion**: 50Hz gamma signal is **real neural activity** — use `--nonotch` for best results
 - **See**: [V2 Results with 50Hz Notch Filter](#v2-results-with-50hz-notch-filter-n3)
 
 ### 2026-01-16 (Multi-Participant Validation)
