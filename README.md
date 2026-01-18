@@ -413,6 +413,21 @@ torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
 
 ## Changelog
 
+### 2026-01-18 (V4 RF Explainability)
+- **Added**: `example_decision_tree_rf.png` + `example_tree_rules.txt` — thesis-ready explainability
+
+### 2026-01-17 (V6 Raw Transformer)
+- **Added**: [`prediction_6_raw_transformer.py`](file:///scripts/prediction_6_raw_transformer.py) — Transformer on raw 4-channel EEG
+- **Result**: P1=80.9% (best single), P2=53.3% (high variance)
+
+### 2026-01-17 (V5 Cross-Participant)
+- **Added**: [`prediction_5_cross_participant.py`](file:///scripts/prediction_5_cross_participant.py) — test generalizability
+- **Result**: 50%/42% — **no cross-participant transfer**
+
+### 2026-01-17 (V4 Random Forest)
+- **Added**: [`prediction_4_rf.py`](file:///scripts/prediction_4_rf.py) — Random Forest classifier
+- **Run-2**: 200 trees, depth=7 → **75.1% mean** ⭐ (best overall)
+
 ### 2026-01-16 (V3 Decision Tree)
 - **Added**: [`prediction_3_dt.py`](file:///scripts/prediction_3_dt.py) — Decision Tree alternative
 - **Run-1**: `max_depth=10` → 58.9% mean
