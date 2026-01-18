@@ -1,0 +1,80 @@
+============================================================
+PREDICTION V4: SKIP PREDICTION (RANDOM FOREST)
+============================================================
+
+============================================================
+STEP 1: LOAD DATA
+============================================================
+   File: eeg_20251210_203221_skip_labels_3_0s.csv
+   ✓ All 7 required columns present
+   ✓ Classes valid: {'not_about_to_skip', 'about_to_skip', 'baseline_2', 'baseline_1'}
+   Total rows: 892692
+
+============================================================
+STEP 2: EXTRACT FREQUENCY BANDS
+============================================================
+   ⏭ Notch filter DISABLED (--nonotch flag)
+   ✓ Extracted 28 band features
+
+============================================================
+STEP 3: CREATE AGGREGATED SAMPLES
+============================================================
+   ✓ Created 321 about_to_skip samples
+   ✓ Created 3291 not_about_to_skip samples
+   Feature vector size: 112 (28 bands × 4 stats)
+
+============================================================
+STEP 4: REBALANCE DATASET
+============================================================
+   Before: class_0=3291, class_1=321
+   After: class_0=321, class_1=321
+   ✓ Exactly 50/50 balanced
+
+============================================================
+STEP 5: TRAIN RANDOM FOREST
+============================================================
+   Train: 385 samples
+   Val: 257 samples
+   N estimators: 200
+   Max depth: 7
+   Min samples/leaf: 5
+
+   Final Results:
+   ✓ Accuracy:  0.7198
+   ✓ Precision: 0.7456
+   ✓ Recall:    0.6641
+   ✓ F1:        0.7025
+   ✓ Model beats random baseline (50%)
+
+============================================================
+STEP 6: SAVE RESULTS
+============================================================
+   ✓ Confusion matrix saved
+   ✓ Feature importance plot saved
+
+   Top 10 most predictive features:
+    1. AF8_high_gamma_mean: 5.2%
+    2. TP9_high_gamma_mean: 5.0%
+    3. AF7_high_gamma_mean: 5.0%
+    4. TP9_very_high_mean: 3.9%
+    5. AF8_very_high_mean: 2.1%
+    6. AF7_high_gamma_min: 2.0%
+    7. AF7_high_gamma_std: 2.0%
+    8. AF8_high_gamma_std: 2.0%
+    9. AF7_high_gamma_max: 1.8%
+   10. TP10_very_high_mean: 1.7%
+   ✓ Class distribution plot saved
+   ✓ Trained model saved (random_forest_model.pkl)
+   ✓ Feature names saved
+
+============================================================
+STEP 7: EXPLAINABILITY
+============================================================
+   ✓ Example decision tree visualization saved
+   ✓ Tree rules saved (example_tree_rules.txt)
+   ⚠ SHAP failed: The shape of the shap_values matrix does not match the shape of the provided data matrix.
+
+============================================================
+TRAINING COMPLETE
+============================================================
+Outputs saved to: recordings/eeg_20251210_203221/model_output_pred_v4_RF_20260118_014536

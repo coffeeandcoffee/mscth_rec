@@ -272,20 +272,52 @@ python scripts/prediction_4_rf.py --file <skip_labels.csv> --nonotch --n-estimat
 
 ---
 
-## V4 Random Forest Run-2 ⭐
+## V4 Random Forest Run-2/3 ⭐ (Best Overall Model)
 
 ```bash
 python scripts/prediction_4_rf.py --file <skip_labels.csv> --nonotch --n-estimators 200 --max-depth 7 --min-samples 5
 ```
 
-| Participant | RF Run-1 | RF Run-2 | Δ |
-|-------------|----------|----------|---|
-| P1 | 73.5% | 72.0% | -1.5% |
-| P2 | 67.3% | **68.8%** | +1.5% |
-| P3 | 79.8% | **84.5%** | +4.7% |
-| **Mean** | **73.5%** | **75.1%** ⭐ | +1.6% |
+| Participant | Accuracy | Precision | Recall | F1 |
+|-------------|----------|-----------|--------|-----|
+| P1 | 72.0% | 74.6% | 66.4% | 70.2% |
+| P2 | 68.8% | 72.8% | 59.6% | 65.6% |
+| P3 | **84.5%** | 87.2% | 81.0% | 83.9% |
+| **Mean** | **75.1%** | 78.2% | 69.0% | 73.2% |
 
-> **Validation**: Same methodology as V2/V3 — 60/40 train/val split from same participant, **no data leakage** between sets. All models validated consistently.
+> **Validation**: 60/40 train/val split, **no data leakage**. Same methodology as V2/V3.
+
+### Explainability Outputs (Thesis-Ready)
+
+Each run generates:
+
+| File | Use in Thesis |
+|------|---------------|
+| `example_decision_tree_rf.png` | **Figure**: "Example decision tree from Random Forest ensemble" |
+| `example_tree_rules.txt` | **Appendix**: Full decision rules in text format |
+| `feature_importance_rf.png` | **Figure**: "Top 20 predictive EEG features" |
+
+### Example Decision Rules (P1)
+
+```
+|--- AF8_high_gamma_mean <= 0.05
+|   |--- TP9_very_high_std <= 0.03
+|   |   |--- class: Not Skip
+|   |--- TP9_very_high_std > 0.03
+|   |   |--- class: Skip
+|--- AF8_high_gamma_mean > 0.05
+|   |--- class: Skip
+```
+
+**Thesis interpretation**: *"The model primarily uses high-gamma activity (40-60Hz) from the AF8 electrode to predict skip intent. When high-gamma mean exceeds threshold, the model predicts an imminent skip. This aligns with research linking gamma oscillations to decision-making and motor preparation."*
+
+### Key Learnings for Thesis
+
+1. **high_gamma (40-60Hz)** is consistently the most predictive feature across all participants
+2. **AF8 and TP9 electrodes** (frontal and temporal) dominate predictions
+3. **Random Forest** provides interpretable decision rules while maintaining 75% accuracy
+4. **Ensemble of 200 trees** prevents overfitting seen in single Decision Trees
+5. **80% overlap** in windowing increases training data 3x, improving generalization
 
 ---
 

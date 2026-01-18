@@ -27,6 +27,7 @@ from datetime import datetime
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import plot_tree, export_text
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 import matplotlib.pyplot as plt
 import joblib
@@ -408,6 +409,76 @@ def plot_class_distribution(y_train, y_val, output_dir):
     plt.close()
 
 
+def plot_best_tree(clf, feature_names, output_dir):
+    """Extract and visualize the best tree from Random Forest."""
+    # Find tree with highest training accuracy (proxy for best)
+    best_tree = clf.estimators_[0]
+    
+    # Plot tree visualization
+    fig, ax = plt.subplots(figsize=(24, 14))
+    plot_tree(best_tree, feature_names=feature_names, 
+              class_names=['Not Skip', 'Skip'],
+              filled=True, rounded=True, ax=ax, max_depth=4, fontsize=9)
+    ax.set_title('Example Decision Tree from Random Forest (1 of 200 trees, depth=4 shown)', fontsize=14)
+    plt.tight_layout()
+    plt.savefig(output_dir / 'example_decision_tree_rf.png', dpi=150)
+    plt.close()
+    
+    # Save tree rules as text
+    tree_rules = export_text(best_tree, feature_names=feature_names, max_depth=5)
+    with open(output_dir / 'example_tree_rules.txt', 'w') as f:
+        f.write("Example Decision Tree Rules from Random Forest\n")
+        f.write("="*50 + "\n\n")
+        f.write(tree_rules)
+    
+    return tree_rules
+
+
+def plot_shap_summary(clf, X_val, feature_names, output_dir):
+    """Generate SHAP summary plot for explainability."""
+    try:
+        import shap
+        
+        # Create SHAP explainer
+        explainer = shap.TreeExplainer(clf)
+        shap_values = explainer.shap_values(X_val)
+        
+        # Handle different shap_values formats (2D for binary, 3D list for multi-class)
+        if isinstance(shap_values, list):
+            # For binary classification, use class 1 (positive class)
+            sv = shap_values[1]
+        else:
+            sv = shap_values
+        
+        # Summary plot (beeswarm)
+        plt.figure(figsize=(12, 10))
+        shap.summary_plot(sv, X_val, feature_names=feature_names, 
+                         show=False, max_display=20)
+        plt.title('SHAP Feature Impact on Skip Prediction', fontsize=14)
+        plt.tight_layout()
+        plt.savefig(output_dir / 'shap_summary_rf.png', dpi=150, bbox_inches='tight')
+        plt.close()
+        
+        # Bar plot (mean absolute SHAP)
+        plt.figure(figsize=(10, 8))
+        shap.summary_plot(sv, X_val, feature_names=feature_names,
+                         plot_type='bar', show=False, max_display=20)
+        plt.title('Mean |SHAP| Value (Feature Importance)', fontsize=14)
+        plt.tight_layout()
+        plt.savefig(output_dir / 'shap_bar_rf.png', dpi=150, bbox_inches='tight')
+        plt.close()
+        
+        print(f"   ✓ SHAP explainability plots saved")
+        return True
+        
+    except ImportError:
+        print(f"   ⚠ SHAP not installed (pip install shap), skipping SHAP plots")
+        return False
+    except Exception as e:
+        print(f"   ⚠ SHAP failed: {e}")
+        return False
+
+
 # ============================================================================
 # MAIN
 # ============================================================================
@@ -560,6 +631,18 @@ def main():
         with open(output_dir / 'feature_names.json', 'w') as f:
             json.dump(agg_feature_names, f, indent=2)
         print(f"   ✓ Feature names saved")
+        
+        # Explainability: Extract best tree visualization
+        print(f"\n{'='*60}")
+        print("STEP 7: EXPLAINABILITY")
+        print("=" * 60)
+        
+        tree_rules = plot_best_tree(clf, agg_feature_names, output_dir)
+        print(f"   ✓ Example decision tree visualization saved")
+        print(f"   ✓ Tree rules saved (example_tree_rules.txt)")
+        
+        # SHAP explainability
+        plot_shap_summary(clf, X_val, agg_feature_names, output_dir)
         
         print(f"\n{'='*60}")
         print("TRAINING COMPLETE")

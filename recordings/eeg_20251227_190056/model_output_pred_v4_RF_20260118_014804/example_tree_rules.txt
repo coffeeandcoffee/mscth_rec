@@ -1,0 +1,31 @@
+Example Decision Tree Rules from Random Forest
+==================================================
+
+|--- AF8_high_gamma_mean <= -0.19
+|   |--- class: 1.0
+|--- AF8_high_gamma_mean >  -0.19
+|   |--- AF7_very_high_mean <= -0.00
+|   |   |--- AF7_beta_mean <= -0.01
+|   |   |   |--- class: 0.0
+|   |   |--- AF7_beta_mean >  -0.01
+|   |   |   |--- AF7_theta_std <= 2.64
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- AF7_theta_std >  2.64
+|   |   |   |   |--- AF7_beta_mean <= 0.02
+|   |   |   |   |   |--- AF8_alpha_std <= 2.10
+|   |   |   |   |   |   |--- class: 0.0
+|   |   |   |   |   |--- AF8_alpha_std >  2.10
+|   |   |   |   |   |   |--- class: 0.0
+|   |   |   |   |--- AF7_beta_mean >  0.02
+|   |   |   |   |   |--- class: 1.0
+|   |--- AF7_very_high_mean >  -0.00
+|   |   |--- TP9_high_gamma_std <= 592.98
+|   |   |   |--- TP10_delta_mean <= 0.12
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- TP10_delta_mean >  0.12
+|   |   |   |   |--- class: 0.0
+|   |   |--- TP9_high_gamma_std >  592.98
+|   |   |   |--- TP10_low_gamma_std <= 2.82
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- TP10_low_gamma_std >  2.82
+|   |   |   |   |--- class: 0.0
