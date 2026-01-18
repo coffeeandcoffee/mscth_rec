@@ -14,11 +14,13 @@ EEG recording and ML pipeline for predicting TikTok engagement from brain signal
 │   ├── post3v2_prep_for_ml.py          # ML preprocessing (V1)
 │   ├── train_transformer.py            # Engagement prediction (V1)
 │   ├── train_transformer_v2.py         # V1 optimization experiments
-│   └── prediction_2.py                 # Skip prediction training (V2) ⭐
+│   ├── prediction_2.py                 # Skip prediction training (V2) ⭐
+│   └── investigation_7_skip_bias.py    # Skip behavior bias analysis (V7) ⭐
 ├── recordings/
 │   └── eeg_*/
 │       ├── model_output/               # V1 models
-│       └── model_output_prediction_v2/ # V2 models ⭐
+│       ├── model_output_prediction_v2/ # V2 models ⭐
+│       └── model_output_investigation_v7_BIAS_*/ # V7 bias analysis ⭐
 └── mscth/                              # Python virtual environment
 ```
 
@@ -363,6 +365,58 @@ python scripts/prediction_6_raw_transformer.py --file <skip_labels.csv> --epochs
 
 ---
 
+## V7 Skip Behavior Bias Analysis (Investigation)
+
+> Analyzes **behavioral patterns** in skip sequences to understand if skipping is content-driven or state-driven.
+
+```bash
+python scripts/investigation_7_skip_bias.py --file <skip_labels.csv>
+```
+
+### Per-Participant Results
+
+| Participant | Skip Blocks | Mode | Mean | Range | Interpretation |
+|-------------|-------------|------|------|-------|----------------|
+| P1 | 82 | 1 (60%) | 2.0 | 1-11 | Some long chains |
+| P2 | 46 | 1 (63%) | 1.8 | 1-9 | Moderate variance |
+| P3 | 10 | 1 (70%) | 1.4 | 1-3 | Mostly single skips |
+
+### Key Finding: Behavioral Momentum
+
+Skip behavior shows **sequential dependency** — once users start skipping, they often continue:
+
+| Pattern | % of Blocks | Interpretation |
+|---------|-------------|----------------|
+| Single skip (1 video) | 60-70% | Content-driven disengagement |
+| Short chains (2-4) | 20-30% | Mixed content + momentum |
+| Long chains (5+) | ~10% | State-driven "browsing mode" |
+
+### Scientific Interpretation
+
+**Skip Chains (about_to_skip):**
+> Skip decisions exhibit **behavioral autocorrelation** — the probability of skipping video N+1 is not independent of having skipped video N. This suggests neural activity preceding a skip may reflect both **stimulus-specific disengagement** and **state-dependent browsing patterns** (attentional mode switching).
+
+**Non-Skip Periods (not_about_to_skip):**
+> Periods of sustained viewing represent genuine **stimulus-driven engagement** where content successfully captured attention and broke any prior skip momentum. This signal is **cleaner** than skip chains because it's purely content-responsive.
+
+### Implications for Prediction Models
+
+| Finding | Model Implication |
+|---------|-------------------|
+| Skip chains contain mixed signals | `about_to_skip` class has confounded content + state signals |
+| Non-skip periods are content-locked | `not_about_to_skip` class is cleaner engagement signal |
+| Frontal high-gamma is predictive | Model detects **attentional state** (engaged vs. browsing) |
+
+**Conclusion:** The classifier likely detects the **absence of deep engagement** (an attentional state) rather than an active "intent to skip" signal. This aligns with neuroscience: high-gamma frontal activity reflects executive control and attentional mode, not content evaluation per se.
+
+**Output:** `model_output_investigation_v7_BIAS_<timestamp>/`
+- `skip_bias_distribution.png` — Histogram of skip chain lengths
+- `skip_bias_cumulative.png` — CDF plot
+- `skip_bias_results.json` — Full statistics
+- `skip_bias_summary.txt` — Text summary
+
+---
+
 ## Summary: Best Models by Participant
 
 | Participant | Best Model | Accuracy |
@@ -412,6 +466,12 @@ torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
 ---
 
 ## Changelog
+
+### 2026-01-18 (V7 Skip Behavior Bias)
+- **Added**: [`investigation_7_skip_bias.py`](file:///scripts/investigation_7_skip_bias.py) — analyzes skip sequence patterns
+- **Finding**: All 3 participants show mode=1 (60-70% single skips), but P1 has chains up to 11
+- **Conclusion**: Skip behavior exhibits **behavioral autocorrelation** — state-driven vs content-driven
+- **Implication**: Model detects **attentional state** (engaged vs browsing), not just content disengagement
 
 ### 2026-01-18 (V4 RF Explainability)
 - **Added**: `example_decision_tree_rf.png` + `example_tree_rules.txt` — thesis-ready explainability

@@ -1,0 +1,25 @@
+SKIP BEHAVIOR BIAS ANALYSIS
+==================================================
+
+Input: eeg_20251224_164549_skip_labels_3_0s.csv
+Date: 2026-01-18 02:10:58
+
+STATISTICS:
+  Total skip blocks: 46
+  Total skips: 85
+  Mean skips/block: 1.85
+  Median: 1.0
+  Mode: 1 (63% of blocks)
+  Range: 1 - 9
+  Std Dev: 1.50
+
+DISTRIBUTION:
+  1 skips: 29 blocks (63.0%)
+  2 skips: 6 blocks (13.0%)
+  3 skips: 6 blocks (13.0%)
+  4 skips: 3 blocks (6.5%)
+  5 skips: 1 blocks (2.2%)
+  9 skips: 1 blocks (2.2%)
+
+KEY FINDING:
+  User typically skips 1 videos in a row.
