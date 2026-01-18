@@ -1,0 +1,73 @@
+============================================================
+V6: RAW EEG TRANSFORMER
+============================================================
+   Device: mps
+
+============================================================
+STEP 1: LOAD DATA
+============================================================
+   File: eeg_20251210_203221_skip_labels_3_0s.csv
+   ✓ All 7 required columns present
+   ✓ Classes valid: {'baseline_2', 'baseline_1', 'not_about_to_skip', 'about_to_skip'}
+   Total rows: 892692
+
+============================================================
+STEP 2: CREATE RAW EEG SAMPLES
+============================================================
+   Actual sampling rate: 256.0 Hz
+   ✓ Created 321 about_to_skip samples
+   ✓ Created 3291 not_about_to_skip samples
+
+============================================================
+STEP 3: INTERPOLATE & NORMALIZE
+============================================================
+   ✓ Interpolated to 768 samples @ 256Hz
+   ✓ Shape: (3612, 768, 4)
+
+============================================================
+STEP 4: REBALANCE DATASET
+============================================================
+   Before: class_0=3291, class_1=321
+   After: class_0=321, class_1=321
+   ✓ Exactly 50/50 balanced
+
+============================================================
+STEP 5: TRAIN TRANSFORMER
+============================================================
+   Train: 385 samples
+   Val: 257 samples
+   Epochs: 50
+   Batch size: 32
+   Learning rate: 0.001
+   Model params: 102,882
+   Epoch 5/50: loss=0.4918, val_acc=0.7977
+   Epoch 10/50: loss=0.5092, val_acc=0.8171
+   Epoch 15/50: loss=0.5244, val_acc=0.8171
+   Epoch 20/50: loss=0.4097, val_acc=0.8132
+   Epoch 25/50: loss=0.4260, val_acc=0.7899
+   Epoch 30/50: loss=0.4193, val_acc=0.8054
+   Epoch 35/50: loss=0.3965, val_acc=0.8171
+   Epoch 40/50: loss=0.4137, val_acc=0.8093
+   Epoch 45/50: loss=0.4134, val_acc=0.8093
+   Epoch 50/50: loss=0.4046, val_acc=0.8093
+
+   Final Results:
+   ✓ Accuracy:  0.8093
+   ✓ Precision: 0.9877
+   ✓ Recall:    0.6250
+   ✓ F1:        0.7656
+   ✓ Model beats random baseline (50%)
+
+============================================================
+STEP 6: SAVE RESULTS
+============================================================
+   ✓ Training history saved
+   ✓ Confusion matrix saved
+   ✓ Class distribution saved
+   ✓ Model saved (raw_transformer_model.pt)
+   ✓ Results JSON saved
+
+============================================================
+TRAINING COMPLETE
+============================================================
+Outputs saved to: recordings/eeg_20251210_203221/model_output_pred_v6_RawTF_20260117_004740

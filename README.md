@@ -307,6 +307,42 @@ python scripts/prediction_5_cross_participant.py --model <P3_model.pkl> --test <
 
 ---
 
+## V6 Raw EEG Transformer (Experimental)
+
+> Uses **raw EEG signals** directly (4 channels) instead of frequency band features. Transformer learns its own feature representations.
+
+```bash
+python scripts/prediction_6_raw_transformer.py --file <skip_labels.csv> --epochs 50
+```
+
+| Participant | V4 RF Run-2 | V6 Raw TF | Δ |
+|-------------|-------------|-----------|---|
+| P1 | 72.0% | **80.9%** ⭐ | **+8.9%** |
+| P2 | 68.8% | 53.3% | -15.5% |
+| P3 | 84.5% | (stuck) | — |
+
+**Key Findings:**
+- P1 achieved **80.9%** — highest single-participant accuracy ever!
+- P2 failed to converge (53.3% ≈ random) — suggests participant-specific data characteristics
+- Raw Transformer is high-variance: works brilliantly for some, fails for others
+- RF with frequency bands is more **consistent** across participants
+
+> ⚠️ **Limitation**: Transformer training on MPS can hang. CPU fallback may be needed.
+
+---
+
+## Summary: Best Models by Participant
+
+| Participant | Best Model | Accuracy |
+|-------------|------------|----------|
+| P1 | V6 Raw TF | **80.9%** ⭐ |
+| P2 | V4 RF Run-2 | **68.8%** |
+| P3 | V4 RF Run-2 | **84.5%** |
+
+**Overall Best**: V4 Random Forest Run-2 (75.1% mean) — most consistent across participants.
+
+---
+
 ## Recording
 
 ```bash

@@ -1,0 +1,21 @@
+{
+  "model": "RawEEGTransformer",
+  "timestamp": "2026-01-17T14:27:12.082008",
+  "input_file": "recordings/eeg_20251224_164549/eeg_20251224_164549_skip_labels_3_0s.csv",
+  "window_seconds": 3.0,
+  "target_fs": 256,
+  "seq_len": 768,
+  "epochs": 50,
+  "batch_size": 32,
+  "lr": 0.001,
+  "d_model": 64,
+  "nhead": 4,
+  "num_layers": 3,
+  "train_samples": 297,
+  "val_samples": 199,
+  "accuracy": 0.5326633165829145,
+  "precision": 0.5208333333333334,
+  "recall": 0.7575757575757576,
+  "f1": 0.6172839506172839,
+  "best_val_acc": 0.542713567839196
+}
