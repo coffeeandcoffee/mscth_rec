@@ -15,12 +15,14 @@ EEG recording and ML pipeline for predicting TikTok engagement from brain signal
 │   ├── train_transformer.py            # Engagement prediction (V1)
 │   ├── train_transformer_v2.py         # V1 optimization experiments
 │   ├── prediction_2.py                 # Skip prediction training (V2) ⭐
-│   └── investigation_7_skip_bias.py    # Skip behavior bias analysis (V7) ⭐
+│   ├── investigation_7_skip_bias.py    # Skip behavior bias analysis (V7) ⭐
+│   └── analysis_8_engagement_index.py  # Engagement Index comparison (V8) ⭐
 ├── recordings/
-│   └── eeg_*/
-│       ├── model_output/               # V1 models
-│       ├── model_output_prediction_v2/ # V2 models ⭐
-│       └── model_output_investigation_v7_BIAS_*/ # V7 bias analysis ⭐
+│   ├── eeg_*/
+│   │   ├── model_output/               # V1 models
+│   │   ├── model_output_prediction_v2/ # V2 models ⭐
+│   │   └── model_output_investigation_v7_BIAS_*/ # V7 bias analysis ⭐
+│   └── analysis_v8_EI_*/               # V8 Engagement Index results ⭐
 └── mscth/                              # Python virtual environment
 ```
 
@@ -417,6 +419,43 @@ Skip behavior shows **sequential dependency** — once users start skipping, the
 
 ---
 
+## V8 Engagement Index Comparison ⭐
+
+> Standard Muse Engagement Index: **EI = β / (α + θ)** — averaged across all 4 electrodes per window. See [`analysis_8_engagement_index.py`](file:///Users/gregorlederer/Local_LifeAdmin_Files/MSc%20Thesis%20-%20EEG%20Neuroscience/Data%20Recording%20and%20Quality%20Tests/scripts/analysis_8_engagement_index.py).
+
+```bash
+python scripts/analysis_8_engagement_index.py --nonotch
+```
+
+### Per-Participant Results
+
+| Participant | EI (Skip) | EI (No Skip) | Δ | p (Mann-Whitney) | Cohen's d | Sig |
+|-------------|-----------|--------------|---|------------------|-----------|-----|
+| P1 | 1.0375 | 1.0324 | +0.005 | 0.890 | 0.017 | n.s. |
+| P2 | 0.6172 | 0.7303 | -0.113 | **0.0002** | -0.221 | *** |
+| P3 | 0.5693 | 0.6761 | -0.107 | 0.562 | -0.270 | n.s. |
+| **Aggregate** | **0.8103** | **0.8383** | **-0.028** | **0.512** | **-0.062** | **n.s.** |
+
+### Interpretation
+
+> ⚠️ **Engagement Index does NOT consistently differ** between skip and non-skip states.
+
+| Finding | Implication |
+|---------|-------------|
+| P1: EI virtually identical (d=0.017) | No engagement difference before skipping |
+| P2: Significant (p<0.001, d=-0.221) | Lower EI before skipping — small effect |
+| P3: Direction matches P2 but n.s. | Trend present but underpowered |
+| Aggregate: n.s. (d=-0.062) | EI alone is not a reliable skip predictor |
+
+**Conclusion:** The standard EI metric (β/(α+θ)) is **not a strong discriminator** between skip and non-skip states. This aligns with V4/V6 findings where **high-gamma (40-60Hz)** — not included in the standard EI formula — was the most predictive feature. The traditional EI may be too coarse for real-time skip prediction.
+
+**Output:** `recordings/analysis_v8_EI_<timestamp>/`
+- `engagement_index_comparison.png` — Bar chart with significance stars
+- `engagement_index_boxplot.png` — Distribution comparison
+- `engagement_index_results.json` — Full statistics
+
+---
+
 ## Summary: Best Models by Participant
 
 | Participant | Best Model | Accuracy |
@@ -466,6 +505,11 @@ torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
 ---
 
 ## Changelog
+
+### 2026-02-10 (V8 Engagement Index)
+- **Added**: [`analysis_8_engagement_index.py`](file:///scripts/analysis_8_engagement_index.py) — EI = β / (α + θ) comparison
+- **Result**: Only P2 significant (p=0.0002), aggregate n.s. (p=0.51)
+- **Conclusion**: Standard EI is **not a reliable skip predictor** — high-gamma (40-60Hz) is the real signal
 
 ### 2026-01-18 (V7 Skip Behavior Bias)
 - **Added**: [`investigation_7_skip_bias.py`](file:///scripts/investigation_7_skip_bias.py) — analyzes skip sequence patterns

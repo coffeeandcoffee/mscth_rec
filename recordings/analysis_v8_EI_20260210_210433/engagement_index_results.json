@@ -1,0 +1,80 @@
+{
+  "P1": {
+    "skip_mean": 1.0374957141209136,
+    "skip_std": 0.2939217798875898,
+    "skip_median": 0.998072442614146,
+    "skip_n": 321,
+    "no_skip_mean": 1.0323709539022847,
+    "no_skip_std": 0.2958750570582548,
+    "no_skip_median": 1.0014391316290523,
+    "no_skip_n": 3291,
+    "delta_mean": 0.005124760218628843,
+    "mannwhitney_U": 525749.0,
+    "mannwhitney_p": 0.89046884669641,
+    "ttest_t": 0.2975805796045976,
+    "ttest_p": 0.7661834629737664,
+    "cohens_d": 0.017377957269178703,
+    "file": "/Users/gregorlederer/Local_LifeAdmin_Files/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/recordings/eeg_20251210_203221/eeg_20251210_203221_skip_labels_3_0s.csv"
+  },
+  "P2": {
+    "skip_mean": 0.617197427384633,
+    "skip_std": 0.4732870861891929,
+    "skip_median": 0.4440910672207764,
+    "skip_n": 248,
+    "no_skip_mean": 0.7303203822181856,
+    "no_skip_std": 0.5495596434657039,
+    "no_skip_median": 0.5729569044948429,
+    "no_skip_n": 3299,
+    "delta_mean": -0.11312295483355261,
+    "mannwhitney_U": 351271.0,
+    "mannwhitney_p": 0.00020193783777770757,
+    "ttest_t": -3.5800183022946523,
+    "ttest_p": 0.0004007451007780293,
+    "cohens_d": -0.22057996738032756,
+    "file": "/Users/gregorlederer/Local_LifeAdmin_Files/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/recordings/eeg_20251224_164549/eeg_20251224_164549_skip_labels_3_0s.csv"
+  },
+  "P3": {
+    "skip_mean": 0.5693271276794809,
+    "skip_std": 0.2758213531719199,
+    "skip_median": 0.5356846571959517,
+    "skip_n": 104,
+    "no_skip_mean": 0.6760814513003656,
+    "no_skip_std": 0.48683704155431834,
+    "no_skip_median": 0.5171383195984325,
+    "no_skip_n": 1743,
+    "delta_mean": -0.10675432362088466,
+    "mannwhitney_U": 87572.0,
+    "mannwhitney_p": 0.5620369368441498,
+    "ttest_t": -3.6096311359165827,
+    "ttest_p": 0.00042227662482588506,
+    "cohens_d": -0.26981584580193135,
+    "file": "/Users/gregorlederer/Local_LifeAdmin_Files/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/recordings/eeg_20251227_190056/eeg_20251227_190056_skip_labels_3_0s.csv"
+  },
+  "AGGREGATE": {
+    "skip_mean": 0.810269104759091,
+    "skip_std": 0.42759806631065134,
+    "skip_median": 0.7999333201946723,
+    "skip_n": 673,
+    "no_skip_mean": 0.8382658970174909,
+    "no_skip_std": 0.4782365992713841,
+    "no_skip_median": 0.7965823174523218,
+    "no_skip_n": 8333,
+    "delta_mean": -0.027996792258399905,
+    "mannwhitney_U": 2761480.0,
+    "mannwhitney_p": 0.5116949158179174,
+    "ttest_t": -1.6176548151962398,
+    "ttest_p": 0.10612453165661369,
+    "cohens_d": -0.06171799149757742
+  },
+  "parameters": {
+    "window_seconds": 3.0,
+    "notch_filter": false,
+    "formula": "EI = beta_power / (alpha_power + theta_power)",
+    "electrodes": [
+      "TP9",
+      "AF7",
+      "AF8",
+      "TP10"
+    ]
+  }
+}
