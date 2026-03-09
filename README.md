@@ -5,6 +5,11 @@ EEG recording and ML pipeline for predicting TikTok engagement from brain signal
 ## Project Structure
 
 ```
+├── data/                               # EEG recordings P4–P31 (CSV) ⭐
+├── survey_data/                        # Pre-experiment questionnaire responses
+├── analysis_and_documentation/         # Incremental data checks (timestamped) ⭐
+│   ├── 20260309_155600_basic_quality_check/
+│   └── 20260309_164100_survey_demographics/
 ├── scripts/
 │   ├── recording_script_v4.py          # EEG + video recording
 │   ├── post0_merge_all_split_recording_csvs.py  # Merge split CSVs ⭐
@@ -533,7 +538,33 @@ torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
 
 ---
 
+## Data Summary (P4–P31)
+
+| Metric | Value |
+|--------|-------|
+| Recruited | 28 participants (P4–P31) |
+| Excluded | 3 (P16: keypress errors, P19: keypress errors, P29: neurological disorder) |
+| **Included** | **25 participants** |
+| Experimenter | P1 (excluded), P2–P3 (preliminary, excluded) |
+| Total recording time | ~792 min across 64 files |
+| Total skip events (A) | 3,943 |
+| Age | M=24.6, SD=2.9, range 20–30 |
+| Sampling rate | 256 Hz (consistent) |
+| Channel coverage | 100% across all recordings |
+
+See `analysis_and_documentation/` for full quality checks and survey analysis.
+
+---
+
 ## Changelog
+
+### 2026-03-09 (Data Quality Checks & Survey Analysis)
+- **Added**: `analysis_and_documentation/` — incremental, documented data checks framework
+- **Added**: `basic_quality_check` — per-participant EEG quality metrics (duration, rate, coverage, gap analysis, keypress intervals)
+- **Added**: `survey_demographics` — survey response distributions, age stats, exclusion decisions
+- **Excluded**: P16 (45 wrong keypresses), P19 (40 wrong keypresses), P29 (neurological disorder)
+- **Updated**: `THESIS_STRUCTURE.md` — added two-tier exclusion strategy (a priori + sensitivity analysis)
+- **Final sample**: n=25 included participants for analysis
 
 ### 2026-02-10 (Thesis Structure)
 - **Added**: `THESIS_STRUCTURE.md` — full methods/results section outline with title, abstract, public health framing
