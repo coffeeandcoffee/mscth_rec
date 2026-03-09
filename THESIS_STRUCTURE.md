@@ -1,4 +1,4 @@
-# Predicting Micro-Decisions during Naturalistic TikTok Time Allocation from Consumer-Grade EEG using Machine Learning Methods
+# The Neurological Signature of TikTok: Predicting Micro-Decisions during Naturalistic TikTok Time Allocation from Consumer-Grade EEG using Machine Learning Methods
 
 > Alternative shorter title: *"Predicting Micro-Decisions during Naturalistic TikTok Time Allocation using Machine Learning Methods"*
 > Both work — the longer version signals EEG upfront, which helps readers immediately understand the modality.
@@ -64,6 +64,17 @@ Skip behavior analysis revealed sequential dependency (behavioral autocorrelatio
 
 > [!IMPORTANT]
 > Per supervisor: The experimenter (who designed the experiment) participates as test subject for pipeline development but is **excluded from all reported results**. This eliminates experimenter bias.
+
+**Exclusion strategy (two tiers):**
+
+| Tier | Criterion | Action | Justification |
+|------|-----------|--------|---------------|
+| **A priori** | Neurological disorder | Exclude | Fundamentally alters baseline EEG |
+| **A priori** | Excessive keypress errors (self-reported >10) | Exclude | Compromises label integrity |
+| **A priori** | Experimenter (P1) | Exclude | Experimenter bias |
+| **Sensitivity** | Psychoactive medication, ADHD, caffeine, unusual sleep, etc. | Include; validate via sensitivity analysis | Per-participant models are self-controlled — individual differences don't contaminate other participants |
+
+> **Sensitivity analysis**: Run the full pipeline with all included participants, then re-run excluding flagged subgroups (e.g., ADHD n=3, medication n=1). If aggregate results (mean accuracy, CI) do not meaningfully change → report inclusion with sensitivity confirmation. If a participant is a clear outlier → report results both with and without, discuss in Section 5.
 
 ---
 
