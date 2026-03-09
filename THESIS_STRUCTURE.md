@@ -9,7 +9,7 @@
 
 ### Why This Matters
 
-Short-form video platforms like TikTok now shape how billions of people allocate their attention — in bursts of seconds. Every swipe is a micro-decision: stay or skip. These micro-decisions, repeated hundreds of times per session, determine what information people absorb, what health messages reach them, and what behaviors get reinforced.
+Short-form video platforms like TikTok now shape how billions of people allocate their attention — in bursts of seconds. Every swipe is a micro-decision: stay or skip. These micro-decisions, repeated hundreds of times per session, determine what information people absorb, what health messages (NOTE: do not mention health yet, first describe the pattern of whats happening, expalining decisions and these machenics broadly so meaning picking them up where they are, which is not where we are, and then developing into health messaging after) reach them, and what behaviors get reinforced.
 
 For **public health**, this has direct consequences:
 - **Health communication** depends on capturing attention in the first seconds — if a health promotion video gets skipped, the message never lands
@@ -22,7 +22,7 @@ Understanding the *neural signature* of an impending skip — before it happens 
 
 This thesis investigates whether consumer-grade EEG can predict skip behavior during naturalistic TikTok browsing. Using a Muse S headband (4 channels, 256 Hz), we recorded brain activity from [N] participants while they freely browsed their personal TikTok feed. Each video transition was marked by keypress, creating a binary classification task: *about to skip* (3-second pre-skip window) vs. *not about to skip* (engaged viewing).
 
-We compared three model families — Decision Tree, Random Forest, and Transformer — in a per-participant evaluation framework, and assessed cross-participant generalizability using Leave-One-Group-Out cross-validation. The Random Forest (200 trees, 112 frequency-domain features) achieved the highest consistent performance at [X]% mean accuracy across [N] participants (95% CI: [lo–hi]%), significantly above the 50% chance baseline.
+We compared three machine learning model families — Decision Tree, Random Forest, and Transformer — in a per-participant evaluation framework, and assessed cross-participant generalizability using Leave-One-Group-Out cross-validation. The Random Forest (200 trees, 112 frequency-domain features) achieved the highest consistent performance at [X]% mean accuracy across [N] participants (95% CI: [lo–hi]%), significantly above the 50% chance baseline.
 
 Feature importance analysis revealed that **high-gamma activity (40–60 Hz)** at frontal (AF7/AF8) and temporal (TP9/TP10) electrodes was the most consistently predictive signal. An empirical investigation of the 50Hz notch filter confirmed that this signal reflects genuine neural activity rather than power line artifact. The standard Engagement Index (β/(α+θ)) failed to discriminate skip from non-skip states, suggesting that gamma-band activity — not captured by traditional engagement metrics — carries the critical information.
 
@@ -126,7 +126,7 @@ Timeline:
 | `about_to_skip` | 3-second window **ending at** each keypress_A | Pre-decision neural state |
 | `not_about_to_skip` | All other TikTok viewing periods (excluding baselines) | Engaged viewing state |
 
-**Justification for 3-second window:**
+#### 3.4.1 Labeling Strategy Justification for 3-second window
 - Motor preparation and decision-making in the brain occurs 1–3 seconds before voluntary action [CITE: Libet, readiness potential literature]
 - Empirically tested against [other window sizes if tested]
 - Baselines excluded from training (kept only for quality assessment)
@@ -186,11 +186,11 @@ Timeline:
 
 ---
 
-#### 3.8 Classification Models
+#### 3.8  Machine Learning Classification Models
 
 Three model families were compared, ordered by interpretability:
 
-| Model | Type | Key Hyperparameters | Interpretability |
+| Model | Type | Key Hyperparameters | Explainability/Interpretability |
 |-------|------|-------------------|-----------------|
 | **Decision Tree** | Single tree | max_depth=5, min_samples_leaf=10 | ✅ Full (explicit rules) |
 | **Random Forest** | Ensemble (200 trees) | max_depth=7, min_samples_leaf=5 | ✅ Feature importance + example trees |
