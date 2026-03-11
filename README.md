@@ -593,6 +593,25 @@ Each participant's sub-recording CSVs are processed independently through the fo
 | `images/per_participant_table.png` | Summary table for all 25 participants |
 | `description.txt` | Aggregate findings summary |
 
+### ⚠️ Open Decision: Feature Representation
+
+The current pipeline **aggregates** each 3s sample (768 timesteps × 28 band signals) into 112 summary statistics (mean/std/min/max per band). This is what `prediction_4_rf.py` always did and what the V4 RF feasibility model was built on. Two options exist:
+
+| | Option A: Aggregated (current) | Option B: Full Time Series |
+|---|---|---|
+| **Input per sample** | 112 features (4 stats × 28 bands) | 21,504 features (768 timesteps × 28 bands, flattened) |
+| **What RF sees** | Statistical summary of the 3s window | Raw temporal dynamics within the 3s window |
+| **Information loss** | Temporal structure within the window is lost | None — all information preserved |
+| **Dimensionality** | Low (112) — well-suited for RF with small n | Very high (21,504) — risk of overfitting with 62–856 samples per participant |
+| **Compute (n=25)** | ~30 seconds total | ~5–10 minutes (larger feature matrices, more memory) |
+| **Model type** | Standard RF works well | RF possible but deep learning (CNN/LSTM) would better exploit temporal structure |
+| **Comparability** | Directly comparable to V4 feasibility results | New model — not comparable to feasibility |
+| **Thesis framing** | "Characterizing the feasibility model on n=25" | "Improved model exploiting temporal features" |
+
+> **Current status**: Option A is implemented. Option B would require a new analysis step and should be framed as an investigation/improvement, not a characterization of the existing best model.
+>
+> **Recommendation**: Keep Option A for the per-participant characterization (Step 6). If Option B is pursued, it should be a separate Step 7 investigation — potentially with a CNN or LSTM architecture that can natively handle the 768×28 time-series input rather than flattening it for RF.
+
 ---
 
 ## Feasibility Results Summary (P1–P3, Development Data)
