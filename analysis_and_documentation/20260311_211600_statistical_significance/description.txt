@@ -69,12 +69,9 @@ SCIENTIFIC INTERPRETATION & CONCLUSION
    large (d > 1.5), our statistical power to detect this effect approaches 
    100%. 
 
-PROSPECTIVE VALIDITY
---------------------
-Therefore, N=25 constitutes a bulletproof, mathematically rigorous 
-dataset that fully supports the conclusions of the thesis. Recruiting 
-additional participants up to N=30 will yield diminishing returns on 
-statistical power and is strictly optional.
+FINAL SCIENTIFIC CONCLUSION
+---------------------------
+We can state with extreme statistical significance ($p = 1.76 \times 10^-8$, Cohen's $d = 1.65$) that the null hypothesis (random chance $50\%$) is rejected in favor of the alternative hypothesis; the selected RF-112 machine learning pipeline successfully detects the neurological signature of 'about_to_skip' behavior prior to motor execution natively across an independent cohort of $N=25$ participants at a mean recall of $67.1\%$.
 
 ======================================================================
 Generated from: analysis_and_documentation/20260311_153500_per_participant_rf/results.json
