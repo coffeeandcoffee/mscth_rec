@@ -1,0 +1,26 @@
+TARGETED EXPLAINABILITY: FEATURE IMPORTANCE
+===========================================
+Extracted Mean Gini Feature Importances across 25 Intra-Subject RF Models.
+
+TOP 10 FEATURES OVERALL:
+------------------------
+  _____________AF8_beta_min: 0.0153 ± 0.0200
+  _____________AF8_beta_max: 0.0139 ± 0.0094
+  ____________TP10_beta_min: 0.0139 ± 0.0175
+  _______AF8_high_gamma_std: 0.0136 ± 0.0149
+  ________AF7_low_gamma_max: 0.0124 ± 0.0129
+  _____________AF7_beta_min: 0.0123 ± 0.0134
+  _____________AF7_beta_max: 0.0121 ± 0.0090
+  ________AF8_low_gamma_max: 0.0121 ± 0.0111
+  ___________AF8_delta_mean: 0.0118 ± 0.0095
+  ______TP10_high_gamma_min: 0.0116 ± 0.0119
+
+IMPORTANCE BY FREQUENCY BAND:
+-----------------------------
+  __________delta: 0.1336
+  __________theta: 0.1407
+  __________alpha: 0.1299
+  ___________beta: 0.1678
+  ______low_gamma: 0.1524
+  _____high_gamma: 0.1450
+  ______very_high: 0.1306

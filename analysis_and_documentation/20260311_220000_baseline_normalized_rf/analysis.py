@@ -381,6 +381,16 @@ def process_participant(pid, sub_recordings, debug_dir=None):
     
     # Train
     res = train_and_evaluate(X_tr, y_tr, X_va, y_va, SEED)
+    
+    # Save the pools to temp JSON for Explainability (Step 15)
+    pool_data = {
+        "skip_pool": skip_pool,
+        "noskip_pool": noskip_pool
+    }
+    out_dir = Path(__file__).resolve().parent
+    with open(out_dir / f"{pid}_pools_{out_dir.name}.json.tmp", "w") as f:
+        json.dump(pool_data, f)
+        
     print(f"  Val acc={res['val']['accuracy']:.1%}  Val Rec={res['val']['recall']:.1%}")
     return res
 
