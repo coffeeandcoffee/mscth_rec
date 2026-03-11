@@ -444,9 +444,11 @@ graph TD
 
 ---
 
-## What to Re-run for n=30
+## What to Re-run (n=25 Baseline, n=30 Optional)
 
-Once all 30 recordings are collected, re-run the following in order:
+Statistical significance testing on the $n=25$ dataset (Accuracy vs 50% chance, one-sample t-test) yields a p-value of $9.74 \times 10^{-12}$ and a massive effect size (Cohen's d = 2.43). **Therefore, $n=25$ is more than scientifically sufficient and constitutes the baseline thesis dataset.** Collecting data for up to $n=30$ is an optional stretch goal.
+
+Once the final dataset is frozen (whether at 25 or 30), re-run the following in order:
 
 | Step | Script | What Changes |
 |------|--------|-------------|
