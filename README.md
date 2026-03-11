@@ -593,24 +593,66 @@ Each participant's sub-recording CSVs are processed independently through the fo
 | `images/per_participant_table.png` | Summary table for all 25 participants |
 | `description.txt` | Aggregate findings summary |
 
-### ⚠️ Open Decision: Feature Representation
+### ✅ Resolved: Feature Representation (Aggregated wins)
 
-The current pipeline **aggregates** each 3s sample (768 timesteps × 28 band signals) into 112 summary statistics (mean/std/min/max per band). This is what `prediction_4_rf.py` always did and what the V4 RF feasibility model was built on. Two options exist:
+> **Decision**: Option A (112 aggregated features) confirmed as the correct approach for RF. Option B (full time series) tested experimentally and **performed significantly worse**.
 
-| | Option A: Aggregated (current) | Option B: Full Time Series |
+See `analysis_and_documentation/20260311_194100_per_participant_rf_timeseries/` for the full experimental run.
+
+#### Comparison: Option A (112 features) vs Option B (21,504 features)
+
+| | Option A: Aggregated ⭐ | Option B: Full Time Series |
 |---|---|---|
-| **Input per sample** | 112 features (4 stats × 28 bands) | 21,504 features (768 timesteps × 28 bands, flattened) |
-| **What RF sees** | Statistical summary of the 3s window | Raw temporal dynamics within the 3s window |
-| **Information loss** | Temporal structure within the window is lost | None — all information preserved |
-| **Dimensionality** | Low (112) — well-suited for RF with small n | Very high (21,504) — risk of overfitting with 62–856 samples per participant |
-| **Compute (n=25)** | ~30 seconds total | ~5–10 minutes (larger feature matrices, more memory) |
-| **Model type** | Standard RF works well | RF possible but deep learning (CNN/LSTM) would better exploit temporal structure |
-| **Comparability** | Directly comparable to V4 feasibility results | New model — not comparable to feasibility |
-| **Thesis framing** | "Characterizing the feasibility model on n=25" | "Improved model exploiting temporal features" |
+| **Val Accuracy** | **65.7% ± 6.3%** | 57.6% ± 8.3% |
+| **Val F1** | **65.9% ± 7.0%** | 57.0% ± 9.1% |
+| **Beat 50% baseline** | **25/25** | 21/25 |
+| **Accuracy range** | 56.0%–78.6% | 49.0%–85.7% |
+| **Train accuracy** | 97.9% ± 1.7% | 99.7% ± 1.4% |
+| **Train-Val gap** | ~32% | ~42% |
 
-> **Current status**: Option A is implemented. Option B would require a new analysis step and should be framed as an investigation/improvement, not a characterization of the existing best model.
->
-> **Recommendation**: Keep Option A for the per-participant characterization (Step 6). If Option B is pursued, it should be a separate Step 7 investigation — potentially with a CNN or LSTM architecture that can natively handle the 768×28 time-series input rather than flattening it for RF.
+#### Per-Participant Head-to-Head
+
+| P | Option A (112) | Option B (21,504) | Δ |
+|---|---|---|---|
+| P4 | **65.8%** | 53.7% | -12.1% |
+| P5 | **66.7%** | 58.3% | -8.4% |
+| P6 | **59.6%** | 51.9% | -7.7% |
+| P7 | **74.5%** | 72.5% | -2.0% |
+| P8 | **60.1%** | 51.4% | -8.7% |
+| P9 | **66.7%** | 57.0% | -9.7% |
+| P10 | 58.3% | **60.0%** | +1.7% |
+| P11 | **66.3%** | 52.7% | -13.6% |
+| P12 | 78.6% | **85.7%** | +7.1% |
+| P13 | **58.1%** | 53.5% | -4.6% |
+| P14 | **70.8%** | 62.5% | -8.3% |
+| P15 | **61.2%** | 58.6% | -2.6% |
+| P17 | **69.3%** | 55.6% | -13.7% |
+| P18 | **74.2%** | 58.3% | -15.9% |
+| P20 | **63.1%** | 54.0% | -9.1% |
+| P21 | **59.2%** | 49.0% | -10.2% |
+| P22 | **69.4%** | 56.9% | -12.5% |
+| P23 | **73.6%** | 58.8% | -14.8% |
+| P24 | **63.5%** | 50.8% | -12.7% |
+| P25 | **64.5%** | 49.4% | -15.1% |
+| P26 | 59.7% | **59.7%** | 0.0% |
+| P27 | **58.2%** | 49.2% | -9.0% |
+| P28 | **76.8%** | 72.2% | -4.6% |
+| P30 | **56.0%** | 50.0% | -6.0% |
+| P31 | **68.5%** | 59.3% | -9.2% |
+| **Mean** | **65.7%** | **57.6%** | **-8.1%** |
+
+> Option A wins for **23/25 participants**. Only P10 (+1.7%) and P12 (+7.1%) favor Option B; P26 is tied.
+
+#### Why Option B Fails for RF
+
+| Factor | Explanation |
+|--------|-------------|
+| **Curse of dimensionality** | 21,504 features with 62–856 samples → RF overfits to noise (100% train, ~50% val for many participants) |
+| **RF splits on individual timesteps** | RF decision trees split on single features — individual timestep values are noisy and non-informative without temporal context |
+| **No temporal awareness** | RF treats 21,504 flat features independently — it cannot learn temporal patterns (rising/falling trends, oscillation phase) that motivate preserving the time series |
+| **Aggregation acts as regularization** | Mean/std/min/max compress noise and highlight distributional differences, which is what RF decision boundaries can actually exploit |
+
+> **Conclusion**: For RF, aggregated statistics are not "information loss" — they are *the right level of abstraction*. Full time series would require a model with native temporal processing (CNN, LSTM, Transformer) to be useful. The V2 Transformer (which operates on raw 768×28 inputs) is the correct architecture for that approach.
 
 ---
 
@@ -683,6 +725,12 @@ See `analysis_and_documentation/` for full quality checks and survey analysis.
 ---
 
 ## Changelog
+
+### 2026-03-11 (Experimental: Full Time Series RF, n=25)
+- **Added**: `per_participant_rf_timeseries` — same RF pipeline but with full flattened time series (21,504 features) instead of 112 aggregated stats
+- **Result**: Val accuracy **57.6% ± 8.3%**, Val F1 **57.0% ± 9.1%**, only **21/25 beat 50% baseline**
+- **Verdict**: Option A (aggregated 112 features) wins for **23/25 participants**, mean accuracy **-8.1%** worse with full time series
+- **Conclusion**: RF cannot exploit temporal structure in flat features — aggregation is the right abstraction for this model family. Resolved open decision ✅
 
 ### 2026-03-11 (Per-Participant RF Training, n=25)
 - **Added**: `per_participant_rf` — trains V4 RF (200 trees, depth=7, no notch) on each of 25 included participants

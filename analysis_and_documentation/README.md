@@ -48,4 +48,5 @@ All scripts are designed to be run from within their own folder and reference da
 | 4 | `20260311_150000_recording_session_summary` | Per-participant recording metrics with pass/fail: BT loss <20%, duration ≥20min, 100s baseline available | ✅ |
 | 5 | `20260311_150100_sample_classification` | Per-participant per-subrecording class block analysis: about_to_skip vs not_about_to_skip sample counts with configurable window/overlap | ✅ |
 | 6 | `20260311_153500_per_participant_rf` | Per-participant RF training (V4 Run-2: 200 trees, depth=7, no notch) on n=25 with train/val box plots and summary table | ✅ |
+| 7 | `20260311_194100_per_participant_rf_timeseries` | **Experimental**: Same RF but with full flattened time series (21,504 features) instead of 112 aggregated stats — Option B from Step 6 open decision | ✅ |
 
