@@ -44,3 +44,7 @@ All scripts are designed to be run from within their own folder and reference da
 |---|--------|-------------|--------|
 | 1 | `20260309_155600_basic_quality_check` | Per-participant, per-recording quality metrics: duration, sampling rate, channel coverage, keypress counts | ✅ |
 | 2 | `20260309_164100_survey_demographics` | Survey response distributions, age stats, exclusion decisions (neurological disorder, keypress errors) | ✅ |
+| 3 | `20260311_145900_exclusion_mask` | A priori exclusion mask: JSON of excluded/included participants with reasons, parametric for future participants | ✅ |
+| 4 | `20260311_150000_recording_session_summary` | Per-participant recording metrics with pass/fail: BT loss <20%, duration ≥20min, 100s baseline available | ✅ |
+| 5 | `20260311_150100_sample_classification` | Per-participant per-subrecording class block analysis: about_to_skip vs not_about_to_skip sample counts with configurable window/overlap | ✅ |
+

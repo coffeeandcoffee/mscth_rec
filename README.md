@@ -9,7 +9,10 @@ EEG recording and ML pipeline for predicting TikTok engagement from brain signal
 ├── survey_data/                        # Pre-experiment questionnaire responses
 ├── analysis_and_documentation/         # Incremental data checks (timestamped) ⭐
 │   ├── 20260309_155600_basic_quality_check/
-│   └── 20260309_164100_survey_demographics/
+│   ├── 20260309_164100_survey_demographics/
+│   ├── 20260311_145900_exclusion_mask/
+│   ├── 20260311_150000_recording_session_summary/
+│   └── 20260311_150100_sample_classification/
 ├── scripts/
 │   ├── recording_script_v4.py          # EEG + video recording
 │   ├── post0_merge_all_split_recording_csvs.py  # Merge split CSVs ⭐
@@ -546,8 +549,8 @@ torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
 | Excluded | 3 (P16: keypress errors, P19: keypress errors, P29: neurological disorder) |
 | **Included** | **25 participants** |
 | Experimenter | P1 (excluded), P2–P3 (preliminary, excluded) |
-| Total recording time | ~792 min across 64 files |
-| Total skip events (A) | 3,943 |
+| Total usable time | ~667 min across 61 files (25 included) |
+| Total skip events (A) | 3,338 (included participants) |
 | Age | M=24.6, SD=2.9, range 20–30 |
 | Sampling rate | 256 Hz (consistent) |
 | Channel coverage | 100% across all recordings |
@@ -557,6 +560,12 @@ See `analysis_and_documentation/` for full quality checks and survey analysis.
 ---
 
 ## Changelog
+
+### 2026-03-11 (Exclusion Mask, Recording Summary & Sample Classification)
+- **Added**: `exclusion_mask` — parametric JSON of excluded/included participants with reasons
+- **Added**: `recording_session_summary` — per-participant pass/fail: BT loss <20%, duration ≥20min, 100s baseline
+- **Added**: `sample_classification` — per-participant per-subrecording class block analysis with sample counts
+- **Result**: 25/25 pass all recording criteria; 35,335 total samples (12.4% skip / 87.6% noskip pre-balancing)
 
 ### 2026-03-09 (Data Quality Checks & Survey Analysis)
 - **Added**: `analysis_and_documentation/` — incremental, documented data checks framework

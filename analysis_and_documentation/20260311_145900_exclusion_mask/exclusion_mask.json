@@ -1,0 +1,47 @@
+{
+  "criteria": {
+    "neurological_disorder": "exclude if diagnosed",
+    "keypress_errors_threshold": 10
+  },
+  "total_recruited": 28,
+  "total_excluded": 3,
+  "total_included": 25,
+  "excluded": {
+    "P16": [
+      "excessive keypress errors (45 total)"
+    ],
+    "P19": [
+      "excessive keypress errors (40 total)"
+    ],
+    "P29": [
+      "neurological disorder"
+    ]
+  },
+  "included": [
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10",
+    "P11",
+    "P12",
+    "P13",
+    "P14",
+    "P15",
+    "P17",
+    "P18",
+    "P20",
+    "P21",
+    "P22",
+    "P23",
+    "P24",
+    "P25",
+    "P26",
+    "P27",
+    "P28",
+    "P30",
+    "P31"
+  ]
+}
