@@ -53,4 +53,5 @@ All scripts are designed to be run from within their own folder and reference da
 | 9 | `20260311_211600_statistical_significance` | **Mathematical Proof**: Calculates one-sample t-test (vs 50% baseline) and Cohen's d for the n=25 RF-112 results to justify standardizing the dataset size. | ✅ |
 | 10 | `20260311_214000_generalizability_logo_cv_rf` | **LOGO-CV**: Evaluates clinical generalizability using Leave-One-Group-Out cross validation across the 25 participants. | ✅ |
 | 11 | `20260311_220000_baseline_normalized_rf` | **Baseline Normalization**: Re-runs the Step 6 Intra-Subject RF-112 pipeline, but normalizes all 3-second task features against the single global 100-s resting state mean per participant. | ✅ |
+| 12 | `20260311_221000_baseline_normalized_statistical_significance` | **Mathematical Proof**: Calculates one-sample t-test (vs 50% baseline) and Cohen's d for the newly generated baseline normalized RF model (Step 11). | ✅ |
 
