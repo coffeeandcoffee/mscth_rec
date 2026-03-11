@@ -694,7 +694,7 @@ See `analysis_and_documentation/` for full quality checks and survey analysis.
 
 In precise alignment with `THESIS_STRUCTURE.md` and standard scientific validation methodology for BCI research, the following steps remain:
 
-1. **Dataset Freeze ($n=25$ Baseline, $n=30$ Optional)**: Statistical significance testing on the current $n=25$ dataset using our primary clinical metric (one-sample t-test: Recall=67.1% vs 50% chance) yields $p = 1.05 \times 10^{-12}$ and Cohen's $d = 2.70$ (a massive effect size). **Scientifically, $n=25$ is more than sufficient to support the thesis.** Recruiting 5 more participants to hit $n=30$ is now an optional stretch target.
+1. **Dataset Freeze ($n=25$ Baseline, $n=30$ Optional)**: Statistical significance testing on the current $n=25$ dataset using our primary clinical metric (one-sample t-test: Recall=67.1% vs 50% chance) yields $p = 1.76 \times 10^{-8}$ and Cohen's $d = 1.65$ (a massive effect size). **Scientifically, $n=25$ is more than sufficient to support the thesis.** Recruiting 5 more participants to hit $n=30$ is now an optional stretch target.
 2. **Leave-One-Group-Out (LOGO) Cross-Validation**: The current validations (Steps 6-8) are intra-subject (trained and tested on the same person's data). To prove generalizability and consumer viability, the final model must be evaluated using LOGO-CV (train on $n-1$, test on the strictly held-out participant) over the entire cohort.
 3. **Targeted Explainability**: Execute feature importance algorithms (Gini impurity / SHAP) on the final LOGO model to draw physiological conclusions about *which* specific brain regions (Electrodes) and frequencies (Bands) significantly drive the skipping behavior, fulfilling the core thesis investigation.
 
