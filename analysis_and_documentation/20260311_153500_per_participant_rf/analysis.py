@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Per-Participant RF Training — Step 6
-=====================================
+Per-Participant RF Training — Step 6 (corrected pipeline)
+=========================================================
 Trains V4 Random Forest (200 trees, depth=7, no notch) individually on each
 of the 25 included participants. Produces:
   - results.json              — per-participant train + val metrics
@@ -10,12 +10,16 @@ of the 25 included participants. Produces:
   - description.txt           — findings summary
 
 Run:  cd <this folder> && python analysis.py
+Debug: cd <this folder> && python analysis.py --debug-one P7
 """
 
 from __future__ import annotations
 
+import argparse
 import json
+import math
 import re
+import sys
 import warnings
 from collections import defaultdict
 from pathlib import Path
@@ -28,7 +32,6 @@ import pandas as pd
 from scipy import signal as sig
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-from sklearn.model_selection import train_test_split
 
 warnings.filterwarnings("ignore")
 
@@ -38,6 +41,7 @@ warnings.filterwarnings("ignore")
 SCRIPT_DIR = Path(__file__).resolve().parent
 DATA_DIR = SCRIPT_DIR.parent.parent / "data"
 MASK_JSON = SCRIPT_DIR.parent / "20260311_145900_exclusion_mask" / "exclusion_mask.json"
+SAMPLE_JSON = SCRIPT_DIR.parent / "20260311_150100_sample_classification" / "sample_classification.json"
 IMAGES_DIR = SCRIPT_DIR / "images"
 IMAGES_DIR.mkdir(exist_ok=True)
 
@@ -47,6 +51,8 @@ MAX_DEPTH = 7
 MIN_SAMPLES_LEAF = 5
 WINDOW_S = 3.0
 OVERLAP = 0.80
+STRIDE_S = WINDOW_S * (1 - OVERLAP)  # 0.6s
+TARGET_SAMPLES = int(256 * WINDOW_S)  # 768 timesteps per 3s block
 SEED = 42
 
 EEG_CHANNELS = ["TP9", "AF7", "AF8", "TP10"]
@@ -62,51 +68,7 @@ FREQUENCY_BANDS = [
 
 
 # ---------------------------------------------------------------------------
-# 1. Segment classification (from post2v2)
-# ---------------------------------------------------------------------------
-def classify_segments(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.copy()
-    df["class"] = ""
-    a_presses = df[df["keypress_A"] == 1].index.tolist()
-    b_presses = df[df["keypress_B"] == 1].index.tolist()
-
-    if len(b_presses) >= 2:
-        df.loc[b_presses[0]:b_presses[1], "class"] = "baseline_1"
-        if len(b_presses) >= 3:
-            df.loc[b_presses[-2]:b_presses[-1], "class"] = "baseline_2"
-
-    if len(a_presses) >= 2:
-        for i in range(len(a_presses) - 1):
-            s, e = a_presses[i], a_presses[i + 1]
-            td = df.loc[e, "lsl_timestamp"] - df.loc[s, "lsl_timestamp"]
-            df.loc[s:e, "class"] = "tiktok_over_4s_watched" if td > 4.0 else "tiktok_under_4s_watched"
-    return df
-
-
-def add_skip_labels(df: pd.DataFrame, window_s: float = WINDOW_S) -> pd.DataFrame:
-    df = df.copy()
-    ts = df["lsl_timestamp"].values
-    kp = df["keypress_A"].values
-    cls = df["class"].values
-    c2 = np.array([
-        cls[i] if cls[i] in ("baseline_1", "baseline_2") else "not_about_to_skip"
-        for i in range(len(df))
-    ], dtype=object)
-
-    for i in range(len(df)):
-        if kp[i] == 1:
-            t0 = ts[i] - window_s
-            for j in range(i - 1, -1, -1):
-                if ts[j] < t0:
-                    break
-                if c2[j] not in ("baseline_1", "baseline_2"):
-                    c2[j] = "about_to_skip"
-    df["classification_2"] = c2
-    return df
-
-
-# ---------------------------------------------------------------------------
-# 2. Frequency feature extraction (from prediction_4_rf)
+# 1. Frequency band extraction (per sub-recording)
 # ---------------------------------------------------------------------------
 def extract_band_power(data, fs, lo, hi):
     ny = fs / 2
@@ -121,104 +83,150 @@ def extract_band_power(data, fs, lo, hi):
         return np.zeros_like(data)
 
 
-def extract_frequency_features(df: pd.DataFrame):
+def add_frequency_bands(df: pd.DataFrame):
+    """Add 28 frequency band columns (7 bands × 4 channels) to DataFrame."""
     td = np.diff(df["lsl_timestamp"].values)
     fs = 1.0 / np.median(td)
-    band_feats = {}
+    feat_names = []
     for ch in EEG_CHANNELS:
         cd = df[ch].values
         for bname, lo, hi in FREQUENCY_BANDS:
-            band_feats[f"{ch}_{bname}"] = extract_band_power(cd, fs, lo, hi)
-    df_b = df.copy()
-    for k, v in band_feats.items():
-        df_b[k] = v
-    return df_b, list(band_feats.keys()), fs
+            col_name = f"{ch}_{bname}"
+            df[col_name] = extract_band_power(cd, fs, lo, hi)
+            feat_names.append(col_name)
+    return df, feat_names, fs
 
 
 # ---------------------------------------------------------------------------
-# 3. Aggregated sample creation (from prediction_4_rf)
+# 2. Sample extraction from blocks (using sample_classification.json)
 # ---------------------------------------------------------------------------
-def create_aggregated_samples(df, feat_names, window_s=WINDOW_S):
+def interpolate_block(ts, data_cols, target_n=TARGET_SAMPLES):
+    """
+    Interpolate a 3s block from irregular timestamps to a uniform grid.
+    ts: array of timestamps for this block
+    data_cols: dict of {col_name: array} for this block
+    Returns dict of {col_name: interpolated_array} with exactly target_n points.
+    """
+    t_start, t_end = ts[0], ts[-1]
+    uniform_t = np.linspace(t_start, t_end, target_n)
+    result = {}
+    for col_name, vals in data_cols.items():
+        result[col_name] = np.interp(uniform_t, ts, vals)
+    return result
+
+
+def extract_samples_from_block(df, block, feat_names):
+    """
+    Extract sliding-window samples from a single class block.
+    Uses the block boundaries from sample_classification.json.
+    Returns list of (aggregated_features_vector,) for this block.
+    """
+    start_t = block["start_t"]
+    end_t = block["end_t"]
+    duration = block["duration_s"]
+    expected_n = block["n_samples"]
+
+    if expected_n == 0 or duration < WINDOW_S:
+        return []
+
     ts = df["lsl_timestamp"].values
-    cls = df["classification_2"].values
-    kp = df["keypress_A"].values
-    samples, labels = [], []
+    samples = []
 
-    # about_to_skip: 3s ending at each keypress_A
-    for idx in np.where(kp == 1)[0]:
-        t_end = ts[idx]
-        t_start = t_end - window_s
-        mask = (ts >= t_start) & (ts < t_end)
-        bi = np.where(mask)[0]
-        if len(bi) < 10:
+    # Slide 3s windows with 0.6s stride
+    n_windows = int(math.floor((duration - WINDOW_S) / STRIDE_S)) + 1
+    for w in range(n_windows):
+        w_start = start_t + w * STRIDE_S
+        w_end = w_start + WINDOW_S
+
+        # Find rows in this window
+        mask = (ts >= w_start) & (ts < w_end)
+        indices = np.where(mask)[0]
+
+        if len(indices) < 10:
             continue
-        block = df.iloc[bi][feat_names].values
+
+        # Extract raw band data for this window
+        block_ts = ts[indices]
+        block_data = {fn: df[fn].values[indices] for fn in feat_names}
+
+        # Interpolate to uniform 768 timesteps
+        interp_data = interpolate_block(block_ts, block_data, TARGET_SAMPLES)
+
+        # Aggregate: mean, std, min, max per band feature → 112 features
         agg = []
-        for j in range(block.shape[1]):
-            c = block[:, j]
-            agg.extend([np.mean(c), np.std(c), np.min(c), np.max(c)])
+        for fn in feat_names:
+            col = interp_data[fn]
+            agg.extend([np.mean(col), np.std(col), np.min(col), np.max(col)])
         samples.append(agg)
-        labels.append(1)
 
-    # not_about_to_skip: sliding windows with 80% overlap
-    ns_mask = cls == "not_about_to_skip"
-    ns_idx = np.where(ns_mask)[0]
-    if len(ns_idx) > 0:
-        breaks = np.where(np.diff(ns_idx) > 1)[0] + 1
-        for region in np.split(ns_idx, breaks):
-            if len(region) < 10:
-                continue
-            rt = ts[region]
-            if rt[-1] - rt[0] < window_s:
-                continue
-            stride = window_s * (1 - OVERLAP)
-            ct = rt[0]
-            while ct <= rt[-1] - window_s:
-                m = (ts >= ct) & (ts < ct + window_s) & ns_mask
-                bi = np.where(m)[0]
-                if len(bi) < 10:
-                    ct += stride
-                    continue
-                block = df.iloc[bi][feat_names].values
-                agg = []
-                for j in range(block.shape[1]):
-                    c = block[:, j]
-                    agg.extend([np.mean(c), np.std(c), np.min(c), np.max(c)])
-                samples.append(agg)
-                labels.append(0)
-                ct += stride
-
-    agg_names = []
-    for fn in feat_names:
-        agg_names.extend([f"{fn}_mean", f"{fn}_std", f"{fn}_min", f"{fn}_max"])
-    return np.array(samples), np.array(labels), agg_names
+    return samples
 
 
 # ---------------------------------------------------------------------------
-# 4. Rebalance
+# 3. Rebalance
 # ---------------------------------------------------------------------------
-def rebalance(X, y, seed=SEED):
+def rebalance_pools(skip_pool, noskip_pool, seed=SEED):
+    """Undersample majority pool to match minority pool size."""
     rng = np.random.RandomState(seed)
-    n0, n1 = np.sum(y == 0), np.sum(y == 1)
-    if n0 == n1:
-        return X, y
-    if n0 > n1:
-        maj, minn = np.where(y == 0)[0], np.where(y == 1)[0]
+    n_skip = len(skip_pool)
+    n_noskip = len(noskip_pool)
+
+    if n_skip == n_noskip:
+        return skip_pool, noskip_pool
+
+    if n_skip > n_noskip:
+        sel = rng.choice(n_skip, size=n_noskip, replace=False)
+        return [skip_pool[i] for i in sel], noskip_pool
     else:
-        maj, minn = np.where(y == 1)[0], np.where(y == 0)[0]
-    sel = rng.choice(maj, size=len(minn), replace=False)
-    idx = np.concatenate([minn, sel])
-    rng.shuffle(idx)
-    return X[idx], y[idx]
+        sel = rng.choice(n_noskip, size=n_skip, replace=False)
+        return skip_pool, [noskip_pool[i] for i in sel]
 
 
 # ---------------------------------------------------------------------------
-# 5. Train RF + collect train & val metrics
+# 4. Train RF + collect train & val metrics
 # ---------------------------------------------------------------------------
-def train_and_evaluate(X, y, seed=SEED):
-    X_tr, X_va, y_tr, y_va = train_test_split(
-        X, y, test_size=0.4, random_state=seed, stratify=y
-    )
+def build_train_val(skip_pool, noskip_pool, seed=SEED):
+    """
+    Shuffle within each pool, then split each 60/40.
+    Combine to form balanced train and val sets.
+    """
+    rng = np.random.RandomState(seed)
+
+    # Shuffle within each pool (breaks temporal adjacency from 80% overlap)
+    skip_idx = np.arange(len(skip_pool))
+    noskip_idx = np.arange(len(noskip_pool))
+    rng.shuffle(skip_idx)
+    rng.shuffle(noskip_idx)
+    skip_pool = [skip_pool[i] for i in skip_idx]
+    noskip_pool = [noskip_pool[i] for i in noskip_idx]
+
+    # 60/40 split per pool
+    n_skip = len(skip_pool)
+    n_noskip = len(noskip_pool)
+    split_skip = int(round(n_skip * 0.6))
+    split_noskip = int(round(n_noskip * 0.6))
+
+    skip_train, skip_val = skip_pool[:split_skip], skip_pool[split_skip:]
+    noskip_train, noskip_val = noskip_pool[:split_noskip], noskip_pool[split_noskip:]
+
+    # Combine and label
+    X_train = np.array(skip_train + noskip_train)
+    y_train = np.array([1] * len(skip_train) + [0] * len(noskip_train))
+    X_val = np.array(skip_val + noskip_val)
+    y_val = np.array([1] * len(skip_val) + [0] * len(noskip_val))
+
+    # Shuffle combined sets
+    tr_idx = np.arange(len(y_train))
+    va_idx = np.arange(len(y_val))
+    rng.shuffle(tr_idx)
+    rng.shuffle(va_idx)
+    X_train, y_train = X_train[tr_idx], y_train[tr_idx]
+    X_val, y_val = X_val[va_idx], y_val[va_idx]
+
+    return X_train, y_train, X_val, y_val
+
+
+def train_and_evaluate(X_tr, y_tr, X_va, y_va, seed=SEED):
     clf = RandomForestClassifier(
         n_estimators=N_ESTIMATORS, max_depth=MAX_DEPTH,
         min_samples_leaf=MIN_SAMPLES_LEAF, random_state=seed,
@@ -239,12 +247,12 @@ def train_and_evaluate(X, y, seed=SEED):
     return {
         "train": train_m, "val": val_m,
         "n_train": len(y_tr), "n_val": len(y_va),
-        "n_total_balanced": len(y),
+        "n_total_balanced": len(y_tr) + len(y_va),
     }
 
 
 # ---------------------------------------------------------------------------
-# 6. Visualization
+# 5. Visualization
 # ---------------------------------------------------------------------------
 def plot_boxplots(results: dict):
     metric_names = ["accuracy", "precision", "recall", "f1"]
@@ -271,7 +279,6 @@ def plot_boxplots(results: dict):
         bp["boxes"][0].set_facecolor("#7fbf7f")
         bp["boxes"][1].set_facecolor("#7f9fbf")
 
-        # Overlay individual data points
         for i, vals in enumerate([train_vals, val_vals], 1):
             jitter = np.random.default_rng(42).uniform(-0.08, 0.08, len(vals))
             ax.scatter(
@@ -356,7 +363,7 @@ def plot_table(results: dict):
 
 
 # ---------------------------------------------------------------------------
-# 7. Description
+# 6. Description
 # ---------------------------------------------------------------------------
 def write_description(results: dict):
     pids = sorted(results.keys(), key=lambda p: int(p[1:]))
@@ -379,9 +386,22 @@ def write_description(results: dict):
         f"  class_weight:     balanced",
         f"  Window:           {WINDOW_S}s",
         f"  Overlap:          {OVERLAP*100:.0f}%",
+        f"  Stride:           {STRIDE_S}s",
+        f"  Interpolation:    {TARGET_SAMPLES} timesteps (256Hz × 3s)",
         f"  Notch filter:     OFF",
-        f"  Train/Val split:  60/40",
+        f"  Train/Val split:  60/40 (per pool)",
         f"  Random seed:      {SEED}", "",
+        "PIPELINE STEPS", "-" * 14,
+        "  1. Load block boundaries from sample_classification.json",
+        "  2. Per sub-recording: extract 7×4 frequency bands from raw EEG",
+        "  3. Slide 3s windows (0.6s stride) through each block",
+        "  4. Interpolate each window to 768 uniform timesteps",
+        "  5. Aggregate: mean/std/min/max per band → 112 features",
+        "  6. Collect into skip_pool and noskip_pool",
+        "  7. Rebalance: undersample majority pool to 50/50",
+        "  8. Shuffle within each pool (break overlap adjacency)",
+        "  9. Split each pool 60/40 → combined train/val sets",
+        "  10. Train RF, evaluate on train and val", "",
         "AGGREGATE RESULTS", "-" * 17,
         f"  Participants:     {len(results)}",
         f"  Val Accuracy:     {np.mean(v_accs):.1%} ± {np.std(v_accs):.1%}",
@@ -408,95 +428,204 @@ def write_description(results: dict):
 
 
 # ---------------------------------------------------------------------------
+# 7. Process one participant (with optional debug output)
+# ---------------------------------------------------------------------------
+def process_participant(pid, sub_recordings, debug_dir=None):
+    """
+    Run the corrected pipeline for one participant.
+    sub_recordings: list of {file, blocks} from sample_classification.json
+    Returns results dict or None if skipped.
+    """
+    skip_pool = []     # list of 112-dim feature vectors
+    noskip_pool = []
+
+    agg_names = None  # set on first sub-recording
+
+    for sr in sub_recordings:
+        csv_name = sr["file"]
+        blocks = sr["blocks"]
+        csv_path = DATA_DIR / csv_name
+
+        if not csv_path.exists():
+            print(f"  ⚠️ File not found: {csv_name} — skipping sub-recording")
+            continue
+
+        # Load raw EEG
+        df = pd.read_csv(csv_path)
+        print(f"  {csv_name}: {len(df):,} rows, {len(blocks)} blocks")
+
+        required = ["lsl_timestamp"] + EEG_CHANNELS
+        missing = [c for c in required if c not in df.columns]
+        if missing:
+            print(f"    ❌ Missing columns: {missing} — skipping")
+            continue
+
+        # Step 2: Extract frequency bands
+        df, feat_names, fs = add_frequency_bands(df)
+
+        # Build aggregated feature names (same for all sub-recordings)
+        if agg_names is None:
+            agg_names = []
+            for fn in feat_names:
+                agg_names.extend([f"{fn}_mean", f"{fn}_std", f"{fn}_min", f"{fn}_max"])
+
+        if debug_dir:
+            out = debug_dir / f"{pid}_{csv_name.replace('.csv', '')}_bands.csv"
+            cols = ["lsl_timestamp"] + feat_names
+            df[cols].head(1000).to_csv(out, index=False)
+            print(f"    🔍 DEBUG: {out.name} (first 1000 rows, {len(cols)} cols)")
+
+        # Step 3–5: Extract samples from each block
+        sub_skip = 0
+        sub_noskip = 0
+        for blk in blocks:
+            samples = extract_samples_from_block(df, blk, feat_names)
+            if blk["label"] == "about_to_skip":
+                skip_pool.extend(samples)
+                sub_skip += len(samples)
+            else:
+                noskip_pool.extend(samples)
+                sub_noskip += len(samples)
+
+        print(f"    Extracted: skip={sub_skip}, noskip={sub_noskip}")
+
+    total_skip = len(skip_pool)
+    total_noskip = len(noskip_pool)
+    print(f"  Pools: skip={total_skip}, noskip={total_noskip}")
+
+    if total_skip < 5:
+        print(f"  ❌ Too few skip samples ({total_skip}) — SKIPPING")
+        return None
+
+    if debug_dir:
+        out = debug_dir / f"{pid}_step5_pools.json"
+        pool_debug = {
+            "info": f"Pre-balance pools: each sample is a {len(agg_names)}-dim "
+                    f"aggregated feature vector from one interpolated {TARGET_SAMPLES}-timestep window",
+            "feature_names": agg_names,
+            "skip_pool": {"count": total_skip, "samples": [s for s in skip_pool]},
+            "noskip_pool": {"count": total_noskip, "samples": [s for s in noskip_pool]},
+        }
+        Path(out).write_text(json.dumps(pool_debug, indent=2))
+        print(f"  🔍 DEBUG: {out.name} — skip={total_skip}, noskip={total_noskip}")
+
+    # Step 6: Rebalance
+    skip_pool, noskip_pool = rebalance_pools(skip_pool, noskip_pool, SEED)
+    print(f"  Balanced: {len(skip_pool)} per class")
+
+    if debug_dir:
+        out = debug_dir / f"{pid}_step6_balanced.json"
+        bal_debug = {
+            "info": f"After rebalancing: {len(skip_pool)} samples per class",
+            "skip_pool": {"count": len(skip_pool), "samples": [s for s in skip_pool]},
+            "noskip_pool": {"count": len(noskip_pool), "samples": [s for s in noskip_pool]},
+        }
+        Path(out).write_text(json.dumps(bal_debug, indent=2))
+        print(f"  🔍 DEBUG: {out.name} — {len(skip_pool)} per class")
+
+    # Step 7-8: Shuffle per pool + split 60/40 per pool
+    X_tr, y_tr, X_va, y_va = build_train_val(skip_pool, noskip_pool, SEED)
+    print(f"  Split: train={len(y_tr)} (s={np.sum(y_tr==1)}/n={np.sum(y_tr==0)}), "
+          f"val={len(y_va)} (s={np.sum(y_va==1)}/n={np.sum(y_va==0)})")
+
+    if debug_dir:
+        out = debug_dir / f"{pid}_step7_train_val.json"
+        split_debug = {
+            "info": "After per-pool shuffle + 60/40 split, then combined",
+            "train": {
+                "count": len(y_tr),
+                "skip": int(np.sum(y_tr == 1)),
+                "noskip": int(np.sum(y_tr == 0)),
+                "samples": [{"features": X_tr[i].tolist(), "label": int(y_tr[i])}
+                            for i in range(len(y_tr))],
+            },
+            "val": {
+                "count": len(y_va),
+                "skip": int(np.sum(y_va == 1)),
+                "noskip": int(np.sum(y_va == 0)),
+                "samples": [{"features": X_va[i].tolist(), "label": int(y_va[i])}
+                            for i in range(len(y_va))],
+            },
+        }
+        Path(out).write_text(json.dumps(split_debug, indent=2))
+        print(f"  🔍 DEBUG: {out.name} — train={len(y_tr)}, val={len(y_va)}")
+
+    # Step 9-10: Train RF + evaluate
+    res = train_and_evaluate(X_tr, y_tr, X_va, y_va, SEED)
+    print(f"  Train acc={res['train']['accuracy']:.1%}  "
+          f"Val acc={res['val']['accuracy']:.1%}  "
+          f"Val F1={res['val']['f1']:.1%}")
+    return res
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
+    parser = argparse.ArgumentParser(description="Step 6: Per-Participant RF Training")
+    parser.add_argument("--debug-one", type=str, default=None, metavar="PID",
+                        help="Run only one participant and save intermediate CSVs "
+                             "to debug_output/ (e.g. --debug-one P7)")
+    args = parser.parse_args()
+
+    debug_dir = None
+    if args.debug_one:
+        debug_dir = SCRIPT_DIR / "debug_output"
+        debug_dir.mkdir(exist_ok=True)
+        print(f"🔍 DEBUG MODE: processing only {args.debug_one}")
+        print(f"   Intermediate CSVs → {debug_dir}/\n")
+
     print("=" * 60)
     print("STEP 6: PER-PARTICIPANT RF TRAINING (n=25)")
     print("=" * 60)
     print(f"  Config: {N_ESTIMATORS} trees, depth={MAX_DEPTH}, "
-          f"window={WINDOW_S}s, overlap={OVERLAP*100:.0f}%, no notch\n")
+          f"window={WINDOW_S}s, overlap={OVERLAP*100:.0f}%, no notch")
+    print(f"  Interpolation: each 3s block → {TARGET_SAMPLES} uniform timesteps\n")
 
     # Load exclusion mask
     mask = json.loads(MASK_JSON.read_text())
     included = set(mask["included"])
-    print(f"  Included participants: {len(included)}\n")
+    print(f"  Included participants: {len(included)}")
 
-    # Collect CSV files per participant
-    files = sorted(DATA_DIR.glob("P*_*.csv"), key=lambda p: (
-        int(re.search(r"P(\d+)", p.name).group(1)),
-        int(re.search(r"_(\d+)\.", p.name).group(1)),
-    ))
-    pid_files: dict[str, list[Path]] = defaultdict(list)
-    for f in files:
-        m = re.match(r"(P\d+)_", f.name, re.IGNORECASE)
-        if m:
-            pid = m.group(1).upper()
-            if pid in included:
-                pid_files[pid].append(f)
+    # Load sample classification (pre-computed block boundaries)
+    sample_cls = json.loads(SAMPLE_JSON.read_text())
+    participants_data = sample_cls["participants"]
+    print(f"  Block data loaded from sample_classification.json\n")
 
-    sorted_pids = sorted(pid_files.keys(), key=lambda p: int(p[1:]))
+    # Filter to debug target if needed
+    if args.debug_one:
+        target = args.debug_one.upper()
+        if target not in participants_data:
+            print(f"❌ {target} not found in sample_classification.json")
+            sys.exit(1)
+        sorted_pids = [target]
+    else:
+        sorted_pids = sorted(
+            [p for p in participants_data if p in included],
+            key=lambda p: int(p[1:])
+        )
 
     # Process each participant
     all_results = {}
     for i, pid in enumerate(sorted_pids, 1):
+        p_data = participants_data[pid]
+        sub_recs = p_data["sub_recordings"]
+
         print(f"\n{'='*60}")
-        print(f"[{i}/{len(sorted_pids)}] {pid} ({len(pid_files[pid])} file(s))")
+        print(f"[{i}/{len(sorted_pids)}] {pid} ({len(sub_recs)} sub-recording(s))")
         print("=" * 60)
 
-        # Concatenate all sub-recordings
-        dfs = []
-        for csv_path in pid_files[pid]:
-            df = pd.read_csv(csv_path)
-            print(f"  Loaded {csv_path.name}: {len(df):,} rows")
-            dfs.append(df)
-        df = pd.concat(dfs, ignore_index=True)
-        print(f"  Total: {len(df):,} rows")
+        res = process_participant(pid, sub_recs, debug_dir=debug_dir)
+        if res is not None:
+            all_results[pid] = res
 
-        # Check required columns
-        required = ["lsl_timestamp", "keypress_A", "keypress_B"] + EEG_CHANNELS
-        missing = [c for c in required if c not in df.columns]
-        if missing:
-            print(f"  ❌ Missing columns: {missing} — SKIPPING")
-            continue
-
-        # Step 1: Classify segments
-        df = classify_segments(df)
-
-        # Step 2: Add skip labels
-        df = add_skip_labels(df, WINDOW_S)
-        c2 = df["classification_2"].value_counts()
-        n_skip = c2.get("about_to_skip", 0)
-        n_noskip = c2.get("not_about_to_skip", 0)
-        print(f"  Labels: skip={n_skip:,}  noskip={n_noskip:,}")
-
-        if n_skip < 10:
-            print(f"  ❌ Too few skip samples — SKIPPING")
-            continue
-
-        # Step 3: Extract frequency features
-        df_b, feat_names, fs = extract_frequency_features(df)
-        print(f"  Fs={fs:.1f}Hz, {len(feat_names)} band features")
-
-        # Step 4: Create aggregated samples
-        X, y, agg_names = create_aggregated_samples(df_b, feat_names, WINDOW_S)
-        print(f"  Samples: skip={np.sum(y==1)}  noskip={np.sum(y==0)}")
-
-        if np.sum(y == 1) < 5:
-            print(f"  ❌ Too few samples after aggregation — SKIPPING")
-            continue
-
-        # Step 5: Rebalance
-        X, y = rebalance(X, y, SEED)
-        print(f"  Balanced: {len(y)} total ({np.sum(y==1)} per class)")
-
-        # Step 6: Train + evaluate
-        res = train_and_evaluate(X, y, SEED)
-        print(f"  Train acc={res['train']['accuracy']:.1%}  "
-              f"Val acc={res['val']['accuracy']:.1%}  "
-              f"Val F1={res['val']['f1']:.1%}")
-
-        all_results[pid] = res
+    if args.debug_one:
+        print(f"\n🔍 DEBUG complete for {args.debug_one}")
+        print(f"   Check CSVs in: {debug_dir}/")
+        print(f"   Files saved:")
+        for f in sorted(debug_dir.glob(f"{args.debug_one.upper()}_*.csv")):
+            print(f"     {f.name} ({f.stat().st_size / 1024:.0f} KB)")
+        return
 
     # --- Save results ---
     print(f"\n{'='*60}")
@@ -512,8 +641,10 @@ def main():
             "min_samples_leaf": MIN_SAMPLES_LEAF,
             "window_s": WINDOW_S,
             "overlap": OVERLAP,
+            "stride_s": STRIDE_S,
+            "interpolation_samples": TARGET_SAMPLES,
             "notch_filter": False,
-            "train_val_split": "60/40",
+            "train_val_split": "60/40 per pool",
             "seed": SEED,
         },
         "participants": all_results,

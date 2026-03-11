@@ -501,19 +501,21 @@ python scripts/analysis_8_engagement_index.py --nonotch
 
 ### Pipeline Steps (per participant)
 
-Each participant's raw EEG CSVs are processed through the following steps:
+Each participant's sub-recording CSVs are processed independently through the following steps:
 
 | Step | Description |
 |------|-------------|
-| 1. **Concatenate** | Merge all sub-recordings (e.g. P4_1.csv + P4_2.csv + P4_3.csv) into one DataFrame |
-| 2. **Classify segments** | Mark baselines (B keypresses) and TikTok viewing periods (between A keypresses, >4s or ≤4s) |
-| 3. **Add skip labels** | 3-second window before each A keypress → `about_to_skip`; all other TikTok viewing → `not_about_to_skip`; baselines excluded |
-| 4. **Extract frequency bands** | Butterworth bandpass (4th order) per channel: 7 bands × 4 channels = 28 band signals. No 50Hz notch filter. |
-| 5. **Create aggregated samples** | Skip samples: one 3s window per keypress. Non-skip samples: sliding 3s windows with 80% overlap (stride=0.6s). Per window: compute mean, std, min, max per band → 28 × 4 = **112 features** |
-| 6. **Rebalance** | Random undersample majority class (`not_about_to_skip`) to match minority (`about_to_skip`) → exact 50/50 balance |
-| 7. **Train/Val split** | 60/40 stratified split (seed=42) |
-| 8. **Train Random Forest** | 200 trees, max_depth=7, min_samples_leaf=5, class_weight=balanced |
-| 9. **Evaluate** | Record accuracy, precision, recall, F1 on both train and validation sets |
+| 1. **Load block boundaries** | Read pre-computed class blocks from `sample_classification.json` (start_t, end_t, label per block per sub-recording) |
+| 2. **Extract frequency bands** | Per sub-recording CSV: Butterworth bandpass (4th order) per channel → 7 bands × 4 channels = 28 band signals. No 50Hz notch filter. |
+| 3. **Slide 3s windows** | Both classes: sliding 3s windows with stride=0.6s (80% overlap) through each block. One sample per window position. |
+| 4. **Interpolate** | Each 3s window is interpolated to exactly 768 uniform timesteps (256Hz × 3s) to handle sampling jitter. |
+| 5. **Aggregate features** | Per window: compute mean, std, min, max per band → 28 × 4 = **112 features** per sample |
+| 6. **Collect into pools** | All samples across sub-recordings → `skip_pool` and `noskip_pool` per participant |
+| 7. **Rebalance** | Random undersample majority pool to match minority → exact 50/50 balance |
+| 8. **Shuffle within pools** | Shuffle samples within each pool independently to break 80% overlap temporal adjacency |
+| 9. **Split per pool** | 60/40 split on each pool separately → combined train/val sets (guarantees balanced train + val) |
+| 10. **Train Random Forest** | 200 trees, max_depth=7, min_samples_leaf=5, class_weight=balanced |
+| 11. **Evaluate** | Record accuracy, precision, recall, F1 on both train and validation sets |
 
 ### RF Configuration (V4 Run-2 — best from feasibility)
 
@@ -524,62 +526,62 @@ Each participant's raw EEG CSVs are processed through the following steps:
 | `min_samples_leaf` | 5 |
 | `class_weight` | balanced |
 | Window | 3.0s |
-| Overlap (non-skip only) | 80% (stride = 0.6s) |
+| Overlap (both classes) | 80% (stride = 0.6s) |
+| Interpolation | 768 timesteps (256Hz × 3s) |
 | Notch filter | OFF |
-| Train/Val split | 60/40 |
+| Train/Val split | 60/40 (per pool) |
 | Random seed | 42 |
 
 ### Aggregate Results (n=25)
 
 | Metric | Train | Validation |
 |--------|-------|------------|
-| **Accuracy** | 98.0% ± 1.5% | **65.5% ± 7.0%** |
-| **F1-Score** | 98.0% ± 1.6% | **66.7% ± 8.6%** |
-| Accuracy range | 94.5%–100% | 50.0%–79.5% |
-| Beat 50% baseline | 25/25 | **24/25** |
+| **Accuracy** | 97.9% ± 1.7% | **65.7% ± 6.3%** |
+| **F1-Score** | 97.9% ± 1.7% | **65.9% ± 7.0%** |
+| Accuracy range | — | 56.0%–78.6% |
+| Beat 50% baseline | 25/25 | **25/25** |
 
-> ⚠️ The large train-val gap (98% vs 66%) is expected: RF with depth=7 memorizes small per-participant datasets (68–554 balanced samples). The validation accuracy is the reliable metric.
+> ⚠️ The large train-val gap (98% vs 66%) is expected: RF with depth=7 memorizes small per-participant datasets (62–856 balanced samples). The validation accuracy is the reliable metric.
 
 ### Per-Participant Validation Performance
 
 | P | Samples | Val Acc | Val Prec | Val Rec | Val F1 |
 |---|---------|---------|----------|---------|--------|
-| P4 | 180 | 54.2% | 54.0% | 55.6% | 54.8% |
-| P5 | 68 | 50.0% | 50.0% | 28.6% | 36.4% |
-| P6 | 222 | 65.2% | 61.0% | 81.8% | 69.9% |
-| P7 | 182 | 78.1% | 77.8% | 77.8% | 77.8% |
-| P8 | 290 | 64.7% | 64.4% | 65.5% | 65.0% |
-| P9 | 238 | 68.8% | 68.8% | 68.8% | 68.8% |
-| P10 | 152 | 63.9% | 61.1% | 73.3% | 66.7% |
-| P11 | 324 | 63.8% | 61.8% | 72.3% | 66.7% |
-| P12 | 110 | 79.5% | 76.0% | 86.4% | 80.8% |
-| P13 | 194 | 60.3% | 58.7% | 69.2% | 63.5% |
-| P14 | 258 | 63.5% | 59.7% | 82.7% | 69.3% |
-| P15 | 244 | 62.2% | 63.0% | 59.2% | 61.1% |
-| P17 | 554 | 73.9% | 70.2% | 82.9% | 76.0% |
-| P18 | 402 | 69.6% | 67.4% | 75.0% | 71.0% |
-| P20 | 352 | 63.8% | 61.7% | 71.4% | 66.2% |
-| P21 | 208 | 66.7% | 63.0% | 81.0% | 70.8% |
-| P22 | 148 | 65.0% | 63.6% | 70.0% | 66.7% |
-| P23 | 412 | 75.8% | 80.0% | 68.3% | 73.7% |
-| P24 | 442 | 63.8% | 61.8% | 71.6% | 66.3% |
-| P25 | 310 | 58.1% | 57.6% | 61.3% | 59.4% |
-| P26 | 164 | 65.1% | 63.9% | 69.7% | 66.7% |
-| P27 | 268 | 61.1% | 62.5% | 55.6% | 58.8% |
-| P28 | 426 | 76.6% | 73.2% | 83.5% | 78.0% |
-| P30 | 234 | 61.7% | 59.0% | 76.6% | 66.7% |
-| P31 | 294 | 61.0% | 58.7% | 74.6% | 65.7% |
-| **Mean** | — | **65.5%** | — | — | **66.7%** |
-
-> P5 is the only participant at chance (50.0%) — this is likely due to having only 68 balanced samples (34 per class), the fewest of all participants.
+| P4 | 204 | 65.8% | 71.0% | 53.7% | 61.1% |
+| P5 | 62 | 66.7% | 70.0% | 58.3% | 63.6% |
+| P6 | 260 | 59.6% | 58.1% | 69.2% | 63.2% |
+| P7 | 244 | 74.5% | 71.4% | 81.6% | 76.2% |
+| P8 | 346 | 60.1% | 60.9% | 56.5% | 58.7% |
+| P9 | 284 | 66.7% | 64.6% | 73.7% | 68.8% |
+| P10 | 148 | 58.3% | 58.1% | 60.0% | 59.0% |
+| P11 | 458 | 66.3% | 66.0% | 67.4% | 66.7% |
+| P12 | 106 | 78.6% | 73.1% | 90.5% | 80.8% |
+| P13 | 214 | 58.1% | 60.0% | 48.8% | 53.8% |
+| P14 | 302 | 70.8% | 67.1% | 81.7% | 73.7% |
+| P15 | 288 | 61.2% | 61.0% | 62.1% | 61.5% |
+| P17 | 856 | 69.3% | 73.2% | 60.8% | 66.5% |
+| P18 | 600 | 74.2% | 72.0% | 79.2% | 75.4% |
+| P20 | 440 | 63.1% | 62.9% | 63.6% | 63.3% |
+| P21 | 246 | 59.2% | 61.5% | 49.0% | 54.5% |
+| P22 | 180 | 69.4% | 67.5% | 75.0% | 71.0% |
+| P23 | 624 | 73.6% | 77.6% | 66.4% | 71.5% |
+| P24 | 628 | 63.5% | 63.1% | 65.1% | 64.1% |
+| P25 | 428 | 64.5% | 63.4% | 68.6% | 65.9% |
+| P26 | 182 | 59.7% | 58.5% | 66.7% | 62.3% |
+| P27 | 304 | 58.2% | 56.9% | 67.2% | 61.7% |
+| P28 | 712 | 76.8% | 76.0% | 78.2% | 77.1% |
+| P30 | 252 | 56.0% | 55.4% | 62.0% | 58.5% |
+| P31 | 406 | 68.5% | 67.4% | 71.6% | 69.5% |
+| **Mean** | — | **65.7%** | — | — | **65.9%** |
 
 ### Key Observations
 
 | Finding | Detail |
 |---------|--------|
-| **24/25 beat baseline** | All except P5 (data-limited) exceed 50% chance |
-| **Top performers** | P12 (79.5%), P7 (78.1%), P28 (76.6%), P23 (75.8%) |
-| **Feasibility → full sample** | Feasibility (n=3, P1–P3): 75.1% → Full sample (n=25): 65.5% — expected drop with more diverse participants |
+| **25/25 beat baseline** | All participants exceed 50% chance |
+| **Top performers** | P12 (78.6%), P28 (76.8%), P7 (74.5%), P18 (74.2%) |
+| **Feasibility → full sample** | Feasibility (n=3, P1–P3): 75.1% → Full sample (n=25): 65.7% — expected drop with more diverse participants |
+| **P5 improved** | Previously at chance (50%) in old pipeline; now 66.7% with corrected sample extraction |
 | **Consistent signal** | Method works across 25 independent participants from different backgrounds |
 
 ### Outputs
@@ -665,8 +667,8 @@ See `analysis_and_documentation/` for full quality checks and survey analysis.
 
 ### 2026-03-11 (Per-Participant RF Training, n=25)
 - **Added**: `per_participant_rf` — trains V4 RF (200 trees, depth=7, no notch) on each of 25 included participants
-- **Pipeline**: concatenate CSVs → classify segments → skip labels (3s window) → extract 7×4 frequency bands → aggregate features (112) → rebalance 50/50 → 60/40 split → train RF → evaluate
-- **Result**: Val accuracy **65.5% ± 7.0%**, Val F1 **66.7% ± 8.6%**, **24/25 beat 50% baseline**
+- **Pipeline**: load blocks from `sample_classification.json` → extract bands per sub-recording → slide 3s windows (0.6s stride) → interpolate to 768 timesteps → aggregate 112 features → collect pools → rebalance 50/50 → shuffle within pools → split per pool 60/40 → train RF → evaluate
+- **Result**: Val accuracy **65.7% ± 6.3%**, Val F1 **65.9% ± 7.0%**, **25/25 beat 50% baseline**
 - **Output**: box plots (train vs val per metric), per-participant table, results JSON
 
 ### 2026-03-11 (Exclusion Mask, Recording Summary & Sample Classification)
