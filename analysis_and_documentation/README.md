@@ -51,4 +51,5 @@ All scripts are designed to be run from within their own folder and reference da
 | 7 | `20260311_194100_per_participant_rf_timeseries` | **Experimental**: Same RF but with full flattened time series (21,504 features) instead of 112 aggregated stats — Option B from Step 6 open decision | ✅ |
 | 8 | `20260311_195500_per_participant_transformer_timeseries` | **Experimental**: Transformer on full time series (768×28 sequence) — same data pipeline as Step 7, model swap only | ✅ |
 | 9 | `20260311_211600_statistical_significance` | **Mathematical Proof**: Calculates one-sample t-test (vs 50% baseline) and Cohen's d for the n=25 RF-112 results to justify standardizing the dataset size. | ✅ |
+| 10 | `20260311_214000_generalizability_logo_cv_rf` | **LOGO-CV**: Evaluates clinical generalizability using Leave-One-Group-Out cross validation across the 25 participants. | ✅ |
 
