@@ -7,16 +7,17 @@ OBJECTIVE
 To mathematically demonstrate that the sample size of N=25 participants 
 is statistically sufficient to reject the null hypothesis, proving that
 the neurological signature for skipping behavior can be predicted above 
-chance levels using the RF-112 model.
+chance levels using the RF-112 model. We evaluate this using our primary 
+clinical metric: Recall (Sensitivity) for the 'about_to_skip' class.
 
 NULL HYPOTHESIS (H0)
 --------------------
-The model's predictive accuracy is equal to random chance (50%).
+The model's Recall is equal to random chance (50%).
 H0: μ = 0.50
 
 ALTERNATIVE HYPOTHESIS (H1)
 ---------------------------
-The model's predictive accuracy is significantly greater than chance.
+The model's Recall is significantly greater than chance.
 H1: μ > 0.50
 
 METHODOLOGY & FORMULAS
@@ -27,7 +28,7 @@ METHODOLOGY & FORMULAS
    
    Formula: t = (x̄ - μ) / (s / √n)
    Where:
-     x̄ = Sample mean accuracy
+     x̄ = Sample mean Recall
      μ = Population mean under H0 (0.50)
      s = Sample standard deviation
      n = Sample size (25)
@@ -42,30 +43,30 @@ METHODOLOGY & FORMULAS
 RESULTS & CALCULATIONS
 ----------------------
 Observed Metrics for 25 Participants:
-  Mean Accuracy (x̄):       0.6571 (65.71%)
-  Sample Std Dev (s):      0.0647 (6.47%)
+  Mean Recall (x̄):         0.6707 (67.07%)
+  Sample Std Dev (s):      0.1033 (10.33%)
   Degrees of Freedom (df): 24
 
 Statistical Outputs:
-  T-Statistic:             12.1453
-  P-Value:                 9.7379e-12
-  Cohen's d:               2.4291
+  T-Statistic:             8.2654
+  P-Value:                 1.7627e-08
+  Cohen's d:               1.6531
 
 SCIENTIFIC INTERPRETATION & CONCLUSION
 --------------------------------------
-1. Significance: The extremely small p-value (9.7379e-12 <<< 0.05) 
-   indicates that the probability of achieving a 65.7 mean accuracy 
+1. Significance: The extremely small p-value (1.7627e-08 <<< 0.05) 
+   indicates that the probability of achieving a 67.1% mean Recall 
    by random chance across 25 participants is practically zero. 
    We confidently REJECT the null hypothesis.
 
-2. Effect Size: A Cohen's d of 2.43 demonstrates a "massive" 
-   effect size. It means the average model accuracy sits 2.43 standard 
+2. Effect Size: A Cohen's d of 1.65 demonstrates a "massive" 
+   effect size. It means the average model Recall sits 1.65 standard 
    deviations above random chance.
 
 3. Sample Size Sufficiency: In BCI and EEG research, N=15-20 is 
    frequently accepted as the gold standard for publication, provided 
    the effect size is robust. Because our effect size is extraordinarily 
-   large (d > 2.0), our statistical power to detect this effect approaches 
+   large (d > 1.5), our statistical power to detect this effect approaches 
    100%. 
 
 PROSPECTIVE VALIDITY
