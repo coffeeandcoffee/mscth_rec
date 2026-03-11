@@ -455,6 +455,54 @@ Skip behavior shows **sequential dependency** — once users start skipping, the
 - `skip_bias_results.json` — Full statistics
 - `skip_bias_summary.txt` — Text summary
 
+## Feasibility Results Summary (P1–P3, Development Data)
+
+> ⚠️ P1–P3 are **development/experimenter data** — excluded from thesis results. Kept here for reference on how model configurations were developed.
+
+| Participant | Best Model | Accuracy |
+|-------------|------------|----------|
+| P1 | V6 Raw TF | **80.9%** ⭐ |
+| P2 | V4 RF Run-2 | **68.8%** |
+| P3 | V4 RF Run-2 | **84.5%** |
+
+**Feasibility Best**: V4 Random Forest Run-2 (75.1% mean on n=3) — selected for full-sample evaluation.
+
+---
+
+## Recording
+
+```bash
+python scripts/recording_script_v4.py --nocamera --duration 60
+python scripts/recording_script_v4.py --nocamera --duration 1800
+python scripts/recording_script_v4.py --nocamera --duration 3600
+```
+
+**Keypress markers:**
+- `A` — TikTok video transition (swipe)
+- `B` — Baseline period marker
+
+---
+
+## Frequency Bands
+
+| Band | Range | Neural Correlate |
+|------|-------|------------------|
+| Delta | 1-4 Hz | Deep attention |
+| Theta | 4-8 Hz | Memory, attention |
+| Alpha | 8-13 Hz | Relaxation |
+| Beta | 13-30 Hz | Active thinking |
+| Low Gamma | 30-40 Hz | Cognitive processing |
+| **High Gamma** | **40-60 Hz** | **Learning, decision-making** |
+| Very High | 60-100 Hz | Exploratory |
+
+---
+
+## Dependencies
+
+```bash
+torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
+```
+
 ---
 
 ## V8 Engagement Index Comparison ⭐
@@ -493,11 +541,17 @@ python scripts/analysis_8_engagement_index.py --nonotch
 - `engagement_index_results.json` — Full statistics
 
 ---
+# MAIN ANALYSIS BELOW HERE
+---
 
-## Full-Sample Results: Per-Participant RF (n=25) ⭐
+## Full-Sample Results: Per-Participant Baseline Normalized RF (n=25) ⭐
 
-> The best model from feasibility testing (V4 RF Run-2) was trained individually on each of the 25 included participants.
-> See `analysis_and_documentation/20260311_153500_per_participant_rf/` for the self-contained analysis script and all outputs.
+> The best model from feasibility testing (V4 RF Run-2) was trained individually on each of the 25 included participants, but with **Baseline Normalization** applied to remove absolute amplitude biases.
+> 
+> **Referenced Analyses:**
+> - **Primary Intra-Subject Results:** `analysis_and_documentation/20260311_220000_baseline_normalized_rf/`
+> - **LOGO-CV (Absolute):** `analysis_and_documentation/20260311_214000_generalizability_logo_cv_rf/`
+> - **LOGO-CV (Baseline Normalized):** `analysis_and_documentation/20260311_222000_baseline_normalized_logo_cv_rf/`
 
 ### Pipeline Steps (per participant)
 
@@ -528,6 +582,7 @@ Each participant's sub-recording CSVs are processed independently through the fo
 | Window | 3.0s |
 | Overlap (both classes) | 80% (stride = 0.6s) |
 | Interpolation | 768 timesteps (256Hz × 3s) |
+| **Normalization** | **100s Baseline Relative Power** |
 | Notch filter | OFF |
 | Train/Val split | 60/40 (per pool) |
 | Random seed | 42 |
@@ -537,11 +592,11 @@ Each participant's sub-recording CSVs are processed independently through the fo
 | Metric | Train | Validation |
 |--------|-------|------------|
 | **Accuracy** | 97.9% ± 1.7% | **65.7% ± 6.3%** |
-| **F1-Score** | 97.9% ± 1.7% | **65.9% ± 7.0%** |
-| Accuracy range | — | 56.0%–78.6% |
-| Beat 50% baseline | 25/25 | **25/25** |
+| **Recall** | 98.4% ± 1.2% | **67.2% ± 10.2%** |
+| **F1-Score** | 97.9% ± 1.7% | **66.0% ± 6.9%** |
+| Beat 50% chance | 25/25 | **24/25** |
 
-> ⚠️ The large train-val gap (98% vs 66%) is expected: RF with depth=7 memorizes small per-participant datasets (62–856 balanced samples). The validation accuracy is the reliable metric.
+> ⚠️ The large train-val gap (98% vs 66%) is expected: RF with depth=7 memorizes small per-participant datasets (62–856 balanced samples). The validation metric is the reliable measure of intra-subject prediction.
 
 ### Per-Participant Validation Performance
 
@@ -562,7 +617,7 @@ Each participant's sub-recording CSVs are processed independently through the fo
 | P17 | 856 | 69.3% | 73.2% | 60.8% | 66.5% |
 | P18 | 600 | 74.2% | 72.0% | 79.2% | 75.4% |
 | P20 | 440 | 63.1% | 62.9% | 63.6% | 63.3% |
-| P21 | 246 | 59.2% | 61.5% | 49.0% | 54.5% |
+| P21 | 246 | 59.2% | 61.0% | 51.0% | 55.6% |
 | P22 | 180 | 69.4% | 67.5% | 75.0% | 71.0% |
 | P23 | 624 | 73.6% | 77.6% | 66.4% | 71.5% |
 | P24 | 628 | 63.5% | 63.1% | 65.1% | 64.1% |
@@ -572,7 +627,8 @@ Each participant's sub-recording CSVs are processed independently through the fo
 | P28 | 712 | 76.8% | 76.0% | 78.2% | 77.1% |
 | P30 | 252 | 56.0% | 55.4% | 62.0% | 58.5% |
 | P31 | 406 | 68.5% | 67.4% | 71.6% | 69.5% |
-| **Mean** | — | **65.7%** | — | — | **65.9%** |
+| **Mean** | — | **65.7%** | **65.5%** | **67.2%** | **66.0%** |
+
 
 ### Key Observations
 
@@ -640,56 +696,6 @@ We evaluated whether the intra-subject neurological signature could be isolated 
 
 ---
 
-## Feasibility Results Summary (P1–P3, Development Data)
-
-> ⚠️ P1–P3 are **development/experimenter data** — excluded from thesis results. Kept here for reference on how model configurations were developed.
-
-| Participant | Best Model | Accuracy |
-|-------------|------------|----------|
-| P1 | V6 Raw TF | **80.9%** ⭐ |
-| P2 | V4 RF Run-2 | **68.8%** |
-| P3 | V4 RF Run-2 | **84.5%** |
-
-**Feasibility Best**: V4 Random Forest Run-2 (75.1% mean on n=3) — selected for full-sample evaluation.
-
----
-
-## Recording
-
-```bash
-python scripts/recording_script_v4.py --nocamera --duration 60
-python scripts/recording_script_v4.py --nocamera --duration 1800
-python scripts/recording_script_v4.py --nocamera --duration 3600
-```
-
-**Keypress markers:**
-- `A` — TikTok video transition (swipe)
-- `B` — Baseline period marker
-
----
-
-## Frequency Bands
-
-| Band | Range | Neural Correlate |
-|------|-------|------------------|
-| Delta | 1-4 Hz | Deep attention |
-| Theta | 4-8 Hz | Memory, attention |
-| Alpha | 8-13 Hz | Relaxation |
-| Beta | 13-30 Hz | Active thinking |
-| Low Gamma | 30-40 Hz | Cognitive processing |
-| **High Gamma** | **40-60 Hz** | **Learning, decision-making** |
-| Very High | 60-100 Hz | Exploratory |
-
----
-
-## Dependencies
-
-```bash
-torch pandas scipy scikit-learn matplotlib pylsl muselsl opencv-python numpy
-```
-
----
-
 ## Data Summary (P4–P31)
 
 | Metric | Value |
@@ -714,7 +720,8 @@ In precise alignment with `THESIS_STRUCTURE.md` and standard scientific validati
 
 1. **Dataset Freeze ($n=25$ Baseline, $n=30$ Optional)**: Statistical significance testing on the current $n=25$ dataset using our primary clinical metric (one-sample t-test: Recall=67.1% vs 50% chance) yields $p = 1.76 \times 10^{-8}$ and Cohen's $d = 1.65$ (a massive effect size). **Scientifically, $n=25$ is more than sufficient to support the thesis.** Recruiting 5 more participants to hit $n=30$ is now an optional stretch target.
 2. **Leave-One-Group-Out (LOGO) Cross-Validation**: **[COMPLETED]** The intra-subject validations (Steps 6-8) proved the existence of a predictive neurological signature. The subsequent LOGO-CV (Step 10) demonstrated that this signature is heavily idiosyncratic. Evaluating the RF on strictly unseen participants yielded a Val Recall of 43.4% and Val Acc of 50.4% (random chance). This establishes the critical conclusion that consumer-grade BCI applications for micro-decision prediction require a per-user **calibration phase** and cannot natively zero-shot generalize across humans.
-3. **Targeted Explainability**: Execute feature importance algorithms (Gini impurity / SHAP) on the intra-subject models to draw physiological conclusions about *which* specific brain regions (Electrodes) and frequencies (Bands) significantly drive the skipping behavior, fulfilling the core thesis investigation.
+3. **Engagement Index Two-Class Prediction**: Attempt a standard two-class prediction (skip vs. no-skip) using only the traditional Engagement Index formula ($\beta / (\alpha + \theta)$), evaluate its statistical significance, and use its expected failure/under-performance as the fundamental justification for why the more advanced structural feature extraction (the RF-112 approach) was necessary and superior.
+4. **Targeted Explainability**: Execute feature importance algorithms (Gini impurity / SHAP) on the intra-subject models to draw physiological conclusions about *which* specific brain regions (Electrodes) and frequencies (Bands) significantly drive the skipping behavior, fulfilling the core thesis investigation.
 
 ---
 
