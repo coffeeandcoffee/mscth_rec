@@ -634,7 +634,7 @@ Each participant's sub-recording CSVs are processed independently through the fo
 
 | Finding | Detail |
 |---------|--------|
-| **25/25 beat baseline** | All participants exceed 50% chance |
+| **24/25 beat baseline** | Almost all participants exceed 50% chance |
 | **Top performers** | P12 (78.6%), P28 (76.8%), P7 (74.5%), P18 (74.2%) |
 | **Feasibility → full sample** | Feasibility (n=3, P1–P3): 75.1% → Full sample (n=25): 65.7% — expected drop with more diverse participants |
 | **P5 improved** | Previously at chance (50%) in old pipeline; now 66.7% with corrected sample extraction |
@@ -664,8 +664,8 @@ We evaluated three approaches on n=25 participants to determine the optimal way 
 |---|---|---|---|
 | **Val Accuracy** | **65.7% ± 6.3%** | 57.6% ± 8.3% | 65.5% ± 5.7% |
 | **Val Recall** | **67.1% ± 10.1%** | 56.7% ± 10.8% | 65.4% ± 13.3% |
-| **Val F1** | **65.9% ± 7.0%** | 57.0% ± 9.1% | 64.8% ± 8.1% |
-| **Beat 50% baseline** | **25/25** | 21/25 | **25/25** |
+| **Val F1** | **66.0% ± 6.9%** | 57.0% ± 9.1% | 64.8% ± 8.1% |
+| **Beat 50% baseline** | **24/25** | 21/25 | **25/25** |
 | **Compute (n=25)** | ~30 seconds | ~5 mins | ~80 mins (GPU) |
 
 #### Scientific Evaluation & Conclusion
@@ -718,10 +718,8 @@ See `analysis_and_documentation/` for full quality checks and survey analysis.
 
 In precise alignment with `THESIS_STRUCTURE.md` and standard scientific validation methodology for BCI research, the following steps remain:
 
-1. **Dataset Freeze ($n=25$ Baseline, $n=30$ Optional)**: Statistical significance testing on the current $n=25$ dataset using our primary clinical metric (one-sample t-test: Recall=67.1% vs 50% chance) yields $p = 1.76 \times 10^{-8}$ and Cohen's $d = 1.65$ (a massive effect size). **Scientifically, $n=25$ is more than sufficient to support the thesis.** Recruiting 5 more participants to hit $n=30$ is now an optional stretch target.
-2. **Leave-One-Group-Out (LOGO) Cross-Validation**: **[COMPLETED]** The intra-subject validations (Steps 6-8) proved the existence of a predictive neurological signature. The subsequent LOGO-CV (Step 10) demonstrated that this signature is heavily idiosyncratic. Evaluating the RF on strictly unseen participants yielded a Val Recall of 43.4% and Val Acc of 50.4% (random chance). This establishes the critical conclusion that consumer-grade BCI applications for micro-decision prediction require a per-user **calibration phase** and cannot natively zero-shot generalize across humans.
-3. **Engagement Index Two-Class Prediction**: Attempt a standard two-class prediction (skip vs. no-skip) using only the traditional Engagement Index formula ($\beta / (\alpha + \theta)$), evaluate its statistical significance, and use its expected failure/under-performance as the fundamental justification for why the more advanced structural feature extraction (the RF-112 approach) was necessary and superior.
-4. **Targeted Explainability**: Execute feature importance algorithms (Gini impurity / SHAP) on the intra-subject models to draw physiological conclusions about *which* specific brain regions (Electrodes) and frequencies (Bands) significantly drive the skipping behavior, fulfilling the core thesis investigation.
+1. **Engagement Index Two-Class Prediction**: Attempt a standard two-class prediction (skip vs. no-skip) using only the traditional Engagement Index formula ($\beta / (\alpha + \theta)$), evaluate its statistical significance, and use its expected failure/under-performance as the fundamental justification for why the more advanced structural feature extraction (the RF-112 approach) was necessary and superior.
+2. **Targeted Explainability**: Execute feature importance algorithms (Gini impurity / SHAP) on the intra-subject models to draw physiological conclusions about *which* specific brain regions (Electrodes) and frequencies (Bands) significantly drive the skipping behavior, fulfilling the core thesis investigation.
 
 ---
 
