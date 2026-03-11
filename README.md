@@ -695,12 +695,17 @@ See `analysis_and_documentation/` for full quality checks and survey analysis.
 In precise alignment with `THESIS_STRUCTURE.md` and standard scientific validation methodology for BCI research, the following steps remain:
 
 1. **Dataset Freeze ($n=25$ Baseline, $n=30$ Optional)**: Statistical significance testing on the current $n=25$ dataset using our primary clinical metric (one-sample t-test: Recall=67.1% vs 50% chance) yields $p = 1.76 \times 10^{-8}$ and Cohen's $d = 1.65$ (a massive effect size). **Scientifically, $n=25$ is more than sufficient to support the thesis.** Recruiting 5 more participants to hit $n=30$ is now an optional stretch target.
-2. **Leave-One-Group-Out (LOGO) Cross-Validation**: The current validations (Steps 6-8) are intra-subject (trained and tested on the same person's data). To prove generalizability and consumer viability, the final model must be evaluated using LOGO-CV (train on $n-1$, test on the strictly held-out participant) over the entire cohort.
-3. **Targeted Explainability**: Execute feature importance algorithms (Gini impurity / SHAP) on the final LOGO model to draw physiological conclusions about *which* specific brain regions (Electrodes) and frequencies (Bands) significantly drive the skipping behavior, fulfilling the core thesis investigation.
+2. **Leave-One-Group-Out (LOGO) Cross-Validation**: **[COMPLETED]** The intra-subject validations (Steps 6-8) proved the existence of a predictive neurological signature. The subsequent LOGO-CV (Step 10) demonstrated that this signature is heavily idiosyncratic. Evaluating the RF on strictly unseen participants yielded a Val Recall of 43.4% and Val Acc of 50.4% (random chance). This establishes the critical conclusion that consumer-grade BCI applications for micro-decision prediction require a per-user **calibration phase** and cannot natively zero-shot generalize across humans.
+3. **Targeted Explainability**: Execute feature importance algorithms (Gini impurity / SHAP) on the intra-subject models to draw physiological conclusions about *which* specific brain regions (Electrodes) and frequencies (Bands) significantly drive the skipping behavior, fulfilling the core thesis investigation.
 
 ---
 
 ## Changelog
+
+### 2026-03-11 (LOGO-CV Generalizability, n=25)
+- **Added**: `generalizability_logo_cv_rf` — Tests the clinical generalizability of the RF-112 model (V4 Run-2). Trains on $n=24$ participants and evaluates on the $1$ strictly held-out participant, repeating for all 25.
+- **Result**: LOGO Val Acc **50.4% ± 5.0%**, LOGO Val Recall **43.4% ± 23.9%**.
+- **Verdict**: Performance drops to perfectly random chance across subjects. This proves the neurological signature for TikTok skipping is highly **idiosyncratic**. Consumer BCIs must include a calibration phase rather than attempting zero-shot cross-human prediction.
 
 ### 2026-03-11 (Experimental: Transformer Time Series, n=25)
 - **Added**: `per_participant_transformer_timeseries` — Deep learning ablation processing the 768×28 full time series as proper sequences through an EEGTransformer (1L, 3H, d=66).
