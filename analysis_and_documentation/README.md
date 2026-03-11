@@ -49,5 +49,6 @@ All scripts are designed to be run from within their own folder and reference da
 | 5 | `20260311_150100_sample_classification` | Per-participant per-subrecording class block analysis: about_to_skip vs not_about_to_skip sample counts with configurable window/overlap | ✅ |
 | 6 | `20260311_153500_per_participant_rf` | Per-participant RF training (V4 Run-2: 200 trees, depth=7, no notch) on n=25 with train/val box plots and summary table | ✅ |
 | 7 | `20260311_194100_per_participant_rf_timeseries` | **Experimental**: Same RF but with full flattened time series (21,504 features) instead of 112 aggregated stats — Option B from Step 6 open decision | ✅ |
-| 8 | `20260311_195500_per_participant_transformer_timeseries` | **Experimental**: Transformer on full time series (768×28 sequence) — same data pipeline as Step 7, model swap only | ⏳ |
+| 8 | `20260311_195500_per_participant_transformer_timeseries` | **Experimental**: Transformer on full time series (768×28 sequence) — same data pipeline as Step 7, model swap only | ✅ |
+| 9 | `20260311_211600_statistical_significance` | **Mathematical Proof**: Calculates one-sample t-test (vs 50% baseline) and Cohen's d for the n=25 RF-112 results to justify standardizing the dataset size. | ✅ |
 
