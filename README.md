@@ -12,7 +12,8 @@ EEG recording and ML pipeline for predicting TikTok engagement from brain signal
 │   ├── 20260309_164100_survey_demographics/
 │   ├── 20260311_145900_exclusion_mask/
 │   ├── 20260311_150000_recording_session_summary/
-│   └── 20260311_150100_sample_classification/
+│   ├── 20260311_150100_sample_classification/
+│   └── 20260311_153500_per_participant_rf/  # ⭐ n=25 RF training results
 ├── scripts/
 │   ├── recording_script_v4.py          # EEG + video recording
 │   ├── post0_merge_all_split_recording_csvs.py  # Merge split CSVs ⭐
@@ -493,7 +494,108 @@ python scripts/analysis_8_engagement_index.py --nonotch
 
 ---
 
-## Summary: Best Models by Participant
+## Full-Sample Results: Per-Participant RF (n=25) ⭐
+
+> The best model from feasibility testing (V4 RF Run-2) was trained individually on each of the 25 included participants.
+> See `analysis_and_documentation/20260311_153500_per_participant_rf/` for the self-contained analysis script and all outputs.
+
+### Pipeline Steps (per participant)
+
+Each participant's raw EEG CSVs are processed through the following steps:
+
+| Step | Description |
+|------|-------------|
+| 1. **Concatenate** | Merge all sub-recordings (e.g. P4_1.csv + P4_2.csv + P4_3.csv) into one DataFrame |
+| 2. **Classify segments** | Mark baselines (B keypresses) and TikTok viewing periods (between A keypresses, >4s or ≤4s) |
+| 3. **Add skip labels** | 3-second window before each A keypress → `about_to_skip`; all other TikTok viewing → `not_about_to_skip`; baselines excluded |
+| 4. **Extract frequency bands** | Butterworth bandpass (4th order) per channel: 7 bands × 4 channels = 28 band signals. No 50Hz notch filter. |
+| 5. **Create aggregated samples** | Skip samples: one 3s window per keypress. Non-skip samples: sliding 3s windows with 80% overlap (stride=0.6s). Per window: compute mean, std, min, max per band → 28 × 4 = **112 features** |
+| 6. **Rebalance** | Random undersample majority class (`not_about_to_skip`) to match minority (`about_to_skip`) → exact 50/50 balance |
+| 7. **Train/Val split** | 60/40 stratified split (seed=42) |
+| 8. **Train Random Forest** | 200 trees, max_depth=7, min_samples_leaf=5, class_weight=balanced |
+| 9. **Evaluate** | Record accuracy, precision, recall, F1 on both train and validation sets |
+
+### RF Configuration (V4 Run-2 — best from feasibility)
+
+| Parameter | Value |
+|-----------|-------|
+| `n_estimators` | 200 |
+| `max_depth` | 7 |
+| `min_samples_leaf` | 5 |
+| `class_weight` | balanced |
+| Window | 3.0s |
+| Overlap (non-skip only) | 80% (stride = 0.6s) |
+| Notch filter | OFF |
+| Train/Val split | 60/40 |
+| Random seed | 42 |
+
+### Aggregate Results (n=25)
+
+| Metric | Train | Validation |
+|--------|-------|------------|
+| **Accuracy** | 98.0% ± 1.5% | **65.5% ± 7.0%** |
+| **F1-Score** | 98.0% ± 1.6% | **66.7% ± 8.6%** |
+| Accuracy range | 94.5%–100% | 50.0%–79.5% |
+| Beat 50% baseline | 25/25 | **24/25** |
+
+> ⚠️ The large train-val gap (98% vs 66%) is expected: RF with depth=7 memorizes small per-participant datasets (68–554 balanced samples). The validation accuracy is the reliable metric.
+
+### Per-Participant Validation Performance
+
+| P | Samples | Val Acc | Val Prec | Val Rec | Val F1 |
+|---|---------|---------|----------|---------|--------|
+| P4 | 180 | 54.2% | 54.0% | 55.6% | 54.8% |
+| P5 | 68 | 50.0% | 50.0% | 28.6% | 36.4% |
+| P6 | 222 | 65.2% | 61.0% | 81.8% | 69.9% |
+| P7 | 182 | 78.1% | 77.8% | 77.8% | 77.8% |
+| P8 | 290 | 64.7% | 64.4% | 65.5% | 65.0% |
+| P9 | 238 | 68.8% | 68.8% | 68.8% | 68.8% |
+| P10 | 152 | 63.9% | 61.1% | 73.3% | 66.7% |
+| P11 | 324 | 63.8% | 61.8% | 72.3% | 66.7% |
+| P12 | 110 | 79.5% | 76.0% | 86.4% | 80.8% |
+| P13 | 194 | 60.3% | 58.7% | 69.2% | 63.5% |
+| P14 | 258 | 63.5% | 59.7% | 82.7% | 69.3% |
+| P15 | 244 | 62.2% | 63.0% | 59.2% | 61.1% |
+| P17 | 554 | 73.9% | 70.2% | 82.9% | 76.0% |
+| P18 | 402 | 69.6% | 67.4% | 75.0% | 71.0% |
+| P20 | 352 | 63.8% | 61.7% | 71.4% | 66.2% |
+| P21 | 208 | 66.7% | 63.0% | 81.0% | 70.8% |
+| P22 | 148 | 65.0% | 63.6% | 70.0% | 66.7% |
+| P23 | 412 | 75.8% | 80.0% | 68.3% | 73.7% |
+| P24 | 442 | 63.8% | 61.8% | 71.6% | 66.3% |
+| P25 | 310 | 58.1% | 57.6% | 61.3% | 59.4% |
+| P26 | 164 | 65.1% | 63.9% | 69.7% | 66.7% |
+| P27 | 268 | 61.1% | 62.5% | 55.6% | 58.8% |
+| P28 | 426 | 76.6% | 73.2% | 83.5% | 78.0% |
+| P30 | 234 | 61.7% | 59.0% | 76.6% | 66.7% |
+| P31 | 294 | 61.0% | 58.7% | 74.6% | 65.7% |
+| **Mean** | — | **65.5%** | — | — | **66.7%** |
+
+> P5 is the only participant at chance (50.0%) — this is likely due to having only 68 balanced samples (34 per class), the fewest of all participants.
+
+### Key Observations
+
+| Finding | Detail |
+|---------|--------|
+| **24/25 beat baseline** | All except P5 (data-limited) exceed 50% chance |
+| **Top performers** | P12 (79.5%), P7 (78.1%), P28 (76.6%), P23 (75.8%) |
+| **Feasibility → full sample** | Feasibility (n=3, P1–P3): 75.1% → Full sample (n=25): 65.5% — expected drop with more diverse participants |
+| **Consistent signal** | Method works across 25 independent participants from different backgrounds |
+
+### Outputs
+
+| File | Purpose |
+|------|---------|
+| `results.json` | Per-participant train + val metrics |
+| `images/boxplot_train_vs_val.png` | Publication-ready box plots (Accuracy, Precision, Recall, F1) |
+| `images/per_participant_table.png` | Summary table for all 25 participants |
+| `description.txt` | Aggregate findings summary |
+
+---
+
+## Feasibility Results Summary (P1–P3, Development Data)
+
+> ⚠️ P1–P3 are **development/experimenter data** — excluded from thesis results. Kept here for reference on how model configurations were developed.
 
 | Participant | Best Model | Accuracy |
 |-------------|------------|----------|
@@ -501,7 +603,7 @@ python scripts/analysis_8_engagement_index.py --nonotch
 | P2 | V4 RF Run-2 | **68.8%** |
 | P3 | V4 RF Run-2 | **84.5%** |
 
-**Overall Best**: V4 Random Forest Run-2 (75.1% mean) — most consistent across participants.
+**Feasibility Best**: V4 Random Forest Run-2 (75.1% mean on n=3) — selected for full-sample evaluation.
 
 ---
 
@@ -560,6 +662,12 @@ See `analysis_and_documentation/` for full quality checks and survey analysis.
 ---
 
 ## Changelog
+
+### 2026-03-11 (Per-Participant RF Training, n=25)
+- **Added**: `per_participant_rf` — trains V4 RF (200 trees, depth=7, no notch) on each of 25 included participants
+- **Pipeline**: concatenate CSVs → classify segments → skip labels (3s window) → extract 7×4 frequency bands → aggregate features (112) → rebalance 50/50 → 60/40 split → train RF → evaluate
+- **Result**: Val accuracy **65.5% ± 7.0%**, Val F1 **66.7% ± 8.6%**, **24/25 beat 50% baseline**
+- **Output**: box plots (train vs val per metric), per-participant table, results JSON
 
 ### 2026-03-11 (Exclusion Mask, Recording Summary & Sample Classification)
 - **Added**: `exclusion_mask` — parametric JSON of excluded/included participants with reasons
