@@ -33,6 +33,7 @@ EEG recording and ML pipeline for predicting TikTok engagement from brain signal
 │   │   └── model_output_investigation_v7_BIAS_*/ # V7 bias analysis ⭐
 │   └── analysis_v8_EI_*/               # V8 Engagement Index results ⭐
 ├── THESIS_STRUCTURE.md                  # Methods/Results section outline ⭐
+├── EXPECTATIONS.md                      # Scientific rigor gap analysis ⭐
 └── mscth/                              # Python virtual environment
 ```
 
@@ -809,6 +810,11 @@ In precise alignment with `THESIS_STRUCTURE.md` and standard scientific validati
 1. **Model Decision Structure Explainability**: Analyze the decision structure of the trained ML models to understand exactly how they arrive at their predictions (e.g., extracting decision rules from trees), if possible.
 2. **50Hz Notch Filter Re-evaluation**: Repeat the `analysis_and_documentation/20260311_220000_baseline_normalized_rf` pipeline **with** a 50Hz notch filter. The goal is to demonstrate that performance significantly decreases, proving that important predictive signals exist in the high-y (>50Hz) ranges and should be preserved even if potentially contaminated by powerline noise, as the models successfully extract usable neurological information from them.
 ---
+
+### 2026-03-12 (Scientific Rigor Gap Analysis)
+- **Added**: `EXPECTATIONS.md` — Deep structural analysis of two reference papers (EEG Emotion Classification with Muse S; Tong et al. 2020, PNAS) mapped against current thesis state.
+- **Identified**: 10 missing analysis documentation steps (Steps 18–27), 5 🔴 must-fix gaps (preprocessing docs, window justification, temporal autocorrelation, CONSORT diagram, n=25 notch ablation), 4 🟡 should-fix items, and 3 🟢 nice-to-have enhancements.
+- **Result**: All `[GAP]` markers in `THESIS_STRUCTURE.md` now have concrete action items with priority levels.
 
 ### 2026-03-12 (Survey Variables & ML Recall Correlation, n=25)
 - **Added**: `survey_ml_correlation` — Correlates the final Baseline Normalized RF validation metrics against pre-experiment survey data to systematically identify label noise or physiological bottlenecks.
