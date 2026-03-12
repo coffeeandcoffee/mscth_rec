@@ -29,6 +29,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
 import pandas as pd
 from scipy import signal as sig
 from sklearn.ensemble import RandomForestClassifier
@@ -354,7 +355,93 @@ def plot_table(results: dict):
 
 
 # ---------------------------------------------------------------------------
-# 6. Description
+# 6. EI vs RF-112 Comparison (Seaborn)
+# ---------------------------------------------------------------------------
+RF112_RESULTS = SCRIPT_DIR.parent / "20260311_220000_baseline_normalized_rf" / "results.json"
+
+
+def plot_ei_vs_rf112_recall(ei_results: dict):
+    """Paired per-participant val recall comparison: Conservative EI vs RF-112."""
+    if not RF112_RESULTS.exists():
+        print(f"⚠️  RF-112 results not found at {RF112_RESULTS}, skipping comparison plot.")
+        return
+
+    rf_data = json.loads(RF112_RESULTS.read_text())
+    rf_participants = rf_data["participants"]
+
+    # Build paired data for participants present in BOTH result sets
+    rows = []
+    for pid in sorted(ei_results.keys(), key=lambda p: int(p[1:])):
+        if pid not in rf_participants:
+            continue
+        rows.append({"Participant": pid, "Model": "Conservative EI\n(5 features)",
+                     "Val Recall": ei_results[pid]["val"]["recall"]})
+        rows.append({"Participant": pid, "Model": "RF-112\n(112 features)",
+                     "Val Recall": rf_participants[pid]["val"]["recall"]})
+
+    if not rows:
+        print("⚠️  No overlapping participants between EI and RF-112 results.")
+        return
+
+    df = pd.DataFrame(rows)
+    n_paired = len(df) // 2
+    ei_vals = df.loc[df["Model"].str.startswith("Conservative"), "Val Recall"].values
+    rf_vals = df.loc[df["Model"].str.startswith("RF-112"), "Val Recall"].values
+
+    # ---- Seaborn figure ----
+    sns.set_theme(style="whitegrid", font_scale=1.05)
+    fig, ax = plt.subplots(figsize=(7, 6.5))
+
+    palette = {"Conservative EI\n(5 features)": "#e07b54",
+               "RF-112\n(112 features)": "#4a90d9"}
+
+    # Box + strip
+    sns.boxplot(data=df, x="Model", y="Val Recall", palette=palette,
+                width=0.45, linewidth=1.3, fliersize=0,
+                boxprops=dict(alpha=0.35), ax=ax)
+    sns.stripplot(data=df, x="Model", y="Val Recall", palette=palette,
+                  size=7, alpha=0.75, jitter=0.12, ax=ax)
+
+    # Paired lines
+    pids_sorted = sorted(
+        [p for p in ei_results if p in rf_participants],
+        key=lambda p: int(p[1:])
+    )
+    for pid in pids_sorted:
+        ei_r = ei_results[pid]["val"]["recall"]
+        rf_r = rf_participants[pid]["val"]["recall"]
+        ax.plot([0, 1], [ei_r, rf_r], color="grey", alpha=0.25, linewidth=0.8, zorder=1)
+
+    # 50% chance line
+    ax.axhline(0.50, ls="--", color="red", alpha=0.5, lw=1, label="Chance (50%)")
+
+    # Annotate means
+    ei_mean, rf_mean = np.mean(ei_vals), np.mean(rf_vals)
+    ei_std, rf_std = np.std(ei_vals), np.std(rf_vals)
+    ax.text(0, ei_mean + 0.025, f"µ = {ei_mean:.1%}", ha="center", fontsize=10,
+            fontweight="bold", color="#b8532e")
+    ax.text(1, rf_mean + 0.025, f"µ = {rf_mean:.1%}", ha="center", fontsize=10,
+            fontweight="bold", color="#2e5d99")
+
+    ax.set_ylabel("Validation Recall (skip class)", fontsize=12)
+    ax.set_xlabel("")
+    ax.set_ylim(0.25, 1.05)
+    ax.set_title(
+        f"Conservative EI vs RF-112 — Per-Participant Validation Recall\n"
+        f"(n = {n_paired}, same RF architecture, same data pipeline)",
+        fontsize=12, fontweight="bold", pad=12,
+    )
+    ax.legend(loc="lower right", fontsize=9)
+
+    plt.tight_layout()
+    out = IMAGES_DIR / "ei_vs_rf112_val_recall.png"
+    fig.savefig(out, dpi=200, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    print(f"✅ Saved: {out}")
+
+
+# ---------------------------------------------------------------------------
+# 7. Description
 # ---------------------------------------------------------------------------
 def write_description(results: dict):
     pids = sorted(results.keys(), key=lambda p: int(p[1:]))
@@ -527,6 +614,7 @@ def main():
     # --- Plots ---
     plot_boxplots(all_results)
     plot_table(all_results)
+    plot_ei_vs_rf112_recall(all_results)
     write_description(all_results)
 
     print(f"\n✅ Done! Check results.json, images/, and description.txt")

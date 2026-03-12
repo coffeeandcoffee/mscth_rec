@@ -680,6 +680,23 @@ We evaluated three approaches on n=25 participants to determine the optimal way 
 
 To rigorously justify the necessity of the 112-feature structural pipeline, the exact same RF architecture was trained exclusively on the traditional Engagement Index formula ($\beta / (\alpha + \theta)$) as a statistical baseline control.
 
+#### Why 5 Features vs 112 Features — The Exact Pipeline Difference
+
+Both experiments share the **identical** RF model (`RandomForestClassifier`, 200 trees, depth=7, `min_samples_leaf=5`, `class_weight=balanced`, seed=42), the same data pipeline (same participants, same `sample_classification.json` block boundaries, same 3s windows, same 80% overlap, same 60/40 split), and the same evaluation protocol. **The only variable changed is the feature engineering step** applied to each 3-second EEG window:
+
+| Pipeline Step | RF-112 | Conservative EI |
+|---|---|---|
+| **Frequency bands extracted** | **7** (delta, theta, alpha, beta, low_gamma, high_gamma, very_high) | **3** (theta, alpha, beta only) |
+| **Channels** | 4 (TP9, AF7, AF8, TP10) | 4 (TP9, AF7, AF8, TP10) |
+| **Per-window aggregation** | 4 statistics (mean, std, min, max) per band per channel | **Collapse** 3 bands into a single ratio: $EI = \overline{\beta_{power}} / (\overline{\alpha_{power}} + \overline{\theta_{power}})$ per channel |
+| **Feature vector per sample** | 7 bands × 4 channels × 4 stats = **112** | 4 per-channel EI ratios + 1 global mean = **5** |
+
+The EI experiment is **not** just "fewer features of the same kind." It fundamentally tests the neuroscience community's standard composite metric: a single predefined ratio that collapses three frequency bands into one scalar per electrode. The RF-112 pipeline instead preserves each band independently across all 7 frequency ranges and characterizes each with 4 distributional statistics, giving the model access to the full structural map of the EEG signal.
+
+This is why it is not 1 vs 112 (the EI formula produces one value *per channel*, and the global mean makes a 5th), and not 112 vs 112 (the EI formula *by definition* collapses bands into a ratio rather than preserving them independently).
+
+#### Results
+
 | Metric | RF-112 (Option A) ⭐ | EI-Only Control (5 Features) |
 |---|---|---|
 | **Val Accuracy** | **65.7% ± 6.3%** | 58.9% ± 6.1% |
@@ -687,12 +704,16 @@ To rigorously justify the necessity of the 112-feature structural pipeline, the 
 | **Val F1** | **66.0% ± 6.9%** | 58.7% ± 8.0% |
 | **Beat 50% baseline** | **24/25** | 23/25 |
 
-> **Primary Source:** `analysis_and_documentation/20260311_233500_engagement_index_prediction/description.txt`
+> **Primary Source:** `analysis_and_documentation/20260311_233500_engagement_index_prediction/`
+> **Comparison Plot:** `images/ei_vs_rf112_val_recall.png` — Paired per-participant val recall (Conservative EI vs RF-112)
 
-#### Scientific Evaluation & Conclusion
+#### What We Can Derive From This
 
-1. **The Insufficiency of Traditional Metrics:** The traditional Engagement Index severely underperforms the 112-feature structural map. Specifically, its Val Recall of 59.4% (± 11.2%) fails to reliably capture the target neurological state compared to the RF-112 approach's 67.2% (± 10.2%).
-2. **Structural Complexity is Required:** This confirms that short-term attentional micro-decisions are encoded in complex cross-band relationships rather than simple predefined composite ratios. The 112-feature architecture is fundamentally necessary to securely capture this nuanced signature.
+1. **The EI formula is insufficient for this task.** When given only the traditional $\beta / (\alpha + \theta)$ ratio, the identical RF model achieves 59.4% recall — barely above chance (50%). When given the full 112-feature structural map, recall rises to 67.2%. Because the model, data, and evaluation are identical, the performance gap is attributable solely to the information content of the features.
+2. **The predictive signal lives partly outside the EI's frequency range.** The EI formula uses only theta (4–8 Hz), alpha (8–13 Hz), and beta (13–30 Hz). The RF-112 pipeline additionally includes delta (1–4 Hz), low gamma (30–40 Hz), high gamma (40–60 Hz), and very high (60–100 Hz). Feature importance analysis (Step 15) independently confirmed that beta and gamma bands are the dominant predictors — frequencies that EI either collapses into a ratio (beta) or ignores entirely (gamma).
+3. **Collapsing bands into a single ratio discards distributional information.** Even for the three bands that EI does use, it reduces an entire 3-second time series to one scalar ratio. The RF-112 approach preserves four statistics (mean, std, min, max) per band, retaining information about signal variability and extremes that a single mean ratio cannot capture.
+
+**What we cannot claim:** We cannot claim that EI is universally useless — it was designed for sustained attention paradigms, not rapid micro-decisions. We also cannot claim that 112 features is the optimal number; it is simply the natural product of 7 bands × 4 channels × 4 statistics. What we can state is that for predicting short-form video skip behavior from consumer-grade EEG, the traditional EI metric does not carry sufficient information, and a richer spectral representation is required.
 
 ### ✅ Resolved: The Idiosyncratic Nature of the Signature
 
@@ -806,6 +827,7 @@ In precise alignment with `THESIS_STRUCTURE.md` and standard scientific validati
 
 ### 2026-03-11 (Engagement Index Two-Class Prediction, n=25)
 - **Added**: `engagement_index_prediction` — Trains the identical RF architecture natively on the 5 Standard Engagement Index values (`beta/(alpha+theta)`) to evaluate if traditional metrics can perform short-term predictions.
+- **Added**: `ei_vs_rf112_val_recall.png` — Seaborn paired comparison plot of Conservative EI vs RF-112 per-participant validation recall.
 - **Result**: Val Acc **58.9% ± 6.1%**, Val Recall **59.4% ± 11.2%**.
 - **Verdict**: Significantly underperforms the RF-112 model (Recall 67.2%). This serves as the negative control justifying the necessity of the 112-feature structural pipeline over traditional composite equations.
 
