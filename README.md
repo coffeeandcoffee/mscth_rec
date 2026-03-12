@@ -730,6 +730,22 @@ The top 10 individual predictive features extracted consistently relied on local
 Unlike sustained-attention experiments dominated by Alpha fluctuations, predicting the rapid sequence of micro-decision video transitions relies primarily on active cognitive binding mechanisms generated over Beta and Gamma ranges at the Frontal nodes. 
 This aligns cleanly with literature reporting high-frequency frontal synchronization during rapid behavioral evaluation and voluntary motor decision generation, as opposed to passive fatigue indexes.
 
+### ✅ Heterogeneity of the "Skip" State (Rapid Browsing)
+
+To understand whether the "intent-to-skip" class represents isolated content-driven decisions or includes broader attentional states, we analyzed the merging of `about_to_skip` blocks across all 25 participants (`analysis_and_documentation/20260312_123320_skip_behavior_bias`). 
+
+Because our pipeline labels the 3 seconds prior to any skip as `about_to_skip`, rapid consecutive skips (where videos are watched for < 3 seconds) cause consecutive pre-skip windows to overlap and geometrically merge into single continuous blocks longer than 3.0 seconds. 
+
+#### Key Findings
+Out of 2,721 total `about_to_skip` continuous blocks in the dataset:
+- **Isolated Skips:** 85.0% of blocks were exactly 3.0 seconds long (yielding exactly 1 sliding sample). This means the user watched the preceding video for at least 3 seconds before deciding to skip.
+- **Rapid Skip Chains:** 15.0% of blocks were >3.0 seconds long (yielding multiple sliding samples), representing chains of rapid, consecutive skips. The longest continuous rapid-skipping block spanned 22 consecutive sliding windows.
+
+#### Scientific Evaluation & Conclusion
+This demonstrates that our positive class (`about_to_skip`) is cognitively heterogeneous. The vast majority of our data represents isolated cognitive appraisals of content. However, 15% of the target data captures a qualitatively different behavior: a "rapid browsing" or "seeking" state where content is rejected almost immediately. 
+
+Therefore, we cannot conclusively claim the machine learning models learned to detect purely an isolated "intent to skip" trigger. The predictive high-frequency frontal signature likely captures interacting elements of both content appraisal and this broader, disengaged attentional state. This highlights the core trade-off of our naturalistic study design: we successfully capture authentic real-world browsing behaviors (including rapid seeking) at the cost of strict experimental stimulus control.
+
 ---
 
 ## Data Summary (P4–P31)
@@ -759,6 +775,11 @@ In precise alignment with `THESIS_STRUCTURE.md` and standard scientific validati
 ---
 
 ## Changelog
+
+### 2026-03-12 (Skip Class Heterogeneity, n=25)
+- **Added**: `skip_behavior_bias` — Analyzes the prevalence of rapid consecutive skipping sequences (videos watched for < 3 seconds) across all 25 included participants.
+- **Result**: 85.0% of target blocks represent isolated skips (watched > 3s), while 15.0% represent merged rapid skip chains (watched < 3s).
+- **Verdict**: The `about_to_skip` target class is cognitively heterogeneous. The predictive neural signature is therefore a mix of isolated content appraisal and a broader "disengaged browsing mode" attentional state.
 
 ### 2026-03-11 (Targeted Explainability: Feature Importance, n=25)
 - **Added**: `targeted_explainability` — Extracts Mean Gini feature importances across the 25 Baseline Normalized RF models to identify exactly which neural regions and frequency bands drive predictive performance.

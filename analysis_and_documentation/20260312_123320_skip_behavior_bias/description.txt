@@ -1,0 +1,23 @@
+Skip Behavior Bias Analysis (n=25)
+==================================
+
+Objective: 
+Analyze the composition of the `about_to_skip` class to determine the prevalence of isolated skip decisions versus rapid, consecutive skipping behavior ("browsing mode").
+
+Methodology: 
+Our labeling pipeline classifies the 3 seconds prior to any swipe as `about_to_skip`. If a user skips a video after watching it for less than 3 seconds, the prior 3-second window overlaps with the current one, merging them into a single continuous block longer than 3.0 seconds. By analyzing the length of these continuous blocks across all 25 included participants (P4-P31, excluding P16, P19, P29), we can identify how much of our data comes from rapid skipping chains.
+
+Key Findings (Class Heterogeneity):
+Out of 2,721 continuous `about_to_skip` blocks:
+- Isolated skips (exactly 1 sliding window / block = 3.0s): 85.0%. The user watched the video for at least 3 seconds before skipping.
+- Short rapid chains (2-4 sliding windows): 8.0%. The user rapidly skipped consecutive videos.
+- Long rapid chains (5+ sliding windows): 6.9%. The highest extreme was a chain producing 22 consecutive sliding windows.
+
+Scientific Interpretation & Model Implications:
+We observe that 15% of the `about_to_skip` blocks represent periods of rapid, consecutive swiping (inter-swipe intervals < 3 seconds). 
+
+What this ACTUALLY proves:
+1. Heterogeneity of the Class: The target neurological state the ML models are learning to predict is not uniform. While 85% of decisions are isolated appraisals, 15% occur during a qualitatively different behavioral state (rapid searching/swiping).
+2. Cognitive State vs Intent: Because a notable portion of the training data comes from these continuous rapid-seeking states, our predictive high-gamma frontal signature might partially reflect the brain moving into a "disengaged browsing mode" rather than a purely clean, isolated decision to reject a specific piece of content.
+
+This is a crucial limitation and nuanced finding for the thesis Discussion section: naturalistic data collection provides high ecological validity but inherently captures mixed attentional states.

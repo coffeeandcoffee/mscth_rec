@@ -26,7 +26,7 @@ We compared three machine learning model families — Decision Tree, Random Fore
 
 Feature importance analysis revealed that **high-gamma activity (40–60 Hz)** at frontal (AF7/AF8) and temporal (TP9/TP10) electrodes was the most consistently predictive signal. An empirical investigation of the 50Hz notch filter confirmed that this signal reflects genuine neural activity rather than power line artifact. The standard Engagement Index (β/(α+θ)) failed to discriminate skip from non-skip states, suggesting that gamma-band activity — not captured by traditional engagement metrics — carries the critical information.
 
-Skip behavior analysis revealed sequential dependency (behavioral autocorrelation), indicating that the classifier detects a broader **attentional state** (disengaged browsing mode) rather than content-specific skip intent. These findings contribute to understanding how the brain allocates attention during naturalistic short-form media consumption.
+Skip behavior analysis revealed class heterogeneity (15% of the target class consisted of contiguous rapid-skipping windows), indicating that the classifier highly correlates with a broader **attentional state** (disengaged browsing mode) rather than purely isolated content-specific skip intent. These findings contribute to understanding how the brain allocates attention during naturalistic short-form media consumption.
 
 ---
 
@@ -379,13 +379,13 @@ Present the best config of each model family (DT, RF, Transformer) across all n=
 - Implications for what the classifier is actually detecting
 
 **What we CAN say:**
-- Skip behavior shows **behavioral autocorrelation** — skipping video N increases probability of skipping N+1
-- The `about_to_skip` class therefore contains a mix of content-driven and state-driven signals
-- The classifier likely detects an **attentional state** (disengaged browsing mode) rather than content-specific "intent to skip"
+- Skip behavior creates **contiguous target blocks** — rapid skipping merges samples into longer consecutive "about_to_skip" sequences.
+- 85% of our target class represents isolated disengagements, while 15% represents a state of rapid browsing.
+- The classifier therefore flags a heterogeneous **attentional state** (disengaged browsing mode + isolated skips) rather than a perfectly uniform content-specific "intent to skip".
 
 **What we CANNOT say:**
-- The exact proportion of signal that is content-driven vs. state-driven
-- Whether removing chain effects would improve or degrade prediction (would need separate experiment)
+- The exact proportion of neural signal that is content-driven vs. state-driven.
+- That the predictive model perfectly isolates the moment of decision (it isolates the *state* preceding the swiping behavior).
 
 ---
 
@@ -428,7 +428,7 @@ graph TD
     K --> L[4.3 Feature Importance]
     L --> M[4.4.1 Notch Filter Investigation]
     M --> N[4.4.2 Engagement Index Benchmark]
-    N --> O[4.4.3 Skip Behavior Bias]
+    N --> O[4.4.3 Heterogeneity of Skip State]
     O --> P[5. Discussion]
     
     style J fill:#2d5016,stroke:#333,color:#fff
