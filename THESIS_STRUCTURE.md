@@ -53,6 +53,10 @@ Skip behavior analysis revealed class heterogeneity (15% of the target class con
 
 #### 3.1 Participants
 
+> **Data Source:**
+> - `analysis_and_documentation/20260309_164100_survey_demographics`
+> - `analysis_and_documentation/20260311_145900_exclusion_mask`
+
 ```
 - n = [TOTAL_RECRUITED] participants recruited ([N_F] female, [N_M] male)
 - Age range: [MIN]–[MAX] years (µ = [MEAN], σ = [SD])
@@ -80,6 +84,8 @@ Skip behavior analysis revealed class heterogeneity (15% of the target class con
 
 #### 3.2 Data Acquisition
 
+> **Data Source:** [GAP - No analysis documentation folder currently assigned]
+
 **Hardware:**
 - Muse S Headband (Gen 2), consumer-grade EEG
 - 4 dry electrodes: AF7, AF8, TP9, TP10 (international 10–20 system)
@@ -96,6 +102,8 @@ Skip behavior analysis revealed class heterogeneity (15% of the target class con
 ---
 
 #### 3.3 Experimental Protocol
+
+> **Data Source:** [GAP - No analysis documentation folder currently assigned]
 
 **Stimuli:** TikTok's "For You" feed — participants freely browsed their own personalized feed
 
@@ -119,6 +127,8 @@ Timeline:
 
 #### 3.4 Labeling Strategy
 
+> **Data Source:** [GAP - No analysis documentation folder currently assigned]
+
 **Binary classification target:** Predict whether the user is *about to skip* the current video.
 
 | Class | Definition | Signal Source |
@@ -134,6 +144,10 @@ Timeline:
 ---
 
 #### 3.5 Signal Preprocessing
+
+> **Data Source:**
+> - `analysis_and_documentation/20260309_155600_basic_quality_check`
+> - `analysis_and_documentation/20260311_150000_recording_session_summary`
 
 **Step 1: Quality checks**
 - Visual inspection of raw EEG waveforms
@@ -160,6 +174,8 @@ Timeline:
 
 #### 3.6 Feature Engineering
 
+> **Data Source:** [GAP - No analysis documentation folder currently assigned]
+
 **For ML models (Decision Tree, Random Forest):**
 - Each 3-second sample block → aggregate statistics per band per channel
 - 4 statistics × 7 bands × 4 channels = **112 features**
@@ -178,6 +194,9 @@ Timeline:
 
 #### 3.7 Windowing and Data Augmentation
 
+> **Data Source:**
+> - `analysis_and_documentation/20260311_150100_sample_classification`
+
 - **Skip samples**: One 3-second window ending at each keypress_A (no overlap)
 - **Non-skip samples**: Sliding windows with **80% overlap** (stride = 0.6s) across contiguous `not_about_to_skip` regions
 - This produces ~3× more non-skip than skip samples before rebalancing
@@ -187,6 +206,8 @@ Timeline:
 ---
 
 #### 3.8  Machine Learning Classification Models
+
+> **Data Source:** [GAP - No analysis documentation folder currently assigned]
 
 Three model families were compared, ordered by interpretability:
 
@@ -202,6 +223,8 @@ Three model families were compared, ordered by interpretability:
 ---
 
 #### 3.9 Evaluation Strategy
+
+> **Data Source:** [GAP - No analysis documentation folder currently assigned]
 
 **Primary evaluation: Per-participant training and testing**
 - 60/40 stratified train/validation split (no temporal leakage — split at sample level after shuffling balanced dataset)
@@ -242,6 +265,11 @@ LOGO-CV Procedure (n participants):
 
 #### 4.1 Per-Participant Model Comparison (Primary Result)
 
+> **Data Source:**
+> - `analysis_and_documentation/20260311_220000_baseline_normalized_rf`
+> - `analysis_and_documentation/20260311_221000_baseline_normalized_statistical_significance`
+> - [GAP - Decision Tree and Transformer model results missing]
+
 > **Core result table — the centerpiece of the thesis.**
 
 Present the best config of each model family (DT, RF, Transformer) across all n=[FINAL_N] participants:
@@ -272,6 +300,9 @@ Present the best config of each model family (DT, RF, Transformer) across all n=
 
 #### 4.2 Cross-Participant Generalization (LOGO-CV)
 
+> **Data Source:**
+> - `analysis_and_documentation/20260311_222000_baseline_normalized_logo_cv_rf`
+
 > Per supervisor's recommendation.
 
 | Test Participant | Train Set | Accuracy | F1 |
@@ -292,6 +323,9 @@ Present the best config of each model family (DT, RF, Transformer) across all n=
 ---
 
 #### 4.3 Feature Importance and Explainability
+
+> **Data Source:**
+> - `analysis_and_documentation/20260311_235800_targeted_explainability`
 
 > This section justifies which brain signals are actually driving predictions.
 
@@ -326,6 +360,8 @@ Present the best config of each model family (DT, RF, Transformer) across all n=
 
 ##### 4.4.1 Effect of 50Hz Notch Filter
 
+> **Data Source:** [GAP - No analysis documentation folder currently assigned]
+
 > **Empirical investigation:** Does removing the 50Hz component (standard practice for power line noise) help or hurt prediction?
 
 **Motivation:** The high-gamma band (40–60Hz) overlaps with 50Hz power line interference. Standard practice applies a notch filter, but this risks removing genuine neural signal.
@@ -350,6 +386,9 @@ Present the best config of each model family (DT, RF, Transformer) across all n=
 
 ##### 4.4.2 Engagement Index Analysis
 
+> **Data Source:**
+> - `analysis_and_documentation/20260311_233500_engagement_index_prediction`
+
 > **Benchmark against established neuroscience metric.**
 
 **Engagement Index:** EI = β / (α + θ), averaged across 4 electrodes per 3-second window.
@@ -372,6 +411,9 @@ Present the best config of each model family (DT, RF, Transformer) across all n=
 
 ##### 4.4.3 Skip Behavior Bias Analysis
 
+> **Data Source:**
+> - `analysis_and_documentation/20260312_123320_skip_behavior_bias`
+
 > **Behavioral investigation:** Are skip decisions independent events, or do they show sequential dependency?
 
 - Distribution of skip chain lengths (histogram)
@@ -386,6 +428,13 @@ Present the best config of each model family (DT, RF, Transformer) across all n=
 **What we CANNOT say:**
 - The exact proportion of neural signal that is content-driven vs. state-driven.
 - That the predictive model perfectly isolates the moment of decision (it isolates the *state* preceding the swiping behavior).
+
+---
+
+##### 4.4.4 Survey Variables & Label Noise Correlation
+
+> **Data Source:**
+> - `analysis_and_documentation/20260312_140000_survey_ml_correlation`
 
 ---
 
