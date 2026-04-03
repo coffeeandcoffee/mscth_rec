@@ -1,4 +1,4 @@
-# The Neurological Signature of TikTok: Predicting Micro-Decisions during Naturalistic TikTok Time Allocation from Consumer-Grade EEG using Machine Learning Methods
+# TikTok's Neurological Signature: Can We Predict When a User Will Swipe Using Only EEG Brainwave-Data and ML?
 
 > Alternative shorter title: *"Predicting Micro-Decisions during Naturalistic TikTok Time Allocation using Machine Learning Methods"*
 > Both work — the longer version signals EEG upfront, which helps readers immediately understand the modality.
