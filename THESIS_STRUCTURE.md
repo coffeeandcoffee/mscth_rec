@@ -1,4 +1,4 @@
-# TikTok's Neurological Signature: Can We Predict When a User Will Swipe Using Only EEG Brainwave-Data and ML?
+# Brain Before the Swipe: Can Consumer-Grade EEG Predict Viewer Engagement during Naturalistic TikTok Browsing?
 
 > Alternative shorter title: *"Predicting Micro-Decisions during Naturalistic TikTok Time Allocation using Machine Learning Methods"*
 > Both work — the longer version signals EEG upfront, which helps readers immediately understand the modality.
