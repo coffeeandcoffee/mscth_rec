@@ -1,0 +1,142 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{graphicx}
+
+\begin{document}
+
+% --- Title Page ---
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    \Huge
+    \textbf{Title of Your MSc Thesis}
+    
+    \vspace{0.5cm}
+    \LARGE
+    MSc Thesis
+    
+    \vspace{1.5cm}
+    
+    \textbf{Your Name}
+    
+    \vfill
+    
+    \Large
+    \textbf{Supervisors:}\\
+    Supervisor 1 Name\\
+    Supervisor 2 Name
+    
+    \vspace{1.5cm}
+    
+    A thesis presented for the degree of\\
+    Master of Science
+    
+    \vspace{0.8cm}
+    
+    University Name\\
+    % \today % uncomment to add the date
+    
+\end{titlepage}
+
+% --- Acknowledgements (Roman numeral numbering) ---
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+I would like to express my sincere gratitude to my supervisors, and everyone else who supported me during this thesis.
+
+% --- Table of Contents ---
+\tableofcontents
+
+\clearpage
+
+% --- Main Content (Arabic numeral numbering) ---
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+This is the abstract of the thesis. We can cite a paper from your library like this: \cite{montag_depressive_2024}.
+
+\chapter{Introduction}
+This is the introduction chapter. You can start writing your content here.
+
+\chapter{Materials and Methods}
+
+\section{Participants}
+Twenty-eight ($N=28$) participants were recruited for the study ([Insert $N_F$ female, $N_M$ male]). To participate, individuals were required to have normal or corrected-to-normal vision and no history of neurological disorders. Three participants were excluded \textit{a priori}: two due to a high number of self-reported keypress errors (greater than 10) which compromised label integrity, and one due to an undisclosed neurological condition. The experimenter's own data, although collected for pipeline validation, was strictly excluded from all reported results to eliminate experimenter bias. The final sample consisted of $n=25$ participants (age range 20--30 years, $M = 24.6$, $SD = 2.9$).
+
+Participants were collected over a total of five days and were conceptually divided into two groups based on recruitment timing: an initial smaller group was recorded in a separate room without financial compensation, while the subsequent main group (recorded a few days later) received a 20-euro voucher as an incentive. All participants provided informed consent and signed data protection agreements approved by the Ethics Committee of the University of Potsdam prior to the study.
+
+\section{Data Acquisition}
+Electroencephalography (EEG) data were recorded using a consumer-grade Muse S headband (Generation 2). The device features four dry electrodes placed at positions AF7, AF8, TP9, and TP10 according to the international 10--20 system, with the reference electrode located at Fpz. Data were continuously sampled at a rate of 256~Hz. 
+
+\begin{figure}[htpb]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{path_to_muse_headband_picture}
+    [Insert Picture of Muse Headband]
+    \caption{The consumer-grade Muse S (Gen 2) EEG headband used for data acquisition.}
+    \label{fig:muse_headband}
+\end{figure}
+
+The EEG signals were transmitted via Bluetooth and recorded using the Lab Streaming Layer (LSL) protocol with the \texttt{muselsl} library. A custom Python recording script was developed to handle data collection. This script featured real-time frequency monitoring and an automatic reconnection mechanism to seamlessly manage any Bluetooth drops without disrupting the session.
+
+To synchronize the behavioral data (video transitions) with the continuous EEG stream without relying on video monitoring of the participant, keystroke markers were mapped directly into the recording script. Participants used their non-dominant hand to press a specific key on a laptop keyboard provided in the room: the ``B'' key to denote the start of the baseline period, and the ``A'' key to mark every manual swipe (skip event) during the TikTok browsing session.
+
+\begin{figure}[htpb]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{path_to_setup_cabin_picture}
+    [Insert Picture of Experimental Setup Cabin]
+    \caption{The experimental setup cabin ensuring privacy and a distraction-free environment for the participant.}
+    \label{fig:setup_cabin}
+\end{figure}
+
+\begin{figure}[htpb]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{path_to_laptop_phone_picture}
+    [Insert Closer Picture of Laptop and Phone Setup]
+    \caption{Close-up of the recording setup showing the researcher's phone and the laptop used for keypress synchronization.}
+    \label{fig:laptop_phone}
+\end{figure}
+
+\section{Experimental Protocol}
+The experimental sessions were scheduled for 45-minute timeslots, with the actual experimental procedures taking approximately 35 to 40 minutes. Upon arrival, participants were greeted, provided with an information sheet, and asked to sign the ethics consent forms. Afterward, they completed a pre-experiment demographic and basic screening survey, which took approximately five to ten minutes.
+
+\begin{figure}[htpb]
+    \centering
+    % \includegraphics[width=\textwidth]{path_to_protocol_flowchart}
+    [Insert Schematic Flowchart of Experimental Protocol]
+    \caption{Experimental protocol flow: Introduction and consent, EEG setup, 2-minute baseline video, task explanation, and 25-minute TikTok free browsing session.}
+    \label{fig:protocol_flow}
+\end{figure}
+
+Participants were then instructed on the tasks. The Muse S headband was mounted on their head and adjusted to ensure optimal skin contact, particularly on the forehead and behind the ears for participants with long hair. The experimenter verified the signal quality and ensured the device was adequately charged.
+
+The experimental paradigm consisted of two main phases: a baseline recording and a free-browsing session. For the baseline phase, participants were provided with the researcher's iPhone, and a two-minute nature video on YouTube was started. Participants were instructed to relax and simply watch the video. Concurrently, the recording script was initiated, and the ``B'' marker was pressed. To ensure ecological validity while keeping the participant focused, the iPhone's ``Guided Access'' feature was enabled to prevent exiting the application. Participants were left alone in the room to afford them privacy. After two minutes, the Guided Access lock visually timed out, signaling the conclusion of the baseline period.
+
+The experimenter then returned to explain the second phase: a naturalistic short-form video browsing task using the TikTok application. To ensure a standardized yet personalized starting state, the app's ``For You'' feed was refreshed using the ``Reset feed'' option in the content preferences settings. Participants were instructed to consume TikTok content as they normally would, watching videos they found interesting and swiping away those they found boring. To restrict the action space strictly to scrolling behavior, they were asked to refrain from using the ``like'' function, writing comments, or visiting user profiles.
+
+Crucially, participants were tasked with pressing the ``A'' button simultaneously with every swipe motion on the phone to accurately synchronize their micro-decisions with the EEG data. For instance, a participant holding the phone in their right hand used their left hand to press the designated key on the adjacent laptop keyboard.
+
+\begin{figure}[htpb]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{path_to_keypress_schematic}
+    [Insert Schematic of Button Click Synchronization]
+    \caption{Schematic representation of the manual synchronization process: the participant swipes to skip the video and simultaneously presses the `A' button to mark the event in the EEG stream.}
+    \label{fig:keypress_sync}
+\end{figure}
+
+The Guided Access feature was reactivated and set to a 25-minute limit for the TikTok app. Participants were reminded that the headband script would automatically reconnect if a Bluetooth disconnection occurred. They were then left alone in the room with the door closed, creating an isolated viewing environment designed to elicit natural responses to the video feed. They were instructed to knock on the glass door if any errors or issues arose; however, no significant interruptions occurred during the sessions.
+
+Once the 25-minute viewing task concluded, the experimenter entered the room, and the participant removed the headband. They then answered a few post-session survey questions, specifically self-reporting if they made any keypress synchronization errors during the session. Finally, they signed the required compensation forms to receive their 20-euro voucher. The post-measurement debrief and surveying process took roughly two to four minutes. Participants were thanked for their time, briefly debriefed about the broader context of the study if interested, and dismissed.
+
+% --- Bibliography ---
+\bibliographystyle{unsrt}
+\bibliography{library}
+
+\end{document}
