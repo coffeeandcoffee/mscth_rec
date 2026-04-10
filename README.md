@@ -954,3 +954,64 @@ In precise alignment with `THESIS_STRUCTURE.md` and standard scientific validati
 ### 2025-12-10
 - **Added**: `recording_script_v4.py` with robust auto-reconnect
 - **Added**: Real-time frequency monitoring during recording
+
+---
+
+### 2026-04-10 (Scientific Narrative Decision: STAY vs. SKIP Target Definition)
+- **Added**: Open structural decision analysis defining the mathematical consequences of prioritizing an "engagement" vs "disengagement" narrative.
+
+## 🧭 The STAY vs. SKIP Narrative Conflict: Metric Misalignment Analysis
+
+The current pipeline and evaluation metrics are mathematically tuned to predict the **action of skipping (Class 1)**, not the state of **staying (Class 0)**. However, the theoretical neuroscience narrative posits that the measured signal is an "absence of deep engagement." This creates a narrative conflict between what the algorithm dynamically detects (attention mode loss) and what the code strictly evaluates (ability to predict the swipe).
+
+### The Current Mathematical State (Based directly on `prediction_4_rf.py`)
+- **Class 0 (`not_about_to_skip`)**: Baseline engaged viewing.
+- **Class 1 (`about_to_skip`)**: The 3.0-second window terminating exactly at the skip keystroke.
+- **Logged Metrics (`results.json`, `boxplot_train_vs_val.png`)**: All standard metric functions (`recall_score`, `precision_score`, `f1_score`) implicitly use `pos_label=1` from the rigorous sklearn libraries. 
+- **Current Target Summary**: The mean validation recall is accurately presented as **67.2%**. This metric strictly represents the *Sensitivity to Imminent Skips* (True Positives / (True Positives + False Negatives)). The graphical Confusion Matrix top-left to bottom-right layout logs `[Stay, Skip]`.
+
+To achieve narrative clarity in the final thesis, exactly one of the following two cases must be consciously chosen, each demanding explicit, specific downstream pipeline alterations:
+
+### Case A: Predicting the Action (SKIP / Disengagement Hub)
+**Narrative**: "The model predicts an impending swipe event to enable real-time UI interventions (e.g., prompting the user or modifying content distribution layers) before they mechanically disengage."
+
+- **Pros**: Matches exactly what the code currently tracks and optimizes natively. False Positives (predicting a skip when the user actually stays) are considered acceptable because in an intervention context, predicting one too many skips is significantly safer than failing to detect a genuine neural intent to skip (a False Negative).
+- **Cons**: Subtly conflates a broad physiological loss of attention (engagement dropping) with an explicit motor intention to swipe.
+- **Required Downstream Changes**:
+  - Section 3.9 (Evaluation Strategy) of the formal text must explicitly mathematically define $y_1$ (Intent to skip) as the focal narrative metric and rigorously justify prioritizing analytical Sensitivity over overall Accuracy / Specificity.
+  - The SHAP plots (`shap_summary_rf.png`) and Decision Trees (`example_decision_tree_rf.png`) are structurally and semantically correct as-is, inherently plotting feature impacts based explicitly on the physiological probability of `Class 1`. No internal code modifications to the pipelines are required.
+
+### Case B: Predicting the State (STAY / Sustained Attention)
+**Narrative**: "The model fundamentally predicts when a user is in a state of isolated sustained engagement. The behavioral skip is simply the delayed motor marker proving the engagement state sequence has critically failed."
+
+- **Pros**: Aligns flawlessly and conservatively with massive swaths of the standard neuroscience literature mapping frontal gamma explicitly to maintaining cognitive/attentional states, bypassing any theoretical claims bridging non-motor potentials directly to mechanical motor intent mapping.
+- **Cons**: The current 67.2% focal metric broadly reported is rendered mathematically obsolete, as it currently evaluates the skip, not the probability of staying engaged.
+- **Required Downstream Changes**:
+  - **Metric Shift Constraint**: The prioritized focal metric must instantly transpose to **Specificity** (True Negative Rate) — mapping the exact precision of the model effectively diagnosing active sustained viewing periods (e.g., `Recall of Class 0`). Alternatively, calculating the Negative Predictive Value (Precision of Class 0).
+  - **Core Script Source Code Replacements**: `prediction_2.py`, `prediction_3_dt.py`, `prediction_4_rf.py`, and `prediction_5_cross_participant.py` strictly require modifications within all analytical blocks to enforce logic structures defining `pos_label=0` implicitly across metrics mapping boundaries (i.e. replacing metrics arrays universally via commands like `recall_score(y_val, y_pred, pos_label=0)`).
+  - **Re-running Entire Mathematical Pipelines**: The total empirical dataset compiled against all 25 participant configurations must be re-processed analytically to generate newly constrained bounds appending updated metrics over the `results.json` log arrays.
+  - **Re-rendering Visual Context Graphs**: Behavioral investigations mapping graphs (`investigation_7...`), specific analytical metric charts, and comprehensive visual metrics (`boxplot_train_vs_val.png`) necessarily require full computational re-rendering strictly logging Class 0 validations. Furthermore, endpoints highlighting SHAP plot distributions and absolute graphical Decision Trees currently displaying exact target splits required semantic re-labelings shifting boundaries to display "Probability of Sustained Engagement" interpretations (effectively charting $1 - P(Skip)$ boundaries computationally).
+
+---
+
+## 🏛 First Principles: Deriving the Target Narrative
+
+To resolve the STAY vs. SKIP conflict, we must derive the optimal choice analytically from the foundational thesis objectives.
+
+### 1. Title and Objective
+- **Title**: *Brain Before the Swipe: Can Consumer-Grade EEG Predict Viewer Engagement during Naturalistic TikTok Browsing?*
+- **Objective**: To understand the neural signature of sustained engagement versus disengagement, enabling the future design of neurologically compelling public health communication.
+
+### 2. The Core Motivation
+The societal relevance of this study is not building a real-time consumer BCI to pause videos before an individual mechanically swipes. The motivation is grounded in health communication: understanding *why* attention holds or fails in a hyper-stimulating digital ecosystem. The mechanical "skip" is merely behavioral exhaust—the physical proof that the cognitive state of active engagement has already collapsed. 
+
+### 3. The Central Research Question
+*Can consumer-grade EEG accurately identify periods of sustained cognitive engagement during naturalistic short-form video consumption, distinct from periods of acute disengagement?*
+
+### 4. The Null Hypothesis ($H_0$)
+*Consumer-grade derived topological EEG patterns cannot mathematically distinguish a state of sustained audiovisual engagement from a state of imminent task abandonment better than random chance ($50\%$).*
+
+### 5. Final Decision Recommendation
+**Recommendation: Proceed with Case B (Predicting the STATE / STAY)**.
+- **Logical Proof**: The working title explicitly promises an investigation of *Engagement*. If the thesis proceeds mapped to Case A (predicting the skip action), the focal metric (Sensitivity to Class 1) answers an engineering intervention question, completely abandoning the behavioral science public health motivation. 
+- **The Scientific Conclusion**: By pivoting the targeted focal metric to **Specificity** (the model's precise algorithmic ability to identify the Class 0 "STAY" condition), the mathematical output directly answers the title's proposition. The machine learning pipeline graduates from a transient skip-detector into a diagnostic proof-of-concept for measuring *Sustained Attention*. Consequentially, executing the downstream pipeline changes outlined in Case B is mathematically and logically required to preserve absolute scientific integrity.
