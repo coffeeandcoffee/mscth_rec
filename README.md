@@ -1014,4 +1014,22 @@ The societal relevance of this study is not building a real-time consumer BCI to
 ### 5. Final Decision Recommendation
 **Recommendation: Proceed with Case B (Predicting the STATE / STAY)**.
 - **Logical Proof**: The working title explicitly promises an investigation of *Engagement*. If the thesis proceeds mapped to Case A (predicting the skip action), the focal metric (Sensitivity to Class 1) answers an engineering intervention question, completely abandoning the behavioral science public health motivation. 
-- **The Scientific Conclusion**: By pivoting the targeted focal metric to **Specificity** (the model's precise algorithmic ability to identify the Class 0 "STAY" condition), the mathematical output directly answers the title's proposition. The machine learning pipeline graduates from a transient skip-detector into a diagnostic proof-of-concept for measuring *Sustained Attention*. Consequentially, executing the downstream pipeline changes outlined in Case B is mathematically and logically required to preserve absolute scientific integrity.
+- **The Scientific Conclusion**: By pivoting the targeted focal metric to **Sensitivity of the STAY paradigm**, the mathematical output directly answers the title's proposition. The machine learning pipeline graduates from a transient skip-detector into a diagnostic proof-of-concept for measuring *Sustained Attention*. Consequentially, executing the downstream pipeline changes outlined in Case B is mathematically and logically required to preserve absolute scientific integrity.
+
+---
+
+## 2026-04-15 Pipeline Re-architecture (The STAY Paradigm Validation)
+
+Based on the theoretical adoption of **Case B**, the entirety of the mathematical pipeline was explicitly rebuilt inside a sterile directory (`04-26_data_analysis_and_results/`). Rather than attempting to backward-engineer the `sklearn` classification metrics to evaluate Class 0, the data structuring script (`step1_prepare_data.py`) was entirely rewritten to rigidly force **STAY = 1** and **SKIP = 0** universally across all 10.8 million EEG samples. 
+
+**Architectural Updates:**
+- `step1_prepare_data.py`: Mapped explicit $n=25$ subset aggregating targets natively matching Sustained Engagement.
+- `utils.py`: Instituted rigorous Baseline relative Power calculations squaring exact signal band bounds to mathematically guarantee accurate inter-participant normalization.
+- `step2_train_rf.py` & `step3_logo_cv_rf.py`: Ran the updated targets natively yielding Sustained Engagement Recall (61.4% Intra-Subject, 68.7% LOGO-CV). 
+- `step4_engagement_index.py`: Engineered a single-feature `LogisticRegression` evaluating standard $\beta/(\alpha+\theta)$ ratios natively alongside the Random Forest via identical k-fold CV.
+- `step6_visualize_results.py`: Constructed side-by-side scientific Box Plots to universally evaluate the updated structural findings.
+
+### 🚧 Critical Next Steps
+To solidify the thesis foundation, the following must be done manually:
+1. **Manual Script Verification**: We must meticulously read through the pipeline parameters and mathematical assignments to ensure absolute conceptual synchronization (no legacy artifacts bleeding through).
+2. **Story Arc & Mathematics Design**: We must manually draft the exact Thesis Story Arc and build the explicit theoretical and mathematical foundations outlining exactly how and why we derive the Baseline Normalized STAY target for the upcoming text.

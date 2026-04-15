@@ -1,0 +1,31 @@
+METRIC DEFINITIONS FOR EEG PIPELINE (CASE B: PREDICTING "STAY")
+===================================================================
+Because we re-architected the mathematics so that Sustained Attention (STAY) is the Positive Class (Label 1) and Skipping (SKIP) is the Negative Class (Label 0), these standard machine learning metrics are rigorously defined as follows:
+
+1. RECALL / SENSITIVITY (STAY)
+--------------------------------------
+Definition: Out of all the actual moments where the user was deeply engaged (STAY), what percentage did our EEG model successfully detect?
+- A HIGH Recall (e.g. 0.85) means the model is excellent at capturing sustained attention. It rarely misses an engagement period.
+- A LOW Recall (e.g. 0.30) means the model is "blind" to engagement, incorrectly flagging many of those periods as skips.
+*This is the most critical metric for evaluating our goal X: How well can we build a biometric signature of active engagement?*
+
+2. PRECISION (STAY)
+--------------------------------------
+Definition: When our model explicitly claims "The user is engaged (STAY)", how often is it actually right?
+- A HIGH Precision (e.g. 0.85) means you can trust the model when it says the user is attentive.
+- A LOW Precision (e.g. 0.30) means the model frequently "cries wolf" claiming the user is engaged, but the user actually proceeded to skip immediately.
+
+3. ACCURACY
+--------------------------------------
+Definition: Overall, across BOTH engagement (STAY) and skips (SKIP), what percentage of predictions were correct? 
+- Because our dataset is rigorously balanced (50% STAY / 50% SKIP) before training, any Accuracy over 0.50 technically proves we have extracted reliable neurological signal beyond random chance. 
+- A HIGH Accuracy means the model handles distinguishing both phases well.
+
+4. F1 SCORE
+--------------------------------------
+Definition: The harmonic mean of Precision and Recall.
+- It provides a single metric balancing the model's ability to not miss engagement windows (Recall) while also not making false claims about engagement (Precision).
+- "Better" means it is a robust, well-rounded signature.
+
+Summary for Goal X:
+To prove our public health thesis — that sustained attention has a unique, quantifiable neurological fingerprint — we want HIGH Recall (Sensitivity) and HIGH Accuracy. If we achieve this, it means our RF-112 pipeline successfully diagnosed the internal state of focus.
