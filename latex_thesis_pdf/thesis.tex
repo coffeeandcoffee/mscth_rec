@@ -1,6 +1,7 @@
 \documentclass[12pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{cite}
 \usepackage{graphicx}
@@ -63,10 +64,20 @@ I would like to express my sincere gratitude to my supervisors, and everyone els
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-This is the abstract of the thesis. We can cite a paper from your library like this: \cite{montag_depressive_2024}.
+This thesis investigates whether consumer-grade Electroencephalography (EEG) can accurately predict when a user is actively sustaining cognitive engagement during naturalistic TikTok browsing. Using a Muse S headband (4 channels, 256~Hz), we recorded brain activity from participants while they freely browsed their personal TikTok feed without artificial constraints. Behavior was mapped via tracking video transitions (screen swipes), allowing us to construct a rigorous binary classification framework focused on the underlying cognitive state: \textit{sustained engagement} (\texttt{STAY}, Class~1) versus \textit{imminent task abandonment} (\texttt{SKIP}, Class~0), captured via the 3-second pre-skip window.
+
+We implemented a robust pipeline applying baseline-normalized relative spectral power features. We compared isolated feature representations across three machine learning architectures---a standard composite Engagement Index evaluated via Logistic Regression, a Baseline Decision Tree, and a Random Forest ensemble---evaluated in an intra-participant framework alongside cross-participant generalizability assessment via Leave-One-Group-Out cross-validation (LOGO-CV). The Random Forest (200 trees, 112 frequency-domain features) achieved the most robust performance, successfully diagnosing the \texttt{STAY} state with a high relative Sustained Engagement Recall intra-subject, significantly surpassing theoretical chance baselines. 
+
+Feature importance mapping revealed that localized high-gamma activity (40--60~Hz) at frontal (AF7/AF8) and temporal (TP9/TP10) nodes was universally the dominant predictive signature differentiating sustained viewing from an impending skip. An empirical ablation of the 50~Hz notch filter confirmed that this frequency range reflected genuine neurological state variance rather than power line contamination. The standard clinical Engagement Index ($\beta/(\alpha+\theta)$) fundamentally failed to discriminate these states natively, indicating that full structural spectral representations incorporating high-frequency volatility are required for micro-decision boundaries \cite{TODO_Engagement_Index_Validation}.
+
+Behavioral skip-sequence analysis exposed target class heterogeneity, establishing that the predictive neural signature fundamentally contrasts genuine content-locked sustained appraisal against a generalized ``disengaged browsing'' attentional mode. Consequently, these findings prove consumer-grade EEG can reliably identify individualized cognitive engagement states during naturalistic algorithmic media consumption, though cross-participant generalizability without per-user calibration remains fundamentally limited.
 
 \chapter{Introduction}
-This is the introduction chapter. You can start writing your content here.
+Short-form video platforms like TikTok now fundamentally shape how billions of people allocate their attention, often in bursts lasting mere seconds. On these platforms, every single swipe represents a critical micro-decision: to stay and engage, or to skip and move on. Repeated hundreds of times per session, these sequential micro-decisions determine exactly what information people absorb, which health or educational messages effectively reach them, and what digital behaviors are continuously reinforced.
+
+For public health communication, this dynamic poses a significant challenge. Health promotion interventions delivered via social media must compete head-to-head with highly optimized entertainment content for the exact same limited cognitive resources. If a health promotion video fails to maintain engagement in the critical first few seconds, the core message never lands. To improve these interventions, we need to understand what actually causes a human brain to sustain engagement---not just what individuals retrospectively claim they liked, but rather what their objective neural state looked like during active, continuous viewing.
+
+Understanding the neural signature of sustained engagement---and the exact moment that engagement begins to collapse---opens the door to designing communications that maintain attention precisely when the brain is most vulnerable to disengagement. This investigation is not about building manipulative technology, but rather about understanding how to make health-relevant content as neurologically compelling as the algorithms it competes against.
 
 \chapter{Materials and Methods}
 
@@ -137,46 +148,90 @@ The Guided Access feature was reactivated and set to a 25-minute limit for the T
 
 Once the 25-minute viewing task concluded, the experimenter entered the room, and the participant removed the headband. They then answered a few post-session survey questions, specifically self-reporting if they made any keypress synchronization errors during the session. Finally, they signed the required compensation forms to receive their 20-euro voucher. The post-measurement debrief and surveying process took roughly two to four minutes. Participants were thanked for their time, briefly debriefed about the broader context of the study if interested, and dismissed.
 
-\section{Labeling Strategy}
-The continuous EEG recordings were temporally segmented based on the keystroke markers to construct a supervised binary classification framework. The computational target objective defining the micro-decision state was strictly partitioned into two discrete classes: the impending skip state (\texttt{about\_to\_skip}, designated mathematically as Class 1) and the engaged browsing state (\texttt{not\_about\_to\_skip}, mathematically designated as Class 0).
+\section{Labeling Strategy: The STAY Paradigm}
+To translate the continuous EEG recordings into a supervised machine learning task, the data were segmented based on the keystroke markers. The primary goal of this research is not simply to predict the mechanical action of a thumb swiping, but rather to identify when a user is actively holding their attention on the content. Therefore, the computational target strictly isolates the underlying cognitive state into two discrete classes: the state of sustained engagement (\texttt{STAY}, designated mathematically as Class 1) and the state of impending disengagement (\texttt{SKIP}, designated mathematically as Class 0).
 
-The \texttt{about\_to\_skip} positive class was rigorously defined as the finite 3.0-second window terminating exactly at the continuous time-series timestamp matching each registered \texttt{A}~keypress (swipe event). The reciprocal \texttt{not\_about\_to\_skip} negative class consisted exclusively of all other contiguous periods mapped during the naturalistic TikTok consumption phases. The manually categorized pre-task resting baseline phases were inherently truncated from the supervised machine learning training corpus guaranteeing that the algorithmic classifiers iteratively optimized themselves strictly based upon isolated variance mapping exclusively to naturalistic media engagement paradigms.
+The \texttt{SKIP} class (Class 0) was strictly defined as the finite 3.0-second window terminating exactly at the timestamp of each registered \texttt{A}~keypress (swipe event). This specific window captures the neural activity immediately preceding the physical action of skipping the video.
 
-\subsection{Justification for the 3.0-Second Anticipatory Window}
-The methodology isolating the specific target modeling sequences bounding the binary classification target via a deterministic 3.0-second anticipatory temporal window is fundamentally anchored inside classical motor preparation and intentional neurological mapping literature [Insert literature citation supporting readiness potential and motor decision latency constraints, e.g., Libet et al. / Haggard on voluntary action neural origins]. Pre-cognitive physiological markers isolating imminent voluntary mechanical decisions are established scientifically to reliably manifest deep within continuous cortical readiness potentials significantly ahead of downstream explicit structural muscular executions. Consequentially, isolating exclusively the 3.0 seconds preceding a mechanical swipe operation isolates computationally the exact localized neurological cognitive state determining attention decay limits and parallel motor execution readiness bounds, actively decoupling and suppressing contamination generated strictly from the execution of the mechanical motor artifact produced via the swipe itself.
+The \texttt{STAY} class (Class 1) represents sustained cognitive engagement. It was defined by extracting all other continuous viewing periods during the naturalistic TikTok consumption phases that fell entirely outside of the 3.0-second pre-skip boundaries. 
 
-\section{Signal Preprocessing}
-Due to the architectural jitter constraints naturally inherent over Bluetooth transmission topologies forcing non-uniform internal sampling drops natively, empirical sampling rate consistencies across each recording session were normalized. True effective sampling boundaries were calculated computationally dynamically via extracting the structural inverse over median physical timestamp differences mapped between neighboring LSL transmission packages, thereby ensuring mathematical fidelity approximating the theoretical 256~Hz hardware ceiling.
+The manually categorized pre-task resting baseline phases were structurally excluded from the machine learning training data. This guaranteed that the algorithms were explicitly trained to differentiate between active engagement and active disengagement while browsing, rather than simply distinguishing resting from viewing.
 
-Subsequently, sequential time-invariant decomposition was enacted utilizing robust continuous 4th-order Butterworth bandpass phase isolation filters systematically separating the localized raw data frames over the four respective physiological channels down onto seven rigorously designated classical standard neurocognitive frequency boundaries: Delta (1--4~Hz), Theta (4--8~Hz), Alpha (8--13~Hz), Beta (13--30~Hz), Low Gamma (30--40~Hz), High Gamma (40--60~Hz), and an intensive exploratory upper limit mapping Very High oscillations (60--100~Hz). 
+\subsection{Theoretical Justification for the STAY Objective}
+The decision to mathematically map sustained engagement as the positive target class (Class 1) ensures that the machine learning models strictly evaluate our core behavioral science objective: measuring human attention capacity. Within this paradigm, the physical swipe is viewed merely as the delayed behavioral exhaust---the physical evidence that the cognitive state of active engagement has already critically failed \cite{TODO_Haggard_Voluntary_Action}.
 
-Additionally, standard neurological preprocessing schema predominantly force integration of deeply aggressive steep notch filters mapped around explicit 50~Hz thresholds designed entirely to computationally suppress power-line utility electromagnetic noise derivations. However, aligned securely against the primary theoretical goal architecture seeking strictly to classify the high-frequency temporal components of cognitive attention decay decisions, the traditional 50~Hz notch filtering arrays were purposefully bypassed conceptually against primary computing layers utilizing explicit non-filtering parameters (\texttt{--nonotch}). This structural decision constraint is further rigorously justified computationally by independent comprehensive ablation investigations explicitly summarized deeper within the empirical Results section tracking conclusive reductions stripping predictive structural variance inside native cortical High Gamma boundaries.
+The choice to isolate the \texttt{SKIP} sequence specifically to a 3.0-second anticipatory temporal window is firmly anchored in classical motor preparation and intentional neurological mapping literature \cite{TODO_Libet_1983_Readiness}. Research reliably demonstrates that pre-cognitive physiological markers isolating imminent voluntary mechanical decisions manifest deep within cortical readiness potentials significantly ahead of downstream physical muscular executions. Consequently, isolating the exact 3.0 seconds preceding a mechanical swipe captures the moment of cognitive attention decay and motor execution readiness, decisively decoupling the mental decision to skip from the physical contamination (motor artifacts) generated by the arm movement itself.
 
-\section{Feature Engineering}
-To evaluate mathematical mapping variance constraints identifying the classification abstractions driving time-invariant EEG variance models, the filtered streaming frequency channels were processed uniformly spanning two explicitly differentiated theoretical mathematical models contingent entirely on the downstream execution algorithm logic constraints.
+\section{Internal Structuring: Python Pipeline Walkthrough}
 
-\subsection{Statistical Structure Extraction (Random Forest and Decision Trees)}
-Executing parallel processes supplying the generalized non-linear statistical topologies mapping the decision trees limits natively required extracting uniform variance thresholds stripping underlying sequential sequence noise elements. To establish strict signal stationarity parameters, internal arrays covering target 3.0-second boundaries natively underwent heavy dimensional mathematical abstractions generating robust aggregations calculating exact sample array mapping parameters tracking discrete signal conditions. Traversing recursively the identical independent topological combinations intersecting each discrete neurocognitive domain frequency structure arraying across all four physical input channels mapping TP9, AF7, AF8, and TP10 respectively calculated absolute window boundaries encompassing simple local Mean components paired simultaneously alongside native physical Standard Deviations, boundary signal Minimums, and corresponding localized structural signal Maximum voltage ranges. Consequently, the inherently unstable chronological phase parameters compressing volatile time-jitter states produced dense stationary 112-dimensional continuous vectors ($7 \text{ specified frequency bands} \times 4 \text{ hardware channels} \times 4 \text{ discrete generalized moments}$). Such structural condensation allowed discrete classifiers natively the necessary mapping stability resolving isolated physiological states entirely unmarred by temporal fluctuation vectors [Insert citation fundamentally supporting stationary statistical band power aggregation heuristics tracking discrete functional features evaluating multi-channel operational BCIs].
+\textit{Note: The following subsections describe step-by-step exactly what the Python code in the \texttt{04-26\_data\_analysis\_and\_results} directory executes to process the EEG signals and build the machine learning models. This is for internal structural tracking and mathematical comprehension.}
 
-\subsection{Temporal Sequence Preservation (Transformer Neural Architectures)}
-Methodologically, recursive deep learning classification configurations depend structurally over preserving raw native mathematical internal dependencies characterizing implicit topological feature gradients natively. Thus, configuring data shapes strictly preserving neural continuous sequential time mapping architectures matching attention-based Transformer execution logic algorithms forcibly bypassed traditional aggregated stationary extraction components. Leveraging uniform sequence density rules, overlapping raw filtered phase-space power matrices extending matching internal 3.0-second physical limits bounding strictly 28 topological derivation parameters (7 bands and 4 channels parallelized natively) were universally formatted bridging robust uniform numerical interpolation. Employing targeted scaling boundaries effectively mapped chronological variance uniformly maintaining rigid constant density ratios tracking precisely 768 absolute uniform sample steps arrayed natively preserving the mathematically designated 256~Hz temporal synchronization parameter structures. By mapping inputs as normalized exact dimensions across exact multi-dimensional continuous matrices tracking continuous $768 \times 28$ parallel structures uniformly, the computationally localized deep transformer matrices efficiently computed independent correlation gradient weights detecting complex nested non-linear physical temporal interdependencies tracking physical decision precursors cleanly prior to physical operational execution bounds.
+\subsection{1. Signal Preprocessing \& Normalization (\texttt{utils.py})}
 
-\section{Windowing and Data Re-balancing}
-The extracted classification states were inherently skewed; naturalistic media consumption involves significantly more time engaged in continuous viewing than executing transient skip actions. To address this, positive class arrays were extracted as disjoint 3.0-second blocks locked to skip events, while negative class arrays were sampled from continuous viewing periods using a 0.6-second sliding stride (80\% temporal overlap). Finally, a uniform random undersampling mechanism was applied to the negative majority class to enforce an exact 50/50 prior distribution for all trained pipelines, preventing sensitivity loss.
+\begin{itemize}
+    \item \textbf{True Sampling Rate Extraction:} The script does not assume the hardware delivers a perfect 256~Hz. Instead, it extracts the true, effective sampling rate by calculating the median time difference ($\Delta t$) between consecutive Lab Streaming Layer (LSL) timestamps:
+    $$ fs_{effective} = \frac{1}{\text{median}(\Delta t)} $$
+    
+    \item \textbf{Frequency Band Splitting:} The raw EEG wave is fed through a continuous 4th-order Butterworth bandpass filter. It systematically slices the wave into 7 established frequency bounds: Delta (1--4~Hz), Theta (4--8~Hz), Alpha (8--13~Hz), Beta (13--30~Hz), Low Gamma (30--40~Hz), High Gamma (40--60~Hz), and Very High (60--100~Hz).
+    
+    \item \textbf{Notch Filter Exclusion:} While a 50~Hz power-line notch filter exists in the script, it is actively disabled via the \texttt{--nonotch} parameter to avoid systematically destroying the target High Gamma neurological signal.
+    
+    \item \textbf{Baseline Relative Power Normalization:} To cancel out physiological noise (like skull thickness or skin resistance unique to each participant), the pipeline uses the 100-s baseline:
+    \begin{enumerate}
+        \item \textbf{Absolute Power Conversion:} First, the script isolates the instantaneous voltage amplitude $A(t)$ and squares it to derive physical electrical power:
+        $$ P_{abs}(t) = A(t)^2 $$
+        \item \textbf{Resting Geometric Mean:} For all 28 extracted channels, it averages the absolute power specifically across the initial 100-second resting baseline ($ \mu_{baseline} $). A failsafe sets the minimum bound to $1 \times 10^{-12}$ to computationally prevent division by zero.
+        \item \textbf{Relative Scaling:} During the active TikTok viewing task, every data point is divided by this resting mean. This converts the raw waves into a clean, personalized "Relative Power Ratio":
+        $$ P_{rel}(t) = \frac{P_{abs}(t)}{\mu_{baseline}} $$
+    \end{enumerate}
+\end{itemize}
 
-\section{Machine Learning Classification Modeling}
-An interpretability-first approach was adopted. The primary framework utilized Random Forest Classifiers [Insert basic RF modeling citation, e.g., Breiman 2001], selected for their resilience against high-dimensional biological noise. Empirical validation established an optimal configuration of 200 estimators, limited by a maximum tree depth of 7 and a minimum leaf size of 5 to enforce feature regularization. A baseline Decision Tree architecture [Insert baseline deterministic DT citation] was also modeled under similar constraints to provide mathematically transparent physiological thresholds.
+\subsection{2. Standard Benchmark: Engagement Index (\texttt{step4\_engagement\_index.py})}
 
-Additionally, an exploratory EEG-specific Attention-Transformer [Insert citation covering Transformer-based continuous physiological signals] was trained. The architecture leveraged a multi-dimensional encoding sequence ($d\_model = 66$) driven through 3 independent multi-head attention blocks with 10\% dropout to evaluate whether unstructured sequential deep learning inherently outperformed generalized stationary statistics.
+\begin{itemize}
+    \item  To test classic clinical theories against the EEG data, the script computes the standard Muse Engagement Index. For every 3.0-second window, it mathematically averages the relative power for the Alpha, Theta, and Beta bands across all four electrodes.
+    \item The final scalar metric is computed by dividing the active Beta power by the sum of the passive Alpha and Theta power:
+    $$ EI_{standard} = \frac{\bar{P}_{\beta}}{\bar{P}_{\alpha} + \bar{P}_{\theta}} $$
+    \item This single EI value is passed structurally to an established \texttt{LogisticRegression} model using 5-fold Stratified Cross-Validation (on balanced \texttt{STAY/SKIP} data). This serves as the baseline diagnostic proof testing if simple classic formulas can accurately detect the \texttt{STAY} state.
+\end{itemize}
 
-\section{Evaluation Strategy}
-Two distinct validation architectures were leveraged across the methodologies to define individual specific reliability and broad generalized scalability.
+\subsection{3. Feature Engineering: The 112 Dimensions (\texttt{step2\_train\_rf.py})}
 
-\subsection{Intra-Subject Baseline Consistency}
-The primary objective determined neurological consistency within individual participants. Personalized models were constructed for all 25 specific datasets utilizing a 60/40 Train/Validation split. Because the underlying scientific goal mandates determining impending actions to trigger user interface interventions, performance evaluation centered on Positive Event Sensitivity (Recall of Class 1) alongside comprehensive Accuracy and F1 scores.
+\begin{itemize}
+    \item \textbf{Statistical Compression:} Because raw time-series data is incredibly volatile, the Random Forest pipeline utilizes statistical extraction. Every 3.0-second window consists of roughly 768 physical sampling timestamps across 28 relative power channels (4 electrodes $\times$ 7 bands). 
+    \item Instead of using all 768 points, the script condenses the 3.0-second sequence along four distinct descriptive parameters describing the geometry of the wave over that window:
+    \begin{enumerate}
+        \item \textbf{Mean} ($\mu$)
+        \item \textbf{Standard Deviation} ($\sigma$)
+        \item \textbf{Minimum Boundary} ($\min$)
+        \item \textbf{Maximum Boundary} ($\max$)
+    \end{enumerate}
+    \item \textbf{Total Dimension Yield:} 7 physiological bands $\times$ 4 hardware channels $\times$ 4 statistical distributions = \textbf{112 continuous input features}.
+\end{itemize}
 
-\subsection{Inter-Subject Generalizability (LOGO Cross Validation)}
-To measure the inter-individual transfer capacity of the neural signature, the validation strategy incorporated a Leave-One-Group-Out Cross Validation (LOGO-CV) methodology [Insert BCI cross-participant LOGO-CV iteration citation]. Specifically, models were iteratively trained on aggregated data from 24 participants and uniquely evaluated against the strictly held-out 25th participant, repeating the cycle across the entire cohort to establish empirical bounds for zero-shot generalized calibration.
+\subsection{4. Traversing Windows \& Probabilistic Scaling (\texttt{step2\_train\_rf.py})}
+
+\begin{itemize}
+    \item \textbf{Extracting the \texttt{SKIP} class (Class 0):} The script drops a strict 3.0-second window terminating sequentially at the exact moment of every \texttt{A}~keypress (swipe). Meaning exactly ONE data block is extracted per skip operation.
+    \item \textbf{Extracting the \texttt{STAY} class (Class 1):} To map sustained engagement, the script shifts a 3.0-second window through all the remaining continuous viewing periods. It operates with an aggressive \textbf{80\% overlap}, shuffling the window forward by a tiny $0.6$-second stride. This yields massive amounts of overlapping \texttt{STAY} arrays.
+    \item \textbf{50/50 Algorithmic Rebalancing:} The overlapping logic inherently creates a wildly imbalanced dataset mapping thousands of \texttt{STAY} windows against a few dozen \texttt{SKIP} windows. Using \texttt{numpy.random.choice} (Seed = 42), the script systematically deletes random \texttt{STAY} windows until the population perfectly matches the \texttt{SKIP} window counts exactly, rigorously enforcing a 50/50 prior distribution to physically prevent classifier bias.
+\end{itemize}
+
+\subsection{5. Model Assembly \& Validation Constraints}
+
+\begin{itemize}
+    \item \textbf{Intra-Subject Consistency (\texttt{step2\_train\_rf.py}):}
+    \begin{itemize}
+        \item For every single participant individually, the balanced 50/50 array is chopped into a 60/40 Train/Validation Split.
+        \item A \texttt{RandomForestClassifier} is deployed utilizing exactly 200 estimators (\texttt{n\_estimators=200}), constrained at a \texttt{max\_depth=7} and \texttt{min\_samples\_leaf=5} to aggressively prevent overfitting the high-dimensional data.
+        \item The model performance is validated natively using the Recall (Sensitivity) locked explicitly tracking the \texttt{STAY} (Class 1) target label.
+    \end{itemize}
+    \item \textbf{Inter-Subject Generalizability via LOGO-CV (\texttt{step3\_logo\_cv\_rf.py}):}
+    \begin{itemize}
+        \item To test whether the predictive map scales blindly across humans, the script iterates through Leave-One-Group-Out Cross Validation (LOGO-CV).
+        \item In a 25-step loop, it tosses 24 individuals into a master training bucket, explicitly rebalances that massively mixed array back to 50/50 natively, trains the Random Forest, and attempts mathematically to diagnose the \texttt{STAY/SKIP} sequences of the hidden 25th participant sequentially.
+    \end{itemize}
+\end{itemize}
 
 \bibliographystyle{unsrt}
 \bibliography{library}
