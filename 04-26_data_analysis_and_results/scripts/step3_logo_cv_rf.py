@@ -35,11 +35,16 @@ def main():
     processed_dir = project_root / "04-26_data_analysis_and_results" / "processed_data"
     
     run_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_dir = project_root / "04-26_data_analysis_and_results" / "outputs" / f"logo_cv_run_{run_timestamp}"
-    output_dir.mkdir(parents=True, exist_ok=True)
     
     notch_freq = None if args.nonotch else 50.0
     normalize = not args.nonormalize
+    
+    suffix = ""
+    if args.nonotch: suffix += "_nonotch"
+    if args.nonormalize: suffix += "_nonorm"
+    
+    output_dir = project_root / "04-26_data_analysis_and_results" / "outputs" / f"logo_cv_run{suffix}_{run_timestamp}"
+    output_dir.mkdir(parents=True, exist_ok=True)
     
     input_files = sorted(list(processed_dir.glob("P*_labeled.csv")))
     if not input_files:

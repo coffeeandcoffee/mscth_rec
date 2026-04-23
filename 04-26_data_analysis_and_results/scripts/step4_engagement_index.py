@@ -111,7 +111,8 @@ def main():
     parser.add_argument('--nonotch', action='store_true')
     args = parser.parse_args()
     
-    out_dir = Path(__file__).resolve().parent.parent.parent / "04-26_data_analysis_and_results" / "outputs" / f"ei_stats_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    suffix = "_nonotch" if args.nonotch else ""
+    out_dir = Path(__file__).resolve().parent.parent.parent / "04-26_data_analysis_and_results" / "outputs" / f"ei_stats{suffix}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     out_dir.mkdir(parents=True, exist_ok=True)
     
     data_dir = Path(__file__).resolve().parent.parent.parent / "04-26_data_analysis_and_results" / "processed_data"
