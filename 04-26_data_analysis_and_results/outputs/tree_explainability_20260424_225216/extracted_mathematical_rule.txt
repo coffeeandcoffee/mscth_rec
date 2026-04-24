@@ -1,0 +1,25 @@
+Surrogate Accuracy: 0.936
+
+New Short-Form Engagement Index (SFEI) Logical Approximation:
+IF (AF8_delta_std <= 0.249):
+    THEN IF (Leaf <= 0.000): [Predict Class 0]
+    ELSE: [Predict Class 0]
+ELSE (AF8_delta_std > 0.249):
+    THEN IF (TP10_theta_std <= 3.018): [Predict Class 0]
+    ELSE: [Predict Class 1]
+    
+
+Full Sklearn Text Tree:
+|--- AF8_delta_std <= 0.25
+|   |--- class: 1
+|--- AF8_delta_std >  0.25
+|   |--- TP10_theta_std <= 3.02
+|   |   |--- AF7_low_gamma_std <= 2.00
+|   |   |   |--- class: 0
+|   |   |--- AF7_low_gamma_std >  2.00
+|   |   |   |--- class: 1
+|   |--- TP10_theta_std >  3.02
+|   |   |--- AF8_beta_min <= 0.00
+|   |   |   |--- class: 1
+|   |   |--- AF8_beta_min >  0.00
+|   |   |   |--- class: 0

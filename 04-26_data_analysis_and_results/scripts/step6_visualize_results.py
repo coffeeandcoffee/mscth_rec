@@ -2,11 +2,12 @@
 """
 Step 6: Master Narrative Visual Representation
 
-Generates the 4-Pillar Scientific Boxplot demonstrating the thesis logic arc:
+Generates the 5-Pillar Scientific Boxplot demonstrating the thesis logic arc:
 1. Clinical Baseline (EI)
 2. Structural Expansion (RF Notch)
 3. High Gamma Proof (RF Nonotch)
 4. Generalizability Limit (LOGO-CV)
+5. Equation Limit (Universal SFEI Battle-test)
 """
 
 import json
@@ -20,10 +21,10 @@ def find_latest_run_dir(base_dir, prefix):
         return None
     return max(dirs, key=lambda d: d.stat().st_mtime)
 
-def plot_master_box_metrics(ei_data, rf_notch_data, rf_nonotch_data, logo_data, output_dir):
+def plot_master_box_metrics(ei_data, rf_notch_data, rf_nonotch_data, logo_data, sfei_data, output_dir):
     """
     Plots a side-by-side Box & Whisker plot comparing Key Performance Metrics
-    across the four distinct narrative steps.
+    across the five distinct narrative steps.
     """
     metrics = ['accuracy', 'recall']
     metric_labels = ['Validation Accuracy', 'STAY Recall (Sensitivity)']
@@ -50,7 +51,7 @@ def plot_master_box_metrics(ei_data, rf_notch_data, rf_nonotch_data, logo_data, 
         rec = [ind['recall'] for ind in rf_notch_data.get('individuals', [])]
         plot_data_dict['accuracy'].append(acc)
         plot_data_dict['recall'].append(rec)
-        labels.append('2. RF-112\n(With 50Hz Notch)')
+        labels.append('2. RF-112\n(With Notch)')
         
     # 3. RF NoNotch
     if rf_nonotch_data:
@@ -58,7 +59,7 @@ def plot_master_box_metrics(ei_data, rf_notch_data, rf_nonotch_data, logo_data, 
         rec = [ind['recall'] for ind in rf_nonotch_data.get('individuals', [])]
         plot_data_dict['accuracy'].append(acc)
         plot_data_dict['recall'].append(rec)
-        labels.append('3. RF-112\n(No Notch / Gamma)')
+        labels.append('3. RF-112\n(High Gamma)')
         
     # 4. LOGO
     if logo_data:
@@ -66,25 +67,37 @@ def plot_master_box_metrics(ei_data, rf_notch_data, rf_nonotch_data, logo_data, 
         rec = [fold['recall'] for fold in logo_data.get('folds', [])]
         plot_data_dict['accuracy'].append(acc)
         plot_data_dict['recall'].append(rec)
-        labels.append('4. LOGO-CV\n(Generalizability)')
+        labels.append('4. LOGO-CV\n(Limits)')
+        
+    # 5. SFEI
+    if sfei_data:
+        acc = [ind['accuracy'] for ind in sfei_data.get('participants', [])]
+        rec = [ind['recall'] for ind in sfei_data.get('participants', [])]
+        plot_data_dict['accuracy'].append(acc)
+        plot_data_dict['recall'].append(rec)
+        labels.append('5. Univ. SFEI\n(Equation Limit)')
 
     # Plotting
-    fig, axes = plt.subplots(1, 2, figsize=(16, 7))
-    fig.suptitle('The STILL Paradigm: 4-Pillar Narrative Progression', fontsize=18, fontweight='bold', y=0.98)
+    fig, axes = plt.subplots(1, 2, figsize=(18, 7))
+    fig.suptitle('The STILL Paradigm: 5-Pillar Narrative Progression', fontsize=18, fontweight='bold', y=0.98)
     
-    colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+    colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0']
     
     for i, m in enumerate(metrics):
         ax = axes[i]
         data_to_plot = plot_data_dict[m]
         
         if data_to_plot:
-            bplot = ax.boxplot(data_to_plot, patch_artist=True, labels=labels,
+            bplot = ax.boxplot(data_to_plot, patch_artist=True,
                                boxprops=dict(facecolor='lightblue', color='black'),
                                capprops=dict(color='black'),
                                whiskerprops=dict(color='black'),
                                flierprops=dict(color='black', markeredgecolor='black'),
                                medianprops=dict(color='firebrick', linewidth=2.5))
+            
+            # Explicitly set tick labels using the updated API
+            ax.set_xticks(range(1, len(labels) + 1))
+            ax.set_xticklabels(labels)
             
             for patch, color in zip(bplot['boxes'], colors[:len(data_to_plot)]):
                 patch.set_facecolor(color)
@@ -123,11 +136,11 @@ def main():
     print("=" * 60)
     
     # 1. Grab Latest Results
-    # Carefully parse distinct prefixes
     ei_dir = find_latest_run_dir(outputs_dir, "ei_stats_")
-    rf_notch_dir = find_latest_run_dir(outputs_dir, "rf_run_2") # Matches 2026...
+    rf_notch_dir = find_latest_run_dir(outputs_dir, "rf_run_2")
     rf_nonotch_dir = find_latest_run_dir(outputs_dir, "rf_run_nonotch_")
     logo_dir = find_latest_run_dir(outputs_dir, "logo_cv_run_")
+    sfei_dir = find_latest_run_dir(outputs_dir, "sfei_battletest_")
     
     def load_json(dir_path, filename):
         if dir_path and (dir_path / filename).exists():
@@ -139,18 +152,20 @@ def main():
     rf_notch_data = load_json(rf_notch_dir, "rf_summary.json")
     rf_nonotch_data = load_json(rf_nonotch_dir, "rf_summary.json")
     logo_data = load_json(logo_dir, "logo_cv_summary.json")
+    sfei_data = load_json(sfei_dir, "sfei_metrics.json")
 
     print(f"✓ Loaded EI Baseline: {'YES' if ei_data else 'NO'}")
     print(f"✓ Loaded RF Notch: {'YES' if rf_notch_data else 'NO'}")
     print(f"✓ Loaded RF NoNotch: {'YES' if rf_nonotch_data else 'NO'}")
     print(f"✓ Loaded LOGO-CV: {'YES' if logo_data else 'NO'}")
+    print(f"✓ Loaded SFEI Battletest: {'YES' if sfei_data else 'NO'}")
 
-    if not any([ei_data, rf_notch_data, rf_nonotch_data, logo_data]):
-        print("Fatal error: No summary matrices located. Run ML loops first.")
+    if not any([ei_data, rf_notch_data, rf_nonotch_data, logo_data, sfei_data]):
+        print("Fatal error: No summary matrices located.")
         return 1
 
     # Plot
-    plot_file = plot_master_box_metrics(ei_data, rf_notch_data, rf_nonotch_data, logo_data, vis_dir)
+    plot_file = plot_master_box_metrics(ei_data, rf_notch_data, rf_nonotch_data, logo_data, sfei_data, vis_dir)
     print(f"\n✓ Generated Master Boxplot => {plot_file.name}")
     print(f"Output Directory => {vis_dir}")
 

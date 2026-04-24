@@ -20,4 +20,6 @@
 \contentsline {subsection}{\numberline {2.6.4}4. Step 3: The High-Frequency Hypothesis (RF-112 \textit {WITHOUT} Notch Filter)}{13}{subsection.2.6.4}%
 \contentsline {subsection}{\numberline {2.6.5}5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{13}{subsection.2.6.5}%
 \contentsline {subsection}{\numberline {2.6.6}6. Step 5: Behavioral Heterogeneity (Skip Bias)}{14}{subsection.2.6.6}%
-\contentsline {subsection}{\numberline {2.6.7}7. Summary of Results}{14}{subsection.2.6.7}%
+\contentsline {subsection}{\numberline {2.6.7}7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}{14}{subsection.2.6.7}%
+\contentsline {subsection}{\numberline {2.6.8}8. Summary of Results}{15}{subsection.2.6.8}%
+\contentsline {subsection}{\numberline {2.6.9}9. Outlook and Implications for Future BCI Design}{15}{subsection.2.6.9}%

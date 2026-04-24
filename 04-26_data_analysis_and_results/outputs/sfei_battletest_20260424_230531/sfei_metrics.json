@@ -1,0 +1,133 @@
+{
+  "aggregate": {
+    "accuracy": 0.5158331773934207,
+    "recall": 0.5217065924123279
+  },
+  "participants": [
+    {
+      "participant": "P18",
+      "accuracy": 0.416823570432357,
+      "recall": 0.39727135678391956
+    },
+    {
+      "participant": "P11",
+      "accuracy": 0.7218498585141209,
+      "recall": 0.7854273350162279
+    },
+    {
+      "participant": "P9",
+      "accuracy": 0.44886103075109823,
+      "recall": 0.4418439716312057
+    },
+    {
+      "participant": "P23",
+      "accuracy": 0.705352990215436,
+      "recall": 0.8169848097862615
+    },
+    {
+      "participant": "P14",
+      "accuracy": 0.33655068584810977,
+      "recall": 0.2904109589041095
+    },
+    {
+      "participant": "P26",
+      "accuracy": 0.3268483216881156,
+      "recall": 0.30568427872402093
+    },
+    {
+      "participant": "P5",
+      "accuracy": 0.6770700080134043,
+      "recall": 0.6858172130899404
+    },
+    {
+      "participant": "P6",
+      "accuracy": 0.5369010535959687,
+      "recall": 0.5380524584904147
+    },
+    {
+      "participant": "P30",
+      "accuracy": 0.635334402198809,
+      "recall": 0.6509965524671407
+    },
+    {
+      "participant": "P25",
+      "accuracy": 0.6780658761528328,
+      "recall": 0.7305654064904651
+    },
+    {
+      "participant": "P17",
+      "accuracy": 0.5148422090729783,
+      "recall": 0.5017383059418458
+    },
+    {
+      "participant": "P20",
+      "accuracy": 0.6388077924896896,
+      "recall": 0.6900271758563971
+    },
+    {
+      "participant": "P12",
+      "accuracy": 0.25104550393554714,
+      "recall": 0.23453187935946557
+    },
+    {
+      "participant": "P4",
+      "accuracy": 0.7156862745098039,
+      "recall": 0.7388888888888888
+    },
+    {
+      "participant": "P27",
+      "accuracy": 0.3927710843373494,
+      "recall": 0.36196016644447143
+    },
+    {
+      "participant": "P15",
+      "accuracy": 0.2750371380313791,
+      "recall": 0.22698961937716264
+    },
+    {
+      "participant": "P22",
+      "accuracy": 0.7246462236010023,
+      "recall": 0.7461818181818182
+    },
+    {
+      "participant": "P10",
+      "accuracy": 0.7075992485031517,
+      "recall": 0.7273291925465839
+    },
+    {
+      "participant": "P8",
+      "accuracy": 0.6599203855017808,
+      "recall": 0.6928232390355041
+    },
+    {
+      "participant": "P28",
+      "accuracy": 0.7045869602321215,
+      "recall": 0.8149425287356321
+    },
+    {
+      "participant": "P13",
+      "accuracy": 0.2643665222040862,
+      "recall": 0.22901772494606373
+    },
+    {
+      "participant": "P21",
+      "accuracy": 0.4379746835443038,
+      "recall": 0.43068483737975266
+    },
+    {
+      "participant": "P24",
+      "accuracy": 0.44104437948445396,
+      "recall": 0.3761904761904762
+    },
+    {
+      "participant": "P31",
+      "accuracy": 0.4450472453555413,
+      "recall": 0.4288765530002644
+    },
+    {
+      "participant": "P7",
+      "accuracy": 0.2387959866220736,
+      "recall": 0.19942806304016267
+    }
+  ]
+}

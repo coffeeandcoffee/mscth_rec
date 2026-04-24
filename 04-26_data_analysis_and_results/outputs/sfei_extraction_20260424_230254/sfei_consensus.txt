@@ -1,0 +1,26 @@
+Root Features Consensus:
+AF8_high_gamma_mean: 2
+AF8_delta_std: 2
+AF8_delta_min: 2
+AF7_theta_max: 1
+AF7_alpha_max: 1
+AF7_high_gamma_std: 1
+AF8_very_high_mean: 1
+TP10_high_gamma_mean: 1
+TP9_high_gamma_std: 1
+TP10_high_gamma_min: 1
+TP10_delta_std: 1
+AF7_low_gamma_min: 1
+TP9_alpha_max: 1
+TP10_alpha_mean: 1
+AF7_alpha_min: 1
+TP9_theta_std: 1
+AF7_delta_max: 1
+TP10_theta_max: 1
+TP9_low_gamma_max: 1
+AF7_delta_min: 1
+TP9_alpha_mean: 1
+AF8_alpha_mean: 1
+
+Proposed Formula:
+SFEI = AF8_high_gamma_mean / AF7_delta_min
