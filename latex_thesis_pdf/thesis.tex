@@ -79,6 +79,110 @@ For public health communication, this dynamic poses a significant challenge. Hea
 
 Understanding the neural signature of sustained engagement---and the exact moment that engagement begins to collapse---opens the door to designing communications that maintain attention precisely when the brain is most vulnerable to disengagement. This investigation is not about building manipulative technology, but rather about understanding how to make health-relevant content as neurologically compelling as the algorithms it competes against.
 
+\chapter{Literature and State of the Art}
+
+% TODO: Expand this section using the Literature Search Checklist below.
+The following sections outline the core theoretical claims, methodologies, and prior research required to contextualize this study. 
+
+\section{Public Health, Media Consumption, and The Attention Economy}
+\begin{itemize}
+    \item \textbf{Claim:} Short-form video algorithms (e.g., TikTok) fundamentally condition human attention into rapid micro-bursts and continuous micro-decision making.\\
+    \textit{Search Query:} \texttt{"short-form video" OR TikTok "sustained attention" OR "attention span"}
+    
+    \item \textbf{Claim:} Public health and educational communication struggles to survive on social media because it competes against highly optimized entertainment for the same limited cognitive resources.\\
+    \textit{Search Query:} \texttt{"public health communication" "social media" "cognitive load" OR "attention economy"}
+    
+    \item \textbf{Claim:} Continuous social media feeds are designed to bypass conscious appraisal and induce a state of `flow' or behavioral momentum, creating a high cognitive barrier for educational interventions.\\
+    \textit{Search Query:} \texttt{"flow state" OR "behavioral momentum" "social media" cognitive barrier intervention}
+    
+    \item \textbf{Claim:} To measure true media engagement, we must rely on objective neural states rather than retrospective self-reporting, which is heavily flawed by recall bias.\\
+    \textit{Search Query:} \texttt{"neural correlates" media engagement "self-report bias" OR "retrospective"}
+\end{itemize}
+
+\section{Neuroscience of Sustained Attention vs. Micro-Decisions}
+\begin{itemize}
+    \item \textbf{Claim:} In educational and public health contexts, evaluating engagement requires prioritizing the detection of sustained attentional maintenance (the ``STAY'' state) over the mere detection of attentional collapse, as maintenance is the prerequisite for memory encoding.\\
+    \textit{Search Query:} \texttt{"sustained attention" maintenance "memory encoding" OR learning EEG}
+    
+    \item \textbf{Claim:} The classical EEG Engagement Index ($\beta / (\alpha + \theta)$) was designed for sustained vigilance (e.g., driving, radar monitoring) and is fundamentally too coarse to capture rapid algorithmic micro-decisions.\\
+    \textit{Search Query:} \texttt{"EEG Engagement Index" "beta / (alpha + theta)" vigilance "sustained attention"}
+    
+    \item \textbf{Claim:} Alpha band activity correlates primarily with passive relaxation or cortical idling, making it a poor predictor for active, high-speed algorithmic decision-making.\\
+    \textit{Search Query:} \texttt{"EEG alpha band" "cortical idling" OR relaxation "decision making"}
+    
+    \item \textbf{Claim:} Active cognitive engagement, complex binding, and algorithmic content appraisal are heavily mediated by high-frequency Beta and Gamma bands.\\
+    \textit{Search Query:} \texttt{"EEG beta" OR "high gamma" "sustained cognitive engagement" OR "active appraisal"}
+    
+    \item \textbf{Claim:} The frontal lobes (AF7, AF8) and temporal lobes (TP9, TP10) are the primary cortical regions responsible for executing micro-decisions, visual appraisal, and executive control.\\
+    \textit{Search Query:} \texttt{"frontal lobe" OR "temporal lobe" "EEG" "rapid decision making" OR "visual appraisal"}
+\end{itemize}
+
+\section{Pre-Motor Intent and Readiness Potentials}
+\begin{itemize}
+    \item \textbf{Claim:} The cognitive decision to voluntarily act (e.g., a thumb swipe) forms in the cortex significantly before the physical motor action is executed, known as the Readiness Potential (Bereitschaftspotential).\\
+    \textit{Search Query:} \texttt{"Readiness Potential" OR "Bereitschaftspotential" "voluntary action" EEG timing}
+    
+    \item \textbf{Claim:} Isolating the 1--3 seconds preceding a mechanical action effectively captures the core cognitive decision while decoupling it from the downstream physical motor artifacts of the arm movement.\\
+    \textit{Search Query:} \texttt{"pre-motor" EEG "decision making" "motor artifact" isolation}
+    
+    \item \textbf{Claim:} A physical keystroke or swipe is merely the delayed behavioral exhaust of an engagement failure that has already occurred neurologically.\\
+    \textit{Search Query:} \texttt{"motor execution delay" "cognitive decision" intention EEG}
+\end{itemize}
+
+\section{Hardware Validity and Experimental Design}
+\begin{itemize}
+    \item \textbf{Claim:} Consumer-grade, 4-channel dry-electrode EEG headsets (like the Muse S) provide valid, reliable, research-grade spectral data for cognitive state classification.\\
+    \textit{Search Query:} \texttt{"Muse EEG" OR "consumer-grade EEG" validity "cognitive state classification"}
+    
+    \item \textbf{Claim:} Naturalistic, unconstrained ``free-browsing'' experimental designs provide critical ecological validity that cannot be replicated in strictly constrained, artificial lab environments.\\
+    \textit{Search Query:} \texttt{"ecological validity" "naturalistic" EEG experiment "free-viewing" OR browsing}
+    
+    \item \textbf{Claim:} Modern neuroergonomics recognizes that surrendering strict experimental stimulus control (e.g., allowing algorithmic feed curation) is a necessary and mathematically acceptable trade-off to capture authentic cognitive states.\\
+    \textit{Search Query:} \texttt{"neuroergonomics" "ecological validity" "stimulus control" trade-off naturalistic EEG}
+\end{itemize}
+
+\section{Signal Processing and High-Frequency Legitimacy}
+\begin{itemize}
+    \item \textbf{Claim:} Baseline relative power normalization effectively cancels out idiosyncratic physiological noise such as skull thickness and basal resting voltage differences across subjects.\\
+    \textit{Search Query:} \texttt{"EEG" "relative power" OR "baseline normalization" "individual differences"}
+    
+    \item \textbf{Claim:} High Gamma (40--60 Hz) activity carries genuine, vital neurological variance related to complex cognitive binding, rather than just being muscular or electrical noise.\\
+    \textit{Search Query:} \texttt{"High Gamma" 40-60 Hz EEG "cognitive binding" OR "decision making"}
+    
+    \item \textbf{Claim:} The standard 50 Hz power-line notch filter can be overly destructive, ablating vital high-frequency cognitive data if misapplied in BCI contexts.\\
+    \textit{Search Query:} \texttt{"50 Hz notch filter" "EEG" "gamma band" data loss}
+    
+    \item \textbf{Claim:} Distilling volatile time-series arrays into geometric/statistical variance parameters (mean, std, min, max) acts as a powerful regularizer for EEG classification against temporal jitter and phase noise.\\
+    \textit{Search Query:} \texttt{"EEG feature extraction" "statistical features" OR "variance" time-series phase noise}
+\end{itemize}
+
+\section{Machine Learning, Idiosyncrasy, and BCI Generalizability}
+\begin{itemize}
+    \item \textbf{Claim:} High-dimensional non-linear ensembles (like Random Forests) significantly outperform simple linear models when decoding dynamic, multi-channel EEG cognitive states.\\
+    \textit{Search Query:} \texttt{"Random Forest" EEG "cognitive state" classification "high dimensional"}
+    
+    \item \textbf{Claim:} In small-sample EEG classification, deep learning architectures (like Transformers) often fail to outperform carefully feature-engineered classical ensembles (like Random Forests) due to their susceptibility to overfitting on high-dimensional noise.\\
+    \textit{Search Query:} \texttt{"EEG classification" "Random Forest" vs "deep learning" OR Transformer small sample size}
+    
+    \item \textbf{Claim:} Even when controlling for absolute physiological voltage differences via baseline normalization, cross-subject BCI generalizability (Leave-One-Subject-Out) fails because the functional cortical strategies encoding engagement are fundamentally unique to the individual.\\
+    \textit{Search Query:} \texttt{"EEG" BCI "cross-subject generalizability" OR "Leave-One-Subject-Out" "baseline normalization" idiosyncratic}
+    
+    \item \textbf{Claim:} Universal, static equations (like the SFEI) are mathematically insufficient for mapping complex short-form media engagement compared to individualized machine learning calibration.\\
+    \textit{Search Query:} \texttt{"EEG" BCI "individualized calibration" vs "universal models" OR static}
+    
+    \item \textbf{Claim:} Rigorous handling of class imbalance (e.g., 50/50 prior distribution enforcement) is critical to prevent base-rate classifier bias in overlapping sliding-window EEG data.\\
+    \textit{Search Query:} \texttt{"EEG classification" "class imbalance" "sliding window" undersampling}
+\end{itemize}
+
+\section{Behavioral Sequence Heterogeneity and Attentional Modes}
+\begin{itemize}
+    \item \textbf{Claim:} User behavior in continuous media consumption exhibits temporal autocorrelation, where the probability of skipping is sequentially dependent on prior actions rather than being purely isolated content appraisals.\\
+    \textit{Search Query:} \texttt{"sequential dependence" OR autocorrelation "media consumption" OR browsing behavior}
+    
+    \item \textbf{Claim:} Cognitive disengagement during continuous tasks is highly heterogeneous, comprising both active, stimulus-locked rejection and a generalized, state-driven ``browsing'' momentum.\\
+    \textit{Search Query:} \texttt{"cognitive disengagement" heterogeneity "attentional state" continuous performance task}
+\end{itemize}
+
 \chapter{Materials and Methods}
 
 \section{Participants}

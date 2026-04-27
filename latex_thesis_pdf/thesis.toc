@@ -1,25 +1,33 @@
 \contentsline {chapter}{Acknowledgements}{I}{chapter*.1}%
 \contentsline {chapter}{Abstract}{1}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Materials and Methods}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Participants}{4}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Data Acquisition}{4}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Experimental Protocol}{5}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Labeling Strategy: The STAY Paradigm}{7}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Theoretical Justification for the STAY Objective}{8}{subsection.2.4.1}%
-\contentsline {section}{\numberline {2.5}Internal Structuring: Python Pipeline Walkthrough}{8}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}1. Signal Preprocessing \& Normalization (\texttt {utils.py})}{8}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}2. Standard Benchmark: Engagement Index (\texttt {step4\_engagement\_index.py})}{9}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}3. Feature Engineering: The 112 Dimensions (\texttt {step2\_train\_rf.py})}{10}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}4. Traversing Windows \& Probabilistic Scaling (\texttt {step2\_train\_rf.py})}{10}{subsection.2.5.4}%
-\contentsline {subsection}{\numberline {2.5.5}5. Model Assembly \& Validation Constraints}{11}{subsection.2.5.5}%
-\contentsline {section}{\numberline {2.6}Internal Structuring: Results Narrative and Gap Analysis}{11}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}1. The Research Question and Narrative Arc}{11}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}2. Step 1: The Clinical Baseline (Engagement Index)}{12}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.6.3}3. Step 2: Structural Expansion (RF-112 \textit {WITH} Notch Filter)}{12}{subsection.2.6.3}%
-\contentsline {subsection}{\numberline {2.6.4}4. Step 3: The High-Frequency Hypothesis (RF-112 \textit {WITHOUT} Notch Filter)}{13}{subsection.2.6.4}%
-\contentsline {subsection}{\numberline {2.6.5}5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{13}{subsection.2.6.5}%
-\contentsline {subsection}{\numberline {2.6.6}6. Step 5: Behavioral Heterogeneity (Skip Bias)}{14}{subsection.2.6.6}%
-\contentsline {subsection}{\numberline {2.6.7}7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}{14}{subsection.2.6.7}%
-\contentsline {subsection}{\numberline {2.6.8}8. Summary of Results}{15}{subsection.2.6.8}%
-\contentsline {subsection}{\numberline {2.6.9}9. Outlook and Implications for Future BCI Design}{15}{subsection.2.6.9}%
+\contentsline {chapter}{\numberline {2}Literature and State of the Art}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Public Health, Media Consumption, and The Attention Economy}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Neuroscience of Sustained Attention vs. Micro-Decisions}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Pre-Motor Intent and Readiness Potentials}{5}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Hardware Validity and Experimental Design}{6}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Signal Processing and High-Frequency Legitimacy}{7}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Machine Learning, Idiosyncrasy, and BCI Generalizability}{7}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Behavioral Sequence Heterogeneity and Attentional Modes}{8}{section.2.7}%
+\contentsline {chapter}{\numberline {3}Materials and Methods}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Participants}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Data Acquisition}{9}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Experimental Protocol}{10}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Labeling Strategy: The STAY Paradigm}{12}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Theoretical Justification for the STAY Objective}{13}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}Internal Structuring: Python Pipeline Walkthrough}{13}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}1. Signal Preprocessing \& Normalization (\texttt {utils.py})}{13}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}2. Standard Benchmark: Engagement Index (\texttt {step4\_engagement\_index.py})}{14}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}3. Feature Engineering: The 112 Dimensions (\texttt {step2\_train\_rf.py})}{15}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}4. Traversing Windows \& Probabilistic Scaling (\texttt {step2\_train\_rf.py})}{15}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}5. Model Assembly \& Validation Constraints}{16}{subsection.3.5.5}%
+\contentsline {section}{\numberline {3.6}Internal Structuring: Results Narrative and Gap Analysis}{16}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}1. The Research Question and Narrative Arc}{16}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}2. Step 1: The Clinical Baseline (Engagement Index)}{17}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}3. Step 2: Structural Expansion (RF-112 \textit {WITH} Notch Filter)}{17}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}4. Step 3: The High-Frequency Hypothesis (RF-112 \textit {WITHOUT} Notch Filter)}{18}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{18}{subsection.3.6.5}%
+\contentsline {subsection}{\numberline {3.6.6}6. Step 5: Behavioral Heterogeneity (Skip Bias)}{19}{subsection.3.6.6}%
+\contentsline {subsection}{\numberline {3.6.7}7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}{19}{subsection.3.6.7}%
+\contentsline {subsection}{\numberline {3.6.8}8. Summary of Results}{20}{subsection.3.6.8}%
+\contentsline {subsection}{\numberline {3.6.9}9. Outlook and Implications for Future BCI Design}{20}{subsection.3.6.9}%
