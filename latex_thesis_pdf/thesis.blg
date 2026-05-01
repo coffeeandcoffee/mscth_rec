@@ -3,48 +3,69 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesis.aux
 The style file: unsrt.bst
 Database file #1: library.bib
-Warning--I didn't find a database entry for "TODO_Engagement_Index_Validation"
-Warning--I didn't find a database entry for "TODO_Haggard_Voluntary_Action"
-Warning--I didn't find a database entry for "TODO_Libet_1983_Readiness"
-You've used 0 entries,
+Warning--entry type for "pope_biocybernetic_1995" isn't style-file defined
+--line 1689 of file library.bib
+Warning--empty journal in mccashin_using_2023
+Warning--empty year in mccashin_using_2023
+Warning--empty year in baughan_i_2022
+Warning--empty journal in anderson_social_2023
+Warning--empty year in anderson_social_2023
+Warning--empty year in knierim_flow_2026
+Warning--empty journal in libet_time_1983
+Warning--empty year in libet_time_1983
+Warning--empty journal in shakeel_review_2015
+Warning--empty year in shakeel_review_2015
+Warning--empty journal in krigolson_choosing_2017
+Warning--empty year in krigolson_choosing_2017
+Warning--empty journal in bellos_methods_2025
+Warning--empty year in bellos_methods_2025
+Warning--empty journal in apicella_eeg-based_2022
+Warning--empty year in apicella_eeg-based_2022
+Warning--empty journal in hasson_intersubject_2004
+Warning--empty year in hasson_intersubject_2004
+Warning--empty journal in fries_rhythms_2015
+Warning--empty year in fries_rhythms_2015
+Warning--empty journal in pattisapu_stimulus-induced_2021
+Warning--empty year in pattisapu_stimulus-induced_2021
+You've used 14 entries,
             1791 wiz_defined-function locations,
-            451 strings with 3689 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+            510 strings with 6544 characters,
+and the built_in function-call counts, 3207 in all, are:
+= -- 239
+> -- 198
+< -- 2
++ -- 71
+- -- 57
+* -- 252
+:= -- 518
+add.period$ -- 41
+call.type$ -- 14
+change.case$ -- 14
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 36
+duplicate$ -- 129
+empty$ -- 292
+format.name$ -- 57
+if$ -- 672
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 14
+missing$ -- 12
+newline$ -- 70
+num.names$ -- 14
+pop$ -- 69
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1
+skip$ -- 63
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 160
+swap$ -- 16
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
-(There were 3 warnings)
+warning$ -- 22
+while$ -- 30
+width$ -- 16
+write$ -- 126
+(There were 23 warnings)
