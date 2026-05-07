@@ -1,0 +1,19 @@
+STATISTICAL TESTS FOR BAND IMPORTANCE DIFFERENCES
+======================================================================
+
+Friedman Test (7 bands × 25 participants):
+  χ² = 16.0114, p = 1.37e-02
+  Conclusion: Significant difference across bands (α=0.05)
+
+Pairwise Wilcoxon Signed-Rank: high_gamma vs. each other band
+----------------------------------------------------------------------
+  high_gamma vs delta         : W=  93.0, p=6.2626e-02, high_gamma is LOWER (r=0.286)
+  high_gamma vs theta         : W= 159.0, p=9.3680e-01, high_gamma is LOWER (r=0.489)
+  high_gamma vs alpha         : W= 113.0, p=1.9081e-01, high_gamma is higher (r=0.348)
+  high_gamma vs beta          : W= 158.0, p=9.1580e-01, high_gamma is higher (r=0.486)
+  high_gamma vs low_gamma     : W= 134.0, p=4.5785e-01, high_gamma is higher (r=0.412)
+  high_gamma vs very_high     : W=  74.0, p=1.5973e-02, high_gamma is higher (r=0.228)
+
+Wilcoxon Signed-Rank: Frontal (AF7+AF8) vs Temporal (TP9+TP10)
+----------------------------------------------------------------------
+  W=100.0, p=9.5733e-02, Frontal is higher

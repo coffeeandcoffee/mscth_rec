@@ -8,13 +8,19 @@ Warning--entry type for "pope_biocybernetic_1995" isn't style-file defined
 Warning--empty journal in mccashin_using_2023
 Warning--empty year in mccashin_using_2023
 Warning--empty year in baughan_i_2022
-Warning--empty journal in anderson_social_2023
-Warning--empty year in anderson_social_2023
 Warning--empty year in knierim_flow_2026
+Warning--empty journal in debettencourt_sustained_2021
+Warning--empty year in debettencourt_sustained_2021
+Warning--empty journal in pfurtscheller_event-related_1996
+Warning--empty year in pfurtscheller_event-related_1996
+Warning--empty journal in miller_integrative_2001
+Warning--empty year in miller_integrative_2001
 Warning--empty journal in libet_time_1983
 Warning--empty year in libet_time_1983
 Warning--empty journal in shakeel_review_2015
 Warning--empty year in shakeel_review_2015
+Warning--empty journal in tong_brain_2020
+Warning--empty year in tong_brain_2020
 Warning--empty journal in krigolson_choosing_2017
 Warning--empty year in krigolson_choosing_2017
 Warning--empty journal in bellos_methods_2025
@@ -27,45 +33,47 @@ Warning--empty journal in fries_rhythms_2015
 Warning--empty year in fries_rhythms_2015
 Warning--empty journal in pattisapu_stimulus-induced_2021
 Warning--empty year in pattisapu_stimulus-induced_2021
-You've used 14 entries,
+Warning--empty journal in anderson_social_2023
+Warning--empty year in anderson_social_2023
+You've used 18 entries,
             1791 wiz_defined-function locations,
-            510 strings with 6544 characters,
-and the built_in function-call counts, 3207 in all, are:
-= -- 239
-> -- 198
+            530 strings with 7292 characters,
+and the built_in function-call counts, 4263 in all, are:
+= -- 329
+> -- 248
 < -- 2
-+ -- 71
-- -- 57
-* -- 252
-:= -- 518
-add.period$ -- 41
-call.type$ -- 14
-change.case$ -- 14
++ -- 89
+- -- 71
+* -- 353
+:= -- 678
+add.period$ -- 53
+call.type$ -- 18
+change.case$ -- 18
 chr.to.int$ -- 0
-cite$ -- 36
-duplicate$ -- 129
-empty$ -- 292
-format.name$ -- 57
-if$ -- 672
+cite$ -- 48
+duplicate$ -- 165
+empty$ -- 390
+format.name$ -- 71
+if$ -- 888
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 12
-newline$ -- 70
-num.names$ -- 14
-pop$ -- 69
+int.to.str$ -- 18
+missing$ -- 16
+newline$ -- 90
+num.names$ -- 18
+pop$ -- 85
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 63
+skip$ -- 76
 stack$ -- 0
-substring$ -- 160
+substring$ -- 266
 swap$ -- 16
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 22
-while$ -- 30
-width$ -- 16
-write$ -- 126
-(There were 23 warnings)
+warning$ -- 30
+while$ -- 42
+width$ -- 20
+write$ -- 162
+(There were 31 warnings)

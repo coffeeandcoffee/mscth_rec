@@ -1,0 +1,218 @@
+{
+  "temporal_split": {
+    "mean_accuracy": 0.5270029962162437,
+    "std_accuracy": 0.1008148997655098,
+    "mean_recall": 0.5387124169060904,
+    "above_chance": 13,
+    "total": 25
+  },
+  "random_split": {
+    "mean_accuracy": 0.6146125119889618,
+    "std_accuracy": 0.08549800782725932,
+    "mean_recall": 0.6189010287676857,
+    "above_chance": 23,
+    "total": 25
+  },
+  "per_participant": [
+    {
+      "participant": "P10",
+      "temporal_accuracy": 0.4426229508196721,
+      "temporal_recall": 0.9166666666666666,
+      "random_accuracy": 0.5573770491803278,
+      "random_recall": 0.5,
+      "delta_accuracy": -0.1147540983606557
+    },
+    {
+      "participant": "P11",
+      "temporal_accuracy": 0.5384615384615384,
+      "temporal_recall": 0.19298245614035087,
+      "random_accuracy": 0.6,
+      "random_recall": 0.6923076923076923,
+      "delta_accuracy": -0.06153846153846154
+    },
+    {
+      "participant": "P12",
+      "temporal_accuracy": 0.8636363636363636,
+      "temporal_recall": 0.95,
+      "random_accuracy": 0.8181818181818182,
+      "random_recall": 0.6818181818181818,
+      "delta_accuracy": 0.045454545454545414
+    },
+    {
+      "participant": "P13",
+      "temporal_accuracy": 0.5512820512820513,
+      "temporal_recall": 0.4523809523809524,
+      "random_accuracy": 0.6153846153846154,
+      "random_recall": 0.6410256410256411,
+      "delta_accuracy": -0.0641025641025641
+    },
+    {
+      "participant": "P14",
+      "temporal_accuracy": 0.5096153846153846,
+      "temporal_recall": 0.4411764705882353,
+      "random_accuracy": 0.6346153846153846,
+      "random_recall": 0.5769230769230769,
+      "delta_accuracy": -0.125
+    },
+    {
+      "participant": "P15",
+      "temporal_accuracy": 0.6326530612244898,
+      "temporal_recall": 0.7435897435897436,
+      "random_accuracy": 0.6428571428571429,
+      "random_recall": 0.5918367346938775,
+      "delta_accuracy": -0.010204081632653073
+    },
+    {
+      "participant": "P17",
+      "temporal_accuracy": 0.4594594594594595,
+      "temporal_recall": 0.19491525423728814,
+      "random_accuracy": 0.6891891891891891,
+      "random_recall": 0.7657657657657657,
+      "delta_accuracy": -0.22972972972972966
+    },
+    {
+      "participant": "P18",
+      "temporal_accuracy": 0.4409937888198758,
+      "temporal_recall": 0.02247191011235955,
+      "random_accuracy": 0.6521739130434783,
+      "random_recall": 0.6375,
+      "delta_accuracy": -0.2111801242236025
+    },
+    {
+      "participant": "P20",
+      "temporal_accuracy": 0.4326241134751773,
+      "temporal_recall": 0.25,
+      "random_accuracy": 0.5815602836879432,
+      "random_recall": 0.6142857142857143,
+      "delta_accuracy": -0.1489361702127659
+    },
+    {
+      "participant": "P21",
+      "temporal_accuracy": 0.5833333333333334,
+      "temporal_recall": 0.25,
+      "random_accuracy": 0.4880952380952381,
+      "random_recall": 0.4523809523809524,
+      "delta_accuracy": 0.09523809523809529
+    },
+    {
+      "participant": "P22",
+      "temporal_accuracy": 0.6333333333333333,
+      "temporal_recall": 0.4411764705882353,
+      "random_accuracy": 0.65,
+      "random_recall": 0.7,
+      "delta_accuracy": -0.01666666666666672
+    },
+    {
+      "participant": "P23",
+      "temporal_accuracy": 0.5696969696969697,
+      "temporal_recall": 0.27631578947368424,
+      "random_accuracy": 0.6303030303030303,
+      "random_recall": 0.6829268292682927,
+      "delta_accuracy": -0.06060606060606055
+    },
+    {
+      "participant": "P24",
+      "temporal_accuracy": 0.4915254237288136,
+      "temporal_recall": 0.12903225806451613,
+      "random_accuracy": 0.6497175141242938,
+      "random_recall": 0.7272727272727273,
+      "delta_accuracy": -0.1581920903954802
+    },
+    {
+      "participant": "P25",
+      "temporal_accuracy": 0.45161290322580644,
+      "temporal_recall": 1.0,
+      "random_accuracy": 0.6693548387096774,
+      "random_recall": 0.6290322580645161,
+      "delta_accuracy": -0.21774193548387094
+    },
+    {
+      "participant": "P26",
+      "temporal_accuracy": 0.3787878787878788,
+      "temporal_recall": 0.5652173913043478,
+      "random_accuracy": 0.6363636363636364,
+      "random_recall": 0.5151515151515151,
+      "delta_accuracy": -0.25757575757575757
+    },
+    {
+      "participant": "P27",
+      "temporal_accuracy": 0.5277777777777778,
+      "temporal_recall": 0.86,
+      "random_accuracy": 0.5740740740740741,
+      "random_recall": 0.6111111111111112,
+      "delta_accuracy": -0.04629629629629628
+    },
+    {
+      "participant": "P28",
+      "temporal_accuracy": 0.6666666666666666,
+      "temporal_recall": 0.3137254901960784,
+      "random_accuracy": 0.7192982456140351,
+      "random_recall": 0.7529411764705882,
+      "delta_accuracy": -0.052631578947368474
+    },
+    {
+      "participant": "P30",
+      "temporal_accuracy": 0.5638297872340425,
+      "temporal_recall": 0.813953488372093,
+      "random_accuracy": 0.5319148936170213,
+      "random_recall": 0.6170212765957447,
+      "delta_accuracy": 0.03191489361702127
+    },
+    {
+      "participant": "P31",
+      "temporal_accuracy": 0.4745762711864407,
+      "temporal_recall": 0.75,
+      "random_accuracy": 0.5508474576271186,
+      "random_recall": 0.5932203389830508,
+      "delta_accuracy": -0.07627118644067793
+    },
+    {
+      "participant": "P4",
+      "temporal_accuracy": 0.5416666666666666,
+      "temporal_recall": 0.4444444444444444,
+      "random_accuracy": 0.5277777777777778,
+      "random_recall": 0.5,
+      "delta_accuracy": 0.01388888888888884
+    },
+    {
+      "participant": "P5",
+      "temporal_accuracy": 0.5,
+      "temporal_recall": 0.7692307692307693,
+      "random_accuracy": 0.5357142857142857,
+      "random_recall": 0.42857142857142855,
+      "delta_accuracy": -0.0357142857142857
+    },
+    {
+      "participant": "P6",
+      "temporal_accuracy": 0.4943820224719101,
+      "temporal_recall": 0.6666666666666666,
+      "random_accuracy": 0.5168539325842697,
+      "random_recall": 0.6136363636363636,
+      "delta_accuracy": -0.022471910112359605
+    },
+    {
+      "participant": "P7",
+      "temporal_accuracy": 0.547945205479452,
+      "temporal_recall": 0.46875,
+      "random_accuracy": 0.7945205479452054,
+      "random_recall": 0.8055555555555556,
+      "delta_accuracy": -0.2465753424657534
+    },
+    {
+      "participant": "P8",
+      "temporal_accuracy": 0.4827586206896552,
+      "temporal_recall": 0.660377358490566,
+      "random_accuracy": 0.47413793103448276,
+      "random_recall": 0.5172413793103449,
+      "delta_accuracy": 0.008620689655172431
+    },
+    {
+      "participant": "P9",
+      "temporal_accuracy": 0.3958333333333333,
+      "temporal_recall": 0.8947368421052632,
+      "random_accuracy": 0.625,
+      "random_recall": 0.625,
+      "delta_accuracy": -0.22916666666666669
+    }
+  ]
+}

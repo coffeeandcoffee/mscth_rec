@@ -1,11 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{pope_biocybernetic_1995}
-Alan~T Pope, Edward~H Bogartb, and Debbie~S Bartolomeb.
-\newblock Biocybernetic system evaluates indices of operator engagement in
-  automated task.
-\newblock Publication Title: Biological Psychology Volume: 40.
-
 \bibitem{mccashin_using_2023}
 Darragh {McCashin} and Colette~M. Murphy.
 \newblock Using {TikTok} for public and youth mental health – a systematic
@@ -20,17 +14,36 @@ Amanda Baughan, Mingrui~Ray Zhang, Raveena Rao, Kai Lukoff, Anastasia
 \newblock In {\em {CHI} Conference on Human Factors in Computing Systems},
   pages 1--13. {ACM}.
 
-\bibitem{anderson_social_2023}
-Ian~A Anderson and Wendy Wood.
-\newblock Social motivations’ limited inﬂuence on habitual behavior: Tests
-  from social media engagement.
-
 \bibitem{knierim_flow_2026}
 Michael~T. Knierim, Thimo Schulz, Moritz Schiller, Jwan Shaban, Mario Nadj,
   Max~L. Wilson, and Alexander Maedche.
 \newblock Flow on social media? rarer than you'd think.
 \newblock In {\em Proceedings of the 2026 {CHI} Conference on Human Factors in
   Computing Systems}, pages 1--14. {ACM}.
+
+\bibitem{debettencourt_sustained_2021}
+Megan~T. {deBettencourt}, Stephanie~D. Williams, Edward~K. Vogel, and Edward
+  Awh.
+\newblock Sustained attention and spatial attention distinctly influence
+  long-term memory encoding.
+\newblock 33(10):2132--2148.
+
+\bibitem{pope_biocybernetic_1995}
+Alan~T Pope, Edward~H Bogartb, and Debbie~S Bartolomeb.
+\newblock Biocybernetic system evaluates indices of operator engagement in
+  automated task.
+\newblock Publication Title: Biological Psychology Volume: 40.
+
+\bibitem{pfurtscheller_event-related_1996}
+G.~Pfurtscheller, A.~Stancák, and Ch. Neuper.
+\newblock Event-related synchronization ({ERS}) in the alpha band — an
+  electrophysiological correlate of cortical idling: A review.
+\newblock 24(1):39--46.
+
+\bibitem{miller_integrative_2001}
+Earl~K. Miller and Jonathan~D. Cohen.
+\newblock An integrative theory of prefrontal cortex function.
+\newblock 24(1):167--202.
 
 \bibitem{libet_time_1983}
 Benjamin Libet, Curtis~A Gleason, and Elwood~W Wright.
@@ -44,6 +57,13 @@ Aqsa Shakeel, Muhammad~Samran Navid, Muhammad~Nabeel Anwar, Suleman Mazhar,
 \newblock A review of techniques for detection of movement intention using
   movement-related cortical potentials.
 \newblock 2015:1--13.
+
+\bibitem{tong_brain_2020}
+Lester~C. Tong, M.~Yavuz Acikalin, Alexander Genevsky, Baba Shiv, and Brian
+  Knutson.
+\newblock Brain activity forecasts video engagement in an internet attention
+  market.
+\newblock 117(12):6936--6941.
 
 \bibitem{krigolson_choosing_2017}
 Olave~E. Krigolson, Chad~C. Williams, Angela Norton, Cameron~D. Hassall, and
@@ -85,5 +105,10 @@ Pascal Fries.
 Srividya Pattisapu and Supratim Ray.
 \newblock Stimulus-induced narrow-band gamma oscillations in humans can be
   recorded using open-hardware low-cost {EEG} amplifier.
+
+\bibitem{anderson_social_2023}
+Ian~A Anderson and Wendy Wood.
+\newblock Social motivations’ limited inﬂuence on habitual behavior: Tests
+  from social media engagement.
 
 \end{thebibliography}

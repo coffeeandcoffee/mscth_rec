@@ -1,33 +1,33 @@
 \contentsline {chapter}{Acknowledgements}{I}{chapter*.1}%
 \contentsline {chapter}{Abstract}{1}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Literature and State of the Art}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Public Health, Media Consumption, and The Attention Economy}{4}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Neuroscience of Sustained Attention vs. Micro-Decisions}{6}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Pre-Motor Intent and Readiness Potentials}{7}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Hardware Validity and Experimental Design}{8}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Signal Processing and High-Frequency Legitimacy}{9}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Machine Learning, Idiosyncrasy, and BCI Generalizability}{11}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Behavioral Sequence Heterogeneity and Attentional Modes}{11}{section.2.7}%
-\contentsline {chapter}{\numberline {3}Materials and Methods}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Participants}{13}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Data Acquisition}{13}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Experimental Protocol}{14}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Labeling Strategy: The STAY Paradigm}{16}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Theoretical Justification for the STAY Objective}{17}{subsection.3.4.1}%
-\contentsline {section}{\numberline {3.5}Internal Structuring: Python Pipeline Walkthrough}{17}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}1. Signal Preprocessing \& Normalization (\texttt {utils.py})}{17}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}2. Standard Benchmark: Engagement Index (\texttt {step4\_engagement\_index.py})}{18}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}3. Feature Engineering: The 112 Dimensions (\texttt {step2\_train\_rf.py})}{19}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}4. Traversing Windows \& Probabilistic Scaling (\texttt {step2\_train\_rf.py})}{19}{subsection.3.5.4}%
-\contentsline {subsection}{\numberline {3.5.5}5. Model Assembly \& Validation Constraints}{20}{subsection.3.5.5}%
-\contentsline {section}{\numberline {3.6}Internal Structuring: Results Narrative and Gap Analysis}{20}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}1. The Research Question and Narrative Arc}{20}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}2. Step 1: The Clinical Baseline (Engagement Index)}{21}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3}3. Step 2: Structural Expansion (RF-112 \textit {WITH} Notch Filter)}{21}{subsection.3.6.3}%
-\contentsline {subsection}{\numberline {3.6.4}4. Step 3: The High-Frequency Hypothesis (RF-112 \textit {WITHOUT} Notch Filter)}{22}{subsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.6.5}5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{23}{subsection.3.6.5}%
-\contentsline {subsection}{\numberline {3.6.6}6. Step 5: Behavioral Heterogeneity (Skip Bias)}{24}{subsection.3.6.6}%
-\contentsline {subsection}{\numberline {3.6.7}7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}{24}{subsection.3.6.7}%
-\contentsline {subsection}{\numberline {3.6.8}8. Summary of Results}{25}{subsection.3.6.8}%
-\contentsline {subsection}{\numberline {3.6.9}9. Outlook and Implications for Future BCI Design}{25}{subsection.3.6.9}%
+\contentsline {chapter}{\numberline {2}Literature and State of the Art}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Public Health, Media Consumption, and The Attention Economy}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Neuroscience of Sustained Attention vs. Micro-Decisions}{7}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Pre-Motor Intent and Readiness Potentials}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Hardware Validity and Experimental Design}{9}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Signal Processing and High-Frequency Legitimacy}{11}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Machine Learning, Idiosyncrasy, and BCI Generalizability}{12}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Behavioral Sequence Heterogeneity and Attentional Modes}{12}{section.2.7}%
+\contentsline {chapter}{\numberline {3}Materials and Methods}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Participants}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Data Acquisition}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Experimental Protocol}{15}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Labeling Strategy: The STAY Paradigm}{17}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Theoretical Justification for the STAY Objective}{18}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}Internal Structuring: Python Pipeline Walkthrough}{18}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}1. Signal Preprocessing \& Normalization (\texttt {utils.py})}{18}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}2. Standard Benchmark: Engagement Index (\texttt {step4\_engagement\_index.py})}{19}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}3. Feature Engineering: The 112 Dimensions (\texttt {step2\_train\_rf.py})}{20}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}4. Traversing Windows \& Probabilistic Scaling (\texttt {step2\_train\_rf.py})}{20}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}5. Model Assembly \& Validation Constraints}{21}{subsection.3.5.5}%
+\contentsline {section}{\numberline {3.6}Internal Structuring: Results Narrative and Gap Analysis}{21}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}1. The Research Question and Narrative Arc}{23}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}2. Step 1: The Clinical Baseline (Engagement Index)}{24}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}3. Step 2: Structural Expansion (RF-112 \textit {WITH} Notch Filter)}{24}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}4. Step 3: The High-Frequency Hypothesis (RF-112 \textit {WITHOUT} Notch Filter)}{25}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{26}{subsection.3.6.5}%
+\contentsline {subsection}{\numberline {3.6.6}6. Step 5: Behavioral Heterogeneity (Skip Bias)}{27}{subsection.3.6.6}%
+\contentsline {subsection}{\numberline {3.6.7}7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}{27}{subsection.3.6.7}%
+\contentsline {subsection}{\numberline {3.6.8}8. Summary of Results}{28}{subsection.3.6.8}%
+\contentsline {subsection}{\numberline {3.6.9}9. Outlook and Implications for Future BCI Design}{28}{subsection.3.6.9}%

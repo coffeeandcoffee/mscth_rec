@@ -1,0 +1,24 @@
+NOTCH ABLATION STATISTICAL COMPARISON
+======================================================================
+
+Participants compared: 25
+Notch aggregate:   acc=0.6144, rec=0.6141
+NoNotch aggregate: acc=0.6162, rec=0.6187
+
+Accuracy: 12 improved, 11 worsened, 2 tied
+Mean Δ accuracy:  +0.0017
+Mean Δ recall:    +0.0047
+
+----------------------------------------------------------------------
+Wilcoxon Signed-Rank Tests (paired, two-sided)
+----------------------------------------------------------------------
+
+  ACCURACY:
+    W = 128.0, p = 0.7610
+    Effect size r = 0.0608
+    → NOT significant at α=0.05 (the difference is noise)
+
+  RECALL:
+    W = 108.0, p = 0.5481
+    Effect size r = 0.1201
+    → NOT significant at α=0.05 (the difference is noise)
