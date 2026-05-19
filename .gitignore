@@ -65,6 +65,11 @@ __pycache__/
 old_delete/
 
 # -----------------------------------------------------------------------------
+# Serialized Data (large, regenerable)
+# -----------------------------------------------------------------------------
+*.pkl
+
+# -----------------------------------------------------------------------------
 # Logs & Temporary Files
 # -----------------------------------------------------------------------------
 *.log
@@ -80,3 +85,8 @@ build/
 *.egg
 # Large skip labels CSVs (regenerate with post2v2_add_skip_classification.py)
 *_skip_labels_*.csv
+
+# EEG Pipeline Run Outputs
+05-12_data_analysis_and_results/runs/
+runs/
+

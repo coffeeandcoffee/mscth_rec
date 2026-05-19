@@ -1,0 +1,69 @@
+important: input and output of this script must stay in the same format and the same in general! if any of those input/output dependencies change by making these changes below, inform me!
+
+--
+
+first, baseline is build or marked labeled this way, very simple:
+from the first keypress of b + 10 seconds thats where baseline starts. (yes ignore all other baseline presses, only the first b press is relevant)
+from that point, + 90 seconds is where baseline ends. all rows that fall into that condition are labeled as baseline. thats it.
+
+baseline is then interpolated to 256 hz. then butterworth. and then extract the scalar metrics that serve as the baseline.
+
+fyi: Baseline is per-participant, not per-CSV. this means you search the first participant csv for the first b press, thats the one. if the first csv has no bpress, search the second csv. and so on. a valid baseline must be a hard prerequisite checked in execution. such as all other consecutive steps need to be validated as well.
+
+fyi: baseline extraction is only within the relevant found csv. it should follow the scientific correct same approach pipeline as below, described with the rest of the data.
+
+fyi: The baseline CSV does not also get trimmed or labeled in any way before this. It is purely: take rows between (first_B_time + 10s) and (first_B_time + 100s) from the raw uninterpolated data, then interpolate that 90s window, then butterworth, then compute mean+stdev.
+
+
+--
+
+and now, the sample building has to me much better.
+
+currently its random and not thought through.
+
+we need this for each participant:
+first, raw data individual csvs per participant (keep them seperate) get loaded -> then to each csv without merging them, apply the following skip stay logic to label each row:
+
+STAY class is applied to all rows at first. then STAY gets replaced by SKIP for samples that fall within the +-3s surrounding an A press:
+check each row starting with first. if the current row has A press, then this row and all rows within 3s before and after (this is the 3s motor preparation window before a skip and orientation window 3s after skip. this ihas nothing to do with the later mentioned 3s sample windows, they just happen to be both 3s) (check timestemps if in that +-3s timewindow, do not count rows and assume 256hz) that timestemp will be labeled as SKIP class - including the row of the a press that initiated the SKIP labeling. otherwise they keep STAY class. this may lead to intended overlap when eg an a press happened and 2s after (where first a press is within the +-3s window of the second a press and vice versa) another a press happens. then that second a presses 3s block that gets put on the data overlaps with the previous ON PURPOSE creating a longer SKIP block on purpose.
+
+then, for each csv for that participant (yes they are still unmerged) cut the beginning and the end to the first and last a press encounter so that these tails get removed. (if a CSV has zero A presses? Skip that CSV entirely.)
+
+then each csv (still not merged yes) gets interpolated to match 256hz because the rows are not uniform.
+
+(here: runs everything twice, once without and once with a 50Hz notch filter applied before butterworth)
+
+then apply butterworth extract bands.
+
+then normalize via baseline scalars (stdev and mean of whole baseline 90s —> the current code only uses mean, not stdev. We want z-score normalization instead: z = (value - baseline_mean) / baseline_std)
+
+then each csv contributes to the stay and skip pool for that participant like so: one skip section is marked by consecutive skip class, so is a stay section. one STAY section is eg 3.7s long. this will yield one sample from 0s to 3s and another from 0.6s to 3.6s and no more(assuming 20% stride aka 0.6s and a 3s sample window). the remaining 0.1s are throws away, not attached somewhere else. then at 3.7s the SKIP section starts and ends where ther is no consecutive SKIP anymore but again a STAY. that section then gets processed the same way only that it contributes to the SKIP pool of samples.
+
+this way the csvs never have to be merged and cleanly contributed to the skip and stay pool of samples.
+
+furthermore:
+What the current script does that should stay:
+The feature_names list (28 names) is stored in the pkl — still needed downstream
+The fs value is stored in the pkl — still needed downstream
+Both dropouts list and boundary_indices are stored — already addressed this
+The pkl structure itself (pid, fs, df, feature_names, baseline_means, dropouts) — downstream steps load this exact structure
+
+note as comments all dependency changes that affect downstream steps:
+
+df['class'] values change from tiktok_over_4s/tiktok_under_4s to STAY/SKIP → step03 must be updated
+The 28 band power columns change from mean-normalized to z-score normalized → affects viz01, step05 feature interpretation, and any threshold-based logic
+Window extraction location — currently step03, do not move it to step01 - that its presented here is merely for context reasons. scope of step01 scripts stays the same.
+
+CSVs never merged, pkl saves not one df but a collection of the unmerged csvs for each participant — step03 currently expects one contiguous df per participant, it needs restructuring
+
+baseline_means in pkl: currently a dict of means only → needs to also store stds, or rename to baseline_stats — step05 and viz01 reference this
+--
+
+fyi:
+The feature_names list is built implicitly via the loop order in build_relative_power. The order is: for each channel → for each band → mean/std/min/max. This list is stored in the pkl and used downstream. Nothing changes here but worth confirming the loop order stays identical.
+---
+
+is order different? anything i missed that the script does that we forgot to describe here? or something i overdefined? or something unclear?
+
+and further: did the script also use baseline scalars for normalization? (eg after interpolation and butterworth bands, extracting the stdev and mean of whole baseline 90s and use that as the devider for every row of after-butterworth vscs?)
+

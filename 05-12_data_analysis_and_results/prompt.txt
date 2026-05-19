@@ -1,0 +1,108 @@
+to avoid complexity, we want to keep it super simple.
+
+
+
+is it easier and better for all the things we want to compare, should main metric logically correctly (mathematical validity of comparing to 50% baseline, and logical correctness of answering the research question) be:
+
+
+
+
+
+mean accuracy across participants, with Wilcoxon signed-rank test vs 50% chance?
+
+
+
+STAY recall (sensitivity for Class 1) with Wilcoxon signed-rank test vs 50% chance?
+
+
+
+that base metric must then be compared to:
+
+"
+
+- grid search (lxnxmx different RFs with different results) -> this is a design decision nessecity
+
+- no 5CV (60/40 split described in early pipeline notes) vs 5CV (blocked temporal 5-fold CV, base metric)  -> this is a design decision nessecity aswell
+
+- notch vs no notch (base metric) -> this is more informative, later for secondary results and discussion
+
+- different groups of different tiktok usage -> primary results, the significance result of that directly impacts how we present results and if we mention this as a limitation or as deemed insignificant
+
+- male and female comparison -> ...
+
+- cohort (paid vs unpaid) comparison
+
+- train RF on AF7/AF8 features only vs TP9/TP10 features only vs all 4 (base)
+
+- excluding specific parts of SKIP class that fall into skip-momentum-sequences vs normal (including those)
+
+- excluding specific parts of STAY class that touch the first 3 seconds after video onset (orientation period) vs normal (including those)
+
+- with deletion of blink and emg contamination above a uV threshold vs no deletion (normal)
+
+- EI with same pipeline vs best RF with same pipeline(normal) (apples to apples)
+
+- compare that results were confirmed stable across seeds 0, 1, 7, 42, 99
+
+- Inter-subject LOGO-CV
+
+"
+
+
+
+as you can see, the clean comparison and what exactly to compare how is still a little confusing for me. i need simple clarity.
+
+
+
+in the end we also want a table to be produced that lists all these tests and results with one column colorful signaling when significant differences are recognized along the significance number.
+
+
+
+in which order? and also what needs to be compared, decided, and then taken into next comparison? this is a chain of decisions. what is observational informative, and what is decision critical?
+
+
+
+(ha! ideally its one script that makes the decisions dynamically after recieving specific results, that way its always one stringent determinatable chain! so to say es tastet sich vor, and then locks in decisions, and then runs the robustness tests (such as paid vs non paid) and interesting tests (such as nonotch vs notch) - SFEI formula is dynamically created as simplified linear formula from the features quantified importance)
+
+
+
+each aspect of comparison shall come with a significance of if it is actually significantly better than base.
+
+
+
+to have one run each that has set params with get params from anpther run and prefills them but then executes each time starting from step 0?
+
+
+
+or are we better off having all comparisons within one run and explicitly hardcoded everything that needs to rerun and also where it needs to rerun so we have full control over comparability?
+
+
+
+--
+
+fundamental question: these aspects we wanna compare, are they on different levels that require different individual approaches? are there groups of aspects to compare? how do we handle adding a new aspect later? (it would be ok to have to do a new run for that, but it must be comparable to old runs - so either old runs get recreated so to say with all other comparisons or just the added aspect gets calculated but that must ensure absolutley bulletproof comparison ability to other previous calculations)
+
+--
+
+ 
+
+evaluate by:
+
+
+
+
+
+correctness (first prio)
+
+
+
+ease (second prio)
+
+
+
+--
+
+
+
+consistency and simplicity is key. we dont need super complex restarting shit. it just needs to work robustly. this topic is complex enough. no need to make it more complex. we want to avoid errors by keeping the system simople with as little parts as possible.
+
