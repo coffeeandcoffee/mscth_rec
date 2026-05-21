@@ -156,6 +156,8 @@ def main():
                         help='Skip parameter approval pause')
     parser.add_argument('--step', action='store_true',
                         help='Execute only the next incomplete step, then stop')
+    parser.add_argument('--restep', action='store_true',
+                        help='Repeat the last completed step, then stop')
     args = parser.parse_args()
 
     print("\n" + "=" * 70)
@@ -193,6 +195,21 @@ def main():
         print(f"\n  Starting run: {timestamp}")
         print(f"  Run directory: {run_dir}")
 
+    # ── Handle --restep ──
+    if args.restep:
+        last_done = 0
+        for i in range(1, len(STEPS) + 1):
+            if step_done(run_dir, i):
+                last_done = i
+        if last_done > 0:
+            print(f"\n  --restep: Un-marking step {last_done:02d} to repeat it.")
+            done_file = run_dir / f"step{last_done:02d}.done"
+            if done_file.exists():
+                done_file.unlink()
+            args.step = True
+        else:
+            print("\n  --restep: No completed steps found to repeat.")
+
     # ── Execute pipeline ──
     for i, (step_module, viz_module, step_name) in enumerate(STEPS, start=1):
         if step_done(run_dir, i):
@@ -222,7 +239,8 @@ def main():
         print(f"  ✓ Step {i:02d} [{step_name}] — COMPLETE")
 
         if args.step:
-            print(f"\n  --step: Stopping after step {i:02d}.")
+            flag_used = "--restep" if args.restep else "--step"
+            print(f"\n  {flag_used}: Stopping after step {i:02d}.")
             print(f"  Resume with: ../venv/bin/python3 run.py --resume {timestamp}")
             break
 

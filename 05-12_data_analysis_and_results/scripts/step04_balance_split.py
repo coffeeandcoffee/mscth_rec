@@ -17,8 +17,9 @@ import pandas as pd
 import config
 
 
-def create_temporal_blocks(windows, n_folds=5, gap_s=3.0):
-    """Divide windows into n_folds temporal blocks with gaps."""
+def create_smart_temporal_blocks(windows, n_folds=5, gap_s=3.0):
+    """Divide windows into n_folds stratified temporal blocks with strict firewalls.
+    Uses the Smart Stratified Temporal Split algorithm."""
     if not windows:
         return [[] for _ in range(n_folds)]
 
@@ -27,20 +28,42 @@ def create_temporal_blocks(windows, n_folds=5, gap_s=3.0):
     times = np.array([w['start_time'] for _, w in sorted_wins])
     ids = [idx for idx, _ in sorted_wins]
 
-    t_min, t_max = times[0], times[-1] + (windows[0].get('end_time', 0) - windows[0].get('start_time', 0))
-    total_dur = t_max - t_min
-    block_dur = (total_dur - gap_s * (n_folds - 1)) / n_folds
+    # Chronological timestamps of the minority class (SKIP)
+    skip_times = [w['start_time'] for _, w in sorted_wins if w['label'] == 0]
+    
+    split_times = []
+    if len(skip_times) >= n_folds:
+        # Place splits at the exact percentiles of the SKIP behavior distribution
+        for k in range(1, n_folds):
+            idx = int(len(skip_times) * k / n_folds)
+            split_times.append(skip_times[idx])
+    else:
+        # Fallback to simple time-based if there are almost no skips
+        t_min, t_max = times[0], times[-1]
+        split_times = [t_min + (t_max - t_min) * k / n_folds for k in range(1, n_folds)]
 
-    if block_dur < 1.0:
-        # Session too short — put everything in one block
-        return [ids] + [[] for _ in range(n_folds - 1)]
-
-    blocks = []
-    for k in range(n_folds):
-        b_start = t_min + k * (block_dur + gap_s)
-        b_end = b_start + block_dur
-        block_ids = [wid for wid, t in zip(ids, times) if b_start <= t < b_end]
-        blocks.append(block_ids)
+    blocks = [[] for _ in range(n_folds)]
+    
+    for wid, t in zip(ids, times):
+        # Check if window falls in the strict deletion gap
+        in_gap = False
+        for st in split_times:
+            if st - gap_s/2 <= t <= st + gap_s/2:
+                in_gap = True
+                break
+        
+        if in_gap:
+            continue
+            
+        # Assign to the correct temporal block
+        block_idx = 0
+        for st in split_times:
+            if t > st + gap_s/2:
+                block_idx += 1
+            else:
+                break
+                
+        blocks[block_idx].append(wid)
 
     return blocks
 
@@ -66,14 +89,49 @@ def undersample_balance(window_ids, windows, seed):
     return balanced
 
 
-def build_cv_splits(windows, params):
+def validate_splits(seed_splits, windows, gap_s, info=""):
+    """Mathematically validates that splits maintain the temporal firewall."""
+    for fold in seed_splits:
+        train_ids = set(fold['train_ids'])
+        test_ids = set(fold['test_ids'])
+        
+        # 1. Absolute Independence
+        overlap = train_ids.intersection(test_ids)
+        assert len(overlap) == 0, f"Validation Failed: {len(overlap)} windows overlap between train and test in fold {fold['fold']} {info}"
+        
+        # 2. Temporal Distance Proof
+        if not train_ids or not test_ids:
+            continue
+            
+        train_times = np.array([windows[i]['start_time'] for i in train_ids])
+        test_times = np.array([windows[i]['start_time'] for i in test_ids])
+        
+        train_times.sort()
+        test_times.sort()
+        
+        min_dist = float('inf')
+        i, j = 0, 0
+        while i < len(train_times) and j < len(test_times):
+            dist = abs(train_times[i] - test_times[j])
+            if dist < min_dist:
+                min_dist = dist
+            if train_times[i] < test_times[j]:
+                i += 1
+            else:
+                j += 1
+                
+        # 3. Assert distance >= gap_s - 0.1
+        assert min_dist >= gap_s - 0.1, f"Validation Failed: Temporal firewall breached! min_dist={min_dist:.3f}s < {gap_s}s in fold {fold['fold']} {info}"
+
+
+def build_cv_splits(windows, params, pid=None):
     """Build temporal blocked CV splits for all seeds."""
     p = params.get('step04', {})
     seeds = p.get('seeds', [0, 1, 7, 42, 99])
     n_folds = p.get('n_folds', 5)
     gap_s = p.get('gap_s', 3.0)
 
-    blocks = create_temporal_blocks(windows, n_folds, gap_s)
+    blocks = create_smart_temporal_blocks(windows, n_folds, gap_s)
 
     all_splits = {}
 
@@ -100,6 +158,9 @@ def build_cv_splits(windows, params):
                 'test_n_skip': sum(1 for i in test_balanced if windows[i]['label'] == 0),
             })
 
+        info = f"(PID {pid}, Seed {seed})" if pid is not None else f"(Seed {seed})"
+        validate_splits(seed_splits, windows, gap_s, info)
+
         all_splits[seed] = seed_splits
 
     return all_splits
@@ -121,7 +182,7 @@ def run(run_dir, params):
             data = pickle.load(f)
 
         windows = data['windows']
-        all_splits = build_cv_splits(windows, params)
+        all_splits = build_cv_splits(windows, params, pid=pid)
 
         # Save splits
         split_path = splits_dir / f"P{pid}_splits.pkl"

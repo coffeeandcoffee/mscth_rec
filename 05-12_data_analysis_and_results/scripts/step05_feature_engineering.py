@@ -144,7 +144,10 @@ def run(run_dir, params):
             with open(notch_pkl, 'rb') as f:
                 notch_data = pickle.load(f)
 
-            notch_df = notch_data['df']
+            # [D3] pkl stores list of DataFrames under 'dfs', not single 'df'
+            import pandas as pd
+            notch_dfs = notch_data['dfs']
+            notch_df = pd.concat(notch_dfs, ignore_index=True)
             notch_fnames = notch_data['feature_names']
 
             # Re-compute features using the same window time ranges but notch data

@@ -102,15 +102,15 @@ DEFAULT_PARAMS = {
     },
     "step02": {
         "blink_thresh_uv": 800,
-        "emg_thresh_uv": 500,
+        "emg_thresh_uv": 800,
         "blink_channels": ["AF7", "AF8"],
         "emg_channels": ["TP9", "TP10"],
     },
     "step03": {
-        "half_window_s": 3.0,
-        "window_s": 3.0,
-        "stay_stride_s": 0.6,
-        "burst_thresh_s": 3.0,
+        "half_window_s": 3.0,      # step01 labels ±3s around each A-press → 6s SKIP region
+        "window_s": 3.0,           # extracted window duration (both SKIP and STAY)
+        "stride_s": 0.6,           # sliding window stride (both SKIP and STAY); 80% overlap
+        "burst_thresh_s": 3.0,     # A-presses < 3s apart → burst-skip flag
     },
     "step04": {
         "seeds": [0, 1, 7, 42, 99],

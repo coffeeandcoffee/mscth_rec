@@ -2,126 +2,204 @@
 """
 step03_label_windows.py — Window extraction and labelling.
 
-Extracts SKIP windows (3s ending at keypress) and STAY windows (0.6s stride,
-80% overlap, from videos watched ≥ 4s). Flags burst-skip sequences.
+Reads the STAY/SKIP labels from step01 and extracts fixed-size windows
+from contiguous SKIP and STAY regions using a sliding window with stride.
+
+Logic:
+  1. Find contiguous SKIP regions (labelled ±half_window_s around each
+     A-press in step01, so each isolated region is ~2×half_window_s = 6s).
+  2. Find contiguous STAY regions (everything between SKIP regions).
+  3. From each region, extract windows of `window_s` seconds using
+     `stride_s` stride.  A window is only emitted if it fits entirely
+     within the region (no crossing label boundaries).
+  4. Burst detection: when a SKIP region is longer than a single A-press
+     region (~2×half_window_s), it means multiple A-presses merged.
+     Count actual A-presses per block using a_press_times from step01.
+     Any block with ≥2 A-presses → all its windows are burst-flagged.
+
 Runs four times internally for sensitivity manifests:
   {artifact_include, artifact_exclude} × {burst_include, burst_exclude}
 
 OUT: 4 windowed dataset .pkl files + 4 label summary CSVs
+
+Parameters (from config.DEFAULT_PARAMS['step03']):
+  half_window_s  — step01 labels ±this around each A-press (→ 2× = SKIP region)
+  window_s       — extracted window duration (both SKIP and STAY)
+  stride_s       — sliding window stride (both SKIP and STAY)
+  burst_thresh_s — unused directly; burst detected by merged regions + A-press count
 """
 
 import numpy as np
 import pandas as pd
 import pickle
 from pathlib import Path
+from collections import defaultdict
 
 import config
 
 
-def extract_skip_windows(df, fs, half_window_s=3.0, window_s=3.0):
-    """Extract SKIP windows via sliding window from SKIP-labelled regions.
+def extract_windows_from_regions(df, fs, label, window_s, stride_s):
+    """Extract windows from contiguous regions of a given label.
 
-    SKIP regions are ±half_window_s wide (labelled in step01).
-    Windows of window_s are extracted with the same stride as STAY.
-    Multiple windows per SKIP region if region is wide enough.
+    For each contiguous block of `label` (SKIP or STAY), slide a window
+    of `window_s` seconds with `stride_s` stride from the start of the
+    region.  A window is only emitted if it fits entirely within the
+    region (no crossing label boundaries).
+
+    Returns a list of window dicts:
+        start_time, end_time, label (0=SKIP, 1=STAY), indices, region_idx
     """
     timestamps = df['lsl_timestamp'].values
     classes = df['class'].values
     windows = []
 
-    skip_mask = np.array([c == 'SKIP' if isinstance(c, str) else False
-                          for c in classes])
-    skip_indices = np.where(skip_mask)[0]
-    if len(skip_indices) == 0:
+    target_mask = np.array([c == label if isinstance(c, str) else False
+                            for c in classes])
+    target_indices = np.where(target_mask)[0]
+    if len(target_indices) == 0:
         return windows
 
-    breaks = np.where(np.diff(skip_indices) > 1)[0] + 1
-    blocks = np.split(skip_indices, breaks)
+    # Split into contiguous blocks
+    breaks = np.where(np.diff(target_indices) > 1)[0] + 1
+    blocks = np.split(target_indices, breaks)
 
-    for block in blocks:
-        region_ts = timestamps[block]
-        region_dur = region_ts[-1] - region_ts[0]
-        if region_dur < window_s:
+    label_int = 0 if label == 'SKIP' else 1
+
+    for region_idx, block in enumerate(blocks):
+        if len(block) < 2:
+            continue
+        region_start = timestamps[block[0]]
+        region_end = timestamps[block[-1]]
+
+        # Region span includes the last sample's duration (1/fs)
+        region_span = (region_end - region_start) + (1.0 / fs)
+
+        if region_span < window_s - (1.0 / fs):
             continue
 
-        # Find keypress = center of block (for kp_idx metadata only)
-        center_idx = block[len(block) // 2]
+        # Deterministic window count: round() absorbs ±1-sample jitter
+        # from 256 Hz interpolation (a "6s" region may be 5.996–6.004s)
+        n_windows = int(round((region_span - window_s) / stride_s)) + 1
+        n_windows = max(1, n_windows)
 
-        t = region_ts[0]
-        region_end = region_ts[-1] + (1.0 / fs)  # include last sample
-        while t + window_s <= region_end:
-            mask = (timestamps >= t) & (timestamps < t + window_s) & skip_mask
+        for wi in range(n_windows):
+            # Compute t from integer multiple to avoid float accumulation
+            t = region_start + wi * stride_s
+
+            # Find samples within [t, t + window_s)
+            mask = (timestamps >= t) & (timestamps < t + window_s) & target_mask
             indices = np.where(mask)[0]
-            if len(indices) >= int(fs * 0.5):
+
+            if len(indices) >= int(fs * window_s * 0.8):  # ≥80% of expected samples
                 windows.append({
                     'start_time': float(t),
                     'end_time': float(t + window_s),
-                    'label': 0,
+                    'label': label_int,
                     'indices': indices,
-                    'kp_idx': int(center_idx),
+                    'region_idx': region_idx,
                 })
-            t += window_s  # no overlap for SKIP — one non-overlapping pass
 
     return windows
 
-def extract_stay_windows(df, fs, stride_s=0.6, window_s=6.0):
-    """Extract STAY windows via sliding window from STAY-labelled regions.
 
-    Window size matches SKIP window (2 × half_window_s = 6s).
-    No minimum region duration — every STAY region ≥ window_s is used.
-    """
+def get_skip_blocks(df, fs):
+    """Return list of (block_start_time, block_end_time) for contiguous SKIP regions."""
     timestamps = df['lsl_timestamp'].values
     classes = df['class'].values
-    windows = []
+    skip_mask = np.array([c == 'SKIP' if isinstance(c, str) else False for c in classes])
+    skip_idx = np.where(skip_mask)[0]
+    if len(skip_idx) == 0:
+        return []
 
-    stay_mask = np.array([c == 'STAY' if isinstance(c, str) else False
-                          for c in classes])
-    stay_indices = np.where(stay_mask)[0]
+    breaks = np.where(np.diff(skip_idx) > 1)[0] + 1
+    blocks = np.split(skip_idx, breaks)
 
-    if len(stay_indices) == 0:
-        return windows
+    result = []
+    for block in blocks:
+        if len(block) < 2:
+            continue
+        result.append((timestamps[block[0]], timestamps[block[-1]]))
+    return result
 
-    breaks = np.where(np.diff(stay_indices) > 1)[0] + 1
-    regions = np.split(stay_indices, breaks)
 
-    for region in regions:
-        region_ts = timestamps[region]
-        region_dur = region_ts[-1] - region_ts[0]
-        if region_dur < window_s:
+def flag_burst_skips(df, skip_windows, a_press_times, half_window_s):
+    """Flag burst-skip windows using actual A-press timestamps.
+
+    Burst detection:
+    1. Find contiguous SKIP blocks in the data.
+    2. For each block, count how many A-presses (from a_press_times)
+       fall within it.
+    3. If a block contains ≥2 A-presses, it's a merged/burst block.
+    4. All windows from burst blocks are flagged is_burst_skip=True.
+
+    Returns:
+        n_flagged: total number of windows flagged
+        block_stats: list of dicts with per-block info for viz/diagnostics
+    """
+    # Default: no burst
+    for w in skip_windows:
+        w['is_burst_skip'] = False
+
+    if not skip_windows or not a_press_times:
+        return 0, []
+
+    fs = 256.0  # approximate, only used for block detection
+    timestamps = df['lsl_timestamp'].values
+    classes = df['class'].values
+    skip_mask = np.array([c == 'SKIP' if isinstance(c, str) else False for c in classes])
+    skip_idx = np.where(skip_mask)[0]
+    if len(skip_idx) == 0:
+        return 0, []
+
+    breaks = np.where(np.diff(skip_idx) > 1)[0] + 1
+    blocks = np.split(skip_idx, breaks)
+
+    block_stats = []
+    n_flagged = 0
+
+    for region_idx, block in enumerate(blocks):
+        if len(block) < 2:
+            block_stats.append({
+                'region_idx': region_idx,
+                'start_time': float(timestamps[block[0]]),
+                'end_time': float(timestamps[block[-1]]),
+                'duration_s': 0.0,
+                'n_a_presses': 0,
+                'is_burst': False,
+            })
             continue
 
-        t = region_ts[0]
-        while t + window_s <= region_ts[-1]:
-            mask = (timestamps >= t) & (timestamps < t + window_s) & stay_mask
-            indices = np.where(mask)[0]
-            if len(indices) >= int(fs * 0.5):
-                windows.append({
-                    'start_time': t,
-                    'end_time': t + window_s,
-                    'label': 1,
-                    'indices': indices,
-                })
-            t += stride_s
+        block_start = timestamps[block[0]]
+        block_end = timestamps[block[-1]]
+        block_dur = block_end - block_start
 
-    return windows
+        # Count A-presses within this block's time range
+        # An A-press is "in" a block if it falls within [block_start, block_end]
+        # (with small tolerance for the ±half_window labelling)
+        a_in_block = [t for t in a_press_times
+                      if block_start - 0.1 <= t <= block_end + 0.1]
+        n_a = len(a_in_block)
 
+        expected_single = 2 * half_window_s
+        is_burst = (n_a >= 2) or (block_dur > expected_single + 1.0)
 
-def flag_burst_skips(skip_windows, burst_thresh_s=3.0):
-    """Flag burst-skip sequences where inter-skip interval < threshold."""
-    if len(skip_windows) < 2:
-        return
+        block_stats.append({
+            'region_idx': region_idx,
+            'start_time': float(block_start),
+            'end_time': float(block_end),
+            'duration_s': float(block_dur),
+            'n_a_presses': n_a,
+            'is_burst': is_burst,
+        })
 
-    # Sort by end time
-    sorted_wins = sorted(skip_windows, key=lambda w: w['end_time'])
+        if is_burst:
+            # Flag all windows from this region
+            for w in skip_windows:
+                if w['region_idx'] == region_idx:
+                    w['is_burst_skip'] = True
+                    n_flagged += 1
 
-    for i in range(len(sorted_wins)):
-        sorted_wins[i]['is_burst_skip'] = False
-
-    for i in range(1, len(sorted_wins)):
-        interval = sorted_wins[i]['end_time'] - sorted_wins[i - 1]['end_time']
-        if interval < burst_thresh_s:
-            sorted_wins[i]['is_burst_skip'] = True
-            sorted_wins[i - 1]['is_burst_skip'] = True
+    return n_flagged, block_stats
 
 
 def compute_artifact_fraction(df, indices):
@@ -138,21 +216,26 @@ def extract_window_data(df, feature_names, indices):
 
 def build_manifest(pid, df, fs, feature_names, params,
                    include_artifacts=True, include_bursts=True):
-    """Build a complete window manifest for one participant under given settings."""
+    """Build a complete window manifest for one participant under given settings.
+
+    Returns:
+        filtered: list of window dicts
+        block_stats: list of per-SKIP-block burst statistics
+    """
     p = params.get('step03', {})
-    half_window_s = p.get('half_window_s', 3.0)
     window_s = p.get('window_s', 3.0)
-    stride_s = p.get('stay_stride_s', 0.6)
-    burst_thresh = p.get('burst_thresh_s', 3.0)
-    print(f"    DEBUG build_manifest: window_s={window_s}, half_window_s={half_window_s}")
+    stride_s = p.get('stride_s', 0.6)
+    half_window_s = p.get('half_window_s', 3.0)
 
-    skip_windows = extract_skip_windows(df, fs, half_window_s, window_s)
-    stay_windows = extract_stay_windows(df, fs, stride_s, window_s)
+    # Extract windows from SKIP and STAY regions using same window & stride
+    skip_windows = extract_windows_from_regions(df, fs, 'SKIP', window_s, stride_s)
+    stay_windows = extract_windows_from_regions(df, fs, 'STAY', window_s, stride_s)
 
-    # Flag burst-skips
-    flag_burst_skips(skip_windows, burst_thresh)
+    # Flag burst-skips using actual A-press timestamps from step01
+    a_press_times = df.attrs.get('a_press_times', [])
+    _, block_stats = flag_burst_skips(df, skip_windows, a_press_times, half_window_s)
 
-    # Set default burst flag for STAY windows
+    # STAY windows are never bursts
     for w in stay_windows:
         w['is_burst_skip'] = False
 
@@ -180,7 +263,7 @@ def build_manifest(pid, df, fs, feature_names, params,
             'data': data,
         })
 
-    return filtered
+    return filtered, block_stats
 
 
 MANIFEST_CONFIGS = [
@@ -202,6 +285,23 @@ def run(run_dir, params):
 
     summary_rows = {name: [] for name, _, _ in MANIFEST_CONFIGS}
 
+    # Read params for display
+    p = params.get('step03', {})
+    window_s = p.get('window_s', 3.0)
+    stride_s = p.get('stride_s', 0.6)
+    half_window_s = p.get('half_window_s', 3.0)
+    burst_thresh = p.get('burst_thresh_s', 3.0)
+
+    print(f"\n  Parameters:")
+    print(f"    half_window_s  = {half_window_s}  (step01 labels ±{half_window_s}s around A-press → {2*half_window_s}s SKIP region)")
+    print(f"    window_s       = {window_s}  (extracted window duration)")
+    print(f"    stride_s       = {stride_s}  (stride for both SKIP and STAY)")
+    print(f"    burst_thresh_s = {burst_thresh}  (A-presses < {burst_thresh}s apart → merged region → burst)")
+    print()
+
+    # Collect all block stats across participants for viz03
+    all_block_stats = {}
+
     for pid in config.INCLUDED_PARTICIPANTS:
         pkl_path = processed_dir / f"P{pid}.pkl"
         with open(pkl_path, 'rb') as f:
@@ -214,14 +314,21 @@ def run(run_dir, params):
 
         print(f"  P{pid}:", end="", flush=True)
 
+        pid_block_stats = []
+
         for manifest_name, incl_art, incl_burst in MANIFEST_CONFIGS:
             # Collect windows across all CSVs for this participant
             all_windows = []
             for df in dfs:
-                windows = build_manifest(pid, df, fs, feature_names, params,
-                                         include_artifacts=incl_art,
-                                         include_bursts=incl_burst)
+                windows, block_stats = build_manifest(
+                    pid, df, fs, feature_names, params,
+                    include_artifacts=incl_art,
+                    include_bursts=incl_burst)
                 all_windows.extend(windows)
+
+                # Collect block stats only for primary manifest
+                if manifest_name == 'primary':
+                    pid_block_stats.extend(block_stats)
 
             # Re-index window_ids across all CSVs
             for i, w in enumerate(all_windows):
@@ -234,6 +341,8 @@ def run(run_dir, params):
                     'windows': all_windows,
                     'feature_names': feature_names,
                     'fs': fs,
+                    'a_press_times': [t for df in dfs
+                                      for t in df.attrs.get('a_press_times', [])],
                 }, f)
 
             n_stay = sum(1 for w in all_windows if w['label'] == 1)
@@ -252,6 +361,7 @@ def run(run_dir, params):
             if manifest_name == 'primary':
                 print(f" STAY={n_stay} SKIP={n_skip} burst={n_burst}", end="")
 
+        all_block_stats[pid] = pid_block_stats
         print()
 
     # Write label summaries
@@ -260,23 +370,29 @@ def run(run_dir, params):
         csv_path = run_dir / "windows" / manifest_name / "label_summary.csv"
         df_s.to_csv(csv_path, index=False)
 
+    # Write block stats for viz03
+    all_block_rows = []
+    for pid, stats in all_block_stats.items():
+        for bs in stats:
+            bs['pid'] = pid
+            all_block_rows.append(bs)
+    if all_block_rows:
+        df_blocks = pd.DataFrame(all_block_rows)
+        df_blocks.to_csv(run_dir / "windows" / "primary" / "block_stats.csv", index=False)
+
     primary = summary_rows['primary']
     total_stay = sum(r['n_stay'] for r in primary)
     total_skip = sum(r['n_skip'] for r in primary)
+    total_burst = sum(r['n_burst_skip'] for r in primary)
     print(f"\n  ✓ Primary manifest: {total_stay} STAY, {total_skip} SKIP windows "
-          f"across {len(primary)} participants.")
+          f"({total_burst} burst-flagged) across {len(primary)} participants.")
 
     # ── Detailed windowing diagnostics ──
-    p = params.get('step03', {})
-    window_s = p.get('skip_window_s', 3.0)
-    stride_s = p.get('stay_stride_s', 0.6)
-    min_stay_s = p.get('min_stay_dur_s', 4.0)
-    burst_thresh = p.get('burst_thresh_s', 3.0)
-
     print(f"\n{'─'*92}")
     print(f"  STEP 03 — WINDOW EXTRACTION DIAGNOSTICS")
-    print(f"  Window: {window_s}s | STAY stride: {stride_s}s ({(1-stride_s/window_s)*100:.0f}% overlap)"
-          f" | Min STAY region: {min_stay_s}s | Burst: <{burst_thresh}s")
+    print(f"  SKIP region: ±{half_window_s}s around A-press = {2*half_window_s}s per single A-press")
+    print(f"  Window: {window_s}s | Stride: {stride_s}s ({(1-stride_s/window_s)*100:.0f}% overlap)")
+    print(f"  Burst: SKIP blocks with ≥2 A-presses (merged regions)")
     print(f"{'─'*92}")
 
     # Per-participant window details from the primary manifest
@@ -315,7 +431,7 @@ def run(run_dir, params):
                 breaks = np.where(np.diff(skip_idx) > 1)[0] + 1
                 n_skip_blocks += len(np.split(skip_idx, breaks))
 
-            # STAY regions ≥ min_stay_s
+            # STAY regions ≥ window_s
             stay_idx = np.where(stay_mask)[0]
             if len(stay_idx) > 0:
                 breaks = np.where(np.diff(stay_idx) > 1)[0] + 1
@@ -323,7 +439,7 @@ def run(run_dir, params):
                     if len(region) > 0:
                         dur = (df['lsl_timestamp'].values[region[-1]]
                                - df['lsl_timestamp'].values[region[0]])
-                        if dur >= min_stay_s:
+                        if dur >= window_s:
                             n_stay_regions += 1
 
         tot_skip_blk += n_skip_blocks
@@ -371,6 +487,20 @@ def run(run_dir, params):
           f"  {tot_pri_stay:>8}  {tot_pri_burst:>5}  {tot_pri_stay/max(tot_pri_skip,1):>5.1f}x"
           f"  │  {tot_ae:>5}  {tot_be:>7}  {tot_aebe:>7}"
           f"  │  {'':>6}")
+
+    # Burst block statistics
+    burst_blocks = [bs for stats in all_block_stats.values() for bs in stats if bs['is_burst']]
+    normal_blocks = [bs for stats in all_block_stats.values() for bs in stats if not bs['is_burst']]
+    print(f"\n  Burst block statistics:")
+    print(f"    Normal blocks (1 A-press, ~{2*half_window_s}s): {len(normal_blocks)}")
+    print(f"    Burst blocks  (≥2 A-presses, merged):  {len(burst_blocks)}")
+    if burst_blocks:
+        a_counts = [bs['n_a_presses'] for bs in burst_blocks]
+        durs = [bs['duration_s'] for bs in burst_blocks]
+        print(f"    Burst A-press counts: min={min(a_counts)}, max={max(a_counts)}, "
+              f"mean={np.mean(a_counts):.1f}")
+        print(f"    Burst durations: min={min(durs):.1f}s, max={max(durs):.1f}s, "
+              f"mean={np.mean(durs):.1f}s")
 
     # Manifest comparison
     print(f"\n  Manifest comparison (total windows across all participants):")

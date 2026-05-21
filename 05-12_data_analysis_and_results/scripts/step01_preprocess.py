@@ -310,15 +310,21 @@ def process_participant(pid, out_dir_nonotch, out_dir_notch, params):
         n_stay_total += (uniform['class'] == 'STAY').sum()
         n_skip_total += (uniform['class'] == 'SKIP').sum()
 
-        # Count A-presses in this CSV before interpolation drops keypress col
-        n_a_presses = int((trimmed['keypress_A'] == 1).sum()) \
-            if 'keypress_A' in trimmed.columns else 0
+        # Extract A-press info before interpolation drops keypress columns
+        if 'keypress_A' in trimmed.columns:
+            a_mask = trimmed['keypress_A'] == 1
+            n_a_presses = int(a_mask.sum())
+            a_press_times = sorted(trimmed.loc[a_mask, 'lsl_timestamp'].values.tolist())
+        else:
+            n_a_presses = 0
+            a_press_times = []
 
         # Nonotch path
         df_nn, feature_names = build_relative_power(
             uniform, baseline_stats, target_fs, notch_freq=None
         )
         df_nn.attrs['n_a_presses'] = n_a_presses
+        df_nn.attrs['a_press_times'] = a_press_times
         processed_dfs_nonotch.append(df_nn)
 
         # Notch path
@@ -326,6 +332,7 @@ def process_participant(pid, out_dir_nonotch, out_dir_notch, params):
             uniform, baseline_stats_notch, target_fs, notch_freq=50.0
         )
         df_n.attrs['n_a_presses'] = n_a_presses
+        df_n.attrs['a_press_times'] = a_press_times
         processed_dfs_notch.append(df_n)
 
     if not processed_dfs_nonotch:
