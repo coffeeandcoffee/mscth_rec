@@ -82,7 +82,7 @@ df.attrs['a_press_times'] # list[float] — LSL timestamps of each A-keypress
 | 01 — Preprocess | ✅ Approved | SKIP regions verified ~6s per isolated A-press |
 | 02 — Artifact Flag | ✅ Approved | See viz02 caveat below |
 | 03 — Window Labelling | ✅ Approved | Sliding window + burst detection working |
-| 04 — Balance & Split | ✅ Approved | viz04 fixed: reads actual fold assignments + real STAY/SKIP counts |
+| 04 — Balance & Split | ✅ Approved | Smart Stratified Temporal Split validated visually (gap validation plot, SKIP density) and mathematically (min gap >= 2.9s) |
 | 05 — Feature Engineering | ✅ Approved | viz05 fixed: schematic reads stat count from params |
 | 06+ | ⚠️ Not yet validated | Resume from here |
 
