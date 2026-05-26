@@ -18,7 +18,7 @@ def run(run_dir, params):
 
     df = pd.read_csv(report_csv)
 
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    fig, axes = plt.subplots(1, 2, figsize=(14, 8))
     fig.suptitle("Step 06 — Grid Search", fontsize=16, fontweight='bold')
 
     # Panel 1 — Hyperparameter selection frequency
@@ -56,6 +56,10 @@ def run(run_dir, params):
                                fontsize=7, rotation=45)
         ax.set_ylabel('Count (participants)'); ax.set_title('HP Selection Frequency')
         ax.legend(fontsize=8)
+        
+        # Add explanation
+        ax.text(0.5, -0.20, "HOW TO INTERPRET:\nThis shows which hyperparameters the grid search picked most often across all participants.\nTaller bars mean that value was frequently chosen as the 'absolute best' performer.\nIf the highest possible value is constantly chosen, we should probably shift the grid higher.", 
+                 ha='center', va='top', transform=ax.transAxes, fontsize=9, bbox=dict(facecolor='lightyellow', alpha=0.8, edgecolor='orange', boxstyle='round,pad=0.5'))
 
     # Panel 2 — Inner CV score surface (one participant)
     ax = axes[1]
@@ -84,6 +88,11 @@ def run(run_dir, params):
             bj = ne_v.index(bp['n_estimators']) if bp['n_estimators'] in ne_v else 0
             ax.plot(bj, bi, '*', color='red', markersize=15)
         plt.colorbar(im, ax=ax, shrink=0.7)
+        
+        # Add explanation
+        ax.text(0.5, -0.20, "HOW TO INTERPRET:\nThis heatmap shows the actual test scores for different combinations of Max Depth and N Estimators.\nDark blue = better score. The red star shows the absolute best combination for this participant.\nIf the star is always in the top right corner, we haven't explored high enough values yet.", 
+                 ha='center', va='top', transform=ax.transAxes, fontsize=9, bbox=dict(facecolor='lightyellow', alpha=0.8, edgecolor='orange', boxstyle='round,pad=0.5'))
 
-    plt.tight_layout()
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.subplots_adjust(bottom=0.25)
     plt.savefig(viz_dir / "viz06_grid_search.png", dpi=200); plt.close()

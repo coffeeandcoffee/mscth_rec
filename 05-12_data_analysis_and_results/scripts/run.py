@@ -43,6 +43,8 @@ STEPS = [
     ("step13_sensitivity_manifests","viz13_sensitivity_manifests_viz","Sensitivity Analysis"),
     ("step14_logo_cv",             "viz14_logo_cv_viz",             "LOGO-CV"),
     ("step15_compile_report",      "viz15_compile_report_viz",      "Report Compilation"),
+    ("step16_parallel_universes",  "viz16_parallel_universes_viz",  "20-Way Parallel Evaluation"),
+    ("step17_final_results",       "viz17_final_results_viz",       "Final Results Summary"),
 ]
 
 
@@ -154,8 +156,8 @@ def main():
                         help='Timestamp of prior run to pre-fill parameters from')
     parser.add_argument('--auto-approve', action='store_true',
                         help='Skip parameter approval pause')
-    parser.add_argument('--step', action='store_true',
-                        help='Execute only the next incomplete step, then stop')
+    parser.add_argument('--step', type=int, default=None,
+                        help='Run pipeline up to and including the specified step number, then stop')
     parser.add_argument('--restep', action='store_true',
                         help='Repeat the last completed step, then stop')
     args = parser.parse_args()
@@ -206,14 +208,21 @@ def main():
             done_file = run_dir / f"step{last_done:02d}.done"
             if done_file.exists():
                 done_file.unlink()
-            args.step = True
+            args.step = last_done
         else:
             print("\n  --restep: No completed steps found to repeat.")
 
     # ── Execute pipeline ──
     for i, (step_module, viz_module, step_name) in enumerate(STEPS, start=1):
+        if args.step is not None and i > args.step:
+            print(f"\n  Requested --step {args.step} has already been reached. Stopping.")
+            break
+
         if step_done(run_dir, i):
             print(f"\n  Step {i:02d} [{step_name}] — SKIPPED (already complete)")
+            if args.step is not None and i == args.step:
+                print(f"\n  --step {args.step}: Stopping as requested step is already complete.")
+                break
             continue
 
         print(f"\n{'─'*70}")
@@ -238,10 +247,10 @@ def main():
         mark_done(run_dir, i)
         print(f"  ✓ Step {i:02d} [{step_name}] — COMPLETE")
 
-        if args.step:
-            flag_used = "--restep" if args.restep else "--step"
+        if args.step is not None and i >= args.step:
+            flag_used = "--restep" if args.restep else f"--step {args.step}"
             print(f"\n  {flag_used}: Stopping after step {i:02d}.")
-            print(f"  Resume with: ../venv/bin/python3 run.py --resume {timestamp}")
+            print(f"  Resume with: python3 run.py --resume {timestamp}")
             break
 
     print(f"\n{'='*70}")

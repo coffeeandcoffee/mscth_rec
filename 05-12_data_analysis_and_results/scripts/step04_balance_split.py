@@ -68,6 +68,13 @@ def create_smart_temporal_blocks(windows, n_folds=5, gap_s=3.0):
     return blocks
 
 
+def create_chronological_blocks_no_gap(windows, n_folds=5):
+    """Divide windows into n_folds stratified temporal blocks with NO firewall.
+    Allows overlapping sliding windows to bleed across the Train/Test boundary.
+    Used exclusively for demonstrating data leakage."""
+    return create_smart_temporal_blocks(windows, n_folds=n_folds, gap_s=0.0)
+
+
 def undersample_balance(window_ids, windows, seed):
     """Undersample majority class to achieve 50/50 balance."""
     rng = np.random.RandomState(seed)
@@ -132,38 +139,47 @@ def build_cv_splits(windows, params, pid=None):
     gap_s = p.get('gap_s', 3.0)
 
     blocks = create_smart_temporal_blocks(windows, n_folds, gap_s)
+    blocks_no_gap = create_chronological_blocks_no_gap(windows, n_folds)
 
     all_splits = {}
+    all_splits_no_gap = {}
 
     for seed in seeds:
         seed_splits = []
+        seed_splits_no_gap = []
+        
         for fold in range(n_folds):
+            # 1. Primary strict splits
             test_ids = blocks[fold]
             train_ids = []
             for k in range(n_folds):
                 if k != fold:
                     train_ids.extend(blocks[k])
-
-            # Balance independently
             train_balanced = undersample_balance(train_ids, windows, seed + fold)
             test_balanced = undersample_balance(test_ids, windows, seed + fold + 100)
-
             seed_splits.append({
-                'fold': fold,
-                'train_ids': train_balanced,
-                'test_ids': test_balanced,
-                'train_n_stay': sum(1 for i in train_balanced if windows[i]['label'] == 1),
-                'train_n_skip': sum(1 for i in train_balanced if windows[i]['label'] == 0),
-                'test_n_stay': sum(1 for i in test_balanced if windows[i]['label'] == 1),
-                'test_n_skip': sum(1 for i in test_balanced if windows[i]['label'] == 0),
+                'fold': fold, 'train_ids': train_balanced, 'test_ids': test_balanced,
+            })
+
+            # 2. No-gap splits
+            test_ids_ng = blocks_no_gap[fold]
+            train_ids_ng = []
+            for k in range(n_folds):
+                if k != fold:
+                    train_ids_ng.extend(blocks_no_gap[k])
+            train_bal_ng = undersample_balance(train_ids_ng, windows, seed + fold)
+            test_bal_ng = undersample_balance(test_ids_ng, windows, seed + fold + 100)
+            seed_splits_no_gap.append({
+                'fold': fold, 'train_ids': train_bal_ng, 'test_ids': test_bal_ng,
             })
 
         info = f"(PID {pid}, Seed {seed})" if pid is not None else f"(Seed {seed})"
-        validate_splits(seed_splits, windows, gap_s, info)
+        validate_splits(seed_splits, windows, gap_s, info)  # Only validate the strict primary splits
 
         all_splits[seed] = seed_splits
+        all_splits_no_gap[seed] = seed_splits_no_gap
 
-    return all_splits
+    return all_splits, all_splits_no_gap
 
 
 def run(run_dir, params):
@@ -182,7 +198,7 @@ def run(run_dir, params):
             data = pickle.load(f)
 
         windows = data['windows']
-        all_splits = build_cv_splits(windows, params, pid=pid)
+        all_splits, all_splits_no_gap = build_cv_splits(windows, params, pid=pid)
 
         # Save splits
         split_path = splits_dir / f"P{pid}_splits.pkl"
@@ -190,6 +206,7 @@ def run(run_dir, params):
             pickle.dump({
                 'pid': pid,
                 'splits': all_splits,
+                'splits_no_gap': all_splits_no_gap,
             }, f)
 
         # Compute balanced counts (use seed 0 as reference)

@@ -58,7 +58,7 @@ def run_sensitivity_variant(run_dir, manifest_name, params):
         wids = feat['window_ids']
 
         # Balance and split
-        splits = build_cv_splits(windows, params)
+        splits, _ = build_cv_splits(windows, params)
         wid_map = {int(w): i for i, w in enumerate(wids)}
 
         seed_recalls = []

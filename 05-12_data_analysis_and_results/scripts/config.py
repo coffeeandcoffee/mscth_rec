@@ -36,9 +36,9 @@ FREQUENCY_BANDS = [
 
 N_BANDS = len(FREQUENCY_BANDS)
 N_CHANNELS = len(EEG_CHANNELS)
-N_STATS = 4  # mean, std, min, max
-N_FEATURES_FULL = N_CHANNELS * N_BANDS * N_STATS       # 112
-N_FEATURES_SUBSET = 2 * N_BANDS * N_STATS              # 56
+N_STATS = 10  # mean, std, min, max, peakfreq, macrofreq, rel_power, act, mob, comp
+N_FEATURES_FULL = N_CHANNELS * N_BANDS * N_STATS       # 280
+N_FEATURES_SUBSET = 2 * N_BANDS * N_STATS              # 140
 
 # ──────────────────────────────────────────────
 # Participants
@@ -97,7 +97,7 @@ DEFAULT_PARAMS = {
         "target_fs": 256.0,
         "baseline_offset_s": 10.0,
         "baseline_duration_s": 90.0,
-        "skip_window_s": 3.0,
+        "skip_window_s": 0.5,      # Default: 3.0 (±0.5s instead of ±3s)
         "butterworth_order": 4,
     },
     "step02": {
@@ -107,9 +107,9 @@ DEFAULT_PARAMS = {
         "emg_channels": ["TP9", "TP10"],
     },
     "step03": {
-        "half_window_s": 3.0,      # step01 labels ±3s around each A-press → 6s SKIP region
-        "window_s": 3.0,           # extracted window duration (both SKIP and STAY)
-        "stride_s": 0.6,           # sliding window stride (both SKIP and STAY); 80% overlap
+        "half_window_s": 0.5,      # Default: 3.0 (matches step01's ±0.5s)
+        "window_s": 1.0,           # Default: 3.0 (1s window duration)
+        "stride_s": 1.0,           # Default: 0.6 (1.0s stride means 0% overlap)
         "burst_thresh_s": 3.0,     # A-presses < 3s apart → burst-skip flag
     },
     "step04": {
@@ -120,19 +120,19 @@ DEFAULT_PARAMS = {
         "train_overlap": 0.8,
     },
     "step05": {
-        "stats": ["mean", "std", "min", "max"],
+        "stats": ["mean", "std", "min", "max", "peakfreq", "macrofreq", "rel_power", "hjorth_act", "hjorth_mob", "hjorth_comp"],
     },
     "step06": {
         "param_grid": {
-            "n_estimators": [100, 200, 300],
-            "max_depth": [5, 7, 10],
-            "min_samples_leaf": [3, 5, 10],
+            'n_estimators': [30, 60, 100], # before 26/05: [100, 200, 300],
+            'max_depth': [1, 2, 3], # before 26/05: [2, 3, 5],
+            'min_samples_leaf': [10, 20, 30], # before 26/05: [3, 5, 10],
         },
         "inner_cv_folds": 3,
         "seed": 0,
     },
     "step07": {
-        "eval_protocols": ["temporal_blocked", "random_split"],
+        "eval_protocols": ["temporal_blocked", "temporal_blocked_no_gap", "random_split"],
         "feature_sets": ["full", "frontal", "temporal"],
         "seeds": [0, 1, 7, 42, 99],
         "random_split_ratio": 0.6,
@@ -142,6 +142,11 @@ DEFAULT_PARAMS = {
     },
     "step14": {
         "balanced": True,
+    },
+    "experimental": {
+        "remove_min_max": True,       # X1: Ablate zero-variance min/max features
+        "use_hilbert_envelope": True, # X2: Use Hilbert amplitude envelope instead of squared instantaneous power
+        "extract_erp_features": True, # X4: Extract time-domain ERP features (raw voltage, slope)
     },
 }
 
@@ -235,12 +240,29 @@ def build_feature_names(channels=None):
 
 
 def build_agg_feature_names(channels=None):
-    """Build ordered list of aggregated feature names (mean/std/min/max)."""
+    """Build ordered list of aggregated feature names."""
     base = build_feature_names(channels)
     agg = []
+    
+    # Check experimental toggles
+    p_exp = DEFAULT_PARAMS.get('experimental', {})
+    remove_min_max = p_exp.get('remove_min_max', False)
+    extract_erp_features = p_exp.get('extract_erp_features', False)
+    
+    stats = ["mean", "std", "min", "max", "peakfreq", "macrofreq", "rel_power", "hjorth_act", "hjorth_mob", "hjorth_comp"]
+    if remove_min_max:
+        stats = [s for s in stats if s not in ('min', 'max')]
+        
     for fname in base:
-        for stat in ['mean', 'std', 'min', 'max']:
+        for stat in stats:
             agg.append(f"{fname}_{stat}")
+            
+    if extract_erp_features:
+        target_chs = channels if channels is not None else EEG_CHANNELS
+        for ch in target_chs:
+            for stat in ['raw_mean', 'raw_std', 'raw_slope']:
+                agg.append(f"{ch}_{stat}")
+                
     return agg
 
 

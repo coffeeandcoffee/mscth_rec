@@ -31,7 +31,10 @@ def run(run_dir, params):
     notch_dir = run_dir / "processed" / "notch"
 
     fig, axes = plt.subplots(2, 2, figsize=(16, 12))
-    fig.suptitle("Step 01 — Preprocessing Overview", fontsize=16, fontweight='bold')
+    title_str = "Step 01 — Preprocessing Overview"
+    if params.get('experimental', config.DEFAULT_PARAMS.get('experimental', {})).get('use_hilbert_envelope', False):
+        title_str += "\n[X2: Hilbert Envelope: ON]"
+    fig.suptitle(title_str, fontsize=16, fontweight='bold')
 
     # Collect data across participants
     fs_values = []

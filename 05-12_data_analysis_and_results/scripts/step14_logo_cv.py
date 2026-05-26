@@ -24,17 +24,37 @@ def run(run_dir, params):
     config.pprint_step(14, "LOGO-CV")
 
     features_dir = run_dir / "features"
+    splits_dir = run_dir / "splits"
     gs_dir = run_dir / "grid_search"
 
-    # Load all participant feature data
+    # Load all participant feature data and Step 04 validated splits
     all_data = {}
     for pid in config.INCLUDED_PARTICIPANTS:
         fp = features_dir / f"P{pid}.pkl"
-        if not fp.exists():
+        sp = splits_dir / f"P{pid}_splits.pkl"
+        if not fp.exists() or not sp.exists():
             continue
+            
         with open(fp, 'rb') as f:
             fd = pickle.load(f)
-        all_data[pid] = fd
+        with open(sp, 'rb') as f:
+            sd = pickle.load(f)
+            
+        # We strictly use the union of Step 04 mathematically balanced test_ids (Seed 0)
+        # to form the completely balanced, validated subset of windows for this participant.
+        splits_seed0 = sd['splits'].get(0, [])
+        valid_test_ids = []
+        for fold in splits_seed0:
+            valid_test_ids.extend(fold['test_ids'])
+            
+        # Map these window IDs to feature indices
+        wid_to_idx = {int(wid): i for i, wid in enumerate(fd['window_ids'])}
+        valid_indices = [wid_to_idx[wid] for wid in valid_test_ids if wid in wid_to_idx]
+        
+        all_data[pid] = {
+            'X_bal': fd['features_full'][valid_indices],
+            'y_bal': fd['labels'][valid_indices]
+        }
 
     if len(all_data) < 5:
         print("  ⚠ Too few participants for LOGO-CV.")
@@ -44,49 +64,20 @@ def run(run_dir, params):
     agg_cm = np.zeros((2, 2), dtype=int)
 
     for test_pid in sorted(all_data.keys()):
-        # Train data: all except test_pid
+        # Train data: concatenate validated Step 04 balanced data for all EXCEPT test_pid
         X_train_parts, y_train_parts = [], []
-        for pid, fd in all_data.items():
+        for pid, data in all_data.items():
             if pid == test_pid:
                 continue
-            X_train_parts.append(fd['features_full'])
-            y_train_parts.append(fd['labels'])
+            X_train_parts.append(data['X_bal'])
+            y_train_parts.append(data['y_bal'])
 
-        X_train = np.concatenate(X_train_parts)
-        y_train = np.concatenate(y_train_parts)
+        X_train_bal = np.concatenate(X_train_parts)
+        y_train_bal = np.concatenate(y_train_parts)
 
-        # Balance training data
-        rng = np.random.RandomState(42)
-        n0 = np.sum(y_train == 0)
-        n1 = np.sum(y_train == 1)
-        n_min = min(n0, n1)
-        if n_min == 0:
-            continue
-
-        idx0 = np.where(y_train == 0)[0]
-        idx1 = np.where(y_train == 1)[0]
-        idx0_sel = rng.choice(idx0, size=n_min, replace=False)
-        idx1_sel = rng.choice(idx1, size=n_min, replace=False)
-        bal_idx = np.concatenate([idx0_sel, idx1_sel])
-        rng.shuffle(bal_idx)
-        X_train_bal = X_train[bal_idx]
-        y_train_bal = y_train[bal_idx]
-
-        # Test data (balanced)
-        X_test = all_data[test_pid]['features_full']
-        y_test = all_data[test_pid]['labels']
-        n0t = np.sum(y_test == 0)
-        n1t = np.sum(y_test == 1)
-        n_min_t = min(n0t, n1t)
-        if n_min_t == 0:
-            continue
-        idx0t = np.where(y_test == 0)[0]
-        idx1t = np.where(y_test == 1)[0]
-        idx0t_sel = rng.choice(idx0t, size=n_min_t, replace=False)
-        idx1t_sel = rng.choice(idx1t, size=n_min_t, replace=False)
-        bal_idx_t = np.concatenate([idx0t_sel, idx1t_sel])
-        X_test_bal = X_test[bal_idx_t]
-        y_test_bal = y_test[bal_idx_t]
+        # Test data: validated Step 04 balanced data FOR test_pid
+        X_test_bal = all_data[test_pid]['X_bal']
+        y_test_bal = all_data[test_pid]['y_bal']
 
         if len(np.unique(y_train_bal)) < 2 or len(np.unique(y_test_bal)) < 2:
             continue

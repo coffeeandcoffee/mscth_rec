@@ -23,11 +23,11 @@ from pathlib import Path
 import config
 
 
-def _flag_ptp(df, fs, channels, low_hz, high_hz, thresh_uv, window_s=0.5):
-    """Generic peak-to-peak artifact flagger on a bandpassed signal.
+def _flag_ptp_percentile(df, fs, channels, low_hz, high_hz, window_s=0.5):
+    """Generic peak-to-peak artifact flagger on a bandpassed signal using 95th percentile.
 
-    A window is flagged if ptp of the bandpassed signal exceeds thresh_uv.
-    Sliding window with 50% overlap.
+    A window is flagged if ptp of the bandpassed signal exceeds the 95th percentile
+    of all windows for that channel. Sliding window with 50% overlap.
     """
     window_samples = max(int(fs * window_s), 20)
     n = len(df)
@@ -37,26 +37,41 @@ def _flag_ptp(df, fs, channels, low_hz, high_hz, thresh_uv, window_s=0.5):
         raw = df[ch].values.astype(float)
         filtered = config.extract_band_amplitude(raw, fs, low_hz, high_hz)
 
+        # Collect all PTP values for this channel
+        ptps = []
         for start in range(0, n - window_samples, window_samples // 2):
             end = start + window_samples
-            if np.ptp(filtered[start:end]) > thresh_uv:
+            ptps.append(np.ptp(filtered[start:end]))
+            
+        if not ptps:
+            continue
+            
+        # Compute 95th percentile threshold
+        thresh_uv = np.percentile(ptps, 95)
+
+        # Apply threshold
+        idx = 0
+        for start in range(0, n - window_samples, window_samples // 2):
+            end = start + window_samples
+            if ptps[idx] > thresh_uv:
                 mask[start:end] = True
+            idx += 1
 
     return mask
 
 
-def flag_blinks(df, fs, thresh_uv):
-    """Blink: ptp of 1-40Hz bandpassed AF7/AF8 > thresh_uv."""
-    return _flag_ptp(df, fs, config.FRONTAL_CHANNELS,
-                     low_hz=1.0, high_hz=40.0,
-                     thresh_uv=thresh_uv, window_s=0.5)
+def flag_blinks(df, fs):
+    """Blink: ptp of 1-40Hz bandpassed AF7/AF8 > 95th percentile."""
+    return _flag_ptp_percentile(df, fs, config.FRONTAL_CHANNELS,
+                                low_hz=1.0, high_hz=40.0,
+                                window_s=0.5)
 
 
-def flag_emg(df, fs, thresh_uv):
-    """EMG: ptp of 30-100Hz bandpassed TP9/TP10 > thresh_uv."""
-    return _flag_ptp(df, fs, config.TEMPORAL_CHANNELS,
-                     low_hz=30.0, high_hz=100.0,
-                     thresh_uv=thresh_uv, window_s=0.25)
+def flag_emg(df, fs):
+    """EMG: ptp of 30-100Hz bandpassed TP9/TP10 > 95th percentile."""
+    return _flag_ptp_percentile(df, fs, config.TEMPORAL_CHANNELS,
+                                low_hz=30.0, high_hz=100.0,
+                                window_s=0.25)
 
 
 def process_participant(pid, nonotch_dir, notch_dir, params):
@@ -85,10 +100,6 @@ def process_participant(pid, nonotch_dir, notch_dir, params):
             f"({len(nonotch_dfs)}) CSV counts differ — pipeline state corrupt."
         )
 
-    p = params.get('step02', {})
-    blink_thresh = p.get('blink_thresh_uv', 800)
-    emg_thresh = p.get('emg_thresh_uv', 500)
-
     flagged_dfs = []
     total_blink = 0
     total_emg = 0
@@ -100,9 +111,9 @@ def process_participant(pid, nonotch_dir, notch_dir, params):
                 f"P{pid}: notch/nonotch row count mismatch within CSV."
             )
 
-        # Detect on notched signal
-        blink_mask = flag_blinks(notch_df, fs, thresh_uv=blink_thresh)
-        emg_mask = flag_emg(notch_df, fs, thresh_uv=emg_thresh)
+        # Detect on notched signal using dynamic 95th percentile thresholds
+        blink_mask = flag_blinks(notch_df, fs)
+        emg_mask = flag_emg(notch_df, fs)
 
         # Write flags to nonotch df (which is what downstream reads)
         out_df = nonotch_df.copy()
@@ -139,12 +150,8 @@ def run(run_dir, params):
     """Entry point called by run.py."""
     config.pprint_step(2, "ARTIFACT FLAGGING")
 
-    p = params.get('step02', {})
-    blink_thresh = p.get('blink_thresh_uv', 800)
-    emg_thresh = p.get('emg_thresh_uv', 500)
     print(f"  Detection on NOTCHED signal (50Hz removed).")
-    print(f"  Thresholds: blink ptp > {blink_thresh}µV (1-40Hz, AF7/AF8), "
-          f"emg ptp > {emg_thresh}µV (30-100Hz, TP9/TP10)")
+    print(f"  Thresholds: Outer 5% rejection (95th percentile) for each participant's channels.")
 
     nonotch_dir = run_dir / "processed" / "nonotch"
     notch_dir = run_dir / "processed" / "notch"

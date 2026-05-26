@@ -17,7 +17,7 @@ from itertools import product
 import pandas as pd
 
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import KFold
+from sklearn.model_selection import TimeSeriesSplit
 from sklearn.metrics import recall_score
 
 import config
@@ -28,10 +28,10 @@ warnings.filterwarnings('ignore')
 
 def run_inner_cv(X_train, y_train, param_combo, inner_folds=3, seed=0):
     """Run inner CV to evaluate a single hyperparameter combination."""
-    kf = KFold(n_splits=inner_folds, shuffle=True, random_state=seed)
+    tscv = TimeSeriesSplit(n_splits=inner_folds)
     recalls = []
 
-    for train_idx, val_idx in kf.split(X_train):
+    for train_idx, val_idx in tscv.split(X_train):
         if len(np.unique(y_train[train_idx])) < 2:
             continue
         if len(np.unique(y_train[val_idx])) < 2:

@@ -45,7 +45,7 @@ import config
 # Baseline extraction
 # ──────────────────────────────────────────────
 
-def extract_baseline_stats(csv_list, baseline_offset_s, baseline_duration_s, target_fs, notch_freq=None):
+def extract_baseline_stats(csv_list, baseline_offset_s, baseline_duration_s, target_fs, notch_freq=None, use_hilbert_envelope=False):
     """Extract baseline_stats dict with 'mean' and 'std' sub-dicts per
     channel×band, computed from the interpolated+filtered 90s baseline window.
 
@@ -109,7 +109,11 @@ def extract_baseline_stats(csv_list, baseline_offset_s, baseline_duration_s, tar
         for band_name, lo, hi in config.FREQUENCY_BANDS:
             fname = f"{ch}_{band_name}"
             amp = config.extract_band_amplitude(ch_uniform, target_fs, lo, hi)
-            power = amp ** 2
+            if use_hilbert_envelope:
+                from scipy.signal import hilbert
+                power = np.abs(hilbert(amp))
+            else:
+                power = amp ** 2
             m = float(np.mean(power))
             s = float(np.std(power))
             if m < 1e-12:
@@ -212,7 +216,7 @@ def interpolate_to_target_fs(df, target_fs):
     return pd.DataFrame(out)
 
 
-def build_relative_power(df_uniform, baseline_stats, target_fs, notch_freq=None):
+def build_relative_power(df_uniform, baseline_stats, target_fs, notch_freq=None, use_hilbert_envelope=False, extract_erp_features=False):
     """Compute z-score normalised band power for all 28 channel×band features.
 
     z = (instantaneous_power - baseline_mean) / baseline_std
@@ -232,11 +236,19 @@ def build_relative_power(df_uniform, baseline_stats, target_fs, notch_freq=None)
             fname = f"{ch}_{band_name}"
             feature_names.append(fname)
             amp = config.extract_band_amplitude(raw, target_fs, lo, hi)
-            power = amp ** 2
+            if use_hilbert_envelope:
+                from scipy.signal import hilbert
+                power = np.abs(hilbert(amp))
+            else:
+                power = amp ** 2
 
             b_mean = baseline_stats['mean'].get(fname, 1e-12)
             b_std = baseline_stats['std'].get(fname, 1e-12)
             df_out[fname] = (power - b_mean) / b_std
+
+    if extract_erp_features:
+        for ch in config.EEG_CHANNELS:
+            feature_names.append(ch)
 
     return df_out, feature_names
 
@@ -250,20 +262,24 @@ def process_participant(pid, out_dir_nonotch, out_dir_notch, params):
     print(f"  P{pid}...", end="", flush=True)
 
     p = params['step01']
+    p_exp = params.get('experimental', config.DEFAULT_PARAMS.get('experimental', {}))
     target_fs        = float(p['target_fs'])
     baseline_offset_s   = float(p['baseline_offset_s'])
     baseline_duration_s = float(p['baseline_duration_s'])
     skip_window_s    = float(p['skip_window_s'])
+    
+    use_hilbert = p_exp.get('use_hilbert_envelope', False)
+    extract_erp = p_exp.get('extract_erp_features', False)
 
     csv_list = config.load_participant_csvs(pid)
 
     # ── Validate baseline (hard prerequisite) ──
     try:
         baseline_stats = extract_baseline_stats(
-            csv_list, baseline_offset_s, baseline_duration_s, target_fs, notch_freq=None
+            csv_list, baseline_offset_s, baseline_duration_s, target_fs, notch_freq=None, use_hilbert_envelope=use_hilbert
         )
         baseline_stats_notch = extract_baseline_stats(
-            csv_list, baseline_offset_s, baseline_duration_s, target_fs, notch_freq=50.0
+            csv_list, baseline_offset_s, baseline_duration_s, target_fs, notch_freq=50.0, use_hilbert_envelope=use_hilbert
         )
     except ValueError as e:
         raise RuntimeError(f"P{pid} baseline validation failed: {e}")
@@ -321,7 +337,7 @@ def process_participant(pid, out_dir_nonotch, out_dir_notch, params):
 
         # Nonotch path
         df_nn, feature_names = build_relative_power(
-            uniform, baseline_stats, target_fs, notch_freq=None
+            uniform, baseline_stats, target_fs, notch_freq=None, use_hilbert_envelope=use_hilbert, extract_erp_features=extract_erp
         )
         df_nn.attrs['n_a_presses'] = n_a_presses
         df_nn.attrs['a_press_times'] = a_press_times
@@ -329,7 +345,7 @@ def process_participant(pid, out_dir_nonotch, out_dir_notch, params):
 
         # Notch path
         df_n, _ = build_relative_power(
-            uniform, baseline_stats_notch, target_fs, notch_freq=50.0
+            uniform, baseline_stats_notch, target_fs, notch_freq=50.0, use_hilbert_envelope=use_hilbert, extract_erp_features=extract_erp
         )
         df_n.attrs['n_a_presses'] = n_a_presses
         df_n.attrs['a_press_times'] = a_press_times

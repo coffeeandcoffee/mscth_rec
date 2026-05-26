@@ -129,7 +129,7 @@ def run(run_dir, params):
     p = params.get('step07', {})
     feature_sets = p.get('feature_sets', ['full', 'frontal', 'temporal'])
     seeds = p.get('seeds', [0, 1, 7, 42, 99])
-    eval_protocols = p.get('eval_protocols', ['temporal_blocked', 'random_split'])
+    eval_protocols = p.get('eval_protocols', ['temporal_blocked', 'temporal_blocked_no_gap', 'random_split'])
 
     all_participant_results = []
 
@@ -166,6 +166,10 @@ def run(run_dir, params):
                 for seed in seeds:
                     if protocol == 'temporal_blocked':
                         splits = split_data['splits'].get(seed, [])
+                        fold_results = train_temporal_blocked(
+                            X, labels, window_ids, splits, best_params, seed)
+                    elif protocol == 'temporal_blocked_no_gap':
+                        splits = split_data.get('splits_no_gap', {}).get(seed, [])
                         fold_results = train_temporal_blocked(
                             X, labels, window_ids, splits, best_params, seed)
                     else:
