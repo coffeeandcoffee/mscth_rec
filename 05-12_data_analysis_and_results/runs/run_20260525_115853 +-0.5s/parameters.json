@@ -1,0 +1,101 @@
+{
+  "step01": {
+    "target_fs": 256.0,
+    "baseline_offset_s": 10.0,
+    "baseline_duration_s": 90.0,
+    "skip_window_s": 0.5,
+    "butterworth_order": 4
+  },
+  "step02": {
+    "blink_thresh_uv": 800,
+    "emg_thresh_uv": 800,
+    "blink_channels": [
+      "AF7",
+      "AF8"
+    ],
+    "emg_channels": [
+      "TP9",
+      "TP10"
+    ]
+  },
+  "step03": {
+    "half_window_s": 0.5,
+    "window_s": 1.0,
+    "stride_s": 1.0,
+    "burst_thresh_s": 3.0
+  },
+  "step04": {
+    "seeds": [
+      0,
+      1,
+      7,
+      42,
+      99
+    ],
+    "n_folds": 5,
+    "gap_s": 3.0,
+    "test_overlap": 0.0,
+    "train_overlap": 0.8
+  },
+  "step05": {
+    "stats": [
+      "mean",
+      "std",
+      "min",
+      "max",
+      "peakfreq",
+      "macrofreq",
+      "rel_power",
+      "hjorth_act",
+      "hjorth_mob",
+      "hjorth_comp"
+    ]
+  },
+  "step06": {
+    "param_grid": {
+      "n_estimators": [
+        100,
+        200,
+        300
+      ],
+      "max_depth": [
+        2,
+        3,
+        5
+      ],
+      "min_samples_leaf": [
+        3,
+        5,
+        10
+      ]
+    },
+    "inner_cv_folds": 3,
+    "seed": 0
+  },
+  "step07": {
+    "eval_protocols": [
+      "temporal_blocked",
+      "temporal_blocked_no_gap",
+      "random_split"
+    ],
+    "feature_sets": [
+      "full",
+      "frontal",
+      "temporal"
+    ],
+    "seeds": [
+      0,
+      1,
+      7,
+      42,
+      99
+    ],
+    "random_split_ratio": 0.6
+  },
+  "step08": {
+    "classifier": "logistic_regression"
+  },
+  "step14": {
+    "balanced": true
+  }
+}

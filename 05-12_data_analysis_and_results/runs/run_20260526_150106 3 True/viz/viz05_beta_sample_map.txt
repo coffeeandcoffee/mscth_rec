@@ -1,0 +1,5 @@
+Beta Sample Map (x=under, i=over threshold. Total i-blocks = 5):
+
+xiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxiiiiiiiii
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxiiiiiiiiixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxiiiiiiiiiixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxi
+iiiiiiiixxxxxxxx

@@ -86,7 +86,41 @@ build/
 # Large skip labels CSVs (regenerate with post2v2_add_skip_classification.py)
 *_skip_labels_*.csv
 
-# EEG Pipeline Run Outputs
-05-12_data_analysis_and_results/runs/
-runs/
+# EEG Pipeline Run Outputs - Ultra-Strict Smart Tracking
+# -----------------------------------------------------------------------------
+# 1. Ignore everything in the runs directory
+05-12_data_analysis_and_results/runs/*
+runs/*
+
+# 2. Allow Git to traverse into the timestamped run folders
+!05-12_data_analysis_and_results/runs/*/
+!runs/*/
+
+# 3. Ignore all files and folders immediately inside the timestamped run folders
+05-12_data_analysis_and_results/runs/*/*
+runs/*/*
+
+# 4. Allow Git to traverse into the specific folders we want to track
+!05-12_data_analysis_and_results/runs/*/viz/
+!05-12_data_analysis_and_results/runs/*/grid_search/
+!runs/*/viz/
+!runs/*/grid_search/
+
+# 5. Explicitly TRACK the contents of those folders (ML models/params & Vizes)
+!05-12_data_analysis_and_results/runs/*/viz/*
+!05-12_data_analysis_and_results/runs/*/grid_search/*
+!runs/*/viz/*
+!runs/*/grid_search/*
+
+# 6. Explicitly TRACK the essential raw final data files
+!05-12_data_analysis_and_results/runs/*/parameters.json
+!05-12_data_analysis_and_results/runs/*/best_combinations.json
+!05-12_data_analysis_and_results/runs/*/parallel_universe_metrics.csv
+!05-12_data_analysis_and_results/runs/*/parallel_universe_comparisons.csv
+!05-12_data_analysis_and_results/runs/*/*_parallel_recalls.pkl
+!runs/*/parameters.json
+!runs/*/best_combinations.json
+!runs/*/parallel_universe_metrics.csv
+!runs/*/parallel_universe_comparisons.csv
+!runs/*/*_parallel_recalls.pkl
 
