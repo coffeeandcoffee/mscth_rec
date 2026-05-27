@@ -22,6 +22,26 @@ Each run creates `runs/run_YYYYMMDD_HHMMSS/` with `processed/`, `windows/`, `viz
 
 ---
 
+## Disk Space & Git Tracking
+
+Run folders generate massive intermediate `.pkl` caches (`processed/`, `windows/`, `splits/`, etc.) that take up gigabytes of disk space. 
+
+**Smart Git Tracking:** The `.gitignore` is configured to **strictly ignore** all of these massive intermediate data folders. It only automatically tracks the highly space-efficient, essential files needed for reproduction:
+- ML Models & Parameters (`grid_search/*.json`, `parameters.json`, `best_combinations.json`)
+- Final Result Data (`parallel_universe_*.csv`, `*_parallel_recalls.pkl`)
+- Visualizations (`viz/*.png`)
+
+**Cleaning Up (CRITICAL):**
+When you are done analyzing a run, you should aggressively purge the gigabytes of unneeded `.pkl` files using the built-in cleaner script. This script safely deletes the heavy caches while **preserving** the essential files listed above that Git tracks.
+
+```bash
+cd scripts
+bash clean_runs.sh                  # Opens an interactive menu to choose a run to clean
+bash clean_runs.sh "run_20260526"   # Instantly target and clean a specific run
+```
+
+---
+
 ## Environment
 
 There are **two venvs** in the parent project folder. Only one works:
