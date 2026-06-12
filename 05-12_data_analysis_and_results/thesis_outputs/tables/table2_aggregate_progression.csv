@@ -1,0 +1,5 @@
+Run,Skip window,Window / stride,RF config,Mean Train Acc,Mean Test Acc,ΔAcc (train−test),Mean Test Recall,Mean EI Recall,"Wilcoxon vs chance (W, p, r)",RF vs EI (p),"NoNotch vs Notch (Δ, p)",LOGO-CV Acc,LOGO-CV Recall
+R1 Baseline,±0.5 s,? s / 1.0 s,Depth ? N=?,0.915,0.648,0.267,0.694,0.483,"W=9, p=<0.0001, r=0.945",<0.001,"Δ=+0.153, p=<0.0001",0.673,0.944
+R2 Non-Overlap,±0.5 s,? s / 1.0 s,Depth ? N=?,0.915,0.648,0.267,0.694,0.483,"W=9, p=<0.0001, r=0.945",<0.001,"Δ=+0.153, p=<0.0001",0.673,0.944
+R3 Regularised RF,±0.5 s,? s / 1.0 s,Depth ? N=?,0.829,0.631,0.198,0.668,0.483,"W=23, p=<0.0001, r=0.858",0.0031,"Δ=+0.128, p=<0.001",0.666,0.887
+R4 Full Signal,±0.5 s,? s / 1.0 s,Depth ? N=?,0.801,0.658,0.144,0.752,0.529,"W=1, p=<0.0001, r=0.994",<0.001,"Δ=+0.212, p=<0.0001",0.667,0.911

@@ -1,0 +1,20 @@
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcccccccccccccccccccccccccccccc}
+\hline
+Metric & \multicolumn{2}{c}{EI LR} & \multicolumn{2}{c}{Beta-only} & \multicolumn{2}{c}{Alpha-only} & \multicolumn{2}{c}{Theta-only} & \multicolumn{2}{c}{Beta/Alpha} & \multicolumn{2}{c}{Beta/Theta} & \multicolumn{2}{c}{EEI} & \multicolumn{2}{c}{EI_mean} & \multicolumn{2}{c}{EI_std} & \multicolumn{2}{c}{EI_peakfreq} & \multicolumn{2}{c}{EI_macrofreq} & \multicolumn{2}{c}{EI_rel_power} & \multicolumn{2}{c}{EI_hjorth_act} & \multicolumn{2}{c}{EI_hjorth_mob} & \multicolumn{2}{c}{EI_hjorth_comp} \\
+ & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig \\
+\hline
+F1 Train (STAY) & 28.0\% & - & 59.8\% & \textcolor{green}{TRUE} & 59.1\% & \textcolor{green}{TRUE} & 36.1\% & \textcolor{green}{TRUE} & 57.3\% & \textcolor{green}{TRUE} & 47.8\% & \textcolor{green}{TRUE} & 61.9\% & \textcolor{green}{TRUE} & 28.0\% & FALSE & 28.0\% & FALSE & 28.0\% & FALSE & 28.0\% & FALSE & 28.0\% & FALSE & 28.0\% & FALSE & 28.0\% & FALSE & 28.0\% & FALSE \\
+F1 Test (STAY) & 19.4\% & - & 53.9\% & \textcolor{green}{TRUE} & 54.8\% & \textcolor{green}{TRUE} & 24.6\% & FALSE & 54.1\% & \textcolor{green}{TRUE} & 43.2\% & \textcolor{green}{TRUE} & 61.4\% & \textcolor{green}{TRUE} & 19.4\% & FALSE & 19.4\% & FALSE & 19.4\% & FALSE & 19.4\% & FALSE & 19.4\% & FALSE & 19.4\% & FALSE & 19.4\% & FALSE & 19.4\% & FALSE \\
+Precision (STAY) & 48.6\% & - & 46.7\% & FALSE & 47.0\% & FALSE & 43.7\% & FALSE & 50.1\% & FALSE & 48.3\% & FALSE & 50.4\% & FALSE & 48.6\% & FALSE & 48.6\% & FALSE & 48.6\% & FALSE & 48.6\% & FALSE & 48.6\% & FALSE & 48.6\% & FALSE & 48.6\% & FALSE & 48.6\% & FALSE \\
+Recall (STAY) & 18.3\% & - & 74.8\% & \textcolor{green}{TRUE} & 72.7\% & \textcolor{green}{TRUE} & 27.2\% & FALSE & 65.0\% & \textcolor{green}{TRUE} & 49.3\% & \textcolor{green}{TRUE} & 84.0\% & \textcolor{green}{TRUE} & 18.3\% & FALSE & 18.3\% & FALSE & 18.3\% & FALSE & 18.3\% & FALSE & 18.3\% & FALSE & 18.3\% & FALSE & 18.3\% & FALSE & 18.3\% & FALSE \\
+F1 Train (SKIP) & 60.0\% & - & 34.0\% & \textcolor{green}{TRUE} & 36.7\% & \textcolor{green}{TRUE} & 58.9\% & FALSE & 37.7\% & \textcolor{green}{TRUE} & 50.3\% & \textcolor{green}{TRUE} & 25.7\% & \textcolor{green}{TRUE} & 60.0\% & FALSE & 60.0\% & FALSE & 60.0\% & FALSE & 60.0\% & FALSE & 60.0\% & FALSE & 60.0\% & FALSE & 60.0\% & FALSE & 60.0\% & FALSE \\
+F1 Test (SKIP) & 58.9\% & - & 21.6\% & \textcolor{green}{TRUE} & 27.0\% & \textcolor{green}{TRUE} & 53.0\% & FALSE & 35.2\% & \textcolor{green}{TRUE} & 43.5\% & \textcolor{green}{TRUE} & 19.9\% & \textcolor{green}{TRUE} & 58.9\% & FALSE & 58.9\% & FALSE & 58.9\% & FALSE & 58.9\% & FALSE & 58.9\% & FALSE & 58.9\% & FALSE & 58.9\% & FALSE & 58.9\% & FALSE \\
+Precision (SKIP) & 49.9\% & - & 45.1\% & FALSE & 48.8\% & FALSE & 45.6\% & FALSE & 46.2\% & FALSE & 47.3\% & FALSE & 50.5\% & FALSE & 49.9\% & FALSE & 49.9\% & FALSE & 49.9\% & FALSE & 49.9\% & FALSE & 49.9\% & FALSE & 49.9\% & FALSE & 49.9\% & FALSE & 49.9\% & FALSE \\
+Recall (SKIP) & 80.9\% & - & 25.2\% & \textcolor{green}{TRUE} & 27.8\% & \textcolor{green}{TRUE} & 73.1\% & FALSE & 34.6\% & \textcolor{green}{TRUE} & 50.5\% & \textcolor{green}{TRUE} & 16.6\% & \textcolor{green}{TRUE} & 80.9\% & FALSE & 80.9\% & FALSE & 80.9\% & FALSE & 80.9\% & FALSE & 80.9\% & FALSE & 80.9\% & FALSE & 80.9\% & FALSE & 80.9\% & FALSE \\
+\hline
+\end{tabular}
+\caption{Minimal Metrics for Inter Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha=0.05$, N=25).}
+\label{tab:metrics_inter_ablation}
+\end{table}

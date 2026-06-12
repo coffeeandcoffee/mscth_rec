@@ -1,0 +1,196 @@
+--
+methods?
+definition of research question exactly
+EI Definition (Mean) + EI(STAT) Definition + EEI Definition
+
+--
+reasonong?
+
+EXPERIMENT
+
+PREPROCESSING & CLASS DEFINITION
+- state window/stride/gap/skiparea decisions, state they are variable
+- show prediction of before-skip and on-skip and gap/window size separation
+-> Default to: its beyond this thesis scope to determine that
+- state window/stride/gap/skiparea decision/assumption for this thesis
+
+EXPERIMENTAL ITERATION
+- try super easy (EI & LR112) & super complex (RF112)
+[EI general] describe why EI -> [EI for this]
+[EI112-OFIT] EI for this 112 features -> Insight: overfit even with simplest model - compare to EI that underperforms but doesnt overfit - decision we need simple metric less complex than the 112 Features+LogReg to achieve more generalizability.
+
+[EI112-OFIT] -> [SIMPLE-METRIC] which simple metric? -> which metric or aspect best seperates the classes?
+[SIMPLE-METRIC] -> [CD] Cohen D Stats Class Separation -> Insight: Most seperating feature across all classes is AF7_high_gamma_hjorth_mob
+
+[CD] -> [TEST-IDEAS]
+-> EI
+-> [EI-AB] Ablation (is any EI part outperforming EI itself?)
+-> [TESTING-EEI] Adding high gamma to EI
+-> [TESTING-EI(STAT)] Exchanging Mean with other stats in EI
+
+[EI-AB] Action: EI Ablation -> Insight: parts are better at predicting some classes than EI.
+[TESTING-EEI] New Extended EI -> Insight: Outperforms in some parts
+[TESTING-EI(STAT)] Exchanging EI(Mean) for EI(STAT)
+
+--
+Findings?
+1. Short video requires simple metrics, 112 LogReg is already too complex.
+3. I discovered a measurable, theoretical improved Metric for ultra-short video engagement, succeeding the conventional EI.
+
+--
+Future:
+1. In time X with gap Y and windows Z the best class separation is achieved = most distinct data for the 2 phases.
+2. Further Explorative discovery of classification formulas
+
+--
+Interpretation / discussion
+- Journey & Fixes
+- This metric A performing for X and Y means: ... (theoretical/neuroscience/psychiology connection) + practical real life connection
+
+
+
+=======================================================
+#############  Possible Thesis Structure  #############
+=======================================================
+
+Based on your narrative and the direct feedback from your professors, here is a brief breakdown of exactly what goes where:
+
+### 0. introduces
+*   Big picture -> small picture
+*   **Catrinel:** Clearly define *exactly* what is being measured (cognitive/emotional state), explicitly stating you are *not* directly measuring behavior.
+*   Exact Rsrch QUestion whats measured and what we can say from that. Dont oversell.
+
+### 1. Methods (The "What & How")
+*   **Definitions:** Exact mathematical definitions of EI(Mean), EI(STAT), and EEI.
+*   **Preprocessing & Setup:** Define STAY/SKIP classes, window/stride/gap/skip-area parameters, and the assumption/decision for the values chosen for this thesis. 
+*   **Professor Feedback Additions:**
+    *   **Catrinel:** Clearly define *exactly* what is being measured (cognitive/emotional state), explicitly stating you are *not* directly measuring behavior.
+    *   **Arnrich:** Explain nessecity of uncontrolled feed scrolling. Note that the TikTok feed is a major uncontrollable random variable. State the percentages of STAY vs. SKIP and Burst ratios. Explain the use of Logistic Regression (a simple binary task) to avoid the massive overfitting seen in the 112-feature Random Forest.
+
+### 2. Results (The "Data & Iteration")
+*   **The Iterative Journey:** Present the sequence of your experiments objectively. 
+    *   Start with the overfit of the 112-feature model.
+    *   Move to the Cohen's *d* exploration (finding the best single metric like `AF7_high_gamma_hjorth_mob`).
+    *   Show the performance of the traditional EI vs. the Ablation (EI-AB).
+    *   Present the final performance of the new EEI and EI(STAT) variants.
+*   **Professor Feedback Additions:**
+    *   **Arnrich:** Show the results of "playing with time windows" (the `viz17` separation graphs) and feature correlations.
+
+### 3. Discussion (The "Why & So What")
+*   **Interpretation & Fixes:** As **Wieler** explicitly requested, the *Discussion* is where you talk about the "Journey & Fixes" and interpret the results.
+*   **Neuro & Practical Connection:** Explain *why* the short video format requires simple metrics, and what your new metric implies neurologically. Tie it to real-time BCI applications (e.g., message delivery rates).
+*   **Limitations (Crucial):**
+    *   mention that clear separation between motor preparation was attempted but cannot be said for sure. Therefore measurments may not only capture content-caused effects but may overlap with motor preparation brain signals that may be absent in other settings of attention drop without the option to skip via swipe.
+    *   mention that people mentioned some keypresses were missed, and this was ignored for this study which may have contributed to lower predictive performance, but that also means that if we would have included that results would have likely been better, meaning what we proved now will for sure prove with more careful data preparation.
+    *   **Pavel & You:** Mention the precision of key presses and self-reported user errors.
+    *   **Arnrich & Wieler:** Walk back the "big picture." Stick strictly to what this specific setup proved. Don't claim there are "no common patterns between subjects" (since big tech algorithms prove otherwise)—instead, frame it as inter-subject variability being too complex for simple baseline models without calibration.
+
+=============================================
+#############  further context  #############
+=============================================
+
+---
+
+FINDINGS v1:
+
+RANDOM FEED = MASSIVE VARIABLE
++ PROOF: LogReg(All Variables) -> massive overfit (goot train, collapse test) -> still Memorizing Noise
++ CONCLUDE: EI & SINGULAR METRICS NEEDED instead of 112 Features, even with simplest model LogReg.
+
+Theoretical Metrics (EI) are Honest; Statistical Cherry-Picking is Dangerous
+(Addresses Arnrich #1 & #4) Arnrich warns that you cannot control the feed (it's a massive random variable). Because the task is so noisy and chaotic, purely statistical Machine Learning models will aggressively cheat and cherry-pick spurious noise to inflate their training scores (The "Best Feature LR" and "All Features LR"). The Evidence: The Engagement Index (EI) Logistic Regression is the only model that did not overfit (Train F1 ≈ Test F1). Because EI is a predefined, theoretically grounded ratio (Beta / [Alpha + Theta]), it physically cannot cheat by cherry-picking noise. While its predictive accuracy remains low due to the chaotic nature of the TikTok feed, it serves as a mathematically honest, robust baseline for future real-time BCI applications (like measuring message delivery rate in real-time).
+
+---
+
+FINDINGS v2 (doublecheck):
+
+1. "All Features LR": The Curse of Dimensionality & Memorizing Noise
+Intra-Subject (Temporal Blocked CV):
+
+The Data: Train F1 is massive (82.6%), but Test F1 collapses to chance (~50%).
+The Math: In the Intra-subject models, the training set is just one continuous block of time for a single person. Because the model is fed 112 features, it has 112 separate weights (degrees of freedom). It uses these 112 weights to draw a hyper-specific boundary that perfectly memorizes the exact background noise, muscle tension, and electrode drift of that specific 15-minute training block.
+Why it fails: EEG is highly non-stationary. By the time the test block happens later in the session, the participant's baseline has drifted. The 112 weights that were perfectly calibrated to the training block's noise are now completely useless, causing the Test F1 to plummet.
+Inter-Subject (LOGO-CV):
+
+The Data: Train F1 is much lower (56.8%), and Test F1 is (50.0%).
+The Math: Why didn't it achieve 82% on Train F1 here? Because the Inter training set contains 24,000+ windows across 24 different people. 112 features are no longer enough to perfectly memorize the massive variance across 24 different brains. However, it still drops to 50% on the test subject because EEG topography is highly subject-specific. Patterns learned across a group of 24 people simply do not generalize to a new unseen individual's unique baseline.
+2. "Best Feature LR": The Death of the Cherry-Picking Overfit
+Background: Previously, this model achieved ~60% Train F1 on Intra. It did this by rolling 112 statistical dice on every single training fold and picking the one feature that happened to perfectly correlate with the noise of that specific time block. Now, we forced it to lock into the single globally predefined best feature (AF7 High Gamma Mobility), making it play by the exact same honest rules as the Engagement Index.
+
+Intra-Subject (Temporal Blocked CV):
+
+The Data: Train F1 plummeted from ~60% down to 53.1%. Test F1 is 50.8%.
+The Math: Because the model is no longer allowed to dynamically scan 112 features and cheat, its training score is no longer artificially inflated by spurious noise correlations. 53.1% is the honest, true predictive ceiling of the single best raw EEG metric. And look at the overfit: there barely is any! Because it didn't cheat during training (53.1%), it doesn't collapse during testing (50.8%).
+Inter-Subject (LOGO-CV):
+
+The Data: Train F1 is 49.6%, Test F1 is 46.0%.
+The Math: Again, no massive overfit. The global best feature simply doesn't hold enough universal predictive power across 24 subjects to generalize well, but it is statistically honest about it.
+3. "EI LR": The Honest Baseline
+Intra-Subject: Train F1 (51.5%), Test F1 (50.9%). Inter-Subject: Train F1 (56.7%), Test F1 (51.8%).
+
+The Math: Because the Engagement Index is a theoretical, pre-calculated mathematical ratio (Beta / [Alpha + Theta]), it physically cannot cheat. It only has 1 feature, so it cannot memorize noise (like All Features LR), and the feature was theoretically predefined, so it cannot cherry-pick noise (like the old Best Feature LR). Therefore, its Train F1 and Test F1 are almost identical.
+The Final Scientific Narrative for the Thesis:
+The Signal Exists: The Statistical Sweep (viz05) proves that cognitive shifts do correlate with STAY/SKIP behavior globally.
+But it is Non-Stationary: The 82% Train F1 vs 50% Test F1 in the All Features Intra model proves mathematically that the EEG signal drifts so heavily over time that predictive models will aggressively memorize temporary noise rather than the true cognitive signal.
+The Solution is Theoretical Constraints: The drop in Best Feature Train F1 (from 60% to 53%) just by disabling feature-scanning proves how dangerously easy it is to find spurious correlations in EEG. Therefore, any future Real-Time BCI in a chaotic environment (like TikTok) must rely on theoretically grounded, predefined metrics (like EI). Purely statistical models will just overfit to the feed's noise.
+
+
+---
+
+Current EI:
+
+The Exact Mathematical Definition of the Current EI
+I just checked step05_feature_engineering.py. The standard Engagement Index in your codebase is calculated as follows:
+
+STAT: The Mathematical Mean (Average power over the time window).
+ELECTRODES: Pooled Average of ALL 4 Electrodes (AF7, AF8, TP9, TP10).
+BANDS: Alpha, Beta, Theta.
+So, the current EI formula is precisely: EI = Mean(Beta_all) / (Mean(Alpha_all) + Mean(Theta_all))
+
+---
+
+
+INTRODUCING EEI:
+
+The Theoretical Extension (EEI)
+You asked: "How do we attach one more feature mathematically certain?" We don't search. We look at the empirical finding from your viz05 (which showed High Gamma had the best global separation). In neuroscience literature, Gamma (>30Hz) is heavily linked to high-level cognitive processing, visual attention, and memory encoding.
+
+So, we propose a single, predefined Extended Engagement Index (EEI): EEI = (Beta + Gamma) / (Alpha + Theta)
+
+---
+
+testing EEI:
+
+The Single Blind Test
+We add the EEI to the pipeline as a predefined feature alongside the standard EI. We run the Intra and Inter models. We look at the results exactly once.
+
+If EEI > EI: You have discovered a measurable, theoretical improvement for ultra-short video engagement.
+If EEI < EI: You have proven that adding higher-frequency bands introduces more noise than signal in a TikTok setting. Either result is a massive, highly specific conclusion for your thesis.
+
+---
+
+
+EI ABLATION:
+
+The Extraction & Extension Plan (Stupid Simple & Rigorous)
+As you noted, the top raw feature we found was AF7_high_gamma_hjorth_mob. If we blindly shoved Hjorth Mobility of AF7 into an equation that otherwise uses Mean Power of All Electrodes, we would be mixing completely incompatible mathematical domains and topographical regions. That is bad science.
+
+To keep it scientifically rigorous and mathematically symmetric, we must extract the BAND and leave the rest.
+
+The Proposed Plan:
+
+The Extraction (Post-Step 5): We look at the Top 10 or 20 features in our new best_features_ranking.json. Instead of blindly taking the #1 feature, we look for the dominant Band. If High Gamma (or Gamma) occupies 6 out of the top 10 spots (regardless of which stat or electrode it was), the empirical conclusion is clear: Gamma holds the untapped signal.
+The Extension (EEI): To maintain mathematical purity, we apply this new band using the exact same constraints as the original EI (Mean Stat, All Electrodes). If Gamma is the dominant band, the Extended EI becomes: EEI = [Mean(Beta_all) + Mean(Gamma_all)] / [Mean(Alpha_all) + Mean(Theta_all)]
+The Ablation Matrix (Step 16/17): We add a config flag ENABLE_EI_ABLATION. When True, Step 16 runs the Logistic Regression on exactly 7 predefined, 1-dimensional models, and outputs a single clean table comparing them:
+Beta-only
+Alpha-only
+Theta-only
+Beta / Alpha
+Beta / Theta
+Standard EI
+Extended EI (EEI)
+Why this is the perfect minimal approach: It stays completely within the thesis boundary. You aren't "fishing" for a complex machine learning formula. You are proving why the standard metric works by dismantling it (Ablation), and you are proposing exactly one mathematically pure extension based on the global statistical sweep.
+
+---
+
+

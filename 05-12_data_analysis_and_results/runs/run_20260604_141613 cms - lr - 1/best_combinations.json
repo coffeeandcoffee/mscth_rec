@@ -1,0 +1,6 @@
+{
+    "Intra_RF": "Intra|Notch|NoArt|Burst|RF",
+    "Intra_EI": "Intra|NoNotch|NoArt|NoBurst|EI",
+    "Inter_RF": "Inter|Notch|Art|Burst|RF",
+    "Inter_EI": "Inter|Notch|NoArt|Burst|EI"
+}

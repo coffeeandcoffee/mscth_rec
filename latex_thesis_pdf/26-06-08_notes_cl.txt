@@ -1,0 +1,28 @@
+Arnrich:
+1. too big of a picture, you cannot be sure theres an effect on behaviour change, be careful.
+2. you cannot control the feed, its more challenging, must be described as a major random variable.
+3. investigate first if some features have some correlation with output!
+4. its a simple binary task, why use linear regression and theres overfit? why not the better logistic regression?
+5. whats the percentage STAY vs SKIP? whats the percentage of bursts of total data?
+6. be careful with the expression "theres no common pattern between subjects" because its unlikely theres no common pattern because big companies bank on that.
+7. play with time windows and see if it gets better or worse.
+
+Pavel:
+1. In discussion add precision of pressing
+
+My comment:
+1. additionally in discussion dont forget to mention that about X +- Y self reported errors of included participants were reported.
+
+Wieler:
+1. Presentation: clear separation of Into - Methods - Results (and more analysis) - And discussion (here go the fixes and co)
+2. stick to what you can learn from this setup. only bits of behaviour if anything.
+
+Catrinel:
+1. What is actually measured? because behaviour is not really measured. do we measure emotional? cognitive? that could mean something for behaviour but behaviour is not measured.
+2. whats outcome and whats measured?
+3. talk to Arnrich and team -> about analysis & stay at topic & at my data
+
+proposed real applications:
+1. "how to more effectively brainwash people"
+2. "why measure engagement? -> real time. messages delivery rate."
+

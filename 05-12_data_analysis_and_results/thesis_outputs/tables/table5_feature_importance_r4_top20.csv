@@ -1,0 +1,21 @@
+Rank,Feature,Mean Gini,SD,Electrode,Band
+1,TP9_delta_macrofreq,0.024752,0.020093,TP9,delta
+2,TP9_low_gamma_peakfreq,0.022775,0.022693,TP9,low_gamma
+3,TP10_delta_macrofreq,0.022532,0.01703,TP10,delta
+4,TP10_low_gamma_peakfreq,0.021896,0.024836,TP10,low_gamma
+5,TP10_theta_macrofreq,0.021057,0.017689,TP10,theta
+6,AF8_theta_macrofreq,0.019222,0.014125,AF8,theta
+7,AF7_delta_macrofreq,0.018655,0.01399,AF7,delta
+8,TP9_theta_macrofreq,0.01829,0.014122,TP9,theta
+9,TP10_alpha_macrofreq,0.016259,0.01523,TP10,alpha
+10,AF8_delta_macrofreq,0.014255,0.010789,AF8,delta
+11,TP10_very_high_macrofreq,0.013548,0.016013,TP10,very_high
+12,AF7_theta_macrofreq,0.013543,0.009713,AF7,theta
+13,TP9_very_high_macrofreq,0.0132,0.017189,TP9,very_high
+14,AF8_alpha_macrofreq,0.012164,0.01087,AF8,alpha
+15,TP9_alpha_macrofreq,0.01215,0.009972,TP9,alpha
+16,AF7_low_gamma_peakfreq,0.010074,0.014822,AF7,low_gamma
+17,AF8_low_gamma_peakfreq,0.009255,0.015363,AF8,low_gamma
+18,AF7_delta_peakfreq,0.009091,0.008412,AF7,delta
+19,TP10_low_gamma_macrofreq,0.00843,0.008476,TP10,low_gamma
+20,TP10_high_gamma_peakfreq,0.008313,0.0078,TP10,high_gamma

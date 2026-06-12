@@ -1,0 +1,8 @@
+{
+    "Intra_EI": "Intra|NoNotch|NoArt|NoBurst|EI",
+    "Intra_LR": "Intra|NoNotch|NoArt|NoBurst|LR",
+    "Intra_BestFeatureLR": "Intra|Notch|Art|Burst|Best Feature LR",
+    "Inter_EI": "Inter|Notch|NoArt|Burst|EI",
+    "Inter_LR": "Inter|Notch|NoArt|Burst|LR",
+    "Inter_BestFeatureLR": "Inter|Notch|NoArt|Burst|Best Feature LR"
+}

@@ -1,0 +1,23 @@
+Test,Run,W,p,r,Sig,Direction
+RF (primary) vs 50% chance,R1,9.0,1.97e-06,0.945,✓,RF > Chance
+RF vs EI (paired),R1,44.0,8.08e-04,0.729,✓,RF > EI
+NoNotch vs Notch (paired),R1,15.0,8.17e-06,0.908,✓,NoNotch > Notch
+RF (primary) vs 50% chance,R2,9.0,1.97e-06,0.945,✓,RF > Chance
+RF vs EI (paired),R2,44.0,8.08e-04,0.729,✓,RF > EI
+NoNotch vs Notch (paired),R2,15.0,8.17e-06,0.908,✓,NoNotch > Notch
+RF (primary) vs 50% chance,R3,23.0,3.81e-05,0.858,✓,RF > Chance
+RF vs EI (paired),R3,56.0,0.0031,0.655,✓,RF > EI
+NoNotch vs Notch (paired),R3,34.0,2.17e-04,0.791,✓,NoNotch > Notch
+RF (primary) vs 50% chance,R4,1.0,1.19e-07,0.994,✓,RF > Chance
+RF vs EI (paired),R4,33.0,1.88e-04,0.797,✓,RF > EI
+NoNotch vs Notch (paired),R4,7.0,1.13e-06,0.957,✓,NoNotch > Notch
+Full vs frontal-only electrode set,R2,24.0,4.54e-05,0.852,✓,Significant
+Full vs temporal-only electrode set,R2,83.0,0.0318,0.489,✓,Significant
+Full vs frontal-only electrode set,R4,44.0,8.08e-04,0.729,✓,Significant
+Full vs temporal-only electrode set,R4,67.0,0.0088,0.588,✓,Significant
+Artifact exclusion effect,R2,50.0,0.0016,0.692,✓,Significant
+Burst exclusion effect,R2,16.0,0.7794,0.901,—,—
+Artifact exclusion effect,R3,105.0,0.1266,0.354,—,—
+Burst exclusion effect,R3,10.0,0.2626,0.939,—,—
+Paid vs unpaid subgroup,R1,93.0,0.3961,-0.208,—,—
+Paid vs unpaid subgroup,R2,93.0,0.3961,-0.208,—,—

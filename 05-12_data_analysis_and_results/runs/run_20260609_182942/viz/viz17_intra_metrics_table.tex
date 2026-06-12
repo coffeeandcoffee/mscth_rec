@@ -1,0 +1,20 @@
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcccccccc}
+\hline
+Metric & \multicolumn{2}{c}{Coin Flip} & \multicolumn{2}{c}{EI LR} & \multicolumn{2}{c}{Best Feature LR} & \multicolumn{2}{c}{All Features LR} \\
+ & Val & Sig & Val & Sig & Val & Sig & Val & Sig \\
+\hline
+F1 Train (STAY) & 49.5\% & - & 51.5\% & FALSE & 53.1\% & \textcolor{green}{TRUE} & 82.6\% & \textcolor{green}{TRUE} \\
+F1 Test (STAY) & 50.4\% & - & 50.9\% & FALSE & 50.8\% & FALSE & 49.2\% & FALSE \\
+Precision (STAY) & 50.4\% & - & 50.7\% & FALSE & 49.6\% & FALSE & 51.1\% & FALSE \\
+Recall (STAY) & 50.4\% & - & 55.5\% & FALSE & 52.9\% & FALSE & 47.8\% & \textcolor{green}{TRUE} \\
+F1 Train (SKIP) & 50.4\% & - & 47.9\% & FALSE & 51.3\% & \textcolor{green}{TRUE} & 82.6\% & \textcolor{green}{TRUE} \\
+F1 Test (SKIP) & 50.3\% & - & 45.3\% & FALSE & 47.6\% & \textcolor{green}{TRUE} & 52.2\% & \textcolor{green}{TRUE} \\
+Precision (SKIP) & 50.4\% & - & 50.3\% & FALSE & 49.7\% & FALSE & 50.8\% & FALSE \\
+Recall (SKIP) & 50.3\% & - & 45.2\% & FALSE & 46.4\% & \textcolor{green}{TRUE} & 54.1\% & \textcolor{green}{TRUE} \\
+\hline
+\end{tabular}
+\caption{Minimal Metrics for Intra Models. Significance tested using Wilcoxon signed-rank test (two-sided, $\alpha=0.05$, N=25).}
+\label{tab:metrics_intra}
+\end{table}
