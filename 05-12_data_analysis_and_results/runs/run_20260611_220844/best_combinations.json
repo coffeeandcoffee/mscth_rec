@@ -1,0 +1,10 @@
+{
+    "Intra_RF": "Intra|NoNotch|NoArt|NoBurst|RF",
+    "Intra_EI": "Intra|NoNotch|NoArt|NoBurst|EI",
+    "Intra_TP10_raw_std_LR": "Intra|NoNotch|NoArt|NoBurst|TP10_raw_std_LR",
+    "Intra_AF7_high_gamma_mean_LR": "Intra|NoNotch|NoArt|NoBurst|AF7_high_gamma_mean_LR",
+    "Inter_RF": "Inter|NoNotch|NoArt|NoBurst|RF",
+    "Inter_EI": "Inter|NoNotch|NoArt|NoBurst|EI",
+    "Inter_TP10_raw_std_LR": "Inter|NoNotch|NoArt|NoBurst|TP10_raw_std_LR",
+    "Inter_AF7_high_gamma_mean_LR": "Inter|NoNotch|NoArt|NoBurst|AF7_high_gamma_mean_LR"
+}

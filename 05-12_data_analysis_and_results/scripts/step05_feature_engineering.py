@@ -150,11 +150,11 @@ def compute_ei(window_data, feature_names):
     for ch in config.EEG_CHANNELS:
         for i, fn in enumerate(feature_names):
             if fn == f"{ch}_alpha":
-                alpha_powers.append(np.mean(window_data[:, i]))
+                alpha_powers.append(np.var(window_data[:, i]))
             elif fn == f"{ch}_beta":
-                beta_powers.append(np.mean(window_data[:, i]))
+                beta_powers.append(np.var(window_data[:, i]))
             elif fn == f"{ch}_theta":
-                theta_powers.append(np.mean(window_data[:, i]))
+                theta_powers.append(np.var(window_data[:, i]))
 
     alpha = np.mean(alpha_powers) if alpha_powers else 1e-12
     theta = np.mean(theta_powers) if theta_powers else 1e-12

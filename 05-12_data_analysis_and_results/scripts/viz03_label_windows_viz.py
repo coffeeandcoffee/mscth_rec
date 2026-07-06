@@ -196,3 +196,108 @@ def run(run_dir, params):
     plt.tight_layout()
     plt.savefig(viz_dir / "viz03_label_windows.png", dpi=200)
     plt.close()
+
+    # --- Individual pics in viz03/ ---
+    viz03_dir = viz_dir / "viz03"
+    viz03_dir.mkdir(exist_ok=True)
+
+    # Panel 1
+    if pkl.exists() and proc_pkl.exists() and wins and dfs:
+        fig_ind, ax_ind = plt.subplots(figsize=(10, 6))
+        if len(skip_idx) > 0:
+            for block in blocks:
+                if len(block) < 2: continue
+                bs = ts_all[block[0]] - t_min
+                be = ts_all[block[-1]] - t_min
+                if be < 0 or bs > 70: continue
+                ax_ind.axvspan(bs, be, alpha=0.08, color='red', zorder=0)
+
+        for label_int, y_base, color in [(0, -0.3, PALETTE[3]), (1, 0.7, PALETTE[0])]:
+            label_wins = sorted([w for w in excerpt if w['label'] == label_int],
+                                key=lambda w: w['start_time'])
+            if not label_wins: continue
+            regions = []
+            current_region = [label_wins[0]]
+            for w in label_wins[1:]:
+                if w['start_time'] - current_region[-1]['start_time'] <= stride_s * 1.1:
+                    current_region.append(w)
+                else:
+                    regions.append(current_region)
+                    current_region = [w]
+            regions.append(current_region)
+            for region_wins in regions:
+                for i, w in enumerate(region_wins):
+                    step = i % n_steps
+                    y = y_base + step * bar_h * 1.3
+                    ax_ind.barh(y, w['end_time'] - w['start_time'],
+                            left=w['start_time'] - t_min, height=bar_h,
+                            color=color, alpha=0.65, edgecolor='white',
+                            linewidth=0.3, zorder=2)
+        drawn_label = False
+        for t in a_press_times:
+            t_rel = t - t_min
+            if 0 <= t_rel <= 70:
+                ax_ind.axvline(x=t_rel, color='crimson', linewidth=1.2,
+                           alpha=0.85, zorder=3,
+                           label='A-keypress' if not drawn_label else None)
+                drawn_label = True
+        ax_ind.set_yticks([0, 1])
+        ax_ind.set_yticklabels(['SKIP', 'STAY'])
+        ax_ind.set_ylim(-0.5, 1.5)
+        ax_ind.set_xlabel('Time (s)')
+        ax_ind.set_xlim(-1, 71)
+        ax_ind.set_title(f'Window Extraction — P{rep_pid} (70s excerpt)\n'
+                     f'Window={window_s}s, stride={stride_s}s, '
+                     f'SKIP region=±{half_window_s}s')
+        ax_ind.legend(fontsize=8, loc='upper right')
+        plt.tight_layout()
+        plt.savefig(viz03_dir / "viz03.1.png", dpi=200)
+        plt.close()
+
+    # Panel 2
+    fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+    ax_ind.bar(x, df_labels['n_stay'], color=PALETTE[0], label='STAY', alpha=0.8)
+    ax_ind.bar(x, df_labels['n_skip'], bottom=df_labels['n_stay'],
+           color=PALETTE[3], label='SKIP', alpha=0.8)
+    ax_ind.set_xticks(x)
+    ax_ind.set_xticklabels([f'P{p}' for p in pids], rotation=90, fontsize=6)
+    ax_ind.set_ylabel('Window Count')
+    ax_ind.set_title('Class Distribution (Raw)')
+    ax_ind.legend(fontsize=8)
+    plt.tight_layout()
+    plt.savefig(viz03_dir / "viz03.2.png", dpi=200)
+    plt.close()
+
+    # Panel 3
+    if all_intervals:
+        fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+        ax_ind.hist(all_intervals, bins=60, color=PALETTE[2], edgecolor='white', alpha=0.8)
+        ax_ind.axvline(2 * half_window_s, color='red', linestyle='--', linewidth=1.5,
+                   label=f'{2*half_window_s}s merge threshold\n'
+                         f'(A-presses closer → merged SKIP region)')
+        ylim = ax_ind.get_ylim()
+        ax_ind.fill_betweenx([0, ylim[1] if ylim[1] > 0 else 10],
+                         0, 2 * half_window_s, alpha=0.1, color='red')
+        ax_ind.set_xlabel('Inter-A-press Interval (s)')
+        ax_ind.set_ylabel('Count')
+        ax_ind.set_title(f'Inter-A-press Intervals ({n_merged} below merge threshold)')
+        ax_ind.legend(fontsize=7)
+        plt.tight_layout()
+        plt.savefig(viz03_dir / "viz03.3.png", dpi=200)
+        plt.close()
+
+    # Panel 4
+    if burst_data:
+        fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+        ax_ind.bar(x, df_b['normal_skip'], color=PALETTE[4], label='Normal skip')
+        ax_ind.bar(x, df_b['burst'], bottom=df_b['normal_skip'],
+               color=PALETTE[3], label='Burst skip')
+        ax_ind.set_xticks(x)
+        ax_ind.set_xticklabels([f"P{r['pid']}" for _, r in df_b.iterrows()],
+                           rotation=90, fontsize=6)
+        ax_ind.set_ylabel('Count')
+        ax_ind.set_title('Burst vs Normal Skips')
+        ax_ind.legend(fontsize=8)
+        plt.tight_layout()
+        plt.savefig(viz03_dir / "viz03.4.png", dpi=200)
+        plt.close()

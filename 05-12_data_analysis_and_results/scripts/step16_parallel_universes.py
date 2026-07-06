@@ -23,7 +23,8 @@ from pathlib import Path
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import recall_score, f1_score, accuracy_score
+from sklearn.metrics import recall_score, f1_score, accuracy_score, confusion_matrix
+from sklearn.dummy import DummyClassifier
 from scipy import stats as sp_stats
 import warnings
 
@@ -32,10 +33,6 @@ warnings.filterwarnings('ignore')
 
 UNIVERSES = {
     'nonotch': 'features',
-    'notch': 'features_notch',
-    'notch_art': 'features_notch_artifact',
-    'notch_burst': 'features_notch_burst',
-    'notch_ab': 'features_notch_artifact_burst',
 }
 
 def undersample_balance_test(X, y, seed):
@@ -76,8 +73,25 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
         if model_type == 'RF':
             X_all = fd['features_full']
             bp = json.load(open(bp_path)) if bp_path.exists() else {}
-        else:
+        elif model_type == 'EI':
             X_all = fd['ei_values'].reshape(-1, 1)
+            bp = {}
+        else:
+            fnames = fd.get('agg_names_full', [])
+            feat_name = model_type.replace('_LR', '')
+            if feat_name in fnames:
+                idx = [fnames.index(feat_name)]
+            if model_type == 'TP10_raw_std_LR':
+                idx = [i for i, fn in enumerate(fnames) if fn == 'TP10_raw_std']
+            elif model_type == 'All_raw_std_LR':
+                idx = [i for i, fn in enumerate(fnames) if fn.endswith('_raw_std')]
+            elif model_type == 'AF7_high_gamma_mean_LR':
+                idx = [i for i, fn in enumerate(fnames) if fn == 'AF7_high_gamma_mean']
+            elif model_type == 'All_high_gamma_mean_LR':
+                idx = [i for i, fn in enumerate(fnames) if fn.endswith('_high_gamma_mean')]
+            else:
+                idx = list(range(len(fnames)))
+            X_all = fd['features_full'][:, idx]
             bp = {}
             
         y_all = fd['labels']
@@ -139,6 +153,23 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
                 fold_train_accs.append(accuracy_score(y_tr, y_pred_tr))
                 fold_test_ns.append(len(y_te))
                 
+                # Add confusion matrices
+                if 'fold_test_cms' not in locals():
+                    fold_test_cms, fold_train_cms = [], []
+                    fold_dummy_test_cms, fold_dummy_train_cms = [], []
+                    
+                fold_test_cms.append(confusion_matrix(y_te, y_pred_te, labels=[0, 1]))
+                fold_train_cms.append(confusion_matrix(y_tr, y_pred_tr, labels=[0, 1]))
+                
+                # Dummy
+                dummy = DummyClassifier(strategy='uniform', random_state=seed)
+                dummy.fit(X_tr, y_tr)
+                yd_te = dummy.predict(X_te)
+                yd_tr = dummy.predict(X_tr)
+                fold_dummy_test_cms.append(confusion_matrix(y_te, yd_te, labels=[0, 1]))
+                fold_dummy_train_cms.append(confusion_matrix(y_tr, yd_tr, labels=[0, 1]))
+
+                
             if fold_test_recalls:
                 seed_test_recalls.append(np.mean(fold_test_recalls))
                 seed_train_recalls.append(np.mean(fold_train_recalls))
@@ -147,6 +178,16 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
                 seed_test_accs.append(np.mean(fold_test_accs))
                 seed_train_accs.append(np.mean(fold_train_accs))
                 seed_test_ns.append(np.sum(fold_test_ns))
+                
+                if 'seed_test_cms' not in locals():
+                    seed_test_cms, seed_train_cms = [], []
+                    seed_dummy_test_cms, seed_dummy_train_cms = [], []
+                    
+                seed_test_cms.append(np.sum(fold_test_cms, axis=0))
+                seed_train_cms.append(np.sum(fold_train_cms, axis=0))
+                seed_dummy_test_cms.append(np.sum(fold_dummy_test_cms, axis=0))
+                seed_dummy_train_cms.append(np.sum(fold_dummy_train_cms, axis=0))
+
                 
         if seed_test_recalls:
             results_per_pid[pid] = {
@@ -157,6 +198,10 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
                 'test_accuracy': float(np.mean(seed_test_accs)),
                 'train_accuracy': float(np.mean(seed_train_accs)),
                 'test_n': float(np.mean(seed_test_ns)),
+                'test_cm': str(np.sum(seed_test_cms, axis=0).tolist()),
+                'train_cm': str(np.sum(seed_train_cms, axis=0).tolist()),
+                'dummy_test_cm': str(np.sum(seed_dummy_test_cms, axis=0).tolist()),
+                'dummy_train_cm': str(np.sum(seed_dummy_train_cms, axis=0).tolist()),
             }
             
     return results_per_pid
@@ -188,7 +233,26 @@ def evaluate_inter(run_dir, universe_dir, model_type, seed=0):
         wid_to_idx = {int(w): i for i, w in enumerate(fd['window_ids'])}
         valid_indices = [wid_to_idx[w] for w in valid_test_ids if w in wid_to_idx]
         
-        X = fd['features_full'][valid_indices] if model_type == 'RF' else fd['ei_values'][valid_indices].reshape(-1, 1)
+        if model_type == 'RF':
+            X = fd['features_full'][valid_indices]
+        elif model_type == 'EI':
+            X = fd['ei_values'][valid_indices].reshape(-1, 1)
+        else:
+            fnames = fd.get('agg_names_full', [])
+            feat_name = model_type.replace('_LR', '')
+            if feat_name in fnames:
+                idx = [fnames.index(feat_name)]
+            if model_type == 'TP10_raw_std_LR':
+                idx = [i for i, fn in enumerate(fnames) if fn == 'TP10_raw_std']
+            elif model_type == 'All_raw_std_LR':
+                idx = [i for i, fn in enumerate(fnames) if fn.endswith('_raw_std')]
+            elif model_type == 'AF7_high_gamma_mean_LR':
+                idx = [i for i, fn in enumerate(fnames) if fn == 'AF7_high_gamma_mean']
+            elif model_type == 'All_high_gamma_mean_LR':
+                idx = [i for i, fn in enumerate(fnames) if fn.endswith('_high_gamma_mean')]
+            else:
+                idx = list(range(len(fnames)))
+            X = fd['features_full'][valid_indices][:, idx]
         y = fd['labels'][valid_indices]
         
         all_data[pid] = {'X': X, 'y': y}
@@ -228,6 +292,16 @@ def evaluate_inter(run_dir, universe_dir, model_type, seed=0):
         y_pred_te = clf.predict(X_te)
         y_pred_tr = clf.predict(X_tr)
         
+        test_cm = confusion_matrix(y_te, y_pred_te, labels=[0, 1])
+        train_cm = confusion_matrix(y_tr, y_pred_tr, labels=[0, 1])
+        
+        dummy = DummyClassifier(strategy='uniform', random_state=seed)
+        dummy.fit(X_tr, y_tr)
+        yd_te = dummy.predict(X_te)
+        yd_tr = dummy.predict(X_tr)
+        dummy_test_cm = confusion_matrix(y_te, yd_te, labels=[0, 1])
+        dummy_train_cm = confusion_matrix(y_tr, yd_tr, labels=[0, 1])
+        
         results_per_pid[test_pid] = {
             'test_recall': float(recall_score(y_te, y_pred_te, pos_label=1, zero_division=0)),
             'train_recall': float(recall_score(y_tr, y_pred_tr, pos_label=1, zero_division=0)),
@@ -236,6 +310,10 @@ def evaluate_inter(run_dir, universe_dir, model_type, seed=0):
             'test_accuracy': float(accuracy_score(y_te, y_pred_te)),
             'train_accuracy': float(accuracy_score(y_tr, y_pred_tr)),
             'test_n': float(len(y_te)),
+            'test_cm': str(test_cm.tolist()),
+            'train_cm': str(train_cm.tolist()),
+            'dummy_test_cm': str(dummy_test_cm.tolist()),
+            'dummy_train_cm': str(dummy_train_cm.tolist()),
         }
         
     return results_per_pid
@@ -276,7 +354,25 @@ def run(run_dir, params):
             burst_param = 'Burst' if 'burst' in u_name or 'ab' in u_name else 'NoBurst'
             
             universe_dir = run_dir / u_dir
-            for model in ['EI', 'RF']:
+            models_to_eval = ['EI', 'RF']
+            if getattr(config, 'ENABLE_TOP_FEATURES_EVAL', False):
+                import importlib
+                viz_top_id = importlib.import_module("viz17_4_identifying_top")
+                viz_top_id.run(run_dir, params)
+                mapping_file = run_dir / "viz" / "viz17_4_selected_features.json"
+                if mapping_file.exists():
+                    with open(mapping_file, 'r') as f:
+                        selected_features = json.load(f)
+                    models_to_eval.extend([f"{fn}_LR" for fn in selected_features.keys()])
+                else:
+                    models_to_eval.extend([
+                        'TP10_raw_std_LR', 
+                        'All_raw_std_LR', 
+                        'AF7_high_gamma_mean_LR', 
+                        'All_high_gamma_mean_LR'
+                    ])
+                
+            for model in models_to_eval:
                 comb_name = f"{scale}|{notch_param}|{art_param}|{burst_param}|{model}"
                 
                 if scale == 'Intra':
@@ -402,4 +498,5 @@ def run(run_dir, params):
     print(f"\n  ✓ 20-way matrix evaluated and stepwise significance saved.")
 
 if __name__ == "__main__":
-    print("Use run.py to execute the pipeline.")
+    import sys
+    run(Path(sys.argv[1]), {})

@@ -5,6 +5,8 @@
 \usepackage{hyperref}
 \usepackage{cite}
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
 
 \begin{document}
 
@@ -75,7 +77,7 @@ These findings establish a proof-of-concept that consumer-grade EEG captures sta
 \chapter{Introduction}
 Short-form video platforms like TikTok now fundamentally shape how billions of people allocate their attention, often in bursts lasting mere seconds. On these platforms, every single swipe represents a critical micro-decision: to stay and engage, or to skip and move on. Repeated hundreds of times per session, these sequential micro-decisions determine exactly what information people absorb, which health or educational messages effectively reach them, and what digital behaviors are continuously reinforced.
 
-For public health communication, this dynamic poses a significant challenge. Health promotion interventions delivered via social media must compete head-to-head with highly optimized entertainment content for the exact same limited cognitive resources \cite{mccashin_using_2023}. Systematic review evidence confirms that TikTok has been adopted for a range of public health purposes, yet institutional accounts remain poorly engaged relative to personal creators precisely because they fail to leverage the platform's full attentional affordances \cite{mccashin_using_2023}. If a health promotion video fails to maintain engagement in the critical first few seconds, the core message never lands. To improve these interventions, we need to understand what actually causes a human brain to sustain engagement---not just what individuals retrospectively claim they liked, but rather what their objective neural state looked like during active, continuous viewing.
+For public health communication, this dynamic poses a significant challenge. Health promotion interventions delivered via social media must compete head-to-head with highly optimized entertainment content for the exact same limited cognitive resources \cite{mccashin_using_2023}. Systematic review evidence confirms that TikTok has been adopted for a range of public health purposes, yet institutional accounts remain poorly engaged relative to personal creators precisely because they fail to leverage the platform's full attentional affordances \cite{mccashin_using_2023}. If a health promotion video fails to maintain engagement in the critical first few seconds, the core message never lands. To improve these interventions, we need to understand what actually causes a human brain to sustain engagement---not just what individuals retrospectively claim they liked, but rather what their objective neural state looked like during active, continuous viewing. This investigation will not help us determine wether a specific content-piece changes behaviour and why, but rather we investigate neural clues for potential behaviour change and other neural markers that may be psychiologically and behaviourally relevant for optimized behaviour change messaging in public health and beyond.
 
 Understanding the neural signature of sustained engagement---and the exact moment that engagement begins to collapse---opens the door to designing communications that maintain attention precisely when the brain is most vulnerable to disengagement. This investigation is about understanding how to make health-relevant content as neurologically compelling as the content it competes against.
 
@@ -193,10 +195,14 @@ The following sections outline the core theoretical claims, methodologies, and p
 \section{Participants}
 Twenty-eight ($N=28$) participants were recruited for the study ([Insert $N_F$ female, $N_M$ male]). To participate, individuals were required to have normal or corrected-to-normal vision and no history of neurological disorders. Three participants were excluded \textit{a priori}: two due to a high number of self-reported keypress errors (greater than 10) which compromised label integrity, and one due to an undisclosed neurological condition. The experimenter's own data, although collected for pipeline validation, was strictly excluded from all reported results to eliminate experimenter bias. The final sample consisted of $n=25$ participants (age range 20--30 years, $M = 24.6$, $SD = 2.9$).
 
-Participants were collected over a total of five days and were conceptually divided into two groups based on recruitment timing: an initial smaller group was recorded in a separate room without financial compensation, while the subsequent main group (recorded a few days later) received a 20-euro voucher as an incentive. All participants provided informed consent and signed data protection agreements approved by the Ethics Committee of the University of Potsdam prior to the study.
+Participants were collected over a total of five days and were conceptually divided into two groups based on recruitment timing: an initial smaller group was recorded in a separate room without financial compensation, while the subsequent main group (recorded a few days later) received a 20-euro voucher as an incentive. All participants provided informed consent and signed data protection agreements approved by the Ethics Committee of the University of Potsdam prior to the study (INSERT: ethics proposal number).
+
+% \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_sig_f1_models_ablation.tex}
+[Insert tex table of participants, answers and co]
+
 
 \section{Data Acquisition}
-Electroencephalography (EEG) data were recorded using a consumer-grade Muse S headband (Generation 2). The device features four dry electrodes placed at positions AF7, AF8, TP9, and TP10 according to the international 10--20 system, with the reference electrode located at Fpz. Data were continuously sampled at a rate of 256~Hz. 
+Electroencephalography (EEG) data were recorded using a consumer-grade Muse S headband (Generation 2) Figure \ref{fig:muse_headband}. The device features four dry electrodes placed at positions AF7, AF8, TP9, and TP10 according to the international 10--20 system, with the reference electrode located at Fpz. Data were continuously sampled at an average rate of 256~Hz. 
 
 \begin{figure}[htpb]
     \centering
@@ -206,7 +212,7 @@ Electroencephalography (EEG) data were recorded using a consumer-grade Muse S he
     \label{fig:muse_headband}
 \end{figure}
 
-The EEG signals were transmitted via Bluetooth and recorded using the Lab Streaming Layer (LSL) protocol with the \texttt{muselsl} library. A custom Python recording script was developed to handle data collection. This script featured real-time frequency monitoring and an automatic reconnection mechanism to seamlessly manage any Bluetooth drops without disrupting the session.
+The EEG signals were transmitted via Bluetooth and recorded using the Lab Streaming Layer (LSL) protocol with the \texttt{muselsl} library. A custom Python recording script was developed to handle data collection (INSERT: reference to exact github code link of script). This script featured real-time frequency monitoring and an automatic reconnection mechanism to seamlessly manage any Bluetooth drops without disrupting the session.
 
 To synchronize the behavioral data (video transitions) with the continuous EEG stream without relying on video monitoring of the participant, keystroke markers were mapped directly into the recording script. Participants used their non-dominant hand to press a specific key on a laptop keyboard provided in the room: the ``B'' key to denote the start of the baseline period, and the ``A'' key to mark every manual swipe (skip event) during the TikTok browsing session.
 
@@ -257,14 +263,56 @@ The Guided Access feature was reactivated and set to a 25-minute limit for the T
 
 Once the 25-minute viewing task concluded, the experimenter entered the room, and the participant removed the headband. They then answered a few post-session survey questions, specifically self-reporting if they made any keypress synchronization errors during the session. Finally, they signed the required compensation forms to receive their 20-euro voucher. The post-measurement debrief and surveying process took roughly two to four minutes. Participants were thanked for their time, briefly debriefed about the broader context of the study if interested, and dismissed.
 
-\section{Labeling Strategy: The STAY Paradigm}
-To translate the continuous EEG recordings into a supervised machine learning task, the data were segmented based on the keystroke markers. The primary goal of this research is not simply to predict the mechanical action of a thumb swiping, but rather to identify when a user is actively holding their attention on the content. Therefore, the computational target strictly isolates the underlying cognitive state into two discrete classes: the state of sustained engagement (\texttt{STAY}, designated mathematically as Class 1) and the state of impending disengagement (\texttt{SKIP}, designated mathematically as Class 0).
+% -- methods read until here -- continute reading, continute inserting INSERT: ...
 
-The \texttt{SKIP} class (Class 0) was strictly defined as the finite 3.0-second window terminating exactly at the timestamp of each registered \texttt{A}~keypress (swipe event). This specific window captures the neural activity immediately preceding the physical action of skipping the video.
+\section{Labeling Strategy}
+To quantify class separability under different labeling choices, Cohen’s \(d\) was computed as the standardized mean difference between the STAY and SKIP distributions. A parameter sensitivity analysis was then performed in which gap length, window length, and imminent-skip period were varied systematically. When gap length and window length were held constant, increasing the imminent-skip period produced a corresponding increase in Cohen’s \(d\), indicating progressively stronger class separation.
 
-The \texttt{STAY} class (Class 1) represents sustained cognitive engagement. It was defined by extracting all other continuous viewing periods during the naturalistic TikTok consumption phases that fell entirely outside of the 3.0-second pre-skip boundaries. 
+\subsection{Operational Definition of Labeling Parameters}
+The labeling strategy was derived directly from the research questions and the aim of isolating neural states relevant to sustained engagement and imminent disengagement during naturalistic browsing. Accordingly, the computational target was constrained to two discrete classes: sustained engagement (\texttt{STAY}) and impending disengagement (\texttt{SKIP}).
 
-The manually categorized pre-task resting baseline phases were structurally excluded from the machine learning training data. This guaranteed that the algorithms were explicitly trained to differentiate between active engagement and active disengagement while browsing, rather than simply distinguishing resting from viewing.
+The default labeling scheme was defined by three temporal parameters. The gap length was set to 2.0 seconds, the window length was set to 1.0 second, and the imminent-skip period was set to 3.0 seconds. In the default configuration, the \texttt{SKIP} class therefore comprised the 1.0-second window immediately preceding the 2.0-second gap before each registered \texttt{A}-keypress (swipe event), yielding a label placement that aligned with the pre-skip attentional state while avoiding the most immediate motor-preparatory interval. The \texttt{STAY} class comprised all remaining continuous viewing segments that satisfied the exclusion criteria described below.
+
+\subsection{Operational Definition of STAY and SKIP}
+The \texttt{SKIP} class was defined as the finite 3.0-second window terminating 2 seconds before the timestamp of each registered \texttt{A}-keypress (swipe event). This window captures neural activity preceding the physical act of skipping a video while excluding the motor-preparation interval, which has been reported to occur approximately 500--1500 ms before movement onset; this interval is therefore covered by the 2-second buffer preceding the swipe time marker.
+
+The \texttt{STAY} class represents sustained cognitive engagement. It was defined by extracting all remaining continuous viewing periods during the naturalistic TikTok consumption phases that were i) outside the 3.0-second \texttt{SKIP} window, ii) outside the 2-second pre-skip motor-preparation buffer, and iii) outside the 0.5-second post-skip orientation grace period.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_9.png}
+    \caption{Schematic overview of the labeling strategy under the default parameterization. The figure illustrates the placement of the \texttt{STAY} and \texttt{SKIP} labels relative to the registered press markers, including the default gap length, window length, and imminent-skip period.}
+    \label{fig:labeling_strategy}
+\end{figure}
+
+\subsection{Baseline Exclusion}
+The manually categorized pre-task resting baseline phases were excluded from the \texttt{STAY}/\texttt{SKIP} classification dataset and used only for per-participant signal normalization. Consequently, the algorithms were trained to discriminate between active engagement (\texttt{STAY}) and approaching disengagement (\texttt{SKIP}) during browsing, rather than between resting and viewing. Figure~\ref{fig:labeling_strategy} illustrates the default labeling logic, including the press markers and the temporal placement of the labeling windows.
+
+In addition to baseline exclusion, the labeling procedure omitted segments affected by boundary overlap between \texttt{STAY} and \texttt{SKIP} definitions. This was necessary to preserve clear class assignment and avoid ambiguous temporal regions near each swipe event. The final label construction therefore prioritized temporal purity of the target classes over maximal sample count.
+
+\subsection{Parameter Sensitivity Analysis}
+To evaluate how the label definition influenced class separability, the three temporal parameters were varied in a controlled sensitivity analysis. In each run, two parameters were frozen while the third was changed systematically, allowing the isolated contribution of each parameter to be assessed. This made it possible to determine whether separability was driven primarily by temporal distance from the swipe event, by the breadth of the labeled segment, or by their interaction.
+
+% -- methods read until here -- continute reading, continute inserting INSERT: ...
+% next step: revise this line below here, to describe the fix variables properly
+% also include gap window images for default and variations appropriately
+
+The key finding was that, under fixed gap length and window length, increasing the imminent-skip period consistently increased Cohen’s \(d\). This indicates that the STAY and SKIP distributions became progressively more distinct as the labeled \texttt{SKIP} interval was shifted farther away from the swipe event. Figure~\ref{fig:window_exploration} presents the corresponding sensitivity analysis and shows the resulting change in class separation across parameter settings.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/run_before_ei_fix/viz17_window_exploration_line.png}
+    \caption{Parameter sweep of the window exploration analysis.}
+    \label{fig:window_exploration}
+\end{figure}
+
+\subsection{Class Separation Metric}
+Cohen’s \(d\) was used as the primary descriptive measure of class separation. It expresses the standardized difference between the STAY and SKIP distributions, making it suitable for comparing separability across parameter settings even when the underlying distributions differ in scale. In this context, larger absolute values of Cohen’s \(d\) indicate stronger separation between the two classes.
+
+% here later include a nice formula of calculation
+
+For each parameter configuration, Cohen’s \(d\) was computed between the STAY and SKIP feature distributions derived from the corresponding labeling scheme. This provided a direct quantitative index of how strongly the chosen temporal definitions emphasized the contrast between sustained engagement and imminent disengagement.
+
 
 \subsection{Theoretical Justification for the STAY Objective}
 The decision to mathematically map sustained engagement as the positive target class (Class 1) ensures that the machine learning models strictly evaluate our core behavioral science objective: measuring human attention capacity. Within this paradigm, the physical swipe is viewed merely as the delayed behavioral exhaust---the physical evidence that the cognitive state of active engagement has already critically failed \cite{libet_time_1983}.
@@ -342,7 +390,124 @@ The choice to isolate the \texttt{SKIP} sequence specifically to a 3.0-second an
     \end{itemize}
 \end{itemize}
 
+
+% --- INSERTED METHODS FIGURES ---
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz01.1.png}
+    \caption{Sampling Rate Distribution across participants.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz01.3.png}
+    \caption{Bluetooth Dropout Heatmap indicating signal loss events.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz02.1.png}
+    \caption{Artifact rate distribution and signal quality flagging.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.1.png}
+    \caption{Window extraction process from raw signal.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.2.png}
+    \caption{Raw class distribution (STAY vs. SKIP) before balancing.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.3.png}
+    \caption{Window duration analysis.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.4.png}
+    \caption{Behavioral interaction distribution over time.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_9.png}
+    \caption{Window parameter exploration (Slice 9).}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_7.png}
+    \caption{Window parameter exploration (Slice 7).}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_12.png}
+    \caption{Window parameter exploration (Slice 12).}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.2_before_balancing.png}
+    \caption{Raw window counts before balancing.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.2_after_balancing.png}
+    \caption{Window counts after balancing.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.1.png}
+    \caption{Temporal cross-validation split visualization.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.2.png}
+    \caption{Balanced class counts across participants.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.3.png}
+    \caption{Fold composition and data distribution.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.4.png}
+    \caption{Temporal fold separation details.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.5.png}
+    \caption{Temporal distance between train and test windows.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz05a.A2.png}
+    \caption{Extracted statistical moments from EEG signals.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz05a.A3.png}
+    \caption{Engagement Index (EI) calculation from band powers.}
+\end{figure}
+% --- END INSERTED METHODS FIGURES ---
 \section{Internal Structuring: Results Narrative and Gap Analysis}
+
 
 \textit{Note: The following subsection synthesizes the data produced by the re-architected \texttt{STAY} pipeline (Case B). It provides a structured, logical story arc mapping what we set out to prove, what the data actually shows, and explicitly highlights what is missing or incomplete for the final academic narrative.}
 
@@ -456,7 +621,203 @@ To answer this honestly and logically, the academic story arc must flow step-by-
     \item \textbf{Narrative Conclusion:} This confirms the constraint of consumer BCI in dynamic environments. Reducing algorithmic media engagement to a static, universal equation is insufficient. The cognitive state is too complex and idiosyncratic. High-dimensional, individualized machine learning approaches (like the RF-112 model achieving 53.8\% via blocked temporal CV, $p=0.0015$) are required. The failure of the universal SFEI is consistent with the LOGO-CV collapse: the engagement signature is fundamentally individualized.
 \end{itemize}
 
+
+% --- INSERTED RESULTS FIGURES ---
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.1_cohend_bands.png}
+    \caption{Cohen's d effect size by frequency band.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.2_cohend_electrodes.png}
+    \caption{Cohen's d effect size by electrode.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.3_cohend_stats.png}
+    \caption{Cohen's d effect size by statistical moment.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.4_cohend_interactions.png}
+    \caption{Cohen's d effect size interactions.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_inter.png}
+    \caption{Inter-subject performance metrics.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_inter.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.png}
+    \caption{Intra-subject performance metrics.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.tex}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance_thesis_paragraph.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance.png}
+    \caption{Inter-subject significance analysis.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_intra_significance_thesis_paragraph.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_intra_significance.png}
+    \caption{Intra-subject significance analysis.}
+\end{figure}
+
+\subsubsection*{Methodology for Significance Testing}
+To rigorously determine whether a predictive model meaningfully outperforms a random baseline (Coin Flip) or a standard reference (Engagement Index, EI LR), this pipeline employs the Wilcoxon signed-rank test. Standard parametric tests assume that the performance metrics across participants are normally distributed. In small-sample physiological data (N=25 participants), this assumption is often violated. Performance is evaluated using paired metrics from the 25 individual cross-validation folds. The test calculates the difference in performance between the evaluated model and the baseline model for each participant. The algorithm employs a two-sided Wilcoxon test with a standard significance threshold ($\alpha = 0.05$). To strictly guarantee superiority, a directional check is applied post-hoc: the arithmetic mean of the model's scores across all participants must be strictly greater than the arithmetic mean of the baseline.
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_3_cohend_method.tex}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_3_cohend_results.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_3_cohend_top_features.png}
+    \caption{Top features ranked by Cohen's d.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_3_cohend_top_features.tex}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_4_description.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_4_identifying_top.png}
+    \caption{Identifying top predictive features.}
+\end{figure}
+
+\subsubsection*{Selected Features}
+\begin{verbatim}
+{
+    "AF7_high_gamma_mean": {
+        "d": 0.16824331879615784,
+        "labels": ["Top Band (high_gamma)", "Top Electrode (AF7)", "Overall Top Feature #2"]
+    },
+    "AF8_delta_peakfreq": {
+        "d": 0.13990937173366547,
+        "labels": ["Top Statistic (peakfreq)"]
+    },
+    "TP10_raw_std": {
+        "d": 0.1959162801504135,
+        "labels": ["Overall Top Feature #1"]
+    }
+}
+\end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat1.png}
+    \caption{Inter-subject performance using Feature 1.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat1.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat2.png}
+    \caption{Inter-subject performance using Feature 2.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat2.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat3.png}
+    \caption{Inter-subject performance using Feature 3.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat3.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat1.png}
+    \caption{Intra-subject performance using Feature 1.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat1.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat2.png}
+    \caption{Intra-subject performance using Feature 2.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat2.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat3.png}
+    \caption{Intra-subject performance using Feature 3.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat3.tex}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_diagnostics.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_final.png}
+    \caption{Final inter-subject performance summary.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_metrics_table_ablation.png}
+    \caption{Inter-subject metrics table ablation.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_metrics_table_ablation.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_optimal_params_ablation.png}
+    \caption{Inter-subject optimal parameters ablation.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_sig_f1_models_ablation.tex}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_diagnostics.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_final.png}
+    \caption{Final intra-subject performance summary.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_metrics_table_ablation.png}
+    \caption{Intra-subject metrics table ablation.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_metrics_table_ablation.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_optimal_params_ablation.png}
+    \caption{Intra-subject optimal parameters ablation.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_sig_f1_models_ablation.tex}
+% --- END INSERTED RESULTS FIGURES ---
 \subsection{8. Summary of Results}
+
 \textbf{Does it answer the research question?} Yes, with appropriate calibration. Within this sample, consumer-grade EEG can predict sustained engagement significantly better than random chance at the intra-subject level (53.8\%, $p=0.0015$ via blocked temporal 5-fold CV), but the effect is small ($\sim$3.8pp above chance) and individually variable. Cross-subject generalization fails completely (LOGO-CV: 49.2\%). Simple clinical formulas (EI: 52.3\%) are insufficient. Feature importance is broadly distributed across all frequency bands, with the model exploiting the full spectral structure rather than any single dominant band. The top individual predictors are high-gamma peak values at frontal sites, but no band achieves statistically significant dominance at the aggregate level.
 
 % TODO: The following items still need to be addressed in the thesis:

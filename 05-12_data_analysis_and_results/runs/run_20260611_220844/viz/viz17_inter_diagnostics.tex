@@ -1,105 +1,21 @@
 \section*{Diagnostic Report (Inter)}
 \subsection*{Model: EI LR}
-Train F1 = 28.0\%, Test F1 = 19.4\%, Precision = 48.6\%, Recall = 18.3\%.
+Train F1 = 62.0\%, Test F1 = 62.5\%, Precision = 49.4\%, Recall = 89.2\%.
 \newline
 \textbf{Significance vs Coin Flip:} p >= 0.05
 \newline
 \textbf{Diagnosis:} Random chance performance (No signal). The F1 score is not statistically significantly better than the Coin Flip baseline (p >= 0.05).
 
-\subsection*{Model: Beta-only}
-Train F1 = 59.8\%, Test F1 = 53.9\%, Precision = 46.7\%, Recall = 74.8\%.
+\subsection*{Model: TP10 raw std LR}
+Train F1 = 49.6\%, Test F1 = 46.0\%, Precision = 47.5\%, Recall = 51.0\%.
+\newline
+\textbf{Significance vs Coin Flip:} p < 0.05
+\newline
+\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
+
+\subsection*{Model: AF7 high gamma mean LR}
+Train F1 = 54.3\%, Test F1 = 45.5\%, Precision = 44.3\%, Recall = 58.1\%.
 \newline
 \textbf{Significance vs Coin Flip:} p < 0.05
 \newline
 \textbf{Diagnosis:} Mild overfit. The model demonstrates genuine predictive power with expected minor performance degradation on unseen data.
-
-\subsection*{Model: Alpha-only}
-Train F1 = 59.1\%, Test F1 = 54.8\%, Precision = 47.0\%, Recall = 72.7\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
-
-\subsection*{Model: Theta-only}
-Train F1 = 36.1\%, Test F1 = 24.6\%, Precision = 43.7\%, Recall = 27.2\%.
-\newline
-\textbf{Significance vs Coin Flip:} p >= 0.05
-\newline
-\textbf{Diagnosis:} Random chance performance (No signal). The F1 score is not statistically significantly better than the Coin Flip baseline (p >= 0.05).
-
-\subsection*{Model: Beta/Alpha}
-Train F1 = 57.3\%, Test F1 = 54.1\%, Precision = 50.1\%, Recall = 65.0\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
-
-\subsection*{Model: Beta/Theta}
-Train F1 = 47.8\%, Test F1 = 43.2\%, Precision = 48.3\%, Recall = 49.3\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
-
-\subsection*{Model: EEI}
-Train F1 = 61.9\%, Test F1 = 61.4\%, Precision = 50.4\%, Recall = 84.0\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
-
-\subsection*{Model: EI_mean}
-Train F1 = 55.7\%, Test F1 = 53.9\%, Precision = 49.2\%, Recall = 68.2\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
-
-\subsection*{Model: EI_std}
-Train F1 = 40.8\%, Test F1 = 28.2\%, Precision = 53.0\%, Recall = 31.1\%.
-\newline
-\textbf{Significance vs Coin Flip:} p >= 0.05
-\newline
-\textbf{Diagnosis:} Random chance performance (No signal). The F1 score is not statistically significantly better than the Coin Flip baseline (p >= 0.05).
-
-\subsection*{Model: EI_peakfreq}
-Train F1 = 51.5\%, Test F1 = 50.3\%, Precision = 51.8\%, Recall = 52.3\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
-
-\subsection*{Model: EI_macrofreq}
-Train F1 = 52.9\%, Test F1 = 52.9\%, Precision = 49.3\%, Recall = 58.2\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
-
-\subsection*{Model: EI_rel_power}
-Train F1 = 59.1\%, Test F1 = 59.3\%, Precision = 50.3\%, Recall = 75.0\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
-
-\subsection*{Model: EI_hjorth_act}
-Train F1 = 62.0\%, Test F1 = 62.5\%, Precision = 49.4\%, Recall = 89.2\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Class collapse to positive (STAY). The model achieves high recall by predicting mostly STAY, sacrificing precision.
-
-\subsection*{Model: EI_hjorth_mob}
-Train F1 = 46.9\%, Test F1 = 46.5\%, Precision = 49.7\%, Recall = 45.6\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
-
-\subsection*{Model: EI_hjorth_comp}
-Train F1 = 53.1\%, Test F1 = 51.9\%, Precision = 52.6\%, Recall = 53.8\%.
-\newline
-\textbf{Significance vs Coin Flip:} p < 0.05
-\newline
-\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.

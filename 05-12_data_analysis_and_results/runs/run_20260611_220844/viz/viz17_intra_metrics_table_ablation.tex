@@ -1,18 +1,18 @@
 \begin{table}[ht]
 \centering
-\begin{tabular}{lcccccccccccccccccccccccccccccc}
+\begin{tabular}{lcccccc}
 \hline
-Metric & \multicolumn{2}{c}{EI LR} & \multicolumn{2}{c}{Beta-only} & \multicolumn{2}{c}{Alpha-only} & \multicolumn{2}{c}{Theta-only} & \multicolumn{2}{c}{Beta/Alpha} & \multicolumn{2}{c}{Beta/Theta} & \multicolumn{2}{c}{EEI} & \multicolumn{2}{c}{EI_mean} & \multicolumn{2}{c}{EI_std} & \multicolumn{2}{c}{EI_peakfreq} & \multicolumn{2}{c}{EI_macrofreq} & \multicolumn{2}{c}{EI_rel_power} & \multicolumn{2}{c}{EI_hjorth_act} & \multicolumn{2}{c}{EI_hjorth_mob} & \multicolumn{2}{c}{EI_hjorth_comp} \\
- & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig \\
+Metric & Coin Flip & EI LR & \multicolumn{2}{c}{TP10 raw std LR} & \multicolumn{2}{c}{AF7 high gamma mean LR} \\\\
+ & Val & Val & Val & Sig & Val & Sig \\\\
 \hline
-F1 Train (STAY) & 51.5\% & - & 53.7\% & FALSE & 53.9\% & FALSE & 53.8\% & FALSE & 51.2\% & FALSE & 51.5\% & FALSE & 51.5\% & FALSE & 49.5\% & FALSE & 51.3\% & FALSE & 52.4\% & FALSE & 51.7\% & FALSE & 52.1\% & FALSE & 51.0\% & FALSE & 52.8\% & FALSE & 53.1\% & FALSE \\
-F1 Test (STAY) & 50.9\% & - & 51.7\% & FALSE & 51.4\% & FALSE & 50.6\% & FALSE & 50.3\% & FALSE & 50.5\% & FALSE & 48.5\% & FALSE & 49.0\% & FALSE & 48.8\% & FALSE & 50.7\% & FALSE & 48.7\% & FALSE & 51.1\% & FALSE & 47.5\% & FALSE & 49.6\% & FALSE & 50.8\% & FALSE \\
-Precision (STAY) & 50.7\% & - & 50.3\% & FALSE & 50.3\% & FALSE & 50.4\% & FALSE & 50.3\% & FALSE & 49.9\% & FALSE & 49.4\% & \textcolor{green}{TRUE} & 49.9\% & FALSE & 50.4\% & FALSE & 51.0\% & FALSE & 49.2\% & FALSE & 50.0\% & FALSE & 50.6\% & FALSE & 51.1\% & FALSE & 51.1\% & FALSE \\
-Recall (STAY) & 55.5\% & - & 54.0\% & FALSE & 53.5\% & FALSE & 51.5\% & FALSE & 52.1\% & FALSE & 53.4\% & FALSE & 50.0\% & FALSE & 49.6\% & FALSE & 48.8\% & FALSE & 50.6\% & FALSE & 48.6\% & FALSE & 54.0\% & FALSE & 48.2\% & FALSE & 48.6\% & FALSE & 51.0\% & FALSE \\
-F1 Train (SKIP) & 47.9\% & - & 53.0\% & \textcolor{green}{TRUE} & 51.8\% & FALSE & 52.1\% & FALSE & 49.7\% & FALSE & 48.6\% & FALSE & 50.3\% & FALSE & 50.7\% & FALSE & 52.6\% & FALSE & 52.8\% & FALSE & 51.4\% & FALSE & 48.4\% & FALSE & 51.5\% & FALSE & 53.1\% & FALSE & 51.8\% & FALSE \\
-F1 Test (SKIP) & 45.3\% & - & 47.7\% & FALSE & 48.1\% & FALSE & 49.6\% & FALSE & 48.1\% & FALSE & 46.7\% & FALSE & 48.6\% & FALSE & 49.2\% & FALSE & 50.0\% & FALSE & 51.2\% & \textcolor{green}{TRUE} & 49.4\% & FALSE & 46.6\% & FALSE & 49.5\% & FALSE & 52.1\% & \textcolor{green}{TRUE} & 51.1\% & FALSE \\
-Precision (SKIP) & 50.3\% & - & 50.2\% & FALSE & 50.3\% & FALSE & 50.5\% & FALSE & 50.3\% & FALSE & 50.7\% & FALSE & 50.0\% & FALSE & 49.9\% & FALSE & 50.0\% & FALSE & 51.1\% & FALSE & 49.3\% & FALSE & 49.9\% & FALSE & 49.9\% & FALSE & 51.1\% & FALSE & 51.2\% & FALSE \\
-Recall (SKIP) & 45.2\% & - & 46.4\% & FALSE & 47.1\% & FALSE & 49.5\% & FALSE & 48.4\% & FALSE & 46.7\% & FALSE & 49.5\% & FALSE & 50.3\% & FALSE & 51.4\% & FALSE & 51.5\% & FALSE & 49.9\% & FALSE & 45.9\% & FALSE & 51.9\% & FALSE & 53.5\% & FALSE & 51.3\% & FALSE \\
+F1 Train (STAY) & 50.6\% & 53.8\% & \textcolor{green}{52.4\%} & TRUE & \textcolor{green}{52.6\%} & TRUE \\\\
+F1 Test (STAY) & 52.4\% & 50.9\% & \textcolor{green}{49.3\%} & TRUE & \textcolor{green}{52.1\%} & TRUE \\\\
+Precision (STAY) & 50.1\% & 49.1\% & \textcolor{green}{48.2\%} & TRUE & 49.9\% & FALSE \\\\
+Recall (STAY) & 55.0\% & 52.9\% & \textcolor{green}{50.4\%} & TRUE & \textcolor{green}{54.6\%} & TRUE \\\\
+F1 Train (SKIP) & 49.4\% & 49.6\% & \textcolor{green}{52.6\%} & TRUE & \textcolor{green}{52.9\%} & TRUE \\\\
+F1 Test (SKIP) & 47.5\% & 46.9\% & 46.8\% & FALSE & 47.2\% & FALSE \\\\
+Precision (SKIP) & 50.1\% & 48.9\% & \textcolor{green}{47.9\%} & TRUE & 49.8\% & FALSE \\\\
+Recall (SKIP) & 45.2\% & 45.1\% & 45.7\% & FALSE & 45.0\% & FALSE \\\\
 \hline
 \end{tabular}
 \caption{Minimal Metrics for Intra Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha=0.05$, N=25).}

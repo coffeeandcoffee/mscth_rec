@@ -1,0 +1,27 @@
+Methodology for Significance Testing of EEG Pipeline Models
+
+To rigorously determine whether a predictive model meaningfully outperforms a random baseline (Coin Flip) or a standard reference (Engagement Index, EI LR), this pipeline employs the Wilcoxon signed-rank test.
+
+1. Rationale for the Non-Parametric Approach
+Standard parametric tests (like the independent or paired t-test) assume that the performance metrics (such as F1-scores) across participants are normally distributed. In small-sample, highly individual physiological data such as EEG (N=25 participants), this assumption is often violated. The Wilcoxon signed-rank test is a non-parametric alternative that makes no assumptions about the underlying distribution, making it statistically robust for this dataset.
+
+2. Paired Participant-Level Comparison
+Performance is not evaluated as a single aggregated mean. Instead, the test utilizes paired metrics from the 25 individual cross-validation folds (where each fold represents a held-out participant).
+The test calculates the difference in performance between the evaluated model and the baseline model for each participant:
+   Difference = Model_Score - Baseline_Score
+By ranking the absolute values of these differences and applying the original signs, the test evaluates whether the median of these paired differences is significantly shifted from zero.
+
+Example: A model might have a high overall average F1-score simply because it performed exceptionally well on just 3 participants, while performing slightly worse than the baseline on the other 22. A mean-based comparison might incorrectly flag this as an overall improvement. The paired Wilcoxon test prevents this illusion by looking at consistency: it will only yield significance if the model reliably beats the baseline across the majority of the individual participants.
+
+3. Two-Sided Testing with Directional Validation
+The algorithm employs a two-sided Wilcoxon test with a standard significance threshold (alpha = 0.05, representing a 95% confidence level). A two-sided test simply detects a significant difference in either direction (i.e., the model could be significantly better OR significantly worse than the baseline).
+To strictly guarantee superiority, a directional check is applied post-hoc:
+- First, the test must yield p < 0.05.
+- Second, the arithmetic mean of the model's scores across all participants must be strictly greater than the arithmetic mean of the baseline.
+If both conditions are met, the model's performance is deemed statistically significantly superior to the baseline, and is highlighted as such (e.g., TRUE).
+
+4. Assumptions and Parameters
+- Paired Samples: N = 25 (derived from 25 strictly partitioned participant folds).
+- Significance Threshold: Alpha = 0.05.
+- Independence: Metric distributions are assumed to be independent between participants but dependent between models evaluated on the identical set of participant features.
+- Ties: Zero-differences (ties) are handled via standard SciPy internal methods (the Wilcoxon method removes zero-differences from the ranking).

@@ -132,3 +132,18 @@ def run(run_dir, params):
     plt.tight_layout()
     plt.savefig(viz_dir / "viz02_artifact_flag.png", dpi=200)
     plt.close()
+
+    # --- Individual Panel 1 (viz02.1) ---
+    fig_ind, ax_ind = plt.subplots(figsize=(6, 6))
+    ax_ind.barh(y_pos, df_sorted['blink_rate'], color=PALETTE[0],
+            label='Blink', height=0.4, align='edge')
+    ax_ind.barh([y + 0.4 for y in y_pos], df_sorted['emg_rate'], color=PALETTE[1],
+            label='EMG', height=0.4, align='edge')
+    ax_ind.set_yticks([y + 0.4 for y in y_pos])
+    ax_ind.set_yticklabels([f"P{p_}" for p_ in df_sorted['pid']], fontsize=7)
+    ax_ind.set_xlabel('Artifact Rate')
+    ax_ind.set_title('Artifact Rate per Participant')
+    ax_ind.legend(fontsize=8)
+    plt.tight_layout()
+    plt.savefig(viz_dir / "viz02.1.png", dpi=200)
+    plt.close()

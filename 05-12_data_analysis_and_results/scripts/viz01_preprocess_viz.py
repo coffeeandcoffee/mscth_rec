@@ -160,3 +160,26 @@ def run(run_dir, params):
     plt.tight_layout()
     plt.savefig(viz_dir / "viz01_preprocess.png", dpi=200)
     plt.close()
+
+    # --- Individual Panel 1 (viz01.1) ---
+    fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+    ax_ind.hist(fs_values, bins=20, color=PALETTE[0], edgecolor='white', alpha=0.8)
+    ax_ind.axvline(256, color='red', linestyle='--', linewidth=1, label='256 Hz nominal')
+    ax_ind.set_xlabel('Effective Sampling Rate (Hz)')
+    ax_ind.set_ylabel('Count')
+    ax_ind.set_title('Sampling Rate Distribution')
+    ax_ind.legend()
+    plt.tight_layout()
+    plt.savefig(viz_dir / "viz01.1.png", dpi=200)
+    plt.close()
+
+    # --- Individual Panel 3 (viz01.3) ---
+    fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+    ax_ind.imshow(heatmap, aspect='auto', cmap='YlOrRd', interpolation='nearest')
+    ax_ind.set_yticks(range(len(pids)))
+    ax_ind.set_yticklabels([f'P{p}' for p in pids], fontsize=6)
+    ax_ind.set_xlabel('Session Time (normalised)')
+    ax_ind.set_title('Bluetooth Dropout Map')
+    plt.tight_layout()
+    plt.savefig(viz_dir / "viz01.3.png", dpi=200)
+    plt.close()

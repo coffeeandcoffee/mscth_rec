@@ -1,0 +1,20 @@
+\begin{table}[ht]
+\centering
+\begin{tabular}{lccc}
+\hline
+Metric & EI LR & \multicolumn{2}{c}{AF7 high gamma mean} \\\\
+ & Val & Val & Sig \\\\
+\hline
+F1 Train (STAY) & 62.0\% & \textcolor{green}{54.3\%} & TRUE \\\\
+F1 Test (STAY) & 62.5\% & \textcolor{green}{45.5\%} & TRUE \\\\
+Precision (STAY) & 49.4\% & 44.3\% & FALSE \\\\
+Recall (STAY) & 89.2\% & \textcolor{green}{58.1\%} & TRUE \\\\
+F1 Train (SKIP) & 20.6\% & \textcolor{green}{45.5\%} & TRUE \\\\
+F1 Test (SKIP) & 10.7\% & \textcolor{green}{35.5\%} & TRUE \\\\
+Precision (SKIP) & 23.5\% & \textcolor{green}{52.4\%} & TRUE \\\\
+Recall (SKIP) & 9.6\% & \textcolor{green}{42.7\%} & TRUE \\\\
+\hline
+\end{tabular}
+\caption{Step 5 (Inter): Proposed Feature (AF7 high gamma mean) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha=0.05$, N=25).}
+\label{tab:metrics_5_inter_1}
+\end{table}
