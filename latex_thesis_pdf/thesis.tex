@@ -291,13 +291,31 @@ The manually categorized pre-task resting baseline phases were excluded from the
 In addition to baseline exclusion, the labeling procedure omitted segments affected by boundary overlap between \texttt{STAY} and \texttt{SKIP} definitions. This was necessary to preserve clear class assignment and avoid ambiguous temporal regions near each swipe event. The final label construction therefore prioritized temporal purity of the target classes over maximal sample count.
 
 \subsection{Parameter Sensitivity Analysis}
-To evaluate how the label definition influenced class separability, the three temporal parameters were varied in a controlled sensitivity analysis. In each run, two parameters were frozen while the third was changed systematically, allowing the isolated contribution of each parameter to be assessed. This made it possible to determine whether separability was driven primarily by temporal distance from the swipe event, by the breadth of the labeled segment, or by their interaction.
 
-% -- methods read until here -- continute reading, continute inserting INSERT: ...
-% next step: revise this line below here, to describe the fix variables properly
-% also include gap window images for default and variations appropriately
+To assess how label definition affects class separability, a controlled sensitivity analysis over three temporal parameters was conducted. In each experiment, two parameters were held constant while the third was varied, isolating its effect. This setup allows us to distinguish whether separability is primarily driven by temporal distance to the swipe event, window size, or their interaction.
 
-The key finding was that, under fixed gap length and window length, increasing the imminent-skip period consistently increased Cohen’s \(d\). This indicates that the STAY and SKIP distributions became progressively more distinct as the labeled \texttt{SKIP} interval was shifted farther away from the swipe event. Figure~\ref{fig:window_exploration} presents the corresponding sensitivity analysis and shows the resulting change in class separation across parameter settings.
+The influence of window size (ws), gap size (gs), and imminent-skip period (isp) on data preprocessing and segmentation is illustrated in three example-configurations: (i) default parameters (ws = 1s, gs = 2s, isp = 3s; Figure \ref{fig:labeling_strategy_default}), (ii) reduced window size (ws = 0.3s, gs = 2s, isp = 3s; Figure \ref{fig:labeling_strategy_small_window}), and (iii) reduced gap with extended imminent-skip period (ws = 1s, gs = 0.5s, isp = 4s; Figure \ref{fig:labeling_strategy_small_gap_big_isp}). The swipe event is indicated by vertical red lines. All figures show the same randomly selected 70-second segment from a single participant. Time (seconds) is plotted on the x-axis, and class labels—STAY (blue) and SKIP (red) on the y-axis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_9.png}
+    \caption{Window parameter exploration (default parameters, same as Figure \ref{fig:labeling_strategy}).}
+    \label{fig:labeling_strategy_default}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_7.png}
+    \caption{Window parameter exploration (default parameters, except a smaller window size).}
+    \label{fig:labeling_strategy_small_window}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_12.png}
+    \caption{Window parameter exploration (default parameters, except a smaller gap size \& a longer imminent-skip period (Skip-Area)).}
+    \label{fig:labeling_strategy_small_gap_big_isp}
+\end{figure}
 
 \begin{figure}[H]
     \centering
@@ -306,90 +324,37 @@ The key finding was that, under fixed gap length and window length, increasing t
     \label{fig:window_exploration}
 \end{figure}
 
+The key result is that, with fixed imminent-skip period and window size, increasing the gap length consistently increases Cohen’s d (Figure \ref{fig:window_exploration}, left), indicating greater separability as the SKIP interval moves further from the swipe event. A similar effect is observed for longer imminent-skip periods, where larger SKIP intervals also improve separability. For fixed gap and imminent-skip period, increasing window size shows a roughly linear or potentially cubic relationship with Cohen’s d (Figure \ref{fig:window_exploration}, right), again corresponding to increased class separation. While all these results strongly suggest better separability with increased overall data-availability (bigger windows, and areas) and simultaneously better separability the further we move away from the swipe, interpreting these relationships and their implications for optimal parameter selection remains beyond the scope of this thesis as it requires separate analysis, and is therefore a promising direction for future work. To maintain focus and scope, this analysis proceeds with the locked, default parameters:
+
+\begin{itemize}
+    \item Window size (ws) = 1 second
+    \item Gap size (gs) = 2 seconds
+    \item Imminent-skip period (isp) = 3 seconds
+\end{itemize}
+
 \subsection{Class Separation Metric}
 Cohen’s \(d\) was used as the primary descriptive measure of class separation. It expresses the standardized difference between the STAY and SKIP distributions, making it suitable for comparing separability across parameter settings even when the underlying distributions differ in scale. In this context, larger absolute values of Cohen’s \(d\) indicate stronger separation between the two classes.
 
-% here later include a nice formula of calculation
+\begin{equation}
+    d = \frac{\bar{x}_{\text{STAY}} - \bar{x}_{\text{SKIP}}}{\sqrt{\frac{(n_{\text{STAY}} - 1)s_{\text{STAY}}^2 + (n_{\text{SKIP}} - 1)s_{\text{SKIP}}^2}{n_{\text{STAY}} + n_{\text{SKIP}} - 2}}}
+    \label{eq:cohens_d}
+\end{equation}
+where \(\bar{x}_{\text{STAY}}\) and \(\bar{x}_{\text{SKIP}}\) denote the sample means of the feature values for the STAY and SKIP windows respectively, \(s_{\text{STAY}}^2\) and \(s_{\text{SKIP}}^2\) are the corresponding sample variances, and \(n_{\text{STAY}}\) and \(n_{\text{SKIP}}\) represent the number of samples in each class.
 
 For each parameter configuration, Cohen’s \(d\) was computed between the STAY and SKIP feature distributions derived from the corresponding labeling scheme. This provided a direct quantitative index of how strongly the chosen temporal definitions emphasized the contrast between sustained engagement and imminent disengagement.
 
+% -- methods read until here -- continute reading, continute inserting INSERT: ...
+% next step: document full recording script, preprocessing, and analysi pipelines.
 
-\subsection{Theoretical Justification for the STAY Objective}
-The decision to mathematically map sustained engagement as the positive target class (Class 1) ensures that the machine learning models strictly evaluate our core behavioral science objective: measuring human attention capacity. Within this paradigm, the physical swipe is viewed merely as the delayed behavioral exhaust---the physical evidence that the cognitive state of active engagement has already critically failed \cite{libet_time_1983}.
+\section{Universal Recording Pipeline}
 
-The choice to isolate the \texttt{SKIP} sequence specifically to a 3.0-second anticipatory temporal window is firmly anchored in classical motor preparation and intentional neurological mapping literature. Readiness potentials have been shown to precede conscious intention to act by several hundred milliseconds \cite{libet_time_1983}, while movement-related cortical potentials in EEG recordings begin approximately 2 seconds prior to voluntary movement execution \cite{shakeel_review_2015}. Treating the swipe as a self-paced voluntary motor act, the 3-second window conservatively encompasses the documented pre-motor preparation period, ensuring capture of engagement-related neural activity before the physical action while providing a buffer against post-decision motor artifact contamination.
+\section{Universal Pre-Processing Pipeline}
 
-\section{Internal Structuring: Python Pipeline Walkthrough}
+The following subsections describe step-by-step exactly what the Python code in the \texttt{04-26\_data\_analysis\_and\_results} directory executes to process the EEG signals into uniform shape suitable for further analysis.
 
-\textit{Note: The following subsections describe step-by-step exactly what the Python code in the \texttt{04-26\_data\_analysis\_and\_results} directory executes to process the EEG signals and build the machine learning models. This is for internal structural tracking and mathematical comprehension.}
+\subsection{Signal Preprocessing \& Normalization (\texttt{???.py})}
 
-\subsection{1. Signal Preprocessing \& Normalization (\texttt{utils.py})}
-
-\begin{itemize}
-    \item \textbf{True Sampling Rate Extraction:} The script does not assume the hardware delivers a perfect 256~Hz. Instead, it extracts the true, effective sampling rate by calculating the median time difference ($\Delta t$) between consecutive Lab Streaming Layer (LSL) timestamps:
-    $$ fs_{effective} = \frac{1}{\text{median}(\Delta t)} $$
-    
-    \item \textbf{Frequency Band Splitting:} The raw EEG wave is fed through a continuous 4th-order Butterworth bandpass filter. It systematically slices the wave into 7 established frequency bounds: Delta (1--4~Hz), Theta (4--8~Hz), Alpha (8--13~Hz), Beta (13--30~Hz), Low Gamma (30--40~Hz), High Gamma (40--60~Hz), and Very High (60--100~Hz).
-    
-    \item \textbf{Notch Filter Exclusion:} While a 50~Hz power-line notch filter exists in the script, it is actively disabled via the \texttt{--nonotch} parameter to avoid systematically destroying the target High Gamma neurological signal.
-    
-    \item \textbf{Baseline Relative Power Normalization:} To cancel out physiological noise (like skull thickness or skin resistance unique to each participant), the pipeline uses the 100-s baseline:
-    \begin{enumerate}
-        \item \textbf{Absolute Power Conversion:} First, the script isolates the instantaneous voltage amplitude $A(t)$ and squares it to derive physical electrical power:
-        $$ P_{abs}(t) = A(t)^2 $$
-        \item \textbf{Resting Geometric Mean:} For all 28 extracted channels, it averages the absolute power specifically across the initial 100-second resting baseline ($ \mu_{baseline} $). A failsafe sets the minimum bound to $1 \times 10^{-12}$ to computationally prevent division by zero.
-        \item \textbf{Relative Scaling:} During the active TikTok viewing task, every data point is divided by this resting mean. This converts the raw waves into a clean, personalized "Relative Power Ratio":
-        $$ P_{rel}(t) = \frac{P_{abs}(t)}{\mu_{baseline}} $$
-    \end{enumerate}
-\end{itemize}
-
-\subsection{2. Standard Benchmark: Engagement Index (\texttt{step4\_engagement\_index.py})}
-
-\begin{itemize}
-    \item  To test classic clinical theories against the EEG data, the script computes the standard Engagement Index originally validated by Pope et al.\ \cite{pope_biocybernetic_1995} for operator engagement monitoring in automated flight-deck tasks. For every 3.0-second window, it mathematically averages the relative power for the Alpha, Theta, and Beta bands across all four electrodes.
-    \item The final scalar metric is computed by dividing the active Beta power by the sum of the passive Alpha and Theta power:
-    $$ EI_{standard} = \frac{\bar{P}_{\beta}}{\bar{P}_{\alpha} + \bar{P}_{\theta}} $$
-    \item This single EI value is passed structurally to an established \texttt{LogisticRegression} model
-\end{itemize}
-
-\subsection{3. Feature Engineering: The 112 Dimensions (\texttt{step2\_train\_rf.py})}
-
-\begin{itemize}
-    \item \textbf{Statistical Compression:} Because raw time-series data is incredibly volatile, the Random Forest pipeline utilizes statistical extraction. Every 3.0-second window consists of roughly 768 physical sampling timestamps across 28 relative power channels (4 electrodes $\times$ 7 bands). 
-    \item Instead of using all 768 points, the script condenses the 3.0-second sequence along four distinct descriptive parameters describing the geometry of the wave over that window:
-    \begin{enumerate}
-        \item \textbf{Mean} ($\mu$)
-        \item \textbf{Standard Deviation} ($\sigma$)
-        \item \textbf{Minimum Boundary} ($\min$)
-        \item \textbf{Maximum Boundary} ($\max$)
-    \end{enumerate}
-    \item \textbf{Total Dimension Yield:} 7 physiological bands $\times$ 4 hardware channels $\times$ 4 statistical distributions = \textbf{112 continuous input features}.
-\end{itemize}
-
-\subsection{4. Traversing Windows \& Probabilistic Scaling (\texttt{step2\_train\_rf.py})}
-
-\begin{itemize}
-    \item \textbf{Extracting the \texttt{SKIP} class (Class 0):} The script drops a strict 3.0-second window terminating sequentially at the exact moment of every \texttt{A}~keypress (swipe). Meaning exactly ONE data block is extracted per skip operation.
-    \item \textbf{Extracting the \texttt{STAY} class (Class 1):} To map sustained engagement, the script shifts a 3.0-second window through all the remaining continuous viewing periods. It operates with an aggressive \textbf{80\% overlap}, shuffling the window forward by a tiny $0.6$-second stride. This yields massive amounts of overlapping \texttt{STAY} arrays.
-    \item \textbf{50/50 Algorithmic Rebalancing:} The overlapping logic inherently creates a wildly imbalanced dataset mapping thousands of \texttt{STAY} windows against a few dozen \texttt{SKIP} windows. Using \texttt{numpy.random.choice} (Seed = 42), the script systematically deletes random \texttt{STAY} windows until the population perfectly matches the \texttt{SKIP} window counts exactly, rigorously enforcing a 50/50 prior distribution to physically prevent classifier bias. Bellos et al.\ note that data scarcity and imbalance are recognized methodological challenges in EEG-based engagement classification, addressable through resampling strategies \cite{bellos_methods_2025}.
-\end{itemize}
-
-\subsection{5. Model Assembly \& Validation Constraints}
-
-\begin{itemize}
-    \item \textbf{Intra-Subject Consistency (\texttt{step2\_train\_rf.py}):}
-    \begin{itemize}
-        \item For every single participant individually, the balanced 50/50 array is chopped into a 60/40 Train/Validation Split.
-        \item A \texttt{RandomForestClassifier} is deployed utilizing exactly 200 estimators (\texttt{n\_estimators=200}), constrained at a \texttt{max\_depth=7} and \texttt{min\_samples\_leaf=5} to aggressively prevent overfitting the high-dimensional data.
-        \item The model performance is validated natively using the Recall (Sensitivity) locked explicitly tracking the \texttt{STAY} (Class 1) target label.
-    \end{itemize}
-    \item \textbf{Inter-Subject Generalizability via LOGO-CV (\texttt{step3\_logo\_cv\_rf.py}):}
-    \begin{itemize}
-        \item To test whether the predictive map scales blindly across humans, the script iterates through Leave-One-Group-Out Cross Validation (LOGO-CV).
-        \item In a 25-step loop, it tosses 24 individuals into a master training bucket, explicitly rebalances that massively mixed array back to 50/50 natively, trains the Random Forest, and attempts mathematically to diagnose the \texttt{STAY/SKIP} sequences of the hidden 25th participant sequentially.
-    \end{itemize}
-\end{itemize}
-
+\section{Result Sythesis Pipeline}
 
 % --- INSERTED METHODS FIGURES ---
 \begin{figure}[H]
@@ -412,12 +377,6 @@ The choice to isolate the \texttt{SKIP} sequence specifically to a 3.0-second an
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.1.png}
-    \caption{Window extraction process from raw signal.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.2.png}
     \caption{Raw class distribution (STAY vs. SKIP) before balancing.}
 \end{figure}
@@ -432,24 +391,6 @@ The choice to isolate the \texttt{SKIP} sequence specifically to a 3.0-second an
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.4.png}
     \caption{Behavioral interaction distribution over time.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_9.png}
-    \caption{Window parameter exploration (Slice 9).}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_7.png}
-    \caption{Window parameter exploration (Slice 7).}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_12.png}
-    \caption{Window parameter exploration (Slice 12).}
 \end{figure}
 
 \begin{figure}[H]
