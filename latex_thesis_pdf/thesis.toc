@@ -20,16 +20,34 @@
 \contentsline {subsection}{\numberline {3.4.4}Parameter Sensitivity Analysis}{19}{subsection.3.4.4}%
 \contentsline {subsection}{\numberline {3.4.5}Class Separation Metric}{21}{subsection.3.4.5}%
 \contentsline {section}{\numberline {3.5}Universal Recording Pipeline}{22}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Universal Pre-Processing Pipeline}{22}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Signal Preprocessing \& Normalization (\texttt {???.py})}{22}{subsection.3.6.1}%
-\contentsline {section}{\numberline {3.7}Result Sythesis Pipeline}{22}{section.3.7}%
-\contentsline {section}{\numberline {3.8}Internal Structuring: Results Narrative and Gap Analysis}{35}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}1. The Research Question and Narrative Arc}{38}{subsection.3.8.1}%
-\contentsline {subsection}{\numberline {3.8.2}2. Step 1: The Clinical Baseline (Engagement Index)}{38}{subsection.3.8.2}%
-\contentsline {subsection}{\numberline {3.8.3}3. Step 2: Structural Expansion (RF-112 \textit {WITH} Notch Filter)}{39}{subsection.3.8.3}%
-\contentsline {subsection}{\numberline {3.8.4}4. Step 3: The High-Frequency Hypothesis (RF-112 \textit {WITHOUT} Notch Filter)}{40}{subsection.3.8.4}%
-\contentsline {subsection}{\numberline {3.8.5}5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{40}{subsection.3.8.5}%
-\contentsline {subsection}{\numberline {3.8.6}6. Step 5: Behavioral Heterogeneity (Skip Bias)}{41}{subsection.3.8.6}%
-\contentsline {subsection}{\numberline {3.8.7}7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}{42}{subsection.3.8.7}%
-\contentsline {subsection}{\numberline {3.8.8}8. Summary of Results}{59}{subsection.3.8.8}%
-\contentsline {subsection}{\numberline {3.8.9}9. Outlook and Implications for Future BCI Design}{59}{subsection.3.8.9}%
+\contentsline {section}{\numberline {3.6}Universal Pre-Processing Pipeline}{23}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Data Synchronization and Interpolation}{23}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Baseline Extraction and Normalization}{25}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Windowing and Class Labeling}{26}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Artifact Rejection}{26}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Rejection}{28}{subsection.3.6.5}%
+\contentsline {section}{\numberline {3.7}Feature Engineering}{29}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Band Power and Statistical Moments}{29}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Engagement Index Calculation}{30}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Hjorth Parameters}{31}{subsection.3.7.3}%
+\contentsline {subsubsection}{Activity}{32}{section*.4}%
+\contentsline {subsubsection}{Mobility}{32}{section*.5}%
+\contentsline {subsubsection}{Complexity}{32}{section*.6}%
+\contentsline {subsection}{\numberline {3.7.4}Peak and Macro Frequency Extraction}{33}{subsection.3.7.4}%
+\contentsline {subsubsection}{Peak Frequency}{33}{section*.7}%
+\contentsline {subsubsection}{Macro Frequency}{33}{section*.8}%
+\contentsline {section}{\numberline {3.8}Result Sythesis Pipeline}{34}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Temporal Cross-Validation and Data Balancing}{34}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Feature Separation Analysis}{36}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{36}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.4}Metrics and Significance Testing}{37}{subsection.3.8.4}%
+\contentsline {section}{\numberline {3.9}Internal Structuring: Results Narrative and Gap Analysis}{38}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}1. The Research Question and Narrative Arc}{40}{subsection.3.9.1}%
+\contentsline {subsection}{\numberline {3.9.2}2. Step 1: The Clinical Baseline (Engagement Index)}{41}{subsection.3.9.2}%
+\contentsline {subsection}{\numberline {3.9.3}3. Step 2: Structural Expansion (RF-112 \textit {WITH} Notch Filter)}{41}{subsection.3.9.3}%
+\contentsline {subsection}{\numberline {3.9.4}4. Step 3: The High-Frequency Hypothesis (RF-112 \textit {WITHOUT} Notch Filter)}{42}{subsection.3.9.4}%
+\contentsline {subsection}{\numberline {3.9.5}5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{43}{subsection.3.9.5}%
+\contentsline {subsection}{\numberline {3.9.6}6. Step 5: Behavioral Heterogeneity (Skip Bias)}{44}{subsection.3.9.6}%
+\contentsline {subsection}{\numberline {3.9.7}7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}{44}{subsection.3.9.7}%
+\contentsline {subsection}{\numberline {3.9.8}8. Summary of Results}{61}{subsection.3.9.8}%
+\contentsline {subsection}{\numberline {3.9.9}9. Outlook and Implications for Future BCI Design}{61}{subsection.3.9.9}%

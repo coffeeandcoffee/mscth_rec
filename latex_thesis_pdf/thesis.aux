@@ -65,7 +65,9 @@
 \newlabel{fig:keypress_sync}{{3.5}{16}{Schematic representation of the manual synchronization process: the participant swipes to skip the video and simultaneously presses the `A' button to mark the event in the EEG stream}{figure.3.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Labeling Strategy}{17}{section.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Operational Definition of Labeling Parameters}{17}{subsection.3.4.1}\protected@file@percent }
+\newlabel{sec:op_labeling_params}{{3.4.1}{17}{Operational Definition of Labeling Parameters}{subsection.3.4.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Operational Definition of STAY and SKIP}{18}{subsection.3.4.2}\protected@file@percent }
+\newlabel{sec:op_stay_skip}{{3.4.2}{18}{Operational Definition of STAY and SKIP}{subsection.3.4.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Schematic overview of the labeling strategy under the default parameterization. The figure illustrates the placement of the \texttt  {STAY} and \texttt  {SKIP} labels relative to the registered press markers, including the default gap length, window length, and imminent-skip period.}}{18}{figure.3.6}\protected@file@percent }
 \newlabel{fig:labeling_strategy}{{3.6}{18}{Schematic overview of the labeling strategy under the default parameterization. The figure illustrates the placement of the \texttt {STAY} and \texttt {SKIP} labels relative to the registered press markers, including the default gap length, window length, and imminent-skip period}{figure.3.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Baseline Exclusion}{18}{subsection.3.4.3}\protected@file@percent }
@@ -81,90 +83,106 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.5}Class Separation Metric}{21}{subsection.3.4.5}\protected@file@percent }
 \newlabel{eq:cohens_d}{{3.1}{21}{Class Separation Metric}{equation.3.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}Universal Recording Pipeline}{22}{section.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Universal Pre-Processing Pipeline}{22}{section.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Signal Preprocessing \& Normalization (\texttt  {???.py})}{22}{subsection.3.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.7}Result Sythesis Pipeline}{22}{section.3.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces Sampling Rate Distribution across participants.}}{22}{figure.3.11}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces Bluetooth Dropout Heatmap indicating signal loss events.}}{23}{figure.3.12}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Artifact rate distribution and signal quality flagging.}}{24}{figure.3.13}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces Raw class distribution (STAY vs. SKIP) before balancing.}}{25}{figure.3.14}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces Window duration analysis.}}{26}{figure.3.15}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.16}{\ignorespaces Behavioral interaction distribution over time.}}{27}{figure.3.16}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.17}{\ignorespaces Raw window counts before balancing.}}{28}{figure.3.17}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.18}{\ignorespaces Window counts after balancing.}}{29}{figure.3.18}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.19}{\ignorespaces Temporal cross-validation split visualization.}}{29}{figure.3.19}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.20}{\ignorespaces Balanced class counts across participants.}}{30}{figure.3.20}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.21}{\ignorespaces Fold composition and data distribution.}}{31}{figure.3.21}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.22}{\ignorespaces Temporal fold separation details.}}{32}{figure.3.22}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.23}{\ignorespaces Temporal distance between train and test windows.}}{33}{figure.3.23}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.24}{\ignorespaces Extracted statistical moments from EEG signals.}}{34}{figure.3.24}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.25}{\ignorespaces Engagement Index (EI) calculation from band powers.}}{35}{figure.3.25}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.8}Internal Structuring: Results Narrative and Gap Analysis}{35}{section.3.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.1}1. The Research Question and Narrative Arc}{38}{subsection.3.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.2}2. Step 1: The Clinical Baseline (Engagement Index)}{38}{subsection.3.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Universal Pre-Processing Pipeline}{23}{section.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Data Synchronization and Interpolation}{23}{subsection.3.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces Sampling Rate Distribution across participants, demonstrating that after interpolation all signals operate precisely at 256 Hz, which is a mathematical prerequisite for the correct extraction of spectral band power.}}{24}{figure.3.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces Bluetooth Dropout Heatmap indicating signal loss events across the experimental timeline. Data windows overlapping with these dropouts were removed from the analysis pipeline.}}{25}{figure.3.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Baseline Extraction and Normalization}{25}{subsection.3.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.3}Windowing and Class Labeling}{26}{subsection.3.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.4}Artifact Rejection}{26}{subsection.3.6.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Artifact rate distribution and signal quality flagging based on the 95th percentile peak-to-peak outlier approach.}}{28}{figure.3.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Rejection}{28}{subsection.3.6.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces Window duration analysis highlighting the occurrence of behavioral burst events (multiple consecutive swipes).}}{29}{figure.3.14}\protected@file@percent }
+\newlabel{fig:bursts}{{3.14}{29}{Window duration analysis highlighting the occurrence of behavioral burst events (multiple consecutive swipes)}{figure.3.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Feature Engineering}{29}{section.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.1}Band Power and Statistical Moments}{29}{subsection.3.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces Extraction of standard statistical moments from the normalized EEG frequency bands.}}{30}{figure.3.15}\protected@file@percent }
+\newlabel{fig:stat_moments}{{3.15}{30}{Extraction of standard statistical moments from the normalized EEG frequency bands}{figure.3.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.2}Engagement Index Calculation}{30}{subsection.3.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.16}{\ignorespaces Engagement Index (EI) calculation deriving a single scalar engagement metric from the Beta, Alpha, and Theta band powers.}}{31}{figure.3.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.3}Hjorth Parameters}{31}{subsection.3.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Activity}{32}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Mobility}{32}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Complexity}{32}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.4}Peak and Macro Frequency Extraction}{33}{subsection.3.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Peak Frequency}{33}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Macro Frequency}{33}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.8}Result Sythesis Pipeline}{34}{section.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.1}Temporal Cross-Validation and Data Balancing}{34}{subsection.3.8.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.17}{\ignorespaces Raw window counts before balancing showing the extreme STAY dominance.}}{34}{figure.3.17}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.18}{\ignorespaces Window counts after undersampling, achieving a strict 50/50 ratio per participant.}}{34}{figure.3.18}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.19}{\ignorespaces Each participant's data is temporally split into 5 folds containing equal amounts of the minority SKIP class.}}{35}{figure.3.19}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.20}{\ignorespaces Temporal minimum required safety distance of 3 seconds between train and test windows is strictly fulfilled.}}{36}{figure.3.20}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.21}{\ignorespaces Temporal cross-validation split visualization, detailing the visible gaps between folds that successfully prevent data leakage.}}{36}{figure.3.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.2}Feature Separation Analysis}{36}{subsection.3.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{36}{subsection.3.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.4}Metrics and Significance Testing}{37}{subsection.3.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.9}Internal Structuring: Results Narrative and Gap Analysis}{38}{section.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.1}1. The Research Question and Narrative Arc}{40}{subsection.3.9.1}\protected@file@percent }
 \citation{apicella_eeg-based_2022}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.3}3. Step 2: Structural Expansion (RF-112 \textit  {WITH} Notch Filter)}{39}{subsection.3.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.2}2. Step 1: The Clinical Baseline (Engagement Index)}{41}{subsection.3.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.3}3. Step 2: Structural Expansion (RF-112 \textit  {WITH} Notch Filter)}{41}{subsection.3.9.3}\protected@file@percent }
 \citation{pattisapu_stimulus-induced_2021}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.4}4. Step 3: The High-Frequency Hypothesis (RF-112 \textit  {WITHOUT} Notch Filter)}{42}{subsection.3.9.4}\protected@file@percent }
 \citation{hasson_intersubject_2004}
 \citation{apicella_eeg-based_2022}
 \citation{bellos_methods_2025}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.4}4. Step 3: The High-Frequency Hypothesis (RF-112 \textit  {WITHOUT} Notch Filter)}{40}{subsection.3.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.5}5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{40}{subsection.3.8.5}\protected@file@percent }
-\newlabel{sec:logo_cv}{{3.8.5}{40}{5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{subsection.3.8.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.6}6. Step 5: Behavioral Heterogeneity (Skip Bias)}{41}{subsection.3.8.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.7}7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}{42}{subsection.3.8.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.26}{\ignorespaces Cohen's d effect size by frequency band.}}{43}{figure.3.26}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.27}{\ignorespaces Cohen's d effect size by electrode.}}{44}{figure.3.27}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.28}{\ignorespaces Cohen's d effect size by statistical moment.}}{44}{figure.3.28}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.29}{\ignorespaces Cohen's d effect size interactions.}}{45}{figure.3.29}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.30}{\ignorespaces Inter-subject performance metrics.}}{45}{figure.3.30}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha =0.05$, N=25).}}{46}{table.3.1}\protected@file@percent }
-\newlabel{tab:metrics_1_inter}{{3.1}{46}{Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha =0.05$, N=25)}{table.3.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.31}{\ignorespaces Intra-subject performance metrics.}}{46}{figure.3.31}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha =0.05$, N=25).}}{47}{table.3.2}\protected@file@percent }
-\newlabel{tab:metrics_1_intra}{{3.2}{47}{Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha =0.05$, N=25)}{table.3.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.32}{\ignorespaces Inter-subject significance analysis.}}{48}{figure.3.32}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.33}{\ignorespaces Intra-subject significance analysis.}}{49}{figure.3.33}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.34}{\ignorespaces Top features ranked by Cohen's d.}}{52}{figure.3.34}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.35}{\ignorespaces Identifying top predictive features.}}{53}{figure.3.35}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.36}{\ignorespaces Inter-subject performance using Feature 1.}}{54}{figure.3.36}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.37}{\ignorespaces Inter-subject performance using Feature 2.}}{54}{figure.3.37}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.38}{\ignorespaces Inter-subject performance using Feature 3.}}{54}{figure.3.38}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.39}{\ignorespaces Intra-subject performance using Feature 1.}}{55}{figure.3.39}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.40}{\ignorespaces Intra-subject performance using Feature 2.}}{55}{figure.3.40}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.41}{\ignorespaces Intra-subject performance using Feature 3.}}{55}{figure.3.41}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.42}{\ignorespaces Final inter-subject performance summary.}}{56}{figure.3.42}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.43}{\ignorespaces Inter-subject metrics table ablation.}}{57}{figure.3.43}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.44}{\ignorespaces Inter-subject optimal parameters ablation.}}{57}{figure.3.44}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.45}{\ignorespaces Final intra-subject performance summary.}}{58}{figure.3.45}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.46}{\ignorespaces Intra-subject metrics table ablation.}}{58}{figure.3.46}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.5}5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{43}{subsection.3.9.5}\protected@file@percent }
+\newlabel{sec:logo_cv}{{3.9.5}{43}{5. Step 4: Cross-Participant Generalizability (LOGO-CV)}{subsection.3.9.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.6}6. Step 5: Behavioral Heterogeneity (Skip Bias)}{44}{subsection.3.9.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.7}7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}{44}{subsection.3.9.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.22}{\ignorespaces Cohen's d effect size by frequency band.}}{45}{figure.3.22}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.23}{\ignorespaces Cohen's d effect size by electrode.}}{46}{figure.3.23}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.24}{\ignorespaces Cohen's d effect size by statistical moment.}}{46}{figure.3.24}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.25}{\ignorespaces Cohen's d effect size interactions.}}{47}{figure.3.25}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.26}{\ignorespaces Inter-subject performance metrics.}}{47}{figure.3.26}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha =0.05$, N=25).}}{48}{table.3.1}\protected@file@percent }
+\newlabel{tab:metrics_1_inter}{{3.1}{48}{Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha =0.05$, N=25)}{table.3.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.27}{\ignorespaces Intra-subject performance metrics.}}{48}{figure.3.27}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha =0.05$, N=25).}}{49}{table.3.2}\protected@file@percent }
+\newlabel{tab:metrics_1_intra}{{3.2}{49}{Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha =0.05$, N=25)}{table.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.28}{\ignorespaces Inter-subject significance analysis.}}{50}{figure.3.28}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.29}{\ignorespaces Intra-subject significance analysis.}}{51}{figure.3.29}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.30}{\ignorespaces Top features ranked by Cohen's d.}}{54}{figure.3.30}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.31}{\ignorespaces Identifying top predictive features.}}{55}{figure.3.31}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.32}{\ignorespaces Inter-subject performance using Feature 1.}}{56}{figure.3.32}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.33}{\ignorespaces Inter-subject performance using Feature 2.}}{56}{figure.3.33}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.34}{\ignorespaces Inter-subject performance using Feature 3.}}{56}{figure.3.34}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.35}{\ignorespaces Intra-subject performance using Feature 1.}}{57}{figure.3.35}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.36}{\ignorespaces Intra-subject performance using Feature 2.}}{57}{figure.3.36}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.37}{\ignorespaces Intra-subject performance using Feature 3.}}{57}{figure.3.37}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.38}{\ignorespaces Final inter-subject performance summary.}}{58}{figure.3.38}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.39}{\ignorespaces Inter-subject metrics table ablation.}}{59}{figure.3.39}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.40}{\ignorespaces Inter-subject optimal parameters ablation.}}{59}{figure.3.40}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.41}{\ignorespaces Final intra-subject performance summary.}}{60}{figure.3.41}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.42}{\ignorespaces Intra-subject metrics table ablation.}}{60}{figure.3.42}\protected@file@percent }
 \bibstyle{unsrt}
 \bibdata{library}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.47}{\ignorespaces Intra-subject optimal parameters ablation.}}{59}{figure.3.47}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.8}8. Summary of Results}{59}{subsection.3.8.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.9}9. Outlook and Implications for Future BCI Design}{59}{subsection.3.8.9}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Top 30 Features by Separation ($|$Cohen's $d|$).}}{60}{table.3.3}\protected@file@percent }
-\newlabel{tab:cohend_top_features}{{3.3}{60}{Top 30 Features by Separation ($|$Cohen's $d|$)}{table.3.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Step 5 (Inter): Proposed Feature (AF7 high gamma mean) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{61}{table.3.4}\protected@file@percent }
-\newlabel{tab:metrics_5_inter_1}{{3.4}{61}{Step 5 (Inter): Proposed Feature (AF7 high gamma mean) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces Step 5 (Inter): Proposed Feature (AF8 delta peakfreq) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{62}{table.3.5}\protected@file@percent }
-\newlabel{tab:metrics_5_inter_2}{{3.5}{62}{Step 5 (Inter): Proposed Feature (AF8 delta peakfreq) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.6}{\ignorespaces Step 5 (Inter): Proposed Feature (TP10 raw std) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{63}{table.3.6}\protected@file@percent }
-\newlabel{tab:metrics_5_inter_3}{{3.6}{63}{Step 5 (Inter): Proposed Feature (TP10 raw std) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.7}{\ignorespaces Step 5 (Intra): Proposed Feature (AF7 high gamma mean) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{64}{table.3.7}\protected@file@percent }
-\newlabel{tab:metrics_5_intra_1}{{3.7}{64}{Step 5 (Intra): Proposed Feature (AF7 high gamma mean) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.8}{\ignorespaces Step 5 (Intra): Proposed Feature (AF8 delta peakfreq) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{65}{table.3.8}\protected@file@percent }
-\newlabel{tab:metrics_5_intra_2}{{3.8}{65}{Step 5 (Intra): Proposed Feature (AF8 delta peakfreq) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.9}{\ignorespaces Step 5 (Intra): Proposed Feature (TP10 raw std) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{66}{table.3.9}\protected@file@percent }
-\newlabel{tab:metrics_5_intra_3}{{3.9}{66}{Step 5 (Intra): Proposed Feature (TP10 raw std) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.9}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.10}{\ignorespaces Minimal Metrics for Inter Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha =0.05$, N=25).}}{67}{table.3.10}\protected@file@percent }
-\newlabel{tab:metrics_inter_ablation}{{3.10}{67}{Minimal Metrics for Inter Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha =0.05$, N=25)}{table.3.10}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.11}{\ignorespaces Models significantly outperforming baseline on F1 Test (Inter)}}{67}{table.3.11}\protected@file@percent }
-\newlabel{tab:sig_f1_inter_ablation}{{3.11}{67}{Models significantly outperforming baseline on F1 Test (Inter)}{table.3.11}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.12}{\ignorespaces Minimal Metrics for Intra Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha =0.05$, N=25).}}{68}{table.3.12}\protected@file@percent }
-\newlabel{tab:metrics_intra_ablation}{{3.12}{68}{Minimal Metrics for Intra Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha =0.05$, N=25)}{table.3.12}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.13}{\ignorespaces Models significantly outperforming baseline on F1 Test (Intra)}}{68}{table.3.13}\protected@file@percent }
-\newlabel{tab:sig_f1_intra_ablation}{{3.13}{68}{Models significantly outperforming baseline on F1 Test (Intra)}{table.3.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.43}{\ignorespaces Intra-subject optimal parameters ablation.}}{61}{figure.3.43}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.8}8. Summary of Results}{61}{subsection.3.9.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.9}9. Outlook and Implications for Future BCI Design}{61}{subsection.3.9.9}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Top 30 Features by Separation ($|$Cohen's $d|$).}}{62}{table.3.3}\protected@file@percent }
+\newlabel{tab:cohend_top_features}{{3.3}{62}{Top 30 Features by Separation ($|$Cohen's $d|$)}{table.3.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Step 5 (Inter): Proposed Feature (AF7 high gamma mean) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{63}{table.3.4}\protected@file@percent }
+\newlabel{tab:metrics_5_inter_1}{{3.4}{63}{Step 5 (Inter): Proposed Feature (AF7 high gamma mean) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces Step 5 (Inter): Proposed Feature (AF8 delta peakfreq) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{64}{table.3.5}\protected@file@percent }
+\newlabel{tab:metrics_5_inter_2}{{3.5}{64}{Step 5 (Inter): Proposed Feature (AF8 delta peakfreq) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.6}{\ignorespaces Step 5 (Inter): Proposed Feature (TP10 raw std) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{65}{table.3.6}\protected@file@percent }
+\newlabel{tab:metrics_5_inter_3}{{3.6}{65}{Step 5 (Inter): Proposed Feature (TP10 raw std) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.7}{\ignorespaces Step 5 (Intra): Proposed Feature (AF7 high gamma mean) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{66}{table.3.7}\protected@file@percent }
+\newlabel{tab:metrics_5_intra_1}{{3.7}{66}{Step 5 (Intra): Proposed Feature (AF7 high gamma mean) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.8}{\ignorespaces Step 5 (Intra): Proposed Feature (AF8 delta peakfreq) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{67}{table.3.8}\protected@file@percent }
+\newlabel{tab:metrics_5_intra_2}{{3.8}{67}{Step 5 (Intra): Proposed Feature (AF8 delta peakfreq) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.9}{\ignorespaces Step 5 (Intra): Proposed Feature (TP10 raw std) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25).}}{68}{table.3.9}\protected@file@percent }
+\newlabel{tab:metrics_5_intra_3}{{3.9}{68}{Step 5 (Intra): Proposed Feature (TP10 raw std) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha =0.05$, N=25)}{table.3.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.10}{\ignorespaces Minimal Metrics for Inter Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha =0.05$, N=25).}}{69}{table.3.10}\protected@file@percent }
+\newlabel{tab:metrics_inter_ablation}{{3.10}{69}{Minimal Metrics for Inter Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha =0.05$, N=25)}{table.3.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.11}{\ignorespaces Models significantly outperforming baseline on F1 Test (Inter)}}{69}{table.3.11}\protected@file@percent }
+\newlabel{tab:sig_f1_inter_ablation}{{3.11}{69}{Models significantly outperforming baseline on F1 Test (Inter)}{table.3.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.12}{\ignorespaces Minimal Metrics for Intra Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha =0.05$, N=25).}}{70}{table.3.12}\protected@file@percent }
+\newlabel{tab:metrics_intra_ablation}{{3.12}{70}{Minimal Metrics for Intra Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha =0.05$, N=25)}{table.3.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.13}{\ignorespaces Models significantly outperforming baseline on F1 Test (Intra)}}{70}{table.3.13}\protected@file@percent }
+\newlabel{tab:sig_f1_intra_ablation}{{3.13}{70}{Models significantly outperforming baseline on F1 Test (Intra)}{table.3.13}{}}
 \bibcite{mccashin_using_2023}{1}
 \bibcite{baughan_i_2022}{2}
 \bibcite{knierim_flow_2026}{3}
@@ -183,4 +201,4 @@
 \bibcite{fries_rhythms_2015}{16}
 \bibcite{pattisapu_stimulus-induced_2021}{17}
 \bibcite{anderson_social_2023}{18}
-\gdef \@abspage@last{74}
+\gdef \@abspage@last{76}
