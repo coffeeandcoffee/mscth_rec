@@ -301,3 +301,90 @@ def run(run_dir, params):
         plt.tight_layout()
         plt.savefig(viz03_dir / "viz03.4.png", dpi=200)
         plt.close()
+
+    # ── Panel 3.3.2 and 3.3.3: Burst Group Sizes (Comparison of ±3s and ±5s) ──
+    from matplotlib.ticker import MaxNLocator
+    stats_data = {}
+    for hw in [3.0, 5.0]:
+        all_group_sizes = []
+        pid_group_sizes = []
+        for pid in config.INCLUDED_PARTICIPANTS:
+            pkl_path = windows_dir / f"P{pid}.pkl"
+            if not pkl_path.exists(): continue
+            with open(pkl_path, 'rb') as f: data = pickle.load(f)
+            a_times = sorted(data.get('a_press_times', []))
+            
+            groups = []
+            current_group = []
+            for t in a_times:
+                if not current_group:
+                    current_group.append(t)
+                else:
+                    if (t - current_group[-1]) <= 2 * hw:
+                        current_group.append(t)
+                    else:
+                        groups.append(current_group)
+                        current_group = [t]
+            if current_group:
+                groups.append(current_group)
+                
+            group_sizes = [len(g) for g in groups]
+            all_group_sizes.extend(group_sizes)
+            for gs in group_sizes:
+                pid_group_sizes.append({'pid': f"P{pid}", 'group_size': gs})
+                
+        df_groups = pd.DataFrame(pid_group_sizes)
+        
+        if not df_groups.empty:
+            # viz03.3.2.png - Count plot per participant
+            fig_ind, ax_ind = plt.subplots(figsize=(14, 6))
+            sns.countplot(data=df_groups, x='pid', hue='group_size', ax=ax_ind, palette="pastel")
+            ax_ind.set_xlabel('Participant')
+            ax_ind.set_ylabel('Count of Burst Groups')
+            ax_ind.set_title(f'Distribution of Burst Group Sizes per Participant (±{hw}s)')
+            ax_ind.set_xticklabels(ax_ind.get_xticklabels(), rotation=90, fontsize=8)
+            ax_ind.yaxis.set_major_locator(MaxNLocator(integer=True))
+            plt.tight_layout()
+            plt.savefig(viz03_dir / f"viz03.3.2_{int(hw)}s.png", dpi=200)
+            plt.close()
+            
+            # viz03.3.3.png - Count plot all participants
+            fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+            sns.countplot(x=all_group_sizes, ax=ax_ind, palette="pastel")
+            ax_ind.set_xlabel('Burst Group Size (consecutive swipes)')
+            ax_ind.set_ylabel('Total Count')
+            ax_ind.set_title(f'Distribution of Burst Group Sizes Across All Participants (±{hw}s)')
+            for container in ax_ind.containers:
+                ax_ind.bar_label(container)
+            ax_ind.yaxis.set_major_locator(MaxNLocator(integer=True))
+            plt.tight_layout()
+            plt.savefig(viz03_dir / f"viz03.3.3_{int(hw)}s.png", dpi=200)
+            plt.close()
+
+            # Calculate stats
+            total_groups = len(all_group_sizes)
+            total_n1 = all_group_sizes.count(1)
+            overall_pct = (total_n1 / total_groups * 100) if total_groups > 0 else 0
+            
+            participant_pcts = []
+            for pid in config.INCLUDED_PARTICIPANTS:
+                pid_gs = [d['group_size'] for d in pid_group_sizes if d['pid'] == f"P{pid}"]
+                if pid_gs:
+                    pct = (pid_gs.count(1) / len(pid_gs)) * 100
+                    participant_pcts.append(pct)
+            
+            mean_pct = np.mean(participant_pcts) if participant_pcts else 0
+            std_pct = np.std(participant_pcts) if participant_pcts else 0
+            
+            stats_data[hw] = {
+                'overall_pct': overall_pct,
+                'mean_pct': mean_pct,
+                'std_pct': std_pct
+            }
+
+    # Write stats to tex file
+    if 3.0 in stats_data and 5.0 in stats_data:
+        tex_path = viz03_dir / "burst_stats.tex"
+        with open(tex_path, "w") as f:
+            f.write(f"Specifically, under the \\(\\pm3.0\\)s window paradigm, {stats_data[3.0]['overall_pct']:.1f}\\% of all swipe events are isolated \\(n=1\\) sequences (participant-level average: {stats_data[3.0]['mean_pct']:.1f}\\% \\(\\pm\\) {stats_data[3.0]['std_pct']:.1f}\\%). ")
+            f.write(f"In contrast, widening the window to \\(\\pm5.0\\)s reduces the overall proportion of isolated swipes to {stats_data[5.0]['overall_pct']:.1f}\\% (participant-level average: {stats_data[5.0]['mean_pct']:.1f}\\% \\(\\pm\\) {stats_data[5.0]['std_pct']:.1f}\\%).\n")

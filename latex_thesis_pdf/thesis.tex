@@ -346,15 +346,15 @@ where \(\bar{x}_{\text{STAY}}\) and \(\bar{x}_{\text{SKIP}}\) denote the sample 
 For each parameter configuration, Cohen’s \(d\) was computed between the STAY and SKIP feature distributions derived from the corresponding labeling scheme. This provided a direct quantitative index of how strongly the chosen temporal definitions emphasized the contrast between sustained engagement and imminent disengagement.
 
 \section{Universal Recording Pipeline}
-To facilitate rigorous and reproducible data collection, a robust Python-based recording architecture (\texttt{scripts/recording\_script\_v4.py}) was developed. This script orchestrates the simultaneous capture of raw EEG telemetry from the Muse S headband and has the capability of recording synchronized behavioral video from a webcam which was not used in this experiment, yet may be of value to future investigations. Its autonomous capabilities ensure that the experimental protocol can be executed reliably without extensive technical oversight.
+To facilitate rigorous and reproducible data collection, a robust Python-based recording architecture (\path{scripts/recording_script_v4.py}) was developed. This script orchestrates the simultaneous capture of raw EEG telemetry from the Muse S headband and has the capability of recording synchronized behavioral video from a webcam which was not used in this experiment, yet may be of value to future investigations. Its autonomous capabilities ensure that the experimental protocol can be executed reliably without extensive technical oversight.
 
-For this study's recordings the command \texttt{python recording\_script\_v4.py --nocamera --duration 1800} was used to call the script. The two flags simply mean (i) bypassing camera recording, as it is not in the scope of this study yet kept for future investigations and (ii) the recording duration is 1800s = 30 minutes.
+For this study's recordings the command \path{python recording_script_v4.py --nocamera --duration 1800} was used to call the script. The two flags simply mean (i) bypassing camera recording, as it is not in the scope of this study yet kept for future investigations and (ii) the recording duration is 1800s = 30 minutes.
 The pipeline's core features include:
 \begin{itemize}
     \item \textbf{Automated Hardware Discovery:} Upon launch, the script automatically scans the local Bluetooth environment for active Muse devices and enumerates all connected camera peripherals, allowing the researcher to select the optimal hardware interactively without requiring hardcoded MAC addresses or device indices.
     \item \textbf{Precision Synchronization and Event Logging:} A dedicated, threaded keypress listener (\texttt{pynput}) monitors the \texttt{A} and \texttt{B} keys used by participants to mark swipe events and baseline respectively. Crucially, the script computes a dynamic time offset between the system clock and the LSL stream clock. Keypresses are retroactively aligned to this LSL timeline within a defined tolerance window and embedded directly into the EEG data rows as binary flags, ensuring absolute temporal synchrony between cognitive events and physical interactions.
     \item \textbf{Simultaneous Multimodal Capture:} The script utilizes the \texttt{pylsl} library to interface with the Lab Streaming Layer (LSL), pulling raw EEG data from the Muse headband at 256 Hz. Unless deactivated with the flag, it concurrently employs OpenCV to capture and encode synchronized webcam video using the H.264 (avc1) codec, providing visual ground truth of participant behavior.
-    \item \textbf{Resilient Auto-Reconnection:} To combat the inherently unstable nature of Bluetooth Low Energy (BLE) connections, the script features an active connection-loss detection loop. If the LSL stream halts (no samples received within a timeout period), the script automatically terminates the hanging subprocess, rescans the Bluetooth environment, restarts the stream, and initiates a sequential data fragment (e.g., \texttt{\_2.csv}, \texttt{\_3.csv}). This guarantees that transient connection drops do not corrupt the entire recording session.
+    \item \textbf{Resilient Auto-Reconnection:} To combat the inherently unstable nature of Bluetooth Low Energy (BLE) connections, the script features an active connection-loss detection loop. If the LSL stream halts (no samples received within a timeout period), the script automatically terminates the hanging subprocess, rescans the Bluetooth environment, restarts the stream, and initiates a sequential data fragment (e.g., \path{_2.csv}, \path{_3.csv}). This guarantees that transient connection drops do not corrupt the entire recording session.
     \item \textbf{Concurrent Multi-Threading:} To ensure that blocking operations (such as writing high-resolution video frames to disk) do not disrupt the high-frequency polling required for EEG telemetry, the script isolates the LSL pulling loop, the OpenCV capture loop, and the keypress listener into independent Python daemon threads.
 \end{itemize}
 
@@ -362,10 +362,10 @@ This open-source compatible architecture ensures that any independent researcher
 
 \section{Universal Pre-Processing Pipeline}
 
-The following subsections describe step-by-step exactly what the Python code in the \texttt{05-12\_data\_analysis\_and\_results/scripts} directory executes to process the raw EEG signals into a uniform shape suitable for analysis.
+The following subsections describe step-by-step exactly what the Python code in the \path{05-12_data_analysis_and_results/scripts} directory executes to process the raw EEG signals into a uniform shape suitable for analysis.
 
 \subsection{Data Synchronization and Interpolation}
-The preprocessing pipeline began with the chronological alignment and concatenation of all recorded CSV files for each participant, ensuring a continuous temporal sequence (executed via \texttt{05-12\_data\_analysis\_and\_results/scripts/step01\_preprocess.py}). The raw data streams collected from the LSL (Lab Streaming Layer) exhibited slight variations in intrinsic sampling rates. To establish a uniform temporal grid suitable for across-session and across-participant analysis, the true sampling rate was derived by calculating the median time difference (\(\Delta t\)) between consecutive timestamps. Subsequently, a linear interpolation algorithm was applied to upsample and regularize the data to a constant sampling frequency of exactly \(f_s = 256\) Hz. This process guarantees that any subsequent spectral analysis relies on a strictly uniform time axis, avoiding mathematical artifacts stemming from temporal jitter.
+The preprocessing pipeline began with the chronological alignment and concatenation of all recorded CSV files for each participant, ensuring a continuous temporal sequence (executed via \path{05-12_data_analysis_and_results/scripts/step01_preprocess.py}). The raw data streams collected from the LSL (Lab Streaming Layer) exhibited slight variations in intrinsic sampling rates. To establish a uniform temporal grid suitable for across-session and across-participant analysis, the true sampling rate was derived by calculating the median time difference (\(\Delta t\)) between consecutive timestamps. Subsequently, a linear interpolation algorithm was applied to upsample and regularize the data to a constant sampling frequency of exactly \(f_s = 256\) Hz. This process guarantees that any subsequent spectral analysis relies on a strictly uniform time axis, avoiding mathematical artifacts stemming from temporal jitter.
 
 % this is just to demonstrate that after interpolation all are 256Hz exactly, which is nessecary for the data to be used properly for processing and analysis
 \begin{figure}[H]
@@ -384,7 +384,7 @@ During this temporal alignment process, Bluetooth transmission dropouts were ide
 \end{figure}
 
 \subsection{Baseline Extraction and Normalization}
-Following temporal synchronization, a baseline resting state was extracted for each participant to account for individual physiological differences, such as varying skull thickness or inherent resting cortical activity. The baseline period was rigidly defined as a 90-second continuous window commencing 10 seconds after the participant's initial \texttt{B} keypress (executed via \texttt{05-12\_data\_analysis\_and\_results/scripts/step01\_preprocess.py}). 
+Following temporal synchronization, a baseline resting state was extracted for each participant to account for individual physiological differences, such as varying skull thickness or inherent resting cortical activity. The baseline period was rigidly defined as a 90-second continuous window commencing 10 seconds after the participant's initial \texttt{B} keypress (executed via \path{05-12_data_analysis_and_results/scripts/step01_preprocess.py}). 
 
 The interpolated signal was then separated into seven standard EEG frequency bands (Delta, Theta, Alpha, Beta, Low Gamma, High Gamma, and Very High Gamma) utilizing a 4th-order Butterworth bandpass filter. The instantaneous amplitude envelope for each band was extracted and squared to compute the instantaneous spectral power \(P\). 
 
@@ -397,12 +397,12 @@ where \(\mu_{base}\) and \(\sigma_{base}\) denote the mean and standard deviatio
 \subsection{Windowing and Class Labeling}
 Following normalization, the continuous data streams were segmented and labeled into discrete \texttt{STAY} and \texttt{SKIP} classes based on the participant's interaction events (\texttt{A} keypresses) as previously established in Sections~\ref{sec:op_labeling_params} and \ref{sec:op_stay_skip}. To strictly prevent motor artifact contamination arising from the physical swipe action, a \textbf{2.0-second gap} was enforced immediately preceding the \texttt{A} keypress, and a \textbf{0.5-second gap} was enforced immediately following it. No data was extracted from these gap periods.
 
-The \texttt{SKIP} class was rigorously defined as the \textbf{3.0-second window} immediately preceding the aforementioned 2.0-second pre-swipe gap (executed via \texttt{05-12\_data\_analysis\_and\_results/scripts/step03\_label\_windows.py}). This temporal framing specifically isolates the critical cognitive decision-making phase leading up to the swipe, entirely uncontaminated by the physical execution of the swipe itself. The \texttt{STAY} class was defined as all remaining valid temporal periods outside of the \texttt{SKIP} windows and safety gaps.
+The \texttt{SKIP} class was rigorously defined as the \textbf{3.0-second window} immediately preceding the aforementioned 2.0-second pre-swipe gap (executed via \path{05-12_data_analysis_and_results/scripts/step03_label_windows.py}). This temporal framing specifically isolates the critical cognitive decision-making phase leading up to the swipe, entirely uncontaminated by the physical execution of the swipe itself. The \texttt{STAY} class was defined as all remaining valid temporal periods outside of the \texttt{SKIP} windows and safety gaps.
 
 Finally, discrete 1.0-second analysis windows were extracted using a sliding window with no overlap (stride = window length). This ensures that windows do not cross class boundaries, enter safety gaps, or overlap with adjacent samples, thereby preventing data leakage and artificially inflated model performance.
 
 \subsection{Artifact Rejection}
-To ensure the integrity of the analyzed EEG signals, an automated outlier detection approach was implemented to flag potential artifacts (executed via \texttt{05-12\_data\_analysis\_and\_results/scripts/step02\_artifact\_flag.py}). Specifically, the 95th percentile of the peak-to-peak amplitude computed on the notch-filtered signal was utilized as a dynamic, participant-specific threshold. Frontal channels (AF7, AF8) were evaluated for ocular artifacts (e.g., blinks), while temporal channels (TP9, TP10) were evaluated for electromyogenic (EMG) artifacts. Absolute voltage thresholds (e.g., \(150\mu V\)) were initially investigated but were ultimately discarded as they did not yield generalizable or useful results across the dataset.
+To ensure the integrity of the analyzed EEG signals, an automated outlier detection approach was implemented to flag potential artifacts (executed via \path{05-12_data_analysis_and_results/scripts/step02_artifact_flag.py}). Specifically, the 95th percentile of the peak-to-peak amplitude computed on the notch-filtered signal was utilized as a dynamic, participant-specific threshold. Frontal channels (AF7, AF8) were evaluated for ocular artifacts (e.g., blinks), while temporal channels (TP9, TP10) were evaluated for electromyogenic (EMG) artifacts. Absolute voltage thresholds (e.g., \(150\mu V\)) were initially investigated but were ultimately discarded as they did not yield generalizable or useful results across the dataset.
 
 No data points were excluded from the final machine learning pipeline based on these artifact flags. Incorporating such filtering would introduce additional experimental conditions and substantially expand the analysis beyond the scope of this proof-of-concept study. Instead, the approach is documented to highlight awareness of artifact-related confounds and to provide a foundation for more advanced rejection strategies in future work.
 
@@ -414,25 +414,26 @@ No data points were excluded from the final machine learning pipeline based on t
 \end{figure}
 
 \subsection{Behavioral Burst Rejection}
-In addition to physiological artifacts, behavioral anomalies termed “bursts” were identified. A burst is defined as a sequence of rapidly successive skip events (e.g., multiple \texttt{A} keypresses merging into a single contiguous temporal block), reflecting frantic swiping rather than deliberate evaluation. Flagging these events aims to ensure that the \texttt{SKIP} class represents genuine cognitive disengagement rather than high-momentum, low-engagement scrolling behavior.
+\label{sec:behavioral_burst_methods}
 
-Although bursts were successfully detected and their occurrence across participants is visualized in Figure~\ref{fig:bursts}, they were not excluded from the final analysis. Incorporating burst rejection would introduce additional analytical complexity and extend beyond the scope of this proof-of-concept study. Instead, their inclusion highlights a relevant behavioral confound and motivates dedicated investigation in future work.
+In addition to physiological artifacts, behavioral anomalies termed “bursts” were identified. A burst is defined as a sequence of rapidly successive skip events (e.g., multiple \texttt{A} keypresses merging into a single contiguous temporal block), reflecting frantic swiping rather than deliberate evaluation. Flagging these events aims to ensure that the \texttt{SKIP} class captures genuine cognitive disengagement rather than high-momentum, low-engagement scrolling behavior.
 
-% -- methods read until here -- continute reading, continute inserting INSERT: ...
-% next step: replace the burst pic + continute detailled reading FEINSCHLIFF + in perplexity rephrasing.
+Although bursts were successfully detected, they were not excluded from the final analysis. Figure~\ref{fig:bursts} visualizes the detection mechanism via the distribution of inter-swipe intervals (i.e., dwell time) across all participants. The vertical threshold marks the 6.0-second merge boundary (2×the 3.0-second \texttt{SKIP} window). Consecutive swipes below this threshold cause their respective \texttt{SKIP} windows to overlap and merge into a single contiguous block, thereby defining a burst. The shaded region highlights the frequency of such rapid, consecutive events.
+
+It is important to note that the \texttt{SKIP} window size is defined independently of the dwell time distribution; the 3.0-second value is an intuitive choice. As such, its influence on the resulting burst structure warrants further investigation. Incorporating burst rejection would introduce additional analytical complexity and is therefore beyond the scope of this proof-of-concept study. Instead, its inclusion highlights a relevant behavioral confound and motivates future work.
 
 % this is not used in results, and is more informaive, that this is more to show that we thought about this: that is how many times people swipe in a row - which we call in this thesis 'Bursts' - and it is another viable parameter and direction of investigation that is interesting for future work beyond this thesis, as again the focus is another.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.3.png}
-    \caption{Window duration analysis highlighting the occurrence of behavioral burst events (multiple consecutive swipes).}
+    \caption{Distribution of inter-swipe intervals (view times of each video across all participants, or dwell time). The shaded region highlights intervals below the 6.0-second merge threshold, where consecutive \texttt{SKIP} windows overlap to form behavioral burst blocks.}
     \label{fig:bursts}
 \end{figure}
 
 \section{Feature Engineering}
 
 \subsection{Band Power and Statistical Moments}
-Following window extraction, a comprehensive feature set was computed for each valid temporal window (executed via \texttt{05-12\_data\_analysis\_and\_results/scripts/step05\_feature\_engineering.py}). For each of the 4 electrodes across the 7 previously defined frequency bands, four primary statistical moments were extracted: Mean, Standard Deviation, Minimum, and Maximum. An example of these extracted statistical moments belonging to one temporal 1-second window of one frequency band (alpha) of one electrode of one participant, is depicted in Figure~\ref{fig:stat_moments}.
+Following window extraction, a comprehensive feature set was computed for each valid temporal window (executed via \path{05-12_data_analysis_and_results/scripts/step05_feature_engineering.py}). For each of the 4 electrodes across the 7 previously defined frequency bands, four primary statistical moments were extracted: Mean, Standard Deviation, Minimum, and Maximum. An example of these extracted statistical moments belonging to one temporal 1-second window of one frequency band (alpha) of one electrode of one participant, is depicted in Figure~\ref{fig:stat_moments}.
 
 % for explanation of each statistical moment definition and exact calculation, and dimension, and how it differs from EI
 \begin{figure}[H]
@@ -511,10 +512,16 @@ Finally, the Macro Frequency \(f_{macro}\) is defined as the total number of dis
 \end{equation}
 The output is a stabilized, macroscopic frequency in Hertz (Hz) that robustly captures the count of dominant structural waves within the cognitive window, effectively ignoring micro-fluctuations.
 
+
+% -- methods read until here -- continute reading, continute inserting INSERT: ...
+% next step: continute detailled reading FEINSCHLIFF + in perplexity rephrasing.
+
+
+
 \section{Result Sythesis Pipeline}
 
 \subsection{Temporal Cross-Validation and Data Balancing}
-Before proceeding to statistical evaluation and modeling, the inherent class imbalance—where the \texttt{STAY} class heavily dominates the \texttt{SKIP} class—had to be addressed (executed via \texttt{05-12\_data\_analysis\_and\_results/scripts/step04\_balance\_split.py}). To prevent the models from trivially predicting the majority class, the \texttt{STAY} class was randomly undersampled for each participant to achieve a strict 50/50 balance. 
+Before proceeding to statistical evaluation and modeling, the inherent class imbalance—where the \texttt{STAY} class heavily dominates the \texttt{SKIP} class—had to be addressed (executed via \path{05-12_data_analysis_and_results/scripts/step04_balance_split.py}). To prevent the models from trivially predicting the majority class, the \texttt{STAY} class was randomly undersampled for each participant to achieve a strict 50/50 balance. 
 
 % this simply shows that the dominant class is STAY and for every participant different, and brings with it the demand for per participant balancing of the classes.
 \begin{figure}[H]
@@ -559,7 +566,7 @@ Crucially, an absolute minimum safety distance of 3 seconds was mandated between
 \end{figure}
 
 \subsection{Feature Separation Analysis}
-To mathematically evaluate the discriminative power of individual features prior to modeling, Cohen's \(d\) was computed to measure the standardized effect size between the \texttt{STAY} and \texttt{SKIP} distributions for each engineered feature (executed via \texttt{05-12\_data\_analysis\_and\_results/scripts/viz17\_feature\_ranking.py}). 
+To mathematically evaluate the discriminative power of individual features prior to modeling, Cohen's \(d\) was computed to measure the standardized effect size between the \texttt{STAY} and \texttt{SKIP} distributions for each engineered feature (executed via \path{05-12_data_analysis_and_results/scripts/viz17_feature_ranking.py}). 
 
 Cohen's \(d\) is defined as:
 \begin{equation}
@@ -567,16 +574,16 @@ Cohen's \(d\) is defined as:
 \end{equation}
 where \(\mu_{stay}\) and \(\mu_{skip}\) represent the class-specific sample means, and \(s_{pooled}\) denotes the pooled standard deviation. 
 
-By calculating the absolute effect size (\(|d|\)), the pipeline systematically ranked all extracted features (e.g., \texttt{TP10\_raw\_std}) according to their individual ability to separate sustained cognitive engagement from the decision to disengage. Features demonstrating the highest absolute \(d\) values were designated as 'Top Features' and isolated for independent predictive baseline modeling.
+By calculating the absolute effect size (\(|d|\)), the pipeline systematically ranked all extracted features (e.g., \path{TP10_raw_std}) according to their individual ability to separate sustained cognitive engagement from the decision to disengage. Features demonstrating the highest absolute \(d\) values were designated as 'Top Features' and isolated for independent predictive baseline modeling.
 
 \subsection{Logistic Regression Modeling and Baselines}
-To benchmark the true predictive capability of the engineered EEG features against chance and clinical baselines, three distinct modeling approaches were evaluated on the temporally isolated test sets (executed via \texttt{05-12\_data\_analysis\_and\_results/scripts/step07\_train\_intra.py} and synthesized in \texttt{step16\_parallel\_universes.py}).
+To benchmark the true predictive capability of the engineered EEG features against chance and clinical baselines, three distinct modeling approaches were evaluated on the temporally isolated test sets (executed via \path{05-12_data_analysis_and_results/scripts/step07_train_intra.py} and synthesized in \path{step16_parallel_universes.py}).
 
 \vspace{1em}
 \noindent\textbf{1. Coinflip Baseline:} A uniform dummy classifier (\texttt{DummyClassifier(strategy='uniform')}) was utilized to establish an empirical chance baseline. Given the rigorous 50/50 balancing of the datasets, this approach reliably generated predictions hovering around the 50\% chance level, verifying that no underlying structural bias existed within the cross-validation folds.
 
 \vspace{1em}
-\noindent\textbf{2. Engagement Index (EI) Baseline:} The pre-calculated EI scalar (derived from \(\beta/(\alpha+\theta)\)) was scaled utilizing a standard scaler (subtracting the mean and scaling to unit variance) and fed as a singular feature into a Logistic Regression model (\texttt{LogisticRegression(class\_weight='balanced')}). This established a clinical baseline, indicating how well classical engagement theory alone could predict the behavioral swipe decision in this specific short-form video context.
+\noindent\textbf{2. Engagement Index (EI) Baseline:} The pre-calculated EI scalar (derived from \(\beta/(\alpha+\theta)\)) was scaled utilizing a standard scaler (subtracting the mean and scaling to unit variance) and fed as a singular feature into a Logistic Regression model (\path{LogisticRegression(class_weight='balanced')}). This established a clinical baseline, indicating how well classical engagement theory alone could predict the behavioral swipe decision in this specific short-form video context.
 
 \vspace{1em}
 \noindent\textbf{3. Top Feature Logistic Regression:} To test the predictive power of individual statistical features independently, the features ranked highest via Cohen's \(d\) (e.g., specific band powers or statistical moments) were similarly scaled and evaluated using isolated Logistic Regression models. This isolated approach allows for direct comparison of individual feature efficacy without the confounding complexities of high-dimensional multivariate models.
@@ -584,22 +591,12 @@ To benchmark the true predictive capability of the engineered EEG features again
 \subsection{Metrics and Significance Testing}
 To thoroughly evaluate model performance, standard classification metrics were recorded for each cross-validation fold: Accuracy, Precision, Recall, and the \(F_1\)-Score. In the specific context of this thesis, predicting the \texttt{STAY} class implies successfully recognizing sustained cognitive engagement, whereas predicting the \texttt{SKIP} class implies recognizing the impending cognitive decision to abort and swipe away. The \(F_1\)-Score, as the harmonic mean of Precision and Recall, was utilized as the primary aggregate performance metric.
 
-To rigorously evaluate whether the Logistic Regression models utilizing individual EEG features outperformed the established baselines across the participant cohort, non-parametric statistical testing was employed. Specifically, the Wilcoxon signed-rank test was used to compute the statistical significance (\(p\)-value) of the performance differences between the paired model distributions (e.g., Top Feature model vs. EI Baseline model, or EI Baseline model vs. 50\% chance level) across all participants (executed via \texttt{05-12\_data\_analysis\_and\_results/scripts/step17\_thesis\_figures\_and\_tables.py}). 
+To rigorously evaluate whether the Logistic Regression models utilizing individual EEG features outperformed the established baselines across the participant cohort, non-parametric statistical testing was employed. Specifically, the Wilcoxon signed-rank test was used to compute the statistical significance (\(p\)-value) of the performance differences between the paired model distributions (e.g., Top Feature model vs. EI Baseline model, or EI Baseline model vs. 50\% chance level) across all participants (executed via \path{05-12_data_analysis_and_results/scripts/step17_thesis_figures_and_tables.py}). 
 
 The rank-biserial correlation (\(r\)) was also computed to quantify the effect size of the Wilcoxon test, indicating the strength of the model's superiority over the compared baseline. This structured chain of statistical proof robustly determines whether individual EEG features can provide a significant improvement over both pure chance and classical clinical engagement metrics when attempting to predict real-world short-form video interactions.
 
-% --- INSERTED METHODS FIGURES ---
 
 
-
-
-
-
-
-
-
-
-% --- END INSERTED METHODS FIGURES ---
 \section{Internal Structuring: Results Narrative and Gap Analysis}
 
 
@@ -662,6 +659,37 @@ You do not need to write this full sentence every time. But every result paragra
 
 A reviewer or committee member cannot attack a proof-of-concept claim for lacking a large representative sample --- that is not what a proof of concept promises. The attack is pre-empted by the framing. The danger is only if you drift into generality language mid-results and contradict the scoping you established in the abstract and introduction. Consistency of register across abstract, introduction, results, and conclusion is the entire defense.
 
+\subsection{0. Behavioral Burst Results}
+
+As established in the methodology (Section~\ref{sec:behavioral_burst_methods}), a burst is defined as a sequence of rapidly successive skip events reflecting frantic swiping. To quantify this burst severity, overlapping \texttt{SKIP} windows were grouped into “burst blocks.” The block size 𝑛 denotes the number of consecutive rapid swipes before a participant pauses to engage. A block of 𝑛=1 represents standard behavior, whereas larger values (e.g., 𝑛=3) indicate repeated rapid skipping without meaningful engagement.
+
+Figure~\ref{fig:bursts_indiv_3s} shows this behavior at the participant level, revealing a clear dichotomy: some participants exhibit frequent large burst blocks (“fast scrollers”), while others predominantly show 𝑛=1 behavior (“careful scrollers”). Figure~\ref{fig:bursts_all_3s} aggregates these patterns, confirming that while 𝑛=1 dominates, a long tail of burst behavior persists.
+
+Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chosen window size by repeating the analysis with a ±5.0-second window (10.0-second merge threshold). The wider threshold captures a larger portion of the dwell time distribution and merges many isolated swipes into larger burst blocks, substantially reducing the proportion of 𝑛=1 events. \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/burst_stats.tex} This underscores the strong dependence on parameter selection and the need for systematic optimization in future work.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.3.2_3s.png}
+    \caption{Distribution of burst group sizes per participant (using the \(\pm3.0\)s window). This highlights the distinct behavioral difference between "frantic scrollers" (larger burst blocks) and "careful scrollers" (predominantly isolated \(n=1\) swipes).}
+    \label{fig:bursts_indiv_3s}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.3.3_3s.png}
+        \caption{Total burst group sizes across all participants (\(\pm3.0\)s window).}
+        \label{fig:bursts_all_3s}
+    \end{minipage}\hfill
+    \begin{minipage}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.3.3_5s.png}
+        \caption{Total burst group sizes across all participants (\(\pm5.0\)s window). The wider threshold computationally merges many normal swipes into larger burst blocks.}
+        \label{fig:bursts_all_5s}
+    \end{minipage}
+\end{figure}
+
 \subsection{1. The Research Question and Narrative Arc}
 \textbf{The core question:} Can consumer-grade EEG (Muse S) accurately identify periods of sustained cognitive engagement (\texttt{STAY} state) versus imminent task abandonment (\texttt{SKIP} state) during naturalistic TikTok browsing?
 
@@ -670,7 +698,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 \subsection{2. Step 1: The Clinical Baseline (Engagement Index)}
 \textbf{Logical Step:} Before building complex models, we must test whether established neuroscience equations can answer our question. The traditional Engagement Index ($EI = \beta / (\alpha + \theta)$) was designed for sustained attention tasks. Since it relies on lower frequency bands ($<30$~Hz), it safely ignores $>50$~Hz noise.
 \begin{itemize}
-    \item \textbf{What the data shows:} Our 5-fold cross-validated Logistic Regression models trained on EI ratios achieved an aggregate mean accuracy of \textbf{52.3\% $\pm$ 6.2\%} and a mean \texttt{STAY} Recall of \textbf{52.8\%} across 25 participants. Only 4 of 25 participants showed a statistically significant difference in EI between STAY and SKIP states ($p<0.05$). [Source: \texttt{ei\_corrected\_20260506\_161647/ei\_aggregate\_summary.csv}]
+    \item \textbf{What the data shows:} Our 5-fold cross-validated Logistic Regression models trained on EI ratios achieved an aggregate mean accuracy of \textbf{52.3\% $\pm$ 6.2\%} and a mean \texttt{STAY} Recall of \textbf{52.8\%} across 25 participants. Only 4 of 25 participants showed a statistically significant difference in EI between STAY and SKIP states ($p<0.05$). [Source: \path{ei_corrected_20260506_161647/ei_aggregate_summary.csv}]
     % NOTE: The original ei_results.json had a bug where all F1 scores were hardcoded to 0.0 (placeholder). Corrected F1 = 0.6646 ± 0.0684.
     % NOTE: The EI evaluation used imbalanced data + 5-fold CV, while the RF used balanced data. This comparison is not strictly apples-to-apples. Consider noting this caveat or re-running EI on balanced data for a fair comparison.
     \item \textbf{Narrative Conclusion:} The standard clinical formula fundamentally fails to reliably discriminate short-form video micro-decisions better than random chance. The neural signature for rapidly maintaining or dropping engagement on TikTok does not map cleanly to simple $\beta / (\alpha + \theta)$ ratios. This is consistent with Apicella et al., who found that EI-based classification in a controlled learning engagement task yielded accuracy performances that were ``not optimal,'' explicitly noting the index is ``mainly used in non-predictive applications'' \cite{apicella_eeg-based_2022}. The replication of this failure in a wholly different paradigm---naturalistic algorithmic browsing versus structured CPT task---strengthens the conclusion that the EI formula is structurally insufficient across engagement detection contexts, not merely for short-form media.
@@ -679,7 +707,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 \subsection{3. Step 2: Structural Expansion (RF-112 \textit{WITH} Notch Filter)}
 \textbf{Logical Step:} Because the simple 3-band EI ratio failed, we expand the feature space. We capture the geometric variance (mean, std, min, max) of all 7 frequency bands across all 4 electrodes (112 features) and feed it into a Random Forest ensemble. We apply a standard 50~Hz Notch Filter to rigorously clean the data of electrical power-line noise, as is standard practice.
 \begin{itemize}
-    \item \textbf{What the data shows (CORRECTED --- leakage-free evaluation):} Using blocked temporal 5-fold CV with 3-second gaps between blocks (train: 80\% overlap, test: 0\% overlap), the RF-112 models achieved a mean intra-subject accuracy of \textbf{53.8\% $\pm$ 7.2\%} with 20 of 25 participants above the 50\% chance baseline (Wilcoxon $p=0.0015$ vs.\ chance). [Source: \texttt{rf\_run\_temporal\_nonotch\_20260506\_172326/rf\_summary.json}]
+    \item \textbf{What the data shows (CORRECTED --- leakage-free evaluation):} Using blocked temporal 5-fold CV with 3-second gaps between blocks (train: 80\% overlap, test: 0\% overlap), the RF-112 models achieved a mean intra-subject accuracy of \textbf{53.8\% $\pm$ 7.2\%} with 20 of 25 participants above the 50\% chance baseline (Wilcoxon $p=0.0015$ vs.\ chance). [Source: \path{rf_run_temporal_nonotch_20260506_172326/rf_summary.json}]
     % NOTE: The original random-split evaluation (61.4%) was inflated by ~8pp due to temporal data leakage from 80% overlapping STAY windows landing in both train and test sets. The blocked temporal CV eliminates this leakage.
     % NOTE: Three participants showed strong individual performance: P12 (81.2%), P7 (67.3%), P22 (62.9%).
     \item \textbf{Narrative Conclusion:} Expanding the dimensionality successfully extracts a statistically significant predictive neurological signature, though the effect is small ($\sim$3.8pp above chance). The model can detect sustained cognitive engagement significantly better than chance ($p=0.0015$), establishing that the structural variance of the EEG signal holds predictive value for micro-decisions within a proof-of-concept scope. Individual variation is large, with some participants showing strong classification (P12: 81.2\%) while others remain at chance level.
@@ -688,7 +716,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 \subsection{4. Step 3: The High-Frequency Hypothesis (RF-112 \textit{WITHOUT} Notch Filter)}
 \textbf{Logical Step:} While 61.4\% is a successful proof of concept, cognitive neuroscience literature suggests that active decision-making and cognitive binding operate in the High Gamma bands (40--60~Hz). Our Notch filter from Step 2 potentially obliterated this vital neural data by aggressively cutting at 50~Hz. We must prove whether removing the filter actually preserves or improves the model's ability to diagnose the \texttt{STAY} state. If the 50~Hz signal was purely power line noise, removing the filter would cause the model's accuracy to collapse.
 \begin{itemize}
-    \item \textbf{What the data shows:} The notch vs.\ no-notch comparison (using the original random-split evaluation) showed accuracy of 61.4\% vs.\ 61.6\% (+0.17pp) and recall of 61.4\% vs.\ 61.9\% (+0.47pp). A paired Wilcoxon signed-rank test across 25 participants confirmed this difference is \textbf{not statistically significant} (accuracy: $p=0.76$; recall: $p=0.55$). 12 participants improved, 11 worsened, 2 tied. Effect sizes were negligible ($r=0.06$, $r=0.12$). [Source: \texttt{ablation\_comparison\_20260506\_161437/ablation\_statistical\_test.txt}]
+    \item \textbf{What the data shows:} The notch vs.\ no-notch comparison (using the original random-split evaluation) showed accuracy of 61.4\% vs.\ 61.6\% (+0.17pp) and recall of 61.4\% vs.\ 61.9\% (+0.47pp). A paired Wilcoxon signed-rank test across 25 participants confirmed this difference is \textbf{not statistically significant} (accuracy: $p=0.76$; recall: $p=0.55$). 12 participants improved, 11 worsened, 2 tied. Effect sizes were negligible ($r=0.06$, $r=0.12$). [Source: \path{ablation_comparison_20260506_161437/ablation_statistical_test.txt}]
     \item \textbf{Narrative Conclusion:} Removing the 50~Hz notch filter did not significantly alter classification performance, which is \textit{consistent with} the interpretation that the 40--60~Hz range contains recoverable cognitive variance rather than solely power-line contamination. However, this null result does not constitute affirmative proof of high-gamma signal validity. The finding is consistent with Pattisapu and Ray's observation that low-cost EEG amplifiers can detect stimulus-induced gamma oscillations \cite{pattisapu_stimulus-induced_2021}.
     % NOTE: The original claim that this "empirically proves" high-gamma is genuine was an overclaim. The correct framing is "consistent with" the hypothesis, not "proof."
 \end{itemize}
@@ -711,7 +739,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 \subsection{7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}
 \textbf{Logical Step:} While the 112-feature Random Forest model works, it is a complex "black box". The holy grail of BCI research is a simple, universal mathematical equation (like the traditional EI: $\beta / (\alpha + \theta)$). To attempt this, we trained surrogate decision trees across all 25 participants to find the "Universal Root Dimensions" driving the predictions. We found that frontal High Gamma ($\text{AF8\_high\_gamma\_mean}$) and frontal Delta ($\text{AF7\_delta\_min}$) were the most common primary splitting features. Based on this, we proposed a Short-Form Engagement Index (SFEI): $SFEI = \text{AF8\_high\_gamma\_mean} / \text{AF7\_delta\_min}$. 
 \begin{itemize}
-    \item \textbf{What the data shows:} We battle-tested this new $SFEI$ formula against the traditional $EI$ using identical 5-fold cross-validation. The $SFEI$ achieved a mean accuracy of \textbf{51.6\%} and a recall of \textbf{52.2\%}. Both the traditional $EI$ (52.3\%) and the proposed $SFEI$ (51.6\%) failed to reliably beat random chance across the population. [Source: \texttt{sfei\_battletest\_20260424\_230531/sfei\_metrics.json}]
+    \item \textbf{What the data shows:} We battle-tested this new $SFEI$ formula against the traditional $EI$ using identical 5-fold cross-validation. The $SFEI$ achieved a mean accuracy of \textbf{51.6\%} and a recall of \textbf{52.2\%}. Both the traditional $EI$ (52.3\%) and the proposed $SFEI$ (51.6\%) failed to reliably beat random chance across the population. [Source: \path{sfei_battletest_20260424_230531/sfei_metrics.json}]
     \item \textbf{Narrative Conclusion:} This confirms the constraint of consumer BCI in dynamic environments. Reducing algorithmic media engagement to a static, universal equation is insufficient. The cognitive state is too complex and idiosyncratic. High-dimensional, individualized machine learning approaches (like the RF-112 model achieving 53.8\% via blocked temporal CV, $p=0.0015$) are required. The failure of the universal SFEI is consistent with the LOGO-CV collapse: the engagement signature is fundamentally individualized.
 \end{itemize}
 

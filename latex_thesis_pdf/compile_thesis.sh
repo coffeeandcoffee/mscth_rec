@@ -11,7 +11,7 @@ import os
 
 def run_command(cmd):
     print(f"Running: {' '.join(cmd)}")
-    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, errors="replace")
     if result.returncode != 0:
         print(f"Command failed with exit code {result.returncode}")
         # bibtex often returns non-zero even with formatting issues, but pdflatex failure is more severe.

@@ -1,3 +1,18 @@
+
+ACTIVATE VENV:
+
+source "/Users/gregorlederer/Documents/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/05-12_data_analysis_and_results/venv/bin/activate"
+
+
+
+
+
+
+
+
+
+
+
 # EEG TikTok Study
 
 EEG recording and ML pipeline for predicting TikTok engagement from brain signals (MSc Thesis).

@@ -6,7 +6,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import viz03_label_windows_viz
 import config
 
-run_dir = Path(__file__).resolve().parent.parent / "runs" / "run_20260519_073332"
+run_dir = Path(__file__).resolve().parent.parent / "runs" / "run_20260611_220844"
 params = __import__('json').load(open(run_dir / "parameters.json"))
 viz03_label_windows_viz.run(run_dir, params)
 print("Done — check viz/viz03_label_windows.png")
