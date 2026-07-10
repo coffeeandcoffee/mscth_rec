@@ -447,14 +447,16 @@ Following window extraction, a comprehensive feature set was computed for each v
 To provide a recognized clinical baseline for cognitive evaluation, the Engagement Index (EI) was calculated for each analysis window. The EI is theoretically grounded in established neurophysiological research correlating task engagement with frontal and parietal band power ratios. It is mathematically defined as:
 \begin{equation}
     EI = \frac{\beta}{\alpha + \theta}
+    \label{fig:formula_EI}
 \end{equation}
-In this pipeline, the EI was computed using the signal variance across all four analyzed channels for the respective Beta (\(\beta\)), Alpha (\(\alpha\)), and Theta (\(\theta\)) bands. This composite scalar serves as a primary benchmark against which the predictive power of individual statistical features is evaluated in the subsequent machine learning phase.
+In this pipeline, exactly one scalar Engagement Index (EI) is computed per \(1.0\)-second analysis window per participant. To calculate this single value, the signal variance (representing total band power) is first extracted for the Beta (\(\beta\)), Alpha (\(\alpha\)), and Theta (\(\theta\)) bands across each of the four individual electrodes. These four spatial variances are then averaged together to produce a single, whole-head \(\beta\), \(\alpha\), and \(\theta\) scalar for that specific window, which are finally fed into the EI ratio formula. This single composite scalar serves as the primary clinical benchmark against which the predictive power of individual statistical features is evaluated in the machine learning phase. An example calculation of the EI for a single sample window of one participant can be observed in Figure~\ref{fig:calculation_visual_EI}, visually showing the three spatially-averaged scalars that are utilized in the Index calculation in Formula~\ref{fig:formula_EI}.
 
 % for explanation of EI definition and calculation
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz05a.A3.png}
     \caption{Engagement Index (EI) calculation deriving a single scalar engagement metric from the Beta, Alpha, and Theta band powers.}
+    \label{fig:calculation_visual_EI}
 \end{figure}
 
 \subsection{Hjorth Parameters}
@@ -517,11 +519,11 @@ The output is a stabilized, macroscopic frequency in Hertz (Hz) that robustly ca
 % next step: continute detailled reading FEINSCHLIFF + in perplexity rephrasing.
 
 
-
+\newpage
 \section{Result Sythesis Pipeline}
 
 \subsection{Temporal Cross-Validation and Data Balancing}
-Before proceeding to statistical evaluation and modeling, the inherent class imbalance—where the \texttt{STAY} class heavily dominates the \texttt{SKIP} class—had to be addressed (executed via \path{05-12_data_analysis_and_results/scripts/step04_balance_split.py}). To prevent the models from trivially predicting the majority class, the \texttt{STAY} class was randomly undersampled for each participant to achieve a strict 50/50 balance. 
+Before proceeding to statistical evaluation and modeling, the inherent class imbalance depicted in Figure~\ref{fig:classes_imbalanced}, where the \texttt{STAY} class (blue) heavily dominates the \texttt{SKIP} class (red), had to be addressed (executed via \path{05-12_data_analysis_and_results/scripts/step04_balance_split.py}). To prevent the models from trivially predicting the majority class, the \texttt{STAY} class was randomly undersampled for each participant to achieve a strict 50/50 balance, per participant, as depicted in Figure~\ref{fig:classes_balanced}.
 
 % this simply shows that the dominant class is STAY and for every participant different, and brings with it the demand for per participant balancing of the classes.
 \begin{figure}[H]
@@ -530,24 +532,27 @@ Before proceeding to statistical evaluation and modeling, the inherent class imb
         \centering
         \includegraphics[width=\linewidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.2_before_balancing.png}
         \caption{Raw window counts before balancing showing the extreme STAY dominance.}
+        \label{fig:classes_imbalanced}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.2_after_balancing.png}
         \caption{Window counts after undersampling, achieving a strict 50/50 ratio per participant.}
+        \label{fig:classes_balanced}
     \end{minipage}
 \end{figure}
 
-To rigorously avoid temporal data leakage (autocorrelation between consecutive EEG windows), a \textbf{Blocked Temporal 5-Fold Cross-Validation} strategy was implemented. The dataset for each participant was chronologically split into 5 distinct folds, ensuring an equal count of the minority \texttt{SKIP} class within each fold. 
+To mitigate temporal leakage due to autocorrelation between adjacent EEG windows, blocked temporal 5-fold cross-validation was applied. Each participant’s data were partitioned chronologically into five folds with equal counts of minority-class (\texttt{SKIP}) instances. Figure~\ref{fig:5_fold_split_per_participant} shows minority-class occurrences (red) and fold boundaries (black), defined by equal splits of these events, per participant.
 
 % for demonstration of how data is split into folds based on 5 equal parts of minority SKIP class per fold.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.5.png}
     \caption{Each participant's data is temporally split into 5 folds containing equal amounts of the minority SKIP class.}
+    \label{fig:5_fold_split_per_participant}
 \end{figure}
 
-Crucially, an absolute minimum safety distance of 3 seconds was mandated between any training window and any testing window at the fold boundaries. If this minimum distance was violated by contiguous windows, the infringing training data was discarded to preserve the strict independence of the unseen test set.
+To rigorously prevent temporal leakage, a minimum separation of 3 seconds between all training and testing windows was strictly enforced at every fold boundary. This constraint was implemented as a hard criterion: any violation automatically triggered pipeline termination, ensuring that no autocorrelated samples could enter the training or test sets. As verified in Figure~\ref{fig:3s_fold_boundary}, all fold boundary gaps (red points along the x-axis) exceed the predefined 3-second threshold (red dashed line), confirming compliance across the dataset. This procedure produces valid minority-balanced folds while preserving strict independence of the test data; an example for a single participant is shown in Figure~\ref{fig:fold_boundaries_for_one_participant}, where the separation gaps between folds (colored blocks) are clearly visible.
 
 % for demonstration of the safety mechanism that ensures stricti no overlap of test and train splits, with an at least 3s minimum gap that must be obeyed as it is demonstrates to successfully be the case in this picture.
 % for demonstration of how it looks with one participant, with all 5 folds in different colors.
@@ -557,11 +562,13 @@ Crucially, an absolute minimum safety distance of 3 seconds was mandated between
         \centering
         \includegraphics[width=\linewidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.4.png}
         \caption{Temporal minimum required safety distance of 3 seconds between train and test windows is strictly fulfilled.}
+        \label{fig:3s_fold_boundary}
     \end{minipage}\hfill
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.1.png}
         \caption{Temporal cross-validation split visualization, detailing the visible gaps between folds that successfully prevent data leakage.}
+        \label{fig:fold_boundaries_for_one_participant}
     \end{minipage}
 \end{figure}
 
@@ -580,7 +587,7 @@ By calculating the absolute effect size (\(|d|\)), the pipeline systematically r
 To benchmark the true predictive capability of the engineered EEG features against chance and clinical baselines, three distinct modeling approaches were evaluated on the temporally isolated test sets (executed via \path{05-12_data_analysis_and_results/scripts/step07_train_intra.py} and synthesized in \path{step16_parallel_universes.py}).
 
 \vspace{1em}
-\noindent\textbf{1. Coinflip Baseline:} A uniform dummy classifier (\texttt{DummyClassifier(strategy='uniform')}) was utilized to establish an empirical chance baseline. Given the rigorous 50/50 balancing of the datasets, this approach reliably generated predictions hovering around the 50\% chance level, verifying that no underlying structural bias existed within the cross-validation folds.
+\noindent\textbf{1. Coinflip Baseline:} A uniform dummy classifier (\texttt{DummyClassifier (strategy='uniform')}) was utilized to establish an empirical chance baseline. Given the rigorous 50/50 balancing of the datasets, this approach reliably generated predictions hovering around the 50\% chance level, verifying that no underlying structural bias existed within the cross-validation folds.
 
 \vspace{1em}
 \noindent\textbf{2. Engagement Index (EI) Baseline:} The pre-calculated EI scalar (derived from \(\beta/(\alpha+\theta)\)) was scaled utilizing a standard scaler (subtracting the mean and scaling to unit variance) and fed as a singular feature into a Logistic Regression model (\path{LogisticRegression(class_weight='balanced')}). This established a clinical baseline, indicating how well classical engagement theory alone could predict the behavioral swipe decision in this specific short-form video context.
@@ -589,7 +596,41 @@ To benchmark the true predictive capability of the engineered EEG features again
 \noindent\textbf{3. Top Feature Logistic Regression:} To test the predictive power of individual statistical features independently, the features ranked highest via Cohen's \(d\) (e.g., specific band powers or statistical moments) were similarly scaled and evaluated using isolated Logistic Regression models. This isolated approach allows for direct comparison of individual feature efficacy without the confounding complexities of high-dimensional multivariate models.
 
 \subsection{Metrics and Significance Testing}
-To thoroughly evaluate model performance, standard classification metrics were recorded for each cross-validation fold: Accuracy, Precision, Recall, and the \(F_1\)-Score. In the specific context of this thesis, predicting the \texttt{STAY} class implies successfully recognizing sustained cognitive engagement, whereas predicting the \texttt{SKIP} class implies recognizing the impending cognitive decision to abort and swipe away. The \(F_1\)-Score, as the harmonic mean of Precision and Recall, was utilized as the primary aggregate performance metric.
+To comprehensively evaluate model performance, standard classification metrics were computed for each cross-validation fold: Accuracy, Precision, Recall, and the F\(_1\)-score. In this context, correct prediction of the \texttt{STAY} class reflects successful detection of sustained cognitive engagement, whereas correct prediction of the \texttt{SKIP} class corresponds to identifying an impending disengagement decision within a 3–5 second pre-action window.
+
+The F\(_1\)-score was used as the primary performance metric, as it balances Precision and Recall and is robust to class imbalance. Metrics were computed separately for each class by treating the respective class as the positive label (i.e., one-vs-rest evaluation for \texttt{SKIP} and \texttt{STAY}).
+
+\textbf{Metric definitions:} Let TP, FP, TN, and FN denote true positives, false positives, true negatives, and false negatives, respectively.
+
+
+\[ \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} \]
+
+\[ \text{Precision} = \frac{TP}{TP + FP} \]
+
+\[ \text{Recall} = \frac{TP}{TP + FN} \]
+
+\[ F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}} \]
+
+\vspace{1em}
+\textbf{Case 1: \texttt{SKIP} as the positive class}
+\begin{itemize}
+    \item \textbf{TP:} correctly predicted \texttt{SKIP} instances
+    \item \textbf{FP:} \texttt{STAY} instances incorrectly predicted as \texttt{SKIP}
+    \item \textbf{FN:} \texttt{SKIP} instances incorrectly predicted as \texttt{STAY}
+    \item \textbf{TN:} correctly predicted \texttt{STAY} instances
+\end{itemize}
+
+\vspace{1em}
+\textbf{Case 2: \texttt{STAY} as the positive class}
+\begin{itemize}
+    \item \textbf{TP:} correctly predicted \texttt{STAY} instances
+    \item \textbf{FP:} \texttt{SKIP} instances incorrectly predicted as \texttt{STAY}
+    \item \textbf{FN:} \texttt{STAY} instances incorrectly predicted as \texttt{SKIP}
+    \item \textbf{TN:} correctly predicted \texttt{SKIP} instances
+\end{itemize}
+\vspace{1em}
+
+A class-specific F\(_1\)-score substantially exceeding chance level indicates that the model captures discriminative structure beyond random guessing for that class. For reference, under balanced random predictions, the expected F\(_1\)-score is approximately 0.5, whereas under strong class imbalance, this baseline decreases and should be interpreted relative to the class distribution.
 
 To rigorously evaluate whether the Logistic Regression models utilizing individual EEG features outperformed the established baselines across the participant cohort, non-parametric statistical testing was employed. Specifically, the Wilcoxon signed-rank test was used to compute the statistical significance (\(p\)-value) of the performance differences between the paired model distributions (e.g., Top Feature model vs. EI Baseline model, or EI Baseline model vs. 50\% chance level) across all participants (executed via \path{05-12_data_analysis_and_results/scripts/step17_thesis_figures_and_tables.py}). 
 
@@ -597,6 +638,7 @@ The rank-biserial correlation (\(r\)) was also computed to quantify the effect s
 
 
 
+\iffalse
 \section{Internal Structuring: Results Narrative and Gap Analysis}
 
 
@@ -658,14 +700,17 @@ You do not need to write this full sentence every time. But every result paragra
 \textbf{Why the proof-of-concept framing is the strongest possible position}
 
 A reviewer or committee member cannot attack a proof-of-concept claim for lacking a large representative sample --- that is not what a proof of concept promises. The attack is pre-empted by the framing. The danger is only if you drift into generality language mid-results and contradict the scoping you established in the abstract and introduction. Consistency of register across abstract, introduction, results, and conclusion is the entire defense.
+\fi
 
-\subsection{0. Behavioral Burst Results}
+\chapter{Results and Discussion}
 
-As established in the methodology (Section~\ref{sec:behavioral_burst_methods}), a burst is defined as a sequence of rapidly successive skip events reflecting frantic swiping. To quantify this burst severity, overlapping \texttt{SKIP} windows were grouped into “burst blocks.” The block size 𝑛 denotes the number of consecutive rapid swipes before a participant pauses to engage. A block of 𝑛=1 represents standard behavior, whereas larger values (e.g., 𝑛=3) indicate repeated rapid skipping without meaningful engagement.
+\section{Behavioral Bursts}
 
-Figure~\ref{fig:bursts_indiv_3s} shows this behavior at the participant level, revealing a clear dichotomy: some participants exhibit frequent large burst blocks (“fast scrollers”), while others predominantly show 𝑛=1 behavior (“careful scrollers”). Figure~\ref{fig:bursts_all_3s} aggregates these patterns, confirming that while 𝑛=1 dominates, a long tail of burst behavior persists.
+As established in the methodology (Section~\ref{sec:behavioral_burst_methods}), a burst is defined as a sequence of rapidly successive skip events reflecting frantic swiping. To quantify this burst severity, overlapping \texttt{SKIP} windows were grouped into “burst blocks.” The block size $n$ denotes the number of consecutive rapid swipes before a participant pauses to engage. A block of $n=1$ represents standard behavior, whereas larger values (e.g., $n=3$) indicate repeated rapid skipping without meaningful engagement.
 
-Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chosen window size by repeating the analysis with a ±5.0-second window (10.0-second merge threshold). The wider threshold captures a larger portion of the dwell time distribution and merges many isolated swipes into larger burst blocks, substantially reducing the proportion of 𝑛=1 events. \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/burst_stats.tex} This underscores the strong dependence on parameter selection and the need for systematic optimization in future work.
+Figure~\ref{fig:bursts_indiv_3s} shows this behavior at the participant level, revealing a clear dichotomy: some participants exhibit frequent large burst blocks (“fast scrollers”), while others predominantly show $n=1$ behavior (“careful scrollers”). Figure~\ref{fig:bursts_all_3s} aggregates these patterns, confirming that while $n=1$ dominates, a long tail of burst behavior persists.
+
+Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chosen window size by repeating the analysis with a ±5.0-second window (10.0-second merge threshold). The wider threshold captures a larger portion of the dwell time distribution and merges many isolated swipes into larger burst blocks, substantially reducing the proportion of $n=1$ events. \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/burst_stats.tex} This underscores the strong dependence on parameter selection and the need for systematic optimization in future work.
 
 \begin{figure}[H]
     \centering
@@ -690,6 +735,7 @@ Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chose
     \end{minipage}
 \end{figure}
 
+\iffalse
 \subsection{1. The Research Question and Narrative Arc}
 \textbf{The core question:} Can consumer-grade EEG (Muse S) accurately identify periods of sustained cognitive engagement (\texttt{STAY} state) versus imminent task abandonment (\texttt{SKIP} state) during naturalistic TikTok browsing?
 
@@ -742,6 +788,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
     \item \textbf{What the data shows:} We battle-tested this new $SFEI$ formula against the traditional $EI$ using identical 5-fold cross-validation. The $SFEI$ achieved a mean accuracy of \textbf{51.6\%} and a recall of \textbf{52.2\%}. Both the traditional $EI$ (52.3\%) and the proposed $SFEI$ (51.6\%) failed to reliably beat random chance across the population. [Source: \path{sfei_battletest_20260424_230531/sfei_metrics.json}]
     \item \textbf{Narrative Conclusion:} This confirms the constraint of consumer BCI in dynamic environments. Reducing algorithmic media engagement to a static, universal equation is insufficient. The cognitive state is too complex and idiosyncratic. High-dimensional, individualized machine learning approaches (like the RF-112 model achieving 53.8\% via blocked temporal CV, $p=0.0015$) are required. The failure of the universal SFEI is consistent with the LOGO-CV collapse: the engagement signature is fundamentally individualized.
 \end{itemize}
+\fi
 
 
 % --- INSERTED RESULTS FIGURES ---
@@ -824,7 +871,7 @@ To rigorously determine whether a predictive model meaningfully outperforms a ra
     \caption{Identifying top predictive features.}
 \end{figure}
 
-\subsubsection*{Selected Features}
+\section*{Selected Features}
 \begin{verbatim}
 {
     "AF7_high_gamma_mean": {
@@ -938,7 +985,7 @@ To rigorously determine whether a predictive model meaningfully outperforms a ra
 
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_sig_f1_models_ablation.tex}
 % --- END INSERTED RESULTS FIGURES ---
-\subsection{8. Summary of Results}
+\section{Summary of Results}
 
 \textbf{Does it answer the research question?} Yes, with appropriate calibration. Within this sample, consumer-grade EEG can predict sustained engagement significantly better than random chance at the intra-subject level (53.8\%, $p=0.0015$ via blocked temporal 5-fold CV), but the effect is small ($\sim$3.8pp above chance) and individually variable. Cross-subject generalization fails completely (LOGO-CV: 49.2\%). Simple clinical formulas (EI: 52.3\%) are insufficient. Feature importance is broadly distributed across all frequency bands, with the model exploiting the full spectral structure rather than any single dominant band. The top individual predictors are high-gamma peak values at frontal sites, but no band achieves statistically significant dominance at the aggregate level.
 
