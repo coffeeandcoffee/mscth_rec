@@ -514,11 +514,6 @@ Finally, the Macro Frequency \(f_{macro}\) is defined as the total number of dis
 \end{equation}
 The output is a stabilized, macroscopic frequency in Hertz (Hz) that robustly captures the count of dominant structural waves within the cognitive window, effectively ignoring micro-fluctuations.
 
-
-% -- methods read until here -- continute reading, continute inserting INSERT: ...
-% next step: continute detailled reading FEINSCHLIFF + in perplexity rephrasing.
-
-
 \newpage
 \section{Result Sythesis Pipeline}
 
@@ -573,6 +568,7 @@ To rigorously prevent temporal leakage, a minimum separation of 3 seconds betwee
 \end{figure}
 
 \subsection{Feature Separation Analysis}
+\label{sec:method_feature_separation_cohen_d}
 To mathematically evaluate the discriminative power of individual features prior to modeling, Cohen's \(d\) was computed to measure the standardized effect size between the \texttt{STAY} and \texttt{SKIP} distributions for each engineered feature (executed via \path{05-12_data_analysis_and_results/scripts/viz17_feature_ranking.py}). 
 
 Cohen's \(d\) is defined as:
@@ -584,6 +580,7 @@ where \(\mu_{stay}\) and \(\mu_{skip}\) represent the class-specific sample mean
 By calculating the absolute effect size (\(|d|\)), the pipeline systematically ranked all extracted features (e.g., \path{TP10_raw_std}) according to their individual ability to separate sustained cognitive engagement from the decision to disengage. Features demonstrating the highest absolute \(d\) values were designated as 'Top Features' and isolated for independent predictive baseline modeling.
 
 \subsection{Logistic Regression Modeling and Baselines}
+\label{sec:method_baselines_and_logistic_regression}
 To benchmark the true predictive capability of the engineered EEG features against chance and clinical baselines, three distinct modeling approaches were evaluated on the temporally isolated test sets (executed via \path{05-12_data_analysis_and_results/scripts/step07_train_intra.py} and synthesized in \path{step16_parallel_universes.py}).
 
 \vspace{1em}
@@ -596,6 +593,7 @@ To benchmark the true predictive capability of the engineered EEG features again
 \noindent\textbf{3. Top Feature Logistic Regression:} To test the predictive power of individual statistical features independently, the features ranked highest via Cohen's \(d\) (e.g., specific band powers or statistical moments) were similarly scaled and evaluated using isolated Logistic Regression models. This isolated approach allows for direct comparison of individual feature efficacy without the confounding complexities of high-dimensional multivariate models.
 
 \subsection{Metrics and Significance Testing}
+\label{sec:method_metrics_and_significance}
 To comprehensively evaluate model performance, standard classification metrics were computed for each cross-validation fold: Accuracy, Precision, Recall, and the F\(_1\)-score. In this context, correct prediction of the \texttt{STAY} class reflects successful detection of sustained cognitive engagement, whereas correct prediction of the \texttt{SKIP} class corresponds to identifying an impending disengagement decision within a 3–5 second pre-action window.
 
 The F\(_1\)-score was used as the primary performance metric, as it balances Precision and Recall and is robust to class imbalance. Metrics were computed separately for each class by treating the respective class as the positive label (i.e., one-vs-rest evaluation for \texttt{SKIP} and \texttt{STAY}).
@@ -702,9 +700,42 @@ You do not need to write this full sentence every time. But every result paragra
 A reviewer or committee member cannot attack a proof-of-concept claim for lacking a large representative sample --- that is not what a proof of concept promises. The attack is pre-empted by the framing. The danger is only if you drift into generality language mid-results and contradict the scoping you established in the abstract and introduction. Consistency of register across abstract, introduction, results, and conclusion is the entire defense.
 \fi
 
+% -- results read until here -- continute reading, continute inserting INSERT: ...
+% next step: continute detailled reading FEINSCHLIFF + in perplexity rephrasing.
+
 \chapter{Results and Discussion}
 
-\section{Behavioral Bursts}
+This chapter presents the results of a multi-stage experimental investigation. This thesis delivers five core scientific contributions:
+
+\begin{enumerate}
+\item \textbf{Primary EEG Experiment under Naturalistic Conditions}
+
+The foundation of this work is the primary experiment (Section~\ref{sec:results_primary_experiment}), in which participants were recorded via EEG while engaging in naturalistic TikTok browsing. This data collection phase constituted a substantial portion of the overall effort, requiring careful experimental design, technical implementation, and data acquisition under ecologically valid conditions. The resulting dataset forms the basis for all subsequent analyses and should be understood as a central contribution of this thesis.
+
+\item \textbf{Reusable EEG Processing and Analysis Pipeline}
+
+In addition to the experimental dataset, a further key contribution lies in the development of a comprehensive script library and analysis pipeline (Section~\ref{sec:results_pipeline}). This framework enables fully reproducible processing, from automated EEG recording on standard laptop hardware to feature extraction, class separation, and machine learning-based prediction. As such, it not only supports the present analysis but also provides a transferable methodological toolset that can be readily adapted to related experimental paradigms.
+
+\item \textbf{Behavioral Burst Analysis}
+
+We continue by focusing on the behavioral burst analysis (Section~\ref{sec:results_burst_analysis}). As no burst rejection was implemented—due to scope constraints outlined in Section~\ref{sec:behavioral_burst_methods}—this component is treated as a secondary result rather than the central analytical pathway.
+
+\item \textbf{Feature Discrimination and Predictive Modeling}
+
+The primary results emerge from a multi-layer analysis (Section~\ref{sec:results_multilayer}): Using the Cohen’s d method described in Section~\ref{sec:method_feature_separation_cohen_d}, we identify features that most effectively differentiate between the SKIP and STAY classes (Section~\ref{sec:results_feature_importance}). Building on this, a set of machine learning models as described in Section~\ref{sec:method_baselines_and_logistic_regression} is applied to predict scrolling behavior based on these class distinctions, challenge the conventional Engagement-Index, and best-performing models and features are reported (Section~\ref{sec:results_model_performance}).
+
+As described in Section~\ref{sec:method_metrics_and_significance}, these results are carefully introduced along their statistical significance, a crucial measure considering the sample size of n=25 participants, in order to give result metrics such as the F1-score the appropriate context for meaningful interpretation. While this prediction task serves as an initial proof of concept, it already indicates which features may provide sufficient discriminatory power.
+
+\item \textbf{Neuroscientific and Behavioral Interpretation}
+
+The results (Section~\ref{sec:results_feature_importance}) offer insights into the brain regions and frequency bands most predictive of this behavior, thereby informing both theoretical interpretation and potential practical applications. Therefore, in the final section (Section~\ref{sec:results_interpretation}), these findings are interpreted in the context of neuroscience, psychology, and behavioral research, highlighting their implications and real-world relevance.
+\end{enumerate}
+
+\section{Key Findings from the Experimental Paradigm} \label{sec:results_exp_learnings}
+
+\section{Reusable Methodological Pipeline} \label{sec:results_pipeline_detail}
+
+\section{Characterizing the Behavioral Burst Phenomenon} \label{sec:results_burst_analysis}
 
 As established in the methodology (Section~\ref{sec:behavioral_burst_methods}), a burst is defined as a sequence of rapidly successive skip events reflecting frantic swiping. To quantify this burst severity, overlapping \texttt{SKIP} windows were grouped into “burst blocks.” The block size $n$ denotes the number of consecutive rapid swipes before a participant pauses to engage. A block of $n=1$ represents standard behavior, whereas larger values (e.g., $n=3$) indicate repeated rapid skipping without meaningful engagement.
 
@@ -734,6 +765,72 @@ Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chose
         \label{fig:bursts_all_5s}
     \end{minipage}
 \end{figure}
+
+
+\section{Evaluating the Engagement Index} \label{sec:results_engagement_index}
+
+\subsection{Feature Importance and Neurophysiological Correlates} \label{sec:results_feature_importance}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.1_cohend_bands.png}
+    \caption{Cohen's d effect size by frequency band.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.2_cohend_electrodes.png}
+    \caption{Cohen's d effect size by electrode.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.3_cohend_stats.png}
+    \caption{Cohen's d effect size by statistical moment.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.4_cohend_interactions.png}
+    \caption{Cohen's d effect size interactions.}
+\end{figure}
+
+\subsection{Model Performance and Benchmark Comparison} \label{sec:results_model_performance}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_inter.png}
+    \caption{Inter-subject performance metrics.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_inter.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.png}
+    \caption{Intra-subject performance metrics.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.tex}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance_thesis_paragraph.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance.png}
+    \caption{Inter-subject significance analysis.}
+\end{figure}
+
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_intra_significance_thesis_paragraph.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_intra_significance.png}
+    \caption{Intra-subject significance analysis.}
+\end{figure}
+
+\section{Neuroscientific and Psychological Interpretation} \label{sec:results_interpretation}
+
 
 \iffalse
 \subsection{1. The Research Question and Narrative Arc}
@@ -792,61 +889,9 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 
 
 % --- INSERTED RESULTS FIGURES ---
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.1_cohend_bands.png}
-    \caption{Cohen's d effect size by frequency band.}
-\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.2_cohend_electrodes.png}
-    \caption{Cohen's d effect size by electrode.}
-\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.3_cohend_stats.png}
-    \caption{Cohen's d effect size by statistical moment.}
-\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.4_cohend_interactions.png}
-    \caption{Cohen's d effect size interactions.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_inter.png}
-    \caption{Inter-subject performance metrics.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_inter.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.png}
-    \caption{Intra-subject performance metrics.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.tex}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance_thesis_paragraph.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance.png}
-    \caption{Inter-subject significance analysis.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_intra_significance_thesis_paragraph.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_intra_significance.png}
-    \caption{Intra-subject significance analysis.}
-\end{figure}
 
 \subsubsection*{Methodology for Significance Testing}
 To rigorously determine whether a predictive model meaningfully outperforms a random baseline (Coin Flip) or a standard reference (Engagement Index, EI LR), this pipeline employs the Wilcoxon signed-rank test. Standard parametric tests assume that the performance metrics across participants are normally distributed. In small-sample physiological data (N=25 participants), this assumption is often violated. Performance is evaluated using paired metrics from the 25 individual cross-validation folds. The test calculates the difference in performance between the evaluated model and the baseline model for each participant. The algorithm employs a two-sided Wilcoxon test with a standard significance threshold ($\alpha = 0.05$). To strictly guarantee superiority, a directional check is applied post-hoc: the arithmetic mean of the model's scores across all participants must be strictly greater than the arithmetic mean of the baseline.
@@ -984,7 +1029,11 @@ To rigorously determine whether a predictive model meaningfully outperforms a ra
 \end{figure}
 
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_sig_f1_models_ablation.tex}
+
+
 % --- END INSERTED RESULTS FIGURES ---
+
+
 \section{Summary of Results}
 
 \textbf{Does it answer the research question?} Yes, with appropriate calibration. Within this sample, consumer-grade EEG can predict sustained engagement significantly better than random chance at the intra-subject level (53.8\%, $p=0.0015$ via blocked temporal 5-fold CV), but the effect is small ($\sim$3.8pp above chance) and individually variable. Cross-subject generalization fails completely (LOGO-CV: 49.2\%). Simple clinical formulas (EI: 52.3\%) are insufficient. Feature importance is broadly distributed across all frequency bands, with the model exploiting the full spectral structure rather than any single dominant band. The top individual predictors are high-gamma peak values at frontal sites, but no band achieves statistically significant dominance at the aggregate level.
