@@ -156,7 +156,7 @@ def run(run_dir, params):
     
     # Generate TEX Table
     tex_lines = [
-        "\\begin{table}[ht]",
+        "\\begin{table}[H]",
         "\\centering",
         "\\begin{tabular}{llc}",
         "\\hline",

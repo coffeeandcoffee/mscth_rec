@@ -193,6 +193,7 @@ The following sections outline the core theoretical claims, methodologies, and p
 \chapter{Materials and Methods}
 
 \section{Participants}
+\label{sec:method_participants}
 Twenty-eight ($N=28$) participants were recruited for the study ([Insert $N_F$ female, $N_M$ male]). To participate, individuals were required to have normal or corrected-to-normal vision and no history of neurological disorders. Three participants were excluded \textit{a priori}: two due to a high number of self-reported keypress errors (greater than 10) which compromised label integrity, and one due to an undisclosed neurological condition. The experimenter's own data, although collected for pipeline validation, was strictly excluded from all reported results to eliminate experimenter bias. The final sample consisted of $n=25$ participants (age range 20--30 years, $M = 24.6$, $SD = 2.9$).
 
 Participants were collected over a total of five days and were conceptually divided into two groups based on recruitment timing: an initial smaller group was recorded in a separate room without financial compensation, while the subsequent main group (recorded a few days later) received a 20-euro voucher as an incentive. All participants provided informed consent and signed data protection agreements approved by the Ethics Committee of the University of Potsdam prior to the study (INSERT: ethics proposal number).
@@ -202,6 +203,7 @@ Participants were collected over a total of five days and were conceptually divi
 
 
 \section{Data Acquisition}
+\label{sec:method_data_acquisition}
 Electroencephalography (EEG) data were recorded using a consumer-grade Muse S headband (Generation 2) Figure \ref{fig:muse_headband}. The device features four dry electrodes placed at positions AF7, AF8, TP9, and TP10 according to the international 10--20 system, with the reference electrode located at Fpz. Data were continuously sampled at an average rate of 256~Hz. 
 
 \begin{figure}[htpb]
@@ -233,6 +235,7 @@ To synchronize the behavioral data (video transitions) with the continuous EEG s
 \end{figure}
 
 \section{Experimental Protocol}
+\label{sec:method_experimental_protocol}
 The experimental sessions were scheduled for 45-minute timeslots, with the actual experimental procedures taking approximately 35 to 40 minutes. Upon arrival, participants were greeted, provided with an information sheet, and asked to sign the ethics consent forms. Afterward, they completed a pre-experiment demographic and basic screening survey, which took approximately five to ten minutes.
 
 \begin{figure}[htpb]
@@ -266,6 +269,7 @@ Once the 25-minute viewing task concluded, the experimenter entered the room, an
 % -- methods read until here -- continute reading, continute inserting INSERT: ...
 
 \section{Labeling Strategy}
+\label{sec:method_skipstay_labeling_strategy}
 To quantify class separability under different labeling choices, Cohen’s \(d\) was computed as the standardized mean difference between the STAY and SKIP distributions. A parameter sensitivity analysis was then performed in which gap length, window length, and imminent-skip period were varied systematically. When gap length and window length were held constant, increasing the imminent-skip period produced a corresponding increase in Cohen’s \(d\), indicating progressively stronger class separation.
 
 \subsection{Operational Definition of Labeling Parameters}
@@ -335,6 +339,7 @@ The key result is that, with fixed imminent-skip period and window size, increas
 \end{itemize}
 
 \subsection{Class Separation Metric}
+\label{sec:method_class_separation_metric}
 Cohen’s \(d\) was used as the primary descriptive measure of class separation. It expresses the standardized difference between the STAY and SKIP distributions, making it suitable for comparing separability across parameter settings even when the underlying distributions differ in scale. In this context, larger absolute values of Cohen’s \(d\) indicate stronger separation between the two classes.
 
 \begin{equation}
@@ -346,6 +351,7 @@ where \(\bar{x}_{\text{STAY}}\) and \(\bar{x}_{\text{SKIP}}\) denote the sample 
 For each parameter configuration, Cohen’s \(d\) was computed between the STAY and SKIP feature distributions derived from the corresponding labeling scheme. This provided a direct quantitative index of how strongly the chosen temporal definitions emphasized the contrast between sustained engagement and imminent disengagement.
 
 \section{Universal Recording Pipeline}
+\label{sec:method_universal_recording_pipeline}
 To facilitate rigorous and reproducible data collection, a robust Python-based recording architecture (\path{scripts/recording_script_v4.py}) was developed. This script orchestrates the simultaneous capture of raw EEG telemetry from the Muse S headband and has the capability of recording synchronized behavioral video from a webcam which was not used in this experiment, yet may be of value to future investigations. Its autonomous capabilities ensure that the experimental protocol can be executed reliably without extensive technical oversight.
 
 For this study's recordings the command \path{python recording_script_v4.py --nocamera --duration 1800} was used to call the script. The two flags simply mean (i) bypassing camera recording, as it is not in the scope of this study yet kept for future investigations and (ii) the recording duration is 1800s = 30 minutes.
@@ -361,6 +367,7 @@ The pipeline's core features include:
 This open-source compatible architecture ensures that any independent researcher equipped with a standard webcam and a consumer-grade Muse S headband can fully replicate the data collection methodology utilized in this thesis.
 
 \section{Universal Pre-Processing Pipeline}
+\label{sec:method_universal_preprocessing_pipeline}
 
 The following subsections describe step-by-step exactly what the Python code in the \path{05-12_data_analysis_and_results/scripts} directory executes to process the raw EEG signals into a uniform shape suitable for analysis.
 
@@ -401,7 +408,7 @@ The \texttt{SKIP} class was rigorously defined as the \textbf{3.0-second window}
 
 Finally, discrete 1.0-second analysis windows were extracted using a sliding window with no overlap (stride = window length). This ensures that windows do not cross class boundaries, enter safety gaps, or overlap with adjacent samples, thereby preventing data leakage and artificially inflated model performance.
 
-\subsection{Artifact Rejection}
+\subsection{Artifact Analysis}
 To ensure the integrity of the analyzed EEG signals, an automated outlier detection approach was implemented to flag potential artifacts (executed via \path{05-12_data_analysis_and_results/scripts/step02_artifact_flag.py}). Specifically, the 95th percentile of the peak-to-peak amplitude computed on the notch-filtered signal was utilized as a dynamic, participant-specific threshold. Frontal channels (AF7, AF8) were evaluated for ocular artifacts (e.g., blinks), while temporal channels (TP9, TP10) were evaluated for electromyogenic (EMG) artifacts. Absolute voltage thresholds (e.g., \(150\mu V\)) were initially investigated but were ultimately discarded as they did not yield generalizable or useful results across the dataset.
 
 No data points were excluded from the final machine learning pipeline based on these artifact flags. Incorporating such filtering would introduce additional experimental conditions and substantially expand the analysis beyond the scope of this proof-of-concept study. Instead, the approach is documented to highlight awareness of artifact-related confounds and to provide a foundation for more advanced rejection strategies in future work.
@@ -413,8 +420,8 @@ No data points were excluded from the final machine learning pipeline based on t
     \caption{Artifact rate distribution and signal quality flagging based on the 95th percentile peak-to-peak outlier approach.}
 \end{figure}
 
-\subsection{Behavioral Burst Rejection}
-\label{sec:behavioral_burst_methods}
+\subsection{Behavioral Burst Analysis}
+\label{sec:method_behavioral_burst_analysis}
 
 In addition to physiological artifacts, behavioral anomalies termed “bursts” were identified. A burst is defined as a sequence of rapidly successive skip events (e.g., multiple \texttt{A} keypresses merging into a single contiguous temporal block), reflecting frantic swiping rather than deliberate evaluation. Flagging these events aims to ensure that the \texttt{SKIP} class captures genuine cognitive disengagement rather than high-momentum, low-engagement scrolling behavior.
 
@@ -431,6 +438,7 @@ It is important to note that the \texttt{SKIP} window size is defined independen
 \end{figure}
 
 \section{Feature Engineering}
+\label{sec:method_feature_engineering}
 
 \subsection{Band Power and Statistical Moments}
 Following window extraction, a comprehensive feature set was computed for each valid temporal window (executed via \path{05-12_data_analysis_and_results/scripts/step05_feature_engineering.py}). For each of the 4 electrodes across the 7 previously defined frequency bands, four primary statistical moments were extracted: Mean, Standard Deviation, Minimum, and Maximum. An example of these extracted statistical moments belonging to one temporal 1-second window of one frequency band (alpha) of one electrode of one participant, is depicted in Figure~\ref{fig:stat_moments}.
@@ -516,6 +524,7 @@ The output is a stabilized, macroscopic frequency in Hertz (Hz) that robustly ca
 
 \newpage
 \section{Result Sythesis Pipeline}
+\label{sec:method_result_synthesis_pipeline}
 
 \subsection{Temporal Cross-Validation and Data Balancing}
 Before proceeding to statistical evaluation and modeling, the inherent class imbalance depicted in Figure~\ref{fig:classes_imbalanced}, where the \texttt{STAY} class (blue) heavily dominates the \texttt{SKIP} class (red), had to be addressed (executed via \path{05-12_data_analysis_and_results/scripts/step04_balance_split.py}). To prevent the models from trivially predicting the majority class, the \texttt{STAY} class was randomly undersampled for each participant to achieve a strict 50/50 balance, per participant, as depicted in Figure~\ref{fig:classes_balanced}.
@@ -569,15 +578,13 @@ To rigorously prevent temporal leakage, a minimum separation of 3 seconds betwee
 
 \subsection{Feature Separation Analysis}
 \label{sec:method_feature_separation_cohen_d}
-To mathematically evaluate the discriminative power of individual features prior to modeling, Cohen's \(d\) was computed to measure the standardized effect size between the \texttt{STAY} and \texttt{SKIP} distributions for each engineered feature (executed via \path{05-12_data_analysis_and_results/scripts/viz17_feature_ranking.py}). 
+To mathematically evaluate the discriminative power of individual features prior to modeling, Cohen’s \(d\) was computed to measure the standardized effect size between the \texttt{STAY} and \texttt{SKIP} distributions for each engineered feature (executed via \path{05-12_data_analysis_and_results/scripts/viz17_feature_ranking.py}). Cohen’s \(d\) is defined as
+\[
+d = \frac{\mu_{\text{STAY}} - \mu_{\text{SKIP}}}{s_{\text{pooled}}}
+\]
+where \(\mu_{\text{STAY}}\) and \(\mu_{\text{SKIP}}\) represent the class-specific sample means, and \(s_{\text{pooled}}\) denotes the pooled standard deviation. As a standardized effect size, Cohen’s \(d\) provides a scale-invariant measure of class separation that is independent of the absolute units of the feature (e.g., microvolts versus power spectral density). It quantifies how many standard deviations separate the centers of the two classes, thereby capturing theoretical separability prior to any model training.
 
-Cohen's \(d\) is defined as:
-\begin{equation}
-    d = \frac{\mu_{stay} - \mu_{skip}}{s_{pooled}}
-\end{equation}
-where \(\mu_{stay}\) and \(\mu_{skip}\) represent the class-specific sample means, and \(s_{pooled}\) denotes the pooled standard deviation. 
-
-By calculating the absolute effect size (\(|d|\)), the pipeline systematically ranked all extracted features (e.g., \path{TP10_raw_std}) according to their individual ability to separate sustained cognitive engagement from the decision to disengage. Features demonstrating the highest absolute \(d\) values were designated as 'Top Features' and isolated for independent predictive baseline modeling.
+By calculating the absolute effect size \(|d|\), the pipeline systematically ranked all extracted features (e.g., TP10\_raw\_std) according to their individual ability to separate sustained cognitive engagement from the decision to disengage. Features demonstrating the highest absolute \(|d|\) values were designated as Top Features and isolated for independent predictive baseline modeling.
 
 \subsection{Logistic Regression Modeling and Baselines}
 \label{sec:method_baselines_and_logistic_regression}
@@ -592,13 +599,15 @@ To benchmark the true predictive capability of the engineered EEG features again
 \vspace{1em}
 \noindent\textbf{3. Top Feature Logistic Regression:} To test the predictive power of individual statistical features independently, the features ranked highest via Cohen's \(d\) (e.g., specific band powers or statistical moments) were similarly scaled and evaluated using isolated Logistic Regression models. This isolated approach allows for direct comparison of individual feature efficacy without the confounding complexities of high-dimensional multivariate models.
 
+To ensure a strict one-to-one comparison with the one-dimensional Engagement Index baseline, each macro “Top Parameter” (band, electrode, statistic) was represented by its strongest single constituent feature.
+
 \subsection{Metrics and Significance Testing}
 \label{sec:method_metrics_and_significance}
 To comprehensively evaluate model performance, standard classification metrics were computed for each cross-validation fold: Accuracy, Precision, Recall, and the F\(_1\)-score. In this context, correct prediction of the \texttt{STAY} class reflects successful detection of sustained cognitive engagement, whereas correct prediction of the \texttt{SKIP} class corresponds to identifying an impending disengagement decision within a 3–5 second pre-action window.
 
 The F\(_1\)-score was used as the primary performance metric, as it balances Precision and Recall and is robust to class imbalance. Metrics were computed separately for each class by treating the respective class as the positive label (i.e., one-vs-rest evaluation for \texttt{SKIP} and \texttt{STAY}).
 
-\textbf{Metric definitions:} Let TP, FP, TN, and FN denote true positives, false positives, true negatives, and false negatives, respectively.
+\textbf{Metric definitions:} Let TP, FP, TN, and FN denote true positives, false positives, true negatives, and false negatives, respectively. To achieve optimal classification performance, the correct predictions (TP and TN) must be maximized while the incorrect predictions (FP and FN) are minimized.
 
 
 \[ \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} \]
@@ -613,26 +622,26 @@ The F\(_1\)-score was used as the primary performance metric, as it balances Pre
 \textbf{Case 1: \texttt{SKIP} as the positive class}
 \begin{itemize}
     \item \textbf{TP:} correctly predicted \texttt{SKIP} instances
+    \item \textbf{TN:} correctly predicted \texttt{STAY} instances
     \item \textbf{FP:} \texttt{STAY} instances incorrectly predicted as \texttt{SKIP}
     \item \textbf{FN:} \texttt{SKIP} instances incorrectly predicted as \texttt{STAY}
-    \item \textbf{TN:} correctly predicted \texttt{STAY} instances
 \end{itemize}
 
 \vspace{1em}
 \textbf{Case 2: \texttt{STAY} as the positive class}
 \begin{itemize}
     \item \textbf{TP:} correctly predicted \texttt{STAY} instances
+    \item \textbf{TN:} correctly predicted \texttt{SKIP} instances
     \item \textbf{FP:} \texttt{SKIP} instances incorrectly predicted as \texttt{STAY}
     \item \textbf{FN:} \texttt{STAY} instances incorrectly predicted as \texttt{SKIP}
-    \item \textbf{TN:} correctly predicted \texttt{SKIP} instances
 \end{itemize}
 \vspace{1em}
 
 A class-specific F\(_1\)-score substantially exceeding chance level indicates that the model captures discriminative structure beyond random guessing for that class. For reference, under balanced random predictions, the expected F\(_1\)-score is approximately 0.5, whereas under strong class imbalance, this baseline decreases and should be interpreted relative to the class distribution.
 
-To rigorously evaluate whether the Logistic Regression models utilizing individual EEG features outperformed the established baselines across the participant cohort, non-parametric statistical testing was employed. Specifically, the Wilcoxon signed-rank test was used to compute the statistical significance (\(p\)-value) of the performance differences between the paired model distributions (e.g., Top Feature model vs. EI Baseline model, or EI Baseline model vs. 50\% chance level) across all participants (executed via \path{05-12_data_analysis_and_results/scripts/step17_thesis_figures_and_tables.py}). 
+To rigorously evaluate whether the Logistic Regression models utilizing individual EEG features outperformed the established baselines across the participant cohort, non-parametric statistical testing was employed. Specifically, the Wilcoxon signed-rank test was used to compute the statistical significance (\(p\)-value) of the performance differences between paired model distributions (e.g., Top Feature model vs. EI Baseline model, or EI Baseline model vs. 50\% chance level) at the participant level. For each participant, the performance metric (e.g., F\(_1\)-score) of the evaluated model was contrasted with that of the baseline, yielding 25 paired differences across the Leave-One-Group-Out cross-validation folds.  
 
-The rank-biserial correlation (\(r\)) was also computed to quantify the effect size of the Wilcoxon test, indicating the strength of the model's superiority over the compared baseline. This structured chain of statistical proof robustly determines whether individual EEG features can provide a significant improvement over both pure chance and classical clinical engagement metrics when attempting to predict real-world short-form video interactions.
+The algorithm employs a two-sided Wilcoxon test with a standard significance threshold (\(\alpha = 0.05\)). Because a two-sided test detects significant differences in either direction, a directional validation check is applied post hoc: a model is deemed statistically significantly superior only if two conditions are met simultaneously, namely (i) the test yields \(p < 0.05\), and (ii) the arithmetic mean of the model’s scores across all participants is strictly greater than the arithmetic mean of the corresponding baseline. The rank-biserial correlation (\(r\)) is also computed to quantify the effect size of the Wilcoxon test, indicating the strength of the model's superiority over the compared baseline. This structured chain of statistical proof robustly determines whether individual EEG features can provide a significant improvement over both pure chance and classical clinical engagement metrics when attempting to predict real-world short-form video interactions.
 
 
 
@@ -710,38 +719,46 @@ This chapter presents the results of a multi-stage experimental investigation. T
 \begin{enumerate}
 \item \textbf{Primary EEG Experiment under Naturalistic Conditions}
 
-The foundation of this work is the primary experiment (Section~\ref{sec:results_primary_experiment}), in which participants were recorded via EEG while engaging in naturalistic TikTok browsing. This data collection phase constituted a substantial portion of the overall effort, requiring careful experimental design, technical implementation, and data acquisition under ecologically valid conditions. The resulting dataset forms the basis for all subsequent analyses and should be understood as a central contribution of this thesis.
+The foundation of this work is the primary experiment (Methods Section~\ref{sec:method_participants} - \ref{sec:method_experimental_protocol}, Results Section~\ref{sec:results_exp_learnings}), in which participants were recorded via EEG while engaging in naturalistic TikTok browsing. This data collection phase constituted a substantial portion of the overall effort, requiring careful experimental design, technical implementation, and data acquisition under ecologically valid conditions. Not only the resulting dataset, but also the easily reproducable nature of the developed experimental method forms the basis for all subsequent analyses and should be understood as a central contribution of this thesis.
 
 \item \textbf{Reusable EEG Processing and Analysis Pipeline}
 
-In addition to the experimental dataset, a further key contribution lies in the development of a comprehensive script library and analysis pipeline (Section~\ref{sec:results_pipeline}). This framework enables fully reproducible processing, from automated EEG recording on standard laptop hardware to feature extraction, class separation, and machine learning-based prediction. As such, it not only supports the present analysis but also provides a transferable methodological toolset that can be readily adapted to related experimental paradigms.
+In addition to the experimental dataset and process, a further key contribution lies in the development of a comprehensive script library and analysis pipeline (Methods Section \ref{sec:method_skipstay_labeling_strategy} - \ref{sec:method_result_synthesis_pipeline}, Results Section~\ref{sec:results_pipeline}). This framework enables fully reproducible processing, from automated EEG recording on standard laptop hardware to feature extraction, class separation, and machine learning-based prediction. As such, it not only supports the present analysis but also provides a transferable methodological toolset that can be readily adapted to related experimental paradigms.
 
-\item \textbf{Behavioral Burst Analysis}
+\item \textbf{Behavioral Swipe-Burst Phenomenon}
 
-We continue by focusing on the behavioral burst analysis (Section~\ref{sec:results_burst_analysis}). As no burst rejection was implemented—due to scope constraints outlined in Section~\ref{sec:behavioral_burst_methods}—this component is treated as a secondary result rather than the central analytical pathway.
+We continue by focusing on the behavioral burst analysis (Methods Section~\ref{sec:method_behavioral_burst_analysis}, Results Section~\ref{sec:results_burst_analysis}). As no burst rejection was implemented—due to scope constraints outlined in Section~\ref{sec:method_behavioral_burst_analysis}, this component is treated as a secondary result rather than the central analytical pathway.
 
-\item \textbf{Feature Discrimination and Predictive Modeling}
+\item \textbf{Evaluating the Engagement Index's Predictive Capacity}
 
-The primary results emerge from a multi-layer analysis (Section~\ref{sec:results_multilayer}): Using the Cohen’s d method described in Section~\ref{sec:method_feature_separation_cohen_d}, we identify features that most effectively differentiate between the SKIP and STAY classes (Section~\ref{sec:results_feature_importance}). Building on this, a set of machine learning models as described in Section~\ref{sec:method_baselines_and_logistic_regression} is applied to predict scrolling behavior based on these class distinctions, challenge the conventional Engagement-Index, and best-performing models and features are reported (Section~\ref{sec:results_model_performance}).
+The primary results emerge from a multi-layer analysis (Methods Section~\ref{sec:method_feature_engineering} - \ref{sec:method_result_synthesis_pipeline}, Results Section~\ref{sec:results_engagement_index}): Using the Cohen’s d method described in Section~\ref{sec:method_feature_separation_cohen_d}, first class separation capability of the conventional Engagement Index was evaluated, then specific features were identified that most effectively differentiate between the SKIP and STAY classes (Section~\ref{sec:results_feature_importance}) and which features outperform the Engagement Index's class-separation capability of \texttt{SKIP} and \texttt{STAY}. Building on this, a set of machine learning models as described in Section~\ref{sec:method_baselines_and_logistic_regression} is applied to predict scrolling behavior based on these class distinctions using the Engagement Index with a Logistic Regression and comparing it to a random-chance baseline, as well as challenging the conventional Engagement-Index by using previously identified superior features with the same Logistic Regression approach and comparing it to the Engagement Index. Best-performing models and features are reported (Section~\ref{sec:results_model_performance}).
 
-As described in Section~\ref{sec:method_metrics_and_significance}, these results are carefully introduced along their statistical significance, a crucial measure considering the sample size of n=25 participants, in order to give result metrics such as the F1-score the appropriate context for meaningful interpretation. While this prediction task serves as an initial proof of concept, it already indicates which features may provide sufficient discriminatory power.
+As described in Section~\ref{sec:method_metrics_and_significance}, these results are carefully introduced along their statistical significance, a crucial measure considering the sample size of n=25 participants, in order to give result metrics such as the F1-score the appropriate context for meaningful interpretation for discussion and further use. While this prediction task serves as an initial proof of concept, it already indicates which features may provide sufficient discriminatory power.
 
 \item \textbf{Neuroscientific and Behavioral Interpretation}
 
 The results (Section~\ref{sec:results_feature_importance}) offer insights into the brain regions and frequency bands most predictive of this behavior, thereby informing both theoretical interpretation and potential practical applications. Therefore, in the final section (Section~\ref{sec:results_interpretation}), these findings are interpreted in the context of neuroscience, psychology, and behavioral research, highlighting their implications and real-world relevance.
 \end{enumerate}
 
+% ----- SECTIONS RESULTS -----
+
 \section{Key Findings from the Experimental Paradigm} \label{sec:results_exp_learnings}
 
-\section{Reusable Methodological Pipeline} \label{sec:results_pipeline_detail}
+Email outreach, email lsits of students work well with incentive, many said it sounds fun, none had an issue with signing agreement, as most were academics themselves they were interested in the study results, Guided access feature is perfect for this as it also memorizes the duration per app - perfect for our 2min baseline and 25min scroll.
+Challenges were staying strict with what to say to them, how to brief what to do when stops, and when what.
 
-\section{Characterizing the Behavioral Burst Phenomenon} \label{sec:results_burst_analysis}
+\section{The Reusable Methodological Pipeline} \label{sec:results_pipeline}
 
-As established in the methodology (Section~\ref{sec:behavioral_burst_methods}), a burst is defined as a sequence of rapidly successive skip events reflecting frantic swiping. To quantify this burst severity, overlapping \texttt{SKIP} windows were grouped into “burst blocks.” The block size $n$ denotes the number of consecutive rapid swipes before a participant pauses to engage. A block of $n=1$ represents standard behavior, whereas larger values (e.g., $n=3$) indicate repeated rapid skipping without meaningful engagement.
+Can be accessed on github, and was observed to run mostly smoothly with some bluetooth dropouts, still unstructured, can be more structured.
+The development process caused us to have roughly 80 percent dead wight scripts that were only temporary or superseeded by a newer script - a simple cleaning algorith shall be implemented next time.
 
-Figure~\ref{fig:bursts_indiv_3s} shows this behavior at the participant level, revealing a clear dichotomy: some participants exhibit frequent large burst blocks (“fast scrollers”), while others predominantly show $n=1$ behavior (“careful scrollers”). Figure~\ref{fig:bursts_all_3s} aggregates these patterns, confirming that while $n=1$ dominates, a long tail of burst behavior persists.
+\section{Behavioral Swipe-Burst Phenomenon} \label{sec:results_burst_analysis}
 
-Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chosen window size by repeating the analysis with a ±5.0-second window (10.0-second merge threshold). The wider threshold captures a larger portion of the dwell time distribution and merges many isolated swipes into larger burst blocks, substantially reducing the proportion of $n=1$ events. \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/burst_stats.tex} This underscores the strong dependence on parameter selection and the need for systematic optimization in future work.
+As established in the methodology (Section~\ref{sec:method_behavioral_burst_analysis}), a burst is defined as a sequence of rapidly successive skip events reflecting frantic swiping. To quantify this burst severity, overlapping \texttt{SKIP} windows were grouped into “burst blocks.” The block size $n$ denotes the number of consecutive rapid swipes before a participant pauses to engage. A block of $n=1$ represents standard behavior, whereas larger values (e.g., $n=3$) indicate repeated rapid skipping, possibly without meaningful engagement due to high frequency and action state innertia.
+
+Figure~\ref{fig:bursts_indiv_3s} shows this behavior at the participant level, revealing a clear dichotomy: some participants exhibit frequent large burst blocks (“fast scrollers”, eg P17), while others predominantly show $n=1$ behavior (“careful scrollers”, eg. P15). Figure~\ref{fig:bursts_all_3s} aggregates these patterns, confirming that while $n=1$ dominates, a long tail of burst behavior persists.
+
+Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chosen window size by repeating the analysis with a ±5.0-second window (10.0-second merge threshold). The wider threshold captures a larger portion of the dwell time distribution and merges many isolated swipes into larger burst blocks, substantially reducing the proportion of $n=1$ events, simply by changing the definition of a "burst block". \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/burst_stats.tex} This underscores the strong dependence on parameter selection and the need for systematic optimization in future work.
 
 \begin{figure}[H]
     \centering
@@ -767,52 +784,105 @@ Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chose
 \end{figure}
 
 
-\section{Evaluating the Engagement Index} \label{sec:results_engagement_index}
+\section{The Engagement Index's Swipe-Prediction Performance}
+\label{sec:results_engagement_index}
 
 \subsection{Feature Importance and Neurophysiological Correlates} \label{sec:results_feature_importance}
 
+In Figure~\ref{fig:cohend_by_freq_band}, we observe that class separation, quantified via Cohen’s \(d\) as described in Section~\ref{sec:method_feature_separation_cohen_d}, is consistently stronger for several individual frequency bands (blue boxes) than for the conventional Engagement Index (red dotted line). In particular, the \(\alpha\)-band (8–13 Hz) achieves an effect size approximately 0.005 standard deviations higher than the Engagement Index, and the high-\(\gamma\) band (40–60 Hz), as the strongest candidate, exceeds it by more than 0.03 standard deviations. The Engagement Index — which combines three bands into a single scalar — itself reaches just above 0.02 and is therefore weaker in class separability than any of the individual broadband bands and the raw signal. This suggests that aggregating multiple bands into a single composite metric may dilute discriminative information that is more clearly expressed within specific, well-chosen frequency ranges.
+
+Moreover, class separation reaches values above 0.04 only for a small subset of bands: the raw, broadband signal (without frequency decomposition), the \(\delta\) band (1–4 Hz), the low-\(\gamma\) band (30–40 Hz), and the high-\(\gamma\) band (40–60 Hz). These results indicate that both very low-frequency activity and specific \(\gamma\)-range oscillations carry comparatively strong discriminative structure for the SKIP versus STAY decision.
+
+Taken together, these findings highlight three key points. First, individual frequency bands exhibit stronger class-separation capability than the conventional Engagement Index, suggesting that analyses based on raw or band-specific signals may be more informative than combined engagement metrics. Second, the raw broadband signal outperforms all separated bands except high \(\gamma\), which underscores the importance of preserving broadband information and motivates closer examination of high-\(\gamma\) activity in particular. Third, the pattern across bands follows a clear up–down–up trend: separability is high at low frequencies, drops to a minimum in the \(\alpha\) range (8–13 Hz), then rises to a global maximum in the high-\(\gamma\) range before decreasing again for very high \(\gamma\) frequencies (60–100 Hz). This systematic profile offers a frequency-resolved view of where discriminative information is concentrated in the EEG.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.1_cohend_bands.png}
     \caption{Cohen's d effect size by frequency band.}
+    \label{fig:cohend_by_freq_band}
 \end{figure}
+
+Similarly, Figure~\ref{fig:cohend_by_electrode} shows that separating the signal by electrode of origin — TP9, AF7, AF8, and TP10 — yields higher class separability than the conventional Engagement Index in all cases. The improvement ranges from just under 0.01 standard deviations for TP9 and AF8 to more than 0.03 standard deviations for AF7 and TP10. This suggests that distinguishing between individual brain regions provides more informative class separation than collapsing the signal into a single composite metric, and that the different electrodes contribute unequally to this discriminative task.
+
+Moreover, the figure reveals a clear dominance of AF7 (left anterior frontal) and TP10 (right temporal pole) over TP9 (left temporal pole) and AF8 (right anterior frontal) in terms of Cohen’s \(d\). This pattern suggests that the frontal and right temporal regions contribute more strongly to the SKIP-versus-STAY separation than the left temporal pole and right anterior frontal regions, pointing to a potentially lateralized and region-specific neurophysiological signature of scrolling behavior.
+
+AF7 (left anterior frontal) is the only electrode that outperforms the raw-data separation performance, and does so by just over 0.005 standard deviations, suggesting that this region may capture particularly salient discriminative information for the SKIP-versus-STAY distinction.
+
+Potential systematic differences related to the recording electrodes cannot be excluded at this stage, as the data were collected using two different devices across the \(n = 25\) participants.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.2_cohend_electrodes.png}
     \caption{Cohen's d effect size by electrode.}
+    \label{fig:cohend_by_electrode}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.3_cohend_stats.png}
-    \caption{Cohen's d effect size by statistical moment.}
-\end{figure}
+Observation X, see Figure~\ref{fig:cohend_interactions}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.4_cohend_interactions.png}
     \caption{Cohen's d effect size interactions.}
+    \label{fig:cohend_interactions}
 \end{figure}
+
+Figure~\ref{fig:cohend_by_stat_moment} shows that, among the statistical moments and related features considered, only a small subset exceeds the conventional Engagement Index by at least 0.01 standard deviations in terms of Cohen’s \(d\) class separation. These features are Hjorth activity, Hjorth mobility, the mean, the standard deviation, Hjorth complexity, and peak frequency. Taken together, this suggests that simple time-domain descriptors and Hjorth-derived measures retain meaningful discriminative information, but only for a limited number of feature types.
+
+Furthermore, only two features - Hjorth complexity and peak frequency - outperform the raw-data class separation ability. This indicates that, while the unprocessed signal already contains substantial discriminative structure, certain higher-order descriptors can still extract additional information beyond the broadband signal alone.
+
+Across the three feature families examined here - frequency bands, electrodes, and statistical moments/metrics - the statistical moments and metrics show the strongest overall class-separation performance. In particular, peak frequency stands out with a Cohen’s \(d\) of nearly 0.07, placing it almost 0.05 standard deviations above the conventional Engagement Index and nearly 0.02 standard deviations above the raw-data separation level. This makes peak frequency the strongest single feature in the present comparison and suggests that oscillatory structure within the signal may be especially informative for distinguishing between the two classes. At the same time, these findings should be interpreted cautiously, as the observed advantages are modest in absolute terms and may be influenced by dataset-specific factors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.3_cohend_stats.png}
+    \caption{Cohen's d effect size by statistical moment.}
+    \label{fig:cohend_by_stat_moment}
+\end{figure}
+
+While the comparison of features up to this point has already provided informative detail, the highest level of resolution is reached when each parameter is specified individually: (i) electrode, (ii) band or raw signal, and (iii) statistic or metric. Table~\ref{tab:cohend_top_features} illustrates the value of this finer-grained perspective. In the preceding analyses, peak frequency emerged as the strongest class separator according to Cohen’s \(d\), when considering all bands and electrodes jointly. In those comparisons, the only variable under inspection was the parameter being held constant, while the remaining parameters varied across features. This resulted in aggregated Cohen’s \(d\) values for each parameter group, as shown in Figures~\ref{fig:cohend_by_freq_band}, \ref{fig:cohend_by_electrode}, \ref{fig:cohend_interactions}, and \ref{fig:cohend_by_stat_moment}. These results raise a natural question: are there individual features, defined across all three parameters, that exceed the currently best observed class-separation performance of peak frequency, at approximately \(0.07\)?
+
+Table~\ref{tab:cohend_top_features} shows that such features do indeed exist. In fact, the top 30 features all outperform the peak-frequency result in terms of Cohen’s \(d\), indicating that a more specific feature definition can yield substantially stronger class separability. The strongest feature is TP10 raw standard deviation, with a Cohen’s \(d\) of \(0.196\), corresponding to an improvement of nearly tenfold over the conventional Engagement Index in terms of class separation.
+
+This shows that class separability is not only determined by broad feature families such as frequency bands, electrodes, or statistical moments, but can increase substantially when the signal is described at the level of individual feature combinations. It further suggests that the conventional Engagement Index captures only part of the discriminative structure present in the data, whereas more specific features can reveal considerably stronger separation between classes. At the same time, these findings should be interpreted as evidence of dataset-specific predictive potential rather than as a universal hierarchy of feature importance.
+
+% table of overall top features
+% cohend_top_features
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_3_cohend_top_features.tex}
+
+Observation X, see Figure~\ref{fig:cohend_top_features_2}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_4_identifying_top.png}
+    \caption{Identifying top predictive features.}
+    \label{fig:cohend_top_features_2}
+\end{figure}
+
+\begin{verbatim}
+{
+    "AF7_high_gamma_mean": {
+        "d": 0.16824331879615784,
+        "labels": ["Top Band (high_gamma)", "Top Electrode (AF7)", "Overall Top Feature #2"]
+    },
+    "AF8_delta_peakfreq": {
+        "d": 0.13990937173366547,
+        "labels": ["Top Statistic (peakfreq)"]
+    },
+    "TP10_raw_std": {
+        "d": 0.1959162801504135,
+        "labels": ["Overall Top Feature #1"]
+    }
+}
+\end{verbatim}
 
 \subsection{Model Performance and Benchmark Comparison} \label{sec:results_model_performance}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_inter.png}
-    \caption{Inter-subject performance metrics.}
-\end{figure}
-
+% metrics_1_inter
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_inter.tex}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.png}
-    \caption{Intra-subject performance metrics.}
-\end{figure}
-
+% 
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.tex}
 
+% 
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance_thesis_paragraph.tex}
 
 \begin{figure}[H]
@@ -821,7 +891,9 @@ Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chose
     \caption{Inter-subject significance analysis.}
 \end{figure}
 
+\iffalse
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_intra_significance_thesis_paragraph.tex}
+\fi
 
 \begin{figure}[H]
     \centering
@@ -829,8 +901,52 @@ Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chose
     \caption{Intra-subject significance analysis.}
 \end{figure}
 
-\section{Neuroscientific and Psychological Interpretation} \label{sec:results_interpretation}
+\subsection{Alternative Index Exploration} \label{sec:results_alternative_index}
 
+% 
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat1.tex}
+
+% 
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat2.tex}
+
+% 
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat3.tex}
+
+% 
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat1.tex}
+
+% 
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat2.tex}
+
+% 
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat3.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_final.png}
+    \caption{Final inter-subject performance summary.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_final.png}
+    \caption{Final intra-subject performance summary.}
+\end{figure}
+
+\section{Neuroscientific and Psychological Interpretation}
+\label{sec:results_interpretation}
+
+\subsection{Neuroscience}
+a
+
+\subsection{Psychiology}
+b
+
+\subsection{Behaviour}
+c
+
+\subsection{Application}
+d
 
 \iffalse
 \subsection{1. The Research Question and Narrative Arc}
@@ -892,7 +1008,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 
 
 
-
+\iffalse
 \subsubsection*{Methodology for Significance Testing}
 To rigorously determine whether a predictive model meaningfully outperforms a random baseline (Coin Flip) or a standard reference (Engagement Index, EI LR), this pipeline employs the Wilcoxon signed-rank test. Standard parametric tests assume that the performance metrics across participants are normally distributed. In small-sample physiological data (N=25 participants), this assumption is often violated. Performance is evaluated using paired metrics from the 25 individual cross-validation folds. The test calculates the difference in performance between the evaluated model and the baseline model for each participant. The algorithm employs a two-sided Wilcoxon test with a standard significance threshold ($\alpha = 0.05$). To strictly guarantee superiority, a directional check is applied post-hoc: the arithmetic mean of the model's scores across all participants must be strictly greater than the arithmetic mean of the baseline.
 
@@ -900,139 +1016,10 @@ To rigorously determine whether a predictive model meaningfully outperforms a ra
 
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_3_cohend_results.tex}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_3_cohend_top_features.png}
-    \caption{Top features ranked by Cohen's d.}
-\end{figure}
-
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_3_cohend_top_features.tex}
 
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_4_description.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_4_identifying_top.png}
-    \caption{Identifying top predictive features.}
-\end{figure}
-
-\section*{Selected Features}
-\begin{verbatim}
-{
-    "AF7_high_gamma_mean": {
-        "d": 0.16824331879615784,
-        "labels": ["Top Band (high_gamma)", "Top Electrode (AF7)", "Overall Top Feature #2"]
-    },
-    "AF8_delta_peakfreq": {
-        "d": 0.13990937173366547,
-        "labels": ["Top Statistic (peakfreq)"]
-    },
-    "TP10_raw_std": {
-        "d": 0.1959162801504135,
-        "labels": ["Overall Top Feature #1"]
-    }
-}
-\end{verbatim}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat1.png}
-    \caption{Inter-subject performance using Feature 1.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat1.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat2.png}
-    \caption{Inter-subject performance using Feature 2.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat2.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat3.png}
-    \caption{Inter-subject performance using Feature 3.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat3.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat1.png}
-    \caption{Intra-subject performance using Feature 1.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat1.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat2.png}
-    \caption{Intra-subject performance using Feature 2.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat2.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat3.png}
-    \caption{Intra-subject performance using Feature 3.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat3.tex}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_diagnostics.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_final.png}
-    \caption{Final inter-subject performance summary.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_metrics_table_ablation.png}
-    \caption{Inter-subject metrics table ablation.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_metrics_table_ablation.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_optimal_params_ablation.png}
-    \caption{Inter-subject optimal parameters ablation.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_sig_f1_models_ablation.tex}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_diagnostics.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_final.png}
-    \caption{Final intra-subject performance summary.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_metrics_table_ablation.png}
-    \caption{Intra-subject metrics table ablation.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_metrics_table_ablation.tex}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_optimal_params_ablation.png}
-    \caption{Intra-subject optimal parameters ablation.}
-\end{figure}
-
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_sig_f1_models_ablation.tex}
-
-
-% --- END INSERTED RESULTS FIGURES ---
-
+\fi
 
 \section{Summary of Results}
 
@@ -1047,8 +1034,13 @@ To rigorously determine whether a predictive model meaningfully outperforms a ra
 % 6. REMAINING PIPELINE RUNS: step11 (feature importance) was run on original models --- optionally re-run on temporal models for consistency. LOGO-CV was run with notch filter only --- consider re-running with nonotch for consistency or noting this.
 % 7. PER-PARTICIPANT SIGNIFICANCE: add binomial CIs to determine how many participants are STATISTICALLY significantly above chance (not just >50%)
 
-\subsection{9. Outlook and Implications for Future BCI Design}
+\subsection{Outlook and Implications for Future BCI Design}
 A critical implication of this thesis is the rejection of the ``Universal BCI Equation'' paradigm. The LOGO-CV validation directly demonstrates this: the Random Forest---a non-linear, 112-component model---completely fails to generalize across participants (49.2\% accuracy), providing evidence that the bottleneck is biological idiosyncrasy, not mathematical complexity. Future development of consumer BCI systems for algorithmic media interaction should pivot toward personalized, high-dimensional machine learning calibration architectures. Additionally, this thesis demonstrates that standard overlapping-window evaluation in BCI research can inflate reported performance by $\sim$8 percentage points, highlighting the importance of temporally-separated evaluation protocols in future work.
+
+\subsection{Future research}
+- continuum between first fold of session to last fold of session what changes and shifts?
+- what does burst preference correlate with?
+- what does increased usage correlate with? (source: survey)
 
 \bibliographystyle{unsrt}
 \bibliography{library}

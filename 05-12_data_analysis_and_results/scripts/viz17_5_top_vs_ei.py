@@ -193,7 +193,7 @@ def run(run_dir, params):
         h2 = "Val & Sig & Val & Sig"
         
         t_tex_lines = [
-            "\\begin{table}[ht]",
+            "\\begin{table}[H]",
             "\\centering",
             "\\begin{tabular}{l" + t_tex_cols + "}",
             "\\hline",
@@ -217,11 +217,13 @@ def run(run_dir, params):
             feat_vals = res_feat[metric]
             feat_mean = np.mean(feat_vals)
             
+            is_green = False
             try:
                 stat, p = wilcoxon(feat_vals, ei_vals)
                 if p < 0.05:
                     sig = 'TRUE'
                     if feat_mean > ei_mean:
+                        is_green = True
                         sb_cells.append((len(t_data), 3)) 
                 else:
                     sig = 'FALSE'
@@ -232,7 +234,7 @@ def run(run_dir, params):
             row.extend([val_str2, sig])
             sig_tex = "TRUE" if sig == 'TRUE' else sig
             val_tex = val_str2.replace('%', '\\%')
-            if sig == 'TRUE': val_tex = f"\\textcolor{{green}}{{{val_tex}}}"
+            if is_green: val_tex = f"\\textcolor{{green}}{{{val_tex}}}"
             t_tex_row.extend([val_tex, sig_tex])
             
             t_data.append(row)

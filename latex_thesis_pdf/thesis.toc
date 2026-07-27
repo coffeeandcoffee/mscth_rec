@@ -24,8 +24,8 @@
 \contentsline {subsection}{\numberline {3.6.1}Data Synchronization and Interpolation}{23}{subsection.3.6.1}%
 \contentsline {subsection}{\numberline {3.6.2}Baseline Extraction and Normalization}{25}{subsection.3.6.2}%
 \contentsline {subsection}{\numberline {3.6.3}Windowing and Class Labeling}{26}{subsection.3.6.3}%
-\contentsline {subsection}{\numberline {3.6.4}Artifact Rejection}{26}{subsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Rejection}{28}{subsection.3.6.5}%
+\contentsline {subsection}{\numberline {3.6.4}Artifact Analysis}{26}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Analysis}{28}{subsection.3.6.5}%
 \contentsline {section}{\numberline {3.7}Feature Engineering}{30}{section.3.7}%
 \contentsline {subsection}{\numberline {3.7.1}Band Power and Statistical Moments}{30}{subsection.3.7.1}%
 \contentsline {subsection}{\numberline {3.7.2}Engagement Index Calculation}{31}{subsection.3.7.2}%
@@ -39,16 +39,21 @@
 \contentsline {section}{\numberline {3.8}Result Sythesis Pipeline}{36}{section.3.8}%
 \contentsline {subsection}{\numberline {3.8.1}Temporal Cross-Validation and Data Balancing}{36}{subsection.3.8.1}%
 \contentsline {subsection}{\numberline {3.8.2}Feature Separation Analysis}{38}{subsection.3.8.2}%
-\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{38}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{39}{subsection.3.8.3}%
 \contentsline {subsection}{\numberline {3.8.4}Metrics and Significance Testing}{39}{subsection.3.8.4}%
 \contentsline {chapter}{\numberline {4}Results and Discussion}{42}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Key Findings from the Experimental Paradigm}{43}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Reusable Methodological Pipeline}{43}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Characterizing the Behavioral Burst Phenomenon}{43}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Evaluating the Engagement Index}{46}{section.4.4}%
+\contentsline {section}{\numberline {4.2}The Reusable Methodological Pipeline}{44}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Behavioral Swipe-Burst Phenomenon}{44}{section.4.3}%
+\contentsline {section}{\numberline {4.4}The Engagement Index's Swipe-Prediction Performance}{46}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Feature Importance and Neurophysiological Correlates}{46}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Model Performance and Benchmark Comparison}{48}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Neuroscientific and Psychological Interpretation}{53}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Behavioral Burst Analysis (Detailed Results)}{53}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Summary of Results}{62}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}9. Outlook and Implications for Future BCI Design}{62}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.4.2}Model Performance and Benchmark Comparison}{53}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Alternative Index Exploration}{56}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Neuroscientific and Psychological Interpretation}{63}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Neuroscience}{63}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Psychiology}{63}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Behaviour}{63}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Application}{63}{subsection.4.5.4}%
+\contentsline {section}{\numberline {4.6}Summary of Results}{63}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Outlook and Implications for Future BCI Design}{63}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Future research}{64}{subsection.4.6.2}%

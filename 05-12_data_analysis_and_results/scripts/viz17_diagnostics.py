@@ -224,7 +224,7 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
         h2 = " & ".join(["Val & Sig"] * len(m_names))
         
         t_tex_lines = [
-            "\\begin{table}[ht]",
+            "\\begin{table}[H]",
             "\\centering",
             "\\begin{tabular}{l" + t_tex_cols + "}",
             "\\hline",
@@ -247,6 +247,7 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
                 vals = m_dict[metric]
                 mean_val = np.mean(vals)
                 
+                is_green = False
                 if m == 'Coin Flip':
                     sig = '-'
                 else:
@@ -255,6 +256,7 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
                         if p < 0.05:
                             sig = 'TRUE'
                             if mean_val > np.mean(models['Coin Flip'][metric]):
+                                is_green = True
                                 sb_cells.append((len(t_data), len(row)))
                         else:
                             sig = 'FALSE'
@@ -265,7 +267,7 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
                 row.extend([val_str, sig])
                 sig_tex = "TRUE" if sig == 'TRUE' else sig
                 val_tex = val_str.replace('%', '\\%')
-                if sig == 'TRUE': val_tex = f"\\textcolor{{green}}{{{val_tex}}}"
+                if is_green: val_tex = f"\\textcolor{{green}}{{{val_tex}}}"
                 t_tex_row.extend([val_tex, sig_tex])
                 
             t_data.append(row)
@@ -274,7 +276,7 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
         t_tex_lines.extend([
             "\\hline",
             "\\end{tabular}",
-            "\\caption{Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\\alpha=0.05$, N=25).}",
+            f"\\caption{{Step 1 ({scale.capitalize()}-subject): EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\\alpha=0.05$, N=25).}}",
             "\\label{tab:metrics_1_" + scale.lower() + "}",
             "\\end{table}"
         ])
@@ -339,7 +341,7 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
     header_2 = " & ".join(["Val & Sig"] * len(model_names))
     
     tex_lines = [
-        "\\begin{table}[ht]",
+        "\\begin{table}[H]",
         "\\centering",
         "\\begin{tabular}{l" + tex_cols + "}",
         "\\hline",
@@ -363,6 +365,7 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
             vals = m_dict[metric]
             mean_val = np.mean(vals)
             
+            is_green = False
             if m_name == 'Coin Flip' or (is_ablation and m_name == 'EI LR'):
                 sig = '-'
             else:
@@ -378,11 +381,13 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
                     if baseline_m is None:
                         baseline_m = models.get('Coin Flip') or models.get('EI LR')
                         
+                    is_green = False
                     if baseline_m is not None:
                         stat, p = wilcoxon(vals, baseline_m[metric])
                         if p < 0.05:
                             sig = 'TRUE'
                             if mean_val > np.mean(baseline_m[metric]):
+                                is_green = True
                                 sig_better_cells.append((len(table_data), len(row)))
                         else:
                             sig = 'FALSE'
@@ -390,13 +395,14 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
                         sig = '-'
                 except Exception:
                     sig = 'FALSE'
+                    is_green = False
             
             val_str = f"{mean_val:.1f}%"
             row.extend([val_str, sig])
             
             sig_tex = "TRUE" if sig == 'TRUE' else sig
             val_tex = val_str.replace('%', '\\%')
-            if sig == 'TRUE': val_tex = f"\\textcolor{{green}}{{{val_tex}}}"
+            if is_green: val_tex = f"\\textcolor{{green}}{{{val_tex}}}"
             tex_row.extend([val_tex, sig_tex])
             
         table_data.append(row)
@@ -587,7 +593,7 @@ def export_f1_tex(scale, models, is_ablation, suffix, viz_dir):
     best_skip_f1 = -1.0
     
     table_lines = [
-        "\\begin{table}[ht]",
+        "\\begin{table}[H]",
         "\\centering",
         "\\begin{tabular}{lcc}",
         "\\hline",
