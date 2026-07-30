@@ -11,49 +11,49 @@
 \contentsline {section}{\numberline {2.7}Behavioral Sequence Heterogeneity and Attentional Modes}{12}{section.2.7}%
 \contentsline {chapter}{\numberline {3}Materials and Methods}{14}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Participants}{14}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Data Acquisition}{14}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Experimental Protocol}{15}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Labeling Strategy}{17}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Operational Definition of Labeling Parameters}{17}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Operational Definition of STAY and SKIP}{18}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Baseline Exclusion}{18}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Parameter Sensitivity Analysis}{19}{subsection.3.4.4}%
-\contentsline {subsection}{\numberline {3.4.5}Class Separation Metric}{21}{subsection.3.4.5}%
-\contentsline {section}{\numberline {3.5}Universal Recording Pipeline}{22}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Universal Pre-Processing Pipeline}{23}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Data Synchronization and Interpolation}{23}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Baseline Extraction and Normalization}{25}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3}Windowing and Class Labeling}{26}{subsection.3.6.3}%
-\contentsline {subsection}{\numberline {3.6.4}Artifact Analysis}{26}{subsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Analysis}{28}{subsection.3.6.5}%
-\contentsline {section}{\numberline {3.7}Feature Engineering}{30}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Band Power and Statistical Moments}{30}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}Engagement Index Calculation}{31}{subsection.3.7.2}%
-\contentsline {subsection}{\numberline {3.7.3}Hjorth Parameters}{32}{subsection.3.7.3}%
-\contentsline {subsubsection}{Activity}{33}{section*.4}%
-\contentsline {subsubsection}{Mobility}{33}{section*.5}%
-\contentsline {subsubsection}{Complexity}{33}{section*.6}%
-\contentsline {subsection}{\numberline {3.7.4}Peak and Macro Frequency Extraction}{34}{subsection.3.7.4}%
-\contentsline {subsubsection}{Peak Frequency}{34}{section*.7}%
-\contentsline {subsubsection}{Macro Frequency}{34}{section*.8}%
-\contentsline {section}{\numberline {3.8}Result Sythesis Pipeline}{36}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}Temporal Cross-Validation and Data Balancing}{36}{subsection.3.8.1}%
-\contentsline {subsection}{\numberline {3.8.2}Feature Separation Analysis}{38}{subsection.3.8.2}%
-\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{39}{subsection.3.8.3}%
-\contentsline {subsection}{\numberline {3.8.4}Metrics and Significance Testing}{39}{subsection.3.8.4}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{42}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Key Findings from the Experimental Paradigm}{43}{section.4.1}%
-\contentsline {section}{\numberline {4.2}The Reusable Methodological Pipeline}{44}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Behavioral Swipe-Burst Phenomenon}{44}{section.4.3}%
-\contentsline {section}{\numberline {4.4}The Engagement Index's Swipe-Prediction Performance}{46}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Feature Importance and Neurophysiological Correlates}{46}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Model Performance and Benchmark Comparison}{53}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Alternative Index Exploration}{56}{subsection.4.4.3}%
-\contentsline {section}{\numberline {4.5}Neuroscientific and Psychological Interpretation}{63}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Neuroscience}{63}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Psychiology}{63}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Behaviour}{63}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}Application}{63}{subsection.4.5.4}%
-\contentsline {section}{\numberline {4.6}Summary of Results}{63}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Outlook and Implications for Future BCI Design}{63}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Future research}{64}{subsection.4.6.2}%
+\contentsline {section}{\numberline {3.2}Data Acquisition}{15}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Experimental Protocol}{18}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Labeling Strategy}{21}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Operational Definition of Labeling Parameters}{21}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Operational Definition of STAY and SKIP}{21}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Baseline Exclusion}{22}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Parameter Sensitivity Analysis}{22}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Class Separation Metric}{25}{subsection.3.4.5}%
+\contentsline {section}{\numberline {3.5}Universal Recording Pipeline}{25}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Universal Pre-Processing Pipeline}{27}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Data Synchronization and Interpolation}{27}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Baseline Extraction and Normalization}{29}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Windowing and Class Labeling}{30}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Artifact Analysis}{30}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Analysis}{32}{subsection.3.6.5}%
+\contentsline {section}{\numberline {3.7}Feature Engineering}{34}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Band Power and Statistical Moments}{34}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Engagement Index Calculation}{35}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Hjorth Parameters}{36}{subsection.3.7.3}%
+\contentsline {subsubsection}{Activity}{37}{section*.4}%
+\contentsline {subsubsection}{Mobility}{37}{section*.5}%
+\contentsline {subsubsection}{Complexity}{37}{section*.6}%
+\contentsline {subsection}{\numberline {3.7.4}Peak and Macro Frequency Extraction}{38}{subsection.3.7.4}%
+\contentsline {subsubsection}{Peak Frequency}{38}{section*.7}%
+\contentsline {subsubsection}{Macro Frequency}{38}{section*.8}%
+\contentsline {section}{\numberline {3.8}Result Sythesis Pipeline}{40}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Temporal Cross-Validation and Data Balancing}{40}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Feature Separation Analysis}{42}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{43}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.4}Metrics and Significance Testing}{43}{subsection.3.8.4}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{46}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Key Findings from the Experimental Paradigm}{47}{section.4.1}%
+\contentsline {section}{\numberline {4.2}The Reusable Methodological Pipeline}{48}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Behavioral Swipe-Burst Phenomenon}{49}{section.4.3}%
+\contentsline {section}{\numberline {4.4}The Engagement Index's Swipe-Prediction Performance}{51}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Feature Importance and Neurophysiological Correlates}{51}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Engagement Index Model Performance and Benchmark Comparison}{58}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Alternative Index Exploration}{62}{subsection.4.4.3}%
+\contentsline {subsubsection}{Intra-Subject (Per-Participant Level)}{62}{section*.9}%
+\contentsline {subsubsection}{Inter-Subject (Cross-Participant Level)}{65}{section*.10}%
+\contentsline {section}{\numberline {4.5}Discussion}{68}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Neuroscience}{69}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Psychiology}{70}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Behaviour}{71}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Application}{71}{subsection.4.5.4}%
+\contentsline {section}{\numberline {4.6}Future Research}{73}{section.4.6}%

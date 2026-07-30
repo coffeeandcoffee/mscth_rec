@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{xcolor}
+\usepackage{booktabs}
 
 \begin{document}
 
@@ -194,43 +195,40 @@ The following sections outline the core theoretical claims, methodologies, and p
 
 \section{Participants}
 \label{sec:method_participants}
-Twenty-eight ($N=28$) participants were recruited for the study ([Insert $N_F$ female, $N_M$ male]). To participate, individuals were required to have normal or corrected-to-normal vision and no history of neurological disorders. Three participants were excluded \textit{a priori}: two due to a high number of self-reported keypress errors (greater than 10) which compromised label integrity, and one due to an undisclosed neurological condition. The experimenter's own data, although collected for pipeline validation, was strictly excluded from all reported results to eliminate experimenter bias. The final sample consisted of $n=25$ participants (age range 20--30 years, $M = 24.6$, $SD = 2.9$).
+Twenty-eight ($N=28$) participants were recruited for the study (14 female, 14 male). To participate, individuals were required to have normal or corrected-to-normal vision and no history of neurological disorders. Three participants were excluded \textit{a priori}: two due to a high number of self-reported keypress errors (greater than 10) which compromised label integrity, and one due to an undisclosed neurological condition. The experimenter's own data, although collected for pipeline validation, was strictly excluded from all reported results to eliminate experimenter bias. The final sample consisted of $n=25$ participants (age range 20--30 years, $M = 24.6$, $SD = 2.9$, 13 female, 12 male).
 
-Participants were collected over a total of five days and were conceptually divided into two groups based on recruitment timing: an initial smaller group was recorded in a separate room without financial compensation, while the subsequent main group (recorded a few days later) received a 20-euro voucher as an incentive. All participants provided informed consent and signed data protection agreements approved by the Ethics Committee of the University of Potsdam prior to the study (INSERT: ethics proposal number).
+Participants were collected over a total of five days and were conceptually divided into two groups based on recruitment timing: an initial smaller group was recorded in a separate room without financial compensation, while the subsequent main group (recorded a few days later) received a 20-euro voucher as an incentive. All participants provided informed consent and signed data protection agreements approved by the Ethics Committee of the University of Potsdam prior to the study (No. 5/147, 08th Sep 2025 - “Optimizing Large Scale Public Health Interventions on Social Media by Creating Neurological Markers of Engagement and Addiction in TikTok to Drive Disease Prevention“) which potentially covers research property beyond this study, beneficial also for future research falling within the scope.
 
 % \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_sig_f1_models_ablation.tex}
-[Insert tex table of participants, answers and co]
+\input{participant_table.tex}
 
 
 \section{Data Acquisition}
 \label{sec:method_data_acquisition}
 Electroencephalography (EEG) data were recorded using a consumer-grade Muse S headband (Generation 2) Figure \ref{fig:muse_headband}. The device features four dry electrodes placed at positions AF7, AF8, TP9, and TP10 according to the international 10--20 system, with the reference electrode located at Fpz. Data were continuously sampled at an average rate of 256~Hz. 
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
-    % \includegraphics[width=0.6\textwidth]{path_to_muse_headband_picture}
-    [Insert Picture of Muse Headband]
-    \caption{The consumer-grade Muse S (Gen 2) EEG headband used for data acquisition.}
+    \includegraphics[width=0.6\textwidth]{/Users/gregorlederer/Documents/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/latex_thesis_pdf/images_thesis/muse.png}
+    \caption[Marketing material of the consumer-grade Muse S (Gen 2) EEG headband]{Marketing material of the consumer-grade Muse S (Gen 2) EEG headband that was used for data acquisition. Source: \cite{gstaticcom_muse_2026}}
     \label{fig:muse_headband}
 \end{figure}
 
-The EEG signals were transmitted via Bluetooth and recorded using the Lab Streaming Layer (LSL) protocol with the \texttt{muselsl} library. A custom Python recording script was developed to handle data collection (INSERT: reference to exact github code link of script). This script featured real-time frequency monitoring and an automatic reconnection mechanism to seamlessly manage any Bluetooth drops without disrupting the session.
+The EEG signals were transmitted via Bluetooth and recorded using the Lab Streaming Layer (LSL) protocol with the \texttt{muselsl} library. A custom Python recording script was developed to handle data collection (\url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline}). This script featured real-time frequency monitoring and an automatic reconnection mechanism to seamlessly manage any Bluetooth drops without disrupting the session.
 
 To synchronize the behavioral data (video transitions) with the continuous EEG stream without relying on video monitoring of the participant, keystroke markers were mapped directly into the recording script. Participants used their non-dominant hand to press a specific key on a laptop keyboard provided in the room: the ``B'' key to denote the start of the baseline period, and the ``A'' key to mark every manual swipe (skip event) during the TikTok browsing session.
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
-    % \includegraphics[width=0.8\textwidth]{path_to_setup_cabin_picture}
-    [Insert Picture of Experimental Setup Cabin]
+    \includegraphics[width=0.8\textwidth]{/Users/gregorlederer/Documents/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/data-ipf-hpi/pictures_cabin/further.jpg}
     \caption{The experimental setup cabin ensuring privacy and a distraction-free environment for the participant.}
     \label{fig:setup_cabin}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
-    % \includegraphics[width=0.8\textwidth]{path_to_laptop_phone_picture}
-    [Insert Closer Picture of Laptop and Phone Setup]
-    \caption{Close-up of the recording setup showing the researcher's phone and the laptop used for keypress synchronization.}
+    \includegraphics[width=0.8\textwidth]{/Users/gregorlederer/Documents/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/latex_thesis_pdf/images_thesis/sketch_cabin_setup.jpg}
+    \caption{Close-up schematic sketch of the recording setup showing the researcher's phone and the laptop used for keypress synchronization by the participant wearing the EEG headband while naturalistic TikTok browsing.}
     \label{fig:laptop_phone}
 \end{figure}
 
@@ -238,11 +236,10 @@ To synchronize the behavioral data (video transitions) with the continuous EEG s
 \label{sec:method_experimental_protocol}
 The experimental sessions were scheduled for 45-minute timeslots, with the actual experimental procedures taking approximately 35 to 40 minutes. Upon arrival, participants were greeted, provided with an information sheet, and asked to sign the ethics consent forms. Afterward, they completed a pre-experiment demographic and basic screening survey, which took approximately five to ten minutes.
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{path_to_protocol_flowchart}
-    [Insert Schematic Flowchart of Experimental Protocol]
-    \caption{Experimental protocol flow: Introduction and consent, EEG setup, 2-minute baseline video, task explanation, and 25-minute TikTok free browsing session.}
+    \includegraphics[width=\textwidth]{/Users/gregorlederer/Documents/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/latex_thesis_pdf/images_thesis/experimental_flow_schematic.png}
+    \caption{Experimental protocol flow: Introduction and consent, EEG setup, 2-minute baseline video, task explanation, and 25-minute TikTok free browsing session, debrief.}
     \label{fig:protocol_flow}
 \end{figure}
 
@@ -254,10 +251,9 @@ The experimenter then returned to explain the second phase: a naturalistic short
 
 Crucially, participants were tasked with pressing the ``A'' button simultaneously with every swipe motion on the phone to accurately synchronize their micro-decisions with the EEG data. For instance, a participant holding the phone in their right hand used their left hand to press the designated key on the adjacent laptop keyboard.
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
-    % \includegraphics[width=0.6\textwidth]{path_to_keypress_schematic}
-    [Insert Schematic of Button Click Synchronization]
+    \includegraphics[width=\textwidth]{/Users/gregorlederer/Documents/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/latex_thesis_pdf/images_thesis/schematic_a_press_swipe_sync.png}
     \caption{Schematic representation of the manual synchronization process: the participant swipes to skip the video and simultaneously presses the `A' button to mark the event in the EEG stream.}
     \label{fig:keypress_sync}
 \end{figure}
@@ -352,15 +348,15 @@ For each parameter configuration, Cohen’s \(d\) was computed between the STAY 
 
 \section{Universal Recording Pipeline}
 \label{sec:method_universal_recording_pipeline}
-To facilitate rigorous and reproducible data collection, a robust Python-based recording architecture (\path{scripts/recording_script_v4.py}) was developed. This script orchestrates the simultaneous capture of raw EEG telemetry from the Muse S headband and has the capability of recording synchronized behavioral video from a webcam which was not used in this experiment, yet may be of value to future investigations. Its autonomous capabilities ensure that the experimental protocol can be executed reliably without extensive technical oversight.
+To facilitate rigorous and reproducible data collection, a robust Python-based recording architecture (\url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_collection/recording_script.py}) was developed. This script orchestrates the simultaneous capture of raw EEG telemetry from the Muse S headband and has the capability of recording synchronized behavioral video from a webcam which was not used in this experiment, yet may be of value to future investigations. Its autonomous capabilities ensure that the experimental protocol can be executed reliably without extensive technical oversight.
 
-For this study's recordings the command \path{python recording_script_v4.py --nocamera --duration 1800} was used to call the script. The two flags simply mean (i) bypassing camera recording, as it is not in the scope of this study yet kept for future investigations and (ii) the recording duration is 1800s = 30 minutes.
+For this study's recordings the command \verb|python recording_script_v4.py --nocamera --duration 1800| was used to call the script. The two flags simply mean (i) bypassing camera recording, as it is not in the scope of this study yet kept for future investigations and (ii) the recording duration is 1800s = 30 minutes.
 The pipeline's core features include:
 \begin{itemize}
     \item \textbf{Automated Hardware Discovery:} Upon launch, the script automatically scans the local Bluetooth environment for active Muse devices and enumerates all connected camera peripherals, allowing the researcher to select the optimal hardware interactively without requiring hardcoded MAC addresses or device indices.
     \item \textbf{Precision Synchronization and Event Logging:} A dedicated, threaded keypress listener (\texttt{pynput}) monitors the \texttt{A} and \texttt{B} keys used by participants to mark swipe events and baseline respectively. Crucially, the script computes a dynamic time offset between the system clock and the LSL stream clock. Keypresses are retroactively aligned to this LSL timeline within a defined tolerance window and embedded directly into the EEG data rows as binary flags, ensuring absolute temporal synchrony between cognitive events and physical interactions.
     \item \textbf{Simultaneous Multimodal Capture:} The script utilizes the \texttt{pylsl} library to interface with the Lab Streaming Layer (LSL), pulling raw EEG data from the Muse headband at 256 Hz. Unless deactivated with the flag, it concurrently employs OpenCV to capture and encode synchronized webcam video using the H.264 (avc1) codec, providing visual ground truth of participant behavior.
-    \item \textbf{Resilient Auto-Reconnection:} To combat the inherently unstable nature of Bluetooth Low Energy (BLE) connections, the script features an active connection-loss detection loop. If the LSL stream halts (no samples received within a timeout period), the script automatically terminates the hanging subprocess, rescans the Bluetooth environment, restarts the stream, and initiates a sequential data fragment (e.g., \path{_2.csv}, \path{_3.csv}). This guarantees that transient connection drops do not corrupt the entire recording session.
+    \item \textbf{Resilient Auto-Reconnection:} To combat the inherently unstable nature of Bluetooth Low Energy (BLE) connections, the script features an active connection-loss detection loop. If the LSL stream halts (no samples received within a timeout period), the script automatically terminates the hanging subprocess, rescans the Bluetooth environment, restarts the stream, and initiates a sequential data fragment (e.g., \verb|_2.csv|, \verb|_3.csv|). This guarantees that transient connection drops do not corrupt the entire recording session.
     \item \textbf{Concurrent Multi-Threading:} To ensure that blocking operations (such as writing high-resolution video frames to disk) do not disrupt the high-frequency polling required for EEG telemetry, the script isolates the LSL pulling loop, the OpenCV capture loop, and the keypress listener into independent Python daemon threads.
 \end{itemize}
 
@@ -369,10 +365,10 @@ This open-source compatible architecture ensures that any independent researcher
 \section{Universal Pre-Processing Pipeline}
 \label{sec:method_universal_preprocessing_pipeline}
 
-The following subsections describe step-by-step exactly what the Python code in the \path{05-12_data_analysis_and_results/scripts} directory executes to process the raw EEG signals into a uniform shape suitable for analysis.
+The following subsections describe step-by-step exactly what the Python code in the \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline} directory executes to process the raw EEG signals into a uniform shape suitable for analysis.
 
 \subsection{Data Synchronization and Interpolation}
-The preprocessing pipeline began with the chronological alignment and concatenation of all recorded CSV files for each participant, ensuring a continuous temporal sequence (executed via \path{05-12_data_analysis_and_results/scripts/step01_preprocess.py}). The raw data streams collected from the LSL (Lab Streaming Layer) exhibited slight variations in intrinsic sampling rates. To establish a uniform temporal grid suitable for across-session and across-participant analysis, the true sampling rate was derived by calculating the median time difference (\(\Delta t\)) between consecutive timestamps. Subsequently, a linear interpolation algorithm was applied to upsample and regularize the data to a constant sampling frequency of exactly \(f_s = 256\) Hz. This process guarantees that any subsequent spectral analysis relies on a strictly uniform time axis, avoiding mathematical artifacts stemming from temporal jitter.
+The preprocessing pipeline began with the chronological alignment and concatenation of all recorded CSV files for each participant, ensuring a continuous temporal sequence (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step01_preprocess.py}). The raw data streams collected from the LSL (Lab Streaming Layer) exhibited slight variations in intrinsic sampling rates. To establish a uniform temporal grid suitable for across-session and across-participant analysis, the true sampling rate was derived by calculating the median time difference (\(\Delta t\)) between consecutive timestamps. Subsequently, a linear interpolation algorithm was applied to upsample and regularize the data to a constant sampling frequency of exactly \(f_s = 256\) Hz. This process guarantees that any subsequent spectral analysis relies on a strictly uniform time axis, avoiding mathematical artifacts stemming from temporal jitter.
 
 % this is just to demonstrate that after interpolation all are 256Hz exactly, which is nessecary for the data to be used properly for processing and analysis
 \begin{figure}[H]
@@ -391,7 +387,7 @@ During this temporal alignment process, Bluetooth transmission dropouts were ide
 \end{figure}
 
 \subsection{Baseline Extraction and Normalization}
-Following temporal synchronization, a baseline resting state was extracted for each participant to account for individual physiological differences, such as varying skull thickness or inherent resting cortical activity. The baseline period was rigidly defined as a 90-second continuous window commencing 10 seconds after the participant's initial \texttt{B} keypress (executed via \path{05-12_data_analysis_and_results/scripts/step01_preprocess.py}). 
+Following temporal synchronization, a baseline resting state was extracted for each participant to account for individual physiological differences, such as varying skull thickness or inherent resting cortical activity. The baseline period was rigidly defined as a 90-second continuous window commencing 10 seconds after the participant's initial \texttt{B} keypress (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step01_preprocess.py}). 
 
 The interpolated signal was then separated into seven standard EEG frequency bands (Delta, Theta, Alpha, Beta, Low Gamma, High Gamma, and Very High Gamma) utilizing a 4th-order Butterworth bandpass filter. The instantaneous amplitude envelope for each band was extracted and squared to compute the instantaneous spectral power \(P\). 
 
@@ -404,12 +400,12 @@ where \(\mu_{base}\) and \(\sigma_{base}\) denote the mean and standard deviatio
 \subsection{Windowing and Class Labeling}
 Following normalization, the continuous data streams were segmented and labeled into discrete \texttt{STAY} and \texttt{SKIP} classes based on the participant's interaction events (\texttt{A} keypresses) as previously established in Sections~\ref{sec:op_labeling_params} and \ref{sec:op_stay_skip}. To strictly prevent motor artifact contamination arising from the physical swipe action, a \textbf{2.0-second gap} was enforced immediately preceding the \texttt{A} keypress, and a \textbf{0.5-second gap} was enforced immediately following it. No data was extracted from these gap periods.
 
-The \texttt{SKIP} class was rigorously defined as the \textbf{3.0-second window} immediately preceding the aforementioned 2.0-second pre-swipe gap (executed via \path{05-12_data_analysis_and_results/scripts/step03_label_windows.py}). This temporal framing specifically isolates the critical cognitive decision-making phase leading up to the swipe, entirely uncontaminated by the physical execution of the swipe itself. The \texttt{STAY} class was defined as all remaining valid temporal periods outside of the \texttt{SKIP} windows and safety gaps.
+The \texttt{SKIP} class was rigorously defined as the \textbf{3.0-second window} immediately preceding the aforementioned 2.0-second pre-swipe gap (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step03_label_windows.py}). This temporal framing specifically isolates the critical cognitive decision-making phase leading up to the swipe, entirely uncontaminated by the physical execution of the swipe itself. The \texttt{STAY} class was defined as all remaining valid temporal periods outside of the \texttt{SKIP} windows and safety gaps.
 
 Finally, discrete 1.0-second analysis windows were extracted using a sliding window with no overlap (stride = window length). This ensures that windows do not cross class boundaries, enter safety gaps, or overlap with adjacent samples, thereby preventing data leakage and artificially inflated model performance.
 
 \subsection{Artifact Analysis}
-To ensure the integrity of the analyzed EEG signals, an automated outlier detection approach was implemented to flag potential artifacts (executed via \path{05-12_data_analysis_and_results/scripts/step02_artifact_flag.py}). Specifically, the 95th percentile of the peak-to-peak amplitude computed on the notch-filtered signal was utilized as a dynamic, participant-specific threshold. Frontal channels (AF7, AF8) were evaluated for ocular artifacts (e.g., blinks), while temporal channels (TP9, TP10) were evaluated for electromyogenic (EMG) artifacts. Absolute voltage thresholds (e.g., \(150\mu V\)) were initially investigated but were ultimately discarded as they did not yield generalizable or useful results across the dataset.
+To ensure the integrity of the analyzed EEG signals, an automated outlier detection approach was implemented to flag potential artifacts (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step02_artifact_flag.py}). Specifically, the 95th percentile of the peak-to-peak amplitude computed on the notch-filtered signal was utilized as a dynamic, participant-specific threshold. Frontal channels (AF7, AF8) were evaluated for ocular artifacts (e.g., blinks), while temporal channels (TP9, TP10) were evaluated for electromyogenic (EMG) artifacts. Absolute voltage thresholds (e.g., \(150\mu V\)) were initially investigated but were ultimately discarded as they did not yield generalizable or useful results across the dataset.
 
 No data points were excluded from the final machine learning pipeline based on these artifact flags. Incorporating such filtering would introduce additional experimental conditions and substantially expand the analysis beyond the scope of this proof-of-concept study. Instead, the approach is documented to highlight awareness of artifact-related confounds and to provide a foundation for more advanced rejection strategies in future work.
 
@@ -441,7 +437,7 @@ It is important to note that the \texttt{SKIP} window size is defined independen
 \label{sec:method_feature_engineering}
 
 \subsection{Band Power and Statistical Moments}
-Following window extraction, a comprehensive feature set was computed for each valid temporal window (executed via \path{05-12_data_analysis_and_results/scripts/step05_feature_engineering.py}). For each of the 4 electrodes across the 7 previously defined frequency bands, four primary statistical moments were extracted: Mean, Standard Deviation, Minimum, and Maximum. An example of these extracted statistical moments belonging to one temporal 1-second window of one frequency band (alpha) of one electrode of one participant, is depicted in Figure~\ref{fig:stat_moments}.
+Following window extraction, a comprehensive feature set was computed for each valid temporal window (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step05_feature_engineering.py}). For each of the 4 electrodes across the 7 previously defined frequency bands, four primary statistical moments were extracted: Mean, Standard Deviation, Minimum, and Maximum. An example of these extracted statistical moments belonging to one temporal 1-second window of one frequency band (alpha) of one electrode of one participant, is depicted in Figure~\ref{fig:stat_moments}.
 
 % for explanation of each statistical moment definition and exact calculation, and dimension, and how it differs from EI
 \begin{figure}[H]
@@ -527,7 +523,7 @@ The output is a stabilized, macroscopic frequency in Hertz (Hz) that robustly ca
 \label{sec:method_result_synthesis_pipeline}
 
 \subsection{Temporal Cross-Validation and Data Balancing}
-Before proceeding to statistical evaluation and modeling, the inherent class imbalance depicted in Figure~\ref{fig:classes_imbalanced}, where the \texttt{STAY} class (blue) heavily dominates the \texttt{SKIP} class (red), had to be addressed (executed via \path{05-12_data_analysis_and_results/scripts/step04_balance_split.py}). To prevent the models from trivially predicting the majority class, the \texttt{STAY} class was randomly undersampled for each participant to achieve a strict 50/50 balance, per participant, as depicted in Figure~\ref{fig:classes_balanced}.
+Before proceeding to statistical evaluation and modeling, the inherent class imbalance depicted in Figure~\ref{fig:classes_imbalanced}, where the \texttt{STAY} class (blue) heavily dominates the \texttt{SKIP} class (red), had to be addressed (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step04_balance_split.py}). To prevent the models from trivially predicting the majority class, the \texttt{STAY} class was randomly undersampled for each participant to achieve a strict 50/50 balance, per participant, as depicted in Figure~\ref{fig:classes_balanced}.
 
 % this simply shows that the dominant class is STAY and for every participant different, and brings with it the demand for per participant balancing of the classes.
 \begin{figure}[H]
@@ -578,7 +574,7 @@ To rigorously prevent temporal leakage, a minimum separation of 3 seconds betwee
 
 \subsection{Feature Separation Analysis}
 \label{sec:method_feature_separation_cohen_d}
-To mathematically evaluate the discriminative power of individual features prior to modeling, Cohen’s \(d\) was computed to measure the standardized effect size between the \texttt{STAY} and \texttt{SKIP} distributions for each engineered feature (executed via \path{05-12_data_analysis_and_results/scripts/viz17_feature_ranking.py}). Cohen’s \(d\) is defined as
+To mathematically evaluate the discriminative power of individual features prior to modeling, Cohen’s \(d\) was computed to measure the standardized effect size between the \texttt{STAY} and \texttt{SKIP} distributions for each engineered feature (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/viz17_feature_ranking.py}). Cohen’s \(d\) is defined as
 \[
 d = \frac{\mu_{\text{STAY}} - \mu_{\text{SKIP}}}{s_{\text{pooled}}}
 \]
@@ -588,13 +584,13 @@ By calculating the absolute effect size \(|d|\), the pipeline systematically ran
 
 \subsection{Logistic Regression Modeling and Baselines}
 \label{sec:method_baselines_and_logistic_regression}
-To benchmark the true predictive capability of the engineered EEG features against chance and clinical baselines, three distinct modeling approaches were evaluated on the temporally isolated test sets (executed via \path{05-12_data_analysis_and_results/scripts/step07_train_intra.py} and synthesized in \path{step16_parallel_universes.py}).
+To benchmark the true predictive capability of the engineered EEG features against chance and clinical baselines, three distinct modeling approaches were evaluated on the temporally isolated test sets (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step07_train_intra.py} and synthesized in \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step16_parallel_universes.py}).
 
 \vspace{1em}
 \noindent\textbf{1. Coinflip Baseline:} A uniform dummy classifier (\texttt{DummyClassifier (strategy='uniform')}) was utilized to establish an empirical chance baseline. Given the rigorous 50/50 balancing of the datasets, this approach reliably generated predictions hovering around the 50\% chance level, verifying that no underlying structural bias existed within the cross-validation folds.
 
 \vspace{1em}
-\noindent\textbf{2. Engagement Index (EI) Baseline:} The pre-calculated EI scalar (derived from \(\beta/(\alpha+\theta)\)) was scaled utilizing a standard scaler (subtracting the mean and scaling to unit variance) and fed as a singular feature into a Logistic Regression model (\path{LogisticRegression(class_weight='balanced')}). This established a clinical baseline, indicating how well classical engagement theory alone could predict the behavioral swipe decision in this specific short-form video context.
+\noindent\textbf{2. Engagement Index (EI) Baseline:} The pre-calculated EI scalar (derived from \(\beta/(\alpha+\theta)\)) was scaled utilizing a standard scaler (subtracting the mean and scaling to unit variance) and fed as a singular feature into a Logistic Regression model (\verb|LogisticRegression(class_weight='balanced')|). This established a clinical baseline, indicating how well classical engagement theory alone could predict the behavioral swipe decision in this specific short-form video context.
 
 \vspace{1em}
 \noindent\textbf{3. Top Feature Logistic Regression:} To test the predictive power of individual statistical features independently, the features ranked highest via Cohen's \(d\) (e.g., specific band powers or statistical moments) were similarly scaled and evaluated using isolated Logistic Regression models. This isolated approach allows for direct comparison of individual feature efficacy without the confounding complexities of high-dimensional multivariate models.
@@ -742,15 +738,23 @@ The results (Section~\ref{sec:results_feature_importance}) offer insights into t
 
 % ----- SECTIONS RESULTS -----
 
-\section{Key Findings from the Experimental Paradigm} \label{sec:results_exp_learnings}
+\section{Key Findings from the Experimental Paradigm}
+\label{sec:results_exp_learnings}
 
-Email outreach, email lsits of students work well with incentive, many said it sounds fun, none had an issue with signing agreement, as most were academics themselves they were interested in the study results, Guided access feature is perfect for this as it also memorizes the duration per app - perfect for our 2min baseline and 25min scroll.
-Challenges were staying strict with what to say to them, how to brief what to do when stops, and when what.
+The experimental paradigm proved feasible in a semi-controlled but still naturalistic setting, and several practical lessons emerged from its execution. Recruitment via email outreach and student mailing lists worked well, especially when paired with a clear and modest incentive. Participants were generally receptive to the study, and most were academically oriented, which appeared to increase interest in the research question and reduce concerns about signing the consent and data-protection forms.
 
-\section{The Reusable Methodological Pipeline} \label{sec:results_pipeline}
+A particularly useful element was the use of iOS Guided Access during both the baseline and TikTok phases. It provided a simple way to constrain the task environment, prevent app switching, and automatically track the duration spent in each app, which matched the temporal structure of the design well. This was especially helpful for the 2-minute baseline and the 25-minute scrolling phase, where reliable timing was essential.
 
-Can be accessed on github, and was observed to run mostly smoothly with some bluetooth dropouts, still unstructured, can be more structured.
-The development process caused us to have roughly 80 percent dead wight scripts that were only temporary or superseeded by a newer script - a simple cleaning algorith shall be implemented next time.
+At the same time, the study also highlighted several practical challenges. One recurring difficulty was maintaining a strict and consistent script during participant instruction, especially when explaining what participants should do when the task started, paused, or ended. Another challenge was ensuring that the instructions around synchronization, keypress behavior, and task boundaries were communicated clearly and uniformly across sessions. These issues did not invalidate the experiment, but they do suggest that the protocol would benefit from a more standardized briefing script and a more formalized session flow in future replications.
+
+\section{The Reusable Methodological Pipeline}
+\label{sec:results_pipeline}
+
+A major practical contribution of this thesis is the reusable analysis and recording pipeline, which can be accessed through the associated GitHub repository, first mentioned in \ref{sec:method_data_acquisition} and further described in Section \ref{sec:method_universal_recording_pipeline}. In the present study, the pipeline ran mostly smoothly after multiple months of optimization, and finally enabled the full workflow from recording to preprocessing, feature extraction, and analysis. The main technical interruptions were occasional Bluetooth dropouts, which were handled by the recording architecture without causing major session failures, but which still underline the need for continued robustness improvements.
+
+The development process also revealed an important software-engineering lesson: a substantial portion of the code base became obsolete during the iterative refinement across multiple months. Precisely 69.6\% (representing a reduction from 37,189 to 11,311 total lines of code) of the scripts were temporary, diagnostic, or superseded by improved versions during development. While this is normal in an exploratory research pipeline, it also shows that the project would benefit from a more systematic cleanup strategy in future iterations. A lightweight script-archiving or pruning mechanism should therefore be introduced next time to preserve clarity, reduce maintenance burden, and make the final codebase easier to reuse and extend.
+
+More broadly, the pipeline demonstrates that a relatively compact and open methodological framework can support consumer-grade EEG recording, synchronized behavioral logging, preprocessing, and downstream feature analysis in a reproducible way. That makes it not only useful for this thesis, but also transferable to other studies with similar naturalistic EEG and behavior-synchronization requirements.
 
 \section{Behavioral Swipe-Burst Phenomenon} \label{sec:results_burst_analysis}
 
@@ -787,9 +791,10 @@ Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chose
 \section{The Engagement Index's Swipe-Prediction Performance}
 \label{sec:results_engagement_index}
 
-\subsection{Feature Importance and Neurophysiological Correlates} \label{sec:results_feature_importance}
+\subsection{Feature Importance and Neurophysiological Correlates}
+\label{sec:results_feature_importance}
 
-In Figure~\ref{fig:cohend_by_freq_band}, we observe that class separation, quantified via Cohen’s \(d\) as described in Section~\ref{sec:method_feature_separation_cohen_d}, is consistently stronger for several individual frequency bands (blue boxes) than for the conventional Engagement Index (red dotted line). In particular, the \(\alpha\)-band (8–13 Hz) achieves an effect size approximately 0.005 standard deviations higher than the Engagement Index, and the high-\(\gamma\) band (40–60 Hz), as the strongest candidate, exceeds it by more than 0.03 standard deviations. The Engagement Index — which combines three bands into a single scalar — itself reaches just above 0.02 and is therefore weaker in class separability than any of the individual broadband bands and the raw signal. This suggests that aggregating multiple bands into a single composite metric may dilute discriminative information that is more clearly expressed within specific, well-chosen frequency ranges.
+In Figure~\ref{fig:cohend_by_freq_band}, we observe that class separation, quantified via Cohen’s \(d\) as described in Section~\ref{sec:method_feature_separation_cohen_d}, is consistently stronger for several individual frequency bands (blue boxes) than for the conventional Engagement Index (red dotted line). In particular, the \(\alpha\)-band (8–13 Hz) achieves an effect size approximately 0.005 standard deviations higher than the Engagement Index, and the high-\(\gamma\) band (40–60 Hz), as the strongest candidate, exceeds it by more than 0.03 standard deviations. The Engagement Index — which combines three bands into a single scalar — itself reaches just above 0.02 and is therefore weaker in class separability than any of the individual frequency bands and the raw signal. This suggests that aggregating multiple bands into a single composite metric may dilute discriminative information that is more clearly expressed within specific, well-chosen frequency ranges.
 
 Moreover, class separation reaches values above 0.04 only for a small subset of bands: the raw, broadband signal (without frequency decomposition), the \(\delta\) band (1–4 Hz), the low-\(\gamma\) band (30–40 Hz), and the high-\(\gamma\) band (40–60 Hz). These results indicate that both very low-frequency activity and specific \(\gamma\)-range oscillations carry comparatively strong discriminative structure for the SKIP versus STAY decision.
 
@@ -816,15 +821,6 @@ Potential systematic differences related to the recording electrodes cannot be e
     \label{fig:cohend_by_electrode}
 \end{figure}
 
-Observation X, see Figure~\ref{fig:cohend_interactions}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.4_cohend_interactions.png}
-    \caption{Cohen's d effect size interactions.}
-    \label{fig:cohend_interactions}
-\end{figure}
-
 Figure~\ref{fig:cohend_by_stat_moment} shows that, among the statistical moments and related features considered, only a small subset exceeds the conventional Engagement Index by at least 0.01 standard deviations in terms of Cohen’s \(d\) class separation. These features are Hjorth activity, Hjorth mobility, the mean, the standard deviation, Hjorth complexity, and peak frequency. Taken together, this suggests that simple time-domain descriptors and Hjorth-derived measures retain meaningful discriminative information, but only for a limited number of feature types.
 
 Furthermore, only two features - Hjorth complexity and peak frequency - outperform the raw-data class separation ability. This indicates that, while the unprocessed signal already contains substantial discriminative structure, certain higher-order descriptors can still extract additional information beyond the broadband signal alone.
@@ -848,7 +844,22 @@ This shows that class separability is not only determined by broad feature famil
 % cohend_top_features
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_3_cohend_top_features.tex}
 
-Observation X, see Figure~\ref{fig:cohend_top_features_2}
+For all features, Figure~\ref{fig:cohend_interactions} shows Cohen’s \(d\) values sorted jointly by frequency band and electrode. For the raw, broadband signal (no frequency filtering), the top feature “TP10 raw std” clearly appears as the global peak in the visualization. Overall, similar trends to the previous figures can be observed, but the combined view makes electrode–band interactions more apparent. In particular, there is a pronounced spike in class-separation performance for the broadband signal at TP10 and AF7.
+
+Moreover, the AF7 electrode stands out by exhibiting a clear upward trend in Cohen’s \(d\) from the \(\alpha\) band (8–13 Hz) through \(\beta\) (13–30 Hz) to low \(\gamma\) (30–40 Hz), followed by a plateau across the broader \(\gamma\) range (30–100 Hz; low, high, and very high \(\gamma\)) with a slight decline toward the highest frequencies. The peak for AF7 lies in the low-\(\gamma\) band (30–40 Hz), where its class-separation ability is highest. This enhanced separability for the SKIP-versus-STAY distinction at AF7 (left anterior frontal), particularly in the \(\gamma\) and high-\(\gamma\) range (30–100 Hz), may suggest that left anterior frontal oscillatory activity in this frequency range is especially sensitive to the neural processes that differentiate sustained engagement from disengagement decisions in this task. These interpretations should, however, be viewed as preliminary and require replication in independent datasets.
+
+Furthermore, the superior class-separation ability of the TP10 broadband signal, relative to TP10’s performance within individual frequency bands, suggests that discriminative information may extend beyond the conventional 1–100 Hz decomposition. This could indicate that additional signal components, including potential artifacts such as electromyographic activity from jaw movements, contribute to the SKIP-versus-STAY separation alongside, or in some cases instead of, purely neural activity. These possibilities highlight the need for careful artifact characterization and control in future work.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.4_cohend_interactions.png}
+    \caption{Cohen's d effect size interactions.}
+    \label{fig:cohend_interactions}
+\end{figure}
+
+As shown in Figure~\ref{fig:cohend_top_features_2} the top features were selected for each category: i) overall top feature \#1, ii) overall top feature \#2, iii) top \#1 feature of top band, iv) top \#1 feature of top electrode, v) top \#1 feature of top statistic/metric.
+
+The feature "TP10 raw std" (|d| = 0.20) is placed for i) feature \#1, whereas "AF7 high gamma mean" (|d| = 0.17) simultaneously represents all 3 categories ii), iii) and iv). "AF8 delta peakfreq" (|d| = 0.14) feature takes the place of category v), which is the \#1 feature amongst the top statistics, namely the Peak-frequency.
 
 \begin{figure}[H]
     \centering
@@ -857,70 +868,99 @@ Observation X, see Figure~\ref{fig:cohend_top_features_2}
     \label{fig:cohend_top_features_2}
 \end{figure}
 
-\begin{verbatim}
-{
-    "AF7_high_gamma_mean": {
-        "d": 0.16824331879615784,
-        "labels": ["Top Band (high_gamma)", "Top Electrode (AF7)", "Overall Top Feature #2"]
-    },
-    "AF8_delta_peakfreq": {
-        "d": 0.13990937173366547,
-        "labels": ["Top Statistic (peakfreq)"]
-    },
-    "TP10_raw_std": {
-        "d": 0.1959162801504135,
-        "labels": ["Overall Top Feature #1"]
-    }
-}
-\end{verbatim}
+\subsection{Engagement Index Model Performance and Benchmark Comparison}
+\label{sec:results_model_performance}
 
-\subsection{Model Performance and Benchmark Comparison} \label{sec:results_model_performance}
+The modeling framework described in Section~\ref{sec:method_baselines_and_logistic_regression} was used to evaluate whether the engineered EEG features could predict \texttt{SKIP} versus \texttt{STAY} behavior beyond chance and beyond the conventional Engagement Index. First, a coin-flip baseline established the empirical chance level. Second, the Engagement Index was evaluated as a one-dimensional logistic regression baseline. Third, the strongest features identified in Section~\ref{sec:results_feature_importance} were tested in isolated logistic regression models to assess whether they could improve predictive performance beyond the baseline models.
 
+To evaluate predictive performance, standard classification metrics were computed as described in Section~\ref{sec:method_metrics_and_significance}. In particular, Accuracy, Precision, Recall, and the F\(_1\)-score were calculated for each cross-validation fold, separately for both classes via one-vs-rest evaluation. The F\(_1\)-score served as the primary metric because it balances Precision and Recall and is therefore more informative than Accuracy under the present class structure.
+
+Statistical significance was assessed using the Wilcoxon signed-rank test, as outlined in Section~\ref{sec:method_metrics_and_significance}. The coin-flip baseline serves as the reference for chance-level performance, whereas the Engagement Index is used as the clinical baseline for subsequent comparisons. Performance is reported both for the intra-subject evaluation setting, in which models were trained and tested within the same participant, and for the inter-subject evaluation setting, in which models were generalized across participants. The corresponding results are shown in Table~\ref{tab:metrics_1_intra} and Table~\ref{tab:metrics_1_inter}, respectively. In these tables, green values indicate metrics that are not only significantly different from the baseline, but also significantly higher than the baseline, thus reflecting genuine performance gains rather than mere statistical deviation.
+
+At the inter-subject level shown in Table~\ref{tab:metrics_1_inter}, the Engagement Index logistic regression yields a statistically significant improvement over the coin-flip baseline only for \texttt{STAY} as the positive class. The most prominent effect is Recall, which rises to 89.2\% compared with 51.7\% for the coin-flip baseline. This indicates that the model is highly sensitive to \texttt{STAY} windows and rarely misses them, but it does not necessarily imply balanced or reliable class discrimination on its own. In fact, high Recall in combination with only moderate F\(_1\)-scores suggests a strong tendency to capture the majority of \texttt{STAY} instances while still leaving room for false positives, meaning that the model may be better at recognizing sustained engagement than at sharply distinguishing it from disengagement.
+
+The corresponding F\(_1\)-scores provide a more nuanced interpretation. At 62.0\% for training and 62.5\% for testing, the model performs above chance and remains relatively stable across folds, which argues against severe overfitting in the inter-subject setting. However, the gain over the coin-flip baseline is modest in absolute terms, especially when viewed alongside the comparatively large improvement in Recall. This combination suggests that the Engagement Index carries some predictive structure, but that this structure is unevenly distributed across metrics: it may identify \texttt{STAY} behavior reasonably well, yet it does not provide a uniformly strong decision boundary between the two classes.
+
+Importantly, these results also clarify what the Engagement Index can and cannot do in this dataset. It appears capable of capturing a limited but real signal related to sustained engagement, particularly for \texttt{STAY}, but it is not sufficient as a standalone descriptor of the full SKIP-versus-STAY decision. The fact that the model improves clearly in Recall while remaining only moderately strong in F\(_1\)-score raises a central interpretive question: does the Engagement Index reflect a broad engagement-related tendency, or is it primarily sensitive to a subset of windows that are easier to classify as \texttt{STAY}? This ambiguity motivates the next analytical step in Section \ref{sec:results_alternative_index}, namely to examine which specific features, electrodes, and frequency ranges contribute more directly to class separability and whether they offer a more interpretable explanation as an 'Alternative Index' over the aggregate Engagement Index. In that sense, the present numbers do not merely indicate performance; they identify the precise limitation of the baseline and justify moving toward feature-level interpretation and model comparison.
+
+% CF vs EI - intra - per participant
+% metrics_1_intra
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.tex}
+
+% CF vs EI - inter - cross participant
 % metrics_1_inter
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_inter.tex}
 
-% 
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_1_intra.tex}
+When assessing the individual participants' performance in the cross-participant model setting, as shown in Figure~\ref{fig:ei_vs_cf_inter_significance_heatmap}, the pattern further supports the interpretation that \texttt{STAY} events are systematically and significantly easier for the Engagement Index to recognize than \texttt{SKIP} events are to detect reliably. This asymmetry suggests that the model captures a broad tendency toward sustained engagement, but lacks equally strong sensitivity to the more transient disengagement-related decision signal.
 
-% 
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance_thesis_paragraph.tex}
+% \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance_thesis_paragraph.tex}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance.png}
-    \caption{Inter-subject significance analysis.}
+    \caption{Inter-subject significance heatmap comparing F\(_1\)-test performance of the Engagement Index and the coin-flip baseline for \texttt{SKIP} and \texttt{STAY} as positive classes.}
+    \label{fig:ei_vs_cf_inter_significance_heatmap}
 \end{figure}
 
 \iffalse
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_intra_significance_thesis_paragraph.tex}
 \fi
 
+\iffalse
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_intra_significance.png}
     \caption{Intra-subject significance analysis.}
+    \label{fig:ei_vs_cf_intra_significance_heatmap}
 \end{figure}
+\fi
 
-\subsection{Alternative Index Exploration} \label{sec:results_alternative_index}
+\subsection{Alternative Index Exploration}
+\label{sec:results_alternative_index}
 
-% 
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat1.tex}
+Alternative Index Exploration entails the evaluation of individual features, informed by the 3 identified best-at-separating classes via Cohen's d top-features in Section \ref{sec:results_feature_importance}, namely "TP10 raw std", "AF7 high gamma mean" and "AF8 delta peakfreq", which are fed into a Logarithmic Regression model, and compared directly to the Engagement Index Logarithmic Regression Model performance from the previous step in Section \ref{sec:results_model_performance}.
 
-% 
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat2.tex}
+\subsubsection{Intra-Subject (Per-Participant Level)}
 
-% 
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat3.tex}
+The performance of TP10 raw standard deviation relative to the Engagement Index is shown in Table~\ref{tab:metrics_5_intra_3}. At the intra-subject level, the only significant improvement is observed for F\(_1\)-train with \texttt{SKIP} as the positive class, where TP10 raw standard deviation reaches 53.6\% compared with 49.6\% for the Engagement Index. Because this advantage does not carry over to the test set, it should be interpreted cautiously and is more consistent with participant-specific overfitting than with robust predictive structure. Nevertheless, the result is still informative: it suggests that raw signal variability at TP10 may contain class-related information that the Engagement Index does not capture, even if that information is not stable enough to generalize within participants.
 
-% 
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat1.tex}
-
-% 
-\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat2.tex}
-
-% 
+% \ref{tab:metrics_5_intra_3}
+% TP10 raw std
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat3.tex}
 
+The performance of AF7 high-\(\gamma\) mean relative to the Engagement Index is shown in Table~\ref{tab:metrics_5_intra_1}. Here, several small but significant improvements emerge: Precision for \texttt{STAY} rises to 49.9\% from 49.1\%, F\(_1\)-train for \texttt{SKIP} increases to 52.9\% from 49.6\%, and Precision for \texttt{SKIP} reaches 49.8\% compared with 48.9\% for the Engagement Index. Although these gains are modest in absolute terms, their consistency across both classes suggests that AF7 high-\(\gamma\) activity may carry slightly more class-specific structure than the Engagement Index. In other words, this feature does not dramatically outperform the baseline, but it does appear to encode a more balanced and slightly more sensitive representation of the \texttt{SKIP}/\texttt{STAY} distinction.
+
+% \ref{tab:metrics_5_intra_1}
+% AF7 high gamma mean
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat1.tex}
+
+The performance of AF8 delta peak frequency relative to the Engagement Index is shown in Table~\ref{tab:metrics_5_intra_2}. In this case, both F\(_1\)-train scores are significantly higher, reaching 83.0\% and 83.1\% for \texttt{SKIP} and \texttt{STAY} as the positive class, respectively. However, the corresponding test performance drops sharply toward chance level, which strongly suggests overfitting. Interestingly, F\(_1\)-test, Precision, and Recall for the \texttt{SKIP} class are still slightly and significantly better than the Engagement Index, indicating that some task-relevant structure is present, even though it is not stable enough to generalize cleanly within participants. This pattern is important because it shows that a feature may carry real discriminative information while still being too context-specific to function as a dependable standalone predictor.
+
+% \ref{tab:metrics_5_intra_2}
+% AF8 delta peakfreq
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_intra_feat2.tex}
+
+\subsubsection{Inter-Subject (Cross-Participant Level)}
+
+The performance of TP10 raw standard deviation relative to the Engagement Index is shown in Table~\ref{tab:metrics_5_inter_3}. For \texttt{SKIP} as the positive class, all performance metrics improve significantly over the Engagement Index. F\(_1\)-train rises from 20.6\% to 52.4\%, F\(_1\)-test increases from 10.7\% to 44.3\%, Precision improves from 23.5\% to 43.0\%, and Recall rises from 9.6\% to 50.8\%. Although these values remain near the 50\% region and therefore do not yet indicate a strongly decisive predictive model, the pattern is nevertheless meaningful: unlike the Engagement Index, TP10 raw standard deviation appears substantially more sensitive to the transient \texttt{SKIP} state. This suggests that raw signal variability at TP10 may preserve information that is more directly aligned with disengagement-related decision processes than the aggregate engagement score does.
+
+% \ref{tab:metrics_5_inter_3}
+% TP10 raw std
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat3.tex}
+
+The performance of AF7 high-\(\gamma\) mean relative to the Engagement Index is shown in Table~\ref{tab:metrics_5_inter_1}. Again, the \texttt{SKIP} class is predicted more effectively than by the Engagement Index. F\(_1\)-train increases from 20.6\% to 45.5\%, F\(_1\)-test from 10.7\% to 35.5\%, Precision from 23.5\% to 52.4\%, and Recall from 9.6\% to 42.7\%. While this does not yet establish a fully reliable cross-participant classifier, it does show that AF7 high-\(\gamma\) activity captures a more informative decision-related pattern than the Engagement Index baseline. The improvement in Precision is particularly notable, as it suggests that when the model predicts \texttt{SKIP}, it does so with substantially greater confidence and reduced false-alarm behavior than the Engagement Index.
+
+% \ref{tab:metrics_5_inter_1}
+% AF7 high gamma mean
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat1.tex}
+
+The performance of AF8 delta peak frequency relative to the Engagement Index is shown in Table~\ref{tab:metrics_5_inter_2}. Here, too, the \texttt{SKIP} class is predicted more effectively than by the Engagement Index. Precision for \texttt{STAY} increases from 49.4\% to 52.8\%, while for \texttt{SKIP}, F\(_1\)-train rises from 20.6\% to 54.1\%, F\(_1\)-test from 10.7\% to 45.5\%, Precision from 23.5\% to 53.1\%, and Recall from 9.6\% to 48.7\%. Among the three candidate features examined here, AF8 delta peak frequency therefore provides one of the clearest improvements over the Engagement Index in the cross-participant setting. This is particularly important because it suggests that a feature derived from low-frequency timing structure may be more informative for \texttt{SKIP} detection than the conventional engagement metric, even if the absolute performance remains moderate. Taken together, these results support the idea that the Engagement Index can capture a limited engagement-related tendency, but that it is not sufficient as a full account of the \texttt{SKIP}/\texttt{STAY} distinction. More specifically, it appears to be relatively better at reflecting sustained \texttt{STAY}-like behavior than at identifying the more transient and behaviorally decisive \texttt{SKIP} state. This creates a clear next question for Section~\ref{sec:results_interpretation}: what neurophysiological or behavioral mechanism is actually being captured by the Engagement Index, and which of the more specific features are better aligned with the underlying decision process?
+
+% \ref{tab:metrics_5_inter_2}
+% AF8 delta peakfreq
+\input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_5_inter_feat2.tex}
+
+\iffalse
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_inter_final.png}
@@ -932,21 +972,85 @@ Observation X, see Figure~\ref{fig:cohend_top_features_2}
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_intra_final.png}
     \caption{Final intra-subject performance summary.}
 \end{figure}
+\fi
 
-\section{Neuroscientific and Psychological Interpretation}
+\section{Discussion}
 \label{sec:results_interpretation}
 
+The results above do not yet justify strong causal claims about underlying brain mechanisms, but they do point to several robust interpretive directions. Most importantly, the analyses suggest that the conventional Engagement Index is not wrong in a trivial sense; rather, it appears to capture a limited and asymmetrical subset of the behaviorally relevant signal. In particular, it seems more aligned with sustained \texttt{STAY}-like states than with the more transient, decision-like \texttt{SKIP} events. This asymmetry is crucial, because it implies that the Engagement Index may reflect a broad state of ongoing engagement, but not the full cognitive transition that leads to disengagement. From a scientific perspective, this is a more useful and humble conclusion than simply saying that the index "works" or "does not work": it works partly, in a constrained way, and its failure modes are themselves informative.
+
+A second important point is that the strongest features are not distributed uniformly across the EEG. Instead, they cluster in specific electrodes, frequency bands, and feature types, with raw broadband variability at TP10, high-\(\gamma\) activity at AF7, and delta peak frequency at AF8 repeatedly emerging as informative. This pattern suggests that the relevant signal may not be a single abstract "engagement" quantity, but rather a combination of lateralized, frequency-specific, and task-sensitive components. The fact that raw broadband signal sometimes outperforms band-limited features also raises the possibility that the discriminative information is not fully captured by conventional band definitions alone. At the same time, this may also indicate sensitivity to non-neural factors, including motion-related or muscle-related artifacts, which must be treated cautiously rather than ignored.
+
 \subsection{Neuroscience}
-a
+
+From a neuroscientific perspective, the most consistent result is that separability increases when the signal is described more specifically, especially in the raw broadband TP10 feature and in AF7 high-\(\gamma\) activity. This may indicate that the decision to continue scrolling versus disengage is associated with a distributed and frequency-sensitive pattern rather than with a single canonical engagement rhythm. The repeated prominence of high-\(\gamma\) and delta-derived features is notable because these ranges are often linked to sharply different physiological processes; however, the present data do not allow a definitive mapping from feature to neural mechanism. What can be said more cautiously is that the observed pattern is compatible with the idea that the task engages both rapid sensorimotor dynamics and higher-order control or monitoring processes, with anterior frontal and temporal sites contributing differently to the observed class structure.
+
+At the same time, the broadband superiority of TP10 and the strong performance of AF7 in high-frequency ranges create an important interpretive friction point. If the signal were purely reflecting a clean cortical engagement index, one might expect a more stable advantage for the conventional composite metric. Instead, the data imply that narrower and more local signal components contain more class-relevant information. This opens at least two competing hypotheses: either the task truly recruits region-specific neurophysiological signatures that the Engagement Index averages away, or the apparent gain is partly driven by peripheral contamination, such as facial muscle activity, motion, or device-dependent noise.  
+% INSERT: Broadband vs artifact contribution  
+% INSERT: Delta/high-gamma interpretation needs literature
+
+The electrode pattern also raises a lateralization question that cannot yet be answered decisively. AF7 and TP10 appear more informative than AF8 and TP9, which may point to a functional asymmetry in how engagement-related and action-related states are expressed during naturalistic scrolling. However, because the recording setup involved two devices and because broadband effects may partially reflect artifact structure, this should be interpreted as a hypothesis for future work rather than as a confirmed hemispheric specialization. In the next step, a targeted analysis of artifact-sensitive channels, spectral decomposition, and device-specific effects would be needed to determine whether these patterns reflect genuine neurophysiology or measurement confounds.
 
 \subsection{Psychiology}
-b
+
+Psychologically, the results suggest that the act of skipping a TikTok video is not simply the inverse of being engaged. The Engagement Index performs better for \texttt{STAY} than for \texttt{SKIP}, which implies that sustained attention or passive continuation may be easier to detect than the brief decision point at which a participant chooses to move on. This distinction matters because it suggests that \texttt{SKIP} is not merely a low-engagement state, but may represent a qualitatively different behavioral event: an active choice, a threshold crossing, or a moment of disengagement that is preceded by a narrower and more transient signal profile. The stronger performance of features such as AF8 delta peak frequency and TP10 raw standard deviation supports the idea that the decisive moment may be better captured by fine-grained temporal structure than by a broad engagement aggregate.
+
+The burst analysis adds an additional psychological layer. Some participants behave as "fast scrollers" with repeated burst blocks, whereas others show mostly isolated swipes. This heterogeneity implies that the psychological process underlying scrolling is not uniform across participants. Some users may evaluate content quickly and repeatedly, while others may linger, reflect, or maintain a more stable engagement rhythm. That individual variability likely explains why per-participant and cross-participant performance differ so strongly, and why the same feature may appear informative in one setting but unstable in another.  
+% INSERT: Individual differences in scrolling style  
+% INSERT: Need literature on action thresholds and disengagement
+
+The modest but consistent success of individual features over the Engagement Index also suggests that a psychologically meaningful model of scrolling may need to distinguish between sustained engagement, momentary decision pressure, and motor execution. The present results are compatible with such a layered interpretation, but they do not yet prove it. What they do show is that an aggregate engagement score is too coarse to explain the full behavioral variance, especially when the behavior is embedded in a rapid, naturalistic, and self-paced interaction environment.
 
 \subsection{Behaviour}
-c
+
+From a behavioral standpoint, the strongest conclusion is that the \texttt{SKIP}/\texttt{STAY} decision is heterogeneous and temporally structured. The burst analysis shows that many swipes occur in clusters rather than as isolated events, which means that the observed behavior is not simply a sequence of independent binary decisions. Instead, it appears to reflect a mixture of cautious sampling, rapid dismissal, and occasional repeated disengagement. This helps explain why feature-level models can outperform the Engagement Index in some cases: the neural signal may be tracking not only whether a participant is engaged, but also where they are in a short behavioral sequence leading toward or away from a swipe.
+
+The fact that raw TP10 variability and AF8 delta peak frequency improve \texttt{SKIP} detection suggests that the behavioral decision to move on may leave a measurable trace in the EEG, but only weakly and only under certain feature definitions. The most defensible interpretation is therefore not that the model "predicts choice" in a strong sense, but that it detects behavioral precursors or correlates of the \texttt{SKIP} decision with limited but meaningful sensitivity. That is an important distinction for the thesis: the signal is informative, but it is not deterministic.
+
+The results also show that behavior is strongly shaped by parameter choices, especially in the burst analysis. Changing the window definition changes how events are grouped, and changing the feature definition changes which patterns emerge as separable. This dependency implies that future behavioral analyses should not rely on a single segmentation or metric, but rather test whether the observed structure is stable across multiple reasonable parameterizations.  
+% INSERT: Behavioral thresholds need theory  
+% INSERT: Modeling sequences vs single decisions
 
 \subsection{Application}
-d
+
+In applied terms, these findings are best understood as a proof of concept for more transparent and behaviorally grounded engagement modeling. Rather than demonstrating a ready-to-deploy predictive system, the results show that naturalistic scrolling behavior can be measured with sufficient structure to support interpretable feature-level analysis, and that some EEG-derived features outperform the conventional Engagement Index in ways that are meaningful for both explanation and future application.
+
+The practical relevance of these findings lies less in the idea of a fully deployable EEG-based prediction system and more in the methodological and conceptual direction they provide. The present results show that naturalistic scrolling behavior can be measured, segmented, and partially explained using a compact set of EEG-derived features, and that these features can outperform a conventional aggregate index in ways that are interpretable at the level of signal structure. This matters because it suggests a path toward more transparent models of engagement: rather than relying on a single composite score, future systems may be built from a small number of physiologically meaningful components that are easier to interpret, debug, and adapt.
+
+One immediate application is in the optimization of message delivery in health communication and behavior-change interventions. If certain EEG signatures are more associated with continued attention or imminent disengagement, then intervention content could be structured to better match those moments of attentional stability or vulnerability. In principle, this could help improve the timing, length, or sequencing of health messages, public-health prompts, educational micro-content, or persuasive interventions in digital environments. For example, short-form health information could be adapted to identify when a user is likely to continue engaging versus when they are likely to skip, which could inform both content design and delivery timing.  
+% INSERT: Need literature on EEG-informed message timing  
+% INSERT: Need literature on adaptive health communication
+
+A second application is in the development of explainable and lightweight screening tools for user engagement in naturalistic settings. Because the strongest results here emerged from a small number of features rather than a large black-box model, the present work may support the design of interpretable real-time monitors that are more feasible than complex deep-learning approaches. Such monitors could be useful in user-testing environments, educational research, human-computer interaction, or cognitive ergonomics, where the goal is not necessarily to make a diagnostic prediction but to identify when a stimulus fails to hold attention or when a participant shifts into a disengaged state.
+
+At the same time, the present results also define the limits of immediate application. The predictive performance is not yet strong enough to justify high-stakes individualized deployment, and the possibility of artifact-related contributions means that any translational use would require substantial validation, device standardization, and robustness testing. In particular, the strong effects observed at TP10 and AF7 raise the possibility that some predictive power may arise from non-neural sources such as jaw movement, facial tension, or other task-correlated artifacts. For this reason, the present study is best interpreted as a proof of principle for explainable signal extraction rather than as a finished applied system.  
+% INSERT: Need literature on EEG applications in HCI  
+% INSERT: Need literature on public-health engagement measurement  
+% INSERT: Need literature on artifact-aware real-time EEG
+
+\section{Future Research}
+
+Future research should first focus on validation and replication. The present findings are promising, but they are based on a single dataset with a relatively small sample size and two different recording devices. Replication in an independent sample is therefore essential, ideally with more uniform hardware, tighter artifact control, and a broader participant pool. A key priority should be to test whether the same features -- especially TP10 raw standard deviation, AF7 high-\(\gamma\) mean, and AF8 delta peak frequency -- remain informative under repeated acquisition, different content types, and different user populations.
+
+A second major direction is mechanistic clarification. The present results leave open whether the strongest effects reflect genuinely neural engagement processes, movement-related artifacts, or a mixture of both. Future work should therefore include explicit artifact analyses, such as electromyographic control, motion monitoring, ICA-based comparison, channel-quality assessments, and device-specific sensitivity checks. It would also be valuable to compare broadband features against strictly cleaned, source-reconstructed, or artifact-masked data to determine how much of the predictive signal survives after conservative preprocessing.  
+% INSERT: Need literature on artifact disentanglement in EEG  
+% INSERT: Need literature on broadband vs cleaned signal validity
+
+A third direction concerns theory development. The Engagement Index appears to capture a limited but real component of sustained engagement, yet it may not capture the behavioral threshold that leads to a swipe. Future studies should therefore distinguish more explicitly between sustained attention, momentary decision pressure, action readiness, and actual behavior. This could be pursued by combining EEG with behavioral timing, self-report, eye tracking, or post-hoc content ratings. In particular, event-aligned designs could help determine whether the relevant neural signature precedes disengagement, coincides with motor preparation, or reflects post-decisional processing.  
+% INSERT: Need literature on sustained attention vs action readiness  
+% INSERT: Need literature on event-aligned naturalistic EEG
+
+A fourth opportunity is methodological expansion. The current pipeline is deliberately simple and interpretable, but future work could test whether other transparent models improve both performance and explanatory value, such as regularized generalized linear models, hierarchical models, or hybrid approaches that preserve interpretability while capturing nonlinearity. At the same time, more elaborate feature engineering may be worthwhile if it remains conceptually grounded; examples include temporal derivatives, burst-aware features, cross-frequency interactions, or individualized feature selection. However, this should be pursued carefully, because greater complexity can easily reduce interpretability and increase the risk of overfitting.  
+% INSERT: Need literature on interpretable EEG modeling  
+% INSERT: Need literature on hierarchical or hybrid biosignal models
+
+A fifth and highly relevant direction concerns public health and behavior change. Short-form digital media is increasingly used not only for entertainment but also for public communication, education, and health promotion. If EEG-informed engagement models can eventually be made robust and explainable, they may support the design of interventions that adapt message format, timing, and length to the user's attentional state. This could matter for smoking cessation messages, vaccine communication, mental-health micro-interventions, nutrition prompts, physical-activity nudges, and other digital behavior-change tools. The challenge is not only technical but also ethical: such systems must avoid manipulation, respect autonomy, and be transparent about how engagement is inferred and used.  
+% INSERT: Need literature on digital health intervention timing  
+% INSERT: Need literature on ethics of adaptive persuasion
+
+Finally, future research should examine generalizability across contexts. The present task used naturalistic TikTok browsing, but similar engagement dynamics may appear in other forms of media consumption, educational content, or digital decision tasks. Testing whether the same feature families generalize to different content domains would help determine whether the observed effects are specific to short-form video or whether they reflect a broader principle of human engagement and disengagement. If replicated, this line of work could contribute not only to neuroscience and psychology, but also to media research, user-experience design, and public-health communication.
+
+Overall, the present study opens a broad but carefully bounded research program: one that combines explainable EEG analysis, naturalistic behavior, and applied communication research. Its value lies not in claiming a final solution, but in identifying a credible path toward more interpretable, behaviorally grounded, and potentially useful models of engagement and disengagement in real-world digital environments.
 
 \iffalse
 \subsection{1. The Research Question and Narrative Arc}
@@ -957,7 +1061,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 \subsection{2. Step 1: The Clinical Baseline (Engagement Index)}
 \textbf{Logical Step:} Before building complex models, we must test whether established neuroscience equations can answer our question. The traditional Engagement Index ($EI = \beta / (\alpha + \theta)$) was designed for sustained attention tasks. Since it relies on lower frequency bands ($<30$~Hz), it safely ignores $>50$~Hz noise.
 \begin{itemize}
-    \item \textbf{What the data shows:} Our 5-fold cross-validated Logistic Regression models trained on EI ratios achieved an aggregate mean accuracy of \textbf{52.3\% $\pm$ 6.2\%} and a mean \texttt{STAY} Recall of \textbf{52.8\%} across 25 participants. Only 4 of 25 participants showed a statistically significant difference in EI between STAY and SKIP states ($p<0.05$). [Source: \path{ei_corrected_20260506_161647/ei_aggregate_summary.csv}]
+    \item \textbf{What the data shows:} Our 5-fold cross-validated Logistic Regression models trained on EI ratios achieved an aggregate mean accuracy of \textbf{52.3\% $\pm$ 6.2\%} and a mean \texttt{STAY} Recall of \textbf{52.8\%} across 25 participants. Only 4 of 25 participants showed a statistically significant difference in EI between STAY and SKIP states ($p<0.05$). [Source: \verb|ei_corrected_20260506_161647/ei_aggregate_summary.csv|]
     % NOTE: The original ei_results.json had a bug where all F1 scores were hardcoded to 0.0 (placeholder). Corrected F1 = 0.6646 ± 0.0684.
     % NOTE: The EI evaluation used imbalanced data + 5-fold CV, while the RF used balanced data. This comparison is not strictly apples-to-apples. Consider noting this caveat or re-running EI on balanced data for a fair comparison.
     \item \textbf{Narrative Conclusion:} The standard clinical formula fundamentally fails to reliably discriminate short-form video micro-decisions better than random chance. The neural signature for rapidly maintaining or dropping engagement on TikTok does not map cleanly to simple $\beta / (\alpha + \theta)$ ratios. This is consistent with Apicella et al., who found that EI-based classification in a controlled learning engagement task yielded accuracy performances that were ``not optimal,'' explicitly noting the index is ``mainly used in non-predictive applications'' \cite{apicella_eeg-based_2022}. The replication of this failure in a wholly different paradigm---naturalistic algorithmic browsing versus structured CPT task---strengthens the conclusion that the EI formula is structurally insufficient across engagement detection contexts, not merely for short-form media.
@@ -966,7 +1070,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 \subsection{3. Step 2: Structural Expansion (RF-112 \textit{WITH} Notch Filter)}
 \textbf{Logical Step:} Because the simple 3-band EI ratio failed, we expand the feature space. We capture the geometric variance (mean, std, min, max) of all 7 frequency bands across all 4 electrodes (112 features) and feed it into a Random Forest ensemble. We apply a standard 50~Hz Notch Filter to rigorously clean the data of electrical power-line noise, as is standard practice.
 \begin{itemize}
-    \item \textbf{What the data shows (CORRECTED --- leakage-free evaluation):} Using blocked temporal 5-fold CV with 3-second gaps between blocks (train: 80\% overlap, test: 0\% overlap), the RF-112 models achieved a mean intra-subject accuracy of \textbf{53.8\% $\pm$ 7.2\%} with 20 of 25 participants above the 50\% chance baseline (Wilcoxon $p=0.0015$ vs.\ chance). [Source: \path{rf_run_temporal_nonotch_20260506_172326/rf_summary.json}]
+    \item \textbf{What the data shows (CORRECTED --- leakage-free evaluation):} Using blocked temporal 5-fold CV with 3-second gaps between blocks (train: 80\% overlap, test: 0\% overlap), the RF-112 models achieved a mean intra-subject accuracy of \textbf{53.8\% $\pm$ 7.2\%} with 20 of 25 participants above the 50\% chance baseline (Wilcoxon $p=0.0015$ vs.\ chance). [Source: \verb|rf_run_temporal_nonotch_20260506_172326/rf_summary.json|]
     % NOTE: The original random-split evaluation (61.4%) was inflated by ~8pp due to temporal data leakage from 80% overlapping STAY windows landing in both train and test sets. The blocked temporal CV eliminates this leakage.
     % NOTE: Three participants showed strong individual performance: P12 (81.2%), P7 (67.3%), P22 (62.9%).
     \item \textbf{Narrative Conclusion:} Expanding the dimensionality successfully extracts a statistically significant predictive neurological signature, though the effect is small ($\sim$3.8pp above chance). The model can detect sustained cognitive engagement significantly better than chance ($p=0.0015$), establishing that the structural variance of the EEG signal holds predictive value for micro-decisions within a proof-of-concept scope. Individual variation is large, with some participants showing strong classification (P12: 81.2\%) while others remain at chance level.
@@ -975,7 +1079,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 \subsection{4. Step 3: The High-Frequency Hypothesis (RF-112 \textit{WITHOUT} Notch Filter)}
 \textbf{Logical Step:} While 61.4\% is a successful proof of concept, cognitive neuroscience literature suggests that active decision-making and cognitive binding operate in the High Gamma bands (40--60~Hz). Our Notch filter from Step 2 potentially obliterated this vital neural data by aggressively cutting at 50~Hz. We must prove whether removing the filter actually preserves or improves the model's ability to diagnose the \texttt{STAY} state. If the 50~Hz signal was purely power line noise, removing the filter would cause the model's accuracy to collapse.
 \begin{itemize}
-    \item \textbf{What the data shows:} The notch vs.\ no-notch comparison (using the original random-split evaluation) showed accuracy of 61.4\% vs.\ 61.6\% (+0.17pp) and recall of 61.4\% vs.\ 61.9\% (+0.47pp). A paired Wilcoxon signed-rank test across 25 participants confirmed this difference is \textbf{not statistically significant} (accuracy: $p=0.76$; recall: $p=0.55$). 12 participants improved, 11 worsened, 2 tied. Effect sizes were negligible ($r=0.06$, $r=0.12$). [Source: \path{ablation_comparison_20260506_161437/ablation_statistical_test.txt}]
+    \item \textbf{What the data shows:} The notch vs.\ no-notch comparison (using the original random-split evaluation) showed accuracy of 61.4\% vs.\ 61.6\% (+0.17pp) and recall of 61.4\% vs.\ 61.9\% (+0.47pp). A paired Wilcoxon signed-rank test across 25 participants confirmed this difference is \textbf{not statistically significant} (accuracy: $p=0.76$; recall: $p=0.55$). 12 participants improved, 11 worsened, 2 tied. Effect sizes were negligible ($r=0.06$, $r=0.12$). [Source: \verb|ablation_comparison_20260506_161437/ablation_statistical_test.txt|]
     \item \textbf{Narrative Conclusion:} Removing the 50~Hz notch filter did not significantly alter classification performance, which is \textit{consistent with} the interpretation that the 40--60~Hz range contains recoverable cognitive variance rather than solely power-line contamination. However, this null result does not constitute affirmative proof of high-gamma signal validity. The finding is consistent with Pattisapu and Ray's observation that low-cost EEG amplifiers can detect stimulus-induced gamma oscillations \cite{pattisapu_stimulus-induced_2021}.
     % NOTE: The original claim that this "empirically proves" high-gamma is genuine was an overclaim. The correct framing is "consistent with" the hypothesis, not "proof."
 \end{itemize}
@@ -998,7 +1102,7 @@ To answer this honestly and logically, the academic story arc must flow step-by-
 \subsection{7. Step 6: Universal SFEI Extraction and Battle-Test (The Final Constraint)}
 \textbf{Logical Step:} While the 112-feature Random Forest model works, it is a complex "black box". The holy grail of BCI research is a simple, universal mathematical equation (like the traditional EI: $\beta / (\alpha + \theta)$). To attempt this, we trained surrogate decision trees across all 25 participants to find the "Universal Root Dimensions" driving the predictions. We found that frontal High Gamma ($\text{AF8\_high\_gamma\_mean}$) and frontal Delta ($\text{AF7\_delta\_min}$) were the most common primary splitting features. Based on this, we proposed a Short-Form Engagement Index (SFEI): $SFEI = \text{AF8\_high\_gamma\_mean} / \text{AF7\_delta\_min}$. 
 \begin{itemize}
-    \item \textbf{What the data shows:} We battle-tested this new $SFEI$ formula against the traditional $EI$ using identical 5-fold cross-validation. The $SFEI$ achieved a mean accuracy of \textbf{51.6\%} and a recall of \textbf{52.2\%}. Both the traditional $EI$ (52.3\%) and the proposed $SFEI$ (51.6\%) failed to reliably beat random chance across the population. [Source: \path{sfei_battletest_20260424_230531/sfei_metrics.json}]
+    \item \textbf{What the data shows:} We battle-tested this new $SFEI$ formula against the traditional $EI$ using identical 5-fold cross-validation. The $SFEI$ achieved a mean accuracy of \textbf{51.6\%} and a recall of \textbf{52.2\%}. Both the traditional $EI$ (52.3\%) and the proposed $SFEI$ (51.6\%) failed to reliably beat random chance across the population. [Source: \verb|sfei_battletest_20260424_230531/sfei_metrics.json|]
     \item \textbf{Narrative Conclusion:} This confirms the constraint of consumer BCI in dynamic environments. Reducing algorithmic media engagement to a static, universal equation is insufficient. The cognitive state is too complex and idiosyncratic. High-dimensional, individualized machine learning approaches (like the RF-112 model achieving 53.8\% via blocked temporal CV, $p=0.0015$) are required. The failure of the universal SFEI is consistent with the LOGO-CV collapse: the engagement signature is fundamentally individualized.
 \end{itemize}
 \fi
@@ -1021,6 +1125,8 @@ To rigorously determine whether a predictive model meaningfully outperforms a ra
 \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_4_description.tex}
 \fi
 
+
+\iffalse
 \section{Summary of Results}
 
 \textbf{Does it answer the research question?} Yes, with appropriate calibration. Within this sample, consumer-grade EEG can predict sustained engagement significantly better than random chance at the intra-subject level (53.8\%, $p=0.0015$ via blocked temporal 5-fold CV), but the effect is small ($\sim$3.8pp above chance) and individually variable. Cross-subject generalization fails completely (LOGO-CV: 49.2\%). Simple clinical formulas (EI: 52.3\%) are insufficient. Feature importance is broadly distributed across all frequency bands, with the model exploiting the full spectral structure rather than any single dominant band. The top individual predictors are high-gamma peak values at frontal sites, but no band achieves statistically significant dominance at the aggregate level.
@@ -1041,6 +1147,7 @@ A critical implication of this thesis is the rejection of the ``Universal BCI Eq
 - continuum between first fold of session to last fold of session what changes and shifts?
 - what does burst preference correlate with?
 - what does increased usage correlate with? (source: survey)
+\fi
 
 \bibliographystyle{unsrt}
 \bibliography{library}
