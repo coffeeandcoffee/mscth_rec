@@ -3,79 +3,114 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesis.aux
 The style file: unsrt.bst
 Database file #1: library.bib
-Warning--entry type for "pope_biocybernetic_1995" isn't style-file defined
---line 1689 of file library.bib
+Warning--entry type for "xu_neural_2024" isn't style-file defined
+--line 1150 of file library.bib
 Warning--entry type for "gstaticcom_muse_2026" isn't style-file defined
---line 2950 of file library.bib
-Warning--empty journal in mccashin_using_2023
-Warning--empty year in mccashin_using_2023
-Warning--empty year in baughan_i_2022
-Warning--empty year in knierim_flow_2026
+--line 2951 of file library.bib
+Warning--entry type for "jdpigeon_muselsl_2026" isn't style-file defined
+--line 2968 of file library.bib
+Warning--entry type for "saltelli_global_2008" isn't style-file defined
+--line 2992 of file library.bib
+Warning--I didn't find a database entry for "li_electromyogram_2021"
 Warning--empty journal in debettencourt_sustained_2021
 Warning--empty year in debettencourt_sustained_2021
-Warning--empty journal in pfurtscheller_event-related_1996
-Warning--empty year in pfurtscheller_event-related_1996
-Warning--empty journal in miller_integrative_2001
-Warning--empty year in miller_integrative_2001
-Warning--empty journal in libet_time_1983
-Warning--empty year in libet_time_1983
+Warning--empty year in knierim_flow_2026
+Warning--empty year in baughan_i_2022
+Warning--empty journal in rahman_detection_2025
+Warning--empty year in rahman_detection_2025
+Warning--empty journal in de_carvalho_selection_2026
+Warning--empty year in de_carvalho_selection_2026
+Warning--empty journal in mccartney_optimal_2026
+Warning--empty year in mccartney_optimal_2026
+Warning--empty journal in saltelli_how_2010
+Warning--empty year in saltelli_how_2010
+Warning--empty journal in tzimourta_eeg_2019
+Warning--empty year in tzimourta_eeg_2019
+Warning--empty year in rimbert_impact_2023
+Warning--empty journal in mi_exploring_2026
+Warning--empty year in mi_exploring_2026
+Warning--empty journal in frenay_classification_2014
+Warning--empty year in frenay_classification_2014
+Warning--empty journal in lew_detection_2012
+Warning--empty year in lew_detection_2012
 Warning--empty journal in shakeel_review_2015
 Warning--empty year in shakeel_review_2015
-Warning--empty journal in tong_brain_2020
-Warning--empty year in tong_brain_2020
-Warning--empty journal in krigolson_choosing_2017
-Warning--empty year in krigolson_choosing_2017
-Warning--empty journal in bellos_methods_2025
-Warning--empty year in bellos_methods_2025
-Warning--empty journal in apicella_eeg-based_2022
-Warning--empty year in apicella_eeg-based_2022
-Warning--empty journal in hasson_intersubject_2004
-Warning--empty year in hasson_intersubject_2004
-Warning--empty journal in fries_rhythms_2015
-Warning--empty year in fries_rhythms_2015
+Warning--empty year in cohen_statistical_1988
+Warning--empty journal in henao_isaza_comprehensive_2026
+Warning--empty year in henao_isaza_comprehensive_2026
+Warning--empty journal in kiarashi_sleep-derived_2025
+Warning--empty year in kiarashi_sleep-derived_2025
+Warning--empty journal in hjorth_contributions_1970
+Warning--empty year in hjorth_contributions_1970
+Warning--empty booktitle in khambampati_frequency_2023
+Warning--empty year in khambampati_frequency_2023
+Warning--empty journal in niknazar_new_2018
+Warning--empty year in niknazar_new_2018
+Warning--empty journal in goncharova_emg_2003
+Warning--empty year in goncharova_emg_2003
+Warning--empty journal in whitham_scalp_2007
+Warning--empty year in whitham_scalp_2007
+Warning--empty journal in yilmaz_facial_2019
+Warning--empty year in yilmaz_facial_2019
+Warning--empty journal in guntekin_review_2016
+Warning--empty year in guntekin_review_2016
+Warning--empty journal in knyazev_eeg_2012
+Warning--empty year in knyazev_eeg_2012
 Warning--empty journal in pattisapu_stimulus-induced_2021
 Warning--empty year in pattisapu_stimulus-induced_2021
-Warning--empty journal in anderson_social_2023
-Warning--empty year in anderson_social_2023
-You've used 19 entries,
+Warning--empty journal in krigolson_choosing_2017
+Warning--empty year in krigolson_choosing_2017
+Warning--empty journal in apicella_eeg-based_2022
+Warning--empty year in apicella_eeg-based_2022
+Warning--empty journal in ovi_frequency_2026
+Warning--empty year in ovi_frequency_2026
+Warning--empty journal in donoghue_electrophysiological_2020
+Warning--empty year in donoghue_electrophysiological_2020
+Warning--empty journal in plucinska_impact_2022
+Warning--empty year in plucinska_impact_2022
+Warning--empty journal in mcmenamin_electromyogenic_2011
+Warning--empty year in mcmenamin_electromyogenic_2011
+Warning--empty journal in mccashin_using_2023
+Warning--empty year in mccashin_using_2023
+You've used 37 entries,
             1791 wiz_defined-function locations,
-            533 strings with 7336 characters,
-and the built_in function-call counts, 4377 in all, are:
-= -- 336
-> -- 252
-< -- 2
-+ -- 91
-- -- 72
-* -- 353
-:= -- 694
-add.period$ -- 55
-call.type$ -- 19
-change.case$ -- 19
+            613 strings with 11108 characters,
+and the built_in function-call counts, 8466 in all, are:
+= -- 618
+> -- 511
+< -- 4
++ -- 185
+- -- 148
+* -- 685
+:= -- 1338
+add.period$ -- 101
+call.type$ -- 37
+change.case$ -- 37
 chr.to.int$ -- 0
-cite$ -- 49
-duplicate$ -- 170
-empty$ -- 408
-format.name$ -- 72
-if$ -- 915
+cite$ -- 97
+duplicate$ -- 344
+empty$ -- 788
+format.name$ -- 148
+if$ -- 1776
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 16
-newline$ -- 94
-num.names$ -- 19
-pop$ -- 90
+int.to.str$ -- 37
+missing$ -- 33
+newline$ -- 175
+num.names$ -- 36
+pop$ -- 183
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 83
+skip$ -- 172
 stack$ -- 0
-substring$ -- 266
-swap$ -- 17
-text.length$ -- 2
+substring$ -- 477
+swap$ -- 41
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 30
-while$ -- 43
-width$ -- 21
-write$ -- 169
-(There were 32 warnings)
+warning$ -- 60
+while$ -- 75
+width$ -- 39
+write$ -- 316
+(There were 65 warnings)

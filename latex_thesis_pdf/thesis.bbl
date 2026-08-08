@@ -1,10 +1,18 @@
 \begin{thebibliography}{10}
 
-\bibitem{mccashin_using_2023}
-Darragh {McCashin} and Colette~M. Murphy.
-\newblock Using {TikTok} for public and youth mental health – a systematic
-  review and content analysis.
-\newblock 28(1):279--306.
+\bibitem{debettencourt_sustained_2021}
+Megan~T. {deBettencourt}, Stephanie~D. Williams, Edward~K. Vogel, and Edward
+  Awh.
+\newblock Sustained attention and spatial attention distinctly influence
+  long-term memory encoding.
+\newblock 33(10):2132--2148.
+
+\bibitem{knierim_flow_2026}
+Michael~T. Knierim, Thimo Schulz, Moritz Schiller, Jwan Shaban, Mario Nadj,
+  Max~L. Wilson, and Alexander Maedche.
+\newblock Flow on social media? rarer than you'd think.
+\newblock In {\em Proceedings of the 2026 {CHI} Conference on Human Factors in
+  Computing Systems}, pages 1--14. {ACM}.
 
 \bibitem{baughan_i_2022}
 Amanda Baughan, Mingrui~Ray Zhang, Raveena Rao, Kai Lukoff, Anastasia
@@ -14,42 +22,70 @@ Amanda Baughan, Mingrui~Ray Zhang, Raveena Rao, Kai Lukoff, Anastasia
 \newblock In {\em {CHI} Conference on Human Factors in Computing Systems},
   pages 1--13. {ACM}.
 
-\bibitem{knierim_flow_2026}
-Michael~T. Knierim, Thimo Schulz, Moritz Schiller, Jwan Shaban, Mario Nadj,
-  Max~L. Wilson, and Alexander Maedche.
-\newblock Flow on social media? rarer than you'd think.
-\newblock In {\em Proceedings of the 2026 {CHI} Conference on Human Factors in
-  Computing Systems}, pages 1--14. {ACM}.
+\bibitem{rahman_detection_2025}
+Mahmudur Rahman, Atqiya~Munawara Mahi, Sharmin Sultana, Matthew~M Churpek, and
+  Mohammad Arif~Ul Alam.
+\newblock Detection of short-form video addiction with wearable sensors via
+  temporally-coherent domain adaptation.
 
-\bibitem{debettencourt_sustained_2021}
-Megan~T. {deBettencourt}, Stephanie~D. Williams, Edward~K. Vogel, and Edward
-  Awh.
-\newblock Sustained attention and spatial attention distinctly influence
-  long-term memory encoding.
-\newblock 33(10):2132--2148.
+\bibitem{jdpigeon_muselsl_2026}
+jdpigeon.
+\newblock muselsl 2.5.1.
 
-\bibitem{pope_biocybernetic_1995}
-Alan~T Pope, Edward~H Bogartb, and Debbie~S Bartolomeb.
-\newblock Biocybernetic system evaluates indices of operator engagement in
-  automated task.
-\newblock Publication Title: Biological Psychology Volume: 40.
+\bibitem{de_carvalho_selection_2026}
+Pierre-Baptiste~Mathieu de~Carvalho, Marie-Constance Corsi, and Laurent
+  Bougrain.
+\newblock Selection and validation of spectral {EEG} markers for real-time
+  monitoring of attention and cognitive engagement in learning contexts.
 
-\bibitem{pfurtscheller_event-related_1996}
-G.~Pfurtscheller, A.~Stancák, and Ch. Neuper.
-\newblock Event-related synchronization ({ERS}) in the alpha band — an
-  electrophysiological correlate of cortical idling: A review.
-\newblock 24(1):39--46.
+\bibitem{moontaha_online_2023}
+Sidratul Moontaha, Franziska Elisabeth~Friederike Schumann, and Bert Arnrich.
+\newblock Online learning for wearable {EEG}-based emotion classification.
 
-\bibitem{miller_integrative_2001}
-Earl~K. Miller and Jonathan~D. Cohen.
-\newblock An integrative theory of prefrontal cortex function.
-\newblock 24(1):167--202.
+\bibitem{mccartney_optimal_2026}
+Matthew~A. {McCartney}, Liisa~A. Kivioja, Sonal~S. Baberwal, and Shirley Coyle.
+\newblock Optimal time window and frequency bandwidth parameter combination for
+  subject-specific motor imagery {EEG} classification.
 
-\bibitem{libet_time_1983}
-Benjamin Libet, Curtis~A Gleason, and Elwood~W Wright.
-\newblock {TIME} {OF} {CONSCIOUS} {INTENTION} {TO} {ACT} {IN} {RELATION} {TO}
-  {ONSET} {OF} {CEREBRAL} {ACTIVITY} ({READINESS}-{POTENTIAL}).
-\newblock 106:623--642.
+\bibitem{saltelli_how_2010}
+Andrea Saltelli, Paola Annoni, and Beatrice D’Hombres.
+\newblock How to avoid a perfunctory sensitivity analysis.
+\newblock 2(6):7592--7594.
+
+\bibitem{tzimourta_eeg_2019}
+Katerina~D. Tzimourta, Nikolaos Giannakeas, Alexandros~T. Tzallas, Loukas~G.
+  Astrakas, Theodora Afrantou, Panagiotis Ioannidis, Nikolaos Grigoriadis,
+  Pantelis Angelidis, Dimitrios~G. Tsalikakis, and Markos~G. Tsipouras.
+\newblock {EEG} window length evaluation for the detection of alzheimer’s
+  disease over different brain regions.
+\newblock 9(4):81.
+
+\bibitem{rimbert_impact_2023}
+Sébastien Rimbert, David Trocellier, and Fabien Lotte.
+\newblock Impact of the baseline temporal selection on the {ERD}/{ERS} analysis
+  for motor imagery-based {BCI}.
+\newblock In {\em 2023 45th Annual International Conference of the {IEEE}
+  Engineering in Medicine \& Biology Society ({EMBC})}, pages 1--4. {IEEE}.
+
+\bibitem{mi_exploring_2026}
+Jian-Xun Mi, Rong-Feng Li, Ke~Liu, and Weisheng Li.
+\newblock Exploring multi-scale time group for common spatial pattern feature
+  based motor imagery {EEG} classification.
+\newblock 112:108591.
+
+\bibitem{frenay_classification_2014}
+Benoit Frenay and Michel Verleysen.
+\newblock Classification in the presence of label noise: A survey.
+\newblock 25(5):845--869.
+
+\bibitem{saltelli_global_2008}
+Global sensitivity analysis: the primer.
+
+\bibitem{lew_detection_2012}
+Eileen Lew.
+\newblock Detection of self-paced reaching movement intention from {EEG}
+  signals.
+\newblock 5.
 
 \bibitem{shakeel_review_2015}
 Aqsa Shakeel, Muhammad~Samran Navid, Muhammad~Nabeel Anwar, Suleman Mazhar,
@@ -58,12 +94,83 @@ Aqsa Shakeel, Muhammad~Samran Navid, Muhammad~Nabeel Anwar, Suleman Mazhar,
   movement-related cortical potentials.
 \newblock 2015:1--13.
 
-\bibitem{tong_brain_2020}
-Lester~C. Tong, M.~Yavuz Acikalin, Alexander Genevsky, Baba Shiv, and Brian
-  Knutson.
-\newblock Brain activity forecasts video engagement in an internet attention
-  market.
-\newblock 117(12):6936--6941.
+\bibitem{cohen_statistical_1988}
+Jacob Cohen.
+\newblock {\em Statistical power analysis for the behavioral sciences}.
+\newblock Psychology Press, 2. ed., reprint edition.
+
+\bibitem{henao_isaza_comprehensive_2026}
+Verónica Henao~Isaza, David Aguillon, Carlos~Andrés Tobón-Quintero,
+  Francisco Lopera, and John~Fredy Ochoa-Gómez.
+\newblock Comprehensive methodology for sample enrichment in {EEG} biomarker
+  studies for alzheimer’s risk classification.
+\newblock 21(3):e0343722.
+
+\bibitem{kiarashi_sleep-derived_2025}
+Yashar Kiarashi, Emily~L Giannotto, Mohsen Motie-Shirazi, Amy~D Rodriguez,
+  Allan~I Levey, and Gari~D Clifford.
+\newblock Sleep-derived features from multi-night in-ear {EEG} identify
+  patterns linked to mild cognitive impairment.
+
+\bibitem{hjorth_contributions_1970}
+Bo~Hjorth.
+\newblock {CONTRIBUTIONS} {ON} {TIME} {DOMAIN} {PROPERTIES}.
+
+\bibitem{khambampati_frequency_2023}
+Subhash Khambampati, Sushanth Dondapati, Chaithanya Kalyan~Bhuma, Bharadwaj
+  Madiraju, and Rahul Pathinarupothi.
+\newblock Frequency and time domain {EEG} analysis for prognostication of
+  postanoxic comatose patients.
+
+\bibitem{niknazar_new_2018}
+Hamid Niknazar, Ali Motie~Nasrabadi, and Mohammad~Bagher Shamsollahi.
+\newblock A new similarity index for nonlinear signal analysis based on local
+  extrema patterns.
+\newblock 382(5):288--299.
+
+\bibitem{goncharova_emg_2003}
+I.I Goncharova, D.J {McFarland}, T.M Vaughan, and J.R Wolpaw.
+\newblock {EMG} contamination of {EEG}: spectral and topographical
+  characteristics.
+\newblock 114(9):1580--1593.
+
+\bibitem{whitham_scalp_2007}
+Emma~M. Whitham, Kenneth~J. Pope, Sean~P. Fitzgibbon, Trent Lewis, C.~Richard
+  Clark, Stephen Loveless, Marita Broberg, Angus Wallace, Dylan {DeLosAngeles},
+  Peter Lillie, Andrew Hardy, Rik Fronsko, Alyson Pulbrook, and John~O.
+  Willoughby.
+\newblock Scalp electrical recording during paralysis: Quantitative evidence
+  that {EEG} frequencies above 20 hz are contaminated by {EMG}.
+\newblock 118(8):1877--1888.
+
+\bibitem{yilmaz_facial_2019}
+Gizem Yilmaz, Abdullah~Salih Budan, Pekcan Ungan, Betilay Topkara, and Kemal~S
+  Türker.
+\newblock Facial muscle activity contaminates {EEG} signal at rest: evidence
+  from frontalis and temporalis motor units.
+\newblock 16(6):066029.
+
+\bibitem{guntekin_review_2016}
+Bahar Güntekin and Erol Başar.
+\newblock Review of evoked and event-related delta responses in the human
+  brain.
+\newblock 103:43--52.
+
+\bibitem{knyazev_eeg_2012}
+Gennady~G. Knyazev.
+\newblock {EEG} delta oscillations as a correlate of basic homeostatic and
+  motivational processes.
+\newblock 36(1):677--695.
+
+\bibitem{xu_neural_2024}
+Ziyan Xu, Xiaobo Liu, Jingjing Chen, and Yu~Zhang.
+\newblock Neural correlates of short-video application addiction and
+  adolescents' executive functions.
+
+\bibitem{pattisapu_stimulus-induced_2021}
+Srividya Pattisapu and Supratim Ray.
+\newblock Stimulus-induced narrow-band gamma oscillations in humans can be
+  recorded using open-hardware low-cost {EEG} amplifier.
 
 \bibitem{krigolson_choosing_2017}
 Olave~E. Krigolson, Chad~C. Williams, Angela Norton, Cameron~D. Hassall, and
@@ -72,13 +179,6 @@ Olave~E. Krigolson, Chad~C. Williams, Angela Norton, Cameron~D. Hassall, and
   {ERP} research.
 \newblock 11.
 
-\bibitem{bellos_methods_2025}
-Christos Bellos, Konstantinos Stefanou, Alexandros Tzallas, Georgios Stergios,
-  and Markos Tsipouras.
-\newblock Methods and approaches for user engagement and user experience
-  analysis based on electroencephalography recordings: A systematic review.
-\newblock 14(2).
-
 \bibitem{apicella_eeg-based_2022}
 Andrea Apicella, Pasquale Arpaia, Mirco Frosolone, Giovanni Improta, Nicola
   Moccaldi, and Andrea Pollastro.
@@ -86,33 +186,41 @@ Andrea Apicella, Pasquale Arpaia, Mirco Frosolone, Giovanni Improta, Nicola
   learning 4.0.
 \newblock 12(1).
 
-\bibitem{moontaha_online_2023}
-Sidratul Moontaha, Franziska Elisabeth~Friederike Schumann, and Bert Arnrich.
-\newblock Online learning for wearable {EEG}-based emotion classification.
-
-\bibitem{hasson_intersubject_2004}
-Uri Hasson, Yuval Nir, Ifat Levy, Galit Fuhrmann, and Rafael Malach.
-\newblock Intersubject synchronization of cortical activity during natural
-  vision.
-\newblock 303(5664):1634--1640.
-
-\bibitem{fries_rhythms_2015}
-Pascal Fries.
-\newblock Rhythms for cognition: Communication through coherence.
-\newblock 88(1):220--235.
-
-\bibitem{pattisapu_stimulus-induced_2021}
-Srividya Pattisapu and Supratim Ray.
-\newblock Stimulus-induced narrow-band gamma oscillations in humans can be
-  recorded using open-hardware low-cost {EEG} amplifier.
-
-\bibitem{anderson_social_2023}
-Ian~A Anderson and Wendy Wood.
-\newblock Social motivations’ limited inﬂuence on habitual behavior: Tests
-  from social media engagement.
-
 \bibitem{gstaticcom_muse_2026}
 gstatic.com.
 \newblock Muse headband.
+
+\bibitem{ovi_frequency_2026}
+Tanvir~Hossain Ovi, Md.~Mobashsherul Islam, Md.~Altaf Uddin, Kambiz Ghazinour,
+  A.M.~Mahmud Chowdhury, and Nazmul Siddique.
+\newblock Frequency band dissociation between cognitive state recognition and
+  person identification in {EEG}.
+\newblock page 100901.
+
+\bibitem{donoghue_electrophysiological_2020}
+Thomas Donoghue, Julio Dominguez, and Bradley Voytek.
+\newblock Electrophysiological frequency band ratio measures conflate periodic
+  and aperiodic neural activity.
+\newblock 7(6):ENEURO.0192--20.2020.
+
+\bibitem{plucinska_impact_2022}
+Renata Plucińska, Konrad Jędrzejewski, Marek Waligóra, Urszula Malinowska,
+  and Jacek Rogala.
+\newblock Impact of {EEG} frequency bands and data separation on the
+  performance of person verification employing neural networks.
+\newblock 22(15):5529.
+
+\bibitem{mcmenamin_electromyogenic_2011}
+Brenton~W. {McMenamin}, Alexander~J. Shackman, Lawrence~L. Greischar, and
+  Richard~J. Davidson.
+\newblock Electromyogenic artifacts and electroencephalographic inferences
+  revisited.
+\newblock 54(1):4--9.
+
+\bibitem{mccashin_using_2023}
+Darragh {McCashin} and Colette~M. Murphy.
+\newblock Using {TikTok} for public and youth mental health – a systematic
+  review and content analysis.
+\newblock 28(1):279--306.
 
 \end{thebibliography}
