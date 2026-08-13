@@ -69,9 +69,11 @@
 \contentsline {subsection}{\numberline {4.5.1}Neuroscience}{83}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Psychology}{85}{subsection.4.5.2}%
 \contentsline {subsection}{\numberline {4.5.3}Behaviour}{86}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}Application}{86}{subsection.4.5.4}%
+\contentsline {subsection}{\numberline {4.5.4}Application}{87}{subsection.4.5.4}%
 \contentsline {subsubsection}{Recommendations for Policy Makers}{88}{section*.11}%
 \contentsline {subsubsection}{Recommendations for Digital Global Public Health Research}{89}{section*.12}%
 \contentsline {subsubsection}{Recommendations for Health Message Design}{90}{section*.13}%
 \contentsline {subsubsection}{Societal Scope: An Explicitly Speculative Outlook}{91}{section*.14}%
-\contentsline {section}{\numberline {4.6}Future Research}{91}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Conclusion and Future Research}{93}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusion}{93}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Future Research}{95}{section.5.2}%

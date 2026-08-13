@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{mccashin_using_2023}
+Darragh {McCashin} and Colette~M. Murphy.
+\newblock Using {TikTok} for public and youth mental health – a systematic
+  review and content analysis.
+\newblock 28(1):279--306.
+
 \bibitem{debettencourt_sustained_2021}
 Megan~T. {deBettencourt}, Stephanie~D. Williams, Edward~K. Vogel, and Edward
   Awh.
@@ -21,6 +27,19 @@ Amanda Baughan, Mingrui~Ray Zhang, Raveena Rao, Kai Lukoff, Anastasia
   dissociation on social media.
 \newblock In {\em {CHI} Conference on Human Factors in Computing Systems},
   pages 1--13. {ACM}.
+
+\bibitem{pope_biocybernetic_1995}
+Alan~T Pope, Edward~H Bogartb, and Debbie~S Bartolomeb.
+\newblock Biocybernetic system evaluates indices of operator engagement in
+  automated task.
+\newblock Publication Title: Biological Psychology Volume: 40.
+
+\bibitem{tong_brain_2020}
+Lester~C. Tong, M.~Yavuz Acikalin, Alexander Genevsky, Baba Shiv, and Brian
+  Knutson.
+\newblock Brain activity forecasts video engagement in an internet attention
+  market.
+\newblock 117(12):6936--6941.
 
 \bibitem{rahman_detection_2025}
 Mahmudur Rahman, Atqiya~Munawara Mahi, Sharmin Sultana, Matthew~M Churpek, and
@@ -172,6 +191,12 @@ Srividya Pattisapu and Supratim Ray.
 \newblock Stimulus-induced narrow-band gamma oscillations in humans can be
   recorded using open-hardware low-cost {EEG} amplifier.
 
+\bibitem{libet_time_1983}
+Benjamin Libet, Curtis~A Gleason, and Elwood~W Wright.
+\newblock {TIME} {OF} {CONSCIOUS} {INTENTION} {TO} {ACT} {IN} {RELATION} {TO}
+  {ONSET} {OF} {CEREBRAL} {ACTIVITY} ({READINESS}-{POTENTIAL}).
+\newblock 106:623--642.
+
 \bibitem{krigolson_choosing_2017}
 Olave~E. Krigolson, Chad~C. Williams, Angela Norton, Cameron~D. Hassall, and
   Francisco~L. Colino.
@@ -186,9 +211,22 @@ Andrea Apicella, Pasquale Arpaia, Mirco Frosolone, Giovanni Improta, Nicola
   learning 4.0.
 \newblock 12(1).
 
+\bibitem{bellos_methods_2025}
+Christos Bellos, Konstantinos Stefanou, Alexandros Tzallas, Georgios Stergios,
+  and Markos Tsipouras.
+\newblock Methods and approaches for user engagement and user experience
+  analysis based on electroencephalography recordings: A systematic review.
+\newblock 14(2).
+
 \bibitem{gstaticcom_muse_2026}
 gstatic.com.
 \newblock Muse headband.
+
+\bibitem{hasson_intersubject_2004}
+Uri Hasson, Yuval Nir, Ifat Levy, Galit Fuhrmann, and Rafael Malach.
+\newblock Intersubject synchronization of cortical activity during natural
+  vision.
+\newblock 303(5664):1634--1640.
 
 \bibitem{ovi_frequency_2026}
 Tanvir~Hossain Ovi, Md.~Mobashsherul Islam, Md.~Altaf Uddin, Kambiz Ghazinour,
@@ -210,6 +248,22 @@ Renata Plucińska, Konrad Jędrzejewski, Marek Waligóra, Urszula Malinowska,
   performance of person verification employing neural networks.
 \newblock 22(15):5529.
 
+\bibitem{pfurtscheller_event-related_1996}
+G.~Pfurtscheller, A.~Stancák, and Ch. Neuper.
+\newblock Event-related synchronization ({ERS}) in the alpha band — an
+  electrophysiological correlate of cortical idling: A review.
+\newblock 24(1):39--46.
+
+\bibitem{fries_rhythms_2015}
+Pascal Fries.
+\newblock Rhythms for cognition: Communication through coherence.
+\newblock 88(1):220--235.
+
+\bibitem{miller_integrative_2001}
+Earl~K. Miller and Jonathan~D. Cohen.
+\newblock An integrative theory of prefrontal cortex function.
+\newblock 24(1):167--202.
+
 \bibitem{mcmenamin_electromyogenic_2011}
 Brenton~W. {McMenamin}, Alexander~J. Shackman, Lawrence~L. Greischar, and
   Richard~J. Davidson.
@@ -217,10 +271,9 @@ Brenton~W. {McMenamin}, Alexander~J. Shackman, Lawrence~L. Greischar, and
   revisited.
 \newblock 54(1):4--9.
 
-\bibitem{mccashin_using_2023}
-Darragh {McCashin} and Colette~M. Murphy.
-\newblock Using {TikTok} for public and youth mental health – a systematic
-  review and content analysis.
-\newblock 28(1):279--306.
+\bibitem{anderson_social_2023}
+Ian~A Anderson and Wendy Wood.
+\newblock Social motivations’ limited inﬂuence on habitual behavior: Tests
+  from social media engagement.
 
 \end{thebibliography}

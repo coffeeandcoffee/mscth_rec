@@ -5,6 +5,8 @@ The style file: unsrt.bst
 Database file #1: library.bib
 Warning--entry type for "xu_neural_2024" isn't style-file defined
 --line 1150 of file library.bib
+Warning--entry type for "pope_biocybernetic_1995" isn't style-file defined
+--line 1690 of file library.bib
 Warning--entry type for "gstaticcom_muse_2026" isn't style-file defined
 --line 2951 of file library.bib
 Warning--entry type for "jdpigeon_muselsl_2026" isn't style-file defined
@@ -12,10 +14,14 @@ Warning--entry type for "jdpigeon_muselsl_2026" isn't style-file defined
 Warning--entry type for "saltelli_global_2008" isn't style-file defined
 --line 2992 of file library.bib
 Warning--I didn't find a database entry for "li_electromyogram_2021"
+Warning--empty journal in mccashin_using_2023
+Warning--empty year in mccashin_using_2023
 Warning--empty journal in debettencourt_sustained_2021
 Warning--empty year in debettencourt_sustained_2021
 Warning--empty year in knierim_flow_2026
 Warning--empty year in baughan_i_2022
+Warning--empty journal in tong_brain_2020
+Warning--empty year in tong_brain_2020
 Warning--empty journal in rahman_detection_2025
 Warning--empty year in rahman_detection_2025
 Warning--empty journal in de_carvalho_selection_2026
@@ -58,59 +64,71 @@ Warning--empty journal in knyazev_eeg_2012
 Warning--empty year in knyazev_eeg_2012
 Warning--empty journal in pattisapu_stimulus-induced_2021
 Warning--empty year in pattisapu_stimulus-induced_2021
+Warning--empty journal in libet_time_1983
+Warning--empty year in libet_time_1983
 Warning--empty journal in krigolson_choosing_2017
 Warning--empty year in krigolson_choosing_2017
 Warning--empty journal in apicella_eeg-based_2022
 Warning--empty year in apicella_eeg-based_2022
+Warning--empty journal in bellos_methods_2025
+Warning--empty year in bellos_methods_2025
+Warning--empty journal in hasson_intersubject_2004
+Warning--empty year in hasson_intersubject_2004
 Warning--empty journal in ovi_frequency_2026
 Warning--empty year in ovi_frequency_2026
 Warning--empty journal in donoghue_electrophysiological_2020
 Warning--empty year in donoghue_electrophysiological_2020
 Warning--empty journal in plucinska_impact_2022
 Warning--empty year in plucinska_impact_2022
+Warning--empty journal in pfurtscheller_event-related_1996
+Warning--empty year in pfurtscheller_event-related_1996
+Warning--empty journal in fries_rhythms_2015
+Warning--empty year in fries_rhythms_2015
+Warning--empty journal in miller_integrative_2001
+Warning--empty year in miller_integrative_2001
 Warning--empty journal in mcmenamin_electromyogenic_2011
 Warning--empty year in mcmenamin_electromyogenic_2011
-Warning--empty journal in mccashin_using_2023
-Warning--empty year in mccashin_using_2023
-You've used 37 entries,
+Warning--empty journal in anderson_social_2023
+Warning--empty year in anderson_social_2023
+You've used 46 entries,
             1791 wiz_defined-function locations,
-            613 strings with 11108 characters,
-and the built_in function-call counts, 8466 in all, are:
-= -- 618
-> -- 511
+            656 strings with 12827 characters,
+and the built_in function-call counts, 10496 in all, are:
+= -- 781
+> -- 615
 < -- 4
-+ -- 185
-- -- 148
-* -- 685
-:= -- 1338
-add.period$ -- 101
-call.type$ -- 37
-change.case$ -- 37
++ -- 223
+- -- 177
+* -- 859
+:= -- 1654
+add.period$ -- 127
+call.type$ -- 46
+change.case$ -- 46
 chr.to.int$ -- 0
-cite$ -- 97
-duplicate$ -- 344
-empty$ -- 788
-format.name$ -- 148
-if$ -- 1776
+cite$ -- 122
+duplicate$ -- 419
+empty$ -- 980
+format.name$ -- 177
+if$ -- 2193
 int.to.chr$ -- 0
-int.to.str$ -- 37
-missing$ -- 33
-newline$ -- 175
-num.names$ -- 36
-pop$ -- 183
+int.to.str$ -- 46
+missing$ -- 41
+newline$ -- 219
+num.names$ -- 45
+pop$ -- 225
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 172
+skip$ -- 202
 stack$ -- 0
-substring$ -- 477
-swap$ -- 41
+substring$ -- 633
+swap$ -- 42
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 60
-while$ -- 75
-width$ -- 39
-write$ -- 316
-(There were 65 warnings)
+warning$ -- 76
+while$ -- 96
+width$ -- 48
+write$ -- 395
+(There were 82 warnings)

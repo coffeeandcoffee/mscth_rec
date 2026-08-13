@@ -10,10 +10,36 @@ Falk:
         1. bilder größer, so wie bei artifact reject
         2. engagement index linien statt grüne balken weil man denkt ist intervall
         3. results 4 electrodes not red auf red
+        6. AI angeben genutzt zu haben
+
+    writing - done:
         4. consistency inter intra -subject in bildunterschriften bei alternative index expltration
         5. praktisches leben implications, das passiert, und das kann diese auswirkungen haben (viel gamma aktivität usw , weniger zeit und energie für soziale interaktionen, weniger soziale stabilität, ... + diese allgemeinen sachen können für mehreres genutzt werden)
-        6. AI angeben genutzt zu haben
 
     Defence
         1. anfang sagen was machen will, arbeit dazu gedacht... ging darum methoden zu entwickeln usw.. und im schluss wollten wir aussagen dazu habenund
         2. am schkluss sagen was gemacht hab, und das ist rausgekommen, und bescränkungen, und das ist dafürdass man weiss in welche richtung represäntativ weiterforschebn
+        3. collect arguments
+            - "part of what has been measured may be myogenic rather than cortical"
+
+Albena:
+
+    Writing
+        1. Check ref count normal? -> Florian sold
+        2. Check results+discussion - conclusions+futurework structure -> Florian sold
+        3. graphs need a x and y axis beschriftung
+        4. acjnowledgements
+
+
+--
+
+FINAL TODO:
+
+1. DONE - Min 65 Quellen, SOTA fertig
+2. DONE - Acknowledgements fertig
+3. DONE - Add conclusions at end, explicitly
+4. graphs   
+    a) X and Y for graphs
+    b) Size bigger for graphs
+    c) engagement index linien statt grüne balken weil man denkt ist intervall
+    d) results 4 electrodes not red auf red
