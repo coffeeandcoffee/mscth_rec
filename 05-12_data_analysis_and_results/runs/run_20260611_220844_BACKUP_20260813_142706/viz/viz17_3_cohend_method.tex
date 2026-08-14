@@ -1,0 +1,9 @@
+To quantify the theoretical separability of the extracted features prior to any model training, Cohen's $d$ is utilized. As a standardized effect size, Cohen's $d$ provides a mathematically pure measure of class separation that is invariant to the absolute scale or unit of the feature (e.g., microvolts versus power spectral density). It answers precisely how many standard deviations separate the centers of the two distinct classes.
+
+The calculation operates on the window level, utilizing the entire global pool of validated EEG windows from all participants simultaneously. For any given engineered feature, the arithmetic mean is calculated across all windows labeled as STAY ($\mu_{stay}$) and across all windows labeled as SKIP ($\mu_{skip}$). Next, the variance within the STAY class ($\sigma^2_{stay}$) and the variance within the SKIP class ($\sigma^2_{skip}$) are calculated. These are averaged to compute the pooled variance, whose square root yields the pooled standard deviation ($s_p$), representing the average noise of the feature regardless of its class label:
+\[ s_p = \sqrt{\frac{\sigma^2_{stay} + \sigma^2_{skip}}{2}} \]
+
+Finally, Cohen's $d$ is calculated by taking the absolute difference between the two class means and dividing it by this pooled standard deviation:
+\[ |d| = \frac{|\mu_{stay} - \mu_{skip}|}{s_p} \]
+
+By standardizing the difference in means against the inherent variance of the data, this calculation simultaneously rewards features where the class centers are far apart while heavily penalizing features that exhibit excessive noise or overlap. This allows features of entirely different natures to be ranked on a single, standardized axis of separability.

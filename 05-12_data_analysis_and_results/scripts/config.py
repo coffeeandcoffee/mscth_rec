@@ -38,6 +38,7 @@ N_BANDS = len(FREQUENCY_BANDS)
 N_CHANNELS = len(EEG_CHANNELS)
 ENABLE_EI_STAT_EXCHANGE = True  # Step 16: Evaluates EI where Mean is exchanged with std, min, max, hjorth_mob, hjorth_comp, beta_ratio.
 ENABLE_TOP_FEATURES_EVAL = True # Step 16: Evaluates the true top separating features as standalone models (e.g. TP10_raw_std, AF7_high_gamma_mean).
+ENABLE_WINDOW_EXPLORATION = True # Unlocks the window/gap/skip-area sweep plots from the existing exploration/ data. step00 (which computes that data) is standalone and not part of run.py's STEPS.
 
 N_STATS = 10  # mean, std, min, max, peakfreq, macrofreq, rel_power, act, mob, comp
 N_FEATURES_FULL = N_CHANNELS * N_BANDS * N_STATS       # 280

@@ -1,0 +1,20 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\hline
+Metric & EI LR & \multicolumn{2}{c}{AF8 delta peakfreq} \\\\
+ & Val & Val & Sig \\\\
+\hline
+F1 Train (STAY) & 53.8\% & \textcolor{green}{83.0\%} & TRUE \\\\
+F1 Test (STAY) & 50.9\% & 49.6\% & TRUE \\\\
+Precision (STAY) & 49.1\% & \textcolor{green}{50.3\%} & TRUE \\\\
+Recall (STAY) & 52.9\% & 48.9\% & TRUE \\\\
+F1 Train (SKIP) & 49.6\% & \textcolor{green}{83.1\%} & TRUE \\\\
+F1 Test (SKIP) & 46.9\% & \textcolor{green}{51.0\%} & TRUE \\\\
+Precision (SKIP) & 48.9\% & \textcolor{green}{50.3\%} & TRUE \\\\
+Recall (SKIP) & 45.1\% & \textcolor{green}{51.7\%} & TRUE \\\\
+\hline
+\end{tabular}
+\caption{Step 5 (Intra-Subject): Proposed Feature (AF8 delta peakfreq) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha=0.05$, N=25).}
+\label{tab:metrics_5_intra_2}
+\end{table}

@@ -243,7 +243,7 @@ def run(run_dir, params):
         t_tex_lines.extend([
             "\\hline",
             "\\end{tabular}",
-            f"\\caption{{Step 5 ({scale}): Proposed Feature ({feat_name.replace('_', ' ')}) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\\alpha=0.05$, N=25).}}",
+            f"\\caption{{Step 5 ({scale}-Subject): Proposed Feature ({feat_name.replace('_', ' ')}) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\\alpha=0.05$, N=25).}}",
             "\\label{tab:metrics_5_" + scale.lower() + "_" + str(idx) + "}",
             "\\end{table}"
         ])

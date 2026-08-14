@@ -1,0 +1,20 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccccc}
+\hline
+Metric & Coin Flip & EI LR & \multicolumn{2}{c}{TP10 raw std LR} & \multicolumn{2}{c}{AF7 high gamma mean LR} \\\\
+ & Val & Val & Val & Sig & Val & Sig \\\\
+\hline
+F1 Train (STAY) & 50.3\% & 62.0\% & 49.6\% & TRUE & 54.3\% & TRUE \\\\
+F1 Test (STAY) & 50.8\% & 62.5\% & 46.0\% & TRUE & 45.5\% & TRUE \\\\
+Precision (STAY) & 49.9\% & 49.4\% & 47.5\% & FALSE & 44.3\% & FALSE \\\\
+Recall (STAY) & 51.7\% & 89.2\% & 51.0\% & TRUE & 58.1\% & TRUE \\\\
+F1 Train (SKIP) & 49.6\% & 20.6\% & \textcolor{green}{52.4\%} & TRUE & 45.5\% & TRUE \\\\
+F1 Test (SKIP) & 48.9\% & 10.7\% & 44.3\% & FALSE & 35.5\% & FALSE \\\\
+Precision (SKIP) & 49.9\% & 23.5\% & 43.0\% & FALSE & 52.4\% & FALSE \\\\
+Recall (SKIP) & 48.0\% & 9.6\% & 50.8\% & FALSE & 42.7\% & FALSE \\\\
+\hline
+\end{tabular}
+\caption{Minimal Metrics for Inter Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha=0.05$, N=25).}
+\label{tab:metrics_inter_ablation}
+\end{table}

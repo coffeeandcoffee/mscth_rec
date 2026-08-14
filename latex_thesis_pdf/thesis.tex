@@ -104,7 +104,7 @@ Specifically, this thesis asks: within a controlled proof-of-concept study, can 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-Short-form video platforms such as TikTok structure user attention as a rapid sequence of binary micro-decisions: continue watching, or swipe away. Platform metrics and much of the surrounding public discourse treat continuous, uninterrupted viewing time as a proxy for user engagement, yet recent behavioral evidence suggests that prolonged, uninterrupted scrolling is at least as consistent with passive, dissociative consumption as with effortful, goal-directed attention. This thesis investigates whether electroencephalography (EEG), recorded unobtrusively during naturalistic short-form video browsing, can discriminate the neural state preceding a voluntary skip decision from the neural state during sustained, non-skip viewing, and whether any such discrimination exceeds what is achieved by the conventional Engagement Index ($\beta/(\alpha+\theta)$), a composite band-power ratio drawn from clinical and educational neuroscience.
+Short-form video platforms such as TikTok structure user attention as a rapid sequence of binary micro-decisions: continue watching, or swipe away. Billions of such decisions are made every day, shaping what a population sees, knows, and acts on, though the data behind them rarely leaves the companies that collect it. Platform metrics and much of the surrounding public discourse treat continuous, uninterrupted viewing time as a proxy for user engagement, yet recent behavioral evidence suggests that prolonged, uninterrupted scrolling is at least as consistent with passive, dissociative consumption as with effortful, goal-directed attention. This thesis investigates whether electroencephalography (EEG), recorded unobtrusively during naturalistic short-form video browsing, can discriminate the neural state preceding a voluntary skip decision from the neural state during sustained, non-skip viewing, and whether any such discrimination exceeds what is achieved by the conventional Engagement Index ($\beta/(\alpha+\theta)$), a composite band-power ratio drawn from clinical and educational neuroscience.
 
 Twenty-five participants ($n=25$; 13 female, 12 male; age $M=24.6$, $SD=2.9$) were recorded with a consumer-grade, four-channel Muse S headband (AF7, AF8, TP9, TP10) while freely browsing a personal TikTok ``For You'' feed for 25 minutes in a private, distraction-free setting, following a two-minute resting baseline. Manual swipe events were synchronized to the EEG stream via keypress markers. A literature-motivated labeling scheme operationalized two classes: \texttt{SKIP}, drawn from a 3.0-second imminent-skip period ending 2.0 seconds before each swipe (a gap exceeding both the reported onset of the Bereitschaftspotential and directly measured pre-movement EMG onset in comparable self-paced tasks), and \texttt{STAY}, comprising all remaining continuous, non-boundary viewing. From this labeling, 236 univariate features spanning seven frequency bands, four electrodes, and the raw broadband signal were engineered, including band power statistics, Hjorth parameters, and two novel time-domain frequency descriptors (Peak Frequency, Macro Frequency).
 
@@ -273,14 +273,20 @@ The following sections outline the core theoretical claims, methodologies, and p
 
 
 \section{Adjacent studies}
-\begin{itemize}
-    \item \textbf{"Detection of Short-Form Video Addiction with Wearable Sensors Via Temporally-Coherent Domain Adaptation"} \cite{rahman_detection_2025} - Same with us: Muse S, TikTok, Freq.Band wise performacne, Muse S sampling rate of 256~Hz - Different to us: Addiction (difference to us) instead of engagement, LSTM instead of Cohen d and LogReg
-\end{itemize}
+\label{sec:adjacent_studies}
+The closest published precedent to the present work is Rahman et al.'s study on the detection of Short-form Video Addiction (SVA) from wearable sensors \cite{rahman_detection_2025}. Its adjacency is a matter of instrumentation and setting rather than of research question: the authors record from the same consumer-grade Muse S headband used here, with the same four dry electrodes (TP9, AF7, AF8, TP10) at the same 256~Hz sampling rate, while participants consume short-form video on their own smartphones from their own feeds --- including TikTok --- and remain free to swipe on to the next video whenever the content fails to hold them. Like the present thesis, that study works with a small young-adult convenience sample ($n=10$, ages 20--35), frames the task as binary classification, and reports classification performance resolved by EEG frequency band. It is, to the author's knowledge, the only prior work combining this specific hardware class with naturalistic short-form video consumption, which is why it is treated here as the primary point of comparison.
+
+The two studies nevertheless target different constructs, and this difference propagates through the entire design. Rahman et al. classify a trait-like condition at the level of the activity block: recording sessions of short-form video consumption are labelled as the positive class and interleaved sessions of unrelated, non-smartphone daily activity as the negative class, in a 1:1 ratio. Their discrimination therefore separates \emph{consuming short-form video at all} from \emph{not doing so}. The present thesis instead operates entirely within the feed, separating two states that both occur during uninterrupted browsing --- sustained non-skip viewing (\texttt{STAY}) versus the seconds immediately preceding a voluntary swipe (\texttt{SKIP}) --- and anchors every label to an individual, time-stamped swipe event. Swipes are, in other words, incidental to their protocol but constitutive of the labelling scheme here. This makes the two contrasts unequal in difficulty, and it is the main reason the absolute accuracies reported in the two studies should not be read side by side.
+
+The methodological differences are equally consequential. Rahman et al. are principally a multi-modal domain-adaptation contribution: they pair EEG with electrodermal activity from an Empatica E4 wristband and train LSTM encoders aligned across modalities by a Maximum Mean Discrepancy loss and an InfoNCE contrastive term, with the explicit goal of transferring performance from the headband to the less obtrusive wristband so that the EEG device might eventually be dropped. Their evaluation uses an 80/20 $k$-fold split. The present work is single-modality and deliberately interpretable, ranking univariate features by Cohen's $d$ and benchmarking logistic regression against the conventional Engagement Index, under blocked temporal cross-validation with an enforced separation between training and test windows and, for the cross-participant case, Leave-One-Group-Out validation (Section~\ref{sec:method_result_synthesis_pipeline}). The contrast is between a high-performing black-box model optimized for detection accuracy and a transparent account of \emph{which} signal components carry class information --- a distinction returned to in Chapter~\ref{chap:results}.
+
+One further difference is directly relevant to the frequency-domain findings reported later. Rahman et al. apply a bandstop filter at 50~Hz and its harmonics and decompose the signal into five bands terminating at 44~Hz (Delta 1--4, Theta 4--8, Alpha 7.5--13, Beta 13--30, Gamma 30--44~Hz), reporting Beta and Gamma as their most informative bands at above 80\% accuracy. Their analysis consequently stops immediately below the range in which the present thesis locates several of its strongest features, since the high-gamma (40--60~Hz) and very-high (60--100~Hz) bands used here straddle and exceed the line frequency. That this thesis retains the un-notched signal rather than removing the 50~Hz component --- a decision justified in Section~\ref{sec:method_artifact_analysis} and tested by ablation in Chapter~\ref{chap:results} --- is precisely what makes that range analysable. Their result that discriminative information concentrates toward the upper end of the analysed spectrum is thus convergent with the present findings, while stopping short of the band where those findings peak.
 
 \section{Libraries}
-\begin{itemize}
-    \item the \texttt{muselsl} library \cite{jdpigeon_muselsl_2026}
-\end{itemize}
+\label{sec:libraries}
+Data acquisition in this thesis relies on \texttt{muselsl} \cite{jdpigeon_muselsl_2026}, an open-source Python package --- usable both as a command-line tool and as an importable library --- that streams, visualizes, and records data from InteraXon Muse headsets, including the Muse S used here. Originally authored by Alexandre Barachant and still actively maintained (version 2.5.1, July 2026), it connects the headband's Bluetooth output to the Lab Streaming Layer (LSL), a system for unifying time-series collection that has become a de facto standard in EEG-based brain--computer interface research because it exposes each data source as a separate, network-transparent stream with synchronized timestamps and near-real-time access. Alongside EEG, \texttt{muselsl} can expose the headband's accelerometer, gyroscope, and PPG sensors as independently named streams.
+
+Two properties of this arrangement matter for the present design. First, the LSL timestamps are what allow manual swipe markers, captured as keypresses, to be aligned to the EEG stream on a common clock --- the precondition for a labelling scheme defined relative to individual swipe events (Section~\ref{sec:method_data_acquisition}). Second, because \texttt{muselsl} is a library rather than a closed application, the recording loop could be wrapped in a custom script adding real-time sampling-rate monitoring and automatic reconnection after Bluetooth dropouts, so that transmission gaps are logged rather than silently interpolated. This is a practical divergence from the adjacent work discussed above, which recorded the same headband through the closed-source Mind Monitor application \cite{rahman_detection_2025}; the open pipeline is what permits the dropout accounting reported in Section~\ref{sec:method_universal_preprocessing_pipeline} and the full-resolution, un-notched signal retained for the gamma-range analysis.
 
 \section{Engagement and Attention in short-form video platforms}
 The behavioral status of continuous, uninterrupted viewing on short-form video platforms is contested in the literature. Attention research using cued recall paradigms has shown that sustained attention is a fluctuating internal state — trial-by-trial, moment-to-moment variation in an EEG-decodable prestimulus signal that predicts subsequent encoding — rather than a fixed property that scales with time-on-task \cite{debettencourt_sustained_2021}. This distinction matters because two recent HCI studies suggest that longer, uninterrupted engagement with social media specifically does not track this kind of productive sustained attention, and may in fact index its absence. In a five-day field study pairing app telemetry with unprompted daily reconstructions, Knierim et al. found that participants spontaneously attributed flow experiences to social media in only 2\% of reported instances, and that within-person increases in social media use — particularly passive, feed-based use — predicted fewer subsequent flow reports and lower momentary readiness \cite{knierim_flow_2026}. Complementarily, Baughan et al. deployed a custom Twitter client and found that extended, uninterrupted scrolling sessions were strongly associated with normative dissociation: users reported becoming "lost" in the feed, losing track of time, and later being unable to recall what they had consumed, with interface features that segmented or interrupted continuous viewing (custom lists, reading-history labels, time-limit prompts) significantly reducing self-reported dissociation \cite{baughan_i_2022}. Taken together, this body of work indicates that duration of continuous, non-skip viewing is an ambiguous behavioral signal: it is equally consistent with effortful, goal-directed engagement and with passive, dissociative consumption in which little of the viewed content is encoded. Our \texttt{STAY} class therefore should not be interpreted as a direct behavioral proxy for sustained cognitive engagement; rather, it captures continuous non-skip viewing time, a necessary but not sufficient behavioral correlate of engagement that the prior literature suggests may just as often reflect disengaged, dissociative viewing.
@@ -417,6 +423,7 @@ The \texttt{SKIP} class was drawn from the imminent-skip period, defined as the 
 
 The \texttt{STAY} class represents continuous, non-skip viewing periods, which are treated as a behavioral proxy for sustained engagement. It is noted that continuous viewing time is an imperfect proxy: passive dwell time can also reflect disengaged or dissociative states rather than effortful attention \cite{baughan_i_2022, knierim_flow_2026}, and sustained attention itself is better understood as a fluctuating internal state than a fixed behavioral duration \cite{debettencourt_sustained_2021}. No EEG marker has been shown to positively validate duration-based labeling as a proxy for cognitive engagement; recent work directly comparing sustained-attention and engagement spectral markers found engagement-sensitive markers failed to discriminate task conditions and that duration-aggregated metrics obscure real-time fluctuations in cognitive state \cite{de_carvalho_selection_2026}, though the authors themselves attribute the frontal-midline-theta null result partly to a baseline confound and a modest sample (n=15) rather than to an unqualified failure of the marker. The \texttt{STAY} class was defined by extracting all remaining continuous viewing periods during the naturalistic TikTok consumption phases that were i) outside the 3.0-second imminent-skip period, ii) outside the 2-second pre-skip motor-preparation buffer, and iii) outside the 0.5-second post-skip orientation grace period.
 
+% ADD: X+Y AXIS
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_9.png}
@@ -436,6 +443,7 @@ To assess how label definition affects class separability, a controlled one-at-a
 
 The influence of window size (ws), gap size (gs), and imminent-skip period (isp) on data preprocessing and segmentation is illustrated in three example-configurations: (i) default parameters (ws = 1s, gs = 2s, isp = 3s; Figure \ref{fig:labeling_strategy}), (ii) reduced window size (ws = 0.3s, gs = 2s, isp = 3s; Figure \ref{fig:labeling_strategy_small_window}), and (iii) reduced gap with extended imminent-skip period (ws = 1s, gs = 0.5s, isp = 4s; Figure \ref{fig:labeling_strategy_small_gap_big_isp}). The swipe event is indicated by vertical red lines. All figures show the same randomly selected 70-second segment from a single participant. Time (seconds) is plotted on the x-axis, and class labels---STAY (blue) and SKIP (red)---on the y-axis.
 
+% ADD: X+Y AXIS, all text (labels and legend and axis descriptor) doutrippleble the current size and consistent same size
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_7.png}
@@ -443,6 +451,7 @@ The influence of window size (ws), gap size (gs), and imminent-skip period (isp)
     \label{fig:labeling_strategy_small_window}
 \end{figure}
 
+% ADD: X+Y AXIS, all text (labels and legend and axis descriptor) tripple the current size and consistent same size
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03_exploration/viz03_exploration_12.png}
@@ -450,14 +459,15 @@ The influence of window size (ws), gap size (gs), and imminent-skip period (isp)
     \label{fig:labeling_strategy_small_gap_big_isp}
 \end{figure}
 
+% ADD: all text (labels and legend and axis descriptor) tripple the current size and consistent same size , make the 2 graphs in that pic vertically stacked, not horizontally
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/run_before_ei_fix/viz17_window_exploration_line.png}
-    \caption{Parameter sweep of the window exploration analysis. This figure originates from an earlier pipeline run predating a correction to the Engagement Index computation; the sweep evaluates only individual component features and does not use the Engagement Index, so the correction does not affect the values shown.}
+    \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_window_exploration_line.png}
+    \caption{Parameter sweep of the window exploration analysis. The sweep evaluates only individual component features and does not use the Engagement Index.}
     \label{fig:window_exploration}
 \end{figure}
 
-The key result is that, with fixed imminent-skip period and window size, increasing the gap length consistently increases Cohen’s d (Figure \ref{fig:window_exploration}, left), indicating greater separability as the SKIP interval moves further from the swipe event. A similar effect is observed for longer imminent-skip periods, where larger SKIP intervals also improve separability. For fixed gap and imminent-skip period, increasing window size is monotonically associated with larger Cohen’s d (Figure \ref{fig:window_exploration}, right), again corresponding to increased class separation. This pattern is consistent with independent findings in EEG classification more broadly: accuracy has been shown to increase monotonically with window length \cite{tzimourta_eeg_2019}, and separability has been shown to increase with distance between the measurement window and the upcoming event \cite{rimbert_impact_2023}. At the same time, this monotonicity is not universal across EEG paradigms, as optimal window length has also been shown to be subject-specific rather than fixed \cite{mi_exploring_2026}. While all these results strongly suggest better separability with increased overall data-availability (bigger windows, and areas) and simultaneously better separability the further we move away from the swipe, interpreting these relationships and their implications for optimal parameter selection remains beyond the scope of this thesis as it requires separate analysis, and is therefore a promising direction for future work. To maintain focus and scope, this analysis proceeds with the locked, default parameters:
+The key result is that, with fixed imminent-skip period and window size, increasing the gap length consistently increases Cohen’s d (Figure \ref{fig:window_exploration}, top), indicating greater separability as the SKIP interval moves further from the swipe event. A similar effect is observed for longer imminent-skip periods, where larger SKIP intervals also improve separability. For fixed gap and imminent-skip period, increasing window size is monotonically associated with larger Cohen’s d (Figure \ref{fig:window_exploration}, bottom), again corresponding to increased class separation. This pattern is consistent with independent findings in EEG classification more broadly: accuracy has been shown to increase monotonically with window length \cite{tzimourta_eeg_2019}, and separability has been shown to increase with distance between the measurement window and the upcoming event \cite{rimbert_impact_2023}. At the same time, this monotonicity is not universal across EEG paradigms, as optimal window length has also been shown to be subject-specific rather than fixed \cite{mi_exploring_2026}. While all these results strongly suggest better separability with increased overall data-availability (bigger windows, and areas) and simultaneously better separability the further we move away from the swipe, interpreting these relationships and their implications for optimal parameter selection remains beyond the scope of this thesis as it requires separate analysis, and is therefore a promising direction for future work. To maintain focus and scope, this analysis proceeds with the locked, default parameters:
 
 \begin{itemize}
     \item Window size (ws) = 1 second
@@ -517,6 +527,7 @@ The preprocessing pipeline began with the chronological alignment and concatenat
 During this temporal alignment process, Bluetooth transmission dropouts were identified by locating unnatural temporal gaps between consecutive CSV boundaries. To ensure data integrity, the duration of these dropouts was logged, and any potential data windows traversing such boundaries were strictly excluded in later extraction phases. Figure~\ref{fig:dropouts} shows the distribution of these events across the experimental timeline.
 
 % this just shows that bluetooth dropouts happened but are not very many, and we handle them appropriately by eliminating any STAY or SKIP area that is touched by such an event.
+% ADD: X+Y AXIS 'in %', all text (labels and legend and axis descriptor) double the current size and consistent same size
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz01.3.png}
@@ -544,11 +555,13 @@ The imminent-skip period was rigorously defined as the \textbf{3.0-second interv
 Finally, discrete 1.0-second analysis windows were extracted using a sliding window with no overlap (stride = window length). This ensures that windows do not cross class boundaries, enter safety gaps, or overlap with adjacent samples, thereby preventing data leakage and artificially inflated model performance, consistent with the practice of excluding windows that do not lie entirely within a single labeled interval \cite{moontaha_online_2023}.
 
 \subsection{Artifact Analysis}
+\label{sec:method_artifact_analysis}
 To ensure the integrity of the analyzed EEG signals, an automated outlier detection approach was implemented to flag potential artifacts (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step02_artifact_flag.py}). The preprocessing pipeline was executed twice, once without and once with a 50~Hz notch filter. The artifact-detection procedure described in this section relies on peak-to-peak amplitude thresholding, a coarse, broadband measure targeting large-amplitude deflections from blinks and muscle activity; for this purpose only, the notch-filtered variant was used so that a constant, non-physiological line-noise component would not itself inflate the amplitude threshold. All analyses reported elsewhere in this thesis, including the frequency-band and gamma-range results in Chapter~\ref{chap:results}, instead use the un-notched data: because the line frequency sits inside the conventional high-gamma range (40--60~Hz), notch filtering is not a neutral operation, and this thesis prioritizes preserving the full, unaltered frequency content over pre-emptively discarding a band on the assumption that its content near 50~Hz is purely artifactual. Specifically, the 95th percentile of the peak-to-peak amplitude computed on the notch-filtered signal was utilized as a dynamic, participant-specific threshold. Frontal channels (AF7, AF8) were evaluated for ocular artifacts (e.g., blinks), while temporal channels (TP9, TP10) were evaluated for electromyogenic (EMG) artifacts, consistent with prior evidence that temporal electrode sites are disproportionately susceptible to EMG contamination \cite{goncharova_emg_2003, whitham_scalp_2007}; this susceptibility has been reported at frequencies as low as 13~Hz \cite{goncharova_emg_2003}, so it is treated here as a risk extending into alpha and beta bands, not only into high-gamma or broadband features. Absolute voltage thresholds (e.g., \(150\,\mu\mathrm{V}\)) were initially investigated but were ultimately discarded as they did not yield generalizable or useful results across the dataset.
 
 No data points were excluded from the final machine learning pipeline based on these artifact flags. Incorporating such filtering would introduce additional experimental conditions and substantially expand the analysis beyond the scope of this proof-of-concept study. Instead, the approach is documented to highlight awareness of artifact-related confounds and to provide a foundation for more advanced rejection strategies in future work. The resulting artifact-rate distribution is shown in Figure~\ref{fig:artifact_rate}.
 
 % this is not used in results, and is more informaive, that this is more to show that we thought about this: that this is how artifact rejection could be done defining a percentile of outliers, but may require more sophisticated algorithm - but this is not part of the scope of this thesis as it is only proof of concept for distinguidhing the classes from EEG, thats why it will continute without artifact rejection and this is a great further direction of investigation.
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same siz 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz02.1.png}
@@ -566,6 +579,7 @@ Although bursts were successfully detected, they were not excluded from the fina
 It is important to note that the imminent-skip period is defined independently of the dwell time distribution; the 3.0-second value is an intuitive choice. As such, its influence on the resulting burst structure warrants further investigation. Incorporating burst rejection would introduce additional analytical complexity and is therefore beyond the scope of this proof-of-concept study. Instead, its inclusion highlights a relevant behavioral confound and motivates future work.
 
 % this is not used in results, and is more informaive, that this is more to show that we thought about this: that is how many times people swipe in a row - which we call in this thesis 'Bursts' - and it is another viable parameter and direction of investigation that is interesting for future work beyond this thesis, as again the focus is another.
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.3.png}
@@ -582,6 +596,7 @@ Following window extraction, a comprehensive feature set was computed for each v
 In addition to these four moments, a Relative Power feature was computed for each band and electrode as the mean power of that band divided by the summed mean power across all bands at the same electrode. This expresses each band's contribution as a proportion of the total spectral power measured at that electrode and is therefore invariant to overall amplitude scaling.
 
 % for explanation of each statistical moment definition and exact calculation, and dimension, and how it differs from EI
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, Add X axis descriptor 'Statistical Moment', and make it not bars but lines at the value as it makes more sense cause its a data point number, and keep the number above it of the value
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz05a.A2.png}
@@ -598,6 +613,7 @@ To provide a recognized clinical baseline for cognitive evaluation, the Engageme
 In this pipeline, exactly one scalar Engagement Index (EI) is computed per \(1.0\)-second analysis window per participant. To calculate this single value, the within-window variance of the baseline-normalized band signal is first extracted for the Beta (\(\beta\)), Alpha (\(\alpha\)), and Theta (\(\theta\)) bands across each of the four individual electrodes. Because the normalized signal is z-scored and therefore centred near zero, the ratio is formed from variances rather than means; the variance is strictly non-negative, so the denominator cannot approach zero and the numerical instability of a mean-based ratio is avoided. These four spatial variances are then averaged together to produce a single, whole-head \(\beta\), \(\alpha\), and \(\theta\) scalar for that specific window, which are finally fed into the EI ratio formula. This single composite scalar serves as the primary clinical benchmark against which the predictive power of individual statistical features is evaluated in the machine learning phase. An example calculation of the EI for a single sample window of one participant can be observed in Figure~\ref{fig:calculation_visual_EI}, visually showing the three spatially-averaged scalars that are utilized in the Index calculation in Equation~\ref{eq:formula_EI}.
 
 % for explanation of EI definition and calculation
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, Add X axis descriptor 'Band Powers', and make it not bars but lines at the value as it makes more sense cause its a data point number, and keep the number above it of the value
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz05a.A3.png}
@@ -674,15 +690,19 @@ Taken together, the two extraction schemes yield the final feature space. For ea
 Before proceeding to statistical evaluation and modeling, the inherent class imbalance depicted in Figure~\ref{fig:classes_imbalanced}, where the \texttt{STAY} class (blue) heavily dominates the \texttt{SKIP} class (red), had to be addressed (executed via \url{https://github.com/coffeeandcoffee/eeg_tiktok_pipeline/data_analysis/step04_balance_split.py}). To prevent the models from trivially predicting the majority class, the \texttt{STAY} class was randomly undersampled for each participant to achieve a strict 50/50 balance, per participant, as depicted in Figure~\ref{fig:classes_balanced}.
 
 % this simply shows that the dominant class is STAY and for every participant different, and brings with it the demand for per participant balancing of the classes.
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, Add X axis descriptor 'Participant', and make the two graphs be vertically stacked, not horizontally squeezed so they can fill whole width.
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\textwidth}
+    \begin{minipage}{\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.2_before_balancing.png}
         \caption{Raw window counts before balancing showing the extreme STAY dominance.}
         \label{fig:classes_imbalanced}
-    \end{minipage}\hfill
-    \begin{minipage}{0.48\textwidth}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \begin{minipage}{\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.2_after_balancing.png}
         \caption{Window counts after undersampling, achieving a strict 50/50 ratio per participant.}
@@ -693,6 +713,7 @@ Before proceeding to statistical evaluation and modeling, the inherent class imb
 Two cross-validation schemes are used throughout. The intra-subject setting applies blocked temporal 5-fold cross-validation within each participant; the inter-subject setting applies Leave-One-Group-Out cross-validation across participants, training on 24 participants and evaluating on the held-out 25th. To mitigate temporal leakage due to autocorrelation between adjacent EEG windows in the intra-subject setting, blocked temporal 5-fold cross-validation was applied. Each participant’s data were partitioned chronologically into five folds with equal counts of minority-class (\texttt{SKIP}) instances. Figure~\ref{fig:5_fold_split_per_participant} shows minority-class occurrences (red) and fold boundaries (black), defined by equal splits of these events, per participant.
 
 % for demonstration of how data is split into folds based on 5 equal parts of minority SKIP class per fold.
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.5.png}
@@ -704,15 +725,19 @@ To rigorously prevent temporal leakage, a minimum separation of 3 seconds betwee
 
 % for demonstration of the safety mechanism that ensures stricti no overlap of test and train splits, with an at least 3s minimum gap that must be obeyed as it is demonstrates to successfully be the case in this picture.
 % for demonstration of how it looks with one participant, with all 5 folds in different colors.
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, and make the two graphs be vertically stacked, not horizontally squeezed so they can fill whole width. and make the second figure with a line of colors rather than colored blocks which is more logical for this timeline like representation.
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\textwidth}
+    \begin{minipage}{\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.4.png}
         \caption{Temporal minimum required safety distance of 3 seconds between train and test windows is strictly fulfilled.}
         \label{fig:3s_fold_boundary}
-    \end{minipage}\hfill
-    \begin{minipage}{0.48\textwidth}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \begin{minipage}{\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz04/viz04.1.png}
         \caption{Temporal cross-validation split visualization, detailing the visible gaps between folds that successfully prevent data leakage.}
@@ -790,29 +815,31 @@ The algorithm employs a two-sided Wilcoxon test with a standard significance thr
 
 
 \chapter{Results and Discussion}
+\label{chap:results}
 
-This chapter presents the results of a multi-stage experimental investigation. This thesis delivers five core scientific contributions:
+This chapter presents the results of a multi-stage experimental investigation. \\\\
+This thesis delivers \textit{five core scientific contributions:}
 
 \begin{enumerate}
-\item \textbf{Primary EEG Experiment under Naturalistic Conditions}
+\item \textbf{Contribution \#1: Primary EEG Experiment under Naturalistic Conditions}
 
 The foundation of this work is the primary experiment (Methods Section~\ref{sec:method_participants} - \ref{sec:method_experimental_protocol}, Results Section~\ref{sec:results_exp_learnings}), in which participants were recorded via EEG while engaging in naturalistic TikTok browsing. This data collection phase constituted a substantial portion of the overall effort, requiring careful experimental design, technical implementation, and data acquisition under ecologically valid conditions. Not only the resulting dataset, but also the easily reproducible nature of the developed experimental method forms the basis for all subsequent analyses and should be understood as a central contribution of this thesis.
 
-\item \textbf{Reusable EEG Processing and Analysis Pipeline}
+\item \textbf{Contribution \#2: Reusable EEG Processing and Analysis Pipeline}
 
 In addition to the experimental dataset and process, a further key contribution lies in the development of a comprehensive script library and analysis pipeline (Methods Sections~\ref{sec:method_skipstay_labeling_strategy}--\ref{sec:method_result_synthesis_pipeline}, Results Section~\ref{sec:results_pipeline}). This framework enables fully reproducible processing, from automated EEG recording on standard laptop hardware to feature extraction, class separation, and machine learning-based prediction. As such, it not only supports the present analysis but also provides a transferable methodological toolset that can be readily adapted to related experimental paradigms.
 
-\item \textbf{Behavioral Swipe-Burst Phenomenon}
+\item \textbf{Contribution \#3: Behavioral Swipe-Burst Phenomenon}
 
 We continue by focusing on the behavioral burst analysis (Methods Section~\ref{sec:method_behavioral_burst_analysis}, Results Section~\ref{sec:results_burst_analysis}). As no burst rejection was implemented---due to scope constraints outlined in Section~\ref{sec:method_behavioral_burst_analysis}---this component is treated as a secondary result rather than the central analytical pathway.
 
-\item \textbf{Evaluating the Engagement Index's Predictive Capacity}
+\item \textbf{Contribution \#4: Evaluating the Engagement Index's Predictive Capacity}
 
 The primary results emerge from a multi-layer analysis (Methods Sections~\ref{sec:method_feature_engineering}--\ref{sec:method_result_synthesis_pipeline}, Results Section~\ref{sec:results_engagement_index}): Using the Cohen’s d method described in Section~\ref{sec:method_feature_separation_cohen_d}, first class separation capability of the conventional Engagement Index was evaluated, then specific features were identified that most effectively differentiate between the SKIP and STAY classes (Section~\ref{sec:results_feature_importance}) and which features outperform the Engagement Index's class-separation capability of \texttt{SKIP} and \texttt{STAY}. Building on this, a set of machine learning models as described in Section~\ref{sec:method_baselines_and_logistic_regression} is applied to predict scrolling behavior based on these class distinctions using the Engagement Index with a Logistic Regression and comparing it to a random-chance baseline, as well as challenging the conventional Engagement-Index by using previously identified superior features with the same Logistic Regression approach and comparing it to the Engagement Index. Best-performing models and features are reported (Section~\ref{sec:results_model_performance}).
 
 As described in Section~\ref{sec:method_metrics_and_significance}, these results are carefully introduced along their statistical significance, a crucial measure considering the sample size of n=25 participants, in order to give result metrics such as the F1-score the appropriate context for meaningful interpretation for discussion and further use. While this prediction task serves as an initial proof of concept, it already indicates which features may provide sufficient discriminatory power.
 
-\item \textbf{Neuroscientific and Behavioral Interpretation}
+\item \textbf{Contribution \#5: Neuroscientific and Behavioral Interpretation}
 
 The results (Section~\ref{sec:results_feature_importance}) offer insights into the brain regions and frequency bands most predictive of this behavior, thereby informing both theoretical interpretation and potential practical applications. Therefore, in the final section (Section~\ref{sec:results_interpretation}), these findings are interpreted in the context of neuroscience, psychology, and behavioral research, highlighting their implications and real-world relevance.
 \end{enumerate}
@@ -845,6 +872,7 @@ Figure~\ref{fig:bursts_indiv_3s} shows this behavior at the participant level, r
 
 Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chosen window size by repeating the analysis with a \(\pm 5.0\)-second window (10.0-second merge threshold). The wider threshold captures a larger portion of the dwell time distribution and merges many isolated swipes into larger burst blocks, substantially reducing the proportion of $n=1$ events, simply by changing the definition of a ``burst block''. Specifically, under the default \(\pm3.0\)s window, 67.4\% of swipe events are isolated singletons (participant-level mean 69.1\% \(\pm\) 16.2\%), while widening to \(\pm5.0\)s reduces this to 48.9\% (participant-level mean 46.9\% \(\pm\) 20.8\%). The large between-participant standard deviation is itself informative: burst tendency appears to be a strongly individual trait rather than a fixed population parameter, foreshadowing the precision-public-health argument developed in Section~\ref{sec:results_interpretation}. \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/burst_stats.tex} This underscores the strong dependence on parameter selection and the need for systematic optimization in future work.
 
+% ADD: all text (labels and legend and axis descriptor) tripple the current size and consistent same size
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.3.2_3s.png}
@@ -852,15 +880,19 @@ Finally, Figure~\ref{fig:bursts_all_5s} illustrates the sensitivity to the chose
     \label{fig:bursts_indiv_3s}
 \end{figure}
 
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, and make the two graphs be vertically stacked, not horizontally squeezed so they can fill whole width.
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.49\textwidth}
+    \begin{minipage}{\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.3.3_3s.png}
         \caption{Total burst group sizes across all participants (\(\pm3.0\)s window).}
         \label{fig:bursts_all_3s}
-    \end{minipage}\hfill
-    \begin{minipage}{0.49\textwidth}
+    \end{minipage}
+
+    \vspace{1em}
+
+    \begin{minipage}{\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz03/viz03.3.3_5s.png}
         \caption{Total burst group sizes across all participants (\(\pm5.0\)s window). The wider threshold computationally merges many normal swipes into larger burst blocks.}
@@ -882,6 +914,8 @@ Moreover, class separation reaches values above 0.04 only for a small subset of 
 Taken together, these findings highlight three key points. First, individual frequency bands exhibit stronger class-separation capability than the conventional Engagement Index, suggesting that analyses based on raw or band-specific signals may be more informative than combined engagement metrics. Second, the raw broadband signal reaches a higher mean \(|d|\) than all separated bands except high \(\gamma\), consistent with prior EEG decoding work showing broadband/undecomposed signal can match or exceed band-limited features depending on task \cite{ovi_frequency_2026}. This comparison should be read with care, since the raw signal is summarized by only three time-domain statistics whereas each band is summarized by eight (Section~\ref{sec:method_feature_engineering}); it nevertheless motivates closer examination of both broadband information and high-\(\gamma\) activity in particular.
 
 Third, the pattern across bands follows a clear up–down–up trend: separability is high at low frequencies, drops to a minimum in the \(\alpha\) range (8–13 Hz), then rises to a global maximum in the high-\(\gamma\) range before decreasing again for very high \(\gamma\) frequencies (60–100 Hz). Non-monotonic, band-specific separability profiles of this kind are not without precedent in EEG classification more broadly; band-wise decoding performance has been shown to peak in non-adjacent frequency ranges rather than scaling smoothly with frequency \cite{plucinska_impact_2022}. This systematic profile offers a frequency-resolved view of where discriminative information is concentrated in the EEG. The \(\alpha\) minimum within this profile is notable in itself: alpha activity is classically interpreted as cortical idling --- the synchronized rhythm of regions that are neither processing sensory input nor generating motor output, which desynchronizes once a region is recruited for active processing \cite{pfurtscheller_event-related_1996} --- and a rhythm indexing momentary passivity rather than content appraisal would be expected to separate the two classes poorly.
+
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.1_cohend_bands.png}
@@ -897,6 +931,7 @@ Among the electrodes, AF7 (left anterior frontal) reaches the highest mean \(|d|
 
 Potential systematic differences related to the recording hardware cannot be excluded at this stage, as two physical units of the headband were used across the \(n = 25\) participants (Section~\ref{sec:method_data_acquisition}).
 
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, and make the bars not red (cause EI line is already red) but make them purple.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.2_cohend_electrodes.png}
@@ -910,6 +945,7 @@ Furthermore, only two statistics - Hjorth complexity and peak frequency - reach 
 
 Across the three feature families examined here---frequency bands, electrodes, and statistical moments/metrics---the statistical moments and metrics show the strongest overall class-separation performance. In particular, peak frequency stands out with a mean \(|d|\) of nearly 0.07, placing it almost 0.05 standard deviations above the conventional Engagement Index and nearly 0.02 above the mean for the raw signal. This makes peak frequency the strongest single feature in the present comparison and suggests that oscillatory structure within the signal may be especially informative for distinguishing between the two classes. At the same time, these findings should be interpreted cautiously, as the observed advantages are modest in absolute terms and may be influenced by dataset-specific factors.
 
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, Add X axis descriptor 'Statistical Moment' instead of Stat which is lazy
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.3_cohend_stats.png}
@@ -933,6 +969,7 @@ Moreover, the AF7 electrode stands out by exhibiting a clear upward trend in Coh
 
 Furthermore, the superior class-separation ability of the TP10 broadband signal, relative to TP10’s performance within individual frequency bands, suggests that discriminative information may extend beyond the conventional 1–100 Hz decomposition. This could indicate that additional signal components, including potential artifacts such as electromyographic activity from jaw movements, contribute to the SKIP-versus-STAY separation alongside, or in some cases instead of, purely neural activity. This possibility is not merely speculative: temporal electrode sites are known to be disproportionately susceptible to broadband EMG contamination from the underlying temporalis muscle, an effect that is present even at rest, spans the same broadband/high-frequency range implicated here, and survives standard ICA-based correction \cite{goncharova_emg_2003, whitham_scalp_2007, yilmaz_facial_2019}. These possibilities highlight the need for careful artifact characterization and control in future work.
 
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, make the legend to be inside the graph not outside so it doesnt take space outside the graph and the figure is more compact.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_0.1.4_cohend_interactions.png}
@@ -943,6 +980,8 @@ Furthermore, the superior class-separation ability of the TP10 broadband signal,
 As shown in Figure~\ref{fig:cohend_top_features_2} the top features were selected for each category: i) overall top feature \#1, ii) overall top feature \#2, iii) top \#1 feature of top band, iv) top \#1 feature of top electrode, v) top \#1 feature of top statistic/metric.
 
 The feature ``TP10 raw std'' (\(|d| = 0.196\)) is placed for i) feature \#1, whereas ``AF7 high gamma mean'' (\(|d| = 0.17\)) simultaneously represents all 3 categories ii), iii) and iv). The ``AF8 delta peakfreq'' (\(|d| = 0.14\)) feature takes the place of category v), which is the \#1 feature amongst the top statistics, namely the Peak-frequency.
+
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, make the graph less ugly so without the bars having black borders and also make the bars gray and make the description thats right of each bar rather inside the bar, and make sure it line breaks inside that bar and never exceeds the bar, eg the AF7 high gamma has Top Band LINEBRAEK Top Electrode LINEBREAK Overall Top Feature #2.
 
 \begin{figure}[H]
     \centering
@@ -977,7 +1016,7 @@ Importantly, these results also clarify what the Engagement Index can and cannot
 When assessing the individual participants' performance in the cross-participant model setting, as shown in Figure~\ref{fig:ei_vs_cf_inter_significance_heatmap}, the pattern further supports the interpretation that \texttt{STAY} events are systematically and significantly easier for the Engagement Index to recognize than \texttt{SKIP} events are to detect reliably. This asymmetry suggests that the model captures a broad tendency toward the \texttt{STAY} class, but lacks equally strong sensitivity to the more transient \texttt{SKIP} class.
 
 % \input{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance_thesis_paragraph.tex}
-
+% ADD: all text (labels and legend and axis descriptor) double the current size and consistent same size, Add X axis descriptor 'Participant', and y axis descriptor 'Performance Metric'  and then consider flipping the graph so its not wide but high, meaning the two performance metrics become columns instead of rows, and each row represents a participant - all else with coloring and so on stays the same
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../05-12_data_analysis_and_results/runs/run_20260611_220844/viz/viz17_2_inter_significance.png}
@@ -1184,6 +1223,44 @@ A fifth and highly relevant direction concerns public health and behavior change
 Finally, future research should examine generalizability across contexts, populations, and content domains. The present sample skewed toward an academically-oriented population recruited via university mailing lists (Section~\ref{sec:method_participants}), and the present task used naturalistic TikTok browsing; similar engagement dynamics may appear in other forms of media consumption, educational content, or digital decision tasks, but this would need to be tested in a broader participant pool before being assumed. Testing whether the same feature families generalize to different content domains would help determine whether the observed effects are specific to short-form video or whether they reflect a broader principle of human engagement and disengagement. If replicated, this line of work could contribute not only to neuroscience and psychology, but also to media research, user-experience design, and public-health communication.
 
 Overall, the present study opens a broad but carefully bounded research program: one that combines explainable EEG analysis, naturalistic behavior, and applied communication research. Its value lies not in claiming a final solution, but in identifying a credible path toward more interpretable, behaviorally grounded, and potentially useful models of engagement and disengagement in real-world digital environments.
+
+\chapter{Plain-Language Summary: Common Questions}
+\label{chap:plain_language}
+
+The questions that dominate public debate about short-form video are not the questions an EEG study is built to answer. They are, however, the questions on which people actually act --- as parents, as teachers, as voters, as regulators, and as communicators trying to reach an audience. This chapter therefore steps out of technical register and answers the most common of those questions in ordinary language, using only what this thesis and the literature it reviews can support. It deliberately revisits ground already covered in Chapters~\ref{chap:results} and~\ref{chap:conclusion}, restated for a reader who has not read them.
+
+Three cautions apply to everything below. This was one study of 25 young adults, mostly students, each recorded once for 25 minutes. It measured brain activity in the seconds around a swipe; it did not measure anyone's health, mood, grades, sleep, or long-term wellbeing, and it followed nobody over time. Every answer here is therefore a \emph{direction of evidence}, not a settled finding, and is written to be revised. Where the honest answer is ``this study cannot tell you,'' that is stated plainly rather than filled in with plausible-sounding inference.
+
+\paragraph{Is short-form video damaging my brain?}
+This study cannot tell you, and nobody should cite it as evidence either way. It never looked for damage. It compared two ordinary moments --- still watching, versus about to swipe away --- in healthy young adults over 25 minutes. What it did find is that those two moments look measurably different in the brain, which says the decision to move on is a real physical event and not merely a habit or a figure of speech. That is a statement about how attention works, not about harm. Claims in circulation that scrolling ``rewires'' or ``shrinks'' the brain go well beyond what evidence of this kind can carry.
+\emph{What to do with this:} treat confident claims in both directions with suspicion. The strong version of the harm story and the dismissive ``it's all moral panic'' reply are both running ahead of the data.
+
+\paragraph{If I watch something for a long time, does that mean I was interested in it?}
+Probably less often than you would assume, and this is the clearest practical message of the thesis. Platforms, advertisers and much public commentary treat time spent watching as if it measured interest. But long, uninterrupted viewing is just as consistent with being absorbed as with being zoned out and later remembering almost nothing \cite{baughan_i_2022, knierim_flow_2026}. The measurement side of this thesis points the same way: the standard laboratory formula for ``engagement'' (Section~\ref{sec:results_model_performance}) was far worse at telling these two moments apart than several plain, single measurements of the raw signal --- the best of which separated them by close to ten times as much. If watch time reliably captured engagement, that gap should not exist.
+\emph{What to do with this:} stop reading watch time as proof that something worked. For anyone reporting reach --- health campaigns especially --- a high view count is a statement about distribution, not about whether anything landed. Ask separately whether people acted, returned, or could recall the message.
+
+\paragraph{Can a cheap headband read my mind, or tell what I am about to do?}
+No --- not in any sense that should worry you today, and the failures are as informative as the successes. Using a consumer headband costing a few hundred euros, the signal that distinguished ``about to swipe'' from ``still watching'' was real but weak, and it worked only when the system was tuned to one specific person. Trained on a group and applied to a new individual, performance collapsed to roughly guessing (Section~\ref{sec:results_alternative_index}). In plain terms: there is a faint, person-specific fingerprint, not a readable thought.
+\emph{What to do with this:} do not buy claims that wearable brain sensors can currently detect engagement, attention or intent in a general population. Equally, note the direction of travel: this was four cheap sensors, one short session, one small group. Organisations with far more data and far longer observation are not bound by those limits, which is the real reason to ask now who is permitted to measure attention and under what oversight.
+
+\paragraph{Why is it so hard to stop scrolling once I start?}
+This study offers one small, concrete piece of the picture. Swipes do not arrive evenly spaced. They cluster into short bursts --- runs of rapid skipping with calmer stretches in between (Section~\ref{sec:results_burst_analysis}). About two-thirds of swipes were isolated, so most of the time people were not in a burst at all. But how burst-prone someone was varied enormously between individuals, far more than any average conveys. The pattern is real; the ``it'' that happens is not the same for everyone.
+\emph{What to do with this:} if you want to interrupt your own scrolling, the useful target is the fast run rather than the total minutes, since the two are not the same behaviour. And be sceptical of advice derived from an average user, because on this measure the average user barely exists.
+
+\paragraph{Should phones be banned in schools, or social media restricted by age?}
+This thesis has nothing to say about either policy, and it would be misleading to enlist it on either side. It tested no intervention, involved no minors, and measured no outcome that such a policy would target. One indirect observation is worth carrying into that debate, however: the behaviour measured here differed so much from person to person that a single rule calibrated to the average would fit very few individuals well. That is a caution about uniform rules generally, not an argument for or against any particular one.
+\emph{What to do with this:} demand that whoever proposes a rule states which outcome it is supposed to improve and how that will be checked afterwards. This study cannot supply that evidence, and neither can most of what is currently cited in the debate.
+
+\paragraph{What should regulators actually require, if not bans?}
+The most defensible ask suggested by this work is disclosure rather than prohibition. Feeds are tuned to maximise something, and the quantity most commonly optimised --- continued watching --- is, on the evidence reviewed here, not a reliable indicator that the viewer is attending, benefiting, or even remembering. Optimising it is therefore not the same as serving the user, and the gap between the two is currently invisible from the outside. A further practical point: this study was run on off-the-shelf hardware by a single researcher, which means independent measurement of these questions is now cheap enough that no regulator need rely solely on platform-supplied figures.
+\emph{What to do with this:} require platforms to disclose what their systems optimise for and to open those targets to outside audit; fund small independent replication rather than waiting for internal data to be volunteered.
+
+\paragraph{I make health or education content. How do I hold attention?}
+Honestly: this thesis does not yet give you a tool. It shows that the moment of leaving has a physical signature, which is a precondition for one day detecting disengagement as it begins --- but the signal is currently too weak, and too person-specific, to build anything you could deploy. What it does give you is a warning about your own dashboard. If you are judging content by average watch time, you are optimising against a number that cannot distinguish an absorbed viewer from a dissociated one, and you may be steadily selecting for content that holds eyes without landing a message.
+\emph{What to do with this:} keep watch time as a distribution check, but judge success on something downstream that you actually care about --- recall, clicks, appointments, behaviour change --- and accept that this is harder and slower to measure. That difficulty is not a reason to fall back on the easier number.
+
+\paragraph{So what is the single most useful thing to take away?}
+That the industry-standard way of measuring engagement is weaker than its ubiquity implies, and that better measurement is now within reach of people outside the platforms. This thesis does not show that anyone has decoded the decision to swipe; it shows that the moment of leaving is physically distinguishable from the state of staying, that the conventional engagement metric largely misses it, and that the equipment required to investigate this costs a few hundred euros rather than a laboratory budget. Whether that capability is used to make feeds more compelling or to hold them accountable is not a scientific question, and will not be settled by studies like this one.
 
 \iffalse
 \subsection{1. The Research Question and Narrative Arc}

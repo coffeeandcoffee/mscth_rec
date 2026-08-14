@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import config
 import pickle
+import viz_style
 
 def run(run_dir, params):
     json_file = run_dir / "features" / "best_features_ranking.json"
@@ -94,15 +95,19 @@ def run(run_dir, params):
     band_labels = [freq_map.get(b, b) for b in bands_present]
     
     # 0.1.1: Band Barplot
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(16, 9))
     sns.barplot(data=df, x='Band', y='d', order=bands_present, errorbar=None, color='#3498db', ax=ax)
     if ei_d > 0:
         ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'Standard EI Baseline (|d|={ei_d:.3f})')
         ax.legend()
     ax.set_xticklabels(band_labels, rotation=45, ha='right')
-    ax.set_ylabel("Mean |Cohen's d|")
-    ax.set_title("Statistical Class Separation via Cohen's d (by Frequency Band)", pad=15, fontweight='bold')
     ax.grid(True, axis='y', linestyle='--', alpha=0.6)
+    viz_style.style_axes(
+        ax, viz_style.FONT_2X,
+        title="Statistical Class Separation via Cohen's d (by Frequency Band)",
+        ylabel="Mean |Cohen's d|",
+    )
+    ax.title.set_fontweight('bold')
     plt.tight_layout()
     plt.savefig(viz_dir / "viz17_0.1.1_cohend_bands.png", dpi=200, bbox_inches='tight')
     plt.close()
@@ -111,45 +116,65 @@ def run(run_dir, params):
     elec_order = ['TP9', 'AF7', 'AF8', 'TP10']
     elecs_present = [e for e in elec_order if e in df['Electrode'].unique()] + [e for e in df['Electrode'].unique() if e not in elec_order]
     
-    fig, ax = plt.subplots(figsize=(8, 6))
-    sns.barplot(data=df, x='Electrode', y='d', order=elecs_present, errorbar=None, color='#e74c3c', ax=ax)
+    # Bars are purple so they cannot be confused with the red EI baseline line.
+    fig, ax = plt.subplots(figsize=(11, 7))
+    sns.barplot(data=df, x='Electrode', y='d', order=elecs_present, errorbar=None, color='#8e44ad', ax=ax)
     if ei_d > 0:
         ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'Standard EI Baseline (|d|={ei_d:.3f})')
         ax.legend()
-    ax.set_ylabel("Mean |Cohen's d|")
-    ax.set_title("Statistical Class Separation via Cohen's d (by Electrode)", pad=15, fontweight='bold')
     ax.grid(True, axis='y', linestyle='--', alpha=0.6)
+    viz_style.style_axes(
+        ax, viz_style.FONT_2X,
+        title="Statistical Class Separation via Cohen's d (by Electrode)",
+        ylabel="Mean |Cohen's d|",
+    )
+    ax.title.set_fontweight('bold')
     plt.tight_layout()
     plt.savefig(viz_dir / "viz17_0.1.2_cohend_electrodes.png", dpi=200, bbox_inches='tight')
     plt.close()
     
     # 0.1.3: Statistic Barplot
     stat_order = df.groupby('Stat')['d'].mean().sort_values(ascending=False).index
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(16, 9))
     sns.barplot(data=df, x='Stat', y='d', order=stat_order, errorbar=None, color='#2ecc71', ax=ax)
     if ei_d > 0:
         ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'Standard EI Baseline (|d|={ei_d:.3f})')
         ax.legend()
     ax.set_xticklabels(stat_order, rotation=45, ha='right')
-    ax.set_ylabel("Mean |Cohen's d|")
-    ax.set_title("Statistical Class Separation via Cohen's d (by Statistic)", pad=15, fontweight='bold')
     ax.grid(True, axis='y', linestyle='--', alpha=0.6)
+    viz_style.style_axes(
+        ax, viz_style.FONT_2X,
+        title="Statistical Class Separation via Cohen's d (by Statistic)",
+        xlabel="Statistical Moment",
+        ylabel="Mean |Cohen's d|",
+    )
+    ax.title.set_fontweight('bold')
     plt.tight_layout()
     plt.savefig(viz_dir / "viz17_0.1.3_cohend_stats.png", dpi=200, bbox_inches='tight')
     plt.close()
     
     # 0.1.4: Abstract Cross-Pattern Interaction Profile
-    fig, ax = plt.subplots(figsize=(12, 6))
-    sns.pointplot(data=df, x='Band', y='d', hue='Electrode', order=bands_present, hue_order=elecs_present, 
-                  dodge=True, markers=['o','s','D','^'], linestyles=['-','--','-.',':'], palette='Set1', ax=ax)
+    # seed= fixes the CI bootstrap so the error bars are reproducible run to run.
+    # Doubled height so the four electrode series stay distinguishable.
+    fig, ax = plt.subplots(figsize=(16, 18))
+    sns.pointplot(data=df, x='Band', y='d', hue='Electrode', order=bands_present, hue_order=elecs_present,
+                  dodge=True, markers=['o','s','D','^'], linestyles=['-','--','-.',':'], palette='Set1',
+                  seed=0, ax=ax)
     if ei_d > 0:
         ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'Standard EI Baseline (|d|={ei_d:.3f})')
-        ax.legend()
     ax.set_xticklabels(band_labels, rotation=45, ha='right')
-    ax.set_ylabel("Mean |Cohen's d|")
-    ax.set_title("Interaction Profile: Frequency Band vs Electrode Topology", pad=15, fontweight='bold')
     ax.grid(True, axis='both', linestyle='--', alpha=0.6)
-    plt.legend(title='Electrode', bbox_to_anchor=(1.05, 1), loc='upper left')
+    # Legend sits inside the axes so the figure stays compact; extra headroom is
+    # added above the data so it does not cover any series.
+    ax.margins(y=0.15)
+    legend = ax.legend(title='Electrode', loc='upper right', ncol=2, framealpha=0.9)
+    viz_style.style_axes(
+        ax, viz_style.FONT_2X,
+        title="Interaction Profile: Frequency Band vs Electrode Topology",
+        ylabel="Mean |Cohen's d|",
+    )
+    viz_style.style_legend(legend, viz_style.FONT_2X)
+    ax.title.set_fontweight('bold')
     plt.tight_layout()
     plt.savefig(viz_dir / "viz17_0.1.4_cohend_interactions.png", dpi=200, bbox_inches='tight')
     plt.close()

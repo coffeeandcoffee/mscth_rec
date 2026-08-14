@@ -16,6 +16,7 @@ import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 import config
+import viz_style
 
 PALETTE = sns.color_palette("pastel")
 WINDOW_S = 120  # 2 minutes centered on artifact
@@ -134,16 +135,21 @@ def run(run_dir, params):
     plt.close()
 
     # --- Individual Panel 1 (viz02.1) ---
-    fig_ind, ax_ind = plt.subplots(figsize=(6, 6))
+    # Taller to fit one participant label per row at FONT_2X, and wider to keep
+    # the aspect ratio under ~1.2 so the figure still fits the page at \textwidth.
+    fig_ind, ax_ind = plt.subplots(figsize=(10, 12))
     ax_ind.barh(y_pos, df_sorted['blink_rate'], color=PALETTE[0],
             label='Blink', height=0.4, align='edge')
     ax_ind.barh([y + 0.4 for y in y_pos], df_sorted['emg_rate'], color=PALETTE[1],
             label='EMG', height=0.4, align='edge')
     ax_ind.set_yticks([y + 0.4 for y in y_pos])
-    ax_ind.set_yticklabels([f"P{p_}" for p_ in df_sorted['pid']], fontsize=7)
-    ax_ind.set_xlabel('Artifact Rate')
-    ax_ind.set_title('Artifact Rate per Participant')
-    ax_ind.legend(fontsize=8)
+    ax_ind.set_yticklabels([f"P{p_}" for p_ in df_sorted['pid']])
+    ax_ind.legend()
+    viz_style.style_axes(
+        ax_ind, viz_style.FONT_2X,
+        title='Artifact Rate per Participant',
+        xlabel='Artifact Rate',
+    )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz02.1.png", dpi=200)
     plt.close()

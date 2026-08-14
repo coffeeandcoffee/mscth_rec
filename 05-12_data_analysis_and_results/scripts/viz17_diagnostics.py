@@ -276,7 +276,7 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
         t_tex_lines.extend([
             "\\hline",
             "\\end{tabular}",
-            f"\\caption{{Step 1 ({scale.capitalize()}-subject): EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\\alpha=0.05$, N=25).}}",
+            f"\\caption{{Step 1 ({scale.capitalize()}-Subject): EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\\alpha=0.05$, N=25).}}",
             "\\label{tab:metrics_1_" + scale.lower() + "}",
             "\\end{table}"
         ])
@@ -321,7 +321,10 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
         
     create_table_n1()
     export_significance_explanation(viz_dir)
-    export_significance_heatmap(scale, models, viz_dir)
+    # Row order of the metric arrays follows df_ei; carry its real participant
+    # ids through so the heatmap is not labelled with a synthetic 1..N index.
+    heatmap_pids = df_ei['pid'].tolist() if not df_ei.empty and 'pid' in df_ei.columns else None
+    export_significance_heatmap(scale, models, viz_dir, pids=heatmap_pids)
     export_thesis_paragraph(scale, viz_dir)
 
     
@@ -716,7 +719,14 @@ If both conditions are met, the model's performance is deemed statistically sign
     with open(viz_dir / "viz17_2_significance.txt", "w") as f:
         f.write(content)
 
-def export_significance_heatmap(scale, models, viz_dir):
+def _participant_labels(pids, n_participants):
+    """Real participant ids (P4, P5, ...) when available, else a 1..N fallback."""
+    if pids is not None and len(pids) == n_participants:
+        return [f"P{int(p)}" for p in pids]
+    return [f"P{i+1}" for i in range(n_participants)]
+
+
+def export_significance_heatmap(scale, models, viz_dir, pids=None):
     import seaborn as sns
     if 'Coin Flip' not in models or 'EI LR' not in models:
         return
@@ -732,15 +742,33 @@ def export_significance_heatmap(scale, models, viz_dir):
     for i, metric in enumerate(metrics):
         diff_matrix[i, :] = ei[metric] - cf[metric]
         
-    fig, ax = plt.subplots(figsize=(max(12, n_participants * 0.5), 3))
-    
-    sns.heatmap(diff_matrix, annot=True, fmt=".1f", cmap="RdYlGn", center=0, 
-                yticklabels=[m.replace('Test ', '') for m in metrics],
-                xticklabels=[f"P{i+1}" for i in range(n_participants)],
+    # Transposed to a tall layout: one row per participant, one column per
+    # performance metric. Colouring and values are unchanged.
+    import viz_style
+    # Wide enough for the title to fit at FONT_2X, tall enough for one row per participant.
+    fig, ax = plt.subplots(figsize=(14, max(9, n_participants * 0.55)))
+
+    sns.heatmap(diff_matrix.T, annot=True, fmt=".1f", cmap="RdYlGn", center=0,
+                yticklabels=_participant_labels(pids, n_participants),
+                xticklabels=[m.replace('Test ', '') for m in metrics],
                 cbar_kws={'label': 'Difference vs Coin Flip (%)'},
+                annot_kws={'size': viz_style.FONT_2X},
                 linewidths=0.5, ax=ax)
-                
-    ax.set_title(f"Participant-Level Significance Map: EI LR vs Coin Flip ({scale})\n(Green = EI LR Outperforms Random)", pad=15, fontweight='bold', fontsize=12)
+
+    # seaborn rotates y labels to vertical when they are tight; force upright.
+    ax.set_yticklabels(ax.get_yticklabels(), rotation=0)
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=0)
+
+    viz_style.style_axes(
+        ax, viz_style.FONT_2X,
+        title=f"Participant-Level Significance Map: EI LR vs Coin Flip ({scale})\n(Green = EI LR Outperforms Random)",
+        xlabel='Performance Metric',
+        ylabel='Participant',
+    )
+    ax.title.set_fontweight('bold')
+    cbar = ax.collections[0].colorbar
+    cbar.ax.tick_params(labelsize=viz_style.FONT_2X)
+    cbar.ax.yaxis.label.set_fontsize(viz_style.FONT_2X)
     plt.tight_layout()
     plt.savefig(viz_dir / f"viz17_2_{scale.lower()}_significance.png", dpi=200)
     plt.close()

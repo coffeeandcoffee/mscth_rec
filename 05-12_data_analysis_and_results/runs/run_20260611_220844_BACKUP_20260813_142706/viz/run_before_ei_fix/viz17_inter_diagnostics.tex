@@ -1,0 +1,35 @@
+\section*{Diagnostic Report (Inter)}
+\subsection*{Model: EI LR}
+Train F1 = 28.0\%, Test F1 = 19.4\%, Precision = 48.6\%, Recall = 18.3\%.
+\newline
+\textbf{Significance vs Coin Flip:} p >= 0.05
+\newline
+\textbf{Diagnosis:} Random chance performance (No signal). The F1 score is not statistically significantly better than the Coin Flip baseline (p >= 0.05).
+
+\subsection*{Model: TP10 raw std LR}
+Train F1 = 49.6\%, Test F1 = 46.0\%, Precision = 47.5\%, Recall = 51.0\%.
+\newline
+\textbf{Significance vs Coin Flip:} p < 0.05
+\newline
+\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
+
+\subsection*{Model: All raw std LR}
+Train F1 = 51.7\%, Test F1 = 49.0\%, Precision = 52.4\%, Recall = 55.0\%.
+\newline
+\textbf{Significance vs Coin Flip:} p < 0.05
+\newline
+\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.
+
+\subsection*{Model: AF7 high gamma mean LR}
+Train F1 = 54.3\%, Test F1 = 45.5\%, Precision = 44.3\%, Recall = 58.1\%.
+\newline
+\textbf{Significance vs Coin Flip:} p < 0.05
+\newline
+\textbf{Diagnosis:} Mild overfit. The model demonstrates genuine predictive power with expected minor performance degradation on unseen data.
+
+\subsection*{Model: All high gamma mean LR}
+Train F1 = 53.9\%, Test F1 = 52.3\%, Precision = 47.9\%, Recall = 65.6\%.
+\newline
+\textbf{Significance vs Coin Flip:} p < 0.05
+\newline
+\textbf{Diagnosis:} Genuine predictive power. Healthy generalization with statistically identical train and test performance.

@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import seaborn as sns
 import config
+import viz_style
 
 PALETTE = sns.color_palette("pastel")
 
@@ -157,13 +158,14 @@ def run(run_dir, params):
 
     if all_intervals:
         ax.hist(all_intervals, bins=60, color=PALETTE[2], edgecolor='white', alpha=0.8)
-        ax.axvline(2 * half_window_s, color='red', linestyle='--', linewidth=1.5,
-                   label=f'{2*half_window_s}s merge threshold\n'
+        merge_thresh_s = 2 * burst_thresh
+        ax.axvline(merge_thresh_s, color='red', linestyle='--', linewidth=1.5,
+                   label=f'{merge_thresh_s}s merge threshold\n'
                          f'(A-presses closer → merged SKIP region)')
-        n_merged = sum(1 for i in all_intervals if i < 2 * half_window_s)
+        n_merged = sum(1 for i in all_intervals if i < merge_thresh_s)
         ylim = ax.get_ylim()
         ax.fill_betweenx([0, ylim[1] if ylim[1] > 0 else 10],
-                         0, 2 * half_window_s, alpha=0.1, color='red')
+                         0, merge_thresh_s, alpha=0.1, color='red')
         ax.set_xlabel('Inter-A-press Interval (s)')
         ax.set_ylabel('Count')
         ax.set_title(f'Inter-A-press Intervals ({n_merged} below merge threshold)')
@@ -270,18 +272,24 @@ def run(run_dir, params):
 
     # Panel 3
     if all_intervals:
-        fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+        # Wider so the title fits on one line at FONT_2X.
+        fig_ind, ax_ind = plt.subplots(figsize=(13, 7))
         ax_ind.hist(all_intervals, bins=60, color=PALETTE[2], edgecolor='white', alpha=0.8)
-        ax_ind.axvline(2 * half_window_s, color='red', linestyle='--', linewidth=1.5,
-                   label=f'{2*half_window_s}s merge threshold\n'
+        merge_thresh_s = 2 * burst_thresh
+        ax_ind.axvline(merge_thresh_s, color='red', linestyle='--', linewidth=1.5,
+                   label=f'{merge_thresh_s}s merge threshold\n'
                          f'(A-presses closer → merged SKIP region)')
         ylim = ax_ind.get_ylim()
         ax_ind.fill_betweenx([0, ylim[1] if ylim[1] > 0 else 10],
-                         0, 2 * half_window_s, alpha=0.1, color='red')
-        ax_ind.set_xlabel('Inter-A-press Interval (s)')
-        ax_ind.set_ylabel('Count')
-        ax_ind.set_title(f'Inter-A-press Intervals ({n_merged} below merge threshold)')
-        ax_ind.legend(fontsize=7)
+                         0, merge_thresh_s, alpha=0.1, color='red')
+        # Right-hand side is empty (long tail), so the legend goes there.
+        ax_ind.legend(loc='upper right')
+        viz_style.style_axes(
+            ax_ind, viz_style.FONT_2X,
+            title=f'Inter-A-press Intervals ({n_merged} below merge threshold)',
+            xlabel='Inter-A-press Interval (s)',
+            ylabel='Count',
+        )
         plt.tight_layout()
         plt.savefig(viz03_dir / "viz03.3.png", dpi=200)
         plt.close()
@@ -337,26 +345,49 @@ def run(run_dir, params):
         
         if not df_groups.empty:
             # viz03.3.2.png - Count plot per participant
-            fig_ind, ax_ind = plt.subplots(figsize=(14, 6))
-            sns.countplot(data=df_groups, x='pid', hue='group_size', ax=ax_ind, palette="pastel")
-            ax_ind.set_xlabel('Participant')
-            ax_ind.set_ylabel('Count of Burst Groups')
-            ax_ind.set_title(f'Distribution of Burst Group Sizes per Participant (±{hw}s)')
-            ax_ind.set_xticklabels(ax_ind.get_xticklabels(), rotation=90, fontsize=8)
+            # Only group sizes up to MAX_GROUP_SIZE are drawn: the long tail
+            # (7..23) is so sparse that including it squeezes every bar to a
+            # sliver. Doubled height stretches the count axis for readability.
+            MAX_GROUP_SIZE = 6
+            df_capped = df_groups[df_groups['group_size'] <= MAX_GROUP_SIZE]
+            n_sizes = df_capped['group_size'].nunique()
+
+            fig_ind, ax_ind = plt.subplots(figsize=(18, 16))
+            sns.countplot(data=df_capped, x='pid', hue='group_size', ax=ax_ind, palette="pastel")
+            ax_ind.set_xticklabels(ax_ind.get_xticklabels(), rotation=90)
             ax_ind.yaxis.set_major_locator(MaxNLocator(integer=True))
-            plt.tight_layout()
-            plt.savefig(viz03_dir / f"viz03.3.2_{int(hw)}s.png", dpi=200)
+            # Legend below the x-axis label, laid out horizontally across the plot.
+            legend = ax_ind.legend(
+                title=f'Burst Group Size (consecutive swipes per block; '
+                      f'sizes above {MAX_GROUP_SIZE} omitted)',
+                loc='upper center', bbox_to_anchor=(0.5, -0.22),
+                ncol=max(n_sizes, 1), frameon=False)
+            viz_style.style_axes(
+                ax_ind, viz_style.FONT_3X,
+                title=f'Distribution of Burst Group Sizes per Participant (±{hw}s)',
+                xlabel='Participant',
+                ylabel='Count of Burst Groups',
+            )
+            viz_style.style_legend(legend, viz_style.FONT_3X)
+            plt.savefig(viz03_dir / f"viz03.3.2_{int(hw)}s.png", dpi=200, bbox_inches='tight')
             plt.close()
             
             # viz03.3.3.png - Count plot all participants
-            fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+            fig_ind, ax_ind = plt.subplots(figsize=(10, 6))
             sns.countplot(x=all_group_sizes, ax=ax_ind, palette="pastel")
-            ax_ind.set_xlabel('Burst Group Size (consecutive swipes)')
-            ax_ind.set_ylabel('Total Count')
-            ax_ind.set_title(f'Distribution of Burst Group Sizes Across All Participants (±{hw}s)')
+            # Half-size value labels so they do not collide, and 20% extra
+            # headroom so the tallest bar's label is not clipped by the axes.
             for container in ax_ind.containers:
-                ax_ind.bar_label(container)
+                ax_ind.bar_label(container, fontsize=viz_style.FONT_2X / 2)
+            ax_ind.set_ylim(0, max(ax_ind.get_ylim()[1], max(
+                [all_group_sizes.count(v) for v in set(all_group_sizes)]) * 1.20))
             ax_ind.yaxis.set_major_locator(MaxNLocator(integer=True))
+            viz_style.style_axes(
+                ax_ind, viz_style.FONT_2X,
+                title=f'Distribution of Burst Group Sizes Across All Participants (±{hw}s)',
+                xlabel='Burst Group Size (consecutive swipes)',
+                ylabel='Total Count',
+            )
             plt.tight_layout()
             plt.savefig(viz03_dir / f"viz03.3.3_{int(hw)}s.png", dpi=200)
             plt.close()

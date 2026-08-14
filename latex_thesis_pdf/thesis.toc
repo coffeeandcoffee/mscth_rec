@@ -8,72 +8,81 @@
 \contentsline {section}{\numberline {1.5}Thesis Structure}{7}{section.1.5}%
 \contentsline {chapter}{\numberline {2}Literature and State of the Art}{8}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Adjacent studies}{8}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Libraries}{8}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Engagement and Attention in short-form video platforms}{8}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Sampling Boundaries in EEG and physiological-signal classification}{10}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Parameter Choice in EEG-classification}{10}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Sampling Boundaries in EEG and Physiological-Signal Classification}{12}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Sensitivity to Parameter Choice in EEG-based classification pipelines}{13}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Default Labeling Parameter Selection}{14}{section.2.8}%
-\contentsline {section}{\numberline {2.9}Class Separation Metric}{15}{section.2.9}%
-\contentsline {section}{\numberline {2.10}Peak Frequency as a Time-Domain Frequency Estimator}{16}{section.2.10}%
-\contentsline {section}{\numberline {2.11}EMG Artifacts in EEG}{17}{section.2.11}%
-\contentsline {section}{\numberline {2.12}Delta-Band Function in Awake Cognition}{18}{section.2.12}%
-\contentsline {subsection}{\numberline {2.12.1}Notch Filtering and the High-Gamma Band}{19}{subsection.2.12.1}%
-\contentsline {subsection}{\numberline {2.12.2}Pre-Motor Window and the Limits of the BP Literature}{20}{subsection.2.12.2}%
-\contentsline {chapter}{\numberline {3}Materials and Methods}{22}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Participants}{22}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Data Acquisition}{23}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Experimental Protocol}{26}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Labeling Strategy}{29}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Operational Definition of Labeling Parameters}{29}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Operational Definition of STAY and SKIP}{30}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Baseline Exclusion}{31}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Parameter Sensitivity Analysis}{32}{subsection.3.4.4}%
-\contentsline {subsection}{\numberline {3.4.5}Class Separation Metric}{34}{subsection.3.4.5}%
-\contentsline {section}{\numberline {3.5}Universal Recording Pipeline}{35}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Universal Pre-Processing Pipeline}{37}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Data Synchronization and Interpolation}{37}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Baseline Extraction and Normalization}{39}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3}Windowing and Class Labeling}{40}{subsection.3.6.3}%
-\contentsline {subsection}{\numberline {3.6.4}Artifact Analysis}{41}{subsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Analysis}{42}{subsection.3.6.5}%
-\contentsline {section}{\numberline {3.7}Feature Engineering}{44}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Band Power and Statistical Moments}{44}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}Engagement Index Calculation}{45}{subsection.3.7.2}%
-\contentsline {subsection}{\numberline {3.7.3}Hjorth Parameters}{47}{subsection.3.7.3}%
-\contentsline {subsubsection}{Activity}{48}{section*.4}%
-\contentsline {subsubsection}{Mobility}{48}{section*.5}%
-\contentsline {subsubsection}{Complexity}{48}{section*.6}%
-\contentsline {subsection}{\numberline {3.7.4}Peak and Macro Frequency Extraction}{49}{subsection.3.7.4}%
-\contentsline {subsubsection}{Peak Frequency}{49}{section*.7}%
-\contentsline {subsubsection}{Macro Frequency}{49}{section*.8}%
-\contentsline {subsection}{\numberline {3.7.5}Raw Broadband Features}{50}{subsection.3.7.5}%
-\contentsline {subsection}{\numberline {3.7.6}Resulting Feature Space}{50}{subsection.3.7.6}%
-\contentsline {section}{\numberline {3.8}Result Synthesis Pipeline}{51}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}Temporal Cross-Validation and Data Balancing}{51}{subsection.3.8.1}%
-\contentsline {subsection}{\numberline {3.8.2}Feature Separation Analysis}{53}{subsection.3.8.2}%
-\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{54}{subsection.3.8.3}%
-\contentsline {subsection}{\numberline {3.8.4}Metrics and Significance Testing}{55}{subsection.3.8.4}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{58}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Key Findings from the Experimental Paradigm}{59}{section.4.1}%
-\contentsline {section}{\numberline {4.2}The Reusable Methodological Pipeline}{60}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Behavioral Swipe-Burst Phenomenon}{61}{section.4.3}%
-\contentsline {section}{\numberline {4.4}The Engagement Index's Swipe-Prediction Performance}{63}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Feature Importance and Neurophysiological Correlates}{63}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Engagement Index Model Performance and Benchmark Comparison}{72}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Alternative Index Exploration}{76}{subsection.4.4.3}%
-\contentsline {subsubsection}{Intra-Subject (Per-Participant Level)}{76}{section*.9}%
-\contentsline {subsubsection}{Inter-Subject (Cross-Participant Level)}{79}{section*.10}%
-\contentsline {section}{\numberline {4.5}Discussion}{82}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Neuroscience}{83}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Psychology}{85}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Behaviour}{86}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}Application}{87}{subsection.4.5.4}%
-\contentsline {subsubsection}{Recommendations for Policy Makers}{88}{section*.11}%
-\contentsline {subsubsection}{Recommendations for Digital Global Public Health Research}{89}{section*.12}%
-\contentsline {subsubsection}{Recommendations for Health Message Design}{90}{section*.13}%
-\contentsline {subsubsection}{Societal Scope: An Explicitly Speculative Outlook}{91}{section*.14}%
-\contentsline {chapter}{\numberline {5}Conclusion and Future Research}{93}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusion}{93}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Future Research}{95}{section.5.2}%
+\contentsline {section}{\numberline {2.2}Libraries}{10}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Engagement and Attention in short-form video platforms}{10}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Sampling Boundaries in EEG and physiological-signal classification}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Parameter Choice in EEG-classification}{12}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Sampling Boundaries in EEG and Physiological-Signal Classification}{14}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Sensitivity to Parameter Choice in EEG-based classification pipelines}{15}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Default Labeling Parameter Selection}{16}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Class Separation Metric}{17}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Peak Frequency as a Time-Domain Frequency Estimator}{18}{section.2.10}%
+\contentsline {section}{\numberline {2.11}EMG Artifacts in EEG}{19}{section.2.11}%
+\contentsline {section}{\numberline {2.12}Delta-Band Function in Awake Cognition}{20}{section.2.12}%
+\contentsline {subsection}{\numberline {2.12.1}Notch Filtering and the High-Gamma Band}{21}{subsection.2.12.1}%
+\contentsline {subsection}{\numberline {2.12.2}Pre-Motor Window and the Limits of the BP Literature}{22}{subsection.2.12.2}%
+\contentsline {chapter}{\numberline {3}Materials and Methods}{24}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Participants}{24}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Data Acquisition}{25}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Experimental Protocol}{28}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Labeling Strategy}{31}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Operational Definition of Labeling Parameters}{31}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Operational Definition of STAY and SKIP}{32}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Baseline Exclusion}{33}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Parameter Sensitivity Analysis}{34}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Class Separation Metric}{37}{subsection.3.4.5}%
+\contentsline {section}{\numberline {3.5}Universal Recording Pipeline}{38}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Universal Pre-Processing Pipeline}{40}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Data Synchronization and Interpolation}{40}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Baseline Extraction and Normalization}{43}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Windowing and Class Labeling}{43}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Artifact Analysis}{44}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Analysis}{47}{subsection.3.6.5}%
+\contentsline {section}{\numberline {3.7}Feature Engineering}{48}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Band Power and Statistical Moments}{48}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Engagement Index Calculation}{49}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Hjorth Parameters}{50}{subsection.3.7.3}%
+\contentsline {subsubsection}{Activity}{51}{section*.4}%
+\contentsline {subsubsection}{Mobility}{51}{section*.5}%
+\contentsline {subsubsection}{Complexity}{51}{section*.6}%
+\contentsline {subsection}{\numberline {3.7.4}Peak and Macro Frequency Extraction}{52}{subsection.3.7.4}%
+\contentsline {subsubsection}{Peak Frequency}{52}{section*.7}%
+\contentsline {subsubsection}{Macro Frequency}{53}{section*.8}%
+\contentsline {subsection}{\numberline {3.7.5}Raw Broadband Features}{53}{subsection.3.7.5}%
+\contentsline {subsection}{\numberline {3.7.6}Resulting Feature Space}{54}{subsection.3.7.6}%
+\contentsline {section}{\numberline {3.8}Result Synthesis Pipeline}{55}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Temporal Cross-Validation and Data Balancing}{55}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Feature Separation Analysis}{61}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{61}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.4}Metrics and Significance Testing}{62}{subsection.3.8.4}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{65}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Key Findings from the Experimental Paradigm}{67}{section.4.1}%
+\contentsline {section}{\numberline {4.2}The Reusable Methodological Pipeline}{67}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Behavioral Swipe-Burst Phenomenon}{68}{section.4.3}%
+\contentsline {section}{\numberline {4.4}The Engagement Index's Swipe-Prediction Performance}{71}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Feature Importance and Neurophysiological Correlates}{71}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Engagement Index Model Performance and Benchmark Comparison}{80}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Alternative Index Exploration}{84}{subsection.4.4.3}%
+\contentsline {subsubsection}{Intra-Subject (Per-Participant Level)}{85}{section*.9}%
+\contentsline {subsubsection}{Inter-Subject (Cross-Participant Level)}{87}{section*.10}%
+\contentsline {section}{\numberline {4.5}Discussion}{90}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Neuroscience}{91}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Psychology}{93}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Behaviour}{94}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Application}{95}{subsection.4.5.4}%
+\contentsline {subsubsection}{Recommendations for Policy Makers}{96}{section*.11}%
+\contentsline {subsubsection}{Recommendations for Digital Global Public Health Research}{97}{section*.12}%
+\contentsline {subsubsection}{Recommendations for Health Message Design}{98}{section*.13}%
+\contentsline {subsubsection}{Societal Scope: An Explicitly Speculative Outlook}{99}{section*.14}%
+\contentsline {chapter}{\numberline {5}Conclusion and Future Research}{101}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusion}{101}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Future Research}{103}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Plain-Language Summary: Common Questions}{106}{chapter.6}%
+\contentsline {paragraph}{Is short-form video damaging my brain?}{106}{section*.15}%
+\contentsline {paragraph}{If I watch something for a long time, does that mean I was interested in it?}{107}{section*.16}%
+\contentsline {paragraph}{Can a cheap headband read my mind, or tell what I am about to do?}{107}{section*.17}%
+\contentsline {paragraph}{Why is it so hard to stop scrolling once I start?}{107}{section*.18}%
+\contentsline {paragraph}{Should phones be banned in schools, or social media restricted by age?}{108}{section*.19}%
+\contentsline {paragraph}{What should regulators actually require, if not bans?}{108}{section*.20}%
+\contentsline {paragraph}{I make health or education content. How do I hold attention?}{108}{section*.21}%
+\contentsline {paragraph}{So what is the single most useful thing to take away?}{109}{section*.22}%

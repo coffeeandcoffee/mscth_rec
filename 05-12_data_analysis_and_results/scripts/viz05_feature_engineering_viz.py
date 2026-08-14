@@ -12,6 +12,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import seaborn as sns
 
 import config
+import viz_style
 
 PALETTE = sns.color_palette("pastel")
 STAY_COLOR = PALETTE[0]
@@ -349,21 +350,49 @@ def _plot_reality_check(viz_dir, rep_pid, windows_dir, features_dir):
     plt.close()
 
     # --- Individual Panel A2 ---
-    fig_ind, ax_ind = plt.subplots(figsize=(6, 5))
-    ax_ind.bar(['Mean', 'Std', 'Min', 'Max'], [mean_a, std_a, min_a, max_a], color='green', alpha=0.6)
-    ax_ind.set_title("Panel A2: Extracted Statistical Moments\n(Alpha Band)", fontsize=10)
-    ax_ind.set_ylabel("Power")
-    for i, v in enumerate([mean_a, std_a, min_a, max_a]):
-        ax_ind.text(i, v, f"{v:.2f}", ha='center', va='bottom', fontsize=8)
+    # Each quantity is a single scalar, so it is marked with a rule at its value
+    # rather than a bar; a bar would imply an area that carries no meaning.
+    a2_labels = ['Mean', 'Std', 'Min', 'Max']
+    a2_values = [mean_a, std_a, min_a, max_a]
+    fig_ind, ax_ind = plt.subplots(figsize=(9, 6))
+    for i, v in enumerate(a2_values):
+        ax_ind.hlines(v, i - 0.3, i + 0.3, colors='green', linewidth=5)
+        ax_ind.text(i, v, f"{v:.2f}", ha='center', va='bottom',
+                    fontsize=viz_style.FONT_2X)
+    ax_ind.axhline(0, color='gray', linewidth=1, zorder=0)
+    ax_ind.set_xticks(range(len(a2_labels)))
+    ax_ind.set_xticklabels(a2_labels)
+    ax_ind.set_xlim(-0.6, len(a2_labels) - 0.4)
+    ax_ind.margins(y=0.15)
+    viz_style.style_axes(
+        ax_ind, viz_style.FONT_2X,
+        title="Panel A2: Extracted Statistical Moments\n(Alpha Band)",
+        xlabel="Statistical Moment",
+        ylabel="Power",
+    )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz05a.A2.png", dpi=200)
     plt.close()
 
     # --- Individual Panel A3 ---
-    fig_ind, ax_ind = plt.subplots(figsize=(6, 5))
-    ax_ind.bar(['Avg Beta\n(Numerator)', 'Avg Alpha\n(Denom)', 'Avg Theta\n(Denom)'], 
-            [avg_beta, avg_alpha, avg_theta], color=['red', 'green', 'purple'], alpha=0.6)
-    ax_ind.set_title(f"Panel A3: Engagement Index Math\nEI = {avg_beta:.2f} / ({avg_alpha:.2f} + {avg_theta:.2f}) = {ei_val:.3f}", fontsize=10)
+    a3_labels = ['Avg Beta\n(Numerator)', 'Avg Alpha\n(Denom)', 'Avg Theta\n(Denom)']
+    a3_values = [avg_beta, avg_alpha, avg_theta]
+    a3_colors = ['red', 'green', 'purple']
+    fig_ind, ax_ind = plt.subplots(figsize=(9, 6))
+    for i, (v, c) in enumerate(zip(a3_values, a3_colors)):
+        ax_ind.hlines(v, i - 0.3, i + 0.3, colors=c, linewidth=5)
+        ax_ind.text(i, v, f"{v:.2f}", ha='center', va='bottom',
+                    fontsize=viz_style.FONT_2X)
+    ax_ind.axhline(0, color='gray', linewidth=1, zorder=0)
+    ax_ind.set_xticks(range(len(a3_labels)))
+    ax_ind.set_xticklabels(a3_labels)
+    ax_ind.set_xlim(-0.6, len(a3_labels) - 0.4)
+    ax_ind.margins(y=0.15)
+    viz_style.style_axes(
+        ax_ind, viz_style.FONT_2X,
+        title=f"Panel A3: Engagement Index Math\nEI = {avg_beta:.2f} / ({avg_alpha:.2f} + {avg_theta:.2f}) = {ei_val:.3f}",
+        xlabel="Band Powers",
+    )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz05a.A3.png", dpi=200)
     plt.close()

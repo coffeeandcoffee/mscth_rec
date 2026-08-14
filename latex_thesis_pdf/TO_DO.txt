@@ -38,8 +38,18 @@ FINAL TODO:
 1. DONE - Min 65 Quellen, SOTA fertig
 2. DONE - Acknowledgements fertig
 3. DONE - Add conclusions at end, explicitly
-4. graphs   
+4. DONE - graphs   
     a) X and Y for graphs
     b) Size bigger for graphs
     c) engagement index linien statt grüne balken weil man denkt ist intervall
     d) results 4 electrodes not red auf red
+
+
+REVIEW after 26th Aug:
+
+MAMA
+    …und noch Axenbeschriftung in figures 3.15 und 3.18 hinzufügen
+    und Betreff für die E-mail: MSc Thesis Draft und weiteres Vorgehen
+
+LOTHAR / CATRINEL / BERT
+    ...

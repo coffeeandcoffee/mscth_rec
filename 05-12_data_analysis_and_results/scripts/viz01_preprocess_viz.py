@@ -17,6 +17,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 import config
+import viz_style
 
 
 PALETTE = sns.color_palette("pastel", n_colors=7)
@@ -174,12 +175,18 @@ def run(run_dir, params):
     plt.close()
 
     # --- Individual Panel 3 (viz01.3) ---
-    fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+    # Taller to fit one participant label per row at FONT_2X, and wider to keep
+    # the aspect ratio under ~1.2 so the figure still fits the page at \textwidth.
+    fig_ind, ax_ind = plt.subplots(figsize=(10, 12))
     ax_ind.imshow(heatmap, aspect='auto', cmap='YlOrRd', interpolation='nearest')
     ax_ind.set_yticks(range(len(pids)))
-    ax_ind.set_yticklabels([f'P{p}' for p in pids], fontsize=6)
-    ax_ind.set_xlabel('Session Time (normalised)')
-    ax_ind.set_title('Bluetooth Dropout Map')
+    ax_ind.set_yticklabels([f'P{p}' for p in pids])
+    viz_style.style_axes(
+        ax_ind, viz_style.FONT_2X,
+        title='Bluetooth Dropout Map',
+        xlabel='Session Time (% of Session)',
+        ylabel='Participant',
+    )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz01.3.png", dpi=200)
     plt.close()

@@ -7,6 +7,7 @@ import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 import config
+import viz_style
 
 PALETTE = sns.color_palette("pastel")
 
@@ -201,7 +202,10 @@ def run(run_dir, params):
         ref_folds_p1 = sd['splits'].get(ref_seed, [])
         if windows_p1 and ref_folds_p1:
             t_min_p1 = min(w['start_time'] for w in windows_p1)
-            fig_ind, ax_ind = plt.subplots(figsize=(8, 4))
+            # Drawn as a single colour-coded ribbon along the time axis rather
+            # than full-height blocks — this is a timeline, so the vertical
+            # extent carries no information.
+            fig_ind, ax_ind = plt.subplots(figsize=(14, 2.0))
             for k, fold in enumerate(ref_folds_p1):
                 fold_ids = fold['test_ids']
                 if not fold_ids: continue
@@ -210,20 +214,34 @@ def run(run_dir, params):
                 b_start = min(fold_starts)
                 b_end = max(fold_ends)
                 color = PALETTE[k % len(PALETTE)]
-                ax_ind.barh(0, b_end - b_start, left=b_start, height=0.5,
-                        color=color, alpha=0.7, label=f'Fold {k+1}')
-            ax_ind.set_yticks([]); ax_ind.set_xlabel('Time (s)')
-            ax_ind.set_title(f'Temporal Fold Structure — P{rep_pid}'); ax_ind.legend(fontsize=7)
-            plt.tight_layout()
-            plt.savefig(viz04_dir / "viz04.1.png", dpi=200); plt.close()
+                ax_ind.hlines(0, b_start, b_end, colors=[color], linewidth=26)
+                # Fold name inside its own segment instead of a legend — saves
+                # the vertical space a legend would otherwise take.
+                ax_ind.text((b_start + b_end) / 2, 0, f'Fold {k+1}',
+                            ha='center', va='center', fontsize=11,
+                            fontstyle='italic', color='dimgray', zorder=4)
+            ax_ind.set_yticks([])
+            ax_ind.set_ylim(-0.5, 0.5)
+            viz_style.style_axes(
+                ax_ind, viz_style.FONT_2X,
+                title=f'Temporal Fold Structure — P{rep_pid}',
+                xlabel='Time (s)',
+            )
+            plt.savefig(viz04_dir / "viz04.1.png", dpi=200, bbox_inches='tight'); plt.close()
 
     # Panel 2 - After balancing
     if x:
-        fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+        fig_ind, ax_ind = plt.subplots(figsize=(14, 8))
         ax_ind.bar(x, stay_counts, color=PALETTE[0], label='STAY (balanced)', alpha=0.8)
         ax_ind.bar(x, skip_counts, bottom=stay_counts, color=PALETTE[3], label='SKIP (balanced)', alpha=0.8)
-        ax_ind.set_xticks(x); ax_ind.set_xticklabels([f'P{p}' for p in pids_list], rotation=90, fontsize=6)
-        ax_ind.set_ylabel('Windows'); ax_ind.set_title('Balanced Counts'); ax_ind.legend(fontsize=8)
+        ax_ind.set_xticks(x); ax_ind.set_xticklabels([f'P{p}' for p in pids_list], rotation=90)
+        ax_ind.legend()
+        viz_style.style_axes(
+            ax_ind, viz_style.FONT_2X,
+            title='Balanced Counts',
+            xlabel='Participant',
+            ylabel='Windows',
+        )
         plt.tight_layout()
         plt.savefig(viz04_dir / "viz04.2.png", dpi=200)
         plt.savefig(viz04_dir / "viz04.2_after_balancing.png", dpi=200)
@@ -239,11 +257,17 @@ def run(run_dir, params):
             raw_stay.append(sum(1 for w in wins if w['label'] == 1))
             raw_skip.append(sum(1 for w in wins if w['label'] == 0))
             
-        fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+        fig_ind, ax_ind = plt.subplots(figsize=(14, 8))
         ax_ind.bar(x, raw_stay, color=PALETTE[0], label='STAY (raw)', alpha=0.8)
         ax_ind.bar(x, raw_skip, bottom=raw_stay, color=PALETTE[3], label='SKIP (raw)', alpha=0.8)
-        ax_ind.set_xticks(x); ax_ind.set_xticklabels([f'P{p}' for p in pids_list], rotation=90, fontsize=6)
-        ax_ind.set_ylabel('Windows'); ax_ind.set_title('Raw Counts (Before Balancing)'); ax_ind.legend(fontsize=8)
+        ax_ind.set_xticks(x); ax_ind.set_xticklabels([f'P{p}' for p in pids_list], rotation=90)
+        ax_ind.legend()
+        viz_style.style_axes(
+            ax_ind, viz_style.FONT_2X,
+            title='Raw Counts (Before Balancing)',
+            xlabel='Participant',
+            ylabel='Windows',
+        )
         plt.tight_layout()
         plt.savefig(viz04_dir / "viz04.2_before_balancing.png", dpi=200)
         plt.close()
@@ -263,7 +287,9 @@ def run(run_dir, params):
         plt.savefig(viz04_dir / "viz04.3.png", dpi=200); plt.close()
 
     # Panel 4
-    fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+    # Taller/wider to fit one participant label per row at FONT_2X while keeping
+    # the aspect ratio page-friendly at \textwidth.
+    fig_ind, ax_ind = plt.subplots(figsize=(12, 13))
     ax_ind.axvline(0, color='red', linestyle='-', alpha=0.8, linewidth=2, label='Edge of Train')
     ax_ind.axvline(gap_s, color='red', linestyle='--', alpha=0.8, linewidth=2, label=f'Minimum Gap ({gap_s}s)')
     for idx, pid in enumerate(config.INCLUDED_PARTICIPANTS):
@@ -293,15 +319,20 @@ def run(run_dir, params):
             ax_ind.scatter(min_dist, idx + jitter, color=PALETTE[3], s=20)
             ax_ind.plot([0, min_dist], [idx+jitter, idx+jitter], color='gray', alpha=0.3, linewidth=1)
     ax_ind.set_yticks(y_ticks_p4)
-    ax_ind.set_yticklabels(y_labels_p4, fontsize=6)
-    ax_ind.set_xlabel('Temporal Distance (s)')
-    ax_ind.set_title('Temporal Firewall Validation')
-    ax_ind.legend(fontsize=8)
+    ax_ind.set_yticklabels(y_labels_p4)
+    ax_ind.legend()
+    viz_style.style_axes(
+        ax_ind, viz_style.FONT_2X,
+        title='Temporal Firewall Validation',
+        xlabel='Temporal Distance (s)',
+    )
     plt.tight_layout()
     plt.savefig(viz04_dir / "viz04.4.png", dpi=200); plt.close()
 
     # Panel 5
-    fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
+    # Taller/wider to fit one participant label per row at FONT_2X while keeping
+    # the aspect ratio page-friendly at \textwidth.
+    fig_ind, ax_ind = plt.subplots(figsize=(12, 13))
     for idx, pid in enumerate(config.INCLUDED_PARTICIPANTS):
         win_pkl = run_dir / "windows" / "primary" / f"P{pid}.pkl"
         if not win_pkl.exists(): continue
@@ -324,9 +355,12 @@ def run(run_dir, params):
                         ymax=(idx+0.4)/len(config.INCLUDED_PARTICIPANTS), 
                         color='black', linewidth=1)
     ax_ind.set_yticks(y_ticks_p5)
-    ax_ind.set_yticklabels(y_labels_p5, fontsize=6)
-    ax_ind.set_xlabel('Time (s)')
-    ax_ind.set_title('Dynamic Split Allocation (SKIP density driven)')
+    ax_ind.set_yticklabels(y_labels_p5)
+    viz_style.style_axes(
+        ax_ind, viz_style.FONT_2X,
+        title='Dynamic Split Allocation (SKIP density driven)',
+        xlabel='Time (s)',
+    )
     plt.tight_layout()
     plt.savefig(viz04_dir / "viz04.5.png", dpi=200); plt.close()
 

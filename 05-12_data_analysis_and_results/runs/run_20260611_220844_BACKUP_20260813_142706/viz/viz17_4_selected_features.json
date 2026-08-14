@@ -1,0 +1,22 @@
+{
+    "AF7_high_gamma_mean": {
+        "d": 0.16824331879615784,
+        "labels": [
+            "Top Band (high_gamma)",
+            "Top Electrode (AF7)",
+            "Overall Top Feature #2"
+        ]
+    },
+    "AF8_delta_peakfreq": {
+        "d": 0.13990937173366547,
+        "labels": [
+            "Top Statistic (peakfreq)"
+        ]
+    },
+    "TP10_raw_std": {
+        "d": 0.1959162801504135,
+        "labels": [
+            "Overall Top Feature #1"
+        ]
+    }
+}

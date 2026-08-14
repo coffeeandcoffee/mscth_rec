@@ -6,6 +6,7 @@ from pathlib import Path
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
+import viz_style
 
 def run(run_dir, params):
     json_file = run_dir / "features" / "best_features_ranking.json"
@@ -84,36 +85,50 @@ def run(run_dir, params):
         json.dump(selected, f, indent=4)
         
     # --- Visualization ---
-    fig, ax = plt.subplots(figsize=(12, 6))
-    
-    # Sort for plotting (lowest d at bottom)
-    plot_data = sorted([(k, v['d'], " & ".join(v['labels'])) for k,v in selected.items()], key=lambda x: x[1])
+    fig, ax = plt.subplots(figsize=(14, 8))
+
+    # Sort for plotting (lowest d at bottom). Each category label goes on its own
+    # line so the annotation can sit inside the bar instead of running off to the right.
+    plot_data = sorted([(k, v['d'], "\n".join(v['labels'])) for k,v in selected.items()], key=lambda x: x[1])
     y_labels = [p[0].replace('_', ' ') for p in plot_data]
     d_vals = [p[1] for p in plot_data]
     annotations = [p[2] for p in plot_data]
-    
+
     y_pos = np.arange(len(plot_data))
-    bars = ax.barh(y_pos, d_vals, color='#9b59b6', alpha=0.8, edgecolor='black', linewidth=1.5)
-    
+    bars = ax.barh(y_pos, d_vals, color='#9e9e9e', alpha=0.85)
+
     ax.set_yticks(y_pos)
     ax.set_yticklabels(y_labels, fontweight='bold')
-    ax.set_xlabel("|Cohen's d|", fontweight='bold')
-    ax.set_title("Identified Representative Top Features for Logistic Regression", pad=20, fontweight='bold', fontsize=14)
-    
-    # Annotate bars
-    for i, bar in enumerate(bars):
-        width = bar.get_width()
-        label = annotations[i]
-        # Text inside or outside
-        ax.text(width + 0.005, bar.get_y() + bar.get_height()/2, label, 
-                va='center', ha='left', fontsize=11, fontstyle='italic', 
-                bbox=dict(facecolor='white', alpha=0.6, edgecolor='none', boxstyle='round,pad=0.2'))
-        
-    # Expand xlim to fit text
+
+    # Text sits inside the bar, inset from the left edge.
     max_d = max(d_vals)
-    ax.set_xlim(0, max_d * 1.5)
-    
+    ax.set_xlim(0, max_d * 1.05)
+    inset = max_d * 0.02
+    texts = []
+    for i, bar in enumerate(bars):
+        texts.append(ax.text(inset, bar.get_y() + bar.get_height()/2, annotations[i],
+                             va='center', ha='left', fontsize=viz_style.FONT_2X,
+                             fontstyle='italic', color='black'))
+
     ax.grid(True, axis='x', linestyle='--', alpha=0.6)
+    viz_style.style_axes(
+        ax, viz_style.FONT_2X,
+        title="Identified Representative Top Features for Logistic Regression",
+        xlabel="|Cohen's d|",
+    )
+    ax.title.set_fontweight('bold')
+    ax.xaxis.label.set_fontweight('bold')
+
+    # Safety net: if a label is ever long enough to overflow its bar, step its
+    # size down until it fits. With the current feature names this does not trigger.
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    x0_px = ax.transData.transform((0, 0))[0]
+    for text, bar in zip(texts, bars):
+        bar_px = ax.transData.transform((bar.get_width(), 0))[0] - x0_px
+        while (text.get_fontsize() > 8
+               and text.get_window_extent(renderer).width > bar_px * 0.92):
+            text.set_fontsize(text.get_fontsize() - 1)
     
     # Write description to tex file instead of plot
     viz_dir = run_dir / "viz"

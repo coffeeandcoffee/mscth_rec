@@ -1,0 +1,20 @@
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcccc}
+\hline
+Metric & \multicolumn{2}{c}{Coin Flip} & \multicolumn{2}{c}{EI LR} \\
+ & Val & Sig & Val & Sig \\
+\hline
+F1 Train (STAY) & 50.6\% & - & 53.7\% & \textcolor{green}{TRUE} \\
+F1 Test (STAY) & 52.4\% & - & 52.8\% & FALSE \\
+Precision (STAY) & 50.1\% & - & 50.3\% & \textcolor{green}{TRUE} \\
+Recall (STAY) & 55.0\% & - & 55.6\% & FALSE \\
+F1 Train (SKIP) & 49.4\% & - & 49.4\% & FALSE \\
+F1 Test (SKIP) & 47.5\% & - & 47.5\% & FALSE \\
+Precision (SKIP) & 50.1\% & - & 50.3\% & \textcolor{green}{TRUE} \\
+Recall (SKIP) & 45.2\% & - & 45.0\% & FALSE \\
+\hline
+\end{tabular}
+\caption{Step 1: EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha=0.05$, N=25).}
+\label{tab:metrics_intra_1}
+\end{table}
