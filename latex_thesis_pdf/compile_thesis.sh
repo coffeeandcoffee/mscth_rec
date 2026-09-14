@@ -15,7 +15,7 @@ def run_command(cmd):
     if result.returncode != 0:
         print(f"Command failed with exit code {result.returncode}")
         # bibtex often returns non-zero even with formatting issues, but pdflatex failure is more severe.
-        if cmd[0] != 'bibtex':
+        if cmd[0] not in ('bibtex', 'biber'):
             print("--- Output ---")
             print(result.stdout)
             print("--- Error ---")
@@ -35,8 +35,8 @@ if __name__ == "__main__":
     # 1. First pdflatex run to generate .aux
     run_command(["pdflatex", "-interaction=nonstopmode", tex_file])
     
-    # 2. bibtex run to process bibliography
-    run_command(["bibtex", tex_file.replace(".tex", "")])
+    # 2. biber run to process bibliography (biblatex backend, not bibtex)
+    run_command(["biber", tex_file.replace(".tex", "")])
     
     # 3. Second pdflatex run to include bibliography and update references
     run_command(["pdflatex", "-interaction=nonstopmode", tex_file])

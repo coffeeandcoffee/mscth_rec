@@ -165,11 +165,14 @@ def run(run_dir, params):
     # --- Individual Panel 1 (viz01.1) ---
     fig_ind, ax_ind = plt.subplots(figsize=(8, 6))
     ax_ind.hist(fs_values, bins=20, color=PALETTE[0], edgecolor='white', alpha=0.8)
-    ax_ind.axvline(256, color='red', linestyle='--', linewidth=1, label='256 Hz nominal')
-    ax_ind.set_xlabel('Effective Sampling Rate (Hz)')
-    ax_ind.set_ylabel('Count')
-    ax_ind.set_title('Sampling Rate Distribution')
+    ax_ind.axvline(256, color='red', linestyle='--', linewidth=1.5, label='256 Hz nominal')
     ax_ind.legend()
+    viz_style.style_axes(
+        ax_ind, viz_style.FONT_2X,
+        title='Sampling Rate Distribution',
+        xlabel='Effective Sampling Rate (Hz)',
+        ylabel='Count',
+    )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz01.1.png", dpi=200)
     plt.close()
@@ -185,7 +188,7 @@ def run(run_dir, params):
         ax_ind, viz_style.FONT_2X,
         title='Bluetooth Dropout Map',
         xlabel='Session Time (% of Session)',
-        ylabel='Participant',
+        ylabel='Participant ID',
     )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz01.3.png", dpi=200)

@@ -13,6 +13,7 @@ from pathlib import Path
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from matplotlib.offsetbox import AnchoredOffsetbox, HPacker, TextArea
 import seaborn as sns
 import config
 import viz_style
@@ -365,7 +366,7 @@ def run(run_dir, params):
             viz_style.style_axes(
                 ax_ind, viz_style.FONT_3X,
                 title=f'Distribution of Burst Group Sizes per Participant (±{hw}s)',
-                xlabel='Participant',
+                xlabel='Participant ID',
                 ylabel='Count of Burst Groups',
             )
             viz_style.style_legend(legend, viz_style.FONT_3X)
@@ -382,14 +383,53 @@ def run(run_dir, params):
             ax_ind.set_ylim(0, max(ax_ind.get_ylim()[1], max(
                 [all_group_sizes.count(v) for v in set(all_group_sizes)]) * 1.20))
             ax_ind.yaxis.set_major_locator(MaxNLocator(integer=True))
+            # The ±3s and ±5s panels are identical apart from the burst window,
+            # so that parameter gets a title line of its own with the value in
+            # red. Matplotlib cannot colour part of a title string, so the line
+            # is assembled from separate text boxes anchored above the axes and
+            # the title is padded to leave room for it.
+            ax_ind.set_title(
+                'Distribution of Burst Group Sizes Across All Participants',
+                pad=viz_style.FONT_2X * 1.8)
             viz_style.style_axes(
                 ax_ind, viz_style.FONT_2X,
-                title=f'Distribution of Burst Group Sizes Across All Participants (±{hw}s)',
                 xlabel='Burst Group Size (consecutive swipes)',
                 ylabel='Total Count',
             )
+            window_note = HPacker(
+                children=[
+                    TextArea('(Burst Window Definition: ',
+                             textprops=dict(size=viz_style.FONT_2X, color='black')),
+                    TextArea(f'±{hw}s',
+                             textprops=dict(size=viz_style.FONT_2X, color='red')),
+                    TextArea(')',
+                             textprops=dict(size=viz_style.FONT_2X, color='black')),
+                ],
+                pad=0, sep=0, align='baseline')
+            ax_ind.add_artist(AnchoredOffsetbox(
+                loc='lower center', child=window_note, pad=0, borderpad=0.35,
+                frameon=False, bbox_to_anchor=(0.5, 1.0),
+                bbox_transform=ax_ind.transAxes))
             plt.tight_layout()
-            plt.savefig(viz03_dir / f"viz03.3.3_{int(hw)}s.png", dpi=200)
+            # Once the tail is long enough (the ±5s panel reaches 27 categories)
+            # the two-digit labels run into each other at FONT_2X. Rather than
+            # shrinking or rotating them, every second label is dropped onto a
+            # row of its own — but only if the labels actually touch, so the
+            # shorter ±3s panel keeps its single straight row.
+            fig_ind.canvas.draw()
+            renderer = fig_ind.canvas.get_renderer()
+            boxes = [t.get_window_extent(renderer)
+                     for t in ax_ind.get_xticklabels()]
+            min_gap_px = 2.0
+            if any(boxes[i].x1 + min_gap_px > boxes[i + 1].x0
+                   for i in range(len(boxes) - 1)):
+                for tick in ax_ind.xaxis.get_major_ticks()[1::2]:
+                    tick.set_pad(tick.get_pad() + viz_style.FONT_2X)
+                plt.tight_layout()
+            # bbox_inches: the title is wider than the 10in figure at FONT_2X,
+            # so without this its closing bracket is cropped off.
+            plt.savefig(viz03_dir / f"viz03.3.3_{int(hw)}s.png", dpi=200,
+                        bbox_inches='tight')
             plt.close()
 
             # Calculate stats

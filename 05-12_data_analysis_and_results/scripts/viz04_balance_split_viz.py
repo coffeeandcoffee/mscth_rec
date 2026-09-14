@@ -214,12 +214,13 @@ def run(run_dir, params):
                 b_start = min(fold_starts)
                 b_end = max(fold_ends)
                 color = PALETTE[k % len(PALETTE)]
-                ax_ind.hlines(0, b_start, b_end, colors=[color], linewidth=26)
+                ax_ind.hlines(0, b_start, b_end, colors=[color], linewidth=40)
                 # Fold name inside its own segment instead of a legend — saves
                 # the vertical space a legend would otherwise take.
-                ax_ind.text((b_start + b_end) / 2, 0, f'Fold {k+1}',
-                            ha='center', va='center', fontsize=11,
-                            fontstyle='italic', color='dimgray', zorder=4)
+                ax_ind.text((b_start + b_end) / 2, 0, f'FOLD {k+1}',
+                            ha='center', va='center', fontsize=22,
+                            fontweight='bold', fontstyle='italic',
+                            color='dimgray', zorder=4)
             ax_ind.set_yticks([])
             ax_ind.set_ylim(-0.5, 0.5)
             viz_style.style_axes(
@@ -239,7 +240,7 @@ def run(run_dir, params):
         viz_style.style_axes(
             ax_ind, viz_style.FONT_2X,
             title='Balanced Counts',
-            xlabel='Participant',
+            xlabel='Participant ID',
             ylabel='Windows',
         )
         plt.tight_layout()
@@ -265,7 +266,7 @@ def run(run_dir, params):
         viz_style.style_axes(
             ax_ind, viz_style.FONT_2X,
             title='Raw Counts (Before Balancing)',
-            xlabel='Participant',
+            xlabel='Participant ID',
             ylabel='Windows',
         )
         plt.tight_layout()
@@ -292,7 +293,9 @@ def run(run_dir, params):
     fig_ind, ax_ind = plt.subplots(figsize=(12, 13))
     ax_ind.axvline(0, color='red', linestyle='-', alpha=0.8, linewidth=2, label='Edge of Train')
     ax_ind.axvline(gap_s, color='red', linestyle='--', alpha=0.8, linewidth=2, label=f'Minimum Gap ({gap_s}s)')
-    for idx, pid in enumerate(config.INCLUDED_PARTICIPANTS):
+    pids_top_down = list(reversed(config.INCLUDED_PARTICIPANTS))
+    y_ticks_ind, y_labels_ind = [], []
+    for idx, pid in enumerate(pids_top_down):
         sp_path = splits_dir / f"P{pid}_splits.pkl"
         win_pkl = run_dir / "windows" / "primary" / f"P{pid}.pkl"
         if not sp_path.exists() or not win_pkl.exists(): continue
@@ -318,13 +321,16 @@ def run(run_dir, params):
             ax_ind.scatter(0, idx + jitter, color='black', s=10)
             ax_ind.scatter(min_dist, idx + jitter, color=PALETTE[3], s=20)
             ax_ind.plot([0, min_dist], [idx+jitter, idx+jitter], color='gray', alpha=0.3, linewidth=1)
-    ax_ind.set_yticks(y_ticks_p4)
-    ax_ind.set_yticklabels(y_labels_p4)
+        y_ticks_ind.append(idx)
+        y_labels_ind.append(f"P{pid}")
+    ax_ind.set_yticks(y_ticks_ind)
+    ax_ind.set_yticklabels(y_labels_ind)
     ax_ind.legend()
     viz_style.style_axes(
         ax_ind, viz_style.FONT_2X,
         title='Temporal Firewall Validation',
         xlabel='Temporal Distance (s)',
+        ylabel='Participant ID',
     )
     plt.tight_layout()
     plt.savefig(viz04_dir / "viz04.4.png", dpi=200); plt.close()
@@ -333,7 +339,8 @@ def run(run_dir, params):
     # Taller/wider to fit one participant label per row at FONT_2X while keeping
     # the aspect ratio page-friendly at \textwidth.
     fig_ind, ax_ind = plt.subplots(figsize=(12, 13))
-    for idx, pid in enumerate(config.INCLUDED_PARTICIPANTS):
+    y_ticks_ind5, y_labels_ind5 = [], []
+    for idx, pid in enumerate(pids_top_down):
         win_pkl = run_dir / "windows" / "primary" / f"P{pid}.pkl"
         if not win_pkl.exists(): continue
         with open(win_pkl, 'rb') as f: wd = pickle.load(f)
@@ -350,16 +357,19 @@ def run(run_dir, params):
         else:
             t_max = max(w['start_time'] for w in windows) - t_min
             splits = [t_max * k / n_folds for k in range(1, n_folds)]
+        # Drawn in data coordinates: axvline's ymin/ymax are axes fractions, which
+        # do not line up with the row they belong to once autoscale adds margins.
         for s in splits:
-            ax_ind.axvline(s, ymin=(idx-0.4)/len(config.INCLUDED_PARTICIPANTS), 
-                        ymax=(idx+0.4)/len(config.INCLUDED_PARTICIPANTS), 
-                        color='black', linewidth=1)
-    ax_ind.set_yticks(y_ticks_p5)
-    ax_ind.set_yticklabels(y_labels_p5)
+            ax_ind.vlines(s, idx - 0.4, idx + 0.4, color='black', linewidth=1)
+        y_ticks_ind5.append(idx)
+        y_labels_ind5.append(f"P{pid}")
+    ax_ind.set_yticks(y_ticks_ind5)
+    ax_ind.set_yticklabels(y_labels_ind5)
     viz_style.style_axes(
         ax_ind, viz_style.FONT_2X,
         title='Dynamic Split Allocation (SKIP density driven)',
         xlabel='Time (s)',
+        ylabel='Participant ID',
     )
     plt.tight_layout()
     plt.savefig(viz04_dir / "viz04.5.png", dpi=200); plt.close()

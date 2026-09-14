@@ -392,6 +392,7 @@ def _plot_reality_check(viz_dir, rep_pid, windows_dir, features_dir):
         ax_ind, viz_style.FONT_2X,
         title=f"Panel A3: Engagement Index Math\nEI = {avg_beta:.2f} / ({avg_alpha:.2f} + {avg_theta:.2f}) = {ei_val:.3f}",
         xlabel="Band Powers",
+        ylabel="Power",
     )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz05a.A3.png", dpi=200)

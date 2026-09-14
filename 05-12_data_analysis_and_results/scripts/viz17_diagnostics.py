@@ -763,7 +763,7 @@ def export_significance_heatmap(scale, models, viz_dir, pids=None):
         ax, viz_style.FONT_2X,
         title=f"Participant-Level Significance Map: EI LR vs Coin Flip ({scale})\n(Green = EI LR Outperforms Random)",
         xlabel='Performance Metric',
-        ylabel='Participant',
+        ylabel='Participant ID',
     )
     ax.title.set_fontweight('bold')
     cbar = ax.collections[0].colorbar

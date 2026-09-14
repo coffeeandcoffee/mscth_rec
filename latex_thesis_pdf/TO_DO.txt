@@ -44,12 +44,47 @@ FINAL TODO:
     c) engagement index linien statt grüne balken weil man denkt ist intervall
     d) results 4 electrodes not red auf red
 
+========================= REVIEW after 26th Aug:
+========
+==DONE==
+========
+OPA:        quotes ordentlch (siehe opa)
+LOTHAR:     1) Figure 3.1: hat die Person eingewilligt, dass Du ein Foto veröffentlichst? Falls nicht – bitte durch eine Skizze ersetzen
+MAMA:       und Betreff für die E-mail: MSc Thesis Draft und weiteres Vorgehen
+MAMA:       und noch Axenbeschriftung in figures 3.15 und 3.18 hinzufügen
+LOTHAR:     Fig 3.11: dort stehen 31 Teilnehmer, im Text sprichst Du aber von 28 Teilnehmern, von denen 3 nichte weiter betrachet wurden?? Was ist korrekt? Es wäre evtl. sinnvoll, wenn Du eine Graphik einbaust, die anzeigt, mit wie vielen Du zu Beginn angefangen hast, und wieviele dann für welche Untersuchungen herangezogen wurden
+LOTHAR:     Fig 3.12: warum ist hier die Reihenfolge der Teilnehmer nicht ebenfalls aufsteigend (von P4-P31) geordnet wir in Fig. 3.11?
+LOTHAR:     Chapter 4: meines Erachtens zeigst Du in Chapter 3 schon Ergebnisse. Daher verstehe ich nicht, warum Du diese nicht im Chapter nennst? Das solltest Du gut erklären – evtl. schätze ich das auch falsch ein, da ich die Arbeit nicht vollständig lesen konnte
+LOTHAR:     Ansonsten liest sich das, was ich gelesen habe, sehr gut und auch die Diskussion ist adäquat kritisch!
 
-REVIEW after 26th Aug:
+========
+==TODO==
+========
 
-MAMA
-    …und noch Axenbeschriftung in figures 3.15 und 3.18 hinzufügen
-    und Betreff für die E-mail: MSc Thesis Draft und weiteres Vorgehen
+CATRINEL
+    Ich finde, die Arbeit liest sich gut.
+    Ich mochte besonders den Empfehlungen Teil und auch den plain langaugae summary.
+    Für die Einführung, denke da fehlen noch Theorie Dinge wie z.B. wie kann man deine Studie in die Health communication Literatur integrieren? Wie bist du genau zu deine Forschungsziele und Forschungsfrage gekommen, was war die Forschungslücke, das ist noch nicht ganz klar dargestellt. Auch wie definiert du eigentlich Engagement in diesen health promotion(public healthcommunication Kontext? So eine Definition sollte auch schon im Einführungsteil auftauchen, weil sonst es gibt viele mögliche Definitionen von Engagement. 
+ 
 
-LOTHAR / CATRINEL / BERT
-    ...
+PAPA
+- ch 1&2 verschlanken
+- precedent & common word analysis
+- read full 5x and make notes -> different passes:
+    1. first occurance definition after abbrivation
+    2. consistency of words
+    3. consistency of sense
+    4. baby langaugae
+    5. rigorous bs cut
+    2. one last run through all PAPA comments
+- instead of experimenter, "experiment lead"
+- F 3.4 3.5 full page format because text too small.
+- format ch 3.5 universal recording pipeline git path exceeds page!
+- Fig 4.4 in 4.4.1 first picture, how big is error there??
+- warum inter were of EI niedriger than intra for SKIP of TP10? (is that covered?)
+- "two independent muse S" in ch 4.5.1 -> warum wurde diese fehlerquelle nichtn ausgesvhlossen? um zu laden, operational.
+- TEST/APPLICABLE: common language nicht so do tnis do that sondern wissenschaftliche dinge in common language
+
+
+
+BERT

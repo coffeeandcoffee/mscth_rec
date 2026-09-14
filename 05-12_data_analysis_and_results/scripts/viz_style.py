@@ -13,6 +13,11 @@ BASE = 10.0
 FONT_2X = 2.0 * BASE   # 20
 FONT_3X = 3.0 * BASE   # 30
 
+# Matplotlib's default axis-label gap is a fixed 4pt, which was set for 10pt
+# text; at FONT_2X/FONT_3X the label ends up touching the tick labels. Scaling
+# the gap with the text keeps the separation looking the same at every size.
+LABEL_PAD_RATIO = 1.0
+
 
 def style_axes(ax, size, title=None, xlabel=None, ylabel=None):
     """Force every text element belonging to `ax` to one consistent point size.
@@ -30,6 +35,8 @@ def style_axes(ax, size, title=None, xlabel=None, ylabel=None):
     ax.title.set_fontsize(size)
     ax.xaxis.label.set_fontsize(size)
     ax.yaxis.label.set_fontsize(size)
+    ax.xaxis.labelpad = LABEL_PAD_RATIO * size
+    ax.yaxis.labelpad = LABEL_PAD_RATIO * size
     ax.tick_params(axis='both', which='major', labelsize=size)
 
     style_legend(ax.get_legend(), size)

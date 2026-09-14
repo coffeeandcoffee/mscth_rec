@@ -137,18 +137,23 @@ def run(run_dir, params):
     # --- Individual Panel 1 (viz02.1) ---
     # Taller to fit one participant label per row at FONT_2X, and wider to keep
     # the aspect ratio under ~1.2 so the figure still fits the page at \textwidth.
+    # Ordered by participant id rather than by artifact rate (as the overview
+    # panel is), descending so that barh's bottom-up drawing puts P4 at the top.
+    df_by_pid = df.sort_values('pid', ascending=False)
+    y_pos_ind = range(len(df_by_pid))
     fig_ind, ax_ind = plt.subplots(figsize=(10, 12))
-    ax_ind.barh(y_pos, df_sorted['blink_rate'], color=PALETTE[0],
+    ax_ind.barh(y_pos_ind, df_by_pid['blink_rate'], color=PALETTE[0],
             label='Blink', height=0.4, align='edge')
-    ax_ind.barh([y + 0.4 for y in y_pos], df_sorted['emg_rate'], color=PALETTE[1],
+    ax_ind.barh([y + 0.4 for y in y_pos_ind], df_by_pid['emg_rate'], color=PALETTE[1],
             label='EMG', height=0.4, align='edge')
-    ax_ind.set_yticks([y + 0.4 for y in y_pos])
-    ax_ind.set_yticklabels([f"P{p_}" for p_ in df_sorted['pid']])
+    ax_ind.set_yticks([y + 0.4 for y in y_pos_ind])
+    ax_ind.set_yticklabels([f"P{p_}" for p_ in df_by_pid['pid']])
     ax_ind.legend()
     viz_style.style_axes(
         ax_ind, viz_style.FONT_2X,
         title='Artifact Rate per Participant',
         xlabel='Artifact Rate',
+        ylabel='Participant ID',
     )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz02.1.png", dpi=200)
