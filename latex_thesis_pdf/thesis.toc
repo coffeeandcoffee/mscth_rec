@@ -82,31 +82,31 @@
 \contentsline {subsubsection}{Recommendations for Digital Global Public Health Research}{105}{section*.17}%
 \contentsline {subsubsection}{Recommendations for Health Message Design}{106}{section*.18}%
 \contentsline {subsubsection}{Societal Scope: An Explicitly Speculative Outlook}{107}{section*.19}%
-\contentsline {chapter}{\numberline {5}A General Definition of Engagement}{109}{chapter.5}%
-\contentsline {section}{\numberline {5.1}What the Results Rule Out}{109}{section.5.1}%
+\contentsline {section}{\numberline {4.6}An Updated Definition of Engagement}{108}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}What the Results Teach Us}{108}{subsection.4.6.1}%
 \contentsline {paragraph}{1. Staying is not engaging.}{109}{section*.20}%
-\contentsline {paragraph}{2. Leaving is an event, and it has a physical signature.}{110}{section*.21}%
-\contentsline {paragraph}{3. The realisation is individual; the construct is not.}{110}{section*.22}%
-\contentsline {paragraph}{4. A measured quantity is undefined without a declared interval.}{110}{section*.23}%
+\contentsline {paragraph}{2. Leaving is an event, and it has a physical signature.}{109}{section*.21}%
+\contentsline {paragraph}{3. The realisation is individual; the construct is not.}{109}{section*.22}%
+\contentsline {paragraph}{4. A measured quantity is undefined without a declared interval.}{109}{section*.23}%
 \contentsline {paragraph}{5. Composites hide more than they summarise.}{110}{section*.24}%
-\contentsline {section}{\numberline {5.2}The Definition}{111}{section.5.2}%
-\contentsline {paragraph}{What it inherits.}{112}{section*.25}%
-\contentsline {paragraph}{What it drops.}{112}{section*.26}%
-\contentsline {paragraph}{What it adds.}{112}{section*.27}%
-\contentsline {section}{\numberline {5.3}What Follows for Measurement}{113}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Bridge: From Physiology to Field Measurement}{113}{section.5.4}%
-\contentsline {section}{\numberline {5.5}How This Definition Could Be Wrong}{114}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Scope of the Claim}{115}{section.5.6}%
-\contentsline {chapter}{\numberline {6}Conclusion and Future Research}{116}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Conclusion}{116}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Future Research}{118}{section.6.2}%
-\contentsline {chapter}{\numberline {7}Plain-Language Summary: Common Questions}{121}{chapter.7}%
-\contentsline {paragraph}{Is short-form video damaging my brain?}{121}{section*.28}%
-\contentsline {paragraph}{If I watch something for a long time, does that mean I was interested in it?}{122}{section*.29}%
-\contentsline {paragraph}{Can a cheap headband read my mind, or tell what I am about to do?}{122}{section*.30}%
-\contentsline {paragraph}{Why is it so hard to stop scrolling once I start?}{122}{section*.31}%
-\contentsline {paragraph}{Should phones be banned in schools, or social media restricted by age?}{123}{section*.32}%
-\contentsline {paragraph}{What should regulators actually require, if not bans?}{123}{section*.33}%
-\contentsline {paragraph}{I make health or education content. How do I hold attention?}{123}{section*.34}%
-\contentsline {paragraph}{So what is the single most useful thing to take away?}{124}{section*.35}%
-\contentsline {chapter}{Bibliography}{125}{chapter*.36}%
+\contentsline {subsection}{\numberline {4.6.2}The Proposed Definition}{110}{subsection.4.6.2}%
+\contentsline {paragraph}{What it inherits.}{111}{section*.25}%
+\contentsline {paragraph}{What it drops.}{111}{section*.26}%
+\contentsline {paragraph}{What it adds.}{111}{section*.27}%
+\contentsline {subsection}{\numberline {4.6.3}Implications for Measurement}{112}{subsection.4.6.3}%
+\contentsline {subsection}{\numberline {4.6.4}The Importance of Field Measurement}{112}{subsection.4.6.4}%
+\contentsline {subsection}{\numberline {4.6.5}Limits of the Proposed Definition}{113}{subsection.4.6.5}%
+\contentsline {subsection}{\numberline {4.6.6}Scope of the Proposed Definition}{114}{subsection.4.6.6}%
+\contentsline {chapter}{\numberline {5}Conclusion and Future Research}{115}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusion}{115}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Future Research}{117}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Plain-Language Summary: Common Questions}{120}{chapter.6}%
+\contentsline {paragraph}{Is short-form video damaging my brain?}{120}{section*.28}%
+\contentsline {paragraph}{If I watch something for a long time, does that mean I was interested in it?}{121}{section*.29}%
+\contentsline {paragraph}{Can a cheap headband read my mind, or tell what I am about to do?}{121}{section*.30}%
+\contentsline {paragraph}{Why is it so hard to stop scrolling once I start?}{121}{section*.31}%
+\contentsline {paragraph}{Should phones be banned in schools, or social media restricted by age?}{122}{section*.32}%
+\contentsline {paragraph}{What should regulators actually require, if not bans?}{122}{section*.33}%
+\contentsline {paragraph}{I make health or education content. How do I hold attention?}{122}{section*.34}%
+\contentsline {paragraph}{So what is the single most useful thing to take away?}{123}{section*.35}%
+\contentsline {chapter}{Bibliography}{124}{chapter*.36}%

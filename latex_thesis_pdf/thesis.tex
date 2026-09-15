@@ -222,7 +222,7 @@ This ambiguity motivates a different empirical question, one this thesis takes a
 
 In the health-communication case that motivates this work, the content on screen is a health message, and the swipe is the moment that message stops being received. Three properties of this definition matter for what follows. It is \emph{effortful and voluntary}, which excludes the passive, dissociative viewing that produces long watch times without recall \cite{baughan_i_2022, knierim_flow_2026}. It is defined \emph{against an alternative} --- the next video, always one thumb movement away --- so that holding attention is a real cost rather than the absence of an exit. And it \emph{ends at an observable event}, the swipe, rather than trailing off into a low score, which is what makes it measurable in this paradigm at all: each swipe is a time-stamped moment at which engagement demonstrably stopped.
 
-This definition is deliberately narrow. It names a screen and a swipe, and so it holds only where both exist. Whether anything survives when those are removed --- whether the same construct can be stated for a learner, a patient using a digital intervention, or a colleague in distributed work --- is taken up in Chapter~\ref{chap:engagement}, once there are results to constrain the answer. Throughout this thesis, \textbf{engagement} is the primary construct label; \emph{attention}, \emph{absorption}, \emph{watch time}, and the \texttt{STAY}/\texttt{SKIP} contrast introduced in Chapter~\ref{chap:methods} name indicators or operationalisations of it, never the construct itself.
+This definition is deliberately narrow. It names a screen and a swipe, and so it holds only where both exist. Whether anything survives when those are removed --- whether the same construct can be stated for a learner, a patient using a digital intervention, or a colleague in distributed work --- is taken up in Section~\ref{sec:engagement_updated}, once there are results to constrain the answer. Throughout this thesis, \textbf{engagement} is the primary construct label; \emph{attention}, \emph{absorption}, \emph{watch time}, and the \texttt{STAY}/\texttt{SKIP} contrast introduced in Chapter~\ref{chap:methods} name indicators or operationalisations of it, never the construct itself.
 
 \section{Engagement in Health Communication}
 \label{sec:intro_health_communication}
@@ -270,7 +270,7 @@ From the resulting labeled dataset, a broad feature space of 236 univariate EEG 
 
 \section{Contributions}
 
-This thesis makes six principal contributions, the first five developed in detail in Chapter~\ref{chap:results} and the sixth in Chapter~\ref{chap:engagement}:
+This thesis makes six principal contributions, each developed in detail in Chapter~\ref{chap:results}:
 
 \begin{enumerate}
     \item A fully naturalistic, ecologically valid EEG experiment synchronizing consumer-grade EEG with free TikTok browsing behavior in $n=25$ participants, together with a reproducible experimental protocol (Section~\ref{sec:results_exp_learnings}).
@@ -278,12 +278,12 @@ This thesis makes six principal contributions, the first five developed in detai
     \item A characterization of swipe-burst behavior, showing that skip events cluster into rapid, individually heterogeneous sequences rather than occurring as uniformly spaced discrete decisions (Section~\ref{sec:results_burst_analysis}).
     \item A direct, statistically grounded comparison between the conventional Engagement Index and granular, feature-level EEG descriptors in their ability to separate and predict \texttt{STAY} versus \texttt{SKIP} states, identifying specific features (raw TP10 variability, AF7 high-gamma activity, AF8 delta peak frequency) that outperform the Engagement Index despite the latter's established status as a clinical and educational benchmark (Sections~\ref{sec:results_engagement_index}--\ref{sec:results_model_performance}).
     \item A neuroscientific, psychological, and behavioral interpretation of these results, together with an explicit, appropriately scoped discussion of their implications for public health communication, digital media policy, and health message design, and of the artifact- and hardware-related confounds that limit the strength of any causal claim (Section~\ref{sec:results_interpretation}).
-    \item A general, instrument-independent definition of engagement as a psychological construct, derived from the definitional gaps identified in Section~\ref{sec:engagement_definitions} and constrained by the empirical results above, together with the reporting requirements it imposes on any engagement measurement and an explicitly hypothetical bridge to lower-cost, field-deployable proxy measurement (Chapter~\ref{chap:engagement}).
+    \item An updated, instrument-independent definition of engagement as a psychological construct, derived from the definitional gaps identified in Section~\ref{sec:engagement_definitions} and constrained by the empirical results above, together with the reporting requirements it imposes on any engagement measurement and an explicitly hypothetical extension to lower-cost, field-deployable proxy measurement (Section~\ref{sec:engagement_updated}).
 \end{enumerate}
 
 \section{Thesis Structure}
 
-The remainder of this thesis is organized as follows. Chapter~2 (Literature and State of the Art) situates the present work within the literature on attention and engagement in short-form video, sampling-boundary handling and parameter sensitivity in EEG classification, class-separation metrics, time-domain frequency estimation, and EMG and line-noise contamination in consumer EEG. Chapter~3 (Materials and Methods) details the participant sample, data acquisition hardware and protocol, labeling strategy and its literature grounding, preprocessing pipeline, feature engineering, and the statistical framework used for model evaluation. Chapter~4 (Results and Discussion) reports the five contributions summarized above and closes with a discussion of their neuroscientific, psychological, behavioral, and applied implications, together with explicitly flagged limitations. Chapter~5 (A General Definition of Engagement) steps outside the paradigm and states, as a contribution of basic research, a general definition of the engagement construct that the preceding results constrain, the measurement requirements following from it, and the conditions under which it would be falsified. The thesis concludes with a set of concrete directions for future research, spanning validation and replication, mechanistic artifact clarification, theoretical development of the engagement construct, methodological expansion, and application to digital public health.
+The remainder of this thesis is organized as follows. Chapter~2 (Literature and State of the Art) situates the present work within the literature on attention and engagement in short-form video, sampling-boundary handling and parameter sensitivity in EEG classification, class-separation metrics, time-domain frequency estimation, and EMG and line-noise contamination in consumer EEG. Chapter~3 (Materials and Methods) details the participant sample, data acquisition hardware and protocol, labeling strategy and its literature grounding, preprocessing pipeline, feature engineering, and the statistical framework used for model evaluation. Chapter~4 (Results and Discussion) reports the five contributions summarized above and closes with a discussion of their neuroscientific, psychological, behavioral, and applied implications, together with explicitly flagged limitations. Its closing section steps outside the paradigm and states, as a contribution of basic research, an updated definition of the engagement construct that the preceding results constrain, the measurement requirements following from it, and the limits of that definition. The thesis concludes with a set of concrete directions for future research, spanning validation and replication, mechanistic artifact clarification, theoretical development of the engagement construct, methodological expansion, and application to digital public health.
 
 
 \iffalse
@@ -432,7 +432,7 @@ Four gaps follow, and together they are why this thesis does not adopt any of th
 
 \paragraph{Gap 4: person-invariance is assumed rather than shown.} A composite index presumes that one functional form holds across individuals. The evidence runs the other way: higher-order association cortex, including prefrontal regions, fails to synchronise across individuals even during passive naturalistic viewing, a dissociation attributed to unique individual variation rather than stereotyped stimulus-driven response \cite{hasson_intersubject_2004}; EEG non-stationarity makes cross-subject classification a recognised difficulty even under laboratory control \cite{apicella_eeg-based_2022}; and inter-subject variability remains an open problem across the EEG engagement literature \cite{bellos_methods_2025}. A definition that names a specific indicator inherits that indicator's failure to generalise, and mistakes a property of the measurement for a property of the construct.
 
-Taken together, these gaps motivate a construct-level definition of engagement that is stated independently of any instrument, and that is nonetheless strong enough to be tested --- which no existing definition currently provides. Two consequences for the present thesis follow. First, on terminology: \textbf{engagement} is used throughout as the primary construct label, and terms such as \emph{attention}, \emph{absorption}, \emph{sustained viewing}, and the \texttt{STAY}/\texttt{SKIP} contrast name indicators or operationalisations of it, never the construct itself. Second, on design: the \texttt{STAY}/\texttt{SKIP} labelling scheme developed in Chapter~\ref{chap:methods} is anchored to an instrument-independent behavioural event --- an individual, time-stamped, voluntary swipe --- precisely so that it does not presuppose any of the definitions above, and it is declared as an operationalisation rather than treated as a definition. Chapter~\ref{chap:engagement} returns to this question once the results are in, and states a general definition of engagement that those results constrain.
+Taken together, these gaps motivate a construct-level definition of engagement that is stated independently of any instrument, and that is nonetheless strong enough to be tested --- which no existing definition currently provides. Two consequences for the present thesis follow. First, on terminology: \textbf{engagement} is used throughout as the primary construct label, and terms such as \emph{attention}, \emph{absorption}, \emph{sustained viewing}, and the \texttt{STAY}/\texttt{SKIP} contrast name indicators or operationalisations of it, never the construct itself. Second, on design: the \texttt{STAY}/\texttt{SKIP} labelling scheme developed in Chapter~\ref{chap:methods} is anchored to an instrument-independent behavioural event --- an individual, time-stamped, voluntary swipe --- precisely so that it does not presuppose any of the definitions above, and it is declared as an operationalisation rather than treated as a definition. Section~\ref{sec:engagement_updated} returns to this question once the results are in, and states an updated definition of engagement that those results constrain.
 
 \section{Engagement and Attention in short-form video platforms}
 \label{sec:engagement_short_form}
@@ -975,7 +975,7 @@ The algorithm employs a two-sided Wilcoxon test with a standard significance thr
 \label{chap:results}
 
 This chapter presents the results of a multi-stage experimental investigation. \\\\
-This thesis delivers \textit{five core scientific contributions}, reported in this chapter, and a sixth, conceptual contribution developed in Chapter~\ref{chap:engagement}:
+This thesis delivers \textit{six core scientific contributions}, all reported in this chapter:
 
 \begin{enumerate}
 \item \textbf{Contribution \#1: Primary EEG Experiment under Naturalistic Conditions}
@@ -1002,7 +1002,7 @@ The results (Section~\ref{sec:results_feature_importance}) offer insights into t
 
 \item \textbf{Contribution \#6: A General Definition of Engagement}
 
-Finally, the results of this chapter are used for a purpose beyond the present paradigm. Chapter~\ref{chap:engagement} treats them as constraints on the engagement construct itself and states a general, instrument-independent definition of engagement, together with the measurement requirements that follow from it and the conditions under which it would be falsified. This contribution is conceptual rather than empirical, and is reported separately for that reason; it does not alter the analyses presented here.
+Finally, the results are used for a purpose beyond the present paradigm. The closing section of this chapter (Section~\ref{sec:engagement_updated}) treats them as constraints on the engagement construct itself and states an updated, instrument-independent definition of engagement, together with the measurement requirements that follow from it and the limits of that definition. This contribution is conceptual rather than empirical; it does not alter the analyses presented here.
 \end{enumerate}
 
 \subsection*{Findings that are reported in the Methods chapter}
@@ -1349,14 +1349,14 @@ The following paragraph is a deliberate change of register: it is a hypothesis-g
 
 Finally, a dual-use note is warranted: any marker that helps health communicators survive the feed helps commercial and political actors equally. The appropriate response is not to withhold such research --- platforms already possess strictly superior behavioral data --- but to conduct it transparently, under ethics oversight (Section~\ref{sec:method_participants}), and to pair it with the auditability recommendations above.
 
-\chapter{A General Definition of Engagement}
-\label{chap:engagement}
+\section{An Updated Definition of Engagement}
+\label{sec:engagement_updated}
 
-Every preceding chapter was about a swipe. This one is not. Chapter~\ref{chap:results} established what the data say about a specific behaviour on a specific platform; this chapter asks what those data, read together with the definitional literature reviewed in Section~\ref{sec:engagement_definitions}, force us to say about \emph{engagement itself} --- as a psychological construct, in any setting where something competes for a person's limited attention.
+Everything reported so far concerned a swipe. This section does not. The preceding sections established what the data say about a specific behaviour on a specific platform; this one asks what those data, read together with the definitional literature reviewed in Section~\ref{sec:engagement_definitions}, force us to say about \emph{engagement itself} --- as a psychological construct, in any setting where something competes for a person's limited attention.
 
 The output is one definition and the measurement requirements that follow from it. It is offered as basic research (\textit{Grundlagenforschung}): a construct claim, deliberately stated without reference to TikTok, EEG, or any particular instrument, so that it can be reused, cited, and attacked outside the paradigm that produced it. It counts as a result of this thesis in the only sense that matters for a definition --- it is constrained by evidence, and it can be shown to be wrong (Section~\ref{sec:engagement_falsification}).
 
-\section{What the Results Rule Out}
+\subsection{What the Results Teach Us}
 \label{sec:engagement_constraints}
 
 Five findings --- four from this thesis, one from the literature it reviews --- constrain what a definition of engagement may say. Each is stated here as an exclusion, because each removes a family of candidate definitions.
@@ -1371,10 +1371,10 @@ Five findings --- four from this thesis, one from the literature it reviews --- 
 
 \paragraph{5. Composites hide more than they summarise.} The Engagement Index collapses three frequency bands into one scalar, and separated the two classes worse than any individual band did (Section~\ref{sec:results_feature_importance}). Aggregating indicators before the construct is settled destroys exactly the information needed to check whether the aggregation was justified. Definition must precede composition, not follow it.
 
-\section{The Definition}
+\subsection{The Proposed Definition}
 \label{sec:engagement_definition}
 
-The definition below is derived from and informed by the results of Chapter~\ref{chap:results}, and it inherits their limits: the effects constraining it are small in absolute terms, come from a single dataset of twenty-five demographically narrow participants, and carry unresolved artifact ambiguity (Section~\ref{sec:results_interpretation}). It is therefore offered as a version~1 --- a definition precise enough to be used and precise enough to be corrected --- rather than as a settled account. It generalises the working definition of Section~\ref{sec:intro_engagement_definition} by removing the two things that made that one domain-bound: the screen, and the swipe.
+The definition below is derived from and informed by the results reported above in this chapter, and it inherits their limits: the effects constraining it are small in absolute terms, come from a single dataset of twenty-five demographically narrow participants, and carry unresolved artifact ambiguity (Section~\ref{sec:results_interpretation}). It is therefore offered as a version~1 --- a definition precise enough to be used and precise enough to be corrected --- rather than as a settled account. It generalises the working definition of Section~\ref{sec:intro_engagement_definition} by removing the two things that made that one domain-bound: the screen, and the swipe.
 
 \begin{center}
 \fbox{%
@@ -1407,7 +1407,7 @@ Each clause does work. Each excludes something.
 
 What the definition deliberately omits is as important as what it contains. It names no indicator, no modality, and no formula (Constraints~3 and~5). It is compatible with an EEG feature, a self-report item, a linguistic marker, or a behavioural trace, and commits to none of them --- which is precisely what makes it portable across the settings where different instruments are the only ones available.
 
-\section{What Follows for Measurement}
+\subsection{Implications for Measurement}
 \label{sec:engagement_measurement}
 
 Three consequences follow directly, and they are the practical content of the definition.
@@ -1418,9 +1418,9 @@ Three consequences follow directly, and they are the practical content of the de
 
 \textbf{Indicators are plural and must be validated against one another.} Because the construct is defined without an indicator, EEG features, self-report, and behavioural or linguistic traces are all candidate indicators of the same thing, and none of them \emph{is} the thing. The work this creates is convergent validation, not the selection of a winner.
 
-Operationally, these collapse into a reporting requirement. A well-formed engagement measurement states four things: the \textbf{object} engaged with, the \textbf{interval} over which engagement is claimed, the \textbf{indicator} used, and the \textbf{exit criterion}, meaning what would have counted as disengagement. A study that cannot state its fourth item has measured occupancy.
+Operationally, these collapse into a reporting requirement. A well-formed engagement measurement states four things: the \textbf{object} engaged with, the \textbf{interval} over which engagement is claimed, the \textbf{indicator} used, and the \textbf{exit criterion}, meaning what would have counted as disengagement. A study that cannot state the fourth of these has measured occupancy rather than engagement.
 
-\section{Bridge: From Physiology to Field Measurement}
+\subsection{The Importance of Field Measurement}
 \label{sec:engagement_bridge}
 
 Physiological measurement of engagement is precise and not deployable. The pipeline used here required a headset, per-participant baseline normalisation, millisecond behavioural synchronisation, a distraction-free room, and within-participant calibration without which performance fell to chance (Section~\ref{sec:results_alternative_index}). None of that survives contact with a classroom, a hospital, a workplace, or a population. The definition above was written so that this is a practical limitation rather than a conceptual one: because the construct is specified without naming an indicator, a cheaper indicator may index the same construct.
@@ -1433,7 +1433,7 @@ On that basis, and as a hypothesis for follow-up research rather than a finding 
 
 This is a conjecture, and the present data cannot test it. This thesis recorded a single twenty-five-minute session of one solitary activity per participant. It contains no repeated self-report, no linguistic data, no second setting, and no downstream outcome against which any proxy could be scored. Demonstrating the bridge would require three things it does not have: a setting in which physiological and proxy measures are collected from the same people at the same time; a disengagement event in that setting as unambiguous as a swipe --- the hard part, since most settings have no thumb; and agreement between proxy and physiological criterion on the \emph{exit} specifically, not merely on the average level. Until the third is shown, a proxy measures the proxy. The value of stating the conjecture precisely is that it names the experiment that would refute it.
 
-\section{How This Definition Could Be Wrong}
+\subsection{Limits of the Proposed Definition}
 \label{sec:engagement_falsification}
 
 Three findings would break it, and each is reachable with existing methods.
@@ -1444,7 +1444,7 @@ If disengagement were shown to have no locatable onset --- to be a smooth declin
 
 If dissociated, non-volitional consumption were shown to produce the same downstream outcomes as effortful attention --- the same recall, the same behaviour change --- then the volitional and effortful clauses would buy nothing, and duration could be rehabilitated as a criterion.
 
-\section{Scope of the Claim}
+\subsection{Scope of the Proposed Definition}
 \label{sec:engagement_scope}
 
 Nothing in the definition is specific to short-form video. TikTok served here as a field site with an unusually convenient property: a clean, frequent, voluntary exit event, a few hundred observable disengagements per person per half-hour, which is what makes the exit clause testable at all. The construct is intended for settings where exits are rarer, slower, and messier --- a learner abandoning a course, a patient dropping out of a digital behaviour-change intervention \cite{perski_conceptualising_2017}, a colleague withdrawing from a shared piece of work --- and where, correspondingly, the field's habit of substituting duration for engagement is hardest to detect and most expensive to get wrong.
@@ -1472,7 +1472,7 @@ What this thesis cannot conclude deserves to be stated as plainly as what it can
 
 What does survive these caveats is a paradigm and an instrument. The experiment demonstrates that ecologically valid short-form video consumption --- a personal feed, no imposed stimulus, no fixation, no trial structure --- can be recorded with millisecond behavioral synchronization on consumer hardware, and analyzed reproducibly end to end with open-source components. That means this kind of question no longer needs an expensive clinical lab: a laptop and a consumer headband are enough. And it gets there without needing any data from the platforms themselves.
 
-One further conclusion is not about TikTok at all, and is stated separately in Chapter~\ref{chap:engagement}: the results above constrain what engagement can be taken to mean as a general construct, and that chapter sets out a definition independent of any instrument, the four things any engagement measurement must therefore report, and an explicitly hypothetical bridge from physiological measurement to the cheaper proxies that field settings would require.
+One further conclusion is not about TikTok at all, and is stated in Section~\ref{sec:engagement_updated}: the results above constrain what engagement can be taken to mean as a general construct, and that chapter sets out a definition independent of any instrument, the four things any engagement measurement must therefore report, and an explicitly hypothetical bridge from physiological measurement to the cheaper proxies that field settings would require.
 
 That last point is why this work matters beyond its effect sizes. Billions of these micro-decisions are made every day, and the systems that shape them are optimized against a proxy --- watch time --- that the literature reviewed here shows to be equally consistent with absorbed attention and with dissociated, unencoded consumption. This thesis provides no license to claim that the neural precursor of a swipe has been decoded. It provides something smaller and more durable: evidence that the moment of leaving has a physiological correlate distinct from the state of staying, that the field's standard engagement metric largely misses it, and that the tools required to study it are now within reach of the public institutions whose messages must survive that same feed. Attention is finite, unevenly distributed, and, for the moment, measured almost exclusively by those with an interest in consuming it. Building an independent, transparent, and falsifiable account of how it is lost is not a neuroscientific curiosity. It is a precondition for anyone else --- educators, clinicians, public health communicators --- to compete on honest terms for the seconds that decide \textit{what a population knows - and acts on.}
 
@@ -1485,7 +1485,7 @@ A second major direction is mechanistic clarification. The present results leave
 % INSERT: Need literature on artifact disentanglement in EEG  
 % INSERT: Need literature on broadband vs cleaned signal validity
 
-A third direction concerns theory development. The Engagement Index appears to capture a limited but real component of sustained engagement, yet it may not capture the behavioral threshold that leads to a swipe. Future studies should therefore distinguish more explicitly between sustained attention, momentary decision pressure, action readiness, and actual behavior. This could be pursued by combining EEG with behavioral timing, self-report, eye tracking, or post-hoc content ratings, and should include testing whether burst membership itself (Section~\ref{sec:results_burst_analysis}) predicts weaker encoding or evaluation, rather than merely describing swipe clustering. In particular, event-aligned designs could help determine whether the relevant neural signature precedes disengagement, coincides with motor preparation, or reflects post-decisional processing. The definition proposed in Chapter~\ref{chap:engagement} is intended as the target of exactly this work: its falsification conditions (Section~\ref{sec:engagement_falsification}) and its proxy-measurement bridge (Section~\ref{sec:engagement_bridge}) are stated as testable hypotheses for follow-up studies rather than as findings of the present one.  
+A third direction concerns theory development. The Engagement Index appears to capture a limited but real component of sustained engagement, yet it may not capture the behavioral threshold that leads to a swipe. Future studies should therefore distinguish more explicitly between sustained attention, momentary decision pressure, action readiness, and actual behavior. This could be pursued by combining EEG with behavioral timing, self-report, eye tracking, or post-hoc content ratings, and should include testing whether burst membership itself (Section~\ref{sec:results_burst_analysis}) predicts weaker encoding or evaluation, rather than merely describing swipe clustering. In particular, event-aligned designs could help determine whether the relevant neural signature precedes disengagement, coincides with motor preparation, or reflects post-decisional processing. The definition proposed in Section~\ref{sec:engagement_updated} is intended as the target of exactly this work: its falsification conditions (Section~\ref{sec:engagement_falsification}) and its proxy-measurement bridge (Section~\ref{sec:engagement_bridge}) are stated as testable hypotheses for follow-up studies rather than as findings of the present one.  
 % INSERT: Need literature on sustained attention vs action readiness  
 % INSERT: Need literature on event-aligned naturalistic EEG
 

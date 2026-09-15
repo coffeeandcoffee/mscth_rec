@@ -1,17 +1,17 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'thesis.blg'
-[56] biber-darwin:342> INFO - === Tue Sep 15, 2026, 13:23:56
-[70] Biber.pm:421> INFO - Reading 'thesis.bcf'
-[156] Biber.pm:1002> INFO - Found 58 citekeys in bib section 0
-[168] Biber.pm:4487> INFO - Processing section 0
-[176] Biber.pm:4678> INFO - Looking for bibtex file 'library.bib' for section 0
-[192] bibtex.pm:1713> INFO - LaTeX decoding ...
-[642] bibtex.pm:1519> INFO - Found BibTeX data source 'library.bib'
-[1020] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1020] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1021] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
-[1021] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[1054] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[1082] bbl.pm:779> INFO - Output to thesis.bbl
-[1082] Biber.pm:132> WARN - ISBN '978-0-470-05997-5 978-0-470-72518-4 978-0-470-72517-7' in entry 'saltelli_global_2008' is invalid - run biber with '--validate_datamodel' for details.
-[1082] Biber.pm:134> INFO - WARNINGS: 1
+[54] biber-darwin:342> INFO - === Tue Sep 15, 2026, 14:00:46
+[67] Biber.pm:421> INFO - Reading 'thesis.bcf'
+[151] Biber.pm:1002> INFO - Found 58 citekeys in bib section 0
+[162] Biber.pm:4487> INFO - Processing section 0
+[169] Biber.pm:4678> INFO - Looking for bibtex file 'library.bib' for section 0
+[184] bibtex.pm:1713> INFO - LaTeX decoding ...
+[636] bibtex.pm:1519> INFO - Found BibTeX data source 'library.bib'
+[1018] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1018] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1018] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1018] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[1052] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[1079] bbl.pm:779> INFO - Output to thesis.bbl
+[1079] Biber.pm:132> WARN - ISBN '978-0-470-05997-5 978-0-470-72518-4 978-0-470-72517-7' in entry 'saltelli_global_2008' is invalid - run biber with '--validate_datamodel' for details.
+[1080] Biber.pm:134> INFO - WARNINGS: 1
