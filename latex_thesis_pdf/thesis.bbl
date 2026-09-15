@@ -438,92 +438,781 @@
       \verb https://pnas.org/doi/full/10.1073/pnas.1905178117
       \endverb
     \endentry
-    \entry{rahman_detection_2025}{article}{}{}
-      \name{author}{5}{}{%
-        {{hash=a29b60ed3cf5d50ccfdda1b5d881f0ea}{%
-           family={Rahman},
-           familyi={R\bibinitperiod},
-           given={Mahmudur},
-           giveni={M\bibinitperiod}}}%
-        {{hash=68b5361f7fdc9de380979a72928d5f51}{%
-           family={Mahi},
-           familyi={M\bibinitperiod},
-           given={Atqiya\bibnamedelima Munawara},
-           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-        {{hash=04de9536ec45824e49006380ce0b7a6d}{%
-           family={Sultana},
+    \entry{yardley_understanding_2016}{article}{}{}
+      \name{author}{9}{}{%
+        {{hash=2b46478fd7e6b62de3bd8588168e6bb2}{%
+           family={Yardley},
+           familyi={Y\bibinitperiod},
+           given={Lucy},
+           giveni={L\bibinitperiod}}}%
+        {{hash=7e6475243e8dad02eaa39a2309450142}{%
+           family={Spring},
            familyi={S\bibinitperiod},
-           given={Sharmin},
-           giveni={S\bibinitperiod}}}%
-        {{hash=34fa182d6dec307cac1fefb2caac2575}{%
-           family={Churpek},
+           given={Bonnie\bibnamedelima J.},
+           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=cbe9fbdf0e8ed1f8181fac7ba00f6579}{%
+           family={Riper},
+           familyi={R\bibinitperiod},
+           given={Heleen},
+           giveni={H\bibinitperiod}}}%
+        {{hash=bb7d8cdb0943b127c8a0c398296d8d62}{%
+           family={Morrison},
+           familyi={M\bibinitperiod},
+           given={Leanne\bibnamedelima G.},
+           giveni={L\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=7d18443c2939e79e90d5ec5a264267c4}{%
+           family={Crane},
            familyi={C\bibinitperiod},
-           given={Matthew\bibnamedelima M},
-           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-        {{hash=386a322a9b2f819d971e96594680358e}{%
-           family={Alam},
-           familyi={A\bibinitperiod},
-           given={Mohammad\bibnamedelimb Arif\bibnamedelima Ul},
-           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
+           given={David\bibnamedelima H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=339e3f781fd926d4cbada07b929f8903}{%
+           family={Curtis},
+           familyi={C\bibinitperiod},
+           given={Kristina},
+           giveni={K\bibinitperiod}}}%
+        {{hash=6fa7ce6138714bc3fdaf37f7acad145f}{%
+           family={Merchant},
+           familyi={M\bibinitperiod},
+           given={Gina\bibnamedelima C.},
+           giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=7eda9cef0f6d933f0682fdf42fe0f410}{%
+           family={Naughton},
+           familyi={N\bibinitperiod},
+           given={Felix},
+           giveni={F\bibinitperiod}}}%
+        {{hash=e5315cff34113375c3adf224b3cd443a}{%
+           family={Blandford},
+           familyi={B\bibinitperiod},
+           given={Ann},
+           giveni={A\bibinitperiod}}}%
       }
-      \strng{namehash}{fae60299a78a4a3d194a94accbd1780b}
-      \strng{fullhash}{b1b2fde4a2680e8295a7959b4d5e5975}
-      \strng{fullhashraw}{b1b2fde4a2680e8295a7959b4d5e5975}
-      \strng{bibnamehash}{b1b2fde4a2680e8295a7959b4d5e5975}
-      \strng{authorbibnamehash}{b1b2fde4a2680e8295a7959b4d5e5975}
-      \strng{authornamehash}{fae60299a78a4a3d194a94accbd1780b}
-      \strng{authorfullhash}{b1b2fde4a2680e8295a7959b4d5e5975}
-      \strng{authorfullhashraw}{b1b2fde4a2680e8295a7959b4d5e5975}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Short-form Video Addiction ({SVA}), a novel digital addiction of the modern world, proliferates among young adults and is not formally diagnosable. {SVA} detection from resulting bio-signals is crucial to prevent its adverse impacts. Existing formal methods involve large and expensive neuro-imaging devices in laboratory setups that are intrusive and not feasible to use in daily life. A possible non-intrusive solution can be using wearable sensors which is challenging due to the resulting noisy and faint signals. To address this problem, we investigated multi-modal wearable sensing technology to detect {SVA} in a non-intrusive fashion. However, fusing multi-modal sensors effectively presented different challenges due to the presence of signal heterogeneity. In this study, we proposed a novel multimodal temporally coherent domain adaptation method to effectively detect {SVA} using Electroencephalogram ({EEG}) and Electrodermal Activity ({EDA}) sensors. We also investigated the nature and properties of {SVA} with the help of different components of {EEG} and {EDA} signals. We evaluated our proposed method for {SVA} detection and fatigue assessment tasks. Experimental evaluation shown the proposed model's superior performance (10\% accuracy) over state-of-art domain adaptation models.}
-      \field{day}{22}
-      \field{journaltitle}{{AMIA} Annual Symposium Proceedings}
-      \field{langid}{english}
-      \field{month}{5}
-      \field{title}{Detection of Short-Form Video Addiction with Wearable Sensors Via Temporally-Coherent Domain Adaptation}
-      \field{volume}{2024}
-      \field{year}{2025}
-      \field{dateera}{ce}
-      \field{pages}{940\bibrangedash 949}
-      \range{pages}{10}
-      \verb{file}
-      \verb PDF:/Users/gregorlederer/Zotero/storage/JSV3GIZR/Rahman et al. - 2025 - Detection of Short-Form Video Addiction with Wearable Sensors Via Temporally-Coherent Domain Adaptat.pdf:application/pdf
-      \endverb
-    \endentry
-    \entry{jdpigeon_muselsl_2026}{online}{}{}
-      \name{author}{1}{}{%
-        {{hash=1fb584ced8121c1907a92744384c1382}{%
-           family={jdpigeon},
-           familyi={j\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {pypi.org}%
-      }
-      \strng{namehash}{1fb584ced8121c1907a92744384c1382}
-      \strng{fullhash}{1fb584ced8121c1907a92744384c1382}
-      \strng{fullhashraw}{1fb584ced8121c1907a92744384c1382}
-      \strng{bibnamehash}{1fb584ced8121c1907a92744384c1382}
-      \strng{authorbibnamehash}{1fb584ced8121c1907a92744384c1382}
-      \strng{authornamehash}{1fb584ced8121c1907a92744384c1382}
-      \strng{authorfullhash}{1fb584ced8121c1907a92744384c1382}
-      \strng{authorfullhashraw}{1fb584ced8121c1907a92744384c1382}
+      \strng{namehash}{27f9d1b8be5dcb7450243a618605060d}
+      \strng{fullhash}{14d2b5c437dc8d669895319cf9a8fafb}
+      \strng{fullhashraw}{14d2b5c437dc8d669895319cf9a8fafb}
+      \strng{bibnamehash}{14d2b5c437dc8d669895319cf9a8fafb}
+      \strng{authorbibnamehash}{14d2b5c437dc8d669895319cf9a8fafb}
+      \strng{authornamehash}{27f9d1b8be5dcb7450243a618605060d}
+      \strng{authorfullhash}{14d2b5c437dc8d669895319cf9a8fafb}
+      \strng{authorfullhashraw}{14d2b5c437dc8d669895319cf9a8fafb}
       \field{sortinit}{8}
       \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{16}
-      \field{month}{7}
-      \field{title}{muselsl 2.5.1}
-      \field{year}{2026}
+      \field{issn}{07493797}
+      \field{journaltitle}{American Journal of Preventive Medicine}
+      \field{langid}{english}
+      \field{month}{11}
+      \field{number}{5}
+      \field{shortjournal}{American Journal of Preventive Medicine}
+      \field{title}{Understanding and Promoting Effective Engagement With Digital Behavior Change Interventions}
+      \field{urlday}{4}
+      \field{urlmonth}{3}
+      \field{urlyear}{2026}
+      \field{volume}{51}
+      \field{year}{2016}
       \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{833\bibrangedash 842}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/j.amepre.2016.06.015
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/7HSE2FF2/Yardley et al. - 2016 - Understanding and Promoting Effective Engagement With Digital Behavior Change Interventions.pdf:application/pdf
+      \endverb
       \verb{urlraw}
-      \verb https://pypi.org/project/muselsl/
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S0749379716302434
       \endverb
       \verb{url}
-      \verb https://pypi.org/project/muselsl/
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S0749379716302434
+      \endverb
+      \keyw{+}
+    \endentry
+    \entry{perski_conceptualising_2017}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=a24c35eb4588d883df2c48edffecd8b0}{%
+           family={Perski},
+           familyi={P\bibinitperiod},
+           given={Olga},
+           giveni={O\bibinitperiod}}}%
+        {{hash=e5315cff34113375c3adf224b3cd443a}{%
+           family={Blandford},
+           familyi={B\bibinitperiod},
+           given={Ann},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9d2787872d7eadcedce1aeb8e7af9eb0}{%
+           family={West},
+           familyi={W\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=64ee05d60f413a4b7b295229bfddd5dc}{%
+           family={Michie},
+           familyi={M\bibinitperiod},
+           given={Susan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{6776c279e1d1d1da5e5eaed01253b6b6}
+      \strng{fullhash}{946d7c7b4c799811562b0571de7c0f80}
+      \strng{fullhashraw}{946d7c7b4c799811562b0571de7c0f80}
+      \strng{bibnamehash}{946d7c7b4c799811562b0571de7c0f80}
+      \strng{authorbibnamehash}{946d7c7b4c799811562b0571de7c0f80}
+      \strng{authornamehash}{6776c279e1d1d1da5e5eaed01253b6b6}
+      \strng{authorfullhash}{946d7c7b4c799811562b0571de7c0f80}
+      \strng{authorfullhashraw}{946d7c7b4c799811562b0571de7c0f80}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{{BEngagement}{\textasciicircum} with digital behaviour change interventions ({DBCIs}) is considered important for their effectiveness. Evaluating engagement is therefore a priority; however, a shared understanding of how to usefully conceptualise engagement is lacking. This review aimed to synthesise literature on engagement to identify key conceptualisations and to develop an integrative conceptual framework involving potential direct and indirect influences on engagement and relationships between engagement and intervention effectiveness. Four electronic databases (Ovid {MEDLINE}, {PsycINFO}, {ISI} Web of Knowledge, {ScienceDirect}) were searched in November 2015. We identified 117 articles that met the inclusion criteria: studies employing experimental or nonexperimental designs with adult participants explicitly or implicitly referring to engagement with {DBCIs}, digital games or technology. Data were synthesised using principles from critical interpretive synthesis. Engagement with {DBCIs} is conceptualised in terms of both experiential and behavioural aspects. A conceptual framework is proposed in which engagement with a {DBCI} is influenced by the {DBCI} itself (content and delivery), the context (the setting in which the {DBCI} is used and the population using it) and the behaviour that the {DBCI} is targeting. The context and Bmechanisms of action{\textasciicircum} may moderate the influence of the {DBCI} on engagement. Engagement, in turn, moderates the influence of the {DBCI} on those mechanisms of action. In the research literature, engagement with {DBCIs} has been conceptualised in terms of both experience and behaviour and sits within a complex system involving the {DBCI}, the context of use, the mechanisms of action of the {DBCI} and the target behaviour.}
+      \field{issn}{1869-6716, 1613-9860}
+      \field{journaltitle}{Translational Behavioral Medicine}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{number}{2}
+      \field{shortjournal}{Behav. Med. Pract. Policy Res.}
+      \field{shorttitle}{Conceptualising engagement with digital behaviour change interventions}
+      \field{title}{Conceptualising engagement with digital behaviour change interventions: a systematic review using principles from critical interpretive synthesis}
+      \field{urlday}{5}
+      \field{urlmonth}{3}
+      \field{urlyear}{2026}
+      \field{volume}{7}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{254\bibrangedash 267}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1007/s13142-016-0453-1
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/D2Z98UKW/13142_2016_article_453.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://academic.oup.com/tbm/article/7/2/254/4563238
+      \endverb
+      \verb{url}
+      \verb https://academic.oup.com/tbm/article/7/2/254/4563238
+      \endverb
+    \endentry
+    \entry{evans_digital_2022}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=79d4120c079906a52c15ab1f5de142cd}{%
+           family={Evans},
+           familyi={E\bibinitperiod},
+           given={William\bibnamedelima Douglas},
+           giveni={W\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=3d5a132df3aa696e72d8eb8b92d055a5}{%
+           family={Abroms},
+           familyi={A\bibinitperiod},
+           given={Lorien\bibnamedelima C.},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=d9c8e42a57e551055c5f6afde7804e43}{%
+           family={Broniatowski},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=a48e080173146a1e98e55ccd142fa168}{%
+           family={Napolitano},
+           familyi={N\bibinitperiod},
+           given={Melissa\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=a7c97ad89c5b04d39d9d93a53b3c0d66}{%
+           family={Arnold},
+           familyi={A\bibinitperiod},
+           given={Jeanie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ede90b9097cab8d723e779d8aac10cfd}{%
+           family={Ichimiya},
+           familyi={I\bibinitperiod},
+           given={Megumi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f2e9b6839b695208d31433da3cb556a8}{%
+           family={Agha},
+           familyi={A\bibinitperiod},
+           given={Sohail},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec65c45cf8b26810af44fb240da44644}
+      \strng{fullhash}{6633f180a5e26068335b9f78e1f460b8}
+      \strng{fullhashraw}{6633f180a5e26068335b9f78e1f460b8}
+      \strng{bibnamehash}{6633f180a5e26068335b9f78e1f460b8}
+      \strng{authorbibnamehash}{6633f180a5e26068335b9f78e1f460b8}
+      \strng{authornamehash}{ec65c45cf8b26810af44fb240da44644}
+      \strng{authorfullhash}{6633f180a5e26068335b9f78e1f460b8}
+      \strng{authorfullhashraw}{6633f180a5e26068335b9f78e1f460b8}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Digital media are omnipresent in modern life, but the science on the impact of digital media on behavior is still in its infancy. There is an emerging evidence base of how to use digital media for behavior change. Strategies to change behavior implemented using digital technology have included a variety of platforms and program strategies, all of which are potentially more effective with increased frequency, intensity, interactivity, and feedback. It is critical to accelerate the pace of research on digital platforms, including social media, to understand and address its effects on human behavior. The purpose of the current paper is to provide an overview and describe methods in this emerging ﬁeld, present use cases, describe a future agenda, and raise central questions to be addressed in future digital health research for behavior change. Digital media for behavior change employs three main methods: (1) digital media interventions, (2) formative research using digital media, and (3) digital media used to conduct evaluations. We examine use cases across several content areas including healthy weight management, tobacco control, and vaccination uptake, to describe and illustrate the methods and potential impact of this emerging ﬁeld of study. In the discussion, we note that digital media interventions need to explore the full range of functionality of digital devices and their near-constant role in personal self-management and day-to-day living to maximize opportunities for behavior change. Future experimental research should rigorously examine the effects of variable levels of engagement with, and frequency and intensity of exposure to, multiple forms of digital media for behavior change.}
+      \field{day}{26}
+      \field{issn}{1660-4601}
+      \field{journaltitle}{International Journal of Environmental Research and Public Health}
+      \field{langid}{english}
+      \field{month}{7}
+      \field{number}{15}
+      \field{shortjournal}{{IJERPH}}
+      \field{shorttitle}{Digital Media for Behavior Change}
+      \field{title}{Digital Media for Behavior Change: Review of an Emerging Field of Study}
+      \field{urlday}{6}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{volume}{19}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{9129}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/ijerph19159129
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/6LQ3QIV6/Evans et al. - 2022 - Digital Media for Behavior Change Review of an Emerging Field of Study.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/1660-4601/19/15/9129
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/1660-4601/19/15/9129
+      \endverb
+    \endentry
+    \entry{zenone_tiktok_2021}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=5df5817df5b6c51b9fa9fc828c73acd1}{%
+           family={Zenone},
+           familyi={Z\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0cf9431694b7616e8371944c0da21fc9}{%
+           family={Ow},
+           familyi={O\bibinitperiod},
+           given={Nikki},
+           giveni={N\bibinitperiod}}}%
+        {{hash=e31e04045bc81fec2ba363e3c5fb31ed}{%
+           family={Barbic},
+           familyi={B\bibinitperiod},
+           given={Skye},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {{BMJ} Publishing Group}%
+      }
+      \strng{namehash}{ff9df1167d389f02ba28459c7789c08c}
+      \strng{fullhash}{4b39d2e5ac2e618b7e082d1d37c4a925}
+      \strng{fullhashraw}{4b39d2e5ac2e618b7e082d1d37c4a925}
+      \strng{bibnamehash}{4b39d2e5ac2e618b7e082d1d37c4a925}
+      \strng{authorbibnamehash}{4b39d2e5ac2e618b7e082d1d37c4a925}
+      \strng{authornamehash}{ff9df1167d389f02ba28459c7789c08c}
+      \strng{authorfullhash}{4b39d2e5ac2e618b7e082d1d37c4a925}
+      \strng{authorfullhashraw}{4b39d2e5ac2e618b7e082d1d37c4a925}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{issn}{20597908}
+      \field{journaltitle}{{BMJ} Global Health}
+      \field{month}{11}
+      \field{number}{11}
+      \field{title}{{TikTok} and public health: a proposed research agenda}
+      \field{volume}{6}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.1136/bmjgh-2021-007648
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/4VP96W6M/e007648.full.pdf:application/pdf
+      \endverb
+      \keyw{public health,child health,health policy,mental health \& psychiatry}
+    \endentry
+    \entry{basch_covid-19_2022}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=6523f1e9c4f5ff87f8ae6de9f0b45f9d}{%
+           family={Basch},
+           familyi={B\bibinitperiod},
+           given={Corey\bibnamedelima H.},
+           giveni={C\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=b0bcb58905e2382eda0c240af8216375}{%
+           family={Hillyer},
+           familyi={H\bibinitperiod},
+           given={Grace\bibnamedelima C.},
+           giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=9387c31e7372749ef40e1d2e1fabde16}{%
+           family={Jaime},
+           familyi={J\bibinitperiod},
+           given={Christie},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {De Gruyter Open Ltd}%
+      }
+      \strng{namehash}{62056c70b9a9bb8ccb80aadd9214a8e6}
+      \strng{fullhash}{3e0e1502c61eda7a0cd380e94a4f8fe3}
+      \strng{fullhashraw}{3e0e1502c61eda7a0cd380e94a4f8fe3}
+      \strng{bibnamehash}{3e0e1502c61eda7a0cd380e94a4f8fe3}
+      \strng{authorbibnamehash}{3e0e1502c61eda7a0cd380e94a4f8fe3}
+      \strng{authornamehash}{62056c70b9a9bb8ccb80aadd9214a8e6}
+      \strng{authorfullhash}{3e0e1502c61eda7a0cd380e94a4f8fe3}
+      \strng{authorfullhashraw}{3e0e1502c61eda7a0cd380e94a4f8fe3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Objectives: {TikTok} is a popular social media platform, especially among those who are 13-24 years of age. The purpose of this cross-sectional study was to describe the content of {COVID}-19 material on {TikTok}. Methods: A total of 100 videos posted under the hashtag \#Coronavirus were included in this study along with all (n=17) posts uploaded by the World Health Organization ({WHO}). Results: Overall, these videos were viewed 1,194,081,700 times. The most commonly cited topics included anxiety (14.5\%) with more than 190.6 million views and quarantine (10.3\%) with 106.6 million views. Fewer than 10\% of videos mentioned how the virus is transmitted, symptoms, and prevention. {WHO} videos more often focused on viral transmission and symptoms but covered these topics in fewer than 10\% of the videos. Conclusions: Although research suggests that cases of {COVID}-19 may be less severe in those under 18 years of age, social distancing remains paramount due to the possibility of transmission even in those with minimal or no symptoms. For young adults in particular, the {WHO} suggests staying connected through social media and making every attempt to stay positive. {TikTok} has the potential, not only to convey important health information, but to address these aspects of the {COVID}-19 pandemic as well.}
+      \field{day}{1}
+      \field{issn}{21910278}
+      \field{journaltitle}{International Journal of Adolescent Medicine and Health}
+      \field{month}{10}
+      \field{number}{5}
+      \field{title}{{COVID}-19 on {TikTok}: harnessing an emerging social media platform to convey important public health messages}
+      \field{volume}{34}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \field{pages}{367\bibrangedash 369}
+      \range{pages}{3}
+      \verb{doi}
+      \verb 10.1515/ijamh-2020-0111
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/3U5TA7TS/10.1515_ijamh-2020-0111.pdf:application/pdf
+      \endverb
+      \keyw{{TikTok},{COVID}-19,social media,adolescents}
+    \endentry
+    \entry{green_role_2000}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e02da93261cf0b9cf22e1d46fbfa0938}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Melanie\bibnamedelima C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=67f614202c3931fc012e8b59f5ee47d7}{%
+           family={Brock},
+           familyi={B\bibinitperiod},
+           given={Timothy\bibnamedelima C.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{8320918960135d73d2c1bd1f8899c637}
+      \strng{fullhash}{8320918960135d73d2c1bd1f8899c637}
+      \strng{fullhashraw}{8320918960135d73d2c1bd1f8899c637}
+      \strng{bibnamehash}{8320918960135d73d2c1bd1f8899c637}
+      \strng{authorbibnamehash}{8320918960135d73d2c1bd1f8899c637}
+      \strng{authornamehash}{8320918960135d73d2c1bd1f8899c637}
+      \strng{authorfullhash}{8320918960135d73d2c1bd1f8899c637}
+      \strng{authorfullhashraw}{8320918960135d73d2c1bd1f8899c637}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1939-1315, 0022-3514}
+      \field{journaltitle}{Journal of Personality and Social Psychology}
+      \field{langid}{english}
+      \field{month}{11}
+      \field{number}{5}
+      \field{shortjournal}{Journal of Personality and Social Psychology}
+      \field{title}{The role of transportation in the persuasiveness of public narratives.}
+      \field{urlday}{5}
+      \field{urlmonth}{3}
+      \field{urlyear}{2026}
+      \field{volume}{79}
+      \field{year}{2000}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{701\bibrangedash 721}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1037/0022-3514.79.5.701
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/WBR254DD/Green and Brock - 2000 - The role of transportation in the persuasiveness of public narratives..pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.apa.org/doi/10.1037/0022-3514.79.5.701
+      \endverb
+      \verb{url}
+      \verb https://doi.apa.org/doi/10.1037/0022-3514.79.5.701
+      \endverb
+    \endentry
+    \entry{moyer-guse_toward_2008}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=ec93656ad2e13a6fe04e4d0becef17d4}{%
+           family={Moyer-Gusé},
+           familyi={M\bibinithyphendelim G\bibinitperiod},
+           given={Emily},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec93656ad2e13a6fe04e4d0becef17d4}
+      \strng{fullhash}{ec93656ad2e13a6fe04e4d0becef17d4}
+      \strng{fullhashraw}{ec93656ad2e13a6fe04e4d0becef17d4}
+      \strng{bibnamehash}{ec93656ad2e13a6fe04e4d0becef17d4}
+      \strng{authorbibnamehash}{ec93656ad2e13a6fe04e4d0becef17d4}
+      \strng{authornamehash}{ec93656ad2e13a6fe04e4d0becef17d4}
+      \strng{authorfullhash}{ec93656ad2e13a6fe04e4d0becef17d4}
+      \strng{authorfullhashraw}{ec93656ad2e13a6fe04e4d0becef17d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{10503293, 14682885}
+      \field{journaltitle}{Communication Theory}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{number}{3}
+      \field{shorttitle}{Toward a Theory of Entertainment Persuasion}
+      \field{title}{Toward a Theory of Entertainment Persuasion: Explaining the Persuasive Effects of Entertainment-Education Messages}
+      \field{urlday}{5}
+      \field{urlmonth}{3}
+      \field{urlyear}{2026}
+      \field{volume}{18}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{407\bibrangedash 425}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1111/j.1468-2885.2008.00328.x
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/C3YZTKJV/Moyer-Gusé - 2008 - Toward a Theory of Entertainment Persuasion Explaining the Persuasive Effects of Entertainment-Educ.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://academic.oup.com/ct/article/18/3/407-425/4098715
+      \endverb
+      \verb{url}
+      \verb https://academic.oup.com/ct/article/18/3/407-425/4098715
+      \endverb
+    \endentry
+    \entry{trunfio_conceptualising_2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b11792efbe2379b694b4772337e2f605}{%
+           family={Trunfio},
+           familyi={T\bibinitperiod},
+           given={Mariapina},
+           giveni={M\bibinitperiod}}}%
+        {{hash=8137feb0bb140eb922430b40dac16039}{%
+           family={Rossi},
+           familyi={R\bibinitperiod},
+           given={Simona},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{c0d481812f4432374ff3dd7d70f52a20}
+      \strng{fullhash}{c0d481812f4432374ff3dd7d70f52a20}
+      \strng{fullhashraw}{c0d481812f4432374ff3dd7d70f52a20}
+      \strng{bibnamehash}{c0d481812f4432374ff3dd7d70f52a20}
+      \strng{authorbibnamehash}{c0d481812f4432374ff3dd7d70f52a20}
+      \strng{authornamehash}{c0d481812f4432374ff3dd7d70f52a20}
+      \strng{authorfullhash}{c0d481812f4432374ff3dd7d70f52a20}
+      \strng{authorfullhashraw}{c0d481812f4432374ff3dd7d70f52a20}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The spread of social media platforms enhanced academic and professional debate on social media engagement that attempted to better understand its theoretical foundations and measurements. This paper aims to systematically contribute to this academic debate by analysing, discussing, and synthesising social media engagement literature in the perspective of social media metrics. Adopting a systematic literature review, the research provides an overarching picture of what has already been investigated and the existing gaps that need further research. The paper confirms the polysemic and multidimensional nature of social media engagement. It identifies the behavioural dimension as the most used proxy for users' level of engagement suggesting the {COBRA} model as a conceptual tool to classify and interpret the construct. Four categories of metrics emerged: quantitative metrics, normalised indexes, set of indexes, qualitative metrics. It also offers insights and guidance to practitioners on modelling and managing social media engagement.}
+      \field{day}{1}
+      \field{issn}{26623331}
+      \field{journaltitle}{Italian Journal of Marketing}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{Conceptualising and measuring social media engagement: A systematic literature review}
+      \field{volume}{2021}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{pages}{267\bibrangedash 292}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1007/s43039-021-00035-8
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/V6ZWE5XU/E0001_Trunfio,2021 (Conceptualising & measuring social-media engagement review).pdf:application/pdf
+      \endverb
+      \keyw{{COBRA} model,Customer engagement,Qualitative metrics,Quantitative metrics,Social media engagement,Social media metrics,Social media platforms}
+    \endentry
+    \entry{salminen_engagement_2024}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=ea9ea4f45481222ddf150b996d888de1}{%
+           family={Salminen},
+           familyi={S\bibinitperiod},
+           given={Joni},
+           giveni={J\bibinitperiod}}}%
+        {{hash=478ecf7f5347387a5160654151c725a7}{%
+           family={Wahid},
+           familyi={W\bibinitperiod},
+           given={Risqo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=57658d6dc718ecf1e8ae58ce0a588e72}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Yanwu},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=3e11dfd8a01f625af5222bdde3364caf}{%
+           family={Jansen},
+           familyi={J\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery, Inc}%
+      }
+      \strng{namehash}{38015bd94c40875841720522202480cf}
+      \strng{fullhash}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{fullhashraw}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{bibnamehash}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{authorbibnamehash}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{authornamehash}{38015bd94c40875841720522202480cf}
+      \strng{authorfullhash}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{authorfullhashraw}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Short videos have become one of the dominant formats of social media content. Such short videos are often boosted by advertising to increase their reach and visibility. We investigate user churn (i.e., drop or loss of consumers during the video viewing) of short video ads on {TikTok}. Data from the {TikTok} Ads account of an e-commerce company was analyzed using logistic regression to examine how gender, age groups, and video duration affect users' video viewing behaviors. The findings indicate that (1) most customers leave the ads within the first quarter of the video; (2) males and females exhibit similar viewing behaviors, but (3) age groups vary by their viewing behaviors. Somewhat surprisingly, we discovered that (4) there is no significant correlation between user churn and ads performance metrics (i.e., cost-per-mille, cost-per-click, and click-through rate).}
+      \field{booktitle}{{HT} 2024: Creative Intelligence - 35th {ACM} Conference on Hypertext and Social Media}
+      \field{day}{10}
+      \field{isbn}{979-8-4007-0595-3}
+      \field{month}{9}
+      \field{title}{Engagement Patterns in {TikTok}: An Analysis of Short Video Ads}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{pages}{323\bibrangedash 329}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1145/3648188.3677048
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/UCI3SYQY/0007_Salminen et al., 2024 (ACM - TikTok User Engagement Analysis).pdf:application/pdf
+      \endverb
+      \keyw{short video ads,social media ads,{TikTok} advertising,user behavior,user churn}
+    \endentry
+    \entry{obrien_what_2008}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=8a718cb765f42c5bca730cd1f801b131}{%
+           family={O'Brien},
+           familyi={O\bibinitperiod},
+           given={Heather\bibnamedelima L.},
+           giveni={H\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=82d2ad59c61d678030b54fb2e0a189d6}{%
+           family={Toms},
+           familyi={T\bibinitperiod},
+           given={Elaine\bibnamedelima G.},
+           giveni={E\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{85f87096ec230e5809ba8b208a10474c}
+      \strng{fullhash}{85f87096ec230e5809ba8b208a10474c}
+      \strng{fullhashraw}{85f87096ec230e5809ba8b208a10474c}
+      \strng{bibnamehash}{85f87096ec230e5809ba8b208a10474c}
+      \strng{authorbibnamehash}{85f87096ec230e5809ba8b208a10474c}
+      \strng{authornamehash}{85f87096ec230e5809ba8b208a10474c}
+      \strng{authorfullhash}{85f87096ec230e5809ba8b208a10474c}
+      \strng{authorfullhashraw}{85f87096ec230e5809ba8b208a10474c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Abstract The purpose of this article is to critically deconstruct the term engagement as it applies to peoples' experiences with technology. Through an extensive, critical multidisciplinary literature review and exploratory study of users of Web searching, online shopping, Webcasting, and gaming applications, we conceptually and operationally defined engagement. Building on past research, we conducted semistructured interviews with the users of four applications to explore their perception of being engaged with the technology. Results indicate that engagement is a process comprised of four distinct stages: point of engagement, period of sustained engagement, disengagement, and reengagement. Furthermore, the process is characterized by attributes of engagement that pertain to the user, the system, and user‐system interaction. We also found evidence of the factors that contribute to nonengagement. Emerging from this research is a definition of engagement—a term not defined consistently in past work—as a quality of user experience characterized by attributes of challenge, positive affect, endurability, aesthetic and sensory appeal, attention, feedback, variety/novelty, interactivity, and perceived user control. This exploratory work provides the foundation for future work to test the conceptual model in various application areas, and to develop methods to measure engaging user experiences.}
+      \field{issn}{1532-2882, 1532-2890}
+      \field{journaltitle}{Journal of the American Society for Information Science and Technology}
+      \field{langid}{english}
+      \field{month}{4}
+      \field{number}{6}
+      \field{shortjournal}{J. Am. Soc. Inf. Sci.}
+      \field{shorttitle}{What is user engagement?}
+      \field{title}{What is user engagement? A conceptual framework for defining user engagement with technology}
+      \field{urlday}{4}
+      \field{urlmonth}{3}
+      \field{urlyear}{2026}
+      \field{volume}{59}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{938\bibrangedash 955}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1002/asi.20801
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/WPS4FUQG/asi.20801.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/10.1002/asi.20801
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/10.1002/asi.20801
+      \endverb
+      \keyw{+}
+    \endentry
+    \entry{karimah_automatic_2022}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e91c1871002ec42656dce26644158d47}{%
+           family={Karimah},
+           familyi={K\bibinitperiod},
+           given={Shofiyati\bibnamedelima Nur},
+           giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=1abdfc05a9a46d0b3d4e8a1775f8ded0}{%
+           family={Hasegawa},
+           familyi={H\bibinitperiod},
+           given={Shinobu},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{e630325401f23d7b2bf678d7e52cfdc9}
+      \strng{fullhash}{e630325401f23d7b2bf678d7e52cfdc9}
+      \strng{fullhashraw}{e630325401f23d7b2bf678d7e52cfdc9}
+      \strng{bibnamehash}{e630325401f23d7b2bf678d7e52cfdc9}
+      \strng{authorbibnamehash}{e630325401f23d7b2bf678d7e52cfdc9}
+      \strng{authornamehash}{e630325401f23d7b2bf678d7e52cfdc9}
+      \strng{authorfullhash}{e630325401f23d7b2bf678d7e52cfdc9}
+      \strng{authorfullhashraw}{e630325401f23d7b2bf678d7e52cfdc9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Background: Recognizing learners’ engagement during learning processes is important for providing personalized pedagogical support and preventing dropouts. As learning processes shift from traditional offline classrooms to distance learning, methods for automatically identifying engagement levels should be developed. Objective: This article aims to present a literature review of recent developments in automatic engagement estimation, including engagement definitions, datasets, and machine learning-based methods for automation estimation. The information, figures, and tables presented in this review aim at providing new researchers with insight on automatic engagement estimation to enhance smart learning with automatic engagement recognition methods. Methods: A literature search was carried out using Scopus, Mendeley references, the {IEEE} Xplore digital library, and {ScienceDirect} following the four phases of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses ({PRISMA}): identification, screening, eligibility, and inclusion. The selected studies included research articles published between 2010 and 2022 that focused on three research questions ({RQs}) related to the engagement definitions, datasets, and methods used in the literature. The article selection excluded books, magazines, news articles, and posters. Results: Forty-seven articles were selected to address the {RQs} and discuss engagement definitions, datasets, and methods. First, we introduce a clear taxonomy that defines engagement according to different types and the components used to measure it. Guided by this taxonomy, we reviewed the engagement types defined in the selected articles, with emotional engagement (n = 40; 65.57\%) measured by affective cues appearing most often (n = 38; 57.58\%). Then, we reviewed engagement and engagement-related datasets in the literature, with most studies assessing engagement with external observations (n = 20; 43.48\%) and self-reported measures (n = 9; 19.57\%). Finally, we summarized machine learning ({ML})-based methods, including deep learning, used in the literature. Conclusions: This review examines engagement definitions, datasets and {ML}-based methods from forty-seven selected articles. A taxonomy and three tables are presented to address three {RQs} and provide researchers in this field with guidance on enhancing smart learning with automatic engagement recognition. However, several key challenges remain, including cognitive and personalized engagement and {ML} issues that may affect real-world implementations.}
+      \field{day}{1}
+      \field{issn}{21967091}
+      \field{journaltitle}{Smart Learning Environments}
+      \field{month}{12}
+      \field{number}{1}
+      \field{title}{Automatic engagement estimation in smart education/learning settings: a systematic review of engagement definitions, datasets, and methods}
+      \field{volume}{9}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.1186/s40561-022-00212-y
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/YXUC53DV/E0002_Karimah,2022 (Automatic engagement estimation in smart-learning – review).pdf:application/pdf
+      \endverb
+      \keyw{Engagement datasets,Engagement definitions,Engagement estimation,Engagement methods}
+    \endentry
+    \entry{bellos_methods_2025}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=d630c722dd854be39299747987f00762}{%
+           family={Bellos},
+           familyi={B\bibinitperiod},
+           given={Christos},
+           giveni={C\bibinitperiod}}}%
+        {{hash=b56453989df0913a503165766d039d32}{%
+           family={Stefanou},
+           familyi={S\bibinitperiod},
+           given={Konstantinos},
+           giveni={K\bibinitperiod}}}%
+        {{hash=0ed6b76f77731f2b9f27a0dfae8079e7}{%
+           family={Tzallas},
+           familyi={T\bibinitperiod},
+           given={Alexandros},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2fd82fba37903864d7801ccdbda3e6ef}{%
+           family={Stergios},
+           familyi={S\bibinitperiod},
+           given={Georgios},
+           giveni={G\bibinitperiod}}}%
+        {{hash=71ce38083472fc701a955c37517383a2}{%
+           family={Tsipouras},
+           familyi={T\bibinitperiod},
+           given={Markos},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Multidisciplinary Digital Publishing Institute ({MDPI})}%
+      }
+      \strng{namehash}{980442507d8722b7ef710e543a33fa6d}
+      \strng{fullhash}{6aa6349673d6b20238dfd28f5eb8b860}
+      \strng{fullhashraw}{6aa6349673d6b20238dfd28f5eb8b860}
+      \strng{bibnamehash}{6aa6349673d6b20238dfd28f5eb8b860}
+      \strng{authorbibnamehash}{6aa6349673d6b20238dfd28f5eb8b860}
+      \strng{authornamehash}{980442507d8722b7ef710e543a33fa6d}
+      \strng{authorfullhash}{6aa6349673d6b20238dfd28f5eb8b860}
+      \strng{authorfullhashraw}{6aa6349673d6b20238dfd28f5eb8b860}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This review paper explores the intersection of user engagement and user experience studies with electroencephalography ({EEG}) analysis by investigating the existing literature in this field. User engagement describes the immediate, session-based experience of using interactive products and is commonly used as a metric to assess the success of games, online platforms, applications, and websites, while user experience encompasses the broader and longer-term aspects of user interaction. This review focuses on the use of {EEG} as a precise and objective method to gain insights into user engagement. {EEG} recordings capture brain activity as waves, which can be categorized into different frequency bands. By analyzing patterns of brain activity associated with attention, emotion, mental workload, and user experience, {EEG} provides valuable insights into user engagement. The review follows the {PRISMA} statement. The search process involved an extensive exploration of multiple databases, resulting in the identification of 74 relevant studies. The review encompasses the entire information flow of the experiments, including data acquisition, pre-processing analysis, feature extraction, and analysis. By examining the current literature, this review provides a comprehensive overview of various algorithms and processes utilized in {EEG}-based systems for studying user engagement and identifies potential directions for future research endeavors.}
+      \field{day}{1}
+      \field{issn}{20799292}
+      \field{journaltitle}{Electronics (Switzerland)}
+      \field{month}{1}
+      \field{number}{2}
+      \field{title}{Methods and Approaches for User Engagement and User Experience Analysis Based on Electroencephalography Recordings: A Systematic Review}
+      \field{volume}{14}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.3390/electronics14020251
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/8RETZK4Q/E0005_Bellos,2025 (EEG methods for user-engagement & UX – systematic review).pdf:application/pdf
+      \endverb
+      \keyw{systematic review,data acquisition,{EEG} analysis,feature extraction,pre-processing analysis,signal processing,user engagement,user experience}
+    \endentry
+    \entry{apicella_eeg-based_2022}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=9a5d5f6714e24b5ce0f4c8e21d31faff}{%
+           family={Apicella},
+           familyi={A\bibinitperiod},
+           given={Andrea},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2f891b21a2dad485a11a6844351f0cdf}{%
+           family={Arpaia},
+           familyi={A\bibinitperiod},
+           given={Pasquale},
+           giveni={P\bibinitperiod}}}%
+        {{hash=b6e049905ed90c334525ea24310944a5}{%
+           family={Frosolone},
+           familyi={F\bibinitperiod},
+           given={Mirco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d858fe615a085c5f47bb83c1ec36aa24}{%
+           family={Improta},
+           familyi={I\bibinitperiod},
+           given={Giovanni},
+           giveni={G\bibinitperiod}}}%
+        {{hash=b2650dced03ba42b76c3efa96735bd97}{%
+           family={Moccaldi},
+           familyi={M\bibinitperiod},
+           given={Nicola},
+           giveni={N\bibinitperiod}}}%
+        {{hash=2972f9281b6b8697c123f40664b991d1}{%
+           family={Pollastro},
+           familyi={P\bibinitperiod},
+           given={Andrea},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Research}%
+      }
+      \strng{namehash}{44455273cca0ab5c50fbf0f29f27457e}
+      \strng{fullhash}{b4978f28b7ce3d27c3b6e07ee439b3ea}
+      \strng{fullhashraw}{b4978f28b7ce3d27c3b6e07ee439b3ea}
+      \strng{bibnamehash}{b4978f28b7ce3d27c3b6e07ee439b3ea}
+      \strng{authorbibnamehash}{b4978f28b7ce3d27c3b6e07ee439b3ea}
+      \strng{authornamehash}{44455273cca0ab5c50fbf0f29f27457e}
+      \strng{authorfullhash}{b4978f28b7ce3d27c3b6e07ee439b3ea}
+      \strng{authorfullhashraw}{b4978f28b7ce3d27c3b6e07ee439b3ea}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A wearable system for the personalized {EEG}-based detection of engagement in learning 4.0 is proposed. In particular, the effectiveness of the proposed solution is assessed by means of the classification accuracy in predicting engagement. The system can be used to make an automated teaching platform adaptable to the user, by managing eventual drops in the cognitive and emotional engagement. The effectiveness of the learning process mainly depends on the engagement level of the learner. In case of distraction, lack of interest or superficial participation, the teaching strategy could be personalized by an automatic modulation of contents and communication strategies. The system is validated by an experimental case study on twenty-one students. The experimental task was to learn how a specific human-machine interface works. Both the cognitive and motor skills of participants were involved. De facto standard stimuli, namely (1) cognitive task (Continuous Performance Test), (2) music background (Music Emotion Recognition—{MER} database), and (3) social feedback (Hermans and De Houwer database), were employed to guarantee a metrologically founded reference. In within-subject approach, the proposed signal processing pipeline (Filter bank, Common Spatial Pattern, and Support Vector Machine), reaches almost 77\% average accuracy, in detecting both cognitive and emotional engagement.}
+      \field{day}{1}
+      \field{issn}{20452322}
+      \field{journaltitle}{Scientific Reports}
+      \field{month}{12}
+      \field{number}{1}
+      \field{title}{{EEG}-based measurement system for monitoring student engagement in learning 4.0}
+      \field{volume}{12}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.1038/s41598-022-09578-y
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/LV866QF6/s41598-022-09578-y.pdf:application/pdf
       \endverb
     \endentry
     \entry{de_carvalho_selection_2026}{article}{}{}
@@ -557,8 +1246,8 @@
       \strng{authornamehash}{85daf2fd52d4a5e57602f879ba755a70}
       \strng{authorfullhash}{3b9b1ba33d7b3717cdf34b334caffce6}
       \strng{authorfullhashraw}{3b9b1ba33d7b3717cdf34b334caffce6}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{8}
@@ -605,8 +1294,8 @@
       \strng{authornamehash}{2ddb233266be6b51575933a9ca17e107}
       \strng{authorfullhash}{02403e9daf6a505722222b7b6b030e1b}
       \strng{authorfullhashraw}{02403e9daf6a505722222b7b6b030e1b}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{{<}p{>}Emotions are indicators of affective states and play a significant role in human daily life, behavior, and interactions. Giving emotional intelligence to the machines could, for instance, facilitate early detection and prediction of (mental) diseases and symptoms. Electroencephalography ({EEG}) -based emotion recognition is being widely applied because it measures electrical correlates directly from the brain rather than the indirect measurement of other physiological responses initiated by the brain. The recent development of non-invasive and portable {EEG} sensors makes it possible to use them in real-time applications. Therefore, this paper presents a real-time emotion classification pipeline, which trains different binary classifiers for the dimensions of Valence and Arousal from an incoming {EEG} data stream. After achieving a 23.9\% (Arousal) and 25.8\% (Valence) higher f1-score on the state-of-art {AMIGOS} dataset, this pipeline was applied to the dataset achieved by an emotion elicitation experimental framework developed within the scope of this thesis. Following two different protocols, 15 participants were recorded using two different consumer-grade {EEG} devices while watching 16 short emotional videos in a controlled environment. For an immediate label setting, the mean f1-score of 87\% and 82\% were achieved for Arousal and Valence, respectively. In a live scenario, while continuously being updated on the incoming data stream with delayed labels, the pipeline proved to be fast enough to achieve predictions in real time. However, the significant discrepancy from the readily available labels on the classification scores leads to future work to include more data with frequent delayed labels in the live settings.{<}/p{>}}
@@ -660,8 +1349,8 @@
       \strng{authornamehash}{abb325757d1caab196766dfda2d49e56}
       \strng{authorfullhash}{d72be04aabc5fe94c59b3a9b8adaed69}
       \strng{authorfullhashraw}{d72be04aabc5fe94c59b3a9b8adaed69}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Motor-imagery ({MI}) {EEG} can be classified using supervised machine learning techniques such as Linear Discriminant Analysis applied to features extracted by Common Spatial Patterns. Performance of these models varies widely, possibly due to {MI} studies commonly utilising differing post-cue time windows and frequency bands to one another. This study aims to assess how the simultaneous optimisation of both these parameters impact {MI} classification performance. This is done by iteratively training and testing a series of subject-specific models on different combinations of frequency bandwidth and time window options across 109 subjects. This is followed by a statistical analysis using repeated measures {ANOVA} to uncover significant differences between different bandwidths and time windows in terms of accuracy across the patient cohort. The resulting visualisations and statistical tests show that there are, indeed, significant differences between both specific time windows and specific bandwidths in terms of accuracy. While the comparison of classification accuracies across 23 frequency bandwidths during five different time windows demonstrates an optimal temporal and spectral scale combination of (0, 4) s at the range of (4, 12) Hz across all subjects, the subjects demonstrate similar accuracies for other parameter combinations. These findings highlight the efficacy of personalised models to detect optimal temporal and spectral parameter combinations to best classify {MI} {EEG} signals that inherently vary across subjects.}
@@ -693,6 +1382,231 @@
       \endverb
       \keyw{★★★★★,Electrical Engineering and Systems Science - Signal Processing}
     \endentry
+    \entry{rahman_detection_2025}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=a29b60ed3cf5d50ccfdda1b5d881f0ea}{%
+           family={Rahman},
+           familyi={R\bibinitperiod},
+           given={Mahmudur},
+           giveni={M\bibinitperiod}}}%
+        {{hash=68b5361f7fdc9de380979a72928d5f51}{%
+           family={Mahi},
+           familyi={M\bibinitperiod},
+           given={Atqiya\bibnamedelima Munawara},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=04de9536ec45824e49006380ce0b7a6d}{%
+           family={Sultana},
+           familyi={S\bibinitperiod},
+           given={Sharmin},
+           giveni={S\bibinitperiod}}}%
+        {{hash=34fa182d6dec307cac1fefb2caac2575}{%
+           family={Churpek},
+           familyi={C\bibinitperiod},
+           given={Matthew\bibnamedelima M},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=386a322a9b2f819d971e96594680358e}{%
+           family={Alam},
+           familyi={A\bibinitperiod},
+           given={Mohammad\bibnamedelimb Arif\bibnamedelima Ul},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
+      }
+      \strng{namehash}{fae60299a78a4a3d194a94accbd1780b}
+      \strng{fullhash}{b1b2fde4a2680e8295a7959b4d5e5975}
+      \strng{fullhashraw}{b1b2fde4a2680e8295a7959b4d5e5975}
+      \strng{bibnamehash}{b1b2fde4a2680e8295a7959b4d5e5975}
+      \strng{authorbibnamehash}{b1b2fde4a2680e8295a7959b4d5e5975}
+      \strng{authornamehash}{fae60299a78a4a3d194a94accbd1780b}
+      \strng{authorfullhash}{b1b2fde4a2680e8295a7959b4d5e5975}
+      \strng{authorfullhashraw}{b1b2fde4a2680e8295a7959b4d5e5975}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Short-form Video Addiction ({SVA}), a novel digital addiction of the modern world, proliferates among young adults and is not formally diagnosable. {SVA} detection from resulting bio-signals is crucial to prevent its adverse impacts. Existing formal methods involve large and expensive neuro-imaging devices in laboratory setups that are intrusive and not feasible to use in daily life. A possible non-intrusive solution can be using wearable sensors which is challenging due to the resulting noisy and faint signals. To address this problem, we investigated multi-modal wearable sensing technology to detect {SVA} in a non-intrusive fashion. However, fusing multi-modal sensors effectively presented different challenges due to the presence of signal heterogeneity. In this study, we proposed a novel multimodal temporally coherent domain adaptation method to effectively detect {SVA} using Electroencephalogram ({EEG}) and Electrodermal Activity ({EDA}) sensors. We also investigated the nature and properties of {SVA} with the help of different components of {EEG} and {EDA} signals. We evaluated our proposed method for {SVA} detection and fatigue assessment tasks. Experimental evaluation shown the proposed model's superior performance (10\% accuracy) over state-of-art domain adaptation models.}
+      \field{day}{22}
+      \field{journaltitle}{{AMIA} Annual Symposium Proceedings}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{title}{Detection of Short-Form Video Addiction with Wearable Sensors Via Temporally-Coherent Domain Adaptation}
+      \field{volume}{2024}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{pages}{940\bibrangedash 949}
+      \range{pages}{10}
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/JSV3GIZR/Rahman et al. - 2025 - Detection of Short-Form Video Addiction with Wearable Sensors Via Temporally-Coherent Domain Adaptat.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{jdpigeon_muselsl_2026}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=1fb584ced8121c1907a92744384c1382}{%
+           family={jdpigeon},
+           familyi={j\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {pypi.org}%
+      }
+      \strng{namehash}{1fb584ced8121c1907a92744384c1382}
+      \strng{fullhash}{1fb584ced8121c1907a92744384c1382}
+      \strng{fullhashraw}{1fb584ced8121c1907a92744384c1382}
+      \strng{bibnamehash}{1fb584ced8121c1907a92744384c1382}
+      \strng{authorbibnamehash}{1fb584ced8121c1907a92744384c1382}
+      \strng{authornamehash}{1fb584ced8121c1907a92744384c1382}
+      \strng{authorfullhash}{1fb584ced8121c1907a92744384c1382}
+      \strng{authorfullhashraw}{1fb584ced8121c1907a92744384c1382}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{16}
+      \field{month}{7}
+      \field{title}{muselsl 2.5.1}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://pypi.org/project/muselsl/
+      \endverb
+      \verb{url}
+      \verb https://pypi.org/project/muselsl/
+      \endverb
+    \endentry
+    \entry{nuamah_electroencephalography_2017}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=4e5b0ff6a6343fe8bb37209cf936ba57}{%
+           family={Nuamah},
+           familyi={N\bibinitperiod},
+           given={Joseph\bibnamedelima K.},
+           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=69e46c8c11b651fd33f91b32e9248368}{%
+           family={Seong},
+           familyi={S\bibinitperiod},
+           given={Younho},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e81b36b84a72a1d8c5f35a2d7aa4d301}{%
+           family={Yi},
+           familyi={Y\bibinitperiod},
+           given={Sun},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Savannah, {GA}, {USA}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{b2c09168cf1802475cccf60402133106}
+      \strng{fullhash}{cf5a152e229445e530c87357f7fa81f8}
+      \strng{fullhashraw}{cf5a152e229445e530c87357f7fa81f8}
+      \strng{bibnamehash}{cf5a152e229445e530c87357f7fa81f8}
+      \strng{authorbibnamehash}{cf5a152e229445e530c87357f7fa81f8}
+      \strng{authornamehash}{b2c09168cf1802475cccf60402133106}
+      \strng{authorfullhash}{cf5a152e229445e530c87357f7fa81f8}
+      \strng{authorfullhashraw}{cf5a152e229445e530c87357f7fa81f8}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The application of autonomous systems is on an increase, and there is the need to optimize the fit between humans and these systems. While operators must be aware of the autonomous systems dynamic behaviors, the autonomous systems must in turn base their operations, among other things, on an ongoing knowledge of operators’ cognitive state, and its application domain. Psychophysiology allows for the use of physiological measurements to understand an operators behavior by noninvasively recording peripheral and central physiological changes while the operator behaves under controlled conditions. Electroencephalography ({EEG}) is a psychophysiological technique for studying brain activation. In the present study, {EEG} task engagement index, defined as the ratio of beta to (alpha + theta), are used as inputs to an artificial neural network ({ANN}) to allow identification and classification of mental engagement. Six separate feedforward {ANN} with single hidden layer trained by backpropagation were designed to classify five mental tasks for each of six participants. The average classification accuracy across the six participants was 88.67 \%. The results show that differences in cognitive task demand do elicit different degrees of mental engagement, which can be measured through the use of the task engagement index.}
+      \field{booktitle}{2017 {IEEE} Conference on Cognitive and Computational Aspects of Situation Management ({CogSIMA})}
+      \field{eventtitle}{2017 {IEEE} Conference on Cognitive and Computational Aspects of Situation Management ({CogSIMA})}
+      \field{isbn}{978-1-5090-6380-2}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{title}{Electroencephalography ({EEG}) classification of cognitive tasks based on task engagement index}
+      \field{urlday}{10}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/COGSIMA.2017.7929581
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/3XIEW33U/Nuamah et al. - 2017 - Electroencephalography (EEG) classification of cognitive tasks based on task engagement index.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://ieeexplore.ieee.org/document/7929581/
+      \endverb
+      \verb{url}
+      \verb http://ieeexplore.ieee.org/document/7929581/
+      \endverb
+      \keyw{Definition,{EEG},Engagement Index}
+    \endentry
+    \entry{hasson_intersubject_2004}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=9f8290b0c59d4aba9138f55107a580cd}{%
+           family={Hasson},
+           familyi={H\bibinitperiod},
+           given={Uri},
+           giveni={U\bibinitperiod}}}%
+        {{hash=818ec9fb2982ee7a4c2005c5e1d15ff4}{%
+           family={Nir},
+           familyi={N\bibinitperiod},
+           given={Yuval},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=0fa676961455db47e4519e109d7a35f1}{%
+           family={Levy},
+           familyi={L\bibinitperiod},
+           given={Ifat},
+           giveni={I\bibinitperiod}}}%
+        {{hash=9f54e44dfe47cc46bdc949407a020e58}{%
+           family={Fuhrmann},
+           familyi={F\bibinitperiod},
+           given={Galit},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c589b71f0edef4c263de13bd1456d7cc}{%
+           family={Malach},
+           familyi={M\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec3c8d2488f73357101ce7e5854c8f3c}
+      \strng{fullhash}{b5a679126465efe2fc1d7b53f1fb91d6}
+      \strng{fullhashraw}{b5a679126465efe2fc1d7b53f1fb91d6}
+      \strng{bibnamehash}{b5a679126465efe2fc1d7b53f1fb91d6}
+      \strng{authorbibnamehash}{b5a679126465efe2fc1d7b53f1fb91d6}
+      \strng{authornamehash}{ec3c8d2488f73357101ce7e5854c8f3c}
+      \strng{authorfullhash}{b5a679126465efe2fc1d7b53f1fb91d6}
+      \strng{authorfullhashraw}{b5a679126465efe2fc1d7b53f1fb91d6}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{To what extent do all brains work alike during natural conditions? We explored this question by letting five subjects freely view half an hour of a popular movie while undergoing functional brain imaging. Applying an unbiased analysis in which spatiotemporal activity patterns in one brain were used to “model” activity in another brain, we found a striking level of voxel-by-voxel synchronization between individuals, not only in primary and secondary visual and auditory areas but also in association cortices. The results reveal a surprising tendency of individual brains to “tick collectively” during natural vision. The intersubject synchronization consisted of a widespread cortical activation pattern correlated with emotionally arousing scenes and regionally selective components. The characteristics of these activations were revealed with the use of an open-ended “reverse-correlation” approach, which inverts the conventional analysis by letting the brain signals themselves “pick up” the optimal stimuli for each specialized cortical area.}
+      \field{day}{12}
+      \field{issn}{0036-8075, 1095-9203}
+      \field{journaltitle}{Science}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{number}{5664}
+      \field{shortjournal}{Science}
+      \field{title}{Intersubject Synchronization of Cortical Activity During Natural Vision}
+      \field{urlday}{30}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{volume}{303}
+      \field{year}{2004}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1634\bibrangedash 1640}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1126/science.1089506
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/4PXJ8CMB/Hasson et al. - 2004 - Intersubject Synchronization of Cortical Activity During Natural Vision.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.science.org/doi/10.1126/science.1089506
+      \endverb
+      \verb{url}
+      \verb https://www.science.org/doi/10.1126/science.1089506
+      \endverb
+      \keyw{★★★★★}
+    \endentry
     \entry{saltelli_how_2010}{article}{}{}
       \name{author}{3}{}{%
         {{hash=40222053beb161f856f5eea1c63522f9}{%
@@ -719,8 +1633,8 @@
       \strng{authornamehash}{6bf91641f4c7b586ec8db024e8a3b0fe}
       \strng{authorfullhash}{852f18738fa0a99c526350e5039b6faa}
       \strng{authorfullhashraw}{852f18738fa0a99c526350e5039b6faa}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The most popular {SA} practice seen in the literature is that of ’one-factor-at-a-time’ ({OAT}). This consists of analyzing the effect of varying one model input factor at a time while keeping all other fixed. While the shortcomings of {OAT} are known from the statistical literature, its widespread use among modellers raises concern on the quality of the associated sensitivity analyses. We introduce a novel geometric proof of the inefficiency of {OAT}, with the purpose of providing the modelling community with a convincing and possibly definitive argument against {OAT}. Alternatives to {OAT} are indicated which are based on statistical theory, drawing from experimental design, regression analysis and sensitivity analysis proper.}
@@ -814,8 +1728,8 @@
       \strng{authornamehash}{c45a134fd9a5d16d31e78bc810d6a3ea}
       \strng{authorfullhash}{62472df9d0b1af645aa35f4469c45f4c}
       \strng{authorfullhashraw}{62472df9d0b1af645aa35f4469c45f4c}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Alzheimer’s Disease ({AD}) is a neurogenerative disorder and the most common type of dementia with a rapidly increasing world prevalence. In this paper, the ability of several statistical and spectral features to detect {AD} from electroencephalographic ({EEG}) recordings is evaluated. For this purpose, clinical {EEG} recordings from 14 patients with {AD} (8 with mild {AD} and 6 with moderate {AD}) and 10 healthy, age-matched individuals are analyzed. The {EEG} signals are initially segmented in nonoverlapping epochs of diﬀerent lengths ranging from 5 s to 12 s. Then, a group of statistical and spectral features calculated for each {EEG} rhythm (δ, θ, α, β, and γ) are extracted, forming the feature vector that trained and tested a Random Forests classiﬁer. Six classiﬁcation problems are addressed, including the discrimination from whole-brain dynamics and separately from speciﬁc brain regions in order to highlight any alterations of the cortical regions. The results indicated a high accuracy ranging from 88.79\% to 96.78\% for whole-brain classiﬁcation. Also, the classiﬁcation accuracy was higher at the posterior and central regions than at the frontal area and the right side of temporal lobe for all classiﬁcation problems.}
@@ -882,8 +1796,8 @@
       \strng{authornamehash}{0af819968a9b4d067b1fc5f14454f9ff}
       \strng{authorfullhash}{d44f80437ddfb9b839d782fa5cf0ece0}
       \strng{authorfullhashraw}{d44f80437ddfb9b839d782fa5cf0ece0}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Motor Imagery-based Brain-Computer Interfaces ({MI}-{BCIs}) are neurotechnologies that exploit the modulation of sensorimotor rhythms over the motor cortices, respectively known as Event-Related Desynchronization ({ERD}) and Synchronization ({ERS}). The interpretation of {ERD}/{ERS} is directly related to the selection of the baseline used to estimate them, and might result in a misleading {ERD}/{ERS} visualization. In fact, in {BCI} paradigms, if two trials are separated by a few seconds, taking a baseline close to the end of the previous trial could result in an over-estimation of the {ERD}, while taking a baseline too close to the upcoming trial could result in an under-estimation of the {ERD}. This phenomenon may cause a functional misinterpretation of the {ERD}/{ERS} phenomena in {MI}-{BCI} studies. This may also impair {BCI} performances for {MI} vs Rest classification, since such baselines are often used as resting states. In this paper, we propose to investigate the effect of several baseline time window selections on {ERD}/{ERS} modulations and {BCI} performances. Our results show that considering the selected temporal baseline effect is essential to analyze the modulations of {ERD}/{ERS} during {MI}-{BCI} use.}
@@ -947,8 +1861,8 @@
       \strng{authornamehash}{736aafc56de75eb45bbddb4369c299f6}
       \strng{authorfullhash}{68b84140ada3c3bc8c045b0c7e37fd8b}
       \strng{authorfullhashraw}{68b84140ada3c3bc8c045b0c7e37fd8b}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Feature extraction is a pivotal challenge in brain–computer interface ({BCI}) systems that utilize motor imagery ({MI}). Discriminative features are crucial for enhancing the classification accuracy of {MI} tasks within {MI}-{BCI} systems. The common spatial pattern ({CSP}) method has been extensively employed for extracting band-power features in this context. Prior research indicates that the efficacy of the {CSP} algorithm can be significantly improved by identifying optimal filter bands or selecting appropriate time windows. Most existing methods adopt a fixed-size time window, which may overlook {EEG} patterns occurring in windows of varying sizes. Furthermore, current approaches have not explored the potential of optimizing the filtering band for different time windows, thereby potentially compromising the effectiveness of the {CSP} algorithm. In this paper, we introduce a novel method called multi-scale time group common spatial pattern ({MTGCSP}), which aims to optimize both the time window for {MI} tasks based on a multi-scale sliding time window preprocessing strategy and the filtering band for each time window at a specific scale. Specifically, the {EEG} signals are initially filtered across multiple sub-bands. Subsequently, we use the multi-scale sliding time window preprocessing strategy to segment the filtered spectral signals into multiple subsequences of varying lengths using the multi-scale sliding window. To extract robust {CSP} features from the multi-scale sliding time window subsequences, we propose a sparse joint optimization objective function that incorporates sparse group constraints. The resulting feature subset is then fed into a support vector machine ({SVM}) classifier with a linear kernel to perform {MI}-{EEG} classification tasks. Experimental results from three public datasets demonstrate that the {MTGCSP} method outperforms other state-of-the-art techniques.}
@@ -1002,8 +1916,8 @@
       \strng{authornamehash}{f88c5373199c5cc76f413b9f5d5c14da}
       \strng{authorfullhash}{f88c5373199c5cc76f413b9f5d5c14da}
       \strng{authorfullhashraw}{f88c5373199c5cc76f413b9f5d5c14da}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Label noise is an important issue in classiﬁcation, with many potential negative consequences. For example, the accuracy of predictions may decrease, whereas the complexity of inferred models and the number of necessary training samples may increase. Many works in the literature have been devoted to the study of label noise and the development of techniques to deal with label noise. However, the ﬁeld lacks a comprehensive survey on the different types of label noise, their consequences and the algorithms that take label noise into account. This paper proposes to ﬁll this gap. Firstly, the deﬁnitions and sources of label noise are considered and a taxonomy of the types of label noise is proposed. Secondly, the potential consequences of label noise are discussed. Thirdly, label noise-robust, label noise cleansing and label noise-tolerant algorithms are reviewed. For each category of approaches, a short discussion is proposed in order to help the practitioner to choose the most suitable technique in its own particular ﬁeld of application. Eventually, the design of experiments is also discussed, what may interest the researchers who would like to test their own algorithms. In this survey, label noise consists of mislabelled instances: no additional information is assumed to be available, like e.g. conﬁdences on labels.}
@@ -1060,8 +1974,8 @@
       \strng{editornamehash}{40222053beb161f856f5eea1c63522f9}
       \strng{editorfullhash}{40222053beb161f856f5eea1c63522f9}
       \strng{editorfullhashraw}{40222053beb161f856f5eea1c63522f9}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{editor}
       \field{labeltitlesource}{shorttitle}
       \field{isbn}{978-0-470-05997-5 978-0-470-72518-4 978-0-470-72517-7}
@@ -1095,8 +2009,8 @@
       \strng{authornamehash}{2b7c258c700e1826c0d1b4082fef809d}
       \strng{authorfullhash}{2b7c258c700e1826c0d1b4082fef809d}
       \strng{authorfullhashraw}{2b7c258c700e1826c0d1b4082fef809d}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Future neuroprosthetic devices, in particular upper limb, will require decoding and executing not only the user’s intended movement type, but also when the user intends to execute the movement. This work investigates the potential use of brain signals recorded non-invasively for detecting the time before a self-paced reaching movement is initiated which could contribute to the design of practical upper limb neuroprosthetics. In particular, we show the detection of self-paced reaching movement intention in single trials using the readiness potential, an electroencephalography ({EEG}) slow cortical potential ({SCP}) computed in a narrow frequency range (0.1–1 Hz). Our experiments with 12 human volunteers, two of them stroke subjects, yield high detection rates prior to the movement onset and low detection rates during the non-movement intention period. With the proposed approach, movement intention was detected around 500 ms before actual onset, which clearly matches previous literature on readiness potentials. Interestingly, the result obtained with one of the stroke subjects is coherent with those achieved in healthy subjects, with single-trial performance of up to 92\% for the paretic arm. These results suggest that, apart from contributing to our understanding of voluntary motor control for designing more advanced neuroprostheses, our work could also have a direct impact on advancing robot-assisted neurorehabilitation.}
@@ -1168,8 +2082,8 @@
       \strng{authornamehash}{68028cef021b142b234d8b4ec020899a}
       \strng{authorfullhash}{0934283f5a059b230b8546fe9d503b75}
       \strng{authorfullhashraw}{0934283f5a059b230b8546fe9d503b75}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The movement-related cortical potential ({MRCP}) is a low-frequency negative shift in the electroencephalography ({EEG}) recording that takes place about 2 seconds prior to voluntary movement production. {MRCP} replicates the cortical processes employed in planning and preparation of movement. In this study, we recapitulate the features such as signal’s acquisition, processing, and enhancement and different electrode montages used for {EEG} data recoding from different studies that used {MRCPs} to predict the upcoming real or imaginary movement. An authentic identification of human movement intention, accompanying the knowledge of the limb engaged in the performance and its direction of movement, has a potential implication in the control of external devices. This information could be helpful in development of a proficient patient-driven rehabilitation tool based on brain-computer interfaces ({BCIs}). Such a {BCI} paradigm with shorter response time appears more natural to the amputees and can also induce plasticity in brain. Along with different training schedules, this can lead to restoration of motor control in stroke patients.}
@@ -1223,8 +2137,8 @@
       \strng{authornamehash}{eaad07ee1c6ef93a9308150f12c3c2eb}
       \strng{authorfullhash}{eaad07ee1c6ef93a9308150f12c3c2eb}
       \strng{authorfullhashraw}{eaad07ee1c6ef93a9308150f12c3c2eb}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2. ed., reprint}
@@ -1286,8 +2200,8 @@
       \strng{editornamehash}{2923e21089ab51794ca22d5fe01e8b91}
       \strng{editorfullhash}{2923e21089ab51794ca22d5fe01e8b91}
       \strng{editorfullhashraw}{2923e21089ab51794ca22d5fe01e8b91}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Objective Dementia, particularly Alzheimer’s disease ({AD}), constitutes a major global health concern, with {AD} accounting for approximately 70\% of all cases. {EEG}-based biomarkers hold promise for early identification of individuals at risk; however, small and heterogeneous samples frequently limit generalizability.}
@@ -1363,8 +2277,8 @@
       \strng{authornamehash}{f77c999d688513f50fcdcd860b31d92c}
       \strng{authorfullhash}{50c079e1f2df07ea49f1a3e14ca8c1fc}
       \strng{authorfullhashraw}{50c079e1f2df07ea49f1a3e14ca8c1fc}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{{INTRODUCTION}: We investigated whether sleep features from multi-night, at-home in-ear {EEG} could distinguish mild cognitive impairment ({MCI}) from cognitively normal ({CN}) older adults, independent of demographic confounds. {METHODS}: Forty-three older adults (24 {MCI}, 19 {CN}) completed 361 overnight in-ear {EEG} recordings at home (4.44 ± 2.29 nights per participant). Deep learning-derived embeddings were compared to bandpower features. We controlled for age and sex to identify sleep-specific features of {MCI} beyond demography.}
@@ -1399,8 +2313,8 @@
       \strng{authornamehash}{4aa924efe085391dce98ee193c8c00d5}
       \strng{authorfullhash}{4aa924efe085391dce98ee193c8c00d5}
       \strng{authorfullhashraw}{4aa924efe085391dce98ee193c8c00d5}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to describe the general characteristics of an {EEG} trace in a few quantitative terms is introduced. Its descriptive parameters are entirely based on time, but they can be derived also from the statistical moments of the power spectrum. Thus the method provides a bridge between a physical time domain interpretation and the conventional frequency domain description. Further, the parameters are based on the concept of variance, giving them an additive property so that the measured values pertain also to any basic elements from which a complex curve may be composed by superposition.}
@@ -1459,8 +2373,8 @@
       \strng{authornamehash}{2015c2bc9a975365f555b518aa2d048a}
       \strng{authorfullhash}{3fde716fdc2ad04c32082c417080f1c1}
       \strng{authorfullhashraw}{3fde716fdc2ad04c32082c417080f1c1}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{26}
@@ -1514,8 +2428,8 @@
       \strng{authornamehash}{3e74e5d56217618d51b1c61fd278a74b}
       \strng{authorfullhash}{6b4874889a61d5f5e2f8aaa98ffe9441}
       \strng{authorfullhashraw}{6b4874889a61d5f5e2f8aaa98ffe9441}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{03759601}
@@ -1579,8 +2493,8 @@
       \strng{authornamehash}{705ea94b844fc349d0409fe7cc672c2a}
       \strng{authorfullhash}{bc1ec69cae80b689fee8546a98ab5d41}
       \strng{authorfullhashraw}{bc1ec69cae80b689fee8546a98ab5d41}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Objective: Electromyogram ({EMG}) contamination is often a problem in electroencephalogram ({EEG}) recording, particularly, for those applications such as {EEG}-based brain – computer interfaces that rely on automated measurements of {EEG} features. As an essential prelude to developing methods for recognizing and eliminating {EMG} contamination of {EEG}, this study deﬁnes the spectral and topographical characteristics of frontalis and temporalis muscle {EMG} over the entire scalp. It describes both average data and the range of individual differences. Methods: In 25 healthy adults, signals from 64 scalp and 4 facial locations were recorded during relaxation and during deﬁned (15, 30, or 70\% of maximum) contractions of frontalis or temporalis muscles. Results: In the average data, {EMG} had a broad frequency distribution from 0 to . 200 Hz. Amplitude was greatest at 20 –30 Hz frontally and 40 – 80 Hz temporally. Temporalis spectra also showed a smaller peak around 20 Hz. These spectral components attenuated and broadened centrally. Even with weak (15\%) contraction, {EMG} was detectable ðP , 0:001Þ near the vertex at frequencies . 12 Hz in the average data and .8 Hz in some individuals. Conclusions: Frontalis or temporalis muscle {EMG} recorded from the scalp has spectral and topographical features that vary substantially across individuals. {EMG} spectra often have peaks in the beta frequency range that resemble {EEG} beta peaks. Signiﬁcance: While {EMG} contamination is greatest at the periphery of the scalp near the active muscles, even weak contractions can produce {EMG} that obscures or mimics {EEG} alpha, mu, or beta rhythms over the entire scalp. Recognition and elimination of this contamination is likely to require recording from an appropriate set of peripheral scalp locations.}
@@ -1696,8 +2610,8 @@
       \strng{authornamehash}{095ac066d331a71db279f10494608b6b}
       \strng{authorfullhash}{fa5441691c2ab245cada389d375b1c04}
       \strng{authorfullhashraw}{fa5441691c2ab245cada389d375b1c04}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Objective: To identify the possible contribution of electromyogram ({EMG}) to scalp electroencephalogram ({EEG}) rhythms at rest and induced or evoked by cognitive tasks. Methods: Scalp {EEG} recordings were made on two subjects in presence and absence of complete neuromuscular blockade, sparing the dominant arm. The subjects undertook cognitive tasks in both states to allow direct comparison of electrical recordings. Results: {EEG} rhythms in the paralysed state diﬀered signiﬁcantly compared with the unparalysed state, with 10- to 200-fold diﬀerences in the power of frequencies above 20 Hz during paralysis. Conclusions: Most of the scalp {EEG} recording above 20 Hz is of {EMG} origin. Previous studies measuring gamma {EEG} need to be re-evaluated. Signiﬁcance: This has a signiﬁcant impact on measurements of gamma rhythms from the scalp {EEG} in unparalysed humans. It is to be hoped that signal separation methods will be able to rectify this situation. Ó 2007 International Federation of Clinical Neurophysiology. Published by Elsevier Ireland Ltd. All rights reserved.}
@@ -1768,8 +2682,8 @@
       \strng{authornamehash}{d57d1e3b47e66bf4ae6549c29933f536}
       \strng{authorfullhash}{3f5fe231da9e9f06f16ebc3f3229bfb1}
       \strng{authorfullhashraw}{3f5fe231da9e9f06f16ebc3f3229bfb1}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Abstract Objective . In order to reach electroencephalography ({EEG}) electrodes on the scalp, synchronized activity of neurons needs to pass thorough several tissue layers, including the skull and muscles covering the scalp. The contamination of {EEG} signal by temporalis and frontalis muscles has been well documented for voluntary muscle contraction even at low contraction levels. The extent of myogenic contamination during postural and/or rest activity of the temporalis and frontalis remains an impediment for {EEG} research. Approach . In this study, we first aimed to observe involuntary, continuous motor unit activity of the frontalis muscle at rest and evaluate motor unit level frontalis interference on the {EEG} electrodes. Second, we compared motor unit interference from the frontalis before and after artefact pruning via an independent component analysis ({ICA}) algorithm. Main results . We demonstrated that motor unit activity of the frontalis muscle produces interference potentials on the frontal electrodes at rest and the interference was significantly reduced after {ICA} on the frontal electrodes, but not completely eliminated. Likewise, the temporalis interference at rest was significantly smaller after {ICA} on the fronto-temporal electrodes, but not completely removed. Significance . We documented the existence of resting involuntary activity of the temporalis and frontalis muscles underneath {EEG} electrodes and the removal of the {EEG} signal from their contiguous interference is not possible even after the use of {ICA} technology. We recommend that {EEG} researchers readdress the definition of ‘rest’ for {EEG} recordings and the {ICA} experts should extend their electromyography removal strategies to motor unit level interference.}
@@ -1851,8 +2765,8 @@
       \strng{authornamehash}{47c961030d85fb1149a4cd27d724eb2d}
       \strng{authorfullhash}{079c935f58c6e322d9dce2b5b7f050d4}
       \strng{authorfullhashraw}{079c935f58c6e322d9dce2b5b7f050d4}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Electroencephalographic ({EEG}) recordings are often contaminated by electromyographic ({EMG}) artifacts, especially when recording during movement. Existing methods to remove {EMG} artifacts include independent component analysis ({ICA}), and other high-order statistical methods. However, these methods can not effectively remove most of {EMG} artifacts. Here, we proposed a modiﬁed {ICA} model for {EMG} artifacts removal in the {EEG}, which is called {EMG} Removal by Adding Sources of {EMG} ({ERASE}). In this new approach, additional channels of real {EMG} from neck and head muscles (reference artifacts) were added as inputs to {ICA} in order to “force” the most power from {EMG} artifacts into a few independent components ({ICs}). The {ICs} containing {EMG} artifacts (the “artifact {ICs}”) were identiﬁed and rejected using an automated procedure. {ERASE} was validated ﬁrst using both simulated and experimentally-recorded {EEG} and {EMG}. Simulation results showed {ERASE} removed {EMG} artifacts from {EEG} signiﬁcantly more effectively than conventional {ICA}. Also, it had a low false positive rate and high sensitivity. Subsequently, {EEG} was collected from 8 healthy participants while they moved their hands to test the realistic efﬁcacy of this approach. Results showed that {ERASE} successfully removed {EMG} artifacts (on average, about 75\% of {EMG} artifacts were removed when using real {EMGs} as reference artifacts) while preserving the expected {EEG} features related to movement. We also tested the {ERASE} procedure using simulated {EMGs} as reference artifacts (about 63\% of {EMG} artifacts removed). Compared to conventional {ICA}, {ERASE} removed on average 26\% more {EMG} artifacts from {EEG}. These ﬁndings suggest that {ERASE} can achieve signiﬁcant separation of {EEG} signal and {EMG} artifacts without a loss of the underlying {EEG} features. These results indicate that using additional real or simulated {EMG} sources can increase the effectiveness of {ICA} in removing {EMG} artifacts from {EEG}. Combined with automated artifact {IC} rejection, {ERASE} also minimizes potential user bias. Future work will focus on improving {ERASE} so that it can also be used in real-time applications.}
@@ -1906,8 +2820,8 @@
       \strng{authornamehash}{35c95232ce8da355feecd1d092afa843}
       \strng{authorfullhash}{35c95232ce8da355feecd1d092afa843}
       \strng{authorfullhashraw}{35c95232ce8da355feecd1d092afa843}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{01678760}
@@ -1955,8 +2869,8 @@
       \strng{authornamehash}{a327e8f4d273c411eb2828fc6522adfd}
       \strng{authorfullhash}{a327e8f4d273c411eb2828fc6522adfd}
       \strng{authorfullhashraw}{a327e8f4d273c411eb2828fc6522adfd}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Functional signiﬁcance of delta oscillations is not fully understood. One way to approach this question would be from an evolutionary perspective. Delta oscillations dominate the {EEG} of waking reptiles. In humans, they are prominent only in early developmental stages and during slow-wave sleep. Increase of delta power has been documented in a wide array of developmental disorders and pathological conditions. Considerable evidence on the association between delta waves and autonomic and metabolic processes hints that they may be involved in integration of cerebral activity with homeostatic processes. Much evidence suggests the involvement of delta oscillations in motivation. They increase during hunger, sexual arousal, and in substance users. They also increase during panic attacks and sustained pain. In cognitive domain, they are implicated in attention, salience detection, and subliminal perception. This evidence shows that delta oscillations are associated with evolutionary old basic processes, which in waking adults are overshadowed by more advanced processes associated with higher frequency oscillations. The former processes rise in activity, however, when the latter are dysfunctional.}
@@ -2021,8 +2935,8 @@
       \strng{authornamehash}{baf36da0a05846435f631c71d6e6c0a9}
       \strng{authorfullhash}{722673bf9376268b05fb630b1af1c47a}
       \strng{authorfullhashraw}{722673bf9376268b05fb630b1af1c47a}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Considering the widespread influence of short-video applications ({SVAs}) on adolescent learners, this study aimed to examine whether and how problematic {SVA} use predicts their executive functions from behavioral and neural perspectives. With a sample of Chinese adolescents (Mage=12.30, N=84), behavioral results show that {SVA} addiction predicted lower working memory but not cognitive control performance. Their brain activation pattern during {SVA} use was also collected and linear regression analysis generated a neural indicator of {SVA} addiction on delta band. This component is proved to be a significant negative predictor of adolescents' working memory and cognitive control performance. Both behavioral and neural evidence provide complementary perspectives on the relationship between {SVA} addiction and adolescents' executive functions. The findings suggest that though {SVAs} have played increasingly important role in adolescents' informal learning experiences, the negative association between {SVA} overuse and their cognitive functioning urges caution.}
@@ -2063,8 +2977,8 @@
       \strng{authornamehash}{31088054e86bdf1ede78678b1ddb90de}
       \strng{authorfullhash}{31088054e86bdf1ede78678b1ddb90de}
       \strng{authorfullhashraw}{31088054e86bdf1ede78678b1ddb90de}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{{PLOS} One}
@@ -2110,8 +3024,8 @@
       \strng{authornamehash}{635192fa60f0820344ea3d5bb7a0abf7}
       \strng{authorfullhash}{05f8786e9d83c57c98bb387faaa56199}
       \strng{authorfullhashraw}{05f8786e9d83c57c98bb387faaa56199}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The recordable cerebral activity (readiness-potential, {RP}) that precedes a freely voluntary, fully endogenous motor act was directly compared with the reportable time (W) for appearance of the subjective experience of'wanting' or intending to act. The onset ofcerebral activity clearly preceded by at least several hundred milliseconds the reported time of conscious intention to act. This relationship held even for those series (with 'type {II}' {RPs}) in which subjects reported that all of the 40 self-initiated movements in the series appeared 'spontaneously' and capriciously.}
@@ -2164,8 +3078,8 @@
       \strng{authornamehash}{30018178ed530f60b24a0c36e7d30076}
       \strng{authorfullhash}{c3a42141abb4267dce34490ddbb5d25c}
       \strng{authorfullhashraw}{c3a42141abb4267dce34490ddbb5d25c}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{In recent years there has been an increase in the number of portable low-cost electroencephalographic ({EEG}) systems available to researchers. However, to date the validation of the use of low-cost {EEG} systems has focused on continuous recording of {EEG} data and/or the replication of large system {EEG} setups reliant on event-markers to afford examination of event-related brain potentials ({ERP}). Here, we demonstrate that it is possible to conduct {ERP} research without being reliant on event markers using a portable {MUSE} {EEG} system and a single computer. Speciﬁcally, we report the results of two experiments using data collected with the {MUSE} {EEG} system—one using the well-known visual oddball paradigm and the other using a standard reward-learning task. Our results demonstrate that we could observe and quantify the N200 and P300 {ERP} components in the visual oddball task and the reward positivity (the mirror opposite component to the feedback-related negativity) in the reward-learning task. Speciﬁcally, single sample t-tests of component existence (all p’s {<} 0.05), computation of Bayesian credible intervals, and 95\% conﬁdence intervals all statistically veriﬁed the existence of the N200, P300, and reward positivity in all analyses. We provide with this research paper an open source website with all the instructions, methods, and software to replicate our ﬁndings and to provide researchers with an easy way to use the {MUSE} {EEG} system for {ERP} research. Importantly, our work highlights that with a single computer and a portable {EEG} system such as the {MUSE} one can conduct {ERP} research with ease thus greatly extending the possible use of the {ERP} methodology to a variety of novel contexts.}
@@ -2195,204 +3109,6 @@
       \endverb
       \verb{url}
       \verb http://journal.frontiersin.org/article/10.3389/fnins.2017.00109/full
-      \endverb
-      \keyw{★★★★★}
-    \endentry
-    \entry{apicella_eeg-based_2022}{article}{}{}
-      \name{author}{6}{}{%
-        {{hash=9a5d5f6714e24b5ce0f4c8e21d31faff}{%
-           family={Apicella},
-           familyi={A\bibinitperiod},
-           given={Andrea},
-           giveni={A\bibinitperiod}}}%
-        {{hash=2f891b21a2dad485a11a6844351f0cdf}{%
-           family={Arpaia},
-           familyi={A\bibinitperiod},
-           given={Pasquale},
-           giveni={P\bibinitperiod}}}%
-        {{hash=b6e049905ed90c334525ea24310944a5}{%
-           family={Frosolone},
-           familyi={F\bibinitperiod},
-           given={Mirco},
-           giveni={M\bibinitperiod}}}%
-        {{hash=d858fe615a085c5f47bb83c1ec36aa24}{%
-           family={Improta},
-           familyi={I\bibinitperiod},
-           given={Giovanni},
-           giveni={G\bibinitperiod}}}%
-        {{hash=b2650dced03ba42b76c3efa96735bd97}{%
-           family={Moccaldi},
-           familyi={M\bibinitperiod},
-           given={Nicola},
-           giveni={N\bibinitperiod}}}%
-        {{hash=2972f9281b6b8697c123f40664b991d1}{%
-           family={Pollastro},
-           familyi={P\bibinitperiod},
-           given={Andrea},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Nature Research}%
-      }
-      \strng{namehash}{44455273cca0ab5c50fbf0f29f27457e}
-      \strng{fullhash}{b4978f28b7ce3d27c3b6e07ee439b3ea}
-      \strng{fullhashraw}{b4978f28b7ce3d27c3b6e07ee439b3ea}
-      \strng{bibnamehash}{b4978f28b7ce3d27c3b6e07ee439b3ea}
-      \strng{authorbibnamehash}{b4978f28b7ce3d27c3b6e07ee439b3ea}
-      \strng{authornamehash}{44455273cca0ab5c50fbf0f29f27457e}
-      \strng{authorfullhash}{b4978f28b7ce3d27c3b6e07ee439b3ea}
-      \strng{authorfullhashraw}{b4978f28b7ce3d27c3b6e07ee439b3ea}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{A wearable system for the personalized {EEG}-based detection of engagement in learning 4.0 is proposed. In particular, the effectiveness of the proposed solution is assessed by means of the classification accuracy in predicting engagement. The system can be used to make an automated teaching platform adaptable to the user, by managing eventual drops in the cognitive and emotional engagement. The effectiveness of the learning process mainly depends on the engagement level of the learner. In case of distraction, lack of interest or superficial participation, the teaching strategy could be personalized by an automatic modulation of contents and communication strategies. The system is validated by an experimental case study on twenty-one students. The experimental task was to learn how a specific human-machine interface works. Both the cognitive and motor skills of participants were involved. De facto standard stimuli, namely (1) cognitive task (Continuous Performance Test), (2) music background (Music Emotion Recognition—{MER} database), and (3) social feedback (Hermans and De Houwer database), were employed to guarantee a metrologically founded reference. In within-subject approach, the proposed signal processing pipeline (Filter bank, Common Spatial Pattern, and Support Vector Machine), reaches almost 77\% average accuracy, in detecting both cognitive and emotional engagement.}
-      \field{day}{1}
-      \field{issn}{20452322}
-      \field{journaltitle}{Scientific Reports}
-      \field{month}{12}
-      \field{number}{1}
-      \field{title}{{EEG}-based measurement system for monitoring student engagement in learning 4.0}
-      \field{volume}{12}
-      \field{year}{2022}
-      \field{dateera}{ce}
-      \verb{doi}
-      \verb 10.1038/s41598-022-09578-y
-      \endverb
-      \verb{file}
-      \verb PDF:/Users/gregorlederer/Zotero/storage/LV866QF6/s41598-022-09578-y.pdf:application/pdf
-      \endverb
-    \endentry
-    \entry{bellos_methods_2025}{article}{}{}
-      \name{author}{5}{}{%
-        {{hash=d630c722dd854be39299747987f00762}{%
-           family={Bellos},
-           familyi={B\bibinitperiod},
-           given={Christos},
-           giveni={C\bibinitperiod}}}%
-        {{hash=b56453989df0913a503165766d039d32}{%
-           family={Stefanou},
-           familyi={S\bibinitperiod},
-           given={Konstantinos},
-           giveni={K\bibinitperiod}}}%
-        {{hash=0ed6b76f77731f2b9f27a0dfae8079e7}{%
-           family={Tzallas},
-           familyi={T\bibinitperiod},
-           given={Alexandros},
-           giveni={A\bibinitperiod}}}%
-        {{hash=2fd82fba37903864d7801ccdbda3e6ef}{%
-           family={Stergios},
-           familyi={S\bibinitperiod},
-           given={Georgios},
-           giveni={G\bibinitperiod}}}%
-        {{hash=71ce38083472fc701a955c37517383a2}{%
-           family={Tsipouras},
-           familyi={T\bibinitperiod},
-           given={Markos},
-           giveni={M\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Multidisciplinary Digital Publishing Institute ({MDPI})}%
-      }
-      \strng{namehash}{980442507d8722b7ef710e543a33fa6d}
-      \strng{fullhash}{6aa6349673d6b20238dfd28f5eb8b860}
-      \strng{fullhashraw}{6aa6349673d6b20238dfd28f5eb8b860}
-      \strng{bibnamehash}{6aa6349673d6b20238dfd28f5eb8b860}
-      \strng{authorbibnamehash}{6aa6349673d6b20238dfd28f5eb8b860}
-      \strng{authornamehash}{980442507d8722b7ef710e543a33fa6d}
-      \strng{authorfullhash}{6aa6349673d6b20238dfd28f5eb8b860}
-      \strng{authorfullhashraw}{6aa6349673d6b20238dfd28f5eb8b860}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{This review paper explores the intersection of user engagement and user experience studies with electroencephalography ({EEG}) analysis by investigating the existing literature in this field. User engagement describes the immediate, session-based experience of using interactive products and is commonly used as a metric to assess the success of games, online platforms, applications, and websites, while user experience encompasses the broader and longer-term aspects of user interaction. This review focuses on the use of {EEG} as a precise and objective method to gain insights into user engagement. {EEG} recordings capture brain activity as waves, which can be categorized into different frequency bands. By analyzing patterns of brain activity associated with attention, emotion, mental workload, and user experience, {EEG} provides valuable insights into user engagement. The review follows the {PRISMA} statement. The search process involved an extensive exploration of multiple databases, resulting in the identification of 74 relevant studies. The review encompasses the entire information flow of the experiments, including data acquisition, pre-processing analysis, feature extraction, and analysis. By examining the current literature, this review provides a comprehensive overview of various algorithms and processes utilized in {EEG}-based systems for studying user engagement and identifies potential directions for future research endeavors.}
-      \field{day}{1}
-      \field{issn}{20799292}
-      \field{journaltitle}{Electronics (Switzerland)}
-      \field{month}{1}
-      \field{number}{2}
-      \field{title}{Methods and Approaches for User Engagement and User Experience Analysis Based on Electroencephalography Recordings: A Systematic Review}
-      \field{volume}{14}
-      \field{year}{2025}
-      \field{dateera}{ce}
-      \verb{doi}
-      \verb 10.3390/electronics14020251
-      \endverb
-      \verb{file}
-      \verb PDF:/Users/gregorlederer/Zotero/storage/8RETZK4Q/E0005_Bellos,2025 (EEG methods for user-engagement & UX – systematic review).pdf:application/pdf
-      \endverb
-      \keyw{systematic review,data acquisition,{EEG} analysis,feature extraction,pre-processing analysis,signal processing,user engagement,user experience}
-    \endentry
-    \entry{hasson_intersubject_2004}{article}{}{}
-      \name{author}{5}{}{%
-        {{hash=9f8290b0c59d4aba9138f55107a580cd}{%
-           family={Hasson},
-           familyi={H\bibinitperiod},
-           given={Uri},
-           giveni={U\bibinitperiod}}}%
-        {{hash=818ec9fb2982ee7a4c2005c5e1d15ff4}{%
-           family={Nir},
-           familyi={N\bibinitperiod},
-           given={Yuval},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=0fa676961455db47e4519e109d7a35f1}{%
-           family={Levy},
-           familyi={L\bibinitperiod},
-           given={Ifat},
-           giveni={I\bibinitperiod}}}%
-        {{hash=9f54e44dfe47cc46bdc949407a020e58}{%
-           family={Fuhrmann},
-           familyi={F\bibinitperiod},
-           given={Galit},
-           giveni={G\bibinitperiod}}}%
-        {{hash=c589b71f0edef4c263de13bd1456d7cc}{%
-           family={Malach},
-           familyi={M\bibinitperiod},
-           given={Rafael},
-           giveni={R\bibinitperiod}}}%
-      }
-      \strng{namehash}{ec3c8d2488f73357101ce7e5854c8f3c}
-      \strng{fullhash}{b5a679126465efe2fc1d7b53f1fb91d6}
-      \strng{fullhashraw}{b5a679126465efe2fc1d7b53f1fb91d6}
-      \strng{bibnamehash}{b5a679126465efe2fc1d7b53f1fb91d6}
-      \strng{authorbibnamehash}{b5a679126465efe2fc1d7b53f1fb91d6}
-      \strng{authornamehash}{ec3c8d2488f73357101ce7e5854c8f3c}
-      \strng{authorfullhash}{b5a679126465efe2fc1d7b53f1fb91d6}
-      \strng{authorfullhashraw}{b5a679126465efe2fc1d7b53f1fb91d6}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{To what extent do all brains work alike during natural conditions? We explored this question by letting five subjects freely view half an hour of a popular movie while undergoing functional brain imaging. Applying an unbiased analysis in which spatiotemporal activity patterns in one brain were used to “model” activity in another brain, we found a striking level of voxel-by-voxel synchronization between individuals, not only in primary and secondary visual and auditory areas but also in association cortices. The results reveal a surprising tendency of individual brains to “tick collectively” during natural vision. The intersubject synchronization consisted of a widespread cortical activation pattern correlated with emotionally arousing scenes and regionally selective components. The characteristics of these activations were revealed with the use of an open-ended “reverse-correlation” approach, which inverts the conventional analysis by letting the brain signals themselves “pick up” the optimal stimuli for each specialized cortical area.}
-      \field{day}{12}
-      \field{issn}{0036-8075, 1095-9203}
-      \field{journaltitle}{Science}
-      \field{langid}{english}
-      \field{month}{3}
-      \field{number}{5664}
-      \field{shortjournal}{Science}
-      \field{title}{Intersubject Synchronization of Cortical Activity During Natural Vision}
-      \field{urlday}{30}
-      \field{urlmonth}{4}
-      \field{urlyear}{2026}
-      \field{volume}{303}
-      \field{year}{2004}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
-      \field{pages}{1634\bibrangedash 1640}
-      \range{pages}{7}
-      \verb{doi}
-      \verb 10.1126/science.1089506
-      \endverb
-      \verb{file}
-      \verb PDF:/Users/gregorlederer/Zotero/storage/4PXJ8CMB/Hasson et al. - 2004 - Intersubject Synchronization of Cortical Activity During Natural Vision.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://www.science.org/doi/10.1126/science.1089506
-      \endverb
-      \verb{url}
-      \verb https://www.science.org/doi/10.1126/science.1089506
       \endverb
       \keyw{★★★★★}
     \endentry
@@ -2437,8 +3153,8 @@
       \strng{authornamehash}{ae31d8ccb0e16445859a080bf95406b9}
       \strng{authorfullhash}{44ec537491048520df334525a9e080be}
       \strng{authorfullhashraw}{44ec537491048520df334525a9e080be}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Brain rhythms are used for both classifying mental states and identifying individuals. However, it is still unclear whether the same neural oscillations can successfully achieve both objectives. This study addresses this question through a three-stage experiment conducted over three weekly recording sessions. Cognitive engagement metrics first examined whether brain signals can discriminate between a cognitive task and an affective stimulus. The deep learning architectures were then trained under a leave-one-session-out scheme to evaluate which frequency bands discriminate most effectively between affective stimulation and cognitive task conditions. The same protocol assessed whether task-discriminative frequencies also preserve person-specific signatures in resting-state recordings collected one week apart. The findings indicate a strong dissociation between the two objectives. Delta-band oscillations achieved 86.9\% accuracy in task classification, but only 15.6\%–23.6\% in person identification. On the other hand, an opposite pattern is observed in the case of broadband signals, which achieve 69.9\% authentication accuracy across temporally separated sessions. Two-way {ANOVA} showed that the observed dissociation was not random, indicating significant band-objective interaction. Task and authentication accuracy demonstrated a significant negative correlation, with delta showing extreme task specialization and broadband demonstrating balanced versatility. The findings reveal that the engagement index differentiates task conditions with a large effect size. In contrast, the theta-alpha ratio exhibits no discriminative capacity. The results indicate that shared cognitive processes are primarily associated with slow cortical rhythms, whereas stable individual signatures extend across broader frequency bands.}
@@ -2496,8 +3212,8 @@
       \strng{authornamehash}{e6d0fe5b5e67ceeda97b584dc24b4290}
       \strng{authorfullhash}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
       \strng{authorfullhashraw}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Band ratio measures, computed as the ratio of power between two frequency bands, are a common analysis measure in neuroelectrophysiological recordings. Band ratio measures are typically interpreted as reflecting quantitative measures of periodic, or oscillatory, activity. This assumes that the measure reflects relative powers of distinct periodic components that are well captured by predefined frequency ranges. However, electrophysiological signals contain periodic components and a 1/f-like aperiodic component, the latter of which contributes power across all frequencies. Here, we investigate whether band ratio measures truly reflect oscillatory power differences, and/or to what extent ratios may instead reflect other periodic changes, such as in center frequency or bandwidth, and/or aperiodic activity. In simulation, we investigate how band ratio measures relate to changes in multiple spectral features, and show how multiple periodic and aperiodic features influence band ratio measures. We validate these findings in human electroencephalography ({EEG}) data, comparing band ratio measures to parameterizations of power spectral features and find that multiple disparate features influence ratio measures. For example, the commonly applied u/b ratio is most reflective of differences in aperiodic activity, and not oscillatory u or b power. Collectively, we show that periodic and aperiodic features can create the same observed changes in band ratio measures, and that this is inconsistent with their typical interpretations as measures of periodic power. We conclude that band ratio measures are a non-specific measure, conflating multiple possible underlying spectral changes, and recommend explicit parameterization of neural power spectra as a more specific approach.}
