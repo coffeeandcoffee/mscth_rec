@@ -518,7 +518,7 @@
       \verb 10.1016/j.amepre.2016.06.015
       \endverb
       \verb{file}
-      \verb PDF:/Users/gregorlederer/Zotero/storage/7HSE2FF2/Yardley et al. - 2016 - Understanding and Promoting Effective Engagement With Digital Behavior Change Interventions.pdf:application/pdf
+      \verb PDF:/Users/gregorlederer/Zotero/storage/7HSE2FF2/yardley2016.pdf:application/pdf
       \endverb
       \verb{urlraw}
       \verb https://linkinghub.elsevier.com/retrieve/pii/S0749379716302434
@@ -930,61 +930,78 @@
       \endverb
       \keyw{{COBRA} model,Customer engagement,Qualitative metrics,Quantitative metrics,Social media engagement,Social media metrics,Social media platforms}
     \endentry
-    \entry{salminen_engagement_2024}{inproceedings}{}{}
-      \name{author}{4}{}{%
-        {{hash=ea9ea4f45481222ddf150b996d888de1}{%
-           family={Salminen},
-           familyi={S\bibinitperiod},
-           given={Joni},
-           giveni={J\bibinitperiod}}}%
-        {{hash=478ecf7f5347387a5160654151c725a7}{%
-           family={Wahid},
-           familyi={W\bibinitperiod},
-           given={Risqo},
+    \entry{chen_factors_2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=8b8805250fb5a57cfbae360547a18706}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Qiang},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=e3863bc0d29070b47095a0a5a0500d49}{%
+           family={Min},
+           familyi={M\bibinitperiod},
+           given={Chen},
+           giveni={C\bibinitperiod}}}%
+        {{hash=25bbf4047d900f3760c65b01ee899dba}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=ac3a14fff63655ba2aee6a20c9bb1fbe}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Xiaoyue},
+           giveni={X\bibinitperiod}}}%
+        {{hash=173072a12c87679d6e0aeed7dbfb2abc}{%
+           family={Evans},
+           familyi={E\bibinitperiod},
+           given={Richard},
            giveni={R\bibinitperiod}}}%
-        {{hash=57658d6dc718ecf1e8ae58ce0a588e72}{%
-           family={Yang},
-           familyi={Y\bibinitperiod},
-           given={Yanwu},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=3e11dfd8a01f625af5222bdde3364caf}{%
-           family={Jansen},
-           familyi={J\bibinitperiod},
-           given={Bernard},
-           giveni={B\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Association for Computing Machinery, Inc}%
-      }
-      \strng{namehash}{38015bd94c40875841720522202480cf}
-      \strng{fullhash}{50faea6c418e55ddc66d5b46bfa0e4a0}
-      \strng{fullhashraw}{50faea6c418e55ddc66d5b46bfa0e4a0}
-      \strng{bibnamehash}{50faea6c418e55ddc66d5b46bfa0e4a0}
-      \strng{authorbibnamehash}{50faea6c418e55ddc66d5b46bfa0e4a0}
-      \strng{authornamehash}{38015bd94c40875841720522202480cf}
-      \strng{authorfullhash}{50faea6c418e55ddc66d5b46bfa0e4a0}
-      \strng{authorfullhashraw}{50faea6c418e55ddc66d5b46bfa0e4a0}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \strng{namehash}{fc2fa1483f697cb76682893252b2e965}
+      \strng{fullhash}{08e6181e8270c251db3fde957abdd869}
+      \strng{fullhashraw}{08e6181e8270c251db3fde957abdd869}
+      \strng{bibnamehash}{08e6181e8270c251db3fde957abdd869}
+      \strng{authorbibnamehash}{08e6181e8270c251db3fde957abdd869}
+      \strng{authornamehash}{fc2fa1483f697cb76682893252b2e965}
+      \strng{authorfullhash}{08e6181e8270c251db3fde957abdd869}
+      \strng{authorfullhashraw}{08e6181e8270c251db3fde957abdd869}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Short videos have become one of the dominant formats of social media content. Such short videos are often boosted by advertising to increase their reach and visibility. We investigate user churn (i.e., drop or loss of consumers during the video viewing) of short video ads on {TikTok}. Data from the {TikTok} Ads account of an e-commerce company was analyzed using logistic regression to examine how gender, age groups, and video duration affect users' video viewing behaviors. The findings indicate that (1) most customers leave the ads within the first quarter of the video; (2) males and females exhibit similar viewing behaviors, but (3) age groups vary by their viewing behaviors. Somewhat surprisingly, we discovered that (4) there is no significant correlation between user churn and ads performance metrics (i.e., cost-per-mille, cost-per-click, and click-through rate).}
-      \field{booktitle}{{HT} 2024: Creative Intelligence - 35th {ACM} Conference on Hypertext and Social Media}
-      \field{day}{10}
-      \field{isbn}{979-8-4007-0595-3}
-      \field{month}{9}
-      \field{title}{Engagement Patterns in {TikTok}: An Analysis of Short Video Ads}
-      \field{year}{2024}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Background: During the {COVID}-19 pandemic, growth in citizen engagement with social media platforms has enabled public health departments to accelerate and improve health information dissemination, developing transparency and trust between governments and citizens. In light of these benefits, it is imperative to learn the antecedents and underlying mechanisms for this to maintain and enhance engagement. Objective: The aim of this study is to determine the factors and influencing mechanisms related to citizen engagement with the {TikTok} account of the National Health Commission of China during the {COVID}-19 pandemic. Methods: Using a web crawler, 355 short videos were collected from the Healthy China account on {TikTok} (with more than 3 million followers throughout China), covering the period from January 21, 2020, to April 25, 2020. The title and video length, as well as the number of likes, shares, and comments were collected for each video. After classifying them using content analysis, a series of negative binomial regression analyses were completed. Results: Among the 355 videos, 154 (43.4\%) related to guidance for clinicians, patients, and ordinary citizens, followed by information concerning the government’s handling of the pandemic (n=100, 28.2\%), the latest news about {COVID}-19 (n=61, 17.2\%), and appreciation toward frontline emergency services (n=40, 11.3\%). Video length, titles, dialogic loop, and content type all influenced the level of citizen engagement. Specifically, video length was negatively associated with the number of likes (incidence rate ratio [{IRR}]=0.19, P{<}.001) and comments ({IRR}=0.39, P{<}.001). Title length was positively related to the number of shares ({IRR}=24.25, P=.01), likes ({IRR}=8.50, P=.03), and comments ({IRR}=7.85, P=.02). Dialogic loop negatively predicted the number of shares ({IRR}=0.56, P=.03). In comparison to appreciative information, information about the government’s handling of the situation ({IRR}=5.16, P{<}.001) and guidelines information ({IRR}=7.31, P{<}.001) were positively correlated with the number of shares, while the latest news was negatively related to the number of likes received ({IRR}=0.46, P=.004). More importantly, the relationship between predictors and citizen engagement was moderated by the emotional valence of video titles. Longer videos with positive titles received a higher number of likes ({IRR}=21.72, P=.04) and comments ({IRR}=10.14, P=.047). Furthermore, for short videos related to government handling of the pandemic ({IRR}=14.48, P=.04) and guidance for stakeholders ({IRR}=7.59, P=.04), positive titles received a greater number of shares. Videos related to the latest news ({IRR}=66.69, P=.04) received more likes if the video title displayed higher levels of positive emotion. Conclusions: During the {COVID}-19 pandemic, videos were frequently published on government social media platforms. Video length, title, dialogic loop, and content type significantly influenced the level of citizen engagement. These relationships were}
+      \field{day}{4}
+      \field{issn}{1438-8871}
+      \field{journaltitle}{Journal of Medical Internet Research}
+      \field{langid}{english}
+      \field{month}{2}
+      \field{number}{2}
+      \field{shortjournal}{J Med Internet Res}
+      \field{shorttitle}{Factors Driving Citizen Engagement With Government {TikTok} Accounts During the {COVID}-19 Pandemic}
+      \field{title}{Factors Driving Citizen Engagement With Government {TikTok} Accounts During the {COVID}-19 Pandemic: Model Development and Analysis}
+      \field{urlday}{16}
+      \field{urlmonth}{9}
+      \field{urlyear}{2026}
+      \field{volume}{23}
+      \field{year}{2021}
       \field{dateera}{ce}
-      \field{pages}{323\bibrangedash 329}
-      \range{pages}{7}
+      \field{urldateera}{ce}
+      \field{pages}{e21463}
+      \range{pages}{-1}
       \verb{doi}
-      \verb 10.1145/3648188.3677048
+      \verb 10.2196/21463
       \endverb
       \verb{file}
-      \verb PDF:/Users/gregorlederer/Zotero/storage/UCI3SYQY/0007_Salminen et al., 2024 (ACM - TikTok User Engagement Analysis).pdf:application/pdf
+      \verb PDF:/Users/gregorlederer/Zotero/storage/8D5ET6Q3/Chen et al. - 2021 - Factors Driving Citizen Engagement With Government TikTok Accounts During the COVID-19 Pandemic Mod.pdf:application/pdf
       \endverb
-      \keyw{short video ads,social media ads,{TikTok} advertising,user behavior,user churn}
+      \verb{urlraw}
+      \verb http://www.jmir.org/2021/2/e21463/
+      \endverb
+      \verb{url}
+      \verb http://www.jmir.org/2021/2/e21463/
+      \endverb
+      \keyw{★★★★★}
     \endentry
     \entry{obrien_what_2008}{article}{}{}
       \name{author}{2}{}{%
@@ -1294,8 +1311,8 @@
       \strng{authornamehash}{2ddb233266be6b51575933a9ca17e107}
       \strng{authorfullhash}{02403e9daf6a505722222b7b6b030e1b}
       \strng{authorfullhashraw}{02403e9daf6a505722222b7b6b030e1b}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{{<}p{>}Emotions are indicators of affective states and play a significant role in human daily life, behavior, and interactions. Giving emotional intelligence to the machines could, for instance, facilitate early detection and prediction of (mental) diseases and symptoms. Electroencephalography ({EEG}) -based emotion recognition is being widely applied because it measures electrical correlates directly from the brain rather than the indirect measurement of other physiological responses initiated by the brain. The recent development of non-invasive and portable {EEG} sensors makes it possible to use them in real-time applications. Therefore, this paper presents a real-time emotion classification pipeline, which trains different binary classifiers for the dimensions of Valence and Arousal from an incoming {EEG} data stream. After achieving a 23.9\% (Arousal) and 25.8\% (Valence) higher f1-score on the state-of-art {AMIGOS} dataset, this pipeline was applied to the dataset achieved by an emotion elicitation experimental framework developed within the scope of this thesis. Following two different protocols, 15 participants were recorded using two different consumer-grade {EEG} devices while watching 16 short emotional videos in a controlled environment. For an immediate label setting, the mean f1-score of 87\% and 82\% were achieved for Arousal and Valence, respectively. In a live scenario, while continuously being updated on the incoming data stream with delayed labels, the pipeline proved to be fast enough to achieve predictions in real time. However, the significant discrepancy from the readily available labels on the classification scores leads to future work to include more data with frequent delayed labels in the live settings.{<}/p{>}}
@@ -1349,8 +1366,8 @@
       \strng{authornamehash}{abb325757d1caab196766dfda2d49e56}
       \strng{authorfullhash}{d72be04aabc5fe94c59b3a9b8adaed69}
       \strng{authorfullhashraw}{d72be04aabc5fe94c59b3a9b8adaed69}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Motor-imagery ({MI}) {EEG} can be classified using supervised machine learning techniques such as Linear Discriminant Analysis applied to features extracted by Common Spatial Patterns. Performance of these models varies widely, possibly due to {MI} studies commonly utilising differing post-cue time windows and frequency bands to one another. This study aims to assess how the simultaneous optimisation of both these parameters impact {MI} classification performance. This is done by iteratively training and testing a series of subject-specific models on different combinations of frequency bandwidth and time window options across 109 subjects. This is followed by a statistical analysis using repeated measures {ANOVA} to uncover significant differences between different bandwidths and time windows in terms of accuracy across the patient cohort. The resulting visualisations and statistical tests show that there are, indeed, significant differences between both specific time windows and specific bandwidths in terms of accuracy. While the comparison of classification accuracies across 23 frequency bandwidths during five different time windows demonstrates an optimal temporal and spectral scale combination of (0, 4) s at the range of (4, 12) Hz across all subjects, the subjects demonstrate similar accuracies for other parameter combinations. These findings highlight the efficacy of personalised models to detect optimal temporal and spectral parameter combinations to best classify {MI} {EEG} signals that inherently vary across subjects.}
@@ -1418,8 +1435,8 @@
       \strng{authornamehash}{fae60299a78a4a3d194a94accbd1780b}
       \strng{authorfullhash}{b1b2fde4a2680e8295a7959b4d5e5975}
       \strng{authorfullhashraw}{b1b2fde4a2680e8295a7959b4d5e5975}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Short-form Video Addiction ({SVA}), a novel digital addiction of the modern world, proliferates among young adults and is not formally diagnosable. {SVA} detection from resulting bio-signals is crucial to prevent its adverse impacts. Existing formal methods involve large and expensive neuro-imaging devices in laboratory setups that are intrusive and not feasible to use in daily life. A possible non-intrusive solution can be using wearable sensors which is challenging due to the resulting noisy and faint signals. To address this problem, we investigated multi-modal wearable sensing technology to detect {SVA} in a non-intrusive fashion. However, fusing multi-modal sensors effectively presented different challenges due to the presence of signal heterogeneity. In this study, we proposed a novel multimodal temporally coherent domain adaptation method to effectively detect {SVA} using Electroencephalogram ({EEG}) and Electrodermal Activity ({EDA}) sensors. We also investigated the nature and properties of {SVA} with the help of different components of {EEG} and {EDA} signals. We evaluated our proposed method for {SVA} detection and fatigue assessment tasks. Experimental evaluation shown the proposed model's superior performance (10\% accuracy) over state-of-art domain adaptation models.}
@@ -1454,8 +1471,8 @@
       \strng{authornamehash}{1fb584ced8121c1907a92744384c1382}
       \strng{authorfullhash}{1fb584ced8121c1907a92744384c1382}
       \strng{authorfullhashraw}{1fb584ced8121c1907a92744384c1382}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{16}
@@ -1469,6 +1486,62 @@
       \verb{url}
       \verb https://pypi.org/project/muselsl/
       \endverb
+    \endentry
+    \entry{salminen_engagement_2024}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=ea9ea4f45481222ddf150b996d888de1}{%
+           family={Salminen},
+           familyi={S\bibinitperiod},
+           given={Joni},
+           giveni={J\bibinitperiod}}}%
+        {{hash=478ecf7f5347387a5160654151c725a7}{%
+           family={Wahid},
+           familyi={W\bibinitperiod},
+           given={Risqo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=57658d6dc718ecf1e8ae58ce0a588e72}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Yanwu},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=3e11dfd8a01f625af5222bdde3364caf}{%
+           family={Jansen},
+           familyi={J\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery, Inc}%
+      }
+      \strng{namehash}{38015bd94c40875841720522202480cf}
+      \strng{fullhash}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{fullhashraw}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{bibnamehash}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{authorbibnamehash}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{authornamehash}{38015bd94c40875841720522202480cf}
+      \strng{authorfullhash}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \strng{authorfullhashraw}{50faea6c418e55ddc66d5b46bfa0e4a0}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Short videos have become one of the dominant formats of social media content. Such short videos are often boosted by advertising to increase their reach and visibility. We investigate user churn (i.e., drop or loss of consumers during the video viewing) of short video ads on {TikTok}. Data from the {TikTok} Ads account of an e-commerce company was analyzed using logistic regression to examine how gender, age groups, and video duration affect users' video viewing behaviors. The findings indicate that (1) most customers leave the ads within the first quarter of the video; (2) males and females exhibit similar viewing behaviors, but (3) age groups vary by their viewing behaviors. Somewhat surprisingly, we discovered that (4) there is no significant correlation between user churn and ads performance metrics (i.e., cost-per-mille, cost-per-click, and click-through rate).}
+      \field{booktitle}{{HT} 2024: Creative Intelligence - 35th {ACM} Conference on Hypertext and Social Media}
+      \field{day}{10}
+      \field{isbn}{979-8-4007-0595-3}
+      \field{month}{9}
+      \field{title}{Engagement Patterns in {TikTok}: An Analysis of Short Video Ads}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{pages}{323\bibrangedash 329}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1145/3648188.3677048
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/UCI3SYQY/0007_Salminen et al., 2024 (ACM - TikTok User Engagement Analysis).pdf:application/pdf
+      \endverb
+      \keyw{short video ads,social media ads,{TikTok} advertising,user behavior,user churn}
     \endentry
     \entry{nuamah_electroencephalography_2017}{inproceedings}{}{}
       \name{author}{3}{}{%
@@ -1502,8 +1575,8 @@
       \strng{authornamehash}{b2c09168cf1802475cccf60402133106}
       \strng{authorfullhash}{cf5a152e229445e530c87357f7fa81f8}
       \strng{authorfullhashraw}{cf5a152e229445e530c87357f7fa81f8}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The application of autonomous systems is on an increase, and there is the need to optimize the fit between humans and these systems. While operators must be aware of the autonomous systems dynamic behaviors, the autonomous systems must in turn base their operations, among other things, on an ongoing knowledge of operators’ cognitive state, and its application domain. Psychophysiology allows for the use of physiological measurements to understand an operators behavior by noninvasively recording peripheral and central physiological changes while the operator behaves under controlled conditions. Electroencephalography ({EEG}) is a psychophysiological technique for studying brain activation. In the present study, {EEG} task engagement index, defined as the ratio of beta to (alpha + theta), are used as inputs to an artificial neural network ({ANN}) to allow identification and classification of mental engagement. Six separate feedforward {ANN} with single hidden layer trained by backpropagation were designed to classify five mental tasks for each of six participants. The average classification accuracy across the six participants was 88.67 \%. The results show that differences in cognitive task demand do elicit different degrees of mental engagement, which can be measured through the use of the task engagement index.}
@@ -1571,8 +1644,8 @@
       \strng{authornamehash}{ec3c8d2488f73357101ce7e5854c8f3c}
       \strng{authorfullhash}{b5a679126465efe2fc1d7b53f1fb91d6}
       \strng{authorfullhashraw}{b5a679126465efe2fc1d7b53f1fb91d6}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{To what extent do all brains work alike during natural conditions? We explored this question by letting five subjects freely view half an hour of a popular movie while undergoing functional brain imaging. Applying an unbiased analysis in which spatiotemporal activity patterns in one brain were used to “model” activity in another brain, we found a striking level of voxel-by-voxel synchronization between individuals, not only in primary and secondary visual and auditory areas but also in association cortices. The results reveal a surprising tendency of individual brains to “tick collectively” during natural vision. The intersubject synchronization consisted of a widespread cortical activation pattern correlated with emotionally arousing scenes and regionally selective components. The characteristics of these activations were revealed with the use of an open-ended “reverse-correlation” approach, which inverts the conventional analysis by letting the brain signals themselves “pick up” the optimal stimuli for each specialized cortical area.}
@@ -1633,8 +1706,8 @@
       \strng{authornamehash}{6bf91641f4c7b586ec8db024e8a3b0fe}
       \strng{authorfullhash}{852f18738fa0a99c526350e5039b6faa}
       \strng{authorfullhashraw}{852f18738fa0a99c526350e5039b6faa}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The most popular {SA} practice seen in the literature is that of ’one-factor-at-a-time’ ({OAT}). This consists of analyzing the effect of varying one model input factor at a time while keeping all other fixed. While the shortcomings of {OAT} are known from the statistical literature, its widespread use among modellers raises concern on the quality of the associated sensitivity analyses. We introduce a novel geometric proof of the inefficiency of {OAT}, with the purpose of providing the modelling community with a convincing and possibly definitive argument against {OAT}. Alternatives to {OAT} are indicated which are based on statistical theory, drawing from experimental design, regression analysis and sensitivity analysis proper.}
@@ -1728,8 +1801,8 @@
       \strng{authornamehash}{c45a134fd9a5d16d31e78bc810d6a3ea}
       \strng{authorfullhash}{62472df9d0b1af645aa35f4469c45f4c}
       \strng{authorfullhashraw}{62472df9d0b1af645aa35f4469c45f4c}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Alzheimer’s Disease ({AD}) is a neurogenerative disorder and the most common type of dementia with a rapidly increasing world prevalence. In this paper, the ability of several statistical and spectral features to detect {AD} from electroencephalographic ({EEG}) recordings is evaluated. For this purpose, clinical {EEG} recordings from 14 patients with {AD} (8 with mild {AD} and 6 with moderate {AD}) and 10 healthy, age-matched individuals are analyzed. The {EEG} signals are initially segmented in nonoverlapping epochs of diﬀerent lengths ranging from 5 s to 12 s. Then, a group of statistical and spectral features calculated for each {EEG} rhythm (δ, θ, α, β, and γ) are extracted, forming the feature vector that trained and tested a Random Forests classiﬁer. Six classiﬁcation problems are addressed, including the discrimination from whole-brain dynamics and separately from speciﬁc brain regions in order to highlight any alterations of the cortical regions. The results indicated a high accuracy ranging from 88.79\% to 96.78\% for whole-brain classiﬁcation. Also, the classiﬁcation accuracy was higher at the posterior and central regions than at the frontal area and the right side of temporal lobe for all classiﬁcation problems.}
@@ -1796,8 +1869,8 @@
       \strng{authornamehash}{0af819968a9b4d067b1fc5f14454f9ff}
       \strng{authorfullhash}{d44f80437ddfb9b839d782fa5cf0ece0}
       \strng{authorfullhashraw}{d44f80437ddfb9b839d782fa5cf0ece0}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Motor Imagery-based Brain-Computer Interfaces ({MI}-{BCIs}) are neurotechnologies that exploit the modulation of sensorimotor rhythms over the motor cortices, respectively known as Event-Related Desynchronization ({ERD}) and Synchronization ({ERS}). The interpretation of {ERD}/{ERS} is directly related to the selection of the baseline used to estimate them, and might result in a misleading {ERD}/{ERS} visualization. In fact, in {BCI} paradigms, if two trials are separated by a few seconds, taking a baseline close to the end of the previous trial could result in an over-estimation of the {ERD}, while taking a baseline too close to the upcoming trial could result in an under-estimation of the {ERD}. This phenomenon may cause a functional misinterpretation of the {ERD}/{ERS} phenomena in {MI}-{BCI} studies. This may also impair {BCI} performances for {MI} vs Rest classification, since such baselines are often used as resting states. In this paper, we propose to investigate the effect of several baseline time window selections on {ERD}/{ERS} modulations and {BCI} performances. Our results show that considering the selected temporal baseline effect is essential to analyze the modulations of {ERD}/{ERS} during {MI}-{BCI} use.}
@@ -1861,8 +1934,8 @@
       \strng{authornamehash}{736aafc56de75eb45bbddb4369c299f6}
       \strng{authorfullhash}{68b84140ada3c3bc8c045b0c7e37fd8b}
       \strng{authorfullhashraw}{68b84140ada3c3bc8c045b0c7e37fd8b}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Feature extraction is a pivotal challenge in brain–computer interface ({BCI}) systems that utilize motor imagery ({MI}). Discriminative features are crucial for enhancing the classification accuracy of {MI} tasks within {MI}-{BCI} systems. The common spatial pattern ({CSP}) method has been extensively employed for extracting band-power features in this context. Prior research indicates that the efficacy of the {CSP} algorithm can be significantly improved by identifying optimal filter bands or selecting appropriate time windows. Most existing methods adopt a fixed-size time window, which may overlook {EEG} patterns occurring in windows of varying sizes. Furthermore, current approaches have not explored the potential of optimizing the filtering band for different time windows, thereby potentially compromising the effectiveness of the {CSP} algorithm. In this paper, we introduce a novel method called multi-scale time group common spatial pattern ({MTGCSP}), which aims to optimize both the time window for {MI} tasks based on a multi-scale sliding time window preprocessing strategy and the filtering band for each time window at a specific scale. Specifically, the {EEG} signals are initially filtered across multiple sub-bands. Subsequently, we use the multi-scale sliding time window preprocessing strategy to segment the filtered spectral signals into multiple subsequences of varying lengths using the multi-scale sliding window. To extract robust {CSP} features from the multi-scale sliding time window subsequences, we propose a sparse joint optimization objective function that incorporates sparse group constraints. The resulting feature subset is then fed into a support vector machine ({SVM}) classifier with a linear kernel to perform {MI}-{EEG} classification tasks. Experimental results from three public datasets demonstrate that the {MTGCSP} method outperforms other state-of-the-art techniques.}
@@ -1916,8 +1989,8 @@
       \strng{authornamehash}{f88c5373199c5cc76f413b9f5d5c14da}
       \strng{authorfullhash}{f88c5373199c5cc76f413b9f5d5c14da}
       \strng{authorfullhashraw}{f88c5373199c5cc76f413b9f5d5c14da}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Label noise is an important issue in classiﬁcation, with many potential negative consequences. For example, the accuracy of predictions may decrease, whereas the complexity of inferred models and the number of necessary training samples may increase. Many works in the literature have been devoted to the study of label noise and the development of techniques to deal with label noise. However, the ﬁeld lacks a comprehensive survey on the different types of label noise, their consequences and the algorithms that take label noise into account. This paper proposes to ﬁll this gap. Firstly, the deﬁnitions and sources of label noise are considered and a taxonomy of the types of label noise is proposed. Secondly, the potential consequences of label noise are discussed. Thirdly, label noise-robust, label noise cleansing and label noise-tolerant algorithms are reviewed. For each category of approaches, a short discussion is proposed in order to help the practitioner to choose the most suitable technique in its own particular ﬁeld of application. Eventually, the design of experiments is also discussed, what may interest the researchers who would like to test their own algorithms. In this survey, label noise consists of mislabelled instances: no additional information is assumed to be available, like e.g. conﬁdences on labels.}
@@ -1974,8 +2047,8 @@
       \strng{editornamehash}{40222053beb161f856f5eea1c63522f9}
       \strng{editorfullhash}{40222053beb161f856f5eea1c63522f9}
       \strng{editorfullhashraw}{40222053beb161f856f5eea1c63522f9}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{editor}
       \field{labeltitlesource}{shorttitle}
       \field{isbn}{978-0-470-05997-5 978-0-470-72518-4 978-0-470-72517-7}
@@ -2009,8 +2082,8 @@
       \strng{authornamehash}{2b7c258c700e1826c0d1b4082fef809d}
       \strng{authorfullhash}{2b7c258c700e1826c0d1b4082fef809d}
       \strng{authorfullhashraw}{2b7c258c700e1826c0d1b4082fef809d}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Future neuroprosthetic devices, in particular upper limb, will require decoding and executing not only the user’s intended movement type, but also when the user intends to execute the movement. This work investigates the potential use of brain signals recorded non-invasively for detecting the time before a self-paced reaching movement is initiated which could contribute to the design of practical upper limb neuroprosthetics. In particular, we show the detection of self-paced reaching movement intention in single trials using the readiness potential, an electroencephalography ({EEG}) slow cortical potential ({SCP}) computed in a narrow frequency range (0.1–1 Hz). Our experiments with 12 human volunteers, two of them stroke subjects, yield high detection rates prior to the movement onset and low detection rates during the non-movement intention period. With the proposed approach, movement intention was detected around 500 ms before actual onset, which clearly matches previous literature on readiness potentials. Interestingly, the result obtained with one of the stroke subjects is coherent with those achieved in healthy subjects, with single-trial performance of up to 92\% for the paretic arm. These results suggest that, apart from contributing to our understanding of voluntary motor control for designing more advanced neuroprostheses, our work could also have a direct impact on advancing robot-assisted neurorehabilitation.}
@@ -2082,8 +2155,8 @@
       \strng{authornamehash}{68028cef021b142b234d8b4ec020899a}
       \strng{authorfullhash}{0934283f5a059b230b8546fe9d503b75}
       \strng{authorfullhashraw}{0934283f5a059b230b8546fe9d503b75}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The movement-related cortical potential ({MRCP}) is a low-frequency negative shift in the electroencephalography ({EEG}) recording that takes place about 2 seconds prior to voluntary movement production. {MRCP} replicates the cortical processes employed in planning and preparation of movement. In this study, we recapitulate the features such as signal’s acquisition, processing, and enhancement and different electrode montages used for {EEG} data recoding from different studies that used {MRCPs} to predict the upcoming real or imaginary movement. An authentic identification of human movement intention, accompanying the knowledge of the limb engaged in the performance and its direction of movement, has a potential implication in the control of external devices. This information could be helpful in development of a proficient patient-driven rehabilitation tool based on brain-computer interfaces ({BCIs}). Such a {BCI} paradigm with shorter response time appears more natural to the amputees and can also induce plasticity in brain. Along with different training schedules, this can lead to restoration of motor control in stroke patients.}
@@ -2137,8 +2210,8 @@
       \strng{authornamehash}{eaad07ee1c6ef93a9308150f12c3c2eb}
       \strng{authorfullhash}{eaad07ee1c6ef93a9308150f12c3c2eb}
       \strng{authorfullhashraw}{eaad07ee1c6ef93a9308150f12c3c2eb}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2. ed., reprint}
@@ -2200,8 +2273,8 @@
       \strng{editornamehash}{2923e21089ab51794ca22d5fe01e8b91}
       \strng{editorfullhash}{2923e21089ab51794ca22d5fe01e8b91}
       \strng{editorfullhashraw}{2923e21089ab51794ca22d5fe01e8b91}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Objective Dementia, particularly Alzheimer’s disease ({AD}), constitutes a major global health concern, with {AD} accounting for approximately 70\% of all cases. {EEG}-based biomarkers hold promise for early identification of individuals at risk; however, small and heterogeneous samples frequently limit generalizability.}
@@ -2277,8 +2350,8 @@
       \strng{authornamehash}{f77c999d688513f50fcdcd860b31d92c}
       \strng{authorfullhash}{50c079e1f2df07ea49f1a3e14ca8c1fc}
       \strng{authorfullhashraw}{50c079e1f2df07ea49f1a3e14ca8c1fc}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{{INTRODUCTION}: We investigated whether sleep features from multi-night, at-home in-ear {EEG} could distinguish mild cognitive impairment ({MCI}) from cognitively normal ({CN}) older adults, independent of demographic confounds. {METHODS}: Forty-three older adults (24 {MCI}, 19 {CN}) completed 361 overnight in-ear {EEG} recordings at home (4.44 ± 2.29 nights per participant). Deep learning-derived embeddings were compared to bandpower features. We controlled for age and sex to identify sleep-specific features of {MCI} beyond demography.}
@@ -2313,8 +2386,8 @@
       \strng{authornamehash}{4aa924efe085391dce98ee193c8c00d5}
       \strng{authorfullhash}{4aa924efe085391dce98ee193c8c00d5}
       \strng{authorfullhashraw}{4aa924efe085391dce98ee193c8c00d5}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to describe the general characteristics of an {EEG} trace in a few quantitative terms is introduced. Its descriptive parameters are entirely based on time, but they can be derived also from the statistical moments of the power spectrum. Thus the method provides a bridge between a physical time domain interpretation and the conventional frequency domain description. Further, the parameters are based on the concept of variance, giving them an additive property so that the measured values pertain also to any basic elements from which a complex curve may be composed by superposition.}
@@ -2373,8 +2446,8 @@
       \strng{authornamehash}{2015c2bc9a975365f555b518aa2d048a}
       \strng{authorfullhash}{3fde716fdc2ad04c32082c417080f1c1}
       \strng{authorfullhashraw}{3fde716fdc2ad04c32082c417080f1c1}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{26}
@@ -2428,8 +2501,8 @@
       \strng{authornamehash}{3e74e5d56217618d51b1c61fd278a74b}
       \strng{authorfullhash}{6b4874889a61d5f5e2f8aaa98ffe9441}
       \strng{authorfullhashraw}{6b4874889a61d5f5e2f8aaa98ffe9441}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{03759601}
@@ -2493,8 +2566,8 @@
       \strng{authornamehash}{705ea94b844fc349d0409fe7cc672c2a}
       \strng{authorfullhash}{bc1ec69cae80b689fee8546a98ab5d41}
       \strng{authorfullhashraw}{bc1ec69cae80b689fee8546a98ab5d41}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Objective: Electromyogram ({EMG}) contamination is often a problem in electroencephalogram ({EEG}) recording, particularly, for those applications such as {EEG}-based brain – computer interfaces that rely on automated measurements of {EEG} features. As an essential prelude to developing methods for recognizing and eliminating {EMG} contamination of {EEG}, this study deﬁnes the spectral and topographical characteristics of frontalis and temporalis muscle {EMG} over the entire scalp. It describes both average data and the range of individual differences. Methods: In 25 healthy adults, signals from 64 scalp and 4 facial locations were recorded during relaxation and during deﬁned (15, 30, or 70\% of maximum) contractions of frontalis or temporalis muscles. Results: In the average data, {EMG} had a broad frequency distribution from 0 to . 200 Hz. Amplitude was greatest at 20 –30 Hz frontally and 40 – 80 Hz temporally. Temporalis spectra also showed a smaller peak around 20 Hz. These spectral components attenuated and broadened centrally. Even with weak (15\%) contraction, {EMG} was detectable ðP , 0:001Þ near the vertex at frequencies . 12 Hz in the average data and .8 Hz in some individuals. Conclusions: Frontalis or temporalis muscle {EMG} recorded from the scalp has spectral and topographical features that vary substantially across individuals. {EMG} spectra often have peaks in the beta frequency range that resemble {EEG} beta peaks. Signiﬁcance: While {EMG} contamination is greatest at the periphery of the scalp near the active muscles, even weak contractions can produce {EMG} that obscures or mimics {EEG} alpha, mu, or beta rhythms over the entire scalp. Recognition and elimination of this contamination is likely to require recording from an appropriate set of peripheral scalp locations.}
@@ -2610,8 +2683,8 @@
       \strng{authornamehash}{095ac066d331a71db279f10494608b6b}
       \strng{authorfullhash}{fa5441691c2ab245cada389d375b1c04}
       \strng{authorfullhashraw}{fa5441691c2ab245cada389d375b1c04}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Objective: To identify the possible contribution of electromyogram ({EMG}) to scalp electroencephalogram ({EEG}) rhythms at rest and induced or evoked by cognitive tasks. Methods: Scalp {EEG} recordings were made on two subjects in presence and absence of complete neuromuscular blockade, sparing the dominant arm. The subjects undertook cognitive tasks in both states to allow direct comparison of electrical recordings. Results: {EEG} rhythms in the paralysed state diﬀered signiﬁcantly compared with the unparalysed state, with 10- to 200-fold diﬀerences in the power of frequencies above 20 Hz during paralysis. Conclusions: Most of the scalp {EEG} recording above 20 Hz is of {EMG} origin. Previous studies measuring gamma {EEG} need to be re-evaluated. Signiﬁcance: This has a signiﬁcant impact on measurements of gamma rhythms from the scalp {EEG} in unparalysed humans. It is to be hoped that signal separation methods will be able to rectify this situation. Ó 2007 International Federation of Clinical Neurophysiology. Published by Elsevier Ireland Ltd. All rights reserved.}
@@ -2682,8 +2755,8 @@
       \strng{authornamehash}{d57d1e3b47e66bf4ae6549c29933f536}
       \strng{authorfullhash}{3f5fe231da9e9f06f16ebc3f3229bfb1}
       \strng{authorfullhashraw}{3f5fe231da9e9f06f16ebc3f3229bfb1}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Abstract Objective . In order to reach electroencephalography ({EEG}) electrodes on the scalp, synchronized activity of neurons needs to pass thorough several tissue layers, including the skull and muscles covering the scalp. The contamination of {EEG} signal by temporalis and frontalis muscles has been well documented for voluntary muscle contraction even at low contraction levels. The extent of myogenic contamination during postural and/or rest activity of the temporalis and frontalis remains an impediment for {EEG} research. Approach . In this study, we first aimed to observe involuntary, continuous motor unit activity of the frontalis muscle at rest and evaluate motor unit level frontalis interference on the {EEG} electrodes. Second, we compared motor unit interference from the frontalis before and after artefact pruning via an independent component analysis ({ICA}) algorithm. Main results . We demonstrated that motor unit activity of the frontalis muscle produces interference potentials on the frontal electrodes at rest and the interference was significantly reduced after {ICA} on the frontal electrodes, but not completely eliminated. Likewise, the temporalis interference at rest was significantly smaller after {ICA} on the fronto-temporal electrodes, but not completely removed. Significance . We documented the existence of resting involuntary activity of the temporalis and frontalis muscles underneath {EEG} electrodes and the removal of the {EEG} signal from their contiguous interference is not possible even after the use of {ICA} technology. We recommend that {EEG} researchers readdress the definition of ‘rest’ for {EEG} recordings and the {ICA} experts should extend their electromyography removal strategies to motor unit level interference.}
@@ -2765,8 +2838,8 @@
       \strng{authornamehash}{47c961030d85fb1149a4cd27d724eb2d}
       \strng{authorfullhash}{079c935f58c6e322d9dce2b5b7f050d4}
       \strng{authorfullhashraw}{079c935f58c6e322d9dce2b5b7f050d4}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Electroencephalographic ({EEG}) recordings are often contaminated by electromyographic ({EMG}) artifacts, especially when recording during movement. Existing methods to remove {EMG} artifacts include independent component analysis ({ICA}), and other high-order statistical methods. However, these methods can not effectively remove most of {EMG} artifacts. Here, we proposed a modiﬁed {ICA} model for {EMG} artifacts removal in the {EEG}, which is called {EMG} Removal by Adding Sources of {EMG} ({ERASE}). In this new approach, additional channels of real {EMG} from neck and head muscles (reference artifacts) were added as inputs to {ICA} in order to “force” the most power from {EMG} artifacts into a few independent components ({ICs}). The {ICs} containing {EMG} artifacts (the “artifact {ICs}”) were identiﬁed and rejected using an automated procedure. {ERASE} was validated ﬁrst using both simulated and experimentally-recorded {EEG} and {EMG}. Simulation results showed {ERASE} removed {EMG} artifacts from {EEG} signiﬁcantly more effectively than conventional {ICA}. Also, it had a low false positive rate and high sensitivity. Subsequently, {EEG} was collected from 8 healthy participants while they moved their hands to test the realistic efﬁcacy of this approach. Results showed that {ERASE} successfully removed {EMG} artifacts (on average, about 75\% of {EMG} artifacts were removed when using real {EMGs} as reference artifacts) while preserving the expected {EEG} features related to movement. We also tested the {ERASE} procedure using simulated {EMGs} as reference artifacts (about 63\% of {EMG} artifacts removed). Compared to conventional {ICA}, {ERASE} removed on average 26\% more {EMG} artifacts from {EEG}. These ﬁndings suggest that {ERASE} can achieve signiﬁcant separation of {EEG} signal and {EMG} artifacts without a loss of the underlying {EEG} features. These results indicate that using additional real or simulated {EMG} sources can increase the effectiveness of {ICA} in removing {EMG} artifacts from {EEG}. Combined with automated artifact {IC} rejection, {ERASE} also minimizes potential user bias. Future work will focus on improving {ERASE} so that it can also be used in real-time applications.}
@@ -2820,8 +2893,8 @@
       \strng{authornamehash}{35c95232ce8da355feecd1d092afa843}
       \strng{authorfullhash}{35c95232ce8da355feecd1d092afa843}
       \strng{authorfullhashraw}{35c95232ce8da355feecd1d092afa843}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{01678760}
@@ -2869,8 +2942,8 @@
       \strng{authornamehash}{a327e8f4d273c411eb2828fc6522adfd}
       \strng{authorfullhash}{a327e8f4d273c411eb2828fc6522adfd}
       \strng{authorfullhashraw}{a327e8f4d273c411eb2828fc6522adfd}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Functional signiﬁcance of delta oscillations is not fully understood. One way to approach this question would be from an evolutionary perspective. Delta oscillations dominate the {EEG} of waking reptiles. In humans, they are prominent only in early developmental stages and during slow-wave sleep. Increase of delta power has been documented in a wide array of developmental disorders and pathological conditions. Considerable evidence on the association between delta waves and autonomic and metabolic processes hints that they may be involved in integration of cerebral activity with homeostatic processes. Much evidence suggests the involvement of delta oscillations in motivation. They increase during hunger, sexual arousal, and in substance users. They also increase during panic attacks and sustained pain. In cognitive domain, they are implicated in attention, salience detection, and subliminal perception. This evidence shows that delta oscillations are associated with evolutionary old basic processes, which in waking adults are overshadowed by more advanced processes associated with higher frequency oscillations. The former processes rise in activity, however, when the latter are dysfunctional.}
@@ -2935,8 +3008,8 @@
       \strng{authornamehash}{baf36da0a05846435f631c71d6e6c0a9}
       \strng{authorfullhash}{722673bf9376268b05fb630b1af1c47a}
       \strng{authorfullhashraw}{722673bf9376268b05fb630b1af1c47a}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Considering the widespread influence of short-video applications ({SVAs}) on adolescent learners, this study aimed to examine whether and how problematic {SVA} use predicts their executive functions from behavioral and neural perspectives. With a sample of Chinese adolescents (Mage=12.30, N=84), behavioral results show that {SVA} addiction predicted lower working memory but not cognitive control performance. Their brain activation pattern during {SVA} use was also collected and linear regression analysis generated a neural indicator of {SVA} addiction on delta band. This component is proved to be a significant negative predictor of adolescents' working memory and cognitive control performance. Both behavioral and neural evidence provide complementary perspectives on the relationship between {SVA} addiction and adolescents' executive functions. The findings suggest that though {SVAs} have played increasingly important role in adolescents' informal learning experiences, the negative association between {SVA} overuse and their cognitive functioning urges caution.}
@@ -2977,8 +3050,8 @@
       \strng{authornamehash}{31088054e86bdf1ede78678b1ddb90de}
       \strng{authorfullhash}{31088054e86bdf1ede78678b1ddb90de}
       \strng{authorfullhashraw}{31088054e86bdf1ede78678b1ddb90de}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{{PLOS} One}
@@ -3024,8 +3097,8 @@
       \strng{authornamehash}{635192fa60f0820344ea3d5bb7a0abf7}
       \strng{authorfullhash}{05f8786e9d83c57c98bb387faaa56199}
       \strng{authorfullhashraw}{05f8786e9d83c57c98bb387faaa56199}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The recordable cerebral activity (readiness-potential, {RP}) that precedes a freely voluntary, fully endogenous motor act was directly compared with the reportable time (W) for appearance of the subjective experience of'wanting' or intending to act. The onset ofcerebral activity clearly preceded by at least several hundred milliseconds the reported time of conscious intention to act. This relationship held even for those series (with 'type {II}' {RPs}) in which subjects reported that all of the 40 self-initiated movements in the series appeared 'spontaneously' and capriciously.}
@@ -3078,8 +3151,8 @@
       \strng{authornamehash}{30018178ed530f60b24a0c36e7d30076}
       \strng{authorfullhash}{c3a42141abb4267dce34490ddbb5d25c}
       \strng{authorfullhashraw}{c3a42141abb4267dce34490ddbb5d25c}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{In recent years there has been an increase in the number of portable low-cost electroencephalographic ({EEG}) systems available to researchers. However, to date the validation of the use of low-cost {EEG} systems has focused on continuous recording of {EEG} data and/or the replication of large system {EEG} setups reliant on event-markers to afford examination of event-related brain potentials ({ERP}). Here, we demonstrate that it is possible to conduct {ERP} research without being reliant on event markers using a portable {MUSE} {EEG} system and a single computer. Speciﬁcally, we report the results of two experiments using data collected with the {MUSE} {EEG} system—one using the well-known visual oddball paradigm and the other using a standard reward-learning task. Our results demonstrate that we could observe and quantify the N200 and P300 {ERP} components in the visual oddball task and the reward positivity (the mirror opposite component to the feedback-related negativity) in the reward-learning task. Speciﬁcally, single sample t-tests of component existence (all p’s {<} 0.05), computation of Bayesian credible intervals, and 95\% conﬁdence intervals all statistically veriﬁed the existence of the N200, P300, and reward positivity in all analyses. We provide with this research paper an open source website with all the instructions, methods, and software to replicate our ﬁndings and to provide researchers with an easy way to use the {MUSE} {EEG} system for {ERP} research. Importantly, our work highlights that with a single computer and a portable {EEG} system such as the {MUSE} one can conduct {ERP} research with ease thus greatly extending the possible use of the {ERP} methodology to a variety of novel contexts.}

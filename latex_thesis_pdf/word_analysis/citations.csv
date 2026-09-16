@@ -1,0 +1,60 @@
+rank,key,cites,cites_in_iffalse,author,year,title
+1,baughan_i_2022,18,6,Baughan,2022,“I Don’t Even Remember What I Read”
+2,moontaha_online_2023,15,1,Moontaha,2023,Online Learning for Wearable EEG-based Emotion Classification
+3,knierim_flow_2026,14,4,Knierim,2026,Flow on Social Media?
+4,perski_conceptualising_2017,11,0,Perski,2017,Conceptualising engagement with digital behaviour change interventions
+5,debettencourt_sustained_2021,10,1,deBettencourt,2021,Sustained Attention and Spatial Attention Distinctly Influence Long-term Memory Encoding
+6,yardley_understanding_2016,9,0,Yardley,2016,Understanding and Promoting Effective Engagement With Digital Behavior Change Interventions
+7,bellos_methods_2025,8,4,Bellos,2025,Methods and Approaches for User Engagement and User Experience Analysis Based on Electroencephalography Recordings: A Systematic Review
+8,apicella_eeg-based_2022,7,3,Apicella,2022,EEG-based measurement system for monitoring student engagement in learning 4.0
+9,lew_detection_2012,7,0,Lew,2012,Detection of self-paced reaching movement intention from EEG signals
+10,goncharova_emg_2003,7,0,Goncharova,2003,EMG contamination of EEG
+11,trunfio_conceptualising_2021,6,0,Trunfio,2021,Conceptualising and measuring social media engagement: A systematic literature review
+12,obrien_what_2008,6,0,O'Brien,2008,What is user engagement?
+13,mccashin_using_2023,5,3,McCashin,2023,Using TikTok for public and youth mental health – A systematic review and content analysis
+14,pope_biocybernetic_1995-3,5,1,Pope,1995,Biocybernetic system evaluates indices of operator engagement in automated task
+15,rahman_detection_2025,5,0,Rahman,2025,Detection of Short-Form Video Addiction with Wearable Sensors Via Temporally-Coherent Domain Adaptation
+16,evans_digital_2022,4,0,Evans,2022,Digital Media for Behavior Change
+17,de_carvalho_selection_2026,4,0,de Carvalho,2026,Selection and Validation of Spectral EEG Markers for Real-Time Monitoring of Attention and Cognitive Engagement in Learning Contexts
+18,mccartney_optimal_2026,4,0,McCartney,2026,Optimal Time Window and Frequency Bandwidth Parameter Combination for Subject-Specific Motor Imagery EEG Classification
+19,hasson_intersubject_2004,4,3,Hasson,2004,Intersubject Synchronization of Cortical Activity During Natural Vision
+20,whitham_scalp_2007,4,0,Whitham,2007,Scalp electrical recording during paralysis
+21,zenone_tiktok_2021,3,0,Zenone,2021,TikTok and public health: a proposed research agenda
+22,salminen_engagement_2024,3,0,Salminen,2024,Engagement Patterns in TikTok: An Analysis of Short Video Ads
+23,saltelli_how_2010,3,0,Saltelli,2010,How to avoid a perfunctory sensitivity analysis
+24,tzimourta_eeg_2019,3,0,Tzimourta,2019,EEG Window Length Evaluation for the Detection of Alzheimer’s Disease over Different Brain Regions
+25,rimbert_impact_2023,3,0,Rimbert,2023,Impact of the baseline temporal selection on the ERD/ERS analysis for Motor Imagery-based BCI
+26,mi_exploring_2026,3,0,Mi,2026,Exploring multi-scale time group for common spatial pattern feature based motor imagery EEG classification
+27,saltelli_global_2008,3,0,Saltelli,2008,Global sensitivity analysis
+28,shakeel_review_2015,3,1,Shakeel,2015,A Review of Techniques for Detection of Movement Intention Using Movement-Related Cortical Potentials
+29,cohen_statistical_1988,3,0,Cohen,1988,Statistical power analysis for the behavioral sciences
+30,henao_isaza_comprehensive_2026,3,0,Henao Isaza,2026,Comprehensive methodology for sample enrichment in EEG biomarker studies for Alzheimer’s risk classification
+31,kiarashi_sleep-derived_2025,3,0,Kiarashi,2025,Sleep-Derived Features From Multi-Night In-ear EEG Identify Patterns Linked To Mild Cognitive Impairment
+32,yilmaz_facial_2019,3,0,Yilmaz,2019,Facial muscle activity contaminates EEG signal at rest
+33,guntekin_review_2016,3,0,Güntekin,2016,Review of evoked and event-related delta responses in the human brain
+34,knyazev_eeg_2012,3,0,Knyazev,2012,EEG delta oscillations as a correlate of basic homeostatic and motivational processes
+35,pattisapu_stimulus-induced_2023,3,2,Pattisapu,2023,Stimulus-induced narrow-band gamma oscillations in humans can be recorded using open-hardware low-cost EEG amplifier
+36,basch_covid-19_2022,2,0,Basch,2022,COVID-19 on TikTok: harnessing an emerging social media platform to convey important public health messages
+37,chen_factors_2021,2,0,Chen,2021,Factors Driving Citizen Engagement With Government TikTok Accounts During the COVID-19 Pandemic
+38,karimah_automatic_2022,2,0,Karimah,2022,"Automatic engagement estimation in smart education/learning settings: a systematic review of engagement definitions, datasets, and methods"
+39,jdpigeon_muselsl_2026,2,0,jdpigeon,2026,muselsl 2.5.1
+40,frenay_classification_2014,2,0,Frenay,2014,Classification in the Presence of Label Noise
+41,hjorth_eeg_1970,2,0,Hjorth,1970,EEG analysis based on time domain properties
+42,khambampati_frequency_2023,2,0,Khambampati,2023,Frequency and Time Domain EEG Analysis for Prognostication of Postanoxic Comatose Patients
+43,xu_neural_2024,2,0,Xu,2024,Neural Correlates of Short-Video Application Addiction and Adolescents' Executive Functions
+44,krigolson_choosing_2017,2,1,Krigolson,2017,Choosing MUSE
+45,ovi_frequency_2026,2,0,Ovi,2026,Frequency band dissociation between cognitive state recognition and person identification in EEG
+46,donoghue_electrophysiological_2020,2,0,Donoghue,2020,Electrophysiological Frequency Band Ratio Measures Conflate Periodic and Aperiodic Neural Activity
+47,pfurtscheller_event-related_1996,2,1,Pfurtscheller,1996,Event-related synchronization (ERS) in the alpha band — an electrophysiological correlate of cortical idling
+48,tong_brain_2020,1,1,Tong,2020,Brain activity forecasts video engagement in an internet attention market
+49,green_role_2000,1,0,Green,2000,The role of transportation in the persuasiveness of public narratives.
+50,moyer-guse_toward_2008,1,0,Moyer-Gusé,2008,Toward a Theory of Entertainment Persuasion
+51,nuamah_electroencephalography_2017,1,0,Nuamah,2017,Electroencephalography (EEG) classification of cognitive tasks based on task engagement index
+52,niknazar_new_2018,1,0,Niknazar,2018,A new similarity index for nonlinear signal analysis based on local extrema patterns
+53,li_electromyogram_2021,1,0,Li,2021,Electromyogram (EMG) Removal by Adding Sources of EMG (ERASE)—A Novel ICA-Based Algorithm for Removing Myoelectric Artifacts From EEG
+54,libet_time_1983,1,1,Libet,1983,Time Of Conscious Intention To Act In Relation To Onset Of Cerebral Activity (Readiness-Potential)
+55,plucinska_impact_2022,1,0,Plucińska,2022,Impact of EEG Frequency Bands and Data Separation on the Performance of Person Verification Employing Neural Networks
+56,fries_rhythms_2015,1,1,Fries,2015,Rhythms for Cognition
+57,miller_integrative_2001,1,1,Miller,2001,An Integrative Theory of Prefrontal Cortex Function
+58,mcmenamin_electromyogenic_2011,1,0,McMenamin,2011,Electromyogenic artifacts and electroencephalographic inferences revisited
+59,anderson_social_2023,1,1,Anderson,2023,Social Motivations’ Limited Inﬂuence on Habitual Behavior: Tests From Social Media Engagement

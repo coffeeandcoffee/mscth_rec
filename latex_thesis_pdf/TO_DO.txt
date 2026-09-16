@@ -56,16 +56,12 @@ LOTHAR:     Fig 3.11: dort stehen 31 Teilnehmer, im Text sprichst Du aber von 28
 LOTHAR:     Fig 3.12: warum ist hier die Reihenfolge der Teilnehmer nicht ebenfalls aufsteigend (von P4-P31) geordnet wir in Fig. 3.11?
 LOTHAR:     Chapter 4: meines Erachtens zeigst Du in Chapter 3 schon Ergebnisse. Daher verstehe ich nicht, warum Du diese nicht im Chapter nennst? Das solltest Du gut erklären – evtl. schätze ich das auch falsch ein, da ich die Arbeit nicht vollständig lesen konnte
 LOTHAR:     Ansonsten liest sich das, was ich gelesen habe, sehr gut und auch die Diskussion ist adäquat kritisch!
+CATRINEL:   Für die Einführung, denke da fehlen noch Theorie Dinge wie z.B. wie kann man deine Studie in die Health communication Literatur integrieren? Wie bist du genau zu deine Forschungsziele und Forschungsfrage gekommen, was war die Forschungslücke, das ist noch nicht ganz klar dargestellt. Auch wie definiert du eigentlich Engagement in diesen health promotion(public healthcommunication Kontext? So eine Definition sollte auch schon im Einführungsteil auftauchen, weil sonst es gibt viele mögliche Definitionen von Engagement. 
+CATRINEL:   Ich finde, die Arbeit liest sich gut. Ich mochte besonders den Empfehlungen Teil und auch den plain langaugae summary.
 
 ========
 ==TODO==
 ========
-
-CATRINEL
-    Ich finde, die Arbeit liest sich gut.
-    Ich mochte besonders den Empfehlungen Teil und auch den plain langaugae summary.
-    Für die Einführung, denke da fehlen noch Theorie Dinge wie z.B. wie kann man deine Studie in die Health communication Literatur integrieren? Wie bist du genau zu deine Forschungsziele und Forschungsfrage gekommen, was war die Forschungslücke, das ist noch nicht ganz klar dargestellt. Auch wie definiert du eigentlich Engagement in diesen health promotion(public healthcommunication Kontext? So eine Definition sollte auch schon im Einführungsteil auftauchen, weil sonst es gibt viele mögliche Definitionen von Engagement. 
- 
 
 PAPA
 - ch 1&2 verschlanken
@@ -76,7 +72,10 @@ PAPA
     3. consistency of sense
     4. baby langaugae
     5. rigorous bs cut
-    2. one last run through all PAPA comments
+    6. one last run through all PAPA comments
+    7. summary after each chapetr of main takeaways (conclusion)
+    8. word/concept and term consistency (pattern recognition essential)
+    9. disrespect to viewer: backreferences (marked, extend!), and word/concept rementions far away
 - instead of experimenter, "experiment lead"
 - F 3.4 3.5 full page format because text too small.
 - format ch 3.5 universal recording pipeline git path exceeds page!
