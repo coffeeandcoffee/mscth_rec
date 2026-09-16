@@ -65,7 +65,7 @@ CATRINEL:   Ich finde, die Arbeit liest sich gut. Ich mochte besonders den Empfe
 
 PAPA
 - ch 1&2 verschlanken
-- precedent & common word analysis
+- precedent done, & but common word analysis
 - read full 5x and make notes -> different passes:
     1. first occurance definition after abbrivation
     2. consistency of words
@@ -75,7 +75,9 @@ PAPA
     6. one last run through all PAPA comments
     7. summary after each chapetr of main takeaways (conclusion)
     8. word/concept and term consistency (pattern recognition essential)
-    9. disrespect to viewer: backreferences (marked, extend!), and word/concept rementions far away
+    9. Claudism: disrespect to reader: backreferences (marked, extend!), and word/concept rementions far away
+    10. Claudism: disrespect to reader: overabstraction and THIS NOT THAT 
+    11. Claudism: spot any dashes and replace
 - instead of experimenter, "experiment lead"
 - F 3.4 3.5 full page format because text too small.
 - format ch 3.5 universal recording pipeline git path exceeds page!
