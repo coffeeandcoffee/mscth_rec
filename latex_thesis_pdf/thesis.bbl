@@ -1454,37 +1454,460 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/JSV3GIZR/Rahman et al. - 2025 - Detection of Short-Form Video Addiction with Wearable Sensors Via Temporally-Coherent Domain Adaptat.pdf:application/pdf
       \endverb
     \endentry
-    \entry{jdpigeon_muselsl_2026}{online}{}{}
-      \name{author}{1}{}{%
-        {{hash=1fb584ced8121c1907a92744384c1382}{%
-           family={jdpigeon},
-           familyi={j\bibinitperiod}}}%
+    \entry{zhang_eeg-svrec_2024}{misc}{}{}
+      \name{author}{7}{}{%
+        {{hash=d9064cca525e1f6d77db016180a833cf}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Shaorun},
+           giveni={S\bibinitperiod}}}%
+        {{hash=74b69b7b89b6175e9270caaa30d3a4a7}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Zhiyu},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=2d8703aece71f17510e90c19b4c05883}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Ziyi},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=365506d07be05155d769084f8a0490f4}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Peijie},
+           giveni={P\bibinitperiod}}}%
+        {{hash=eb294f4a1f98b3664bcc1539456b1130}{%
+           family={Ai},
+           familyi={A\bibinitperiod},
+           given={Qingyao},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=c5f133678c8bdff0e050e19158f289ed}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Min},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e98c31f0239c26bfe8cf759cf214500d}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Yiqun},
+           giveni={Y\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {pypi.org}%
+        {arXiv}%
       }
-      \strng{namehash}{1fb584ced8121c1907a92744384c1382}
-      \strng{fullhash}{1fb584ced8121c1907a92744384c1382}
-      \strng{fullhashraw}{1fb584ced8121c1907a92744384c1382}
-      \strng{bibnamehash}{1fb584ced8121c1907a92744384c1382}
-      \strng{authorbibnamehash}{1fb584ced8121c1907a92744384c1382}
-      \strng{authornamehash}{1fb584ced8121c1907a92744384c1382}
-      \strng{authorfullhash}{1fb584ced8121c1907a92744384c1382}
-      \strng{authorfullhashraw}{1fb584ced8121c1907a92744384c1382}
+      \strng{namehash}{5a2eaaed6e79af7de67f2b43c78c4f7c}
+      \strng{fullhash}{23194de15c6d9debf11e74caea35f399}
+      \strng{fullhashraw}{23194de15c6d9debf11e74caea35f399}
+      \strng{bibnamehash}{23194de15c6d9debf11e74caea35f399}
+      \strng{authorbibnamehash}{23194de15c6d9debf11e74caea35f399}
+      \strng{authornamehash}{5a2eaaed6e79af7de67f2b43c78c4f7c}
+      \strng{authorfullhash}{23194de15c6d9debf11e74caea35f399}
+      \strng{authorfullhashraw}{23194de15c6d9debf11e74caea35f399}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{In recent years, short video platforms have gained widespread popularity, making the quality of video recommendations crucial for retaining users. Existing recommendation systems primarily rely on behavioral data, which faces limitations when inferring user preferences due to issues such as data sparsity and noise from accidental interactions or personal habits. To address these challenges and provide a more comprehensive understanding of user affective experience and cognitive activity, we propose {EEG}-{SVRec}, the first {EEG} dataset with User Multidimensional Affective Engagement Labels in Short Video Recommendation.}
+      \field{day}{1}
+      \field{eprinttype}{arxiv}
+      \field{langid}{english}
+      \field{month}{4}
+      \field{number}{{arXiv}:2404.01008}
+      \field{shorttitle}{{EEG}-{SVRec}}
+      \field{title}{{EEG}-{SVRec}: An {EEG} Dataset with User Multidimensional Affective Engagement Labels in Short Video Recommendation}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.2404.01008
+      \endverb
+      \verb{eprint}
+      \verb 2404.01008 [cs]
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/N3JESNFK/Zhang et al. - 2024 - EEG-SVRec An EEG Dataset with User Multidimensional Affective Engagement Labels in Short Video Reco.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/2404.01008
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/2404.01008
+      \endverb
+      \keyw{Computer Science - Information Retrieval}
+    \endentry
+    \entry{du_understanding_2025}{inproceedings}{}{}
+      \name{author}{6}{}{%
+        {{hash=fc687df3467ae161f992b4d8ab1c580c}{%
+           family={Du},
+           familyi={D\bibinitperiod},
+           given={Bangde},
+           giveni={B\bibinitperiod}}}%
+        {{hash=2d8703aece71f17510e90c19b4c05883}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Ziyi},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=74752de53a530c03691ac081d0fd985e}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Zhijing},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=eb294f4a1f98b3664bcc1539456b1130}{%
+           family={Ai},
+           familyi={A\bibinitperiod},
+           given={Qingyao},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=e98c31f0239c26bfe8cf759cf214500d}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Yiqun},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=0453bd4ddd91c5d48b05e090851d54ff}{%
+           family={Jankowska},
+           familyi={J\bibinitperiod},
+           given={Monika},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery, Inc}%
+      }
+      \strng{namehash}{f1caaeca1b8ce1f73543beb9e49642cd}
+      \strng{fullhash}{76cc3f0ff75c8828e10afb41d17449c7}
+      \strng{fullhashraw}{76cc3f0ff75c8828e10afb41d17449c7}
+      \strng{bibnamehash}{76cc3f0ff75c8828e10afb41d17449c7}
+      \strng{authorbibnamehash}{76cc3f0ff75c8828e10afb41d17449c7}
+      \strng{authornamehash}{f1caaeca1b8ce1f73543beb9e49642cd}
+      \strng{authorfullhash}{76cc3f0ff75c8828e10afb41d17449c7}
+      \strng{authorfullhashraw}{76cc3f0ff75c8828e10afb41d17449c7}
+      \field{extraname}{1}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{16}
+      \field{abstract}{This paper explores the impact of Opinion Polarization ({OP}) in the increasingly prevalent context of short video browsing, a dominant medium in the contemporary digital landscape with significant influence on public opinion and social dynamics. We investigate the effects of {OP} on user perceptions and behaviors in short video consumption, and find that traditional user feedback signals, such as like and browsing duration, are not effective in detecting and measuring {OP}. Recognizing this problem, our study employs Electroencephalogram ({EEG}) signals as a novel, noninvasive approach to assess the neural processing of perception and cognition related to {OP}. Our user study reveals that {OP} notably affects users’ sentiments, resulting in measurable changes in brain signals. Furthermore, we demonstrate the potential of using {EEG} signals to predict users’ exposure to polarized short video content. By exploring the relationships between {OP}, brain signals, and user behavior, our research offers a novel perspective in understanding the dynamics of short video browsing and proposes an innovative method for quantifying the impact of {OP} in this context.}
+      \field{booktitle}{{SIGIR} 2025 - Proceedings of the 48th International {ACM} {SIGIR} Conference on Research and Development in Information Retrieval}
+      \field{day}{13}
+      \field{isbn}{979-8-4007-1592-1}
       \field{month}{7}
-      \field{title}{muselsl 2.5.1}
-      \field{year}{2026}
+      \field{title}{Understanding the Effect of Opinion Polarization in Short Video Browsing}
+      \field{year}{2025}
       \field{dateera}{ce}
+      \field{pages}{906\bibrangedash 916}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1145/3726302.3730107
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/EL8EH8CS/3726302.3730107.pdf:application/pdf
+      \endverb
+      \keyw{{EEG},Opinion Polarization,Short Video Browsing}
+    \endentry
+    \entry{du_eeg_2025}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=fc687df3467ae161f992b4d8ab1c580c}{%
+           family={Du},
+           familyi={D\bibinitperiod},
+           given={Bangde},
+           giveni={B\bibinitperiod}}}%
+        {{hash=2d8703aece71f17510e90c19b4c05883}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Ziyi},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=0453bd4ddd91c5d48b05e090851d54ff}{%
+           family={Jankowska},
+           familyi={J\bibinitperiod},
+           given={Monika},
+           giveni={M\bibinitperiod}}}%
+        {{hash=74752de53a530c03691ac081d0fd985e}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Zhijing},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=eb294f4a1f98b3664bcc1539456b1130}{%
+           family={Ai},
+           familyi={A\bibinitperiod},
+           given={Qingyao},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=400181542a34d7c2c07b41cde7b60f91}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Yujia},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e98c31f0239c26bfe8cf759cf214500d}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Yiqun},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{f1caaeca1b8ce1f73543beb9e49642cd}
+      \strng{fullhash}{b43bf9c858a081a3915feca8578194af}
+      \strng{fullhashraw}{b43bf9c858a081a3915feca8578194af}
+      \strng{bibnamehash}{b43bf9c858a081a3915feca8578194af}
+      \strng{authorbibnamehash}{b43bf9c858a081a3915feca8578194af}
+      \strng{authornamehash}{f1caaeca1b8ce1f73543beb9e49642cd}
+      \strng{authorfullhash}{b43bf9c858a081a3915feca8578194af}
+      \strng{authorfullhashraw}{b43bf9c858a081a3915feca8578194af}
+      \field{extraname}{2}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{25}
+      \field{issn}{2045-2322}
+      \field{journaltitle}{Scientific Reports}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{number}{1}
+      \field{shortjournal}{Sci Rep}
+      \field{title}{{EEG} reveals the cognitive impact of polarized content in short video scenarios}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{volume}{15}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{18277}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1038/s41598-025-02423-y
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/5VR3CW66/Du et al. - 2025 - EEG reveals the cognitive impact of polarized content in short video scenarios.pdf:application/pdf
+      \endverb
       \verb{urlraw}
-      \verb https://pypi.org/project/muselsl/
+      \verb https://www.nature.com/articles/s41598-025-02423-y
       \endverb
       \verb{url}
-      \verb https://pypi.org/project/muselsl/
+      \verb https://www.nature.com/articles/s41598-025-02423-y
+      \endverb
+    \endentry
+    \entry{zhang_how_2025-1}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b44c9f44cea2b2278315dcc44c3f6af1}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Zhipeng},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=62cc32de7cb90a3fe9cc810af546d4e1}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Liyi},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{6a87f0311bb2bc4863e04ffc7e6672dc}
+      \strng{fullhash}{6a87f0311bb2bc4863e04ffc7e6672dc}
+      \strng{fullhashraw}{6a87f0311bb2bc4863e04ffc7e6672dc}
+      \strng{bibnamehash}{6a87f0311bb2bc4863e04ffc7e6672dc}
+      \strng{authorbibnamehash}{6a87f0311bb2bc4863e04ffc7e6672dc}
+      \strng{authornamehash}{6a87f0311bb2bc4863e04ffc7e6672dc}
+      \strng{authorfullhash}{6a87f0311bb2bc4863e04ffc7e6672dc}
+      \strng{authorfullhashraw}{6a87f0311bb2bc4863e04ffc7e6672dc}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{With the popularity of short videos, the performance of online celebrities have garnered significant interest among scholars. However, previous antecedent research on consumer behavior in social media has rarely focused on consumers’ real-time cognitive and emotional processes when faced with different performances of online celebrities. This study used {EEG} (electroencephalography) signals to calculate four neural engagement indexes—emotion, relaxation, attention, and cognitive load—and explored how online celebrities’ displaying styles and selling approaches affect consumers’ neural engagement in short video advertisements. The experimental results indicated that the transaction-based selling approach and high-displaying style of online celebrities evoked more neural engagement than the relationship-based selling approach and low-displaying style, respectively. Different product types and consumers’ short video addiction degrees made the neural engagement indexes significantly different. These findings broadened the potential applications of {EEG} and enhanced the literature on consumers’ neural engagement by fusing psychology with short video e-commerce.}
+      \field{issn}{15729362}
+      \field{journaltitle}{Electronic Commerce Research}
+      \field{title}{How do online celebrities attract consumers? an {EEG} study on consumers’ neural engagement in short video advertising}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.1007/s10660-025-09956-4
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/JA726QD8/0013_Zhang 2025 (EEG Social Media Celebrity Ads).pdf:application/pdf
+      \endverb
+      \keyw{Consumers' neural engagement,Displaying styles,Online celebrities,Selling approaches,Short video advertisements}
+    \endentry
+    \entry{wade_investigating_2024}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=08c50e8e316cf41606b1282be0d42c9a}{%
+           family={Wade},
+           familyi={W\bibinitperiod},
+           given={Callum},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{08c50e8e316cf41606b1282be0d42c9a}
+      \strng{fullhash}{08c50e8e316cf41606b1282be0d42c9a}
+      \strng{fullhashraw}{08c50e8e316cf41606b1282be0d42c9a}
+      \strng{bibnamehash}{08c50e8e316cf41606b1282be0d42c9a}
+      \strng{authorbibnamehash}{08c50e8e316cf41606b1282be0d42c9a}
+      \strng{authornamehash}{08c50e8e316cf41606b1282be0d42c9a}
+      \strng{authorfullhash}{08c50e8e316cf41606b1282be0d42c9a}
+      \strng{authorfullhashraw}{08c50e8e316cf41606b1282be0d42c9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{TikTok} addiction may be causing similar cognitive dysfunction to other highly researched addictions. Addiction is known to affect executive functions, particularly response inhibition. Evidence indicates that differences in N2/P3 amplitude/latency, and increased beta power (commonly found in individuals with addictions) may be causing impaired response inhibition, and overall cognitive performance. The current study aimed to fill the gap in {TikTok} addiction research using electroencephalogram ({EEG}) to investigate brain responses to 'Go' '{NoGo}' stimuli. 18 individuals participated in the study, 10 of whom had no history of addiction, and 8 with {TikTok} addiction. Using a between-subjects, repeated measures design, brain lateralisation differences were found in P3 latency during the 'Go' correct response condition in the F7/F8 electrodes F (1, 13) = 7.94 p = 0.015 η 2p = 0.38. Significant difference in beta power was found between the video and resting state conditions F (1, 13) = 5.24 p = 0.038 η 2p = 0.27. Results suggest that individuals with {TikTok} addiction may respond more impulsively, but there is no evidence to suggest that response inhibition is impaired. Results confirmed previous research, showing that brain activation in response to specific impulse related tasks is stronger in the right hemisphere. Findings suggest that {TikTok} addiction may be causing differences in brain responses, specifically in the frontal cortex which is directly involved with executive functions and cognitive performance.}
+      \field{title}{Investigating brain responses in individuals with {TikTok} addiction, using Electroencephalogram ({EEG})}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/EC3XNUEY/TikTok EEG Research Study.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{dumitru_does_2025}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=270ec658c4c81c52a56a66f6bd1c53ca}{%
+           family={Dumitru},
+           familyi={D\bibinitperiod},
+           given={Serban-Andreas},
+           giveni={S\bibinithyphendelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{270ec658c4c81c52a56a66f6bd1c53ca}
+      \strng{fullhash}{270ec658c4c81c52a56a66f6bd1c53ca}
+      \strng{fullhashraw}{270ec658c4c81c52a56a66f6bd1c53ca}
+      \strng{bibnamehash}{270ec658c4c81c52a56a66f6bd1c53ca}
+      \strng{authorbibnamehash}{270ec658c4c81c52a56a66f6bd1c53ca}
+      \strng{authornamehash}{270ec658c4c81c52a56a66f6bd1c53ca}
+      \strng{authorfullhash}{270ec658c4c81c52a56a66f6bd1c53ca}
+      \strng{authorfullhashraw}{270ec658c4c81c52a56a66f6bd1c53ca}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The rapid growth of short-form video platforms such as {TikTok} has raised concerns about their potential impact on cognitive functions, particularly sustained attention. This study investigated the effects of {TikTok}-style short-form content ({SFC}) and mindfulness meditation on sustained attention in young adults, using behavioural and {EEG} measures. Participants (aged 19-24) were categorised as either addicted or non-addicted to {SFC} and completed three sustained attention tasks, with two interventions-viewing {SFC} and mindfulness meditation-randomly assigned between tasks. {EEG} data were recorded throughout to examine neural correlates of attentional engagement. Results indicated that addicted participants showed significantly faster reaction times compared to non-addicted participants. Increases in reaction time following the {SFC} intervention are present for both groups. Additionally, a reduction in the P300 component was observed in addicted individuals after viewing {SFC}. These findings suggest that {SFC} may have immediate, measurable effects on attentional processes, highlighting the need for further research into its cognitive and neural implications.}
+      \field{title}{Does {TikTok}-style content impair sustained attention?}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/4I5DYL37/bAI2025DumitruSA.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{yan_mobile_2024}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=8b9aef4f9bfa814cbe12ba7ced360508}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Tingting},
+           giveni={T\bibinitperiod}}}%
+        {{hash=ded2bdaf4f003f80aa901b622dc6bf2a}{%
+           family={Su},
+           familyi={S\bibinitperiod},
+           given={Conghui},
+           giveni={C\bibinitperiod}}}%
+        {{hash=08c4d837914fb953ff3f75b260d7c395}{%
+           family={Xue},
+           familyi={X\bibinitperiod},
+           given={Weichen},
+           giveni={W\bibinitperiod}}}%
+        {{hash=90787043797def3cac788eb849e1ac2e}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Yuzheng},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=4e2a7cb3247df9b03fa5c77ff9f13e1c}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Hui},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Frontiers Media {SA}}%
+      }
+      \strng{namehash}{4937643f17035284aacadb4f7f94a506}
+      \strng{fullhash}{1aa09a252673349a68b7129bb00909ba}
+      \strng{fullhashraw}{1aa09a252673349a68b7129bb00909ba}
+      \strng{bibnamehash}{1aa09a252673349a68b7129bb00909ba}
+      \strng{authorbibnamehash}{1aa09a252673349a68b7129bb00909ba}
+      \strng{authornamehash}{4937643f17035284aacadb4f7f94a506}
+      \strng{authorfullhash}{1aa09a252673349a68b7129bb00909ba}
+      \strng{authorfullhashraw}{1aa09a252673349a68b7129bb00909ba}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The pervasive nature of short-form video platforms has seamlessly integrated into daily routines, yet it is important to recognize their potential adverse effects on both physical and mental health. Prior research has identified a detrimental impact of excessive short-form video consumption on attentional behavior, but the underlying neural mechanisms remain unexplored. In the current study, we aimed to investigate the effect of short-form video use on attentional functions, measured through the attention network test ({ANT}). A total of 48 participants, consisting of 35 females and 13 males, with a mean age of 21.8 years, were recruited. The mobile phone short video addiction tendency questionnaire ({MPSVATQ}) and self-control scale ({SCS}) were conducted to assess the short video usage behavior and self-control ability. Electroencephalogram ({EEG}) data were recorded during the completion of the {ANT} task. The correlation analysis showed a significant negative relationship between {MPSVATQ} and theta power index reflecting the executive control in the prefrontal region (r = −0.395, p = 0.007), this result was not observed by using theta power index of the resting-state {EEG} data. Furthermore, a significant negative correlation was identified between {MPSVATQ} and {SCS} outcomes (r = −0.320, p = 0.026). These results suggest that an increased tendency toward mobile phone short video addiction could negatively impact self-control and diminish executive control within the realm of attentional functions. This study sheds light on the adverse consequences stemming from short video consumption and underscores the importance of developing interventions to mitigate short video addiction.}
+      \field{issn}{16625161}
+      \field{journaltitle}{Frontiers in Human Neuroscience}
+      \field{title}{Mobile phone short video use negatively impacts attention functions: an {EEG} study}
+      \field{volume}{18}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.3389/fnhum.2024.1383913
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/6EG46J7K/fnhum-18-1383913.pdf:application/pdf
+      \endverb
+      \keyw{{EEG},★,addiction tendency,attention network,executive control,mobile phone short-form video,Negative Impact,scope:Methods,scope:{StateOfArt},Short Video Use}
+    \endentry
+    \entry{barachant_muse-lsl_2019}{misc}{}{}
+      \name{author}{7}{}{%
+        {{hash=30e7efb101f748da20650e9fc7cd0b5e}{%
+           family={Barachant},
+           familyi={B\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b9f55820f0df3833e816f39f5cbac8fc}{%
+           family={Morrison},
+           familyi={M\bibinitperiod},
+           given={Dano},
+           giveni={D\bibinitperiod}}}%
+        {{hash=af2fb2e40af03d3f1faeb62a35754fb7}{%
+           family={Banville},
+           familyi={B\bibinitperiod},
+           given={Hubert},
+           giveni={H\bibinitperiod}}}%
+        {{hash=db853d6ed98035ae611288f934f83eab}{%
+           family={Kowaleski},
+           familyi={K\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod}}}%
+        {{hash=aed3d72093e51251ef82bffa2b73e8fe}{%
+           family={Shaked},
+           familyi={S\bibinitperiod},
+           given={Uri},
+           giveni={U\bibinitperiod}}}%
+        {{hash=e025c50afc5f276842eaf9c3a2e6c17b}{%
+           family={Chevallier},
+           familyi={C\bibinitperiod},
+           given={Sylvain},
+           giveni={S\bibinitperiod}}}%
+        {{hash=565c7e1f2e0b295ced968d5e81e2eed0}{%
+           family={Torre\bibnamedelima Tresols},
+           familyi={T\bibinitperiod\bibinitdelim T\bibinitperiod},
+           given={Juan\bibnamedelima Jesús},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Zenodo}%
+      }
+      \strng{namehash}{5366cde337de1cb32d549878c093b4e3}
+      \strng{fullhash}{f574702668c37d2682b8830fa71a4f22}
+      \strng{fullhashraw}{f574702668c37d2682b8830fa71a4f22}
+      \strng{bibnamehash}{f574702668c37d2682b8830fa71a4f22}
+      \strng{authorbibnamehash}{f574702668c37d2682b8830fa71a4f22}
+      \strng{authornamehash}{5366cde337de1cb32d549878c093b4e3}
+      \strng{authorfullhash}{f574702668c37d2682b8830fa71a4f22}
+      \strng{authorfullhashraw}{f574702668c37d2682b8830fa71a4f22}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{25}
+      \field{month}{5}
+      \field{title}{muse-lsl}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.5281/zenodo.3228861
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.5281/zenodo.3228861
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.5281/zenodo.3228861
       \endverb
     \endentry
     \entry{salminen_engagement_2024}{inproceedings}{}{}
@@ -1644,8 +2067,8 @@
       \strng{authornamehash}{ec3c8d2488f73357101ce7e5854c8f3c}
       \strng{authorfullhash}{b5a679126465efe2fc1d7b53f1fb91d6}
       \strng{authorfullhashraw}{b5a679126465efe2fc1d7b53f1fb91d6}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{To what extent do all brains work alike during natural conditions? We explored this question by letting five subjects freely view half an hour of a popular movie while undergoing functional brain imaging. Applying an unbiased analysis in which spatiotemporal activity patterns in one brain were used to “model” activity in another brain, we found a striking level of voxel-by-voxel synchronization between individuals, not only in primary and secondary visual and auditory areas but also in association cortices. The results reveal a surprising tendency of individual brains to “tick collectively” during natural vision. The intersubject synchronization consisted of a widespread cortical activation pattern correlated with emotionally arousing scenes and regionally selective components. The characteristics of these activations were revealed with the use of an open-ended “reverse-correlation” approach, which inverts the conventional analysis by letting the brain signals themselves “pick up” the optimal stimuli for each specialized cortical area.}
@@ -1934,8 +2357,8 @@
       \strng{authornamehash}{736aafc56de75eb45bbddb4369c299f6}
       \strng{authorfullhash}{68b84140ada3c3bc8c045b0c7e37fd8b}
       \strng{authorfullhashraw}{68b84140ada3c3bc8c045b0c7e37fd8b}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Feature extraction is a pivotal challenge in brain–computer interface ({BCI}) systems that utilize motor imagery ({MI}). Discriminative features are crucial for enhancing the classification accuracy of {MI} tasks within {MI}-{BCI} systems. The common spatial pattern ({CSP}) method has been extensively employed for extracting band-power features in this context. Prior research indicates that the efficacy of the {CSP} algorithm can be significantly improved by identifying optimal filter bands or selecting appropriate time windows. Most existing methods adopt a fixed-size time window, which may overlook {EEG} patterns occurring in windows of varying sizes. Furthermore, current approaches have not explored the potential of optimizing the filtering band for different time windows, thereby potentially compromising the effectiveness of the {CSP} algorithm. In this paper, we introduce a novel method called multi-scale time group common spatial pattern ({MTGCSP}), which aims to optimize both the time window for {MI} tasks based on a multi-scale sliding time window preprocessing strategy and the filtering band for each time window at a specific scale. Specifically, the {EEG} signals are initially filtered across multiple sub-bands. Subsequently, we use the multi-scale sliding time window preprocessing strategy to segment the filtered spectral signals into multiple subsequences of varying lengths using the multi-scale sliding window. To extract robust {CSP} features from the multi-scale sliding time window subsequences, we propose a sparse joint optimization objective function that incorporates sparse group constraints. The resulting feature subset is then fed into a support vector machine ({SVM}) classifier with a linear kernel to perform {MI}-{EEG} classification tasks. Experimental results from three public datasets demonstrate that the {MTGCSP} method outperforms other state-of-the-art techniques.}
@@ -1989,8 +2412,8 @@
       \strng{authornamehash}{f88c5373199c5cc76f413b9f5d5c14da}
       \strng{authorfullhash}{f88c5373199c5cc76f413b9f5d5c14da}
       \strng{authorfullhashraw}{f88c5373199c5cc76f413b9f5d5c14da}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Label noise is an important issue in classiﬁcation, with many potential negative consequences. For example, the accuracy of predictions may decrease, whereas the complexity of inferred models and the number of necessary training samples may increase. Many works in the literature have been devoted to the study of label noise and the development of techniques to deal with label noise. However, the ﬁeld lacks a comprehensive survey on the different types of label noise, their consequences and the algorithms that take label noise into account. This paper proposes to ﬁll this gap. Firstly, the deﬁnitions and sources of label noise are considered and a taxonomy of the types of label noise is proposed. Secondly, the potential consequences of label noise are discussed. Thirdly, label noise-robust, label noise cleansing and label noise-tolerant algorithms are reviewed. For each category of approaches, a short discussion is proposed in order to help the practitioner to choose the most suitable technique in its own particular ﬁeld of application. Eventually, the design of experiments is also discussed, what may interest the researchers who would like to test their own algorithms. In this survey, label noise consists of mislabelled instances: no additional information is assumed to be available, like e.g. conﬁdences on labels.}
@@ -2047,8 +2470,8 @@
       \strng{editornamehash}{40222053beb161f856f5eea1c63522f9}
       \strng{editorfullhash}{40222053beb161f856f5eea1c63522f9}
       \strng{editorfullhashraw}{40222053beb161f856f5eea1c63522f9}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{editor}
       \field{labeltitlesource}{shorttitle}
       \field{isbn}{978-0-470-05997-5 978-0-470-72518-4 978-0-470-72517-7}
@@ -2082,8 +2505,8 @@
       \strng{authornamehash}{2b7c258c700e1826c0d1b4082fef809d}
       \strng{authorfullhash}{2b7c258c700e1826c0d1b4082fef809d}
       \strng{authorfullhashraw}{2b7c258c700e1826c0d1b4082fef809d}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Future neuroprosthetic devices, in particular upper limb, will require decoding and executing not only the user’s intended movement type, but also when the user intends to execute the movement. This work investigates the potential use of brain signals recorded non-invasively for detecting the time before a self-paced reaching movement is initiated which could contribute to the design of practical upper limb neuroprosthetics. In particular, we show the detection of self-paced reaching movement intention in single trials using the readiness potential, an electroencephalography ({EEG}) slow cortical potential ({SCP}) computed in a narrow frequency range (0.1–1 Hz). Our experiments with 12 human volunteers, two of them stroke subjects, yield high detection rates prior to the movement onset and low detection rates during the non-movement intention period. With the proposed approach, movement intention was detected around 500 ms before actual onset, which clearly matches previous literature on readiness potentials. Interestingly, the result obtained with one of the stroke subjects is coherent with those achieved in healthy subjects, with single-trial performance of up to 92\% for the paretic arm. These results suggest that, apart from contributing to our understanding of voluntary motor control for designing more advanced neuroprostheses, our work could also have a direct impact on advancing robot-assisted neurorehabilitation.}
@@ -2155,8 +2578,8 @@
       \strng{authornamehash}{68028cef021b142b234d8b4ec020899a}
       \strng{authorfullhash}{0934283f5a059b230b8546fe9d503b75}
       \strng{authorfullhashraw}{0934283f5a059b230b8546fe9d503b75}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The movement-related cortical potential ({MRCP}) is a low-frequency negative shift in the electroencephalography ({EEG}) recording that takes place about 2 seconds prior to voluntary movement production. {MRCP} replicates the cortical processes employed in planning and preparation of movement. In this study, we recapitulate the features such as signal’s acquisition, processing, and enhancement and different electrode montages used for {EEG} data recoding from different studies that used {MRCPs} to predict the upcoming real or imaginary movement. An authentic identification of human movement intention, accompanying the knowledge of the limb engaged in the performance and its direction of movement, has a potential implication in the control of external devices. This information could be helpful in development of a proficient patient-driven rehabilitation tool based on brain-computer interfaces ({BCIs}). Such a {BCI} paradigm with shorter response time appears more natural to the amputees and can also induce plasticity in brain. Along with different training schedules, this can lead to restoration of motor control in stroke patients.}
@@ -2210,8 +2633,8 @@
       \strng{authornamehash}{eaad07ee1c6ef93a9308150f12c3c2eb}
       \strng{authorfullhash}{eaad07ee1c6ef93a9308150f12c3c2eb}
       \strng{authorfullhashraw}{eaad07ee1c6ef93a9308150f12c3c2eb}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2. ed., reprint}
@@ -2273,8 +2696,8 @@
       \strng{editornamehash}{2923e21089ab51794ca22d5fe01e8b91}
       \strng{editorfullhash}{2923e21089ab51794ca22d5fe01e8b91}
       \strng{editorfullhashraw}{2923e21089ab51794ca22d5fe01e8b91}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Objective Dementia, particularly Alzheimer’s disease ({AD}), constitutes a major global health concern, with {AD} accounting for approximately 70\% of all cases. {EEG}-based biomarkers hold promise for early identification of individuals at risk; however, small and heterogeneous samples frequently limit generalizability.}
@@ -2350,8 +2773,8 @@
       \strng{authornamehash}{f77c999d688513f50fcdcd860b31d92c}
       \strng{authorfullhash}{50c079e1f2df07ea49f1a3e14ca8c1fc}
       \strng{authorfullhashraw}{50c079e1f2df07ea49f1a3e14ca8c1fc}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{{INTRODUCTION}: We investigated whether sleep features from multi-night, at-home in-ear {EEG} could distinguish mild cognitive impairment ({MCI}) from cognitively normal ({CN}) older adults, independent of demographic confounds. {METHODS}: Forty-three older adults (24 {MCI}, 19 {CN}) completed 361 overnight in-ear {EEG} recordings at home (4.44 ± 2.29 nights per participant). Deep learning-derived embeddings were compared to bandpower features. We controlled for age and sex to identify sleep-specific features of {MCI} beyond demography.}
@@ -2386,8 +2809,8 @@
       \strng{authornamehash}{4aa924efe085391dce98ee193c8c00d5}
       \strng{authorfullhash}{4aa924efe085391dce98ee193c8c00d5}
       \strng{authorfullhashraw}{4aa924efe085391dce98ee193c8c00d5}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to describe the general characteristics of an {EEG} trace in a few quantitative terms is introduced. Its descriptive parameters are entirely based on time, but they can be derived also from the statistical moments of the power spectrum. Thus the method provides a bridge between a physical time domain interpretation and the conventional frequency domain description. Further, the parameters are based on the concept of variance, giving them an additive property so that the measured values pertain also to any basic elements from which a complex curve may be composed by superposition.}
@@ -2446,8 +2869,8 @@
       \strng{authornamehash}{2015c2bc9a975365f555b518aa2d048a}
       \strng{authorfullhash}{3fde716fdc2ad04c32082c417080f1c1}
       \strng{authorfullhashraw}{3fde716fdc2ad04c32082c417080f1c1}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{26}

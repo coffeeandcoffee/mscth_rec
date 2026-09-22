@@ -1,0 +1,64 @@
+LIBRARY OF CONSISTENT TERMS
+Use each term exactly as written. Do not swap in synonyms.
+Format: TERM | what it means / what it is used for | where first coined
+
+--- THE THESIS ---
+the present thesis | this thesis; used when emphasizing alone as well as alongside other things non included in this thesis to draw a clear line.
+the author | refers to the author and reasearcher and experiment lead of the present thesis
+
+--- THE CONSTRUCT ---
+engagement | the primary construct label of the thesis; everything else is an indicator of it | Sec. Defining Engagement (Intro)
+working definition | the screen-and-swipe definition of engagement, boxed in the Introduction | Sec. Defining Engagement (Intro)
+updated definition | the instrument-free version of the definition | Sec. An Updated Definition of Engagement
+disengagement event / exit | the observable moment engagement ends (in this thesis: the swipe) | Sec. Defining Engagement (Intro)
+exit criterion | what would have counted as disengagement; one of the four reporting requirements | Sec. Implications for Measurement
+declared interval | the timescale over which engagement is claimed | Sec. The Proposed Definition
+occupancy | attention with no alternative (captive), or presence without engagement; NOT engagement | Sec. The Proposed Definition
+normative dissociation | zoned-out, low-recall scrolling (Baughan et al.) | Sec. Engagement and Attention in short-form video platforms
+
+--- THE SETTING ---
+infinite feed | the short-form video feed itself, where participants are | Sec. Adjacent studies
+naturalistic use | participants watch their own feed on their own terms and swipe whenever they please | Sec. Adjacent studies
+swipe | the single self-paced action that moves to the next video; anchors every label | Intro / Sec. Adjacent studies
+burst / burst block | several rapid swipes merged into one block | Sec. Behavioral Burst Analysis
+fast scrollers / careful scrollers | participants with many vs few burst blocks (do NOT use "frantic scrollers") | Sec. Behavioral Swipe-Burst Phenomenon
+
+--- THE LITERATURE ---
+adjacent study | Rahman et al. 2025; same Muse S headband, different question | Sec. Adjacent studies
+secondary adjacent studies | the three compared EEG studies of short-form video viewing without a consumer headband: Zhang et al., Du et al., Zhang and Zhang | Sec. Secondary adjacent studies
+black box vs glass box | detection-accuracy model (adjacent study) vs model that shows which part of the signal carries the class information (this thesis) | Sec. Adjacent studies
+punching a hole | mental image for a notch filter removing 50 Hz and everything real near it | Sec. Adjacent studies
+powerline-noise | 50 Hz electrical contamination (use this, NOT "mains frequency", "line noise", "power-line noise") | Sec. Adjacent studies
+
+--- THE RECORDING ---
+bridge | muselsl; carries the Muse Bluetooth signal to the laptop and onto LSL; mental image: a bridge between headband and laptop | Sec. Recording Software
+shared clock | LSL time; one clock on the wall that every stream (EEG, keypresses) reads | Sec. Recording Software
+custom recording script | the thesis's own script that launches the bridge, reads samples with pylsl, and adds the two guards | Sec. Recording Software / Universal Recording Pipeline
+reconnect gap | lost time between two recording files after a Bluetooth dropout; logged, never crossed by a window, never interpolated | Sec. Recording Software
+
+--- THE LABELS ---
+STAY | continuous, non-skip viewing inside the infinite feed | Sec. Operational Definition of STAY and SKIP
+SKIP | the imminent-skip period before a swipe | Sec. Operational Definition of STAY and SKIP
+imminent-skip period | 3.0 s interval from which SKIP windows are drawn | Sec. Operational Definition of Labeling Parameters
+gap length / pre-swipe gap | 2.0 s excluded right before the swipe (motor safety margin) | Sec. Operational Definition of Labeling Parameters
+window length | 1.0 s analysis window | Sec. Operational Definition of Labeling Parameters
+grace period | 0.5 s excluded right after the swipe | Sec. Operational Definition of Labeling Parameters
+safety gap | umbrella word for the excluded gap periods | Sec. Research Questions / Windowing and Class Labeling
+Bereitschaftspotential (BP) | slow brain signal of movement preparation before a voluntary action | Sec. Pre-Motor Window and the Limits of the BP Literature
+
+--- THE SIGNAL AND FEATURES ---
+slice | one view of the data: one band, one electrode, one statistic, or a combination; a slice contains multiple features | Sec. Adjacent studies
+feature | a part of a slice, defined by specific band, electrode, statistic, and or combination.
+raw signal | the undecomposed broadband signal, kept alongside the seven bands | Sec. Baseline Extraction and Normalization
+high-gamma (40-60 Hz) / very high gamma (60-100 Hz) | the two top bands, both reaching into powerline-noise territory | Sec. Baseline Extraction and Normalization
+Peak Frequency / Macro Frequency | the two self-defined time-domain frequency features | Sec. Peak and Macro Frequency Extraction
+Engagement Index (EI) | the classical ratio beta/(alpha+theta); the benchmark | Intro / Sec. Engagement Index Calculation
+Cohen's d | class separation of one feature, in units of that feature's own spread | Sec. Adjacent studies / Class Separation Metric
+top features | TP10 raw std, AF7 high gamma mean, AF8 delta peak frequency | Sec. Feature Importance
+Alternative Index | the top features used in place of the EI | Sec. Alternative Index Exploration
+coin-flip baseline | chance-level reference classifier | Sec. Logistic Regression Modeling and Baselines
+intra-subject / inter-subject | within one participant (blocked 5-fold) / across participants (Leave-One-Group-Out); do not use only Inter or Intra, not Inter-Subject and Intra-Subject, instead always say Inter-subject and Intra-subject! | Sec. Temporal Cross-Validation
+
+------------------------------------------------------------------
+NOTE:
+if a term here mentioned is used not in same chapter but later, there will be a reference to the last chapter where it was used or to chapter where was first coined to make retro reference for reader super easy, along a short refreshing explanation of term eg. mental image if available from place where first coined.
