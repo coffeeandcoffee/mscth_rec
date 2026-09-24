@@ -49,7 +49,7 @@ gap length / pre-swipe gap | 2.0 s excluded right before the swipe (motor safety
 window length | 1.0 s analysis window | Sec. Operational Definition of Labeling Parameters
 grace period | 0.5 s excluded right after the swipe | Sec. Operational Definition of Labeling Parameters
 safety gap | umbrella word for the excluded gap periods | Sec. Research Questions / Windowing and Class Labeling
-Bereitschaftspotential (BP) | slow brain signal of movement preparation before a voluntary action | Sec. Pre-Motor Window
+Bereitschaftspotential (BP) | slow brain signal of movement preparation before a voluntary action | Sec. Pre-Motor Window and the Limits of the BP Literature
 
 --- THE SIGNAL AND FEATURES ---
 slice | one view of the data: one band, one electrode, one statistic, or a combination; a slice contains multiple features | Sec. Adjacent studies

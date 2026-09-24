@@ -1,0 +1,72 @@
+/Users/gregorlederer/Documents/Academic/20260914_research_strategy.pdf
+read that.
+then read our full thesis at:
+"
+'/Users/gregorlederer/Documents/MSc Thesis - EEG Neuroscience/Data Recording and Quality Tests/latex_thesis_pdf/thesis.tex'
+"
+we generally aim for a concentrated, really, really concentrated, very focused, really smart and easy language, and really, really punchy without much noise and highly focused.
+--
+heres some context on how we previously changed pictures minimal invasively, just for you to know how we work, not that you should do pictures, you should do text, but just fyi:
+"
+All four paths verified. Here is the one sentence:
+To change any figure in the thesis, take the PNG filename from its `\includegraphics{...}` line in latex_thesis_pdf/thesis.tex, `grep` that filename under `05-12_data_analysis_and_results/scripts/` to find the matplotlib code that draws it, edit that code (using `viz_style.style_axes(ax, viz_style.FONT_2X, ...)` to keep all text in a figure at one consistent size), then run `cd "05-12_data_analysis_and_results" && venv/bin/python regen_thesis_figures.py` — which redraws every thesis figure in place inside `runs/run_20260611_220844/viz/` from the existing run data in about a minute — followed by `cd latex_thesis_pdf && bash compile_thesis.sh` to pick the new images up; never run scripts/run.py or delete any `step*.done` file to regenerate a figure, because that re-runs preprocessing and overwrites `processed/`, `windows/`, `splits/` and `features/`, i.e. the data every number in the thesis rests on.
+Two things worth passing along with it:
+
+* `regen_thesis_figures.py` is safe to re-run as often as they like — it only reads the existing run data and rewrites PNGs plus the generated `.tex` tables, so there is no state to corrupt.
+* Full backup exists at `runs/run_20260611_220844_BACKUP_20260813_142706/` (23 MB, holds `viz/` and every root artifact), so any figure can be restored by copying it back.
+
+"
+
+--
+
+Now the task:
+
+Subject of optimization is literature chapter "Adjacent studies".
+
+step#1:
+Read the chapter in thesis pdf in full.
+Understand which sources it quotes.
+Then pull and read all these sources pdfs - from the bib file you know wheree the pdfs are.
+Then you critically go through the whole chapter and spot mistakes.
+Then you report them to me in the simplest non overwhelming minimal word way.
+After I have approved, you go ahead and implement them.
+
+Keep in mind the focussed structure:
+describe the field in its own terms: what each prior work does, what it achieves, and where it falls short. It is normal to position our work (the present thesis) in a SOTA chapter, but the usual way is to do it once, at the end[of every section, as the gap it fills], not in every paragraph. We do it as 
+"\paragraph{Gap the present thesis fills:} max 3 sentences describing gap detailed."
+
+Keep in mind the most omnipresent risk - the curse of knowledge - that every sentence runs the risk of being contaminated by and must be double checked against:
+"
+The paragraph was written from inside the writer's head, not for the reader. I'd call it the **curse of knowledge**: the writer knew what every compressed phrase meant and forgot the reader doesn't.
+
+That showed up in five ways:
+
+1. **Shorthand with no explanation.** "Not deployable", "proxy", "conjecture", "indicator" and "construct" are labels. Each one stood in for an idea the reader never got to see.
+2. **Words pointing at nothing.** "It", "this", "the bridge", "the third" and "the definition above" all assumed the reader still held something from paragraphs or sections earlier.
+3. **Slogans instead of sentences.** "A proxy measures the proxy", "most settings have no thumb" and "survives contact with" were written to sound memorable, not to be understood. They reward the writer and make the reader decode.
+4. **Too much confidence.** "None of that survives" and "the two properties the results identify as definitional" claimed more than one study of 25 people can support.
+5. **A factual error hidden in the density.** "Without which performance fell to chance" didn't match the Results: even with calibration, the models were only slightly above chance. Dense wording makes an error like that easy to miss, for the writer and for the examiner.
+
+In short, the paragraph showed off its understanding instead of passing it on. The fix each time was to name the concrete thing, give an everyday example or analogy where the idea was abstract, and check each claim against the Results."
+
+Step #2:
+Without changing meaning and without changing facts and without loosing information and without altering the facts, you will simplify this chapter, shorten it, and make sentences very short without secondary sentences. It is idiot proof language. Easily understandable. Where applicable you use relatable metaphors. Overall you use extremely simple baby language. You also coin terms and concepts here that you reuse within the chapter to create easy pattern recognition, familiarity and give the reader the feeling and confidence they know  exactly what your talking about as you communicate with lowest friction possible. Terms concepts and metaphors may later also be reused inlayer parts of the thesis to again create and use pattern recognition of reader to our advantage and to build a bridge to the here mentioned concepts, terms, metaphors and so on. We make it super pleasant and easy for the reader. It is important to still keep it hyper focussed and use these rhetoric tools responsibly as scientific rigour and credibility stand at the first priority. Second priority is ease of read and understanding.
+
+
+please do not force add new terms in step 2 its getting too much. also do not randomly use previous terms. this element must be used with responsibility, where there is true fit.
+
+dont force gaps. sometimes its just to include the prior work we build on, it doesnt need to have gaps we fill.
+
+- recheck all assumptions - make it in itself consistent - and then check all fixes are successful and none forgotten.
+
+generally do not add more, rather over carefully remove.
+
+
+Also keep in mind:
+dont talk too much keep it focussed on the mission of the SOTA-section.
+
+When a pronoun has no clear antecedent(both, that, it, this,..)(The earlier word or phrase that a later word points back to), the sentence goes vague. Try to not use antecedents AT ALL, instead use previously clearly coined terms consistently and correctly. Even if ridiculously many, we are willing to take this risk because this approach make things crystal clear.
+
+Also do not use ---. Instead, use comma.
+
+Also avoid saying "x not y" too much, and keep away from extreme words, soften language humbly.

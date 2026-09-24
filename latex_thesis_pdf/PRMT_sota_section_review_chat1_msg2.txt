@@ -1,0 +1,33 @@
+Very good. Also read all the previous chapters of the literature to ensure that we do not repeat something that has already been said and we focus it really on just what this chapter will contribute. Yes, and fix all the things that you said you will fix.
+
+please do not force add new terms in step 2 its getting too much. also do not randomly use previous terms. this element must be used with responsibility, where there is true fit.
+
+dont force gaps. sometimes its just to include the prior work we build on, it doesnt need to have gaps we fill.
+
+- recheck all assumptions - make it in itself consistent - and then check all fixes are successful and none forgotten.
+
+generally do not add more, rather over carefully remove.
+
+--
+Implement all fixes
+
+Keep in mind the most omnipresent risk - the curse of knowledge - that every sentence runs the risk of being contaminated by and must be double checked against:
+"
+The paragraph was written from inside the writer's head, not for the reader. I'd call it the **curse of knowledge**: the writer knew what every compressed phrase meant and forgot the reader doesn't.
+
+That showed up in five ways:
+
+1. **Shorthand with no explanation.** "Not deployable", "proxy", "conjecture", "indicator" and "construct" are labels. Each one stood in for an idea the reader never got to see.
+2. **Words pointing at nothing.** "It", "this", "the bridge", "the third" and "the definition above" all assumed the reader still held something from paragraphs or sections earlier.
+3. **Slogans instead of sentences.** "A proxy measures the proxy", "most settings have no thumb" and "survives contact with" were written to sound memorable, not to be understood. They reward the writer and make the reader decode.
+4. **Too much confidence.** "None of that survives" and "the two properties the results identify as definitional" claimed more than one study of 25 people can support.
+5. **A factual error hidden in the density.** "Without which performance fell to chance" didn't match the Results: even with calibration, the models were only slightly above chance. Dense wording makes an error like that easy to miss, for the writer and for the examiner.
+
+In short, the paragraph showed off its understanding instead of passing it on. The fix each time was to name the concrete thing, give an everyday example or analogy where the idea was abstract, and check each claim against the Results."
+
+
+
+--
+Also read all the previous chapters of the literature to ensure that we do not repeat something that has already been said and we focus it really on just what this chapter will contribute.
+--
+vice versa implement there all things we found here that are wrong in previous literature chapters. (and elsewhere)
