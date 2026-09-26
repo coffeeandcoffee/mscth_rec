@@ -95,7 +95,7 @@ def run_universe(base_params, area, gap, win_size, parent_run_dir):
     p = copy.deepcopy(base_params)
     p['step01']['pre_skip_window_s'] = float(area)
     p['step01']['gap_s'] = float(gap)
-    p['step03']['window_size_s'] = float(win_size)
+    p['step03']['window_s'] = float(win_size)  # stride stays at step03 stride_s (1.0 s)
     
     print(f"\n  [UNIVERSE {univ_name}] Starting Pipeline")
     

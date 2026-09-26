@@ -45,7 +45,7 @@ def run(run_dir, params):
     # Stacked vertically so each panel spans the full figure width.
     fig, axes = plt.subplots(2, 1, figsize=(16, 18),
                              gridspec_kw={'hspace': 0.45})
-    fig.suptitle("Window Exploration: Maximizing Feature Separation", fontweight='bold')
+    fig.suptitle("Sensitivity Analysis of Three Labeling Parameters", fontweight='bold')
     viz_style.style_suptitle(fig, viz_style.FONT_3X)
     
     # ---- Graph 1: Gap vs Skip-Area (Window fixed to 1.0s) ----
@@ -63,19 +63,19 @@ def run(run_dir, params):
                 y_vals.append(v)
                 
         if len(x_gaps) > 0:
-            ax1.plot(x_gaps, y_vals, marker='o', label=f'Skip-Area={area}s', color=palette1[a_idx], linewidth=2, markersize=8)
+            ax1.plot(x_gaps, y_vals, marker='o', label=f'{area:g} s', color=palette1[a_idx], linewidth=2, markersize=8)
             
     ax1.set_xticks(gaps)
     ax1.grid(True, linestyle='--', alpha=0.7)
     # All four series rise to the top right, so no corner is free at the
     # default limits; add headroom and place the legend above the data.
     ax1.margins(y=0.30)
-    ax1.legend(title="Total Skip-Area", loc="upper left", ncol=2)
+    ax1.legend(title="SKIP period", loc="upper left", ncol=2)
     viz_style.style_axes(
         ax1, viz_style.FONT_3X,
-        title="Sweep: GAP and SKIP-AREA (Fixed Window=1.0s)",
-        xlabel="GAP (s)",
-        ylabel="Max Separation (|d|)",
+        title="Pre-swipe gap × SKIP period (window length 1.0 s)",
+        xlabel="Pre-swipe gap (s)",
+        ylabel="Largest |d| of one feature",
     )
     
     # ---- Graph 2: Window Length (Area fixed to 3.0s, Gap fixed to 2.0s) ----
@@ -91,16 +91,16 @@ def run(run_dir, params):
             y_vals_ws.append(v)
             
     if len(x_ws) > 0:
-        ax2.plot(x_ws, y_vals_ws, marker='o', color='purple', linewidth=2, markersize=8, label="Gap=2.0s, Area=3.0s")
+        ax2.plot(x_ws, y_vals_ws, marker='o', color='purple', linewidth=2, markersize=8, label="Pre-swipe gap 2.0 s, SKIP period 3.0 s")
         
     ax2.set_xticks(window_sizes)
     ax2.grid(True, linestyle='--', alpha=0.7)
     ax2.legend(loc="upper left")
     viz_style.style_axes(
         ax2, viz_style.FONT_3X,
-        title="Sweep: Window Duration",
-        xlabel="Window Length (s)",
-        ylabel="Max Separation (|d|)",
+        title="Window length alone",
+        xlabel="Window length (s)",
+        ylabel="Largest |d| of one feature",
     )
             
     plt.savefig(viz_dir / "viz17_window_exploration_line.png", dpi=200, bbox_inches='tight')

@@ -5,6 +5,7 @@ Format: TERM | what it means / what it is used for | where first coined
 --- THE THESIS ---
 the present thesis | this thesis; used when emphasizing alone as well as alongside other things non included in this thesis to draw a clear line.
 the author | refers to the author and reasearcher and experiment lead of the present thesis
+beyond the scope of the present thesis | fixed phrase for a question the present thesis names but does not test; pair with a pointer to Future Research | Sec. Participants
 
 --- THE CONSTRUCT ---
 engagement | the primary construct label of the thesis; everything else is an indicator of it | Sec. Defining Engagement (Intro)
@@ -18,9 +19,11 @@ normative dissociation | zoned-out, low-recall scrolling (Baughan et al.) | Sec.
 
 --- THE SETTING ---
 infinite feed | the short-form video feed itself, where participants are | Sec. Adjacent studies
-naturalistic use | participants watch their own feed on their own terms and swipe whenever they please | Sec. Adjacent studies
+naturalistic use | self-paced viewing of an algorithmic feed, with a swipe possible at any moment (in this thesis: TikTok For You feed on the author's iPhone, reset before each participant; NOT 'own feed on own phone') | Sec. Adjacent studies
 swipe | the single self-paced action that moves to the next video; anchors every label | Intro / Sec. Adjacent studies
-burst / burst block | several rapid swipes merged into one block | Sec. Behavioral Burst Analysis
+burst / burst block | several rapid swipes merged into one block; swipes merge when their ±3.0 s burst windows overlap (closer than 6.0 s); the burst window is NOT the SKIP period | Sec. Behavioral Burst Analysis
+burst window | ±3.0 s around each swipe, used only by the burst analysis; groups swipes, changes no label; separate definition from the SKIP period, though the two can overlap in time | Sec. Behavioral Burst Analysis
+inter-swipe interval | time between two consecutive "A" keypresses, roughly the viewing time of one video (do NOT use "dwell time" for it) | Sec. Behavioral Burst Analysis
 fast scrollers / careful scrollers | participants with many vs few burst blocks (do NOT use "frantic scrollers") | Sec. Behavioral Swipe-Burst Phenomenon
 
 --- THE LITERATURE ---
@@ -36,22 +39,28 @@ ask route / log route / body route | the three routes to measure engagement (Per
 dose | the counts from the log route (use, exposure, platform counters) | Sec. Engagement in the Health Communication Literature
 
 --- THE RECORDING ---
+baseline phase / browsing phase | the two phases of a session: 2-minute resting video / 25-minute TikTok browsing | Sec. Experimental Protocol
 bridge | muselsl; carries the Muse Bluetooth signal to the laptop and onto LSL; mental image: a bridge between headband and laptop | Sec. Recording Software
 shared clock | LSL time; one clock on the wall that every stream (EEG, keypresses) reads | Sec. Recording Software
-custom recording script | the thesis's own script that launches the bridge, reads samples with pylsl, and adds the two guards | Sec. Recording Software / Universal Recording Pipeline
+recording pipeline | the thesis's own recording code (one Python file, recording_script.py): finds the headband, starts muselsl, reads EEG with pylsl, flags keypresses in LSL time, reconnects after a Bluetooth dropout (do NOT use "custom recording script", "recording architecture" or "Universal"; section title: Reproducible Recording Pipeline) | Sec. Recording Software / Reproducible Recording Pipeline
+recording file | one CSV file of the recording pipeline; a Bluetooth dropout ends one recording file and starts the next; the preprocessing pipeline processes each recording file on its own and never joins two (do NOT use "CSV file" in running text) | Sec. Reproducible Preprocessing Pipeline
+preprocessing pipeline | the thesis's own preprocessing code (step01-step03): trims, interpolates to 256 Hz, splits into bands, z-scores band envelopes against the baseline, cuts windows; runs once without and once with a 50 Hz notch filter (section title: Reproducible Preprocessing Pipeline; do NOT write "Pre-Processing") | Sec. Reproducible Preprocessing Pipeline
 reconnect gap | lost time between two recording files after a Bluetooth dropout; logged, never crossed by a window, never interpolated | Sec. Recording Software
 
 --- THE LABELS ---
-STAY | continuous, non-skip viewing inside the infinite feed | Sec. Operational Definition of STAY and SKIP
-SKIP | the imminent-skip period before a swipe | Sec. Operational Definition of STAY and SKIP
-imminent-skip period | 3.0 s interval from which SKIP windows are drawn | Sec. Operational Definition of Labeling Parameters
-gap length / pre-swipe gap | 2.0 s excluded right before the swipe (motor safety margin) | Sec. Operational Definition of Labeling Parameters
+STAY | the label of windows drawn from the STAY period: continuous, non-skip viewing inside the infinite feed | Sec. Operational Definition of STAY and SKIP
+SKIP | the label of windows drawn from the SKIP period before a swipe | Sec. Operational Definition of STAY and SKIP
+labeling parameters | the four values that define the STAY and SKIP labels: pre-swipe gap, SKIP period, post-swipe gap, window length; the sensitivity analysis varies the first, second and fourth, the post-swipe gap stays at 0.5 s (do NOT use "timing values" or "temporal parameters") | Sec. Labeling Strategy
+SKIP period | 3.0 s just before the pre-swipe gap, from which SKIP windows are drawn (do NOT use "imminent-skip period") | Sec. Operational Definition of Labeling Parameters
+pre-swipe gap | 2.0 s excluded right before the keypress that marks a swipe; meant to keep swipe preparation out of SKIP (do NOT use "gap length") | Sec. Operational Definition of Labeling Parameters
 window length | 1.0 s analysis window | Sec. Operational Definition of Labeling Parameters
-grace period | 0.5 s excluded right after the swipe | Sec. Operational Definition of Labeling Parameters
-safety gap | umbrella word for the excluded gap periods | Sec. Research Questions / Windowing and Class Labeling
+post-swipe gap | 0.5 s excluded right after the keypress that marks a swipe (do NOT use "grace period") | Sec. Operational Definition of Labeling Parameters
+STAY period | all remaining browsing time: starts after a post-swipe gap, ends where the next SKIP period starts | Sec. Operational Definition of STAY and SKIP
 Bereitschaftspotential (BP) | slow brain signal of movement preparation before a voluntary action | Sec. Pre-Motor Window
 
 --- THE SIGNAL AND FEATURES ---
+envelope | the strength of one band at every moment (Hilbert transform); mental image: a line traced along the tops of the waves; not squared to power; the band envelopes are z-scored, the raw signal is NOT | Sec. Baseline Extraction and Normalization
+artifact check | the 95th-percentile peak-to-peak flagging of blinks (AF7/AF8, 1-40 Hz) and EMG (TP9/TP10, 30-100 Hz) on the notch-filtered copy; flags only, removes nothing | Sec. Artifact Analysis
 slice | one view of the data: one band, one electrode, one statistic, or a combination; a slice contains multiple features | Sec. Adjacent studies
 feature | a part of a slice, defined by specific band, electrode, statistic, and or combination.
 raw signal | the undecomposed broadband signal, kept alongside the seven bands | Sec. Baseline Extraction and Normalization
@@ -67,3 +76,13 @@ intra-subject / inter-subject | within one participant (blocked 5-fold) / across
 ------------------------------------------------------------------
 NOTE:
 if a term here mentioned is used not in same chapter but later, there will be a reference to the last chapter where it was used or to chapter where was first coined to make retro reference for reader super easy, along a short refreshing explanation of term eg. mental image if available from place where first coined.
+
+sensitivity analysis | the reruns of the pipeline with other values of three labeling parameters (do NOT use "sweep") | Sec. Parameter Sensitivity Analysis
+--- THE RESULT SYNTHESIS PIPELINE (added 2026-09-26, Sec. 3.8) ---
+fold | one of five time-ordered parts of one participant's windows; each fold holds about one fifth of the SKIP windows; each fold serves once as test data | Sec. Temporal Cross-Validation and Data Balancing
+fold gap | the 3 s dropped around each fold border (every window starting within 1.5 s of the border is dropped); window starts of training and test data lie more than 3 s apart, i.e. more than 2 s without any window between them (do NOT say "3 s between windows"; do NOT use "firewall" or "safety distance") | Sec. Temporal Cross-Validation and Data Balancing
+seed | the starting number of the random generator that picks the dropped windows in balancing; five seeds (0, 1, 7, 42, 99); intra-subject results average over the five seeds, inter-subject uses the first seed only | Sec. Temporal Cross-Validation and Data Balancing
+balancing | randomly dropping windows of the LARGER class (STAY in 21 of 25 participants; SKIP in P17, P23, P24, P28), separately in every training fold and every test fold (do NOT say "STAY was undersampled per participant") | Sec. Temporal Cross-Validation and Data Balancing
+EI model / top-feature model | logistic regression with the EI, or with one top feature, as the only input | Sec. Logistic Regression Modeling and Baselines
+F1-train / F1-test | F1-score on training windows / on test windows; metrics are computed per participant from TP, TN, FP, FN summed over all folds and seeds (NOT "per fold") | Sec. Metrics and Significance Testing
+student who has seen the exam questions | mental image for leakage between training and test data; coined in Sec. Adjacent Study, reused in Sec. Temporal Cross-Validation | Sec. Adjacent Study

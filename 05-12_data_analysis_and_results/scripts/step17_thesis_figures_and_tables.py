@@ -257,8 +257,8 @@ for run, path in RUN_DIRS.items():
 
     tab2_rows.append({
         'Run': run_labels[run],
-        'Skip window': f"±{params.get('step01', {}).get('skip_window_s', '?')} s",
-        'Window / stride': f"{params.get('step03', {}).get('window_size_s', '?')} s / {params.get('step03', {}).get('stride_s', '?')} s",
+        'Skip window': f"{params.get('step01', {}).get('pre_skip_window_s', '?')} s, gap {params.get('step01', {}).get('gap_s', 2.0)} s",
+        'Window / stride': f"{params.get('step03', {}).get('window_s', '?')} s / {params.get('step03', {}).get('stride_s', '?')} s",
         'RF config': f"Depth {params.get('step06', {}).get('max_depth', '?')} N={params.get('step06', {}).get('n_estimators', '?')}",
         'Mean Train Acc': f"{mean_train_acc:.3f}",
         'Mean Test Acc': f"{mean_test_acc:.3f}",

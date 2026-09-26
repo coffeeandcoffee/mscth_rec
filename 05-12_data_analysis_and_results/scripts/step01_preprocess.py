@@ -5,7 +5,10 @@ step01_preprocess.py — Baseline-normalised relative power computation.
 Runs twice internally: nonotch (primary) and notch (ablation).
 Computes true sampling rate via median delta-t, interpolates each CSV to
 256 Hz, applies Butterworth 7-band split, z-score normalises via 90s baseline
-window, labels each sample as STAY or SKIP via ±3s A-press windows.
+window, labels each sample as STAY, SKIP or EXCL around each A-press:
+SKIP = imminent-skip period [press - gap - isp, press - gap),
+EXCL = pre-swipe gap [press - gap, press) + grace period [press, press + grace],
+STAY = everything else. SKIP overrides a neighbouring press's EXCL (bursts).
 
 OUT: per-participant .pkl files + dropout_log.csv
 
@@ -129,16 +132,18 @@ def extract_baseline_stats(csv_list, baseline_offset_s, baseline_duration_s, tar
 # STAY / SKIP labeling
 # ──────────────────────────────────────────────
 
-def label_stay_skip(df, skip_window_s):
-    """Label every row as STAY or SKIP.
+def label_stay_skip(df, gap_s, isp_s, grace_s):
+    """Label every row as STAY, SKIP or EXCL (excluded from both classes).
 
-    Rule:
+    Rule (checked via lsl_timestamp, not row count):
         All rows start as STAY.
-        For each A press, all rows within ±SKIP_WINDOW_S of that press
-        (checked via lsl_timestamp, not row count) are relabeled SKIP.
-        Overlapping SKIP windows from adjacent A presses merge naturally.
+        For each A press p, rows in [p - gap_s, p + grace_s] become EXCL
+        (pre-swipe gap and grace period).
+        Then, for each A press p, rows in [p - gap_s - isp_s, p - gap_s)
+        become SKIP (imminent-skip period). SKIP is written last, so in a
+        burst it overrides the gap or grace period of a neighbouring press.
 
-    Returns df with added 'class' column ('STAY' or 'SKIP').
+    Returns df with added 'class' column ('STAY', 'SKIP' or 'EXCL').
     """
     df = df.copy()
     df['class'] = 'STAY'
@@ -147,21 +152,24 @@ def label_stay_skip(df, skip_window_s):
         return df
 
     timestamps = df['lsl_timestamp'].values
-    a_press_rows = df[df['keypress_A'] == 1]
+    press_times = df.loc[df['keypress_A'] == 1, 'lsl_timestamp'].values
 
-    for row_idx in a_press_rows.index:
-        t_press = df.loc[row_idx, 'lsl_timestamp']
-        t_lo = t_press - skip_window_s
-        t_hi = t_press + skip_window_s
-        mask = (timestamps >= t_lo) & (timestamps <= t_hi)
+    for t_press in press_times:
+        mask = (timestamps >= t_press - gap_s) & (timestamps <= t_press + grace_s)
+        df.loc[mask, 'class'] = 'EXCL'
+    for t_press in press_times:
+        mask = ((timestamps >= t_press - gap_s - isp_s) &
+                (timestamps < t_press - gap_s))
         df.loc[mask, 'class'] = 'SKIP'
 
     return df
 
 
-def trim_to_a_presses(df):
-    """Remove rows before the first A press and after the last A press.
+def trim_to_a_presses(df, lead_s, tail_s):
+    """Keep rows from lead_s before the first A press to tail_s after the last.
 
+    lead_s = gap_s + isp_s, so the imminent-skip period of the first press is
+    kept; tail_s = grace_s, so nothing after the last grace period is kept.
     Returns None if the CSV has zero A presses (caller must skip it).
     """
     if 'keypress_A' not in df.columns:
@@ -171,10 +179,9 @@ def trim_to_a_presses(df):
         return None
     first_a_time = df.loc[a_rows.index[0], 'lsl_timestamp']
     last_a_time  = df.loc[a_rows.index[-1], 'lsl_timestamp']
-    skip_window_s = 3.0  # must include the full ±3s around first and last press
     mask = (
-        (df['lsl_timestamp'] >= first_a_time - skip_window_s) &
-        (df['lsl_timestamp'] <= last_a_time  + skip_window_s)
+        (df['lsl_timestamp'] >= first_a_time - lead_s) &
+        (df['lsl_timestamp'] <= last_a_time + tail_s)
     )
     return df[mask].copy()
 
@@ -200,11 +207,13 @@ def interpolate_to_target_fs(df, target_fs):
 
     out = {'lsl_timestamp': t_uniform, 'class': None}
 
-    # Interpolate class label (nearest neighbour — preserve STAY/SKIP)
-    class_numeric = (df['class'].values == 'SKIP').astype(float)
+    # Interpolate class label (nearest neighbour — preserve STAY/SKIP/EXCL)
+    class_names = np.array(['STAY', 'SKIP', 'EXCL'])
+    class_numeric = np.select([df['class'].values == 'SKIP',
+                               df['class'].values == 'EXCL'], [1.0, 2.0], 0.0)
     interp_class = interp1d(t_raw, class_numeric, kind='nearest',
                             fill_value='extrapolate')
-    out['class'] = np.where(interp_class(t_uniform) > 0.5, 'SKIP', 'STAY')
+    out['class'] = class_names[np.rint(interp_class(t_uniform)).astype(int)]
 
     for ch in config.EEG_CHANNELS:
         raw_ch = df[ch].values.astype(float)
@@ -266,7 +275,9 @@ def process_participant(pid, out_dir_nonotch, out_dir_notch, params):
     target_fs        = float(p['target_fs'])
     baseline_offset_s   = float(p['baseline_offset_s'])
     baseline_duration_s = float(p['baseline_duration_s'])
-    skip_window_s    = float(p['skip_window_s'])
+    gap_s            = float(p.get('gap_s', 2.0))              # pre-swipe gap
+    isp_s            = float(p.get('pre_skip_window_s', 3.0))  # imminent-skip period
+    grace_s          = float(p.get('grace_s', 0.5))            # grace period
     
     use_hilbert = p_exp.get('use_hilbert_envelope', False)
     extract_erp = p_exp.get('extract_erp_features', False)
@@ -311,10 +322,10 @@ def process_participant(pid, out_dir_nonotch, out_dir_notch, params):
 
     for csv_df in csv_list:
         # Label STAY/SKIP
-        labeled = label_stay_skip(csv_df, skip_window_s)
+        labeled = label_stay_skip(csv_df, gap_s, isp_s, grace_s)
 
         # Trim to first/last A press — skip CSV if no A presses
-        trimmed = trim_to_a_presses(labeled)
+        trimmed = trim_to_a_presses(labeled, gap_s + isp_s, grace_s)
         if trimmed is None:
             continue
 
@@ -414,11 +425,14 @@ def run(run_dir, params):
     # ── Detailed STAY/SKIP summary table ──
     p = params['step01']
     target_fs = float(p['target_fs'])
-    skip_window_s = float(p['skip_window_s'])
+    gap_s = float(p.get('gap_s', 2.0))
+    isp_s = float(p.get('pre_skip_window_s', 3.0))
+    grace_s = float(p.get('grace_s', 0.5))
 
     print(f"\n{'─'*78}")
     print(f"  STEP 01 — STAY/SKIP CLASS SUMMARY")
-    print(f"  Labelling: ±{skip_window_s}s around each A-press → SKIP, rest → STAY")
+    print(f"  Labelling: [-{gap_s + isp_s}s, -{gap_s}s) before each A-press → SKIP, "
+          f"[-{gap_s}s, +{grace_s}s] → excluded, rest → STAY")
     print(f"  Interpolated to {target_fs:.0f} Hz")
     print(f"{'─'*78}")
     print(f"  {'PID':>4}  {'CSVs':>4}  {'STAY samp':>10}  {'SKIP samp':>10}"

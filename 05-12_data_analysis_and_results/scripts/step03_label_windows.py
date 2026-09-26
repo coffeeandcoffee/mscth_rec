@@ -6,8 +6,8 @@ Reads the STAY/SKIP labels from step01 and extracts fixed-size windows
 from contiguous SKIP and STAY regions using a sliding window with stride.
 
 Logic:
-  1. Find contiguous SKIP regions (labelled ±half_window_s around each
-     A-press in step01, so each isolated region is ~2×half_window_s = 6s).
+  1. Find contiguous SKIP regions (step01 labels the imminent-skip period
+     before each A-press, so each isolated region is ~2×half_window_s = isp).
   2. Find contiguous STAY regions (everything between SKIP regions).
   3. From each region, extract windows of `window_s` seconds using
      `stride_s` stride.  A window is only emitted if it fits entirely
@@ -23,7 +23,7 @@ Runs four times internally for sensitivity manifests:
 OUT: 4 windowed dataset .pkl files + 4 label summary CSVs
 
 Parameters (from config.DEFAULT_PARAMS['step03']):
-  half_window_s  — step01 labels ±this around each A-press (→ 2× = SKIP region)
+  half_window_s  — derived: step01 pre_skip_window_s / 2 (→ 2× = SKIP region)
   window_s       — extracted window duration (both SKIP and STAY)
   stride_s       — sliding window stride (both SKIP and STAY)
   burst_thresh_s — unused directly; burst detected by merged regions + A-press count
@@ -225,7 +225,9 @@ def build_manifest(pid, df, fs, feature_names, params,
     p = params.get('step03', {})
     window_s = p.get('window_s', 3.0)
     stride_s = p.get('stride_s', 0.6)
-    half_window_s = p.get('half_window_s', 3.0)
+    # One press gives one SKIP block as long as the imminent-skip period
+    # (step01), so half_window_s = isp / 2 keeps expected_single = isp.
+    half_window_s = params.get('step01', {}).get('pre_skip_window_s', 3.0) / 2
 
     # Extract windows from SKIP and STAY regions using same window & stride
     skip_windows = extract_windows_from_regions(df, fs, 'SKIP', window_s, stride_s)
@@ -289,11 +291,13 @@ def run(run_dir, params):
     p = params.get('step03', {})
     window_s = p.get('window_s', 3.0)
     stride_s = p.get('stride_s', 0.6)
-    half_window_s = p.get('half_window_s', 3.0)
+    # One press gives one SKIP block as long as the imminent-skip period
+    # (step01), so half_window_s = isp / 2 keeps expected_single = isp.
+    half_window_s = params.get('step01', {}).get('pre_skip_window_s', 3.0) / 2
     burst_thresh = p.get('burst_thresh_s', 3.0)
 
     print(f"\n  Parameters:")
-    print(f"    half_window_s  = {half_window_s}  (step01 labels ±{half_window_s}s around A-press → {2*half_window_s}s SKIP region)")
+    print(f"    half_window_s  = {half_window_s}  (SKIP region per A-press = {2*half_window_s}s imminent-skip period)")
     print(f"    window_s       = {window_s}  (extracted window duration)")
     print(f"    stride_s       = {stride_s}  (stride for both SKIP and STAY)")
     print(f"    burst_thresh_s = {burst_thresh}  (A-presses < {burst_thresh}s apart → merged region → burst)")
@@ -390,7 +394,7 @@ def run(run_dir, params):
     # ── Detailed windowing diagnostics ──
     print(f"\n{'─'*92}")
     print(f"  STEP 03 — WINDOW EXTRACTION DIAGNOSTICS")
-    print(f"  SKIP region: ±{half_window_s}s around A-press = {2*half_window_s}s per single A-press")
+    print(f"  SKIP region: {2*half_window_s}s imminent-skip period per single A-press")
     print(f"  Window: {window_s}s | Stride: {stride_s}s ({(1-stride_s/window_s)*100:.0f}% overlap)")
     print(f"  Burst: SKIP blocks with ≥2 A-presses (merged regions)")
     print(f"{'─'*92}")

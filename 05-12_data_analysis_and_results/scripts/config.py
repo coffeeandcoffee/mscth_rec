@@ -101,7 +101,9 @@ DEFAULT_PARAMS = {
         "target_fs": 256.0,
         "baseline_offset_s": 10.0,
         "baseline_duration_s": 90.0,
-        "skip_window_s": 0.5,      # Default: 3.0 (±0.5s instead of ±3s)
+        "pre_skip_window_s": 3.0,  # imminent-skip period: SKIP = [press-gap-3s, press-gap)
+        "gap_s": 2.0,              # pre-swipe gap, excluded from STAY and SKIP
+        "grace_s": 0.5,            # grace period after each press, excluded
         "butterworth_order": 4,
     },
     "step02": {
@@ -111,7 +113,6 @@ DEFAULT_PARAMS = {
         "emg_channels": ["TP9", "TP10"],
     },
     "step03": {
-        "half_window_s": 0.5,      # Default: 3.0 (matches step01's ±0.5s)
         "window_s": 1.0,           # Default: 3.0 (1s window duration)
         "stride_s": 1.0,           # Default: 0.6 (1.0s stride means 0% overlap)
         "burst_thresh_s": 3.0,     # A-presses < 3s apart → burst-skip flag

@@ -761,7 +761,7 @@ def export_significance_heatmap(scale, models, viz_dir, pids=None):
 
     viz_style.style_axes(
         ax, viz_style.FONT_2X,
-        title=f"Participant-Level Significance Map: EI LR vs Coin Flip ({scale})\n(Green = EI LR Outperforms Random)",
+        title=f"F1-Test Difference per Participant: EI LR minus Coin Flip ({scale})\n(Green = EI LR higher; no significance test)",
         xlabel='Performance Metric',
         ylabel='Participant ID',
     )

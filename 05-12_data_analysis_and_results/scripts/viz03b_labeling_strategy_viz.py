@@ -9,7 +9,7 @@ This module draws the panels directly from the exploration window data.
 
 Each panel shows the same 70-second excerpt from one participant under one
 labeling parameterisation: STAY windows in blue, SKIP windows in red, the shaded
-imminent-skip regions, and the registered A-keypresses as vertical red lines.
+SKIP periods, and the registered A-keypresses as vertical red lines.
 
 Output file names are kept identical to the ones thesis.tex already references.
 """
@@ -21,6 +21,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
+from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
 
 import config
 import viz_style
@@ -100,23 +102,31 @@ def _draw_panel(ax, wdata, univ_name, font_size):
     for t in a_press_times:
         t_rel = t - t_min
         if 0 <= t_rel <= EXCERPT_S:
-            ax.axvline(t_rel, color='crimson', linewidth=1.6, zorder=3,
-                       label='A-keypress' if not drawn_label else None)
+            ax.axvline(t_rel, color='crimson', linewidth=1.6, zorder=3)
             drawn_label = True
 
     ax.set_yticks([0, 1])
     ax.set_yticklabels(['SKIP', 'STAY'])
     ax.set_ylim(-0.6, 1.4)
     ax.set_xlim(-1, EXCERPT_S + 1)
+    handles = [
+        Line2D([0], [0], color=STAY_COLOR, linewidth=6, label='STAY window'),
+        Line2D([0], [0], color=SKIP_COLOR, linewidth=6, label='SKIP window'),
+        Patch(facecolor='red', alpha=0.12, edgecolor='red', label='SKIP period'),
+    ]
     if drawn_label:
-        ax.legend(loc='upper right')
+        handles.append(Line2D([0], [0], color='crimson', linewidth=1.6,
+                              label='A keypress (swipe)'))
+    ax.get_figure().legend(handles=handles, loc='lower center',
+                           bbox_to_anchor=(0.5, 0.0), ncol=len(handles),
+                           frameon=False, fontsize=font_size)
 
     viz_style.style_axes(
         ax, font_size,
-        title=f'P{REP_PID} | {univ_name} | '
-              f'Window={window}s, Gap={gap}s, Area={area}s',
+        title=f'P{REP_PID} | window length {window:g} s, pre-swipe gap {gap:g} s, '
+              f'SKIP period {area:g} s',
         xlabel='Time (s)',
-        ylabel='Class Label',
+        ylabel='Label',
     )
     return True
 
@@ -142,7 +152,7 @@ def run(run_dir, params):
 
         fig, ax = plt.subplots(figsize=(20, 6))
         if _draw_panel(ax, wdata, univ_name, font_size):
-            plt.tight_layout()
+            plt.tight_layout(rect=(0, 0.14, 1, 1))
             plt.savefig(out_dir / out_name, dpi=200, bbox_inches='tight')
             written += 1
         plt.close()

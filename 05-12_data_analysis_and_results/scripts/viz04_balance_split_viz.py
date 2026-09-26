@@ -96,7 +96,7 @@ def run(run_dir, params):
     # --- Panel 4 — Temporal Firewall Validation ---
     # Visual proof of the 3s gap
     ax4.axvline(0, color='red', linestyle='-', alpha=0.8, linewidth=2, label='Edge of Train')
-    ax4.axvline(gap_s, color='red', linestyle='--', alpha=0.8, linewidth=2, label=f'Minimum Gap ({gap_s}s)')
+    ax4.axvline(gap_s, color='red', linestyle='--', alpha=0.8, linewidth=2, label=f'Fold gap ({gap_s} s)')
     
     y_ticks_p4 = []
     y_labels_p4 = []
@@ -141,7 +141,7 @@ def run(run_dir, params):
     ax4.set_yticks(y_ticks_p4)
     ax4.set_yticklabels(y_labels_p4, fontsize=6)
     ax4.set_xlabel('Temporal Distance (s)')
-    ax4.set_title('Temporal Firewall Validation')
+    ax4.set_title('Fold Gap Check')
     ax4.legend(fontsize=8)
 
     # --- Panel 5 — Dynamic Split visualization ---
@@ -292,7 +292,7 @@ def run(run_dir, params):
     # the aspect ratio page-friendly at \textwidth.
     fig_ind, ax_ind = plt.subplots(figsize=(12, 13))
     ax_ind.axvline(0, color='red', linestyle='-', alpha=0.8, linewidth=2, label='Edge of Train')
-    ax_ind.axvline(gap_s, color='red', linestyle='--', alpha=0.8, linewidth=2, label=f'Minimum Gap ({gap_s}s)')
+    ax_ind.axvline(gap_s, color='red', linestyle='--', alpha=0.8, linewidth=2, label=f'Fold gap ({gap_s} s)')
     pids_top_down = list(reversed(config.INCLUDED_PARTICIPANTS))
     y_ticks_ind, y_labels_ind = [], []
     for idx, pid in enumerate(pids_top_down):
@@ -328,7 +328,7 @@ def run(run_dir, params):
     ax_ind.legend()
     viz_style.style_axes(
         ax_ind, viz_style.FONT_2X,
-        title='Temporal Firewall Validation',
+        title='Fold Gap Check',
         xlabel='Temporal Distance (s)',
         ylabel='Participant ID',
     )

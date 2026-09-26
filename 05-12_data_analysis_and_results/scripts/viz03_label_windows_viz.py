@@ -279,7 +279,7 @@ def run(run_dir, params):
         merge_thresh_s = 2 * burst_thresh
         ax_ind.axvline(merge_thresh_s, color='red', linestyle='--', linewidth=1.5,
                    label=f'{merge_thresh_s}s merge threshold\n'
-                         f'(A-presses closer → merged SKIP region)')
+                         f'(swipes closer → one burst block)')
         ylim = ax_ind.get_ylim()
         ax_ind.fill_betweenx([0, ylim[1] if ylim[1] > 0 else 10],
                          0, merge_thresh_s, alpha=0.1, color='red')
@@ -287,8 +287,8 @@ def run(run_dir, params):
         ax_ind.legend(loc='upper right')
         viz_style.style_axes(
             ax_ind, viz_style.FONT_2X,
-            title=f'Inter-A-press Intervals ({n_merged} below merge threshold)',
-            xlabel='Inter-A-press Interval (s)',
+            title=f'Inter-swipe Intervals ({n_merged} below merge threshold)',
+            xlabel='Inter-swipe Interval (s)',
             ylabel='Count',
         )
         plt.tight_layout()

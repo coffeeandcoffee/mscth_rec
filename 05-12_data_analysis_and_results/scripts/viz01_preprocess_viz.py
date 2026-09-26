@@ -187,7 +187,7 @@ def run(run_dir, params):
     viz_style.style_axes(
         ax_ind, viz_style.FONT_2X,
         title='Bluetooth Dropout Map',
-        xlabel='Session Time (% of Session)',
+        xlabel='Time from First Dropout (% of Longest Span)',
         ylabel='Participant ID',
     )
     plt.tight_layout()

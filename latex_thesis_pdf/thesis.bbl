@@ -1182,7 +1182,7 @@
       \endverb
       \keyw{systematic review,data acquisition,{EEG} analysis,feature extraction,pre-processing analysis,signal processing,user engagement,user experience}
     \endentry
-    \entry{moontaha_online_2023}{article}{}{}
+    \entry{moontaha_online_2023}{misc}{}{}
       \name{author}{3}{}{%
         {{hash=dc0c7c8ee6b10322369f443fa1b3a60b}{%
            family={Moontaha},
@@ -1212,11 +1212,11 @@
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{abstract}{{<}p{>}Emotions are indicators of affective states and play a significant role in human daily life, behavior, and interactions. Giving emotional intelligence to the machines could, for instance, facilitate early detection and prediction of (mental) diseases and symptoms. Electroencephalography ({EEG}) -based emotion recognition is being widely applied because it measures electrical correlates directly from the brain rather than the indirect measurement of other physiological responses initiated by the brain. The recent development of non-invasive and portable {EEG} sensors makes it possible to use them in real-time applications. Therefore, this paper presents a real-time emotion classification pipeline, which trains different binary classifiers for the dimensions of Valence and Arousal from an incoming {EEG} data stream. After achieving a 23.9\% (Arousal) and 25.8\% (Valence) higher f1-score on the state-of-art {AMIGOS} dataset, this pipeline was applied to the dataset achieved by an emotion elicitation experimental framework developed within the scope of this thesis. Following two different protocols, 15 participants were recorded using two different consumer-grade {EEG} devices while watching 16 short emotional videos in a controlled environment. For an immediate label setting, the mean f1-score of 87\% and 82\% were achieved for Arousal and Valence, respectively. In a live scenario, while continuously being updated on the incoming data stream with delayed labels, the pipeline proved to be fast enough to achieve predictions in real time. However, the significant discrepancy from the readily available labels on the classification scores leads to future work to include more data with frequent delayed labels in the live settings.{<}/p{>}}
       \field{day}{9}
-      \field{journaltitle}{Preprints}
       \field{month}{1}
       \field{note}{Preprint, not peer-reviewed}
-      \field{title}{Online Learning for Wearable {EEG}-Based Emotion Classification}
+      \field{title}{Online Learning for Wearable {EEG}-based Emotion Classification}
       \field{year}{2023}
       \field{dateera}{ce}
       \verb{doi}
@@ -1225,6 +1225,13 @@
       \verb{file}
       \verb PDF:/Users/gregorlederer/Zotero/storage/7G4MNK82/Online_Learning_for_Wearable_EEG-based_Emotion_Cla.pdf:application/pdf
       \endverb
+      \verb{urlraw}
+      \verb https://www.preprints.org/manuscript/202301.0156/v1
+      \endverb
+      \verb{url}
+      \verb https://www.preprints.org/manuscript/202301.0156/v1
+      \endverb
+      \keyw{★★★★}
     \endentry
     \entry{rimbert_impact_2023}{inproceedings}{}{}
       \name{author}{3}{}{%
@@ -2463,7 +2470,7 @@
       \verb 10.3389/fneng.2012.00013
       \endverb
       \verb{file}
-      \verb PDF:/Users/gregorlederer/Zotero/storage/RCUPK5AH/Lew - 2012 - Detection of self-paced reaching movement intention from EEG signals.pdf:application/pdf
+      \verb PDF:/Users/gregorlederer/Zotero/storage/RCUPK5AH/Lew et al. - 2012 - Detection of self-paced reaching movement intention from EEG signals.pdf:application/pdf
       \endverb
       \verb{urlraw}
       \verb http://journal.frontiersin.org/article/10.3389/fneng.2012.00013/abstract
@@ -3460,15 +3467,17 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{19}
-      \field{journaltitle}{{bioRxiv}}
+      \field{journaltitle}{{PLOS} One}
       \field{langid}{english}
-      \field{month}{11}
+      \field{number}{1}
       \field{title}{Stimulus-induced narrow-band gamma oscillations in humans can be recorded using open-hardware low-cost {EEG} amplifier}
-      \field{year}{2021}
+      \field{volume}{18}
+      \field{year}{2023}
       \field{dateera}{ce}
+      \field{pages}{e0279881}
+      \range{pages}{-1}
       \verb{doi}
-      \verb 10.1101/2021.11.16.468841
+      \verb 10.1371/journal.pone.0279881
       \endverb
       \verb{file}
       \verb PDF:/Users/gregorlederer/Zotero/storage/Q2FSC9BY/Pattisapu and Ray - 2023 - Stimulus-induced narrow-band gamma oscillations in humans can be recorded using open-hardware low-co.pdf:application/pdf
@@ -3495,7 +3504,7 @@
         {{hash=33c7b90fcefe4b1202606409c5638b1d}{%
            family={Pearl},
            familyi={P\bibinitperiod},
-           given={Dennis\bibnamedelima K},
+           given={Dennis\bibnamedelima K.},
            giveni={D\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
       }
       \strng{namehash}{635192fa60f0820344ea3d5bb7a0abf7}
@@ -3740,6 +3749,180 @@
       \endverb
       \keyw{★★★★★}
     \endentry
+    \entry{donoghue_electrophysiological_2020}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=b506f30d3144a1d91ef70a4d9961edaf}{%
+           family={Donoghue},
+           familyi={D\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=b18e780e290ac77f2f3a824e89ce331e}{%
+           family={Dominguez},
+           familyi={D\bibinitperiod},
+           given={Julio},
+           giveni={J\bibinitperiod}}}%
+        {{hash=823d72e8eebcb7bcda3898fe845420ac}{%
+           family={Voytek},
+           familyi={V\bibinitperiod},
+           given={Bradley},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{e6d0fe5b5e67ceeda97b584dc24b4290}
+      \strng{fullhash}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
+      \strng{fullhashraw}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
+      \strng{bibnamehash}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
+      \strng{authorbibnamehash}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
+      \strng{authornamehash}{e6d0fe5b5e67ceeda97b584dc24b4290}
+      \strng{authorfullhash}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
+      \strng{authorfullhashraw}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Band ratio measures, computed as the ratio of power between two frequency bands, are a common analysis measure in neuroelectrophysiological recordings. Band ratio measures are typically interpreted as reflecting quantitative measures of periodic, or oscillatory, activity. This assumes that the measure reflects relative powers of distinct periodic components that are well captured by predefined frequency ranges. However, electrophysiological signals contain periodic components and a 1/f-like aperiodic component, the latter of which contributes power across all frequencies. Here, we investigate whether band ratio measures truly reflect oscillatory power differences, and/or to what extent ratios may instead reflect other periodic changes, such as in center frequency or bandwidth, and/or aperiodic activity. In simulation, we investigate how band ratio measures relate to changes in multiple spectral features, and show how multiple periodic and aperiodic features influence band ratio measures. We validate these findings in human electroencephalography ({EEG}) data, comparing band ratio measures to parameterizations of power spectral features and find that multiple disparate features influence ratio measures. For example, the commonly applied u/b ratio is most reflective of differences in aperiodic activity, and not oscillatory u or b power. Collectively, we show that periodic and aperiodic features can create the same observed changes in band ratio measures, and that this is inconsistent with their typical interpretations as measures of periodic power. We conclude that band ratio measures are a non-specific measure, conflating multiple possible underlying spectral changes, and recommend explicit parameterization of neural power spectra as a more specific approach.}
+      \field{issn}{2373-2822}
+      \field{journaltitle}{eneuro}
+      \field{langid}{english}
+      \field{month}{11}
+      \field{number}{6}
+      \field{shortjournal}{{eNeuro}}
+      \field{title}{Electrophysiological Frequency Band Ratio Measures Conflate Periodic and Aperiodic Neural Activity}
+      \field{urlday}{8}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{volume}{7}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{ENEURO.0192\bibrangedash 20.2020}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1523/ENEURO.0192-20.2020
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/B5VQZRUC/Donoghue et al. - 2020 - Electrophysiological Frequency Band Ratio Measures Conflate Periodic and Aperiodic Neural Activity.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.eneuro.org/lookup/doi/10.1523/ENEURO.0192-20.2020
+      \endverb
+      \verb{url}
+      \verb https://www.eneuro.org/lookup/doi/10.1523/ENEURO.0192-20.2020
+      \endverb
+      \keyw{★★★★★}
+    \endentry
+    \entry{varoquaux_assessing_2017}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=cfa3239dded54488f9a82a5718d5b927}{%
+           family={Varoquaux},
+           familyi={V\bibinitperiod},
+           given={Gaël},
+           giveni={G\bibinitperiod}}}%
+        {{hash=a38c3e10123230486099d321f3c93cd9}{%
+           family={Raamana},
+           familyi={R\bibinitperiod},
+           given={Pradeep\bibnamedelima Reddy},
+           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=d4e9fd7317901eaeafbc6816c9bde5fd}{%
+           family={Engemann},
+           familyi={E\bibinitperiod},
+           given={Denis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=251f46d030bce0e15cec8005a92d0b3a}{%
+           family={Hoyos-Idrobo},
+           familyi={H\bibinithyphendelim I\bibinitperiod},
+           given={Andrés},
+           giveni={A\bibinitperiod}}}%
+        {{hash=48d7274dea9ffbd3123a8a01ce2cc75f}{%
+           family={Schwartz},
+           familyi={S\bibinitperiod},
+           given={Yannick},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=0f3fc06fb9fcbb01b9cc0985eaf0a71c}{%
+           family={Thirion},
+           familyi={T\bibinitperiod},
+           given={Bertrand},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{03333c7c412234b29244b2d68a2dbe08}
+      \strng{fullhash}{9259c2447bb7d946ff4cf866c8458d68}
+      \strng{fullhashraw}{9259c2447bb7d946ff4cf866c8458d68}
+      \strng{bibnamehash}{9259c2447bb7d946ff4cf866c8458d68}
+      \strng{authorbibnamehash}{9259c2447bb7d946ff4cf866c8458d68}
+      \strng{authornamehash}{03333c7c412234b29244b2d68a2dbe08}
+      \strng{authorfullhash}{9259c2447bb7d946ff4cf866c8458d68}
+      \strng{authorfullhashraw}{9259c2447bb7d946ff4cf866c8458d68}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Decoding, ie prediction from brain images or signals, calls for empirical evaluation of its predictive power. Such evaluation is achieved via cross-validation, a method also used to tune decoders’ hyper-parameters. This paper is a review on cross-validation procedures for decoding in neuroimaging. It includes a didactic overview of the relevant theoretical considerations. Practical aspects are highlighted with an extensive empirical study of the common decoders in withinand across-subject predictions, on multiple datasets –anatomical and functional {MRI} and {MEG}– and simulations. Theory and experiments outline that the popular “leave-one-out” strategy leads to unstable and biased estimates, and a repeated random splits method should be preferred. Experiments outline the large error bars of cross-validation in neuroimaging settings: typical conﬁdence intervals of 10\%. Nested cross-validation can tune decoders’ parameters while avoiding circularity bias. However we ﬁnd that it can be more favorable to use sane defaults, in particular for non-sparse decoders.}
+      \field{eprinttype}{arxiv}
+      \field{issn}{10538119}
+      \field{journaltitle}{{NeuroImage}}
+      \field{langid}{english}
+      \field{month}{1}
+      \field{shortjournal}{{NeuroImage}}
+      \field{shorttitle}{Assessing and tuning brain decoders}
+      \field{title}{Assessing and tuning brain decoders: cross-validation, caveats, and guidelines}
+      \field{urlday}{26}
+      \field{urlmonth}{9}
+      \field{urlyear}{2026}
+      \field{volume}{145}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{166\bibrangedash 179}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1016/j.neuroimage.2016.10.038
+      \endverb
+      \verb{eprint}
+      \verb 1606.05201 [stat.ML]
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/J99CEAPW/Varoquaux et al. - 2017 - Assessing and tuning brain decoders cross-validation, caveats, and guidelines.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1606.05201
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1606.05201
+      \endverb
+      \keyw{Statistics - Machine Learning}
+    \endentry
+    \entry{demsar_statistical_2006}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=4f1562f6c926af2ba7e34e919ea14f1d}{%
+           family={Demšar},
+           familyi={D\bibinitperiod},
+           given={Janez},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{fullhash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{fullhashraw}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{bibnamehash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{authorbibnamehash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{authornamehash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{authorfullhash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{authorfullhashraw}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{While methods for comparing two learning algorithms on a single data set have been scrutinized for quite some time already, the issue of statistical tests for comparisons of more algorithms on multiple data sets, which is even more essential to typical machine learning studies, has been all but ignored. This article reviews the current practice and then theoretically and empirically examines several suitable tests. Based on that, we recommend a set of simple, yet safe and robust non-parametric tests for statistical comparisons of classiﬁers: the Wilcoxon signed ranks test for comparison of two classiﬁers and the Friedman test with the corresponding post-hoc tests for comparison of more classiﬁers over multiple data sets. Results of the latter can also be neatly presented with the newly introduced {CD} (critical difference) diagrams.}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{langid}{english}
+      \field{title}{Statistical Comparisons of Classiﬁers over Multiple Data Sets}
+      \field{volume}{7}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \field{pages}{1\bibrangedash 30}
+      \range{pages}{30}
+      \verb{file}
+      \verb PDF:/Users/gregorlederer/Zotero/storage/SZ3HKHMJ/Demšar - 2006 - Statistical Comparisons of Classiﬁers over Multiple Data Sets.pdf:application/pdf
+      \endverb
+    \endentry
     \entry{ovi_frequency_2026}{article}{}{}
       \name{author}{6}{}{%
         {{hash=961464126690cee66d5e64129218d444}{%
@@ -3811,67 +3994,6 @@
       \endverb
       \verb{url}
       \verb https://linkinghub.elsevier.com/retrieve/pii/S2666827026000666
-      \endverb
-      \keyw{★★★★★}
-    \endentry
-    \entry{donoghue_electrophysiological_2020}{article}{}{}
-      \name{author}{3}{}{%
-        {{hash=b506f30d3144a1d91ef70a4d9961edaf}{%
-           family={Donoghue},
-           familyi={D\bibinitperiod},
-           given={Thomas},
-           giveni={T\bibinitperiod}}}%
-        {{hash=b18e780e290ac77f2f3a824e89ce331e}{%
-           family={Dominguez},
-           familyi={D\bibinitperiod},
-           given={Julio},
-           giveni={J\bibinitperiod}}}%
-        {{hash=823d72e8eebcb7bcda3898fe845420ac}{%
-           family={Voytek},
-           familyi={V\bibinitperiod},
-           given={Bradley},
-           giveni={B\bibinitperiod}}}%
-      }
-      \strng{namehash}{e6d0fe5b5e67ceeda97b584dc24b4290}
-      \strng{fullhash}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
-      \strng{fullhashraw}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
-      \strng{bibnamehash}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
-      \strng{authorbibnamehash}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
-      \strng{authornamehash}{e6d0fe5b5e67ceeda97b584dc24b4290}
-      \strng{authorfullhash}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
-      \strng{authorfullhashraw}{f5e01b21f9a4a0558de0bb4d3bcf5ba0}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Band ratio measures, computed as the ratio of power between two frequency bands, are a common analysis measure in neuroelectrophysiological recordings. Band ratio measures are typically interpreted as reflecting quantitative measures of periodic, or oscillatory, activity. This assumes that the measure reflects relative powers of distinct periodic components that are well captured by predefined frequency ranges. However, electrophysiological signals contain periodic components and a 1/f-like aperiodic component, the latter of which contributes power across all frequencies. Here, we investigate whether band ratio measures truly reflect oscillatory power differences, and/or to what extent ratios may instead reflect other periodic changes, such as in center frequency or bandwidth, and/or aperiodic activity. In simulation, we investigate how band ratio measures relate to changes in multiple spectral features, and show how multiple periodic and aperiodic features influence band ratio measures. We validate these findings in human electroencephalography ({EEG}) data, comparing band ratio measures to parameterizations of power spectral features and find that multiple disparate features influence ratio measures. For example, the commonly applied u/b ratio is most reflective of differences in aperiodic activity, and not oscillatory u or b power. Collectively, we show that periodic and aperiodic features can create the same observed changes in band ratio measures, and that this is inconsistent with their typical interpretations as measures of periodic power. We conclude that band ratio measures are a non-specific measure, conflating multiple possible underlying spectral changes, and recommend explicit parameterization of neural power spectra as a more specific approach.}
-      \field{issn}{2373-2822}
-      \field{journaltitle}{eneuro}
-      \field{langid}{english}
-      \field{month}{11}
-      \field{number}{6}
-      \field{shortjournal}{{eNeuro}}
-      \field{title}{Electrophysiological Frequency Band Ratio Measures Conflate Periodic and Aperiodic Neural Activity}
-      \field{urlday}{8}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
-      \field{volume}{7}
-      \field{year}{2020}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
-      \field{pages}{ENEURO.0192\bibrangedash 20.2020}
-      \range{pages}{-1}
-      \verb{doi}
-      \verb 10.1523/ENEURO.0192-20.2020
-      \endverb
-      \verb{file}
-      \verb PDF:/Users/gregorlederer/Zotero/storage/B5VQZRUC/Donoghue et al. - 2020 - Electrophysiological Frequency Band Ratio Measures Conflate Periodic and Aperiodic Neural Activity.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://www.eneuro.org/lookup/doi/10.1523/ENEURO.0192-20.2020
-      \endverb
-      \verb{url}
-      \verb https://www.eneuro.org/lookup/doi/10.1523/ENEURO.0192-20.2020
       \endverb
       \keyw{★★★★★}
     \endentry

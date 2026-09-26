@@ -257,24 +257,27 @@ def _plot_reality_check(viz_dir, rep_pid, windows_dir, features_dir):
                 map_f.write(box2_str + "\n")
 
         # Panel A2: Extracted Stats for Alpha
-        mean_a, std_a, min_a, max_a = np.mean(alpha_ts), np.std(alpha_ts), np.min(alpha_ts), np.max(alpha_ts)
-        ax2.bar(['Mean', 'Std', 'Min', 'Max'], [mean_a, std_a, min_a, max_a], color='green', alpha=0.6)
-        ax2.set_title("Panel A2: Extracted Statistical Moments\n(Alpha Band)", fontsize=10)
-        ax2.set_ylabel("Power")
-        for i, v in enumerate([mean_a, std_a, min_a, max_a]):
+        # Only mean and SD enter the final feature set (min/max are excluded).
+        mean_a, std_a = np.mean(alpha_ts), np.std(alpha_ts)
+        ax2.bar(['Mean', 'SD'], [mean_a, std_a], color='green', alpha=0.6)
+        ax2.set_title("Panel A2: Mean and SD\n(Alpha Band)", fontsize=10)
+        ax2.set_ylabel("z-score")
+        for i, v in enumerate([mean_a, std_a]):
             ax2.text(i, v, f"{v:.2f}", ha='center', va='bottom', fontsize=8)
 
         # Panel A3: EI Calculation
-        alpha_means = [np.mean(data[:, f_names.index(f"{ch}_alpha")]) for ch in config.EEG_CHANNELS]
-        beta_means = [np.mean(data[:, f_names.index(f"{ch}_beta")]) for ch in config.EEG_CHANNELS]
-        theta_means = [np.mean(data[:, f_names.index(f"{ch}_theta")]) for ch in config.EEG_CHANNELS]
+        # Same computation as step05.compute_ei: variance of the z-scored
+        # envelope per electrode, averaged over the four electrodes.
+        alpha_vars = [np.var(data[:, f_names.index(f"{ch}_alpha")]) for ch in config.EEG_CHANNELS]
+        beta_vars = [np.var(data[:, f_names.index(f"{ch}_beta")]) for ch in config.EEG_CHANNELS]
+        theta_vars = [np.var(data[:, f_names.index(f"{ch}_theta")]) for ch in config.EEG_CHANNELS]
         
-        avg_alpha = np.mean(alpha_means)
-        avg_beta = np.mean(beta_means)
-        avg_theta = np.mean(theta_means)
+        avg_alpha = np.mean(alpha_vars)
+        avg_beta = np.mean(beta_vars)
+        avg_theta = np.mean(theta_vars)
         ei_val = avg_beta / (avg_alpha + avg_theta) if (avg_alpha + avg_theta) > 0 else 0
         
-        ax3.bar(['Avg Beta\n(Numerator)', 'Avg Alpha\n(Denom)', 'Avg Theta\n(Denom)'], 
+        ax3.bar(['Beta\n(numerator)', 'Alpha\n(denominator)', 'Theta\n(denominator)'], 
                 [avg_beta, avg_alpha, avg_theta], color=['red', 'green', 'purple'], alpha=0.6)
         ax3.set_title(f"Panel A3: Engagement Index Math\nEI = {avg_beta:.2f} / ({avg_alpha:.2f} + {avg_theta:.2f}) = {ei_val:.3f}", fontsize=10)
     except ValueError:
@@ -352,8 +355,8 @@ def _plot_reality_check(viz_dir, rep_pid, windows_dir, features_dir):
     # --- Individual Panel A2 ---
     # Each quantity is a single scalar, so it is marked with a rule at its value
     # rather than a bar; a bar would imply an area that carries no meaning.
-    a2_labels = ['Mean', 'Std', 'Min', 'Max']
-    a2_values = [mean_a, std_a, min_a, max_a]
+    a2_labels = ['Mean', 'SD']
+    a2_values = [mean_a, std_a]
     fig_ind, ax_ind = plt.subplots(figsize=(9, 6))
     for i, v in enumerate(a2_values):
         ax_ind.hlines(v, i - 0.3, i + 0.3, colors='green', linewidth=5)
@@ -366,16 +369,16 @@ def _plot_reality_check(viz_dir, rep_pid, windows_dir, features_dir):
     ax_ind.margins(y=0.15)
     viz_style.style_axes(
         ax_ind, viz_style.FONT_2X,
-        title="Panel A2: Extracted Statistical Moments\n(Alpha Band)",
-        xlabel="Statistical Moment",
-        ylabel="Power",
+        title="Mean and SD of the z-scored envelope\n(alpha, one window)",
+        xlabel="Statistic",
+        ylabel="z-score",
     )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz05a.A2.png", dpi=200)
     plt.close()
 
     # --- Individual Panel A3 ---
-    a3_labels = ['Avg Beta\n(Numerator)', 'Avg Alpha\n(Denom)', 'Avg Theta\n(Denom)']
+    a3_labels = ['Beta\n(numerator)', 'Alpha\n(denominator)', 'Theta\n(denominator)']
     a3_values = [avg_beta, avg_alpha, avg_theta]
     a3_colors = ['red', 'green', 'purple']
     fig_ind, ax_ind = plt.subplots(figsize=(9, 6))
@@ -390,9 +393,9 @@ def _plot_reality_check(viz_dir, rep_pid, windows_dir, features_dir):
     ax_ind.margins(y=0.15)
     viz_style.style_axes(
         ax_ind, viz_style.FONT_2X,
-        title=f"Panel A3: Engagement Index Math\nEI = {avg_beta:.2f} / ({avg_alpha:.2f} + {avg_theta:.2f}) = {ei_val:.3f}",
-        xlabel="Band Powers",
-        ylabel="Power",
+        title=f"EI = {avg_beta:.2f} / ({avg_alpha:.2f} + {avg_theta:.2f}) = {ei_val:.2f}",
+        xlabel="Band (mean over the four electrodes)",
+        ylabel="Variance of z-scored envelope",
     )
     plt.tight_layout()
     plt.savefig(viz_dir / "viz05a.A3.png", dpi=200)
