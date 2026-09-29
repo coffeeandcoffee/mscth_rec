@@ -1,20 +1,38 @@
 \begin{table}[H]
 \centering
-\begin{tabular}{lccc}
+\providecolor{sigHigher}{HTML}{1E7B34}
+\providecolor{sigLower}{HTML}{C62828}
+\providecolor{nsGray}{gray}{0.55}
+\providecolor{classBox}{gray}{0.90}
+\providecolor{ruleGray}{gray}{0.78}
+\providecolor{headGray}{gray}{0.45}
+\small
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{2pt}
+{\raggedright\textbf{Performance within each participant}\par {\footnotesize\textcolor{headGray}{(intra-subject setting: each model trained and tested on one participant)}}\par}
+\vspace{3pt}
+\begin{tabularx}{\textwidth}{c l >{\centering\arraybackslash}p{2.5cm} >{\centering\arraybackslash}X >{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{2.95cm}}
+\arrayrulecolor{black}\hline
+\multicolumn{2}{l}{\footnotesize\textbf{Metric}} & {\footnotesize\textbf{Baseline}} & {\footnotesize\textbf{Engagement Index}} & {\footnotesize\textbf{\(\Delta\)\,[pp]}} & {\footnotesize\textbf{Significance test}} \\
+\multicolumn{2}{l}{{\scriptsize\textcolor{headGray}{\textbf{Note}}}} & {\scriptsize\textcolor{headGray}{coin flip, \(\sim\)50\%}} & {\scriptsize\textcolor{headGray}{logistic regression}} &  & {\scriptsize\textcolor{headGray}{Engagement Index\newline vs.\ baseline}} \\
 \hline
-Metric & Coin Flip & \multicolumn{2}{c}{EI LR} \\\\
- & Val & Val & Sig \\\\
-\hline
-F1 Train (STAY) & 50.6\% & \textcolor{green}{53.8\%} & TRUE \\\\
-F1 Test (STAY) & 52.4\% & 50.9\% & TRUE \\\\
-Precision (STAY) & 50.1\% & 49.1\% & TRUE \\\\
-Recall (STAY) & 55.0\% & 52.9\% & TRUE \\\\
-F1 Train (SKIP) & 49.4\% & 49.6\% & FALSE \\\\
-F1 Test (SKIP) & 47.5\% & 46.9\% & FALSE \\\\
-Precision (SKIP) & 50.1\% & 48.9\% & TRUE \\\\
-Recall (SKIP) & 45.2\% & 45.1\% & FALSE \\\\
-\hline
-\end{tabular}
-\caption{Step 1 (Intra-Subject): EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\alpha=0.05$, N=25).}
+\cellcolor{classBox} & F\(_1\)-train & 50.6\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{53.8\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+3.2}} & {\footnotesize significantly higher} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & F\(_1\)-test & 52.4\% & \textcolor{sigLower}{\textbf{50.9\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)1.5}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & Precision & 50.1\% & \textcolor{sigLower}{\textbf{49.1\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)1.0}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{STAY}}} & Recall & 55.0\% & \textcolor{sigLower}{\textbf{52.9\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)2.1}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{black}\hline
+\cellcolor{classBox} & \textcolor{nsGray}{F\(_1\)-train} & \textcolor{nsGray}{49.4\%} & \textcolor{nsGray}{49.6\%} & \textcolor{nsGray}{+0.2} & {\footnotesize\textcolor{nsGray}{not significant}} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & \textcolor{nsGray}{F\(_1\)-test} & \textcolor{nsGray}{47.5\%} & \textcolor{nsGray}{46.9\%} & \textcolor{nsGray}{\(-\)0.6} & {\footnotesize\textcolor{nsGray}{not significant}} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & Precision & 50.1\% & \textcolor{sigLower}{\textbf{48.9\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)1.2}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{SKIP}}} & \textcolor{nsGray}{Recall} & \textcolor{nsGray}{45.2\%} & \textcolor{nsGray}{45.1\%} & \textcolor{nsGray}{\(-\)0.1} & {\footnotesize\textcolor{nsGray}{not significant}} \\
+\arrayrulecolor{black}\hline
+\end{tabularx}
+\caption{EI model versus coin-flip baseline, intra-subject setting. Performance is the mean over the 25 participants. \(\Delta\): compared model minus the coin-flip baseline, in percentage points (pp). Significance test: two-sided Wilcoxon signed-rank test against the coin-flip baseline ($\alpha=0.05$, $n=25$, uncorrected). Green cells: significantly higher than the coin-flip baseline; red values: significantly lower; gray row: not significant.}
 \label{tab:metrics_1_intra}
 \end{table}

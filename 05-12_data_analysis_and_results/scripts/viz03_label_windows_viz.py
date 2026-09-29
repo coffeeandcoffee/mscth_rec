@@ -359,15 +359,15 @@ def run(run_dir, params):
             ax_ind.yaxis.set_major_locator(MaxNLocator(integer=True))
             # Legend below the x-axis label, laid out horizontally across the plot.
             legend = ax_ind.legend(
-                title=f'Burst Group Size (consecutive swipes per block; '
+                title=f'Block Size (swipes per burst block; '
                       f'sizes above {MAX_GROUP_SIZE} omitted)',
                 loc='upper center', bbox_to_anchor=(0.5, -0.22),
                 ncol=max(n_sizes, 1), frameon=False)
             viz_style.style_axes(
                 ax_ind, viz_style.FONT_3X,
-                title=f'Distribution of Burst Group Sizes per Participant (±{hw}s)',
+                title=f'Distribution of Block Sizes per Participant (±{hw}s)',
                 xlabel='Participant ID',
-                ylabel='Count of Burst Groups',
+                ylabel='Count of Burst Blocks',
             )
             viz_style.style_legend(legend, viz_style.FONT_3X)
             plt.savefig(viz03_dir / f"viz03.3.2_{int(hw)}s.png", dpi=200, bbox_inches='tight')
@@ -389,11 +389,11 @@ def run(run_dir, params):
             # is assembled from separate text boxes anchored above the axes and
             # the title is padded to leave room for it.
             ax_ind.set_title(
-                'Distribution of Burst Group Sizes Across All Participants',
+                'Distribution of Block Sizes Across All Participants',
                 pad=viz_style.FONT_2X * 1.8)
             viz_style.style_axes(
                 ax_ind, viz_style.FONT_2X,
-                xlabel='Burst Group Size (consecutive swipes)',
+                xlabel='Block Size (swipes per burst block)',
                 ylabel='Total Count',
             )
             window_note = HPacker(
@@ -447,7 +447,13 @@ def run(run_dir, params):
             mean_pct = np.mean(participant_pcts) if participant_pcts else 0
             std_pct = np.std(participant_pcts) if participant_pcts else 0
             
+            # overall_pct counts burst BLOCKS of size 1; swipe_pct counts
+            # SWIPES that stand alone. The two differ, so both are kept.
+            total_swipes = sum(all_group_sizes)
+            swipe_pct = (total_n1 / total_swipes * 100) if total_swipes > 0 else 0
+
             stats_data[hw] = {
+                'swipe_pct': swipe_pct,
                 'overall_pct': overall_pct,
                 'mean_pct': mean_pct,
                 'std_pct': std_pct
@@ -457,5 +463,10 @@ def run(run_dir, params):
     if 3.0 in stats_data and 5.0 in stats_data:
         tex_path = viz03_dir / "burst_stats.tex"
         with open(tex_path, "w") as f:
-            f.write(f"Specifically, under the \\(\\pm3.0\\)s window paradigm, {stats_data[3.0]['overall_pct']:.1f}\\% of all swipe events are isolated \\(n=1\\) sequences (participant-level average: {stats_data[3.0]['mean_pct']:.1f}\\% \\(\\pm\\) {stats_data[3.0]['std_pct']:.1f}\\%). ")
-            f.write(f"In contrast, widening the window to \\(\\pm5.0\\)s reduces the overall proportion of isolated swipes to {stats_data[5.0]['overall_pct']:.1f}\\% (participant-level average: {stats_data[5.0]['mean_pct']:.1f}\\% \\(\\pm\\) {stats_data[5.0]['std_pct']:.1f}\\%).\n")
+            # Reference numbers only; thesis.tex states them in its own text.
+            for hw_ in (3.0, 5.0):
+                d = stats_data[hw_]
+                f.write(f"Under the \\(\\pm{hw_:.1f}\\)~s burst window, {d['swipe_pct']:.1f}\\% of swipes stand alone, "
+                        f"and {d['overall_pct']:.1f}\\% of burst blocks have size 1 "
+                        f"(per participant: mean {d['mean_pct']:.1f}\\%, standard deviation {d['std_pct']:.1f} percentage points). ")
+            f.write("\n")

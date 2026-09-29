@@ -1,123 +1,131 @@
+\babel@toc {english}{}\relax 
 \contentsline {chapter}{Acknowledgements}{I}{chapter*.1}%
 \contentsline {chapter}{Abstract}{1}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation}{3}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Defining Engagement}{4}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Engagement in Health Communication}{5}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Research Gap}{5}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Research Questions}{7}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Approach}{8}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Contributions}{9}{section.1.7}%
-\contentsline {section}{\numberline {1.8}Thesis Structure}{10}{section.1.8}%
-\contentsline {chapter}{\numberline {2}Literature and State of the Art}{11}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Adjacent Study}{11}{section.2.1}%
-\contentsline {paragraph}{Gap the present thesis fills:}{12}{section*.4}%
-\contentsline {section}{\numberline {2.2}Secondary Adjacent Studies}{13}{section.2.2}%
-\contentsline {paragraph}{Gap the present thesis fills:}{14}{section*.5}%
-\contentsline {section}{\numberline {2.3}Recording Software}{15}{section.2.3}%
-\contentsline {paragraph}{Gap the present thesis fills:}{15}{section*.6}%
-\contentsline {section}{\numberline {2.4}Defining Engagement: Existing Definitions and Their Gaps}{16}{section.2.4}%
-\contentsline {paragraph}{Gap the present thesis fills:}{18}{section*.7}%
-\contentsline {section}{\numberline {2.5}Measuring Engagement in the Health Communication Literature}{18}{section.2.5}%
-\contentsline {paragraph}{Three routes.}{19}{section*.8}%
-\contentsline {paragraph}{The log route in practice.}{19}{section*.9}%
-\contentsline {paragraph}{The body route in practice.}{19}{section*.10}%
-\contentsline {paragraph}{Health messages on TikTok.}{20}{section*.11}%
-\contentsline {paragraph}{The research agenda.}{21}{section*.12}%
-\contentsline {paragraph}{Gap the present thesis fills:}{21}{section*.13}%
-\contentsline {section}{\numberline {2.6}Viewing Time as an Indicator of Engagement}{21}{section.2.6}%
-\contentsline {paragraph}{Gap the present thesis fills:}{23}{section*.14}%
-\contentsline {section}{\numberline {2.7}Parameter Choice in EEG Classification}{24}{section.2.7}%
-\contentsline {paragraph}{Gap the present thesis fills:}{26}{section*.15}%
-\contentsline {section}{\numberline {2.8}Windows at Label Borders}{26}{section.2.8}%
-\contentsline {paragraph}{Gap the present thesis fills:}{27}{section*.16}%
-\contentsline {section}{\numberline {2.9}Class Separation Metric}{27}{section.2.9}%
-\contentsline {paragraph}{Gap the present thesis fills:}{28}{section*.17}%
-\contentsline {section}{\numberline {2.10}Estimating Frequency from Local Maxima}{29}{section.2.10}%
-\contentsline {paragraph}{Gap the present thesis fills:}{30}{section*.18}%
-\contentsline {section}{\numberline {2.11}EMG Artifacts in EEG}{30}{section.2.11}%
-\contentsline {section}{\numberline {2.12}Delta-Band Function in Awake Cognition}{32}{section.2.12}%
-\contentsline {paragraph}{Gap the present thesis fills:}{33}{section*.19}%
-\contentsline {section}{\numberline {2.13}Notch Filtering and the High-Gamma Band}{34}{section.2.13}%
-\contentsline {section}{\numberline {2.14}Pre-Motor Window}{35}{section.2.14}%
-\contentsline {chapter}{\numberline {3}Materials and Methods}{37}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Participants}{37}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Data Acquisition}{39}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Experimental Protocol}{42}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Labeling Strategy}{45}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Operational Definition of Labeling Parameters}{45}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Operational Definition of STAY and SKIP}{46}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Baseline and Border Exclusion}{47}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Class Separation Metric}{47}{subsection.3.4.4}%
-\contentsline {subsection}{\numberline {3.4.5}Parameter Sensitivity Analysis}{47}{subsection.3.4.5}%
-\contentsline {paragraph}{Conclusion:}{51}{section*.20}%
-\contentsline {section}{\numberline {3.5}Reproducible Recording Pipeline}{51}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Reproducible Preprocessing Pipeline}{52}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Data Synchronization and Interpolation}{53}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Baseline Extraction and Normalization}{55}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3}Windowing and Class Labeling}{55}{subsection.3.6.3}%
-\contentsline {subsection}{\numberline {3.6.4}Artifact Analysis}{56}{subsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Analysis}{58}{subsection.3.6.5}%
-\contentsline {section}{\numberline {3.7}Feature Engineering}{59}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Mean, Standard Deviation and Relative Power}{59}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}Engagement Index}{60}{subsection.3.7.2}%
-\contentsline {subsection}{\numberline {3.7.3}Hjorth Parameters}{61}{subsection.3.7.3}%
-\contentsline {paragraph}{Activity.}{62}{section*.21}%
-\contentsline {paragraph}{Mobility.}{62}{section*.22}%
-\contentsline {paragraph}{Complexity.}{62}{section*.23}%
-\contentsline {subsection}{\numberline {3.7.4}Peak Frequency and Macro Frequency}{62}{subsection.3.7.4}%
-\contentsline {paragraph}{Peak Frequency.}{63}{section*.24}%
-\contentsline {paragraph}{Macro Frequency.}{63}{section*.25}%
-\contentsline {subsection}{\numberline {3.7.5}Raw Features}{63}{subsection.3.7.5}%
-\contentsline {section}{\numberline {3.8}Result Synthesis Pipeline}{65}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}Temporal Cross-Validation and Data Balancing}{65}{subsection.3.8.1}%
-\contentsline {subsection}{\numberline {3.8.2}Feature Separation Analysis}{70}{subsection.3.8.2}%
-\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{71}{subsection.3.8.3}%
-\contentsline {subsection}{\numberline {3.8.4}Metrics and Significance Testing}{71}{subsection.3.8.4}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{73}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Key Findings from the Experimental Paradigm}{75}{section.4.1}%
-\contentsline {section}{\numberline {4.2}The Reusable Methodological Pipeline}{76}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Behavioral Swipe-Burst Phenomenon}{77}{section.4.3}%
-\contentsline {section}{\numberline {4.4}The Engagement Index's Swipe-Prediction Performance}{80}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Feature Importance and Neurophysiological Correlates}{80}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Engagement Index Model Performance and Benchmark Comparison}{89}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Alternative Index Exploration}{93}{subsection.4.4.3}%
-\contentsline {subsubsection}{Intra-Subject (Per-Participant Level)}{94}{section*.27}%
-\contentsline {subsubsection}{Inter-Subject (Cross-Participant Level)}{96}{section*.28}%
-\contentsline {section}{\numberline {4.5}Discussion}{99}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Neuroscience}{100}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Psychology}{102}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Behaviour}{103}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}Application}{104}{subsection.4.5.4}%
-\contentsline {subsubsection}{Recommendations for Policy Makers}{105}{section*.29}%
-\contentsline {subsubsection}{Recommendations for Digital Global Public Health Research}{106}{section*.30}%
-\contentsline {subsubsection}{Recommendations for Health Message Design}{107}{section*.31}%
-\contentsline {subsubsection}{Societal Scope: An Explicitly Speculative Outlook}{108}{section*.32}%
-\contentsline {section}{\numberline {4.6}An Updated Definition of Engagement}{109}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}What the Results Teach Us}{109}{subsection.4.6.1}%
-\contentsline {paragraph}{1. Staying is not engaging.}{110}{section*.33}%
-\contentsline {paragraph}{2. Leaving is an event, and it has a physical signature.}{110}{section*.34}%
-\contentsline {paragraph}{3. The realisation is individual; the construct is not.}{110}{section*.35}%
-\contentsline {paragraph}{4. A measured quantity is undefined without a declared interval.}{110}{section*.36}%
-\contentsline {paragraph}{5. Composites hide more than they summarise.}{110}{section*.37}%
-\contentsline {subsection}{\numberline {4.6.2}The Proposed Definition}{111}{subsection.4.6.2}%
-\contentsline {paragraph}{What it inherits.}{112}{section*.38}%
-\contentsline {paragraph}{What it drops.}{112}{section*.39}%
-\contentsline {paragraph}{What it adds.}{112}{section*.40}%
-\contentsline {subsection}{\numberline {4.6.3}Implications for Measurement}{113}{subsection.4.6.3}%
-\contentsline {subsection}{\numberline {4.6.4}The Importance of Field Measurement}{113}{subsection.4.6.4}%
-\contentsline {subsection}{\numberline {4.6.5}Limits of the Proposed Definition}{114}{subsection.4.6.5}%
-\contentsline {subsection}{\numberline {4.6.6}Scope of the Proposed Definition}{115}{subsection.4.6.6}%
-\contentsline {chapter}{\numberline {5}Conclusion and Future Research}{116}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusion}{116}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Future Research}{119}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Plain-Language Summary: Common Questions}{122}{chapter.6}%
-\contentsline {paragraph}{Is short-form video damaging my brain?}{122}{section*.41}%
-\contentsline {paragraph}{If I watch something for a long time, does that mean I was interested in it?}{123}{section*.42}%
-\contentsline {paragraph}{Can a cheap headband read my mind, or tell what I am about to do?}{123}{section*.43}%
-\contentsline {paragraph}{Why is it so hard to stop scrolling once I start?}{123}{section*.44}%
-\contentsline {paragraph}{Should phones be banned in schools, or social media restricted by age?}{124}{section*.45}%
-\contentsline {paragraph}{What should regulators actually require, if not bans?}{124}{section*.46}%
-\contentsline {paragraph}{I make health or education content. How do I hold attention?}{124}{section*.47}%
-\contentsline {paragraph}{So what is the single most useful thing to take away?}{125}{section*.48}%
-\contentsline {chapter}{Bibliography}{126}{chapter*.49}%
+\contentsline {section}{\numberline {1.2}Defining Engagement}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Engagement in Health Communication}{4}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Research Gap}{4}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Research Questions}{5}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Approach}{5}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Contributions}{6}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Thesis Structure}{6}{section.1.8}%
+\contentsline {chapter}{\numberline {2}Literature and State of the Art}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Adjacent Study}{7}{section.2.1}%
+\contentsline {paragraph}{Gap the present thesis fills:}{8}{section*.4}%
+\contentsline {section}{\numberline {2.2}Secondary Adjacent Studies}{9}{section.2.2}%
+\contentsline {paragraph}{Gap the present thesis fills:}{10}{section*.5}%
+\contentsline {section}{\numberline {2.3}Recording Software}{11}{section.2.3}%
+\contentsline {paragraph}{Gap the present thesis fills:}{11}{section*.6}%
+\contentsline {section}{\numberline {2.4}Defining Engagement: Existing Definitions and Their Gaps}{12}{section.2.4}%
+\contentsline {paragraph}{Gap the present thesis fills:}{14}{section*.7}%
+\contentsline {section}{\numberline {2.5}Measuring Engagement in the Health Communication Literature}{14}{section.2.5}%
+\contentsline {paragraph}{Three routes.}{15}{section*.8}%
+\contentsline {paragraph}{The log route in practice.}{15}{section*.9}%
+\contentsline {paragraph}{The body route in practice.}{15}{section*.10}%
+\contentsline {paragraph}{Health messages on TikTok.}{16}{section*.11}%
+\contentsline {paragraph}{The research agenda.}{17}{section*.12}%
+\contentsline {paragraph}{Gap the present thesis fills:}{17}{section*.13}%
+\contentsline {section}{\numberline {2.6}Viewing Time as an Indicator of Engagement}{17}{section.2.6}%
+\contentsline {paragraph}{Gap the present thesis fills:}{19}{section*.14}%
+\contentsline {section}{\numberline {2.7}Parameter Choice in EEG Classification}{20}{section.2.7}%
+\contentsline {paragraph}{Gap the present thesis fills:}{22}{section*.15}%
+\contentsline {section}{\numberline {2.8}Windows at Label Borders}{22}{section.2.8}%
+\contentsline {paragraph}{Gap the present thesis fills:}{23}{section*.16}%
+\contentsline {section}{\numberline {2.9}Class Separation Metric}{23}{section.2.9}%
+\contentsline {paragraph}{Gap the present thesis fills:}{24}{section*.17}%
+\contentsline {section}{\numberline {2.10}Estimating Frequency from Local Maxima}{25}{section.2.10}%
+\contentsline {paragraph}{Gap the present thesis fills:}{26}{section*.18}%
+\contentsline {section}{\numberline {2.11}EMG Artifacts in EEG}{26}{section.2.11}%
+\contentsline {section}{\numberline {2.12}Delta-Band Function in Awake Cognition}{28}{section.2.12}%
+\contentsline {paragraph}{Gap the present thesis fills:}{30}{section*.19}%
+\contentsline {section}{\numberline {2.13}Notch Filtering and the High-Gamma Band}{30}{section.2.13}%
+\contentsline {section}{\numberline {2.14}Pre-Motor Window}{31}{section.2.14}%
+\contentsline {section}{\numberline {2.15}Summary of Gaps}{33}{section.2.15}%
+\contentsline {chapter}{\numberline {3}Materials and Methods}{34}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Participants}{34}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Data Acquisition}{36}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Experimental Protocol}{39}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Labeling Strategy}{42}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Operational Definition of Labeling Parameters}{42}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Operational Definition of STAY and SKIP}{43}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Baseline and Border Exclusion}{44}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Class Separation Metric}{44}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Parameter Sensitivity Analysis}{44}{subsection.3.4.5}%
+\contentsline {paragraph}{Conclusion:}{48}{section*.20}%
+\contentsline {section}{\numberline {3.5}Reproducible Recording Pipeline}{48}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Reproducible Preprocessing Pipeline}{49}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Data Synchronization and Interpolation}{50}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Baseline Extraction and Normalization}{52}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Windowing and Class Labeling}{52}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Artifact Analysis}{53}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}Behavioral Burst Analysis}{55}{subsection.3.6.5}%
+\contentsline {section}{\numberline {3.7}Feature Engineering}{56}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Mean, Standard Deviation and Relative Power}{56}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Engagement Index}{57}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Hjorth Parameters}{58}{subsection.3.7.3}%
+\contentsline {paragraph}{Activity.}{59}{section*.21}%
+\contentsline {paragraph}{Mobility.}{59}{section*.22}%
+\contentsline {paragraph}{Complexity.}{59}{section*.23}%
+\contentsline {subsection}{\numberline {3.7.4}Peak Frequency and Macro Frequency}{59}{subsection.3.7.4}%
+\contentsline {paragraph}{Peak Frequency.}{60}{section*.24}%
+\contentsline {paragraph}{Macro Frequency.}{60}{section*.25}%
+\contentsline {subsection}{\numberline {3.7.5}Raw Features}{60}{subsection.3.7.5}%
+\contentsline {section}{\numberline {3.8}Result Synthesis Pipeline}{62}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Temporal Cross-Validation and Data Balancing}{62}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Feature Separation Analysis}{67}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}Logistic Regression Modeling and Baselines}{68}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.4}Metrics and Significance Testing}{68}{subsection.3.8.4}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{70}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Lessons from Running the Experiment}{71}{section.4.1}%
+\contentsline {section}{\numberline {4.2}The Reusable Pipeline}{72}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Behavioral Swipe-Burst Phenomenon}{73}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Engagement Index Performance}{76}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Class Separation of Single Features}{76}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}EI Model versus Coin-Flip Baseline}{81}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Top-Feature Models}{84}{subsection.4.4.3}%
+\contentsline {subsubsection}{Intra-subject Setting}{85}{section*.27}%
+\contentsline {subsubsection}{Inter-subject Setting}{87}{section*.28}%
+\contentsline {section}{\numberline {4.5}Discussion}{90}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Neuroscience}{91}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Psychology}{93}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Behaviour}{94}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Application}{94}{subsection.4.5.4}%
+\contentsline {subsubsection}{Recommendations for Policy Makers}{95}{section*.29}%
+\contentsline {subsubsection}{Recommendations for Digital Global Public Health Research}{95}{section*.30}%
+\contentsline {subsubsection}{Recommendations for Health Message Design}{96}{section*.31}%
+\contentsline {subsubsection}{Societal Scope: An Explicitly Speculative Outlook}{97}{section*.32}%
+\contentsline {section}{\numberline {4.6}Implication: Engagement Definition}{97}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Four Findings}{97}{subsection.4.6.1}%
+\contentsline {paragraph}{Staying is no proof of engagement.}{97}{section*.33}%
+\contentsline {paragraph}{The swipe is a datable end.}{98}{section*.34}%
+\contentsline {paragraph}{No single signal defines engagement.}{98}{section*.35}%
+\contentsline {paragraph}{A number means little without an interval.}{98}{section*.36}%
+\contentsline {subsection}{\numberline {4.6.2}The Proposed Definition}{98}{subsection.4.6.2}%
+\contentsline {paragraph}{What the proposed definition inherits.}{99}{section*.37}%
+\contentsline {paragraph}{Where the proposed definition departs.}{99}{section*.38}%
+\contentsline {paragraph}{What the proposed definition drops.}{100}{section*.39}%
+\contentsline {paragraph}{What the proposed definition adds.}{100}{section*.40}%
+\contentsline {subsection}{\numberline {4.6.3}Implications for Measurement}{100}{subsection.4.6.3}%
+\contentsline {subsection}{\numberline {4.6.4}A Hypothesis for Field Measurement}{101}{subsection.4.6.4}%
+\contentsline {subsection}{\numberline {4.6.5}What Would Show the Proposal Wrong}{102}{subsection.4.6.5}%
+\contentsline {subsection}{\numberline {4.6.6}Scope of the Proposal}{102}{subsection.4.6.6}%
+\contentsline {chapter}{\numberline {5}Conclusion and Future Research}{103}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusion}{103}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Future Research}{106}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Plain-Language Summary: Common Questions}{109}{chapter.6}%
+\contentsline {paragraph}{Is short-form video damaging my brain?}{109}{section*.41}%
+\contentsline {paragraph}{If I watch something for a long time, does that mean I was interested in it?}{110}{section*.42}%
+\contentsline {paragraph}{Can a cheap headband read my mind, or tell what I am about to do?}{110}{section*.43}%
+\contentsline {paragraph}{Why is it so hard to stop scrolling once I start?}{110}{section*.44}%
+\contentsline {paragraph}{Should phones be banned in schools, or social media restricted by age?}{111}{section*.45}%
+\contentsline {paragraph}{What should regulators actually require, if not bans?}{111}{section*.46}%
+\contentsline {paragraph}{I make health or education content. How do I hold attention?}{111}{section*.47}%
+\contentsline {paragraph}{So what is the single most useful thing to take away?}{112}{section*.48}%
+\contentsline {chapter}{Bibliography}{113}{chapter*.49}%
+\contentsline {chapter}{\numberline {A}Kurzzusammenfassung (German Summary)}{122}{appendix.A}%
+\babel@toc {ngerman}{}\relax 
+\contentsline {paragraph}{Methode.}{122}{section*.50}%
+\contentsline {paragraph}{Ergebnisse.}{123}{section*.51}%
+\contentsline {paragraph}{Schlussfolgerung.}{123}{section*.52}%
+\babel@toc {english}{}\relax 

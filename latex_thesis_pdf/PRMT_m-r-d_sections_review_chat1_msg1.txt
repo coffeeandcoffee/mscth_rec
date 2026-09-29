@@ -22,6 +22,7 @@ Two things worth passing along with it:
 Now the task:
 
 Subject of optimization is section X
+goal is cutting it to 30% the current size.
 
 step#1:
 Read the chapter in thesis pdf in full.

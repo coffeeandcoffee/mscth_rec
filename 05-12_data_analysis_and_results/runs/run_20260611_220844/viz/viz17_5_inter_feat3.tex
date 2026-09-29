@@ -1,20 +1,38 @@
 \begin{table}[H]
 \centering
-\begin{tabular}{lccc}
+\providecolor{sigHigher}{HTML}{1E7B34}
+\providecolor{sigLower}{HTML}{C62828}
+\providecolor{nsGray}{gray}{0.55}
+\providecolor{classBox}{gray}{0.90}
+\providecolor{ruleGray}{gray}{0.78}
+\providecolor{headGray}{gray}{0.45}
+\small
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{2pt}
+{\raggedright\textbf{Performance across participants}\par {\footnotesize\textcolor{headGray}{(inter-subject setting: each model trained on 24 participants, tested on the 25th)}}\par}
+\vspace{3pt}
+\begin{tabularx}{\textwidth}{c l >{\centering\arraybackslash}p{2.5cm} >{\centering\arraybackslash}X >{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{2.95cm}}
+\arrayrulecolor{black}\hline
+\multicolumn{2}{l}{\footnotesize\textbf{Metric}} & {\footnotesize\textbf{Engagement Index}} & {\footnotesize\textbf{TP10 raw standard deviation}} & {\footnotesize\textbf{\(\Delta\)\,[pp]}} & {\footnotesize\textbf{Significance test}} \\
+\multicolumn{2}{l}{{\scriptsize\textcolor{headGray}{\textbf{Note}}}} & {\scriptsize\textcolor{headGray}{logistic regression}} & {\scriptsize\textcolor{headGray}{top feature, logistic regression}} &  & {\scriptsize\textcolor{headGray}{top feature vs.\newline Engagement Index}} \\
 \hline
-Metric & EI LR & \multicolumn{2}{c}{TP10 raw std} \\\\
- & Val & Val & Sig \\\\
-\hline
-F1 Train (STAY) & 62.0\% & 49.6\% & TRUE \\\\
-F1 Test (STAY) & 62.5\% & 46.0\% & TRUE \\\\
-Precision (STAY) & 49.4\% & 47.5\% & FALSE \\\\
-Recall (STAY) & 89.2\% & 51.0\% & TRUE \\\\
-F1 Train (SKIP) & 20.6\% & \textcolor{green}{52.4\%} & TRUE \\\\
-F1 Test (SKIP) & 10.7\% & \textcolor{green}{44.3\%} & TRUE \\\\
-Precision (SKIP) & 23.5\% & \textcolor{green}{43.0\%} & TRUE \\\\
-Recall (SKIP) & 9.6\% & \textcolor{green}{50.8\%} & TRUE \\\\
-\hline
-\end{tabular}
-\caption{Step 5 (Inter-Subject): Proposed Feature (TP10 raw std) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\alpha=0.05$, N=25).}
+\cellcolor{classBox} & F\(_1\)-train & 62.0\% & \textcolor{sigLower}{\textbf{49.6\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)12.4}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & F\(_1\)-test & 62.5\% & \textcolor{sigLower}{\textbf{46.0\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)16.5}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & \textcolor{nsGray}{Precision} & \textcolor{nsGray}{49.4\%} & \textcolor{nsGray}{47.5\%} & \textcolor{nsGray}{\(-\)1.9} & {\footnotesize\textcolor{nsGray}{not significant}} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{STAY}}} & Recall & 89.2\% & \textcolor{sigLower}{\textbf{51.0\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)38.2}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{black}\hline
+\cellcolor{classBox} & F\(_1\)-train & 20.6\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{52.4\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+31.8}} & {\footnotesize significantly higher} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & F\(_1\)-test & 10.7\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{44.3\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+33.6}} & {\footnotesize significantly higher} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & Precision & 23.5\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{43.0\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+19.5}} & {\footnotesize significantly higher} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{SKIP}}} & Recall & 9.6\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{50.8\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+41.2}} & {\footnotesize significantly higher} \\
+\arrayrulecolor{black}\hline
+\end{tabularx}
+\caption{Top-feature model (TP10 raw standard deviation) versus EI model, inter-subject setting. Both models are logistic regressions with one input. Performance is the mean over the 25 participants. \(\Delta\): compared model minus the EI model, in percentage points (pp). Significance test: two-sided Wilcoxon signed-rank test against the EI model ($\alpha=0.05$, $n=25$, uncorrected). Green cells: significantly higher than the EI model; red values: significantly lower; gray row: not significant.}
 \label{tab:metrics_5_inter_3}
 \end{table}

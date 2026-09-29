@@ -1,0 +1,20 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\hline
+Metric & EI LR & \multicolumn{2}{c}{AF8 delta peakfreq} \\\\
+ & Val & Val & Sig \\\\
+\hline
+F1 Train (STAY) & 62.0\% & 57.4\% & TRUE \\\\
+F1 Test (STAY) & 62.5\% & 48.3\% & TRUE \\\\
+Precision (STAY) & 49.4\% & \textcolor{green}{52.8\%} & TRUE \\\\
+Recall (STAY) & 89.2\% & 54.6\% & TRUE \\\\
+F1 Train (SKIP) & 20.6\% & \textcolor{green}{54.1\%} & TRUE \\\\
+F1 Test (SKIP) & 10.7\% & \textcolor{green}{45.5\%} & TRUE \\\\
+Precision (SKIP) & 23.5\% & \textcolor{green}{53.1\%} & TRUE \\\\
+Recall (SKIP) & 9.6\% & \textcolor{green}{48.7\%} & TRUE \\\\
+\hline
+\end{tabular}
+\caption{Top-feature model (AF8 delta peakfreq) versus EI model (EI LR), inter-subject setting. Wilcoxon signed-rank test against the EI model (two-sided, $\alpha=0.05$, $n=25$). Sig: TRUE when $p<0.05$, in either direction. Green: significantly higher than the EI model.}
+\label{tab:metrics_5_inter_2}
+\end{table}

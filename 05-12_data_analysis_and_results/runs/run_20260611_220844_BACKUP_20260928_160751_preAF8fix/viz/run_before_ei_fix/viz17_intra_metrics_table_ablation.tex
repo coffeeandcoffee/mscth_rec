@@ -1,0 +1,20 @@
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcccccccccccc}
+\hline
+Metric & \multicolumn{2}{c}{Coin Flip} & \multicolumn{2}{c}{EI LR} & \multicolumn{2}{c}{TP10 raw std LR} & \multicolumn{2}{c}{All raw std LR} & \multicolumn{2}{c}{AF7 high gamma mean LR} & \multicolumn{2}{c}{All high gamma mean LR} \\
+ & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig \\
+\hline
+F1 Train (STAY) & 50.6\% & - & 53.7\% & - & 52.4\% & \textcolor{green}{TRUE} & 55.1\% & \textcolor{green}{TRUE} & 52.6\% & \textcolor{green}{TRUE} & 55.2\% & \textcolor{green}{TRUE} \\
+F1 Test (STAY) & 52.4\% & - & 52.8\% & - & 49.3\% & \textcolor{green}{TRUE} & 49.7\% & \textcolor{green}{TRUE} & 52.1\% & FALSE & 49.2\% & \textcolor{green}{TRUE} \\
+Precision (STAY) & 50.1\% & - & 50.3\% & - & 48.2\% & \textcolor{green}{TRUE} & 49.6\% & \textcolor{green}{TRUE} & 49.9\% & \textcolor{green}{TRUE} & 49.1\% & \textcolor{green}{TRUE} \\
+Recall (STAY) & 55.0\% & - & 55.6\% & - & 50.4\% & \textcolor{green}{TRUE} & 50.1\% & \textcolor{green}{TRUE} & 54.6\% & FALSE & 49.2\% & \textcolor{green}{TRUE} \\
+F1 Train (SKIP) & 49.4\% & - & 49.4\% & - & 52.6\% & \textcolor{green}{TRUE} & 55.2\% & \textcolor{green}{TRUE} & 52.9\% & \textcolor{green}{TRUE} & 56.0\% & \textcolor{green}{TRUE} \\
+F1 Test (SKIP) & 47.5\% & - & 47.5\% & - & 46.8\% & FALSE & 49.0\% & \textcolor{green}{TRUE} & 47.2\% & FALSE & 49.0\% & \textcolor{green}{TRUE} \\
+Precision (SKIP) & 50.1\% & - & 50.3\% & - & 47.9\% & \textcolor{green}{TRUE} & 49.4\% & \textcolor{green}{TRUE} & 49.8\% & \textcolor{green}{TRUE} & 49.1\% & \textcolor{green}{TRUE} \\
+Recall (SKIP) & 45.2\% & - & 45.0\% & - & 45.7\% & FALSE & 49.0\% & \textcolor{green}{TRUE} & 45.0\% & FALSE & 49.0\% & \textcolor{green}{TRUE} \\
+\hline
+\end{tabular}
+\caption{Minimal Metrics for Intra Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha=0.05$, N=25).}
+\label{tab:metrics_intra_ablation}
+\end{table}

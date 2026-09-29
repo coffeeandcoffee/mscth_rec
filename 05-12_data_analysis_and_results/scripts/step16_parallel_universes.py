@@ -79,8 +79,6 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
         else:
             fnames = fd.get('agg_names_full', [])
             feat_name = model_type.replace('_LR', '')
-            if feat_name in fnames:
-                idx = [fnames.index(feat_name)]
             if model_type == 'TP10_raw_std_LR':
                 idx = [i for i, fn in enumerate(fnames) if fn == 'TP10_raw_std']
             elif model_type == 'All_raw_std_LR':
@@ -89,6 +87,11 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
                 idx = [i for i, fn in enumerate(fnames) if fn == 'AF7_high_gamma_mean']
             elif model_type == 'All_high_gamma_mean_LR':
                 idx = [i for i, fn in enumerate(fnames) if fn.endswith('_high_gamma_mean')]
+            elif feat_name in fnames:
+                # Any other selected top feature: that one feature only.
+                # (Previously a bare `if` above this chain was overwritten by the
+                # `else`, so e.g. AF8_delta_peakfreq_LR silently used all features.)
+                idx = [fnames.index(feat_name)]
             else:
                 idx = list(range(len(fnames)))
             X_all = fd['features_full'][:, idx]
@@ -240,8 +243,6 @@ def evaluate_inter(run_dir, universe_dir, model_type, seed=0):
         else:
             fnames = fd.get('agg_names_full', [])
             feat_name = model_type.replace('_LR', '')
-            if feat_name in fnames:
-                idx = [fnames.index(feat_name)]
             if model_type == 'TP10_raw_std_LR':
                 idx = [i for i, fn in enumerate(fnames) if fn == 'TP10_raw_std']
             elif model_type == 'All_raw_std_LR':
@@ -250,6 +251,11 @@ def evaluate_inter(run_dir, universe_dir, model_type, seed=0):
                 idx = [i for i, fn in enumerate(fnames) if fn == 'AF7_high_gamma_mean']
             elif model_type == 'All_high_gamma_mean_LR':
                 idx = [i for i, fn in enumerate(fnames) if fn.endswith('_high_gamma_mean')]
+            elif feat_name in fnames:
+                # Any other selected top feature: that one feature only.
+                # (Previously a bare `if` above this chain was overwritten by the
+                # `else`, so e.g. AF8_delta_peakfreq_LR silently used all features.)
+                idx = [fnames.index(feat_name)]
             else:
                 idx = list(range(len(fnames)))
             X = fd['features_full'][valid_indices][:, idx]

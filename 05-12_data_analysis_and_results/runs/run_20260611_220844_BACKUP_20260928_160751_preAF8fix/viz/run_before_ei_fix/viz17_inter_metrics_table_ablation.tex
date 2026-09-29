@@ -1,0 +1,20 @@
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcccccccccccc}
+\hline
+Metric & \multicolumn{2}{c}{Coin Flip} & \multicolumn{2}{c}{EI LR} & \multicolumn{2}{c}{TP10 raw std LR} & \multicolumn{2}{c}{All raw std LR} & \multicolumn{2}{c}{AF7 high gamma mean LR} & \multicolumn{2}{c}{All high gamma mean LR} \\
+ & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig & Val & Sig \\
+\hline
+F1 Train (STAY) & 50.3\% & - & 28.0\% & - & 49.6\% & \textcolor{green}{TRUE} & 51.7\% & \textcolor{green}{TRUE} & 54.3\% & \textcolor{green}{TRUE} & 53.9\% & \textcolor{green}{TRUE} \\
+F1 Test (STAY) & 50.8\% & - & 19.4\% & - & 46.0\% & FALSE & 49.0\% & FALSE & 45.5\% & FALSE & 52.3\% & FALSE \\
+Precision (STAY) & 49.9\% & - & 48.6\% & - & 47.5\% & FALSE & 52.4\% & FALSE & 44.3\% & FALSE & 47.9\% & FALSE \\
+Recall (STAY) & 51.7\% & - & 18.3\% & - & 51.0\% & FALSE & 55.0\% & FALSE & 58.1\% & FALSE & 65.6\% & \textcolor{green}{TRUE} \\
+F1 Train (SKIP) & 49.6\% & - & 60.0\% & - & 52.4\% & \textcolor{green}{TRUE} & 51.1\% & \textcolor{green}{TRUE} & 45.5\% & \textcolor{green}{TRUE} & 46.4\% & \textcolor{green}{TRUE} \\
+F1 Test (SKIP) & 48.9\% & - & 58.9\% & - & 44.3\% & \textcolor{green}{TRUE} & 42.1\% & \textcolor{green}{TRUE} & 35.5\% & \textcolor{green}{TRUE} & 32.8\% & \textcolor{green}{TRUE} \\
+Precision (SKIP) & 49.9\% & - & 49.9\% & - & 43.0\% & FALSE & 42.4\% & FALSE & 52.4\% & FALSE & 46.0\% & FALSE \\
+Recall (SKIP) & 48.0\% & - & 80.9\% & - & 50.8\% & \textcolor{green}{TRUE} & 47.1\% & \textcolor{green}{TRUE} & 42.7\% & \textcolor{green}{TRUE} & 34.7\% & \textcolor{green}{TRUE} \\
+\hline
+\end{tabular}
+\caption{Minimal Metrics for Inter Models. Significance tested using Wilcoxon signed-rank test against Standard EI (two-sided, $\alpha=0.05$, N=25).}
+\label{tab:metrics_inter_ablation}
+\end{table}

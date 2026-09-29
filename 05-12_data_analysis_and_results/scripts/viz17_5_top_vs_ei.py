@@ -203,7 +203,8 @@ def run(run_dir, params):
         ]
         
         sb_cells = []
-        
+        tex_rows = []
+
         for metric in metrics_order:
             row = [metric]
             t_tex_row = [metric.replace('%', '\\%')]
@@ -218,17 +219,21 @@ def run(run_dir, params):
             feat_mean = np.mean(feat_vals)
             
             is_green = False
+            verdict = 'ns'
             try:
                 stat, p = wilcoxon(feat_vals, ei_vals)
                 if p < 0.05:
                     sig = 'TRUE'
+                    verdict = 'lower'
                     if feat_mean > ei_mean:
                         is_green = True
-                        sb_cells.append((len(t_data), 3)) 
+                        verdict = 'higher'
+                        sb_cells.append((len(t_data), 3))
                 else:
                     sig = 'FALSE'
             except:
                 sig = 'FALSE'
+            tex_rows.append((metric, ei_mean, feat_mean, verdict))
                 
             val_str2 = f"{feat_mean:.1f}%"
             row.extend([val_str2, sig])
@@ -240,16 +245,23 @@ def run(run_dir, params):
             t_data.append(row)
             t_tex_lines.append(" & ".join(t_tex_row) + " \\\\")
             
-        t_tex_lines.extend([
-            "\\hline",
-            "\\end{tabular}",
-            f"\\caption{{Step 5 ({scale}-Subject): Proposed Feature ({feat_name.replace('_', ' ')}) vs EI. Significance tested using Wilcoxon signed-rank test against EI (two-sided, $\\alpha=0.05$, N=25).}}",
-            "\\label{tab:metrics_5_" + scale.lower() + "_" + str(idx) + "}",
-            "\\end{table}"
-        ])
-        
+        import thesis_metric_table as tmt
+        pretty = {
+            'TP10_raw_std': 'TP10 raw standard deviation',
+            'AF7_high_gamma_mean': 'AF7 high-gamma mean',
+            'AF8_delta_peakfreq': 'AF8 delta peak frequency',
+        }.get(feat_name, feat_name.replace('_', ' '))
+        tex = tmt.render(
+            tex_rows, scale.lower(),
+            ref_header=("Engagement Index", "logistic regression"),
+            model_header=(pretty, "top feature, logistic regression"),
+            sig_comment=r"top feature vs.\newline Engagement Index",
+            caption=(f"Top-feature model ({pretty}) versus EI model, {scale.lower()}-subject setting. "
+                     "Both models are logistic regressions with one input. "
+                     + tmt.legend_sentence("the EI model")),
+            label="tab:metrics_5_" + scale.lower() + "_" + str(idx))
         with open(viz_dir / f"viz17_5_{scale.lower()}_feat{idx}.tex", 'w') as f:
-            f.write("\n".join(post_process_tex_lines(t_tex_lines)))
+            f.write(tex)
             
         fw = max(10, len(cols) * 1.5)
         fig, ax = plt.subplots(figsize=(fw, 4))

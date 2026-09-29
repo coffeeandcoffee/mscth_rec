@@ -1,0 +1,20 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\hline
+Metric & Coin Flip & \multicolumn{2}{c}{EI LR} \\\\
+ & Val & Val & Sig \\\\
+\hline
+F1 Train (STAY) & 50.3\% & \textcolor{green}{62.0\%} & TRUE \\\\
+F1 Test (STAY) & 50.8\% & \textcolor{green}{62.5\%} & TRUE \\\\
+Precision (STAY) & 49.9\% & 49.4\% & FALSE \\\\
+Recall (STAY) & 51.7\% & \textcolor{green}{89.2\%} & TRUE \\\\
+F1 Train (SKIP) & 49.6\% & 20.6\% & TRUE \\\\
+F1 Test (SKIP) & 48.9\% & 10.7\% & TRUE \\\\
+Precision (SKIP) & 49.9\% & 23.5\% & TRUE \\\\
+Recall (SKIP) & 48.0\% & 9.6\% & TRUE \\\\
+\hline
+\end{tabular}
+\caption{EI model (EI LR) versus coin-flip baseline, inter-subject setting. Wilcoxon signed-rank test against the coin-flip baseline (two-sided, $\alpha=0.05$, $n=25$). Sig: TRUE when $p<0.05$, in either direction. Green: significantly higher than the coin-flip baseline.}
+\label{tab:metrics_1_inter}
+\end{table}

@@ -239,9 +239,11 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
             'F1 Train (SKIP)', 'F1 Test (SKIP)', 'Precision (SKIP)', 'Recall (SKIP)'
         ]
         
+        tex_rows = []
         for metric in metrics_order_n1:
             row = [metric]
             t_tex_row = [metric.replace('%', '\\%')]
+            verdict = 'ns'
             for m in m_names:
                 m_dict = models.get(m)
                 vals = m_dict[metric]
@@ -255,8 +257,10 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
                         stat, p = wilcoxon(vals, models['Coin Flip'][metric])
                         if p < 0.05:
                             sig = 'TRUE'
+                            verdict = 'lower'
                             if mean_val > np.mean(models['Coin Flip'][metric]):
                                 is_green = True
+                                verdict = 'higher'
                                 sb_cells.append((len(t_data), len(row)))
                         else:
                             sig = 'FALSE'
@@ -272,17 +276,20 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
                 
             t_data.append(row)
             t_tex_lines.append(" & ".join(t_tex_row) + " \\\\")
-            
-        t_tex_lines.extend([
-            "\\hline",
-            "\\end{tabular}",
-            f"\\caption{{Step 1 ({scale.capitalize()}-Subject): EI vs Coin Flip. Significance tested using Wilcoxon signed-rank test against Coin Flip (two-sided, $\\alpha=0.05$, N=25).}}",
-            "\\label{tab:metrics_1_" + scale.lower() + "}",
-            "\\end{table}"
-        ])
-        
+            tex_rows.append((metric, np.mean(models['Coin Flip'][metric]),
+                             np.mean(models['EI LR'][metric]), verdict))
+
+        import thesis_metric_table as tmt
+        tex = tmt.render(
+            tex_rows, scale.lower(),
+            ref_header=("Baseline", r"coin flip, \(\sim\)50\%"),
+            model_header=("Engagement Index", "logistic regression"),
+            sig_comment=r"Engagement Index\newline vs.\ baseline",
+            caption=(f"EI model versus coin-flip baseline, {scale.lower()}-subject setting. "
+                     + tmt.legend_sentence("the coin-flip baseline")),
+            label="tab:metrics_1_" + scale.lower())
         with open(viz_dir / f"viz17_1_{scale.lower()}.tex", 'w') as f:
-            f.write("\n".join(post_process_tex_lines(t_tex_lines)))
+            f.write(tex)
             
         fw = max(8, len(cols) * 0.8)
         fig, ax = plt.subplots(figsize=(fw, 4))
