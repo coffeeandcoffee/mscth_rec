@@ -999,9 +999,6 @@ The one number is the feature AF7 high-gamma mean of that one window. Every wind
 \begin{table}[H]
 \centering
 \footnotesize
-\caption[One number per window for every statistic]{One number per window for every statistic. Baseline: the value when the window matches the baseline average (Mean) or the spread of the whole 90~s baseline (standard deviation, Activity, EI). --: no fixed baseline value. SD: standard deviation.}
-\label{tab:feature_ranges}
-\vspace{4pt}
 \begin{tabular}{llll}
 \toprule
 \textbf{Statistic} & \textbf{One number} & \textbf{Range} & \textbf{Baseline} \\
@@ -1020,6 +1017,8 @@ Raw standard deviation & SD of raw & \(\geq 0\) & -- \\
 Raw slope & fitted-line slope & device-limited & -- \\
 \bottomrule
 \end{tabular}
+\caption[One number per window for every statistic]{One number per window for every statistic. Baseline: the value when the window matches the baseline average (Mean) or the spread of the whole 90~s baseline (standard deviation, Activity, EI). --: no fixed baseline value. SD: standard deviation.}
+\label{tab:feature_ranges}
 \end{table}
 
 \subsection{Mean, Standard Deviation and Relative Power}

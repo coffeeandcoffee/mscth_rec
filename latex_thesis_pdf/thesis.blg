@@ -1,129 +1,129 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'thesis.blg'
-[53] biber-darwin:342> INFO - === Thu Oct  1, 2026, 17:57:59
-[66] Biber.pm:421> INFO - Reading 'thesis.bcf'
-[148] Biber.pm:1002> INFO - Found 68 citekeys in bib section 0
-[159] Biber.pm:4487> INFO - Processing section 0
-[167] Biber.pm:4678> INFO - Looking for bibtex file 'library.bib' for section 0
-[183] bibtex.pm:1713> INFO - LaTeX decoding ...
-[665] bibtex.pm:1519> INFO - Found BibTeX data source 'library.bib'
-[1098] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1098] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1098] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
-[1098] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[1136] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[1169] bbl.pm:779> INFO - Output to thesis.bbl
-[1169] Biber.pm:132> WARN - article entry 'mccashin_using_2023' (library.bib): Invalid format '2023-01-01' of date field 'date' - ignoring
-[1169] Biber.pm:132> WARN - inproceedings entry 'baughan_i_2022' (library.bib): Invalid format '2026-05-01' of date field 'urldate' - ignoring
-[1169] Biber.pm:132> WARN - inproceedings entry 'baughan_i_2022' (library.bib): Invalid format '2022-04-27' of date field 'date' - ignoring
-[1169] Biber.pm:132> WARN - inproceedings entry 'knierim_flow_2026' (library.bib): Invalid format '2026-05-01' of date field 'urldate' - ignoring
-[1169] Biber.pm:132> WARN - inproceedings entry 'knierim_flow_2026' (library.bib): Invalid format '2026-04-13' of date field 'date' - ignoring
-[1169] Biber.pm:132> WARN - article entry 'pope_biocybernetic_1995-3' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'pope_biocybernetic_1995-3' (library.bib): Invalid format '1995-05' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'tong_brain_2020' (library.bib): Invalid format '2025-10-21' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'tong_brain_2020' (library.bib): Invalid format '2020-03-24' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'yardley_understanding_2016' (library.bib): Invalid format '2026-03-04' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'yardley_understanding_2016' (library.bib): Invalid format '2016-11' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'green_role_2000' (library.bib): Invalid format '2026-03-05' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'green_role_2000' (library.bib): Invalid format '2000-11' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'moyer-guse_toward_2008' (library.bib): Invalid format '2026-03-05' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'moyer-guse_toward_2008' (library.bib): Invalid format '2008-08' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'perski_conceptualising_2017' (library.bib): Invalid format '2026-03-05' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'perski_conceptualising_2017' (library.bib): Invalid format '2017-06' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'trunfio_conceptualising_2021' (library.bib): Invalid format '2021-09-01' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'obrien_what_2008' (library.bib): Invalid format '2026-03-04' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'obrien_what_2008' (library.bib): Invalid format '2008-04' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'rahman_detection_2025' (library.bib): Invalid format '2025-05-22' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'moontaha_online_2023-1' (library.bib): Invalid format '2026-09-29' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'moontaha_online_2023-1' (library.bib): Invalid format '2023-02-21' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - misc entry 'zhang_eeg-svrec_2024' (library.bib): Invalid format '2025-10-06' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - misc entry 'zhang_eeg-svrec_2024' (library.bib): Invalid format '2024-04-01' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - inproceedings entry 'he_understanding_2023' (library.bib): Invalid format '2026-09-23' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - inproceedings entry 'he_understanding_2023' (library.bib): Invalid format '2023-10-21' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - inproceedings entry 'du_understanding_2025' (library.bib): Invalid format '2025-07-13' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'du_eeg_2025' (library.bib): Invalid format '2025-10-06' of date field 'urldate' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'du_eeg_2025' (library.bib): Invalid format '2025-05-25' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'zhang_how_2025-1' (library.bib): Invalid format '2025' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - report entry 'wade_investigating_2024' (library.bib): Invalid format '2024' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - report entry 'dumitru_does_2025' (library.bib): Invalid format '2025' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'yan_mobile_2024' (library.bib): Invalid format '2024' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - online entry 'barachant_muselsl_2026' (library.bib): Invalid format '2026-07-16' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - article entry 'bellos_methods_2025' (library.bib): Invalid format '2025-01-01' of date field 'date' - ignoring
-[1170] Biber.pm:132> WARN - inproceedings entry 'salminen_engagement_2024' (library.bib): Invalid format '2024-09-10' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - inproceedings entry 'nuamah_electroencephalography_2017' (library.bib): Invalid format '2026-02-10' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - inproceedings entry 'nuamah_electroencephalography_2017' (library.bib): Invalid format '2017-03' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'apicella_eeg-based_2022' (library.bib): Invalid format '2022-12-01' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - inproceedings entry 'de_carvalho_selection_2026' (library.bib): Invalid format '2026-06-08' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'karimah_automatic_2022' (library.bib): Invalid format '2022-12-01' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'evans_digital_2022' (library.bib): Invalid format '2026-06-06' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'evans_digital_2022' (library.bib): Invalid format '2022-07-26' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'basch_covid-19_2022' (library.bib): Invalid format '2022-10-01' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'chen_factors_2021' (library.bib): Invalid format '2026-09-16' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'chen_factors_2021' (library.bib): Invalid format '2021-02-04' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'zenone_tiktok_2021' (library.bib): Invalid format '2021-11-24' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'debettencourt_sustained_2021' (library.bib): Invalid format '2026-05-06' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'debettencourt_sustained_2021' (library.bib): Invalid format '2021-09-01' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'tzimourta_eeg_2019' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'tzimourta_eeg_2019' (library.bib): Invalid format '2019-04-14' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'mi_exploring_2026' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'mi_exploring_2026' (library.bib): Invalid format '2026-02' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - inproceedings entry 'rimbert_impact_2023' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - inproceedings entry 'rimbert_impact_2023' (library.bib): Invalid format '2023-07-24' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - ISBN '978-0-470-05997-5 978-0-470-72518-4 978-0-470-72517-7' in entry 'saltelli_global_2008' is invalid - run biber with '--validate_datamodel' for details.
-[1171] Biber.pm:132> WARN - collection entry 'saltelli_global_2008' (library.bib): Invalid format '2008' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'saltelli_how_2010' (library.bib): Invalid format '2026-08-04' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'saltelli_how_2010' (library.bib): Invalid format '2010' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'mccartney_optimal_2026' (library.bib): Invalid format '2026-08-04' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'mccartney_optimal_2026' (library.bib): Invalid format '2026-03-23' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'lew_detection_2012' (library.bib): Invalid format '2026-08-03' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'lew_detection_2012' (library.bib): Invalid format '2012-07-12' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'frenay_classification_2014' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'frenay_classification_2014' (library.bib): Invalid format '2014-05' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - book entry 'cohen_statistical_1988' (library.bib): Invalid format '1988' of date field 'date' - ignoring
-[1171] Biber.pm:132> WARN - article entry 'henao_isaza_comprehensive_2026' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'henao_isaza_comprehensive_2026' (library.bib): Invalid format '2026-03-11' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'kiarashi_sleep-derived_2025' (library.bib): Invalid format '2025-11-13' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'hjorth_eeg_1970' (library.bib): Invalid format '1970-01-30' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - inproceedings entry 'khambampati_frequency_2023' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - inproceedings entry 'khambampati_frequency_2023' (library.bib): Invalid format '2023-11-26' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'niknazar_new_2018' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'niknazar_new_2018' (library.bib): Invalid format '2018-02' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'shin_rate_2017' (library.bib): Invalid format '2026-09-28' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'shin_rate_2017' (library.bib): Invalid format '2017-11-06' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'goncharova_emg_2003' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'goncharova_emg_2003' (library.bib): Invalid format '2003-09' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'yilmaz_facial_2019' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'yilmaz_facial_2019' (library.bib): Invalid format '2019-12-01' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'whitham_scalp_2007' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'whitham_scalp_2007' (library.bib): Invalid format '2007-08' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'li_electromyogram_2021' (library.bib): Invalid format '2026-09-13' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'li_electromyogram_2021' (library.bib): Invalid format '2021-01-15' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'mcmenamin_electromyogenic_2011' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'mcmenamin_electromyogenic_2011' (library.bib): Invalid format '2011-01' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'guntekin_review_2016' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'guntekin_review_2016' (library.bib): Invalid format '2016-05' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'knyazev_eeg_2012' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'knyazev_eeg_2012' (library.bib): Invalid format '2012-01' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - report entry 'xu_neural_2024' (library.bib): Invalid format '2024' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'pattisapu_stimulus-induced_2023' (library.bib): Invalid format '2023' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'libet_time_1983' (library.bib): Invalid format '1983' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'shakeel_review_2015' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'shakeel_review_2015' (library.bib): Invalid format '2015' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'krigolson_choosing_2017' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'krigolson_choosing_2017' (library.bib): Invalid format '2017-03-10' of date field 'date' - ignoring
-[1172] Biber.pm:132> WARN - article entry 'hasson_intersubject_2004' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'hasson_intersubject_2004' (library.bib): Invalid format '2004-03-12' of date field 'date' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'donoghue_electrophysiological_2020' (library.bib): Invalid format '2026-08-08' of date field 'urldate' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'donoghue_electrophysiological_2020' (library.bib): Invalid format '2020-11' of date field 'date' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'varoquaux_assessing_2017' (library.bib): Invalid format '2026-09-26' of date field 'urldate' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'varoquaux_assessing_2017' (library.bib): Invalid format '2017-01' of date field 'date' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'demsar_statistical_2006' (library.bib): Invalid format '2006' of date field 'date' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'pfurtscheller_event-related_1996' (library.bib): Invalid format '2026-05-06' of date field 'urldate' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'pfurtscheller_event-related_1996' (library.bib): Invalid format '1996-11' of date field 'date' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'ovi_frequency_2026' (library.bib): Invalid format '2026-08-08' of date field 'urldate' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'ovi_frequency_2026' (library.bib): Invalid format '2026-04' of date field 'date' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'fries_rhythms_2015' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'fries_rhythms_2015' (library.bib): Invalid format '2015-10' of date field 'date' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'miller_integrative_2001' (library.bib): Invalid format '2026-05-06' of date field 'urldate' - ignoring
-[1173] Biber.pm:132> WARN - article entry 'miller_integrative_2001' (library.bib): Invalid format '2001-03' of date field 'date' - ignoring
-[1173] Biber.pm:134> INFO - WARNINGS: 113
+[52] biber-darwin:342> INFO - === Thu Oct  1, 2026, 18:03:45
+[65] Biber.pm:421> INFO - Reading 'thesis.bcf'
+[150] Biber.pm:1002> INFO - Found 68 citekeys in bib section 0
+[161] Biber.pm:4487> INFO - Processing section 0
+[168] Biber.pm:4678> INFO - Looking for bibtex file 'library.bib' for section 0
+[184] bibtex.pm:1713> INFO - LaTeX decoding ...
+[649] bibtex.pm:1519> INFO - Found BibTeX data source 'library.bib'
+[1083] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1083] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1083] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1083] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[1120] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[1154] bbl.pm:779> INFO - Output to thesis.bbl
+[1154] Biber.pm:132> WARN - article entry 'mccashin_using_2023' (library.bib): Invalid format '2023-01-01' of date field 'date' - ignoring
+[1154] Biber.pm:132> WARN - inproceedings entry 'baughan_i_2022' (library.bib): Invalid format '2026-05-01' of date field 'urldate' - ignoring
+[1154] Biber.pm:132> WARN - inproceedings entry 'baughan_i_2022' (library.bib): Invalid format '2022-04-27' of date field 'date' - ignoring
+[1154] Biber.pm:132> WARN - inproceedings entry 'knierim_flow_2026' (library.bib): Invalid format '2026-05-01' of date field 'urldate' - ignoring
+[1154] Biber.pm:132> WARN - inproceedings entry 'knierim_flow_2026' (library.bib): Invalid format '2026-04-13' of date field 'date' - ignoring
+[1154] Biber.pm:132> WARN - article entry 'pope_biocybernetic_1995-3' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
+[1154] Biber.pm:132> WARN - article entry 'pope_biocybernetic_1995-3' (library.bib): Invalid format '1995-05' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'tong_brain_2020' (library.bib): Invalid format '2025-10-21' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'tong_brain_2020' (library.bib): Invalid format '2020-03-24' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'yardley_understanding_2016' (library.bib): Invalid format '2026-03-04' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'yardley_understanding_2016' (library.bib): Invalid format '2016-11' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'green_role_2000' (library.bib): Invalid format '2026-03-05' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'green_role_2000' (library.bib): Invalid format '2000-11' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'moyer-guse_toward_2008' (library.bib): Invalid format '2026-03-05' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'moyer-guse_toward_2008' (library.bib): Invalid format '2008-08' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'perski_conceptualising_2017' (library.bib): Invalid format '2026-03-05' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'perski_conceptualising_2017' (library.bib): Invalid format '2017-06' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'trunfio_conceptualising_2021' (library.bib): Invalid format '2021-09-01' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'obrien_what_2008' (library.bib): Invalid format '2026-03-04' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'obrien_what_2008' (library.bib): Invalid format '2008-04' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'rahman_detection_2025' (library.bib): Invalid format '2025-05-22' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'moontaha_online_2023-1' (library.bib): Invalid format '2026-09-29' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'moontaha_online_2023-1' (library.bib): Invalid format '2023-02-21' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - misc entry 'zhang_eeg-svrec_2024' (library.bib): Invalid format '2025-10-06' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - misc entry 'zhang_eeg-svrec_2024' (library.bib): Invalid format '2024-04-01' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - inproceedings entry 'he_understanding_2023' (library.bib): Invalid format '2026-09-23' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - inproceedings entry 'he_understanding_2023' (library.bib): Invalid format '2023-10-21' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - inproceedings entry 'du_understanding_2025' (library.bib): Invalid format '2025-07-13' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'du_eeg_2025' (library.bib): Invalid format '2025-10-06' of date field 'urldate' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'du_eeg_2025' (library.bib): Invalid format '2025-05-25' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'zhang_how_2025-1' (library.bib): Invalid format '2025' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - report entry 'wade_investigating_2024' (library.bib): Invalid format '2024' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - report entry 'dumitru_does_2025' (library.bib): Invalid format '2025' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'yan_mobile_2024' (library.bib): Invalid format '2024' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - online entry 'barachant_muselsl_2026' (library.bib): Invalid format '2026-07-16' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - article entry 'bellos_methods_2025' (library.bib): Invalid format '2025-01-01' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - inproceedings entry 'salminen_engagement_2024' (library.bib): Invalid format '2024-09-10' of date field 'date' - ignoring
+[1155] Biber.pm:132> WARN - inproceedings entry 'nuamah_electroencephalography_2017' (library.bib): Invalid format '2026-02-10' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - inproceedings entry 'nuamah_electroencephalography_2017' (library.bib): Invalid format '2017-03' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'apicella_eeg-based_2022' (library.bib): Invalid format '2022-12-01' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - inproceedings entry 'de_carvalho_selection_2026' (library.bib): Invalid format '2026-06-08' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'karimah_automatic_2022' (library.bib): Invalid format '2022-12-01' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'evans_digital_2022' (library.bib): Invalid format '2026-06-06' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'evans_digital_2022' (library.bib): Invalid format '2022-07-26' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'basch_covid-19_2022' (library.bib): Invalid format '2022-10-01' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'chen_factors_2021' (library.bib): Invalid format '2026-09-16' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'chen_factors_2021' (library.bib): Invalid format '2021-02-04' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'zenone_tiktok_2021' (library.bib): Invalid format '2021-11-24' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'debettencourt_sustained_2021' (library.bib): Invalid format '2026-05-06' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'debettencourt_sustained_2021' (library.bib): Invalid format '2021-09-01' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'tzimourta_eeg_2019' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'tzimourta_eeg_2019' (library.bib): Invalid format '2019-04-14' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'mi_exploring_2026' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'mi_exploring_2026' (library.bib): Invalid format '2026-02' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - inproceedings entry 'rimbert_impact_2023' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - inproceedings entry 'rimbert_impact_2023' (library.bib): Invalid format '2023-07-24' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - ISBN '978-0-470-05997-5 978-0-470-72518-4 978-0-470-72517-7' in entry 'saltelli_global_2008' is invalid - run biber with '--validate_datamodel' for details.
+[1156] Biber.pm:132> WARN - collection entry 'saltelli_global_2008' (library.bib): Invalid format '2008' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'saltelli_how_2010' (library.bib): Invalid format '2026-08-04' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'saltelli_how_2010' (library.bib): Invalid format '2010' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'mccartney_optimal_2026' (library.bib): Invalid format '2026-08-04' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'mccartney_optimal_2026' (library.bib): Invalid format '2026-03-23' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'lew_detection_2012' (library.bib): Invalid format '2026-08-03' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'lew_detection_2012' (library.bib): Invalid format '2012-07-12' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'frenay_classification_2014' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'frenay_classification_2014' (library.bib): Invalid format '2014-05' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - book entry 'cohen_statistical_1988' (library.bib): Invalid format '1988' of date field 'date' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'henao_isaza_comprehensive_2026' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring
+[1156] Biber.pm:132> WARN - article entry 'henao_isaza_comprehensive_2026' (library.bib): Invalid format '2026-03-11' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'kiarashi_sleep-derived_2025' (library.bib): Invalid format '2025-11-13' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'hjorth_eeg_1970' (library.bib): Invalid format '1970-01-30' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - inproceedings entry 'khambampati_frequency_2023' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - inproceedings entry 'khambampati_frequency_2023' (library.bib): Invalid format '2023-11-26' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'niknazar_new_2018' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'niknazar_new_2018' (library.bib): Invalid format '2018-02' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'shin_rate_2017' (library.bib): Invalid format '2026-09-28' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'shin_rate_2017' (library.bib): Invalid format '2017-11-06' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'goncharova_emg_2003' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'goncharova_emg_2003' (library.bib): Invalid format '2003-09' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'yilmaz_facial_2019' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'yilmaz_facial_2019' (library.bib): Invalid format '2019-12-01' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'whitham_scalp_2007' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'whitham_scalp_2007' (library.bib): Invalid format '2007-08' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'li_electromyogram_2021' (library.bib): Invalid format '2026-09-13' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'li_electromyogram_2021' (library.bib): Invalid format '2021-01-15' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'mcmenamin_electromyogenic_2011' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'mcmenamin_electromyogenic_2011' (library.bib): Invalid format '2011-01' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'guntekin_review_2016' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'guntekin_review_2016' (library.bib): Invalid format '2016-05' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'knyazev_eeg_2012' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'knyazev_eeg_2012' (library.bib): Invalid format '2012-01' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - report entry 'xu_neural_2024' (library.bib): Invalid format '2024' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'pattisapu_stimulus-induced_2023' (library.bib): Invalid format '2023' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'libet_time_1983' (library.bib): Invalid format '1983' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'shakeel_review_2015' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'shakeel_review_2015' (library.bib): Invalid format '2015' of date field 'date' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'krigolson_choosing_2017' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
+[1157] Biber.pm:132> WARN - article entry 'krigolson_choosing_2017' (library.bib): Invalid format '2017-03-10' of date field 'date' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'hasson_intersubject_2004' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'hasson_intersubject_2004' (library.bib): Invalid format '2004-03-12' of date field 'date' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'donoghue_electrophysiological_2020' (library.bib): Invalid format '2026-08-08' of date field 'urldate' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'donoghue_electrophysiological_2020' (library.bib): Invalid format '2020-11' of date field 'date' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'varoquaux_assessing_2017' (library.bib): Invalid format '2026-09-26' of date field 'urldate' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'varoquaux_assessing_2017' (library.bib): Invalid format '2017-01' of date field 'date' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'demsar_statistical_2006' (library.bib): Invalid format '2006' of date field 'date' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'pfurtscheller_event-related_1996' (library.bib): Invalid format '2026-05-06' of date field 'urldate' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'pfurtscheller_event-related_1996' (library.bib): Invalid format '1996-11' of date field 'date' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'ovi_frequency_2026' (library.bib): Invalid format '2026-08-08' of date field 'urldate' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'ovi_frequency_2026' (library.bib): Invalid format '2026-04' of date field 'date' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'fries_rhythms_2015' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'fries_rhythms_2015' (library.bib): Invalid format '2015-10' of date field 'date' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'miller_integrative_2001' (library.bib): Invalid format '2026-05-06' of date field 'urldate' - ignoring
+[1158] Biber.pm:132> WARN - article entry 'miller_integrative_2001' (library.bib): Invalid format '2001-03' of date field 'date' - ignoring
+[1158] Biber.pm:134> INFO - WARNINGS: 113
