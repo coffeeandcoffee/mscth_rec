@@ -113,7 +113,7 @@
 \contentsline {paragraph}{Additional insights.}{105}{section*.39}%
 \contentsline {chapter}{\numberline {5}Conclusion and Future Research}{106}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Conclusion}{106}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Future Research}{109}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Future Research}{110}{section.5.2}%
 \contentsline {chapter}{\numberline {6}Plain-Language Summary: Common Questions}{112}{chapter.6}%
 \contentsline {paragraph}{What does ``engagement'' mean in this thesis?}{112}{section*.40}%
 \contentsline {paragraph}{Is short-form video damaging my brain?}{113}{section*.41}%

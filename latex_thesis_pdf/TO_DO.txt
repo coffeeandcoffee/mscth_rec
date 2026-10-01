@@ -76,20 +76,9 @@ CATRINEL:   Ich finde, die Arbeit liest sich gut. Ich mochte besonders den Empfe
 - format ch 3.5 universal recording pipeline git path exceeds page!
 - TEST/APPLICABLE: common language nicht so do tnis do that sondern wissenschaftliche dinge in common language
 
-========
-==TODO==
-========
-
-PAPA
-- ch 1&2 verschlanken
-- know every word analysis?
 - read full 5x and make notes -> different passes:
     5. rigorous bs cut ch2 ?
-    6. one last run through all PAPA comments
 
-format:
-- F 3.4 3.5 full page format because text too small.
-- Fig 4.4 in 4.4.1 first picture, how big is error there??
 - table 3.1 "last nights sleep" clarification -> in fig description
 - in sec 3.3 after "experiment lead" in bracklets use that ibstead of "author"
 - blue stay period must be marked in Fig 3.7, 3.8 & 3.9
@@ -109,10 +98,24 @@ format:
 push git
 - ch4 intro should mention 4.7 asban additional point right? saying that it answers the research questions in a summary.
 - methods is also missing such an overview in ch3 before 3.1
+- "two independent muse S" in ch 4.5.1 -> warum wurde diese fehlerquelle nichtn ausgesvhlossen? um zu laden, operational.
+
+========
+==TODO==
+========
+
+PAPA
+- ch 1&2 verschlanken
+
+- know every word analysis?
+    6. one last run through all PAPA comments
+
+format:
+- F 3.4 3.5 full page format because text too small.
+- Fig 4.4 in 4.4.1 first picture, how big is error there??
 
 cover this:
 - warum inter were of EI niedriger than intra for SKIP of TP10? (is that covered?)
-- "two independent muse S" in ch 4.5.1 -> warum wurde diese fehlerquelle nichtn ausgesvhlossen? um zu laden, operational.
 
 last checks:
 - that Figure 3.18 and no other overlaps with footer!
