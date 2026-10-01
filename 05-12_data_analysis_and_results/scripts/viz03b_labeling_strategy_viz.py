@@ -30,6 +30,15 @@ import viz_style
 PALETTE = sns.color_palette("pastel")
 STAY_COLOR = PALETTE[0]
 SKIP_COLOR = PALETTE[3]
+STAY_SHADE = 'blue'
+
+# Window bars: twice the former 6 pt rule (about 0.11 data units at this figure size),
+# each framed by a thin black line.
+BAR_HEIGHT = 0.11
+WINDOW_FRAME_LW = 0.8
+
+# Post-swipe gap (grace period after each keypress), as in config.DEFAULT_PARAMS.
+POST_SWIPE_GAP_S = config.DEFAULT_PARAMS['step01']['grace_s']
 
 # Participant and excerpt used by the figures in the thesis.
 REP_PID = 4
@@ -88,14 +97,31 @@ def _draw_panel(ax, wdata, univ_name, font_size):
     for start, end in merged:
         ax.axvspan(start, end, alpha=0.12, color='red', zorder=0)
 
-    # Labeled windows, drawn as short rules on the STAY / SKIP levels.
+    # Shaded STAY periods: from the end of one post-swipe gap to the start of
+    # the next SKIP period. Before the first press and after the last press of
+    # a recording file there is no STAY period (the file is trimmed there).
+    presses = sorted(a_press_times)
+    for t_prev, t_next in zip(presses[:-1], presses[1:]):
+        stay_start = t_prev + POST_SWIPE_GAP_S
+        stay_end = t_next - gap - area
+        if stay_end <= stay_start or stay_end < t_min or stay_start > t_max:
+            continue
+        ax.axvspan(stay_start - t_min, stay_end - t_min, alpha=0.12,
+                   color=STAY_SHADE, zorder=0)
+
+    # Labeled windows, drawn as thick bars on the STAY / SKIP levels. Each
+    # window gets its own thin black frame, so neighbouring windows stay
+    # distinguishable instead of merging into one continuous line.
     for w in windows:
         if w['start_time'] > t_max or w['end_time'] < t_min:
             continue
         y = 1 if w['label'] == 1 else 0
         color = STAY_COLOR if w['label'] == 1 else SKIP_COLOR
-        ax.hlines(y - 0.15, w['start_time'] - t_min, w['end_time'] - t_min,
-                  colors=[color], linewidth=6, zorder=2)
+        x0 = w['start_time'] - t_min
+        ax.broken_barh([(x0, w['end_time'] - w['start_time'])],
+                       (y - 0.15 - BAR_HEIGHT / 2, BAR_HEIGHT),
+                       facecolors=color, edgecolors='black',
+                       linewidth=WINDOW_FRAME_LW, zorder=2)
 
     # Registered A-keypresses.
     drawn_label = False
@@ -110,15 +136,18 @@ def _draw_panel(ax, wdata, univ_name, font_size):
     ax.set_ylim(-0.6, 1.4)
     ax.set_xlim(-1, EXCERPT_S + 1)
     handles = [
-        Line2D([0], [0], color=STAY_COLOR, linewidth=6, label='STAY window'),
-        Line2D([0], [0], color=SKIP_COLOR, linewidth=6, label='SKIP window'),
+        Patch(facecolor=STAY_COLOR, edgecolor='black', linewidth=WINDOW_FRAME_LW,
+              label='STAY window'),
+        Patch(facecolor=SKIP_COLOR, edgecolor='black', linewidth=WINDOW_FRAME_LW,
+              label='SKIP window'),
+        Patch(facecolor=STAY_SHADE, alpha=0.12, edgecolor=STAY_SHADE, label='STAY period'),
         Patch(facecolor='red', alpha=0.12, edgecolor='red', label='SKIP period'),
     ]
     if drawn_label:
         handles.append(Line2D([0], [0], color='crimson', linewidth=1.6,
                               label='A keypress (swipe)'))
     ax.get_figure().legend(handles=handles, loc='lower center',
-                           bbox_to_anchor=(0.5, 0.0), ncol=len(handles),
+                           bbox_to_anchor=(0.5, 0.0), ncol=3,
                            frameon=False, fontsize=font_size)
 
     viz_style.style_axes(
@@ -152,7 +181,7 @@ def run(run_dir, params):
 
         fig, ax = plt.subplots(figsize=(20, 6))
         if _draw_panel(ax, wdata, univ_name, font_size):
-            plt.tight_layout(rect=(0, 0.14, 1, 1))
+            plt.tight_layout(rect=(0, 0.22, 1, 1))
             plt.savefig(out_dir / out_name, dpi=200, bbox_inches='tight')
             written += 1
         plt.close()

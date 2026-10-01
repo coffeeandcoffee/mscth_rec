@@ -22,11 +22,11 @@ normative dissociation | zoned-out, low-recall scrolling (Baughan et al.) | Sec.
 infinite feed | the short-form video feed itself, where participants are | Sec. Adjacent studies
 naturalistic use | self-paced viewing of an algorithmic feed, with a swipe possible at any moment (in this thesis: TikTok For You feed on the author's iPhone, reset before each participant; NOT 'own feed on own phone') | Sec. Adjacent studies
 swipe | the single self-paced action that moves to the next video; anchors every label | Intro / Sec. Adjacent studies
-burst / burst block | several rapid swipes merged into one block; swipes merge when their ±3.0 s burst windows overlap (closer than 6.0 s); the burst window is NOT the SKIP period | Sec. Behavioral Burst Analysis
-burst window | ±3.0 s around each swipe, used only by the burst analysis; groups swipes, changes no label; separate definition from the SKIP period, though the two can overlap in time | Sec. Behavioral Burst Analysis
-inter-swipe interval | time between two consecutive "A" keypresses, roughly the viewing time of one video (do NOT use "dwell time" for it) | Sec. Behavioral Burst Analysis
-block size | number of swipes in one burst block; a burst block of size 1 is a swipe with no other swipe within 6.0 s; do NOT write "n" for it (n is the sample size) and do NOT use "burst group"; always say whether a share counts SWIPES (40.3% stand alone at ±3.0 s) or BURST BLOCKS (67.4% have size 1 at ±3.0 s) | Sec. Behavioral Swipe-Burst Phenomenon
-fast scrollers / slow scrollers | participants with many large burst blocks vs mostly burst blocks of size 1; the two ends of one range, not two groups (do NOT use "frantic scrollers" or "careful scrollers") | Sec. Behavioral Swipe-Burst Phenomenon
+burst / burst block | several rapid swipes merged into one block; swipes merge when their ±3.0 s burst windows overlap (closer than 6.0 s); the burst window is NOT the SKIP period | Sec. Behavioural Burst Analysis
+burst window | ±3.0 s around each swipe, used only by the burst analysis; groups swipes, changes no label; separate definition from the SKIP period, though the two can overlap in time | Sec. Behavioural Burst Analysis
+inter-swipe interval | time between two consecutive "A" keypresses, roughly the viewing time of one video (do NOT use "dwell time" for it) | Sec. Behavioural Burst Analysis
+block size | number of swipes in one burst block; a burst block of size 1 is a swipe with no other swipe within 6.0 s; do NOT write "n" for it (n is the sample size) and do NOT use "burst group"; always say whether a share counts SWIPES (40.3% stand alone at ±3.0 s) or BURST BLOCKS (67.4% have size 1 at ±3.0 s) | Sec. Behavioural Swipe-Burst Phenomenon
+fast scrollers / slow scrollers | participants with many large burst blocks vs mostly burst blocks of size 1; the two ends of one range, not two groups (do NOT use "frantic scrollers" or "careful scrollers") | Sec. Behavioural Swipe-Burst Phenomenon
 
 --- THE LITERATURE ---
 adjacent study | Rahman et al. 2025; same Muse S headband, different question | Sec. Adjacent studies
@@ -61,7 +61,7 @@ pre-swipe gap | 2.0 s excluded right before the keypress that marks a swipe; mea
 window length | 1.0 s analysis window | Sec. Operational Definition of Labeling Parameters
 post-swipe gap | 0.5 s excluded right after the keypress that marks a swipe (do NOT use "grace period") | Sec. Operational Definition of Labeling Parameters
 STAY period | all remaining browsing time: starts after a post-swipe gap, ends where the next SKIP period starts | Sec. Operational Definition of STAY and SKIP
-Bereitschaftspotential (BP) | slow brain signal of movement preparation before a voluntary action | Sec. Pre-Motor Window
+readiness potential (Bereitschaftspotential) | slow brain signal of movement preparation before a voluntary action; no abbreviation (do NOT write 'BP') | Sec. Pre-Motor Window
 
 --- THE SIGNAL AND FEATURES ---
 envelope | the strength of one band at every moment (Hilbert transform); mental image: a line traced along the tops of the waves; not squared to power; the band envelopes are z-scored, the raw signal is NOT | Sec. Baseline Extraction and Normalization
@@ -71,7 +71,7 @@ feature | a part of a slice, defined by specific band, electrode, statistic, an
 raw signal | the undecomposed broadband signal, kept alongside the seven bands | Sec. Baseline Extraction and Normalization
 high-gamma (40-60 Hz) / very high gamma (60-100 Hz) | the two top bands, both reaching into powerline-noise territory | Sec. Baseline Extraction and Normalization
 Peak Frequency / Macro Frequency | the two self-defined time-domain frequency features | Sec. Peak and Macro Frequency Extraction
-Engagement Index (EI) | the classical ratio beta/(alpha+theta); the benchmark | Intro / Sec. Engagement Index Calculation
+Engagement Index (EI) | the classical ratio beta/(alpha+theta); the benchmark; defined once at first main-text use (Sec. Motivation), 'EI' everywhere after; full name only in the Abstract, section headings, the Plain-Language chapter and the German summary; result-table headers say 'EI model' | Sec. Motivation / Sec. Engagement Index
 Cohen's d | class separation of one feature, in units of that feature's own spread | Sec. Adjacent studies / Class Separation Metric
 top features | TP10 raw standard deviation, AF7 high-gamma mean, AF8 delta peak frequency (write the names like this in running text, NOT the table names 'TP10 raw std' etc.) | Sec. Feature Separation Analysis / Class Separation of Single Features
 Alternative Index | RETIRED (2026-09-28): do NOT use; say 'top features' / 'top-feature models' | Sec. Top-Feature Models
@@ -106,3 +106,35 @@ time-precise | what EEG is (records 256 times per second during viewing, unlike 
 witnesses | analogy for the routes (ask, log, body): no single witness sees everything; agreement on the time of the exit adds credibility, disagreement adds information (never 'must change'); no route is ground truth | Sec. A Hypothesis for Field Measurement
 test case | what TikTok was for the proposed definition (do NOT use 'field site'; 'field' is reserved for settings where EEG is hard to use, as in 'field measures') | Sec. Scope of the Proposal
 falsifiers | TWO findings would show the proposed definition wrong: (1) an indicator that marks the change toward the exit in new people without calibration to each person; (2) dissociated viewing with the same recall and behaviour change as attentive viewing. 'effortful' and 'voluntary' were removed from both definitions 2026-09-28 (attention alone keeps dissociated viewing out; leaving out 'effortful' lets flow count as engagement). The former 'smooth decline' falsifier was cut 2026-09-28 (the definition already allows fading before the exit) | Sec. What Would Show the Proposal Wrong
+
+--- PLAIN-LANGUAGE SUMMARY (added 2026-09-29, Ch. 6) ---
+still watching / about to swipe | plain-language labels for STAY / SKIP (about to swipe = the seconds before a swipe); set in \emph each time; used only in Ch. 6 | Ch. Plain-Language Summary
+zoned-out viewing | plain-language name for normative dissociation: viewing without really paying attention (matches 'zoned-out scrolling' in Intro/Discussion) | Ch. Plain-Language Summary
+affordable for one person | how the Muse S cost is stated (no euro price appears anywhere in the thesis; source wording: 'affordable for a single consumer', Sec. Secondary Adjacent Studies) | Ch. Plain-Language Summary
+
+--- ABBREVIATIONS (added 2026-09-29) ---
+Rule: full name + short form in brackets at the FIRST use in the main text (Abstract counts separately); short form only after that; never define twice.
+EEG | electroencephalography | Abstract; again Sec. Motivation
+EI | Engagement Index (see entry above) | Sec. Motivation
+fMRI | functional magnetic resonance imaging | Sec. Motivation
+HPI | Hasso Plattner Institute | Acknowledgements
+EMG | electromyographic (Abstract) / electromyogram (main text) | Abstract; Sec. EMG Artifacts in EEG
+10-20 system | electrode labels (AF7, AF8, TP9, TP10, Fpz, Fp1, ...) follow the international 10-20 system; write 'Fpz', not 'FPz' | Sec. Adjacent Study
+Gen 1 / Gen 2 | first / second generation of the Muse S | Sec. Adjacent Study
+AUC | area under the receiver operating characteristic curve | Sec. Secondary Adjacent Studies
+ANOVA | analysis of variance | Sec. Secondary Adjacent Studies
+LSL | Lab Streaming Layer | Sec. Recording Software
+HCI | human-computer interaction | Sec. Defining Engagement: Existing Definitions and Their Gaps
+DBCI | digital behaviour change intervention (see THE LITERATURE) | Sec. Measuring Engagement in the Health Communication Literature
+WHO | World Health Organization | Sec. Measuring Engagement in the Health Communication Literature
+IRR | incidence rate ratio | Sec. Measuring Engagement in the Health Communication Literature
+OAT | one-at-a-time (sensitivity-analysis design) | Sec. Parameter Choice in EEG Classification
+ICA | independent component analysis | Sec. EMG Artifacts in EEG
+ADHD | attention-deficit/hyperactivity disorder | Sec. Participants
+M / SD; N / n | mean / standard deviation; N = all recruited participants, n = analysed sample | Sec. Participants
+ERP | event-related potential (N200, P300: named for polarity and latency) | Sec. Data Acquisition
+|d| | the size of Cohen's d | Sec. Class Separation Metric (Methods)
+TP / TN / FP / FN | true positive / true negative / false positive / false negative | Sec. Metrics and Significance Testing
+pp | percentage points (result-table captions only) | result tables
+SFV | short-form video (participant table only) | participant table
+alpha | the Greek letter alpha means the alpha band only (beta/(alpha+theta)); write 'significance level 0.05', not 'alpha = 0.05' | Sec. Metrics and Significance Testing

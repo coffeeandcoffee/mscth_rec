@@ -10,6 +10,38 @@ import config
 import pickle
 import viz_style
 
+# Thesis wording for bands and statistics, so figures and tables use the same
+# names as the running text instead of code names such as 'peakfreq'.
+BAND_NOUN = {'low_gamma': 'low gamma', 'high_gamma': 'high gamma', 'very_high': 'very high gamma'}
+BAND_ADJ = {'low_gamma': 'low-gamma', 'high_gamma': 'high-gamma', 'very_high': 'very-high-gamma'}
+STAT_LABEL = {
+    'std': 'standard deviation', 'peakfreq': 'Peak Frequency', 'macrofreq': 'Macro Frequency',
+    'rel_power': 'Relative Power', 'hjorth_act': 'Hjorth activity',
+    'hjorth_mob': 'Hjorth mobility', 'hjorth_comp': 'Hjorth complexity',
+}
+
+
+def split_feature(name):
+    """'AF7_high_gamma_mean' -> ('AF7', 'high_gamma', 'mean')."""
+    parts = name.split('_')
+    for band in ('high_gamma', 'low_gamma', 'very_high', 'raw'):
+        if band in name:
+            stat = name.split(band + '_')[1] if len(name.split(band + '_')) > 1 else 'unknown'
+            return parts[0], band, stat
+    band = parts[1] if len(parts) > 1 else 'unknown'
+    stat = '_'.join(parts[2:]) if len(parts) > 2 else 'unknown'
+    return parts[0], band, stat
+
+
+def feature_label(name):
+    """'AF8_delta_peakfreq' -> 'AF8 delta peak frequency', as in the running text."""
+    elec, band, stat = split_feature(name)
+    stat_txt = STAT_LABEL.get(stat, stat)
+    if stat in ('peakfreq', 'macrofreq', 'rel_power'):
+        stat_txt = stat_txt.lower()
+    return f"{elec} {BAND_ADJ.get(band, band)} {stat_txt}"
+
+
 def run(run_dir, params):
     json_file = run_dir / "features" / "best_features_ranking.json"
     if not json_file.exists():
@@ -51,7 +83,7 @@ def run(run_dir, params):
     top_n = 30
     ranking = ranking_full[:top_n]
     
-    names = [r['name'].replace('_', ' ') for r in ranking]
+    names = [feature_label(r['name']) for r in ranking]
     ds = [abs(r['d']) for r in ranking]
     
     viz_dir = run_dir / "viz"
@@ -86,7 +118,7 @@ def run(run_dir, params):
     df = pd.DataFrame(parsed)
     
     # Extract frequencies from config for labeling
-    freq_map = {name: f"{name} ({low}-{high} Hz)" for name, low, high in config.FREQUENCY_BANDS}
+    freq_map = {name: f"{BAND_NOUN.get(name, name)} ({low}-{high} Hz)" for name, low, high in config.FREQUENCY_BANDS}
     freq_map['raw'] = 'raw (Broadband)'
     
     # Enforce logical band ordering
@@ -98,7 +130,7 @@ def run(run_dir, params):
     fig, ax = plt.subplots(figsize=(16, 9))
     sns.barplot(data=df, x='Band', y='d', order=bands_present, errorbar=None, color='#3498db', ax=ax)
     if ei_d > 0:
-        ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'Standard EI Baseline (|d|={ei_d:.3f})')
+        ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'EI (|d| = {ei_d:.3f})')
         ax.legend()
     ax.set_xticklabels(band_labels, rotation=45, ha='right')
     ax.grid(True, axis='y', linestyle='--', alpha=0.6)
@@ -120,7 +152,7 @@ def run(run_dir, params):
     fig, ax = plt.subplots(figsize=(11, 7))
     sns.barplot(data=df, x='Electrode', y='d', order=elecs_present, errorbar=None, color='#8e44ad', ax=ax)
     if ei_d > 0:
-        ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'Standard EI Baseline (|d|={ei_d:.3f})')
+        ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'EI (|d| = {ei_d:.3f})')
         ax.legend()
     ax.grid(True, axis='y', linestyle='--', alpha=0.6)
     viz_style.style_axes(
@@ -138,9 +170,9 @@ def run(run_dir, params):
     fig, ax = plt.subplots(figsize=(16, 9))
     sns.barplot(data=df, x='Stat', y='d', order=stat_order, errorbar=None, color='#2ecc71', ax=ax)
     if ei_d > 0:
-        ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'Standard EI Baseline (|d|={ei_d:.3f})')
+        ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'EI (|d| = {ei_d:.3f})')
         ax.legend()
-    ax.set_xticklabels(stat_order, rotation=45, ha='right')
+    ax.set_xticklabels([STAT_LABEL.get(s, s) for s in stat_order], rotation=45, ha='right')
     ax.grid(True, axis='y', linestyle='--', alpha=0.6)
     viz_style.style_axes(
         ax, viz_style.FONT_2X,
@@ -161,7 +193,7 @@ def run(run_dir, params):
                   dodge=True, markers=['o','s','D','^'], linestyles=['-','--','-.',':'], palette='Set1',
                   seed=0, ax=ax)
     if ei_d > 0:
-        ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'Standard EI Baseline (|d|={ei_d:.3f})')
+        ax.axhline(ei_d, color='red', linestyle='--', linewidth=2, label=f'EI (|d| = {ei_d:.3f})')
     ax.set_xticklabels(band_labels, rotation=45, ha='right')
     ax.grid(True, axis='both', linestyle='--', alpha=0.6)
     # Legend sits inside the axes so the figure stays compact; extra headroom is

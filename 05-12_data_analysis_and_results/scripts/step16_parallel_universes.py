@@ -108,7 +108,12 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
         seed_test_accs = []
         seed_train_accs = []
         seed_test_ns = []
-        
+        # Confusion matrices are summed per participant only. (They used to be
+        # created once via `not in locals()` and never reset, so each participant's
+        # matrix silently included every earlier participant, fold and seed.)
+        seed_test_cms, seed_train_cms = [], []
+        seed_dummy_test_cms, seed_dummy_train_cms = [], []
+
         for seed in seeds:
             splits = sd['splits'].get(seed, [])
             fold_test_recalls = []
@@ -118,7 +123,9 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
             fold_test_accs = []
             fold_train_accs = []
             fold_test_ns = []
-            
+            fold_test_cms, fold_train_cms = [], []
+            fold_dummy_test_cms, fold_dummy_train_cms = [], []
+
             for fi in splits:
                 tri = [wid_to_idx[w] for w in fi['train_ids'] if w in wid_to_idx]
                 tei = [wid_to_idx[w] for w in fi['test_ids'] if w in wid_to_idx]
@@ -157,10 +164,6 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
                 fold_test_ns.append(len(y_te))
                 
                 # Add confusion matrices
-                if 'fold_test_cms' not in locals():
-                    fold_test_cms, fold_train_cms = [], []
-                    fold_dummy_test_cms, fold_dummy_train_cms = [], []
-                    
                 fold_test_cms.append(confusion_matrix(y_te, y_pred_te, labels=[0, 1]))
                 fold_train_cms.append(confusion_matrix(y_tr, y_pred_tr, labels=[0, 1]))
                 
@@ -181,11 +184,7 @@ def evaluate_intra(run_dir, universe_dir, model_type, seeds):
                 seed_test_accs.append(np.mean(fold_test_accs))
                 seed_train_accs.append(np.mean(fold_train_accs))
                 seed_test_ns.append(np.sum(fold_test_ns))
-                
-                if 'seed_test_cms' not in locals():
-                    seed_test_cms, seed_train_cms = [], []
-                    seed_dummy_test_cms, seed_dummy_train_cms = [], []
-                    
+
                 seed_test_cms.append(np.sum(fold_test_cms, axis=0))
                 seed_train_cms.append(np.sum(fold_train_cms, axis=0))
                 seed_dummy_test_cms.append(np.sum(fold_dummy_test_cms, axis=0))

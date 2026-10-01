@@ -7,6 +7,7 @@ import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 import viz_style
+from viz17_feature_ranking import BAND_NOUN, STAT_LABEL, feature_label
 
 def run(run_dir, params):
     json_file = run_dir / "features" / "best_features_ranking.json"
@@ -73,9 +74,9 @@ def run(run_dir, params):
         else:
             selected[name]['labels'].append(category_label)
             
-    add_feature(rep_band, f"Top Band ({top_band})")
+    add_feature(rep_band, f"Top Band ({BAND_NOUN.get(top_band, top_band)})")
     add_feature(rep_elec, f"Top Electrode ({top_elec})")
-    add_feature(rep_stat, f"Top Statistic ({top_stat})")
+    add_feature(rep_stat, f"Top Statistic ({STAT_LABEL.get(top_stat, top_stat)})")
     add_feature(rep_top1, "Overall Top Feature #1")
     add_feature(rep_top2, "Overall Top Feature #2")
     
@@ -90,7 +91,7 @@ def run(run_dir, params):
     # Sort for plotting (lowest d at bottom). Each category label goes on its own
     # line so the annotation can sit inside the bar instead of running off to the right.
     plot_data = sorted([(k, v['d'], "\n".join(v['labels'])) for k,v in selected.items()], key=lambda x: x[1])
-    y_labels = [p[0].replace('_', ' ') for p in plot_data]
+    y_labels = [feature_label(p[0]) for p in plot_data]
     d_vals = [p[1] for p in plot_data]
     annotations = [p[2] for p in plot_data]
 

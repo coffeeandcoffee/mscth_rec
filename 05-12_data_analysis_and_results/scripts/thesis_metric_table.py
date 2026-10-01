@@ -131,6 +131,6 @@ def legend_sentence(ref_short):
     """Shared caption tail that explains the colours."""
     return (f"Performance is the mean over the 25 participants. \\(\\Delta\\): compared model minus "
             f"{ref_short}, in percentage points (pp). Significance test: two-sided "
-            f"Wilcoxon signed-rank test against {ref_short} ($\\alpha=0.05$, $n=25$, uncorrected). "
+            f"Wilcoxon signed-rank test against {ref_short} (significance level 0.05, $n=25$, uncorrected). "
             f"Green cells: significantly higher than {ref_short}; red values: significantly lower; "
             f"gray row: not significant.")

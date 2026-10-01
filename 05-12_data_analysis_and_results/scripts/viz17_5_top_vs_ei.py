@@ -253,9 +253,9 @@ def run(run_dir, params):
         }.get(feat_name, feat_name.replace('_', ' '))
         tex = tmt.render(
             tex_rows, scale.lower(),
-            ref_header=("Engagement Index", "logistic regression"),
+            ref_header=("EI model", "logistic regression"),
             model_header=(pretty, "top feature, logistic regression"),
-            sig_comment=r"top feature vs.\newline Engagement Index",
+            sig_comment=r"top feature vs.\newline EI model",
             caption=(f"Top-feature model ({pretty}) versus EI model, {scale.lower()}-subject setting. "
                      "Both models are logistic regressions with one input. "
                      + tmt.legend_sentence("the EI model")),

@@ -61,7 +61,7 @@ tex_lines.extend([
     "\\bottomrule",
     "\\end{tabular}",
     "}",
-    "\\caption{Participant demographics and pre-session survey responses. SFV = Short-Form Video. P16, P19, and P29 were excluded from the final analysis.}",
+    "\\caption{Participant demographics and pre-session survey responses. Sex: F = female, M = male. Daily SFV use: daily use of short-form video (SFV), in minutes (min) or hours (h). Sleep (h): hours of sleep in the night before the session. P16, P19, and P29 were excluded from the final analysis.}",
     "\\label{tab:participant_demographics}",
     "\\end{table}"
 ])

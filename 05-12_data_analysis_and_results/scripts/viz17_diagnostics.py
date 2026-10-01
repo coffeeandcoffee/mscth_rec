@@ -283,8 +283,8 @@ def generate_diagnostics(scale, df_scale, best_configs, viz_dir):
         tex = tmt.render(
             tex_rows, scale.lower(),
             ref_header=("Baseline", r"coin flip, \(\sim\)50\%"),
-            model_header=("Engagement Index", "logistic regression"),
-            sig_comment=r"Engagement Index\newline vs.\ baseline",
+            model_header=("EI model", "logistic regression"),
+            sig_comment=r"EI model\newline vs.\ baseline",
             caption=(f"EI model versus coin-flip baseline, {scale.lower()}-subject setting. "
                      + tmt.legend_sentence("the coin-flip baseline")),
             label="tab:metrics_1_" + scale.lower())
@@ -758,7 +758,7 @@ def export_significance_heatmap(scale, models, viz_dir, pids=None):
     sns.heatmap(diff_matrix.T, annot=True, fmt=".1f", cmap="RdYlGn", center=0,
                 yticklabels=_participant_labels(pids, n_participants),
                 xticklabels=[m.replace('Test ', '') for m in metrics],
-                cbar_kws={'label': 'Difference vs Coin Flip (%)'},
+                cbar_kws={'label': 'Difference vs coin-flip baseline (pp)'},
                 annot_kws={'size': viz_style.FONT_2X},
                 linewidths=0.5, ax=ax)
 
@@ -768,7 +768,7 @@ def export_significance_heatmap(scale, models, viz_dir, pids=None):
 
     viz_style.style_axes(
         ax, viz_style.FONT_2X,
-        title=f"F1-Test Difference per Participant: EI LR minus Coin Flip ({scale})\n(Green = EI LR higher; no significance test)",
+        title=f"F1-test Difference per Participant: EI Model minus Coin-Flip Baseline\n({scale.lower()}-subject setting; green = EI model higher; no significance test)",
         xlabel='Performance Metric',
         ylabel='Participant ID',
     )

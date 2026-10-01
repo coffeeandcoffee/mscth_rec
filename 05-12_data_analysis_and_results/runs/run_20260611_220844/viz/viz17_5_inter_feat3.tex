@@ -13,8 +13,8 @@
 \vspace{3pt}
 \begin{tabularx}{\textwidth}{c l >{\centering\arraybackslash}p{2.5cm} >{\centering\arraybackslash}X >{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{2.95cm}}
 \arrayrulecolor{black}\hline
-\multicolumn{2}{l}{\footnotesize\textbf{Metric}} & {\footnotesize\textbf{Engagement Index}} & {\footnotesize\textbf{TP10 raw standard deviation}} & {\footnotesize\textbf{\(\Delta\)\,[pp]}} & {\footnotesize\textbf{Significance test}} \\
-\multicolumn{2}{l}{{\scriptsize\textcolor{headGray}{\textbf{Note}}}} & {\scriptsize\textcolor{headGray}{logistic regression}} & {\scriptsize\textcolor{headGray}{top feature, logistic regression}} &  & {\scriptsize\textcolor{headGray}{top feature vs.\newline Engagement Index}} \\
+\multicolumn{2}{l}{\footnotesize\textbf{Metric}} & {\footnotesize\textbf{EI model}} & {\footnotesize\textbf{TP10 raw standard deviation}} & {\footnotesize\textbf{\(\Delta\)\,[pp]}} & {\footnotesize\textbf{Significance test}} \\
+\multicolumn{2}{l}{{\scriptsize\textcolor{headGray}{\textbf{Note}}}} & {\scriptsize\textcolor{headGray}{logistic regression}} & {\scriptsize\textcolor{headGray}{top feature, logistic regression}} &  & {\scriptsize\textcolor{headGray}{top feature vs.\newline EI model}} \\
 \hline
 \cellcolor{classBox} & F\(_1\)-train & 62.0\% & \textcolor{sigLower}{\textbf{49.6\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)12.4}} & {\footnotesize significantly lower} \\
 \arrayrulecolor{ruleGray}\cline{2-6}
@@ -33,6 +33,6 @@
 \cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{SKIP}}} & Recall & 9.6\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{50.8\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+41.2}} & {\footnotesize significantly higher} \\
 \arrayrulecolor{black}\hline
 \end{tabularx}
-\caption{Top-feature model (TP10 raw standard deviation) versus EI model, inter-subject setting. Both models are logistic regressions with one input. Performance is the mean over the 25 participants. \(\Delta\): compared model minus the EI model, in percentage points (pp). Significance test: two-sided Wilcoxon signed-rank test against the EI model ($\alpha=0.05$, $n=25$, uncorrected). Green cells: significantly higher than the EI model; red values: significantly lower; gray row: not significant.}
+\caption{Top-feature model (TP10 raw standard deviation) versus EI model, inter-subject setting. Both models are logistic regressions with one input. Performance is the mean over the 25 participants. \(\Delta\): compared model minus the EI model, in percentage points (pp). Significance test: two-sided Wilcoxon signed-rank test against the EI model (significance level 0.05, $n=25$, uncorrected). Green cells: significantly higher than the EI model; red values: significantly lower; gray row: not significant.}
 \label{tab:metrics_5_inter_3}
 \end{table}

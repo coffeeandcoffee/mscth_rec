@@ -59,33 +59,67 @@ LOTHAR:     Ansonsten liest sich das, was ich gelesen habe, sehr gut und auch di
 CATRINEL:   Für die Einführung, denke da fehlen noch Theorie Dinge wie z.B. wie kann man deine Studie in die Health communication Literatur integrieren? Wie bist du genau zu deine Forschungsziele und Forschungsfrage gekommen, was war die Forschungslücke, das ist noch nicht ganz klar dargestellt. Auch wie definiert du eigentlich Engagement in diesen health promotion(public healthcommunication Kontext? So eine Definition sollte auch schon im Einführungsteil auftauchen, weil sonst es gibt viele mögliche Definitionen von Engagement. 
 CATRINEL:   Ich finde, die Arbeit liest sich gut. Ich mochte besonders den Empfehlungen Teil und auch den plain langaugae summary.
 
+- precedent done, & but common word analysis
+
+- read full 5x and make notes -> different passes:
+    1. first occurance definition after abbrivation
+    2. consistency of words
+    3. consistency of sense
+    4. baby langaugae
+    7. summary after each chapetr of main takeaways (conclusion)
+    9. Claudism: disrespect to reader: backreferences (marked, extend!), and word/concept rementions far away
+    10. Claudism: disrespect to reader: overabstraction and THIS NOT THAT 
+    11. Claudism: spot any dashes and replace
+    8. word/concept and term consistency (pattern recognition essential)
+
+- instead of experimenter, "experiment lead"
+- format ch 3.5 universal recording pipeline git path exceeds page!
+- TEST/APPLICABLE: common language nicht so do tnis do that sondern wissenschaftliche dinge in common language
+
 ========
 ==TODO==
 ========
 
 PAPA
 - ch 1&2 verschlanken
-- precedent done, & but common word analysis
+- know every word analysis?
 - read full 5x and make notes -> different passes:
-    1. first occurance definition after abbrivation
-    2. consistency of words
-    3. consistency of sense
-    4. baby langaugae
-    5. rigorous bs cut
+    5. rigorous bs cut ch2 ?
     6. one last run through all PAPA comments
-    7. summary after each chapetr of main takeaways (conclusion)
-    8. word/concept and term consistency (pattern recognition essential)
-    9. Claudism: disrespect to reader: backreferences (marked, extend!), and word/concept rementions far away
-    10. Claudism: disrespect to reader: overabstraction and THIS NOT THAT 
-    11. Claudism: spot any dashes and replace
-- instead of experimenter, "experiment lead"
+
+format:
 - F 3.4 3.5 full page format because text too small.
-- format ch 3.5 universal recording pipeline git path exceeds page!
 - Fig 4.4 in 4.4.1 first picture, how big is error there??
+- table 3.1 "last nights sleep" clarification -> in fig description
+- in sec 3.3 after "experiment lead" in bracklets use that ibstead of "author"
+- blue stay period must be marked in Fig 3.7, 3.8 & 3.9
+- make the line of a skip and stay window double as thick and make one window be surrounded by a thin black line framing that window so when they are next to each other they dont just look like one continuous line (Fig 3.7, 3.8 & 3.9)
+- check this reference is right.. and dynamic! "..§2.4.2]. The stride, the st.:"
+- in ch 3.6.3: "No window takes data from a pre-swipe gap or a post-swipe gap, except SKIP windows in bursts (Section 3.4.2)." should add after "and is as a limitation of this study passed on to future research for impact on results."
+- Fig 3.12 should make clear "Share of samples flagged by the described artifact check of total recording per participant,..."
+- after last sentence in 3.6.2 "At AF7 and AF8, however, the artifact check looks only for blinks." we need to say explicitely that artifact removal was not activated in this analysis, and no window was removed when it was flagged as an artifact by the artifact check, because firstly artifact check is not confident enough based in existing literature as its outside scope of this thesis and activation and optimization is therefore left to future research. and second the goal of this thesis is also to start the investigation of the research questions with as little assumptions an dfilters as possible that are not absolutely nessecary to understand the full data first. (idk makes sense to say that?)
+- for Fig 4.7 what does "Error bars represent bootstrapped 95% confidence intervals." refer to? i dont see error intervals there. arent they ommitted and it should say so in description= or am i mistaken?
+- 4.4.2 i dont get this scentence explain to me "The p-values are uncorrected across 64 tests, so a green value is an exploratory finding (Section 3.8.4)." and check if correcrt !
+- question from my side: Table 4.7 stay recall has a delte +1.7 and stay precision a delta of +0.8 and precision is statistically significant but recall even though delta is higher is not. why?
+- a limitation must be added that while per participant the classes were balanced, the contribution of each participant to the pool was not evened out, so participants that carry more data contribute more to the pool of data which makes it uneven for cross participant or not? answer me this first pls. for cohend and for the log reg models.
+- is in discussion "and Miller and Cohen note that the prefrontal cortex is not critical for simple, automatic behaviours" really cohen true? or shal we delete him?
+
+- 3.7.3 explanation of how we get to the feature value but stops at the sample level. the reader asks themselves 'so what is that one number now exactly for one electrode of one band of that one statistic for one window i was promised? theres a gap something missing from the explanation!' -> this should be the case for every stat, properly until the one value per window explained so reader understands it fully; and PLUS what is the max and min value for that stat and whats the value when its equal to baseline. for each stat!!
+- justification for feature selection should be clear, ideally from literature! needs to map directly to research question and maximizing the success in answering it! - such as done in 3.7.5 in the beginning thats good!
+push git
+- ch4 intro should mention 4.7 asban additional point right? saying that it answers the research questions in a summary.
+- methods is also missing such an overview in ch3 before 3.1
+
+cover this:
 - warum inter were of EI niedriger than intra for SKIP of TP10? (is that covered?)
 - "two independent muse S" in ch 4.5.1 -> warum wurde diese fehlerquelle nichtn ausgesvhlossen? um zu laden, operational.
-- TEST/APPLICABLE: common language nicht so do tnis do that sondern wissenschaftliche dinge in common language
 
+last checks:
+- that Figure 3.18 and no other overlaps with footer!
+
+--- FUTURE? ---
+-> where do bursts contaminate each others skip wit what should be excluded? (pre and post gaps) -> simple exclusion of any window that touches any gap regardless if in burst or not!
+-> how does EI verlauf look like over the course of a video? from 0% to 100% of the video, without excluding any windows, and with each video stretched to that size? and then also without stretching so it shows absolute length? but with start times aligned?
 
 
 BERT

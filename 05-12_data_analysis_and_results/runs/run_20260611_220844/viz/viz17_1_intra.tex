@@ -13,26 +13,26 @@
 \vspace{3pt}
 \begin{tabularx}{\textwidth}{c l >{\centering\arraybackslash}p{2.5cm} >{\centering\arraybackslash}X >{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{2.95cm}}
 \arrayrulecolor{black}\hline
-\multicolumn{2}{l}{\footnotesize\textbf{Metric}} & {\footnotesize\textbf{Baseline}} & {\footnotesize\textbf{Engagement Index}} & {\footnotesize\textbf{\(\Delta\)\,[pp]}} & {\footnotesize\textbf{Significance test}} \\
-\multicolumn{2}{l}{{\scriptsize\textcolor{headGray}{\textbf{Note}}}} & {\scriptsize\textcolor{headGray}{coin flip, \(\sim\)50\%}} & {\scriptsize\textcolor{headGray}{logistic regression}} &  & {\scriptsize\textcolor{headGray}{Engagement Index\newline vs.\ baseline}} \\
+\multicolumn{2}{l}{\footnotesize\textbf{Metric}} & {\footnotesize\textbf{Baseline}} & {\footnotesize\textbf{EI model}} & {\footnotesize\textbf{\(\Delta\)\,[pp]}} & {\footnotesize\textbf{Significance test}} \\
+\multicolumn{2}{l}{{\scriptsize\textcolor{headGray}{\textbf{Note}}}} & {\scriptsize\textcolor{headGray}{coin flip, \(\sim\)50\%}} & {\scriptsize\textcolor{headGray}{logistic regression}} &  & {\scriptsize\textcolor{headGray}{EI model\newline vs.\ baseline}} \\
 \hline
-\cellcolor{classBox} & F\(_1\)-train & 50.6\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{53.8\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+3.2}} & {\footnotesize significantly higher} \\
+\cellcolor{classBox} & \textcolor{nsGray}{F\(_1\)-train} & \textcolor{nsGray}{50.6\%} & \textcolor{nsGray}{51.0\%} & \textcolor{nsGray}{+0.4} & {\footnotesize\textcolor{nsGray}{not significant}} \\
 \arrayrulecolor{ruleGray}\cline{2-6}
-\cellcolor{classBox} & F\(_1\)-test & 52.4\% & \textcolor{sigLower}{\textbf{50.9\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)1.5}} & {\footnotesize significantly lower} \\
+\cellcolor{classBox} & \textcolor{nsGray}{F\(_1\)-test} & \textcolor{nsGray}{52.2\%} & \textcolor{nsGray}{47.5\%} & \textcolor{nsGray}{\(-\)4.7} & {\footnotesize\textcolor{nsGray}{not significant}} \\
 \arrayrulecolor{ruleGray}\cline{2-6}
-\cellcolor{classBox} & Precision & 50.1\% & \textcolor{sigLower}{\textbf{49.1\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)1.0}} & {\footnotesize significantly lower} \\
+\cellcolor{classBox} & \textcolor{nsGray}{Precision} & \textcolor{nsGray}{50.1\%} & \textcolor{nsGray}{50.6\%} & \textcolor{nsGray}{+0.5} & {\footnotesize\textcolor{nsGray}{not significant}} \\
 \arrayrulecolor{ruleGray}\cline{2-6}
-\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{STAY}}} & Recall & 55.0\% & \textcolor{sigLower}{\textbf{52.9\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)2.1}} & {\footnotesize significantly lower} \\
+\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{STAY}}} & \textcolor{nsGray}{Recall} & \textcolor{nsGray}{54.5\%} & \textcolor{nsGray}{48.2\%} & \textcolor{nsGray}{\(-\)6.3} & {\footnotesize\textcolor{nsGray}{not significant}} \\
 \arrayrulecolor{black}\hline
-\cellcolor{classBox} & \textcolor{nsGray}{F\(_1\)-train} & \textcolor{nsGray}{49.4\%} & \textcolor{nsGray}{49.6\%} & \textcolor{nsGray}{+0.2} & {\footnotesize\textcolor{nsGray}{not significant}} \\
+\cellcolor{classBox} & F\(_1\)-train & 49.5\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{51.5\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+2.0}} & {\footnotesize significantly higher} \\
 \arrayrulecolor{ruleGray}\cline{2-6}
-\cellcolor{classBox} & \textcolor{nsGray}{F\(_1\)-test} & \textcolor{nsGray}{47.5\%} & \textcolor{nsGray}{46.9\%} & \textcolor{nsGray}{\(-\)0.6} & {\footnotesize\textcolor{nsGray}{not significant}} \\
+\cellcolor{classBox} & \textcolor{nsGray}{F\(_1\)-test} & \textcolor{nsGray}{47.8\%} & \textcolor{nsGray}{49.5\%} & \textcolor{nsGray}{+1.7} & {\footnotesize\textcolor{nsGray}{not significant}} \\
 \arrayrulecolor{ruleGray}\cline{2-6}
-\cellcolor{classBox} & Precision & 50.1\% & \textcolor{sigLower}{\textbf{48.9\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)1.2}} & {\footnotesize significantly lower} \\
+\cellcolor{classBox} & \textcolor{nsGray}{Precision} & \textcolor{nsGray}{50.1\%} & \textcolor{nsGray}{49.9\%} & \textcolor{nsGray}{\(-\)0.2} & {\footnotesize\textcolor{nsGray}{not significant}} \\
 \arrayrulecolor{ruleGray}\cline{2-6}
-\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{SKIP}}} & \textcolor{nsGray}{Recall} & \textcolor{nsGray}{45.2\%} & \textcolor{nsGray}{45.1\%} & \textcolor{nsGray}{\(-\)0.1} & {\footnotesize\textcolor{nsGray}{not significant}} \\
+\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{SKIP}}} & \textcolor{nsGray}{Recall} & \textcolor{nsGray}{45.7\%} & \textcolor{nsGray}{51.9\%} & \textcolor{nsGray}{+6.2} & {\footnotesize\textcolor{nsGray}{not significant}} \\
 \arrayrulecolor{black}\hline
 \end{tabularx}
-\caption{EI model versus coin-flip baseline, intra-subject setting. Performance is the mean over the 25 participants. \(\Delta\): compared model minus the coin-flip baseline, in percentage points (pp). Significance test: two-sided Wilcoxon signed-rank test against the coin-flip baseline ($\alpha=0.05$, $n=25$, uncorrected). Green cells: significantly higher than the coin-flip baseline; red values: significantly lower; gray row: not significant.}
+\caption{EI model versus coin-flip baseline, intra-subject setting. Performance is the mean over the 25 participants. \(\Delta\): compared model minus the coin-flip baseline, in percentage points (pp). Significance test: two-sided Wilcoxon signed-rank test against the coin-flip baseline (significance level 0.05, $n=25$, uncorrected). Green cells: significantly higher than the coin-flip baseline; red values: significantly lower; gray row: not significant.}
 \label{tab:metrics_1_intra}
 \end{table}

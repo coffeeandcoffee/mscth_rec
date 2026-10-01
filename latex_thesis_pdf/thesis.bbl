@@ -48,15 +48,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Globally, {TikTok} is now the fastest growing social media platform among children and young people; but it remains surprisingly under-researched in psychology and psychiatry. This is despite the fact that social media platforms have been subject to intense academic and societal scrutiny regarding their potentially adverse effects on youth mental health and wellbeing, notwithstanding the inconsistent findings across the literature. In this two part study, we conducted a systematic review concerning studies that have examined {TikTok} for any public health or mental health purpose; and a follow-up content analysis of {TikTok} within an Irish context. For study 1, a predetermined search strategy covering representative public and mental health terminology was applied to six databases – {PSYCINFO}, Google Scholar, {PUBMED}, Wiley, Journal of Medical Internet Research, {ACM} – within the period 2016 to 2021. Included studies were limited to English-speaking publications of any design where {TikTok} was the primary focus of the study. The quality appraisal tool by Dunne et al., (2018) was applied to all included studies. For study 2, we replicated our search strategy from study 1, and converted this terminology to {TikTok} hashtags to search within {TikTok} in combination with Irish-specific hashtags. As quantified by the app, the top two “most liked” videos were selected for inclusion across the following three targeted groups: official public health accounts; registered Irish charities; and personal {TikTok} creators. A full descriptive analysis was applied in both studies. Study 1 found 24 studies that covered a range of public and mental health issues: {COVID}-19 (n = 10), dermatology (n = 7), eating disorders (n = 1), cancer (n = 1), tics (n = 1), radiology (n = 1), sexual health (n = 1), {DNA} (n = 1), and public health promotion (n = 1). Studies were predominately from the {USA}, applied a content analysis design, and were of acceptable quality overall. In study 2, 29 Irish {TikTok} accounts were analysed, including the accounts of public health authorities (n = 2), charity or non-profit (n = 5), and personal {TikTok} creators (n = 22). The overall engagement data from these accounts represented a significant outreach to younger populations: total likes n = 2,588,181; total comments n = 13,775; and total shares n = 21,254. {TikTok} has been utilised for a range of public health purposes, but remains poorly engaged by institutional accounts. The various mechanisms for connecting with younger audiences presents a unique opportunity for youth mental health practitioners to consider, yet there were distinct differences in how {TikTok} accounts used platform features to interact. Overall, there is an absence of high quality mixed methodological evaluations of {TikTok} content for public and mental health, despite it being the most used platform for children and young people.}
-      \field{day}{1}
       \field{issn}{14617021}
       \field{journaltitle}{Clinical Child Psychology and Psychiatry}
-      \field{month}{1}
       \field{number}{1}
       \field{title}{Using {TikTok} for public and youth mental health – A systematic review and content analysis}
       \field{volume}{28}
-      \field{year}{2023}
-      \field{dateera}{ce}
       \field{pages}{279\bibrangedash 306}
       \range{pages}{28}
       \verb{doi}
@@ -66,6 +62,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/E66DL99Q/mccashin-murphy-2022-using-tiktok-for-public-and-youth-mental-health-a-systematic-review-and-content-analysis.pdf:application/pdf
       \endverb
       \keyw{scope:{StateOfArt},{TikTok},scope:Motivation,*,★★,children,Mental Health,psychology,Public Health,qualitative,Review,tiktok}
+      \warn{\item article entry 'mccashin_using_2023' (library.bib): Invalid format '2023-01-01' of date field 'date' - ignoring}
     \endentry
     \entry{baughan_i_2022}{inproceedings}{}{}
       \name{author}{7}{}{%
@@ -125,19 +122,11 @@
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Many people have experienced mindlessly scrolling on social media. We investigated these experiences through the lens of normative dissociation: total cognitive absorption, characterized by diminished self-awareness and reduced sense of agency. To explore user experiences of normative dissociation and how design afects the likelihood of normative dissociation, we deployed Chirp, a custom Twitter client, to 43 U.S. participants. Experience sampling and interviews revealed that sometimes, becoming absorbed in normative dissociation on social media felt like a benefcial break. However, people also reported passively slipping into normative dissociation, such that they failed to absorb any content and were left feeling like they had wasted their time. We found that designed interventions–including custom lists, reading history labels, time limit dialogs, and usage statistics–reduced normative dissociation. Our fndings demonstrate that interaction designs intended to capture attention likely do so by harnessing people’s natural inclination to seek normative dissociation experiences. This suggests that normative dissociation may be a more productive framing than addiction for discussing social media overuse.}
       \field{booktitle}{{CHI} Conference on Human Factors in Computing Systems}
-      \field{day}{27}
       \field{eventtitle}{{CHI} '22: {CHI} Conference on Human Factors in Computing Systems}
       \field{isbn}{978-1-4503-9157-3}
       \field{langid}{english}
-      \field{month}{4}
       \field{shorttitle}{“I Don’t Even Remember What I Read”}
       \field{title}{“I Don’t Even Remember What I Read”: How Design Influences Dissociation on Social Media}
-      \field{urlday}{1}
-      \field{urlmonth}{5}
-      \field{urlyear}{2026}
-      \field{year}{2022}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{1\bibrangedash 13}
       \range{pages}{13}
       \verb{doi}
@@ -152,6 +141,8 @@
       \verb{url}
       \verb https://dl.acm.org/doi/10.1145/3491102.3501899
       \endverb
+      \warn{\item inproceedings entry 'baughan_i_2022' (library.bib): Invalid format '2026-05-01' of date field 'urldate' - ignoring}
+      \warn{\item inproceedings entry 'baughan_i_2022' (library.bib): Invalid format '2022-04-27' of date field 'date' - ignoring}
     \endentry
     \entry{knierim_flow_2026}{inproceedings}{}{}
       \name{author}{7}{}{%
@@ -211,19 +202,11 @@
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Researchers often attribute social media’s appeal to its ability to elicit flow experiences of deep absorption and effortless engagement. Yet prolonged use has also been linked to distraction, fatigue, and lower mood. This paradox remains poorly understood, in part because prior studies rely on habitual or one-shot reports that ask participants to directly attribute flow to social media. To address this gap, we conducted a five-day field study with 40 participants, combining objective smartphone app tracking with daily reconstructions of flow-inducing activities. Across 673 reported flow occurrences, participants rarely associated flow with social media (2\%). Instead, heavier social media use predicted fewer daily flow occurrences. We further examine this relationship through the effects of social media use on fatigue, mood, and motivation. Altogether, our findings suggest that flow and social media may not align as closely as assumed - and might even compete - underscoring the need for further research.}
       \field{booktitle}{Proceedings of the 2026 {CHI} Conference on Human Factors in Computing Systems}
-      \field{day}{13}
       \field{eventtitle}{{CHI} 2026: {CHI} Conference on Human Factors in Computing Systems}
       \field{isbn}{979-8-4007-2278-3}
       \field{langid}{english}
-      \field{month}{4}
       \field{shorttitle}{Flow on Social Media?}
       \field{title}{Flow on Social Media? Rarer Than You'd Think}
-      \field{urlday}{1}
-      \field{urlmonth}{5}
-      \field{urlyear}{2026}
-      \field{year}{2026}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{1\bibrangedash 14}
       \range{pages}{14}
       \verb{doi}
@@ -239,6 +222,8 @@
       \verb https://dl.acm.org/doi/10.1145/3772318.3791800
       \endverb
       \keyw{★★★★★}
+      \warn{\item inproceedings entry 'knierim_flow_2026' (library.bib): Invalid format '2026-05-01' of date field 'urldate' - ignoring}
+      \warn{\item inproceedings entry 'knierim_flow_2026' (library.bib): Invalid format '2026-04-13' of date field 'date' - ignoring}
     \endentry
     \entry{pope_biocybernetic_1995-3}{article}{}{}
       \name{author}{3}{}{%
@@ -274,17 +259,10 @@
       \field{issn}{03010511}
       \field{journaltitle}{Biological Psychology}
       \field{langid}{english}
-      \field{month}{5}
       \field{number}{1}
       \field{shortjournal}{Biological Psychology}
       \field{title}{Biocybernetic system evaluates indices of operator engagement in automated task}
-      \field{urlday}{30}
-      \field{urlmonth}{4}
-      \field{urlyear}{2026}
       \field{volume}{40}
-      \field{year}{1995}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{187\bibrangedash 195}
       \range{pages}{9}
       \verb{doi}
@@ -300,6 +278,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/0301051195051163
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'pope_biocybernetic_1995-3' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'pope_biocybernetic_1995-3' (library.bib): Invalid format '1995-05' of date field 'date' - ignoring}
     \endentry
     \entry{tong_brain_2020}{article}{}{}
       \name{author}{5}{}{%
@@ -342,21 +322,13 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The growth of the internet has spawned new “attention markets,” in which people devote increasing amounts of time to consuming online content, but the neurobehavioral mechanisms that drive engagement in these markets have yet to be elucidated. We used functional {MRI} ({FMRI}) to examine whether individuals’ neural responses to videos could predict their choices to start and stop watching videos as well as whether group brain activity could forecast aggregate video view frequency and duration out of sample on the internet (i.e., on youtube.com ). Brain activity during video onset predicted individual choice in several regions (i.e., increased activity in the nucleus accumbens [{NAcc}] and medial prefrontal cortex [{MPFC}] as well as decreased activity in the anterior insula [{AIns}]). Group activity during video onset in only a subset of these regions, however, forecasted both aggregate view frequency and duration (i.e., increased {NAcc} and decreased {AIns})—and did so above and beyond conventional measures. These findings extend neuroforecasting theory and tools by revealing that activity in brain regions implicated in anticipatory affect at the onset of video viewing (but not initial choice) can forecast time allocation out of sample in an internet attention market.}
-      \field{day}{24}
       \field{issn}{0027-8424, 1091-6490}
       \field{journaltitle}{Proceedings of the National Academy of Sciences}
       \field{langid}{english}
-      \field{month}{3}
       \field{number}{12}
       \field{shortjournal}{Proc. Natl. Acad. Sci. U.S.A.}
       \field{title}{Brain activity forecasts video engagement in an internet attention market}
-      \field{urlday}{21}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
       \field{volume}{117}
-      \field{year}{2020}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{6936\bibrangedash 6941}
       \range{pages}{6}
       \verb{doi}
@@ -371,6 +343,8 @@
       \verb{url}
       \verb https://pnas.org/doi/full/10.1073/pnas.1905178117
       \endverb
+      \warn{\item article entry 'tong_brain_2020' (library.bib): Invalid format '2025-10-21' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'tong_brain_2020' (library.bib): Invalid format '2020-03-24' of date field 'date' - ignoring}
     \endentry
     \entry{yardley_understanding_2016}{article}{}{}
       \name{author}{9}{}{%
@@ -435,17 +409,10 @@
       \field{issn}{07493797}
       \field{journaltitle}{American Journal of Preventive Medicine}
       \field{langid}{english}
-      \field{month}{11}
       \field{number}{5}
       \field{shortjournal}{American Journal of Preventive Medicine}
       \field{title}{Understanding and Promoting Effective Engagement With Digital Behavior Change Interventions}
-      \field{urlday}{4}
-      \field{urlmonth}{3}
-      \field{urlyear}{2026}
       \field{volume}{51}
-      \field{year}{2016}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{833\bibrangedash 842}
       \range{pages}{10}
       \verb{doi}
@@ -461,6 +428,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S0749379716302434
       \endverb
       \keyw{+}
+      \warn{\item article entry 'yardley_understanding_2016' (library.bib): Invalid format '2026-03-04' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'yardley_understanding_2016' (library.bib): Invalid format '2016-11' of date field 'date' - ignoring}
     \endentry
     \entry{green_role_2000}{article}{}{}
       \name{author}{2}{}{%
@@ -490,17 +459,10 @@
       \field{issn}{1939-1315, 0022-3514}
       \field{journaltitle}{Journal of Personality and Social Psychology}
       \field{langid}{english}
-      \field{month}{11}
       \field{number}{5}
       \field{shortjournal}{Journal of Personality and Social Psychology}
       \field{title}{The role of transportation in the persuasiveness of public narratives.}
-      \field{urlday}{5}
-      \field{urlmonth}{3}
-      \field{urlyear}{2026}
       \field{volume}{79}
-      \field{year}{2000}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{701\bibrangedash 721}
       \range{pages}{21}
       \verb{doi}
@@ -515,6 +477,8 @@
       \verb{url}
       \verb https://doi.apa.org/doi/10.1037/0022-3514.79.5.701
       \endverb
+      \warn{\item article entry 'green_role_2000' (library.bib): Invalid format '2026-03-05' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'green_role_2000' (library.bib): Invalid format '2000-11' of date field 'date' - ignoring}
     \endentry
     \entry{moyer-guse_toward_2008}{article}{}{}
       \name{author}{1}{}{%
@@ -539,17 +503,10 @@
       \field{issn}{10503293, 14682885}
       \field{journaltitle}{Communication Theory}
       \field{langid}{english}
-      \field{month}{8}
       \field{number}{3}
       \field{shorttitle}{Toward a Theory of Entertainment Persuasion}
       \field{title}{Toward a Theory of Entertainment Persuasion: Explaining the Persuasive Effects of Entertainment-Education Messages}
-      \field{urlday}{5}
-      \field{urlmonth}{3}
-      \field{urlyear}{2026}
       \field{volume}{18}
-      \field{year}{2008}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{407\bibrangedash 425}
       \range{pages}{19}
       \verb{doi}
@@ -564,6 +521,8 @@
       \verb{url}
       \verb https://academic.oup.com/ct/article/18/3/407-425/4098715
       \endverb
+      \warn{\item article entry 'moyer-guse_toward_2008' (library.bib): Invalid format '2026-03-05' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'moyer-guse_toward_2008' (library.bib): Invalid format '2008-08' of date field 'date' - ignoring}
     \endentry
     \entry{perski_conceptualising_2017}{article}{}{}
       \name{author}{4}{}{%
@@ -604,18 +563,11 @@
       \field{issn}{1869-6716, 1613-9860}
       \field{journaltitle}{Translational Behavioral Medicine}
       \field{langid}{english}
-      \field{month}{6}
       \field{number}{2}
       \field{shortjournal}{Behav. Med. Pract. Policy Res.}
       \field{shorttitle}{Conceptualising engagement with digital behaviour change interventions}
       \field{title}{Conceptualising engagement with digital behaviour change interventions: a systematic review using principles from critical interpretive synthesis}
-      \field{urlday}{5}
-      \field{urlmonth}{3}
-      \field{urlyear}{2026}
       \field{volume}{7}
-      \field{year}{2017}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{254\bibrangedash 267}
       \range{pages}{14}
       \verb{doi}
@@ -630,6 +582,8 @@
       \verb{url}
       \verb https://academic.oup.com/tbm/article/7/2/254/4563238
       \endverb
+      \warn{\item article entry 'perski_conceptualising_2017' (library.bib): Invalid format '2026-03-05' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'perski_conceptualising_2017' (library.bib): Invalid format '2017-06' of date field 'date' - ignoring}
     \endentry
     \entry{trunfio_conceptualising_2021}{article}{}{}
       \name{author}{2}{}{%
@@ -660,15 +614,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The spread of social media platforms enhanced academic and professional debate on social media engagement that attempted to better understand its theoretical foundations and measurements. This paper aims to systematically contribute to this academic debate by analysing, discussing, and synthesising social media engagement literature in the perspective of social media metrics. Adopting a systematic literature review, the research provides an overarching picture of what has already been investigated and the existing gaps that need further research. The paper confirms the polysemic and multidimensional nature of social media engagement. It identifies the behavioural dimension as the most used proxy for users' level of engagement suggesting the {COBRA} model as a conceptual tool to classify and interpret the construct. Four categories of metrics emerged: quantitative metrics, normalised indexes, set of indexes, qualitative metrics. It also offers insights and guidance to practitioners on modelling and managing social media engagement.}
-      \field{day}{1}
       \field{issn}{26623331}
       \field{journaltitle}{Italian Journal of Marketing}
-      \field{month}{9}
       \field{number}{3}
       \field{title}{Conceptualising and measuring social media engagement: A systematic literature review}
       \field{volume}{2021}
-      \field{year}{2021}
-      \field{dateera}{ce}
       \field{pages}{267\bibrangedash 292}
       \range{pages}{26}
       \verb{doi}
@@ -678,6 +628,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/V6ZWE5XU/E0001_Trunfio,2021 (Conceptualising & measuring social-media engagement review).pdf:application/pdf
       \endverb
       \keyw{{COBRA} model,Customer engagement,Qualitative metrics,Quantitative metrics,Social media engagement,Social media metrics,Social media platforms}
+      \warn{\item article entry 'trunfio_conceptualising_2021' (library.bib): Invalid format '2021-09-01' of date field 'date' - ignoring}
     \endentry
     \entry{obrien_what_2008}{article}{}{}
       \name{author}{2}{}{%
@@ -708,18 +659,11 @@
       \field{issn}{1532-2882, 1532-2890}
       \field{journaltitle}{Journal of the American Society for Information Science and Technology}
       \field{langid}{english}
-      \field{month}{4}
       \field{number}{6}
       \field{shortjournal}{J. Am. Soc. Inf. Sci.}
       \field{shorttitle}{What is user engagement?}
       \field{title}{What is user engagement? A conceptual framework for defining user engagement with technology}
-      \field{urlday}{4}
-      \field{urlmonth}{3}
-      \field{urlyear}{2026}
       \field{volume}{59}
-      \field{year}{2008}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{938\bibrangedash 955}
       \range{pages}{18}
       \verb{doi}
@@ -735,6 +679,8 @@
       \verb https://onlinelibrary.wiley.com/doi/10.1002/asi.20801
       \endverb
       \keyw{+}
+      \warn{\item article entry 'obrien_what_2008' (library.bib): Invalid format '2026-03-04' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'obrien_what_2008' (library.bib): Invalid format '2008-04' of date field 'date' - ignoring}
     \endentry
     \entry{rahman_detection_2025}{article}{}{}
       \name{author}{5}{}{%
@@ -777,19 +723,68 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Short-form Video Addiction ({SVA}), a novel digital addiction of the modern world, proliferates among young adults and is not formally diagnosable. {SVA} detection from resulting bio-signals is crucial to prevent its adverse impacts. Existing formal methods involve large and expensive neuro-imaging devices in laboratory setups that are intrusive and not feasible to use in daily life. A possible non-intrusive solution can be using wearable sensors which is challenging due to the resulting noisy and faint signals. To address this problem, we investigated multi-modal wearable sensing technology to detect {SVA} in a non-intrusive fashion. However, fusing multi-modal sensors effectively presented different challenges due to the presence of signal heterogeneity. In this study, we proposed a novel multimodal temporally coherent domain adaptation method to effectively detect {SVA} using Electroencephalogram ({EEG}) and Electrodermal Activity ({EDA}) sensors. We also investigated the nature and properties of {SVA} with the help of different components of {EEG} and {EDA} signals. We evaluated our proposed method for {SVA} detection and fatigue assessment tasks. Experimental evaluation shown the proposed model's superior performance (10\% accuracy) over state-of-art domain adaptation models.}
-      \field{day}{22}
       \field{journaltitle}{{AMIA} Annual Symposium Proceedings}
       \field{langid}{english}
-      \field{month}{5}
       \field{title}{Detection of Short-Form Video Addiction with Wearable Sensors Via Temporally-Coherent Domain Adaptation}
       \field{volume}{2024}
-      \field{year}{2025}
-      \field{dateera}{ce}
       \field{pages}{940\bibrangedash 949}
       \range{pages}{10}
       \verb{file}
       \verb PDF:/Users/gregorlederer/Zotero/storage/JSV3GIZR/Rahman et al. - 2025 - Detection of Short-Form Video Addiction with Wearable Sensors Via Temporally-Coherent Domain Adaptat.pdf:application/pdf
       \endverb
+      \warn{\item article entry 'rahman_detection_2025' (library.bib): Invalid format '2025-05-22' of date field 'date' - ignoring}
+    \endentry
+    \entry{moontaha_online_2023-1}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=dc0c7c8ee6b10322369f443fa1b3a60b}{%
+           family={Moontaha},
+           familyi={M\bibinitperiod},
+           given={Sidratul},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b7f5ceaaa4e67346334b035fbae422e1}{%
+           family={Schumann},
+           familyi={S\bibinitperiod},
+           given={Franziska\bibnamedelimb Elisabeth\bibnamedelima Friederike},
+           giveni={F\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=b01bc214f1b6015a86573cb3ee725876}{%
+           family={Arnrich},
+           familyi={A\bibinitperiod},
+           given={Bert},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{2ddb233266be6b51575933a9ca17e107}
+      \strng{fullhash}{02403e9daf6a505722222b7b6b030e1b}
+      \strng{fullhashraw}{02403e9daf6a505722222b7b6b030e1b}
+      \strng{bibnamehash}{02403e9daf6a505722222b7b6b030e1b}
+      \strng{authorbibnamehash}{02403e9daf6a505722222b7b6b030e1b}
+      \strng{authornamehash}{2ddb233266be6b51575933a9ca17e107}
+      \strng{authorfullhash}{02403e9daf6a505722222b7b6b030e1b}
+      \strng{authorfullhashraw}{02403e9daf6a505722222b7b6b030e1b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Giving emotional intelligence to machines can facilitate the early detection and prediction of mental diseases and symptoms. Electroencephalography ({EEG})-based emotion recognition is widely applied because it measures electrical correlates directly from the brain rather than indirect measurement of other physiological responses initiated by the brain. Therefore, we used non-invasive and portable {EEG} sensors to develop a real-time emotion classification pipeline. The pipeline trains different binary classifiers for Valence and Arousal dimensions from an incoming {EEG} data stream achieving a 23.9\% (Arousal) and 25.8\% (Valence) higher F1-Score on the state-of-art {AMIGOS} dataset than previous work. Afterward, the pipeline was applied to the curated dataset from 15 participants using two consumer-grade {EEG} devices while watching 16 short emotional videos in a controlled environment. Mean F1-Scores of 87\% (Arousal) and 82\% (Valence) were achieved for an immediate label setting. Additionally, the pipeline proved to be fast enough to achieve predictions in real-time in a live scenario with delayed labels while continuously being updated. The significant discrepancy from the readily available labels on the classification scores leads to future work to include more data. Thereafter, the pipeline is ready to be used for real-time applications of emotion classification.}
+      \field{issn}{1424-8220}
+      \field{journaltitle}{Sensors}
+      \field{langid}{english}
+      \field{number}{5}
+      \field{shortjournal}{Sensors}
+      \field{title}{Online Learning for Wearable {EEG}-Based Emotion Classification}
+      \field{volume}{23}
+      \field{pages}{2387}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s23052387
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/1424-8220/23/5/2387
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/1424-8220/23/5/2387
+      \endverb
+      \warn{\item article entry 'moontaha_online_2023-1' (library.bib): Invalid format '2026-09-29' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'moontaha_online_2023-1' (library.bib): Invalid format '2023-02-21' of date field 'date' - ignoring}
     \endentry
     \entry{zhang_eeg-svrec_2024}{misc}{}{}
       \name{author}{7}{}{%
@@ -845,19 +840,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{In recent years, short video platforms have gained widespread popularity, making the quality of video recommendations crucial for retaining users. Existing recommendation systems primarily rely on behavioral data, which faces limitations when inferring user preferences due to issues such as data sparsity and noise from accidental interactions or personal habits. To address these challenges and provide a more comprehensive understanding of user affective experience and cognitive activity, we propose {EEG}-{SVRec}, the first {EEG} dataset with User Multidimensional Affective Engagement Labels in Short Video Recommendation.}
-      \field{day}{1}
       \field{eprinttype}{arxiv}
       \field{langid}{english}
-      \field{month}{4}
       \field{number}{{arXiv}:2404.01008}
       \field{shorttitle}{{EEG}-{SVRec}}
       \field{title}{{EEG}-{SVRec}: An {EEG} Dataset with User Multidimensional Affective Engagement Labels in Short Video Recommendation}
-      \field{urlday}{6}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2024}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \verb{doi}
       \verb 10.48550/arXiv.2404.01008
       \endverb
@@ -874,6 +861,8 @@
       \verb http://arxiv.org/abs/2404.01008
       \endverb
       \keyw{Computer Science - Information Retrieval}
+      \warn{\item misc entry 'zhang_eeg-svrec_2024' (library.bib): Invalid format '2025-10-06' of date field 'urldate' - ignoring}
+      \warn{\item misc entry 'zhang_eeg-svrec_2024' (library.bib): Invalid format '2024-04-01' of date field 'date' - ignoring}
     \endentry
     \entry{he_understanding_2023}{inproceedings}{}{}
       \name{author}{7}{}{%
@@ -933,18 +922,10 @@
       \field{labeltitlesource}{title}
       \field{abstract}{Short video ({SV}) online streaming has been one of the most popular Internet applications in recent years. When browsing {SVs}, users gradually immerse themselves and derive relaxation or knowledge. Whereas prolonged browsing will lead to a decline in positive feelings, users continue due to inertia, resulting in decreased satisfaction. Immersion is shown to be an essential factor for users’ positive experience and highly related to users’ interactions in film, games, and virtual reality. However, immersion in {SV} interaction is still unexplored, which differs from the previously studied scenarios essentially because {SV} delivery is fragmented, discrete, and with limited time for each video.}
       \field{booktitle}{Proceedings of the 32nd {ACM} International Conference on Information and Knowledge Management}
-      \field{day}{21}
       \field{eventtitle}{{CIKM} '23: The 32nd {ACM} International Conference on Information and Knowledge Management}
       \field{isbn}{979-8-4007-0124-5}
       \field{langid}{english}
-      \field{month}{10}
       \field{title}{Understanding User Immersion in Online Short Video Interaction}
-      \field{urlday}{23}
-      \field{urlmonth}{9}
-      \field{urlyear}{2026}
-      \field{year}{2023}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{731\bibrangedash 740}
       \range{pages}{10}
       \verb{doi}
@@ -959,6 +940,8 @@
       \verb{url}
       \verb https://dl.acm.org/doi/10.1145/3583780.3615099
       \endverb
+      \warn{\item inproceedings entry 'he_understanding_2023' (library.bib): Invalid format '2026-09-23' of date field 'urldate' - ignoring}
+      \warn{\item inproceedings entry 'he_understanding_2023' (library.bib): Invalid format '2023-10-21' of date field 'date' - ignoring}
     \endentry
     \entry{du_understanding_2025}{inproceedings}{}{}
       \name{author}{6}{}{%
@@ -1011,12 +994,8 @@
       \field{labeltitlesource}{title}
       \field{abstract}{This paper explores the impact of Opinion Polarization ({OP}) in the increasingly prevalent context of short video browsing, a dominant medium in the contemporary digital landscape with significant influence on public opinion and social dynamics. We investigate the effects of {OP} on user perceptions and behaviors in short video consumption, and find that traditional user feedback signals, such as like and browsing duration, are not effective in detecting and measuring {OP}. Recognizing this problem, our study employs Electroencephalogram ({EEG}) signals as a novel, noninvasive approach to assess the neural processing of perception and cognition related to {OP}. Our user study reveals that {OP} notably affects users’ sentiments, resulting in measurable changes in brain signals. Furthermore, we demonstrate the potential of using {EEG} signals to predict users’ exposure to polarized short video content. By exploring the relationships between {OP}, brain signals, and user behavior, our research offers a novel perspective in understanding the dynamics of short video browsing and proposes an innovative method for quantifying the impact of {OP} in this context.}
       \field{booktitle}{{SIGIR} 2025 - Proceedings of the 48th International {ACM} {SIGIR} Conference on Research and Development in Information Retrieval}
-      \field{day}{13}
       \field{isbn}{979-8-4007-1592-1}
-      \field{month}{7}
       \field{title}{Understanding the Effect of Opinion Polarization in Short Video Browsing}
-      \field{year}{2025}
-      \field{dateera}{ce}
       \field{pages}{906\bibrangedash 916}
       \range{pages}{11}
       \verb{doi}
@@ -1026,6 +1005,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/EL8EH8CS/3726302.3730107.pdf:application/pdf
       \endverb
       \keyw{{EEG},Opinion Polarization,Short Video Browsing}
+      \warn{\item inproceedings entry 'du_understanding_2025' (library.bib): Invalid format '2025-07-13' of date field 'date' - ignoring}
     \endentry
     \entry{du_eeg_2025}{article}{}{}
       \name{author}{7}{}{%
@@ -1078,21 +1058,13 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{25}
       \field{issn}{2045-2322}
       \field{journaltitle}{Scientific Reports}
       \field{langid}{english}
-      \field{month}{5}
       \field{number}{1}
       \field{shortjournal}{Sci Rep}
       \field{title}{{EEG} reveals the cognitive impact of polarized content in short video scenarios}
-      \field{urlday}{6}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
       \field{volume}{15}
-      \field{year}{2025}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{18277}
       \range{pages}{1}
       \verb{doi}
@@ -1107,6 +1079,8 @@
       \verb{url}
       \verb https://www.nature.com/articles/s41598-025-02423-y
       \endverb
+      \warn{\item article entry 'du_eeg_2025' (library.bib): Invalid format '2025-10-06' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'du_eeg_2025' (library.bib): Invalid format '2025-05-25' of date field 'date' - ignoring}
     \endentry
     \entry{zhang_how_2025-1}{article}{}{}
       \name{author}{2}{}{%
@@ -1140,8 +1114,6 @@
       \field{issn}{15729362}
       \field{journaltitle}{Electronic Commerce Research}
       \field{title}{How do online celebrities attract consumers? an {EEG} study on consumers’ neural engagement in short video advertising}
-      \field{year}{2025}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.1007/s10660-025-09956-4
       \endverb
@@ -1149,6 +1121,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/JA726QD8/0013_Zhang 2025 (EEG Social Media Celebrity Ads).pdf:application/pdf
       \endverb
       \keyw{Consumers' neural engagement,Displaying styles,Online celebrities,Selling approaches,Short video advertisements}
+      \warn{\item article entry 'zhang_how_2025-1' (library.bib): Invalid format '2025' of date field 'date' - ignoring}
     \endentry
     \entry{wade_investigating_2024}{report}{}{}
       \name{author}{1}{}{%
@@ -1166,17 +1139,16 @@
       \strng{authornamehash}{08c50e8e316cf41606b1282be0d42c9a}
       \strng{authorfullhash}{08c50e8e316cf41606b1282be0d42c9a}
       \strng{authorfullhashraw}{08c50e8e316cf41606b1282be0d42c9a}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{{TikTok} addiction may be causing similar cognitive dysfunction to other highly researched addictions. Addiction is known to affect executive functions, particularly response inhibition. Evidence indicates that differences in N2/P3 amplitude/latency, and increased beta power (commonly found in individuals with addictions) may be causing impaired response inhibition, and overall cognitive performance. The current study aimed to fill the gap in {TikTok} addiction research using electroencephalogram ({EEG}) to investigate brain responses to 'Go' '{NoGo}' stimuli. 18 individuals participated in the study, 10 of whom had no history of addiction, and 8 with {TikTok} addiction. Using a between-subjects, repeated measures design, brain lateralisation differences were found in P3 latency during the 'Go' correct response condition in the F7/F8 electrodes F (1, 13) = 7.94 p = 0.015 η 2p = 0.38. Significant difference in beta power was found between the video and resting state conditions F (1, 13) = 5.24 p = 0.038 η 2p = 0.27. Results suggest that individuals with {TikTok} addiction may respond more impulsively, but there is no evidence to suggest that response inhibition is impaired. Results confirmed previous research, showing that brain activation in response to specific impulse related tasks is stronger in the right hemisphere. Findings suggest that {TikTok} addiction may be causing differences in brain responses, specifically in the frontal cortex which is directly involved with executive functions and cognitive performance.}
       \field{title}{Investigating brain responses in individuals with {TikTok} addiction, using Electroencephalogram ({EEG})}
-      \field{year}{2024}
-      \field{dateera}{ce}
       \verb{file}
       \verb PDF:/Users/gregorlederer/Zotero/storage/EC3XNUEY/TikTok EEG Research Study.pdf:application/pdf
       \endverb
+      \warn{\item report entry 'wade_investigating_2024' (library.bib): Invalid format '2024' of date field 'date' - ignoring}
     \endentry
     \entry{dumitru_does_2025}{report}{}{}
       \name{author}{1}{}{%
@@ -1200,11 +1172,10 @@
       \field{labeltitlesource}{title}
       \field{abstract}{The rapid growth of short-form video platforms such as {TikTok} has raised concerns about their potential impact on cognitive functions, particularly sustained attention. This study investigated the effects of {TikTok}-style short-form content ({SFC}) and mindfulness meditation on sustained attention in young adults, using behavioural and {EEG} measures. Participants (aged 19-24) were categorised as either addicted or non-addicted to {SFC} and completed three sustained attention tasks, with two interventions-viewing {SFC} and mindfulness meditation-randomly assigned between tasks. {EEG} data were recorded throughout to examine neural correlates of attentional engagement. Results indicated that addicted participants showed significantly faster reaction times compared to non-addicted participants. Increases in reaction time following the {SFC} intervention are present for both groups. Additionally, a reduction in the P300 component was observed in addicted individuals after viewing {SFC}. These findings suggest that {SFC} may have immediate, measurable effects on attentional processes, highlighting the need for further research into its cognitive and neural implications.}
       \field{title}{Does {TikTok}-style content impair sustained attention?}
-      \field{year}{2025}
-      \field{dateera}{ce}
       \verb{file}
       \verb PDF:/Users/gregorlederer/Zotero/storage/4I5DYL37/bAI2025DumitruSA.pdf:application/pdf
       \endverb
+      \warn{\item report entry 'dumitru_does_2025' (library.bib): Invalid format '2025' of date field 'date' - ignoring}
     \endentry
     \entry{yan_mobile_2024}{article}{}{}
       \name{author}{5}{}{%
@@ -1254,8 +1225,6 @@
       \field{journaltitle}{Frontiers in Human Neuroscience}
       \field{title}{Mobile phone short video use negatively impacts attention functions: an {EEG} study}
       \field{volume}{18}
-      \field{year}{2024}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.3389/fnhum.2024.1383913
       \endverb
@@ -1263,6 +1232,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/6EG46J7K/fnhum-18-1383913.pdf:application/pdf
       \endverb
       \keyw{{EEG},★,addiction tendency,attention network,executive control,mobile phone short-form video,Negative Impact,scope:Methods,scope:{StateOfArt},Short Video Use}
+      \warn{\item article entry 'yan_mobile_2024' (library.bib): Invalid format '2024' of date field 'date' - ignoring}
     \endentry
     \entry{barachant_muselsl_2026}{online}{}{}
       \name{author}{1}{}{%
@@ -1287,11 +1257,7 @@
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{16}
-      \field{month}{7}
       \field{title}{muselsl 2.5.1}
-      \field{year}{2026}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.5281/zenodo.3228861
       \endverb
@@ -1301,6 +1267,7 @@
       \verb{url}
       \verb https://pypi.org/project/muselsl/
       \endverb
+      \warn{\item online entry 'barachant_muselsl_2026' (library.bib): Invalid format '2026-07-16' of date field 'date' - ignoring}
     \endentry
     \entry{bellos_methods_2025}{article}{}{}
       \name{author}{5}{}{%
@@ -1346,15 +1313,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This review paper explores the intersection of user engagement and user experience studies with electroencephalography ({EEG}) analysis by investigating the existing literature in this field. User engagement describes the immediate, session-based experience of using interactive products and is commonly used as a metric to assess the success of games, online platforms, applications, and websites, while user experience encompasses the broader and longer-term aspects of user interaction. This review focuses on the use of {EEG} as a precise and objective method to gain insights into user engagement. {EEG} recordings capture brain activity as waves, which can be categorized into different frequency bands. By analyzing patterns of brain activity associated with attention, emotion, mental workload, and user experience, {EEG} provides valuable insights into user engagement. The review follows the {PRISMA} statement. The search process involved an extensive exploration of multiple databases, resulting in the identification of 74 relevant studies. The review encompasses the entire information flow of the experiments, including data acquisition, pre-processing analysis, feature extraction, and analysis. By examining the current literature, this review provides a comprehensive overview of various algorithms and processes utilized in {EEG}-based systems for studying user engagement and identifies potential directions for future research endeavors.}
-      \field{day}{1}
       \field{issn}{20799292}
       \field{journaltitle}{Electronics (Switzerland)}
-      \field{month}{1}
       \field{number}{2}
       \field{title}{Methods and Approaches for User Engagement and User Experience Analysis Based on Electroencephalography Recordings: A Systematic Review}
       \field{volume}{14}
-      \field{year}{2025}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.3390/electronics14020251
       \endverb
@@ -1362,6 +1325,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/8RETZK4Q/E0005_Bellos,2025 (EEG methods for user-engagement & UX – systematic review).pdf:application/pdf
       \endverb
       \keyw{systematic review,data acquisition,{EEG} analysis,feature extraction,pre-processing analysis,signal processing,user engagement,user experience}
+      \warn{\item article entry 'bellos_methods_2025' (library.bib): Invalid format '2025-01-01' of date field 'date' - ignoring}
     \endentry
     \entry{salminen_engagement_2024}{inproceedings}{}{}
       \name{author}{4}{}{%
@@ -1403,12 +1367,8 @@
       \field{labeltitlesource}{title}
       \field{abstract}{Short videos have become one of the dominant formats of social media content. Such short videos are often boosted by advertising to increase their reach and visibility. We investigate user churn (i.e., drop or loss of consumers during the video viewing) of short video ads on {TikTok}. Data from the {TikTok} Ads account of an e-commerce company was analyzed using logistic regression to examine how gender, age groups, and video duration affect users' video viewing behaviors. The findings indicate that (1) most customers leave the ads within the first quarter of the video; (2) males and females exhibit similar viewing behaviors, but (3) age groups vary by their viewing behaviors. Somewhat surprisingly, we discovered that (4) there is no significant correlation between user churn and ads performance metrics (i.e., cost-per-mille, cost-per-click, and click-through rate).}
       \field{booktitle}{{HT} 2024: Creative Intelligence - 35th {ACM} Conference on Hypertext and Social Media}
-      \field{day}{10}
       \field{isbn}{979-8-4007-0595-3}
-      \field{month}{9}
       \field{title}{Engagement Patterns in {TikTok}: An Analysis of Short Video Ads}
-      \field{year}{2024}
-      \field{dateera}{ce}
       \field{pages}{323\bibrangedash 329}
       \range{pages}{7}
       \verb{doi}
@@ -1418,6 +1378,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/UCI3SYQY/0007_Salminen et al., 2024 (ACM - TikTok User Engagement Analysis).pdf:application/pdf
       \endverb
       \keyw{short video ads,social media ads,{TikTok} advertising,user behavior,user churn}
+      \warn{\item inproceedings entry 'salminen_engagement_2024' (library.bib): Invalid format '2024-09-10' of date field 'date' - ignoring}
     \endentry
     \entry{nuamah_electroencephalography_2017}{inproceedings}{}{}
       \name{author}{3}{}{%
@@ -1460,14 +1421,7 @@
       \field{eventtitle}{2017 {IEEE} Conference on Cognitive and Computational Aspects of Situation Management ({CogSIMA})}
       \field{isbn}{978-1-5090-6380-2}
       \field{langid}{english}
-      \field{month}{3}
       \field{title}{Electroencephalography ({EEG}) classification of cognitive tasks based on task engagement index}
-      \field{urlday}{10}
-      \field{urlmonth}{2}
-      \field{urlyear}{2026}
-      \field{year}{2017}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{1\bibrangedash 6}
       \range{pages}{6}
       \verb{doi}
@@ -1483,6 +1437,8 @@
       \verb http://ieeexplore.ieee.org/document/7929581/
       \endverb
       \keyw{Definition,{EEG},Engagement Index}
+      \warn{\item inproceedings entry 'nuamah_electroencephalography_2017' (library.bib): Invalid format '2026-02-10' of date field 'urldate' - ignoring}
+      \warn{\item inproceedings entry 'nuamah_electroencephalography_2017' (library.bib): Invalid format '2017-03' of date field 'date' - ignoring}
     \endentry
     \entry{apicella_eeg-based_2022}{article}{}{}
       \name{author}{6}{}{%
@@ -1533,21 +1489,18 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A wearable system for the personalized {EEG}-based detection of engagement in learning 4.0 is proposed. In particular, the effectiveness of the proposed solution is assessed by means of the classification accuracy in predicting engagement. The system can be used to make an automated teaching platform adaptable to the user, by managing eventual drops in the cognitive and emotional engagement. The effectiveness of the learning process mainly depends on the engagement level of the learner. In case of distraction, lack of interest or superficial participation, the teaching strategy could be personalized by an automatic modulation of contents and communication strategies. The system is validated by an experimental case study on twenty-one students. The experimental task was to learn how a specific human-machine interface works. Both the cognitive and motor skills of participants were involved. De facto standard stimuli, namely (1) cognitive task (Continuous Performance Test), (2) music background (Music Emotion Recognition—{MER} database), and (3) social feedback (Hermans and De Houwer database), were employed to guarantee a metrologically founded reference. In within-subject approach, the proposed signal processing pipeline (Filter bank, Common Spatial Pattern, and Support Vector Machine), reaches almost 77\% average accuracy, in detecting both cognitive and emotional engagement.}
-      \field{day}{1}
       \field{issn}{20452322}
       \field{journaltitle}{Scientific Reports}
-      \field{month}{12}
       \field{number}{1}
       \field{title}{{EEG}-based measurement system for monitoring student engagement in learning 4.0}
       \field{volume}{12}
-      \field{year}{2022}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.1038/s41598-022-09578-y
       \endverb
       \verb{file}
       \verb PDF:/Users/gregorlederer/Zotero/storage/LV866QF6/s41598-022-09578-y.pdf:application/pdf
       \endverb
+      \warn{\item article entry 'apicella_eeg-based_2022' (library.bib): Invalid format '2022-12-01' of date field 'date' - ignoring}
     \endentry
     \entry{de_carvalho_selection_2026}{inproceedings}{}{}
       \name{author}{3}{}{%
@@ -1585,12 +1538,8 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{{CORTICO} 2026}
-      \field{day}{8}
       \field{langid}{english}
-      \field{month}{6}
       \field{title}{Selection and Validation of Spectral {EEG} Markers for Real-Time Monitoring of Attention and Cognitive Engagement in Learning Contexts}
-      \field{year}{2026}
-      \field{dateera}{ce}
       \verb{file}
       \verb PDF:/Users/gregorlederer/Zotero/storage/PZBNFQAH/de Carvalho et al. - 2026 - Selection and Validation of Spectral EEG Markers for Real-Time Monitoring of Attention and Cognitive.pdf:application/pdf
       \endverb
@@ -1601,6 +1550,7 @@
       \verb https://hal.science/hal-05648562
       \endverb
       \keyw{★★★★★}
+      \warn{\item inproceedings entry 'de_carvalho_selection_2026' (library.bib): Invalid format '2026-06-08' of date field 'date' - ignoring}
     \endentry
     \entry{karimah_automatic_2022}{article}{}{}
       \name{author}{2}{}{%
@@ -1631,15 +1581,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Background: Recognizing learners’ engagement during learning processes is important for providing personalized pedagogical support and preventing dropouts. As learning processes shift from traditional offline classrooms to distance learning, methods for automatically identifying engagement levels should be developed. Objective: This article aims to present a literature review of recent developments in automatic engagement estimation, including engagement definitions, datasets, and machine learning-based methods for automation estimation. The information, figures, and tables presented in this review aim at providing new researchers with insight on automatic engagement estimation to enhance smart learning with automatic engagement recognition methods. Methods: A literature search was carried out using Scopus, Mendeley references, the {IEEE} Xplore digital library, and {ScienceDirect} following the four phases of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses ({PRISMA}): identification, screening, eligibility, and inclusion. The selected studies included research articles published between 2010 and 2022 that focused on three research questions ({RQs}) related to the engagement definitions, datasets, and methods used in the literature. The article selection excluded books, magazines, news articles, and posters. Results: Forty-seven articles were selected to address the {RQs} and discuss engagement definitions, datasets, and methods. First, we introduce a clear taxonomy that defines engagement according to different types and the components used to measure it. Guided by this taxonomy, we reviewed the engagement types defined in the selected articles, with emotional engagement (n = 40; 65.57\%) measured by affective cues appearing most often (n = 38; 57.58\%). Then, we reviewed engagement and engagement-related datasets in the literature, with most studies assessing engagement with external observations (n = 20; 43.48\%) and self-reported measures (n = 9; 19.57\%). Finally, we summarized machine learning ({ML})-based methods, including deep learning, used in the literature. Conclusions: This review examines engagement definitions, datasets and {ML}-based methods from forty-seven selected articles. A taxonomy and three tables are presented to address three {RQs} and provide researchers in this field with guidance on enhancing smart learning with automatic engagement recognition. However, several key challenges remain, including cognitive and personalized engagement and {ML} issues that may affect real-world implementations.}
-      \field{day}{1}
       \field{issn}{21967091}
       \field{journaltitle}{Smart Learning Environments}
-      \field{month}{12}
       \field{number}{1}
       \field{title}{Automatic engagement estimation in smart education/learning settings: a systematic review of engagement definitions, datasets, and methods}
       \field{volume}{9}
-      \field{year}{2022}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.1186/s40561-022-00212-y
       \endverb
@@ -1647,6 +1593,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/YXUC53DV/E0002_Karimah,2022 (Automatic engagement estimation in smart-learning – review).pdf:application/pdf
       \endverb
       \keyw{Engagement datasets,Engagement definitions,Engagement estimation,Engagement methods}
+      \warn{\item article entry 'karimah_automatic_2022' (library.bib): Invalid format '2022-12-01' of date field 'date' - ignoring}
     \endentry
     \entry{evans_digital_2022}{article}{}{}
       \name{author}{7}{}{%
@@ -1699,22 +1646,14 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Digital media are omnipresent in modern life, but the science on the impact of digital media on behavior is still in its infancy. There is an emerging evidence base of how to use digital media for behavior change. Strategies to change behavior implemented using digital technology have included a variety of platforms and program strategies, all of which are potentially more effective with increased frequency, intensity, interactivity, and feedback. It is critical to accelerate the pace of research on digital platforms, including social media, to understand and address its effects on human behavior. The purpose of the current paper is to provide an overview and describe methods in this emerging ﬁeld, present use cases, describe a future agenda, and raise central questions to be addressed in future digital health research for behavior change. Digital media for behavior change employs three main methods: (1) digital media interventions, (2) formative research using digital media, and (3) digital media used to conduct evaluations. We examine use cases across several content areas including healthy weight management, tobacco control, and vaccination uptake, to describe and illustrate the methods and potential impact of this emerging ﬁeld of study. In the discussion, we note that digital media interventions need to explore the full range of functionality of digital devices and their near-constant role in personal self-management and day-to-day living to maximize opportunities for behavior change. Future experimental research should rigorously examine the effects of variable levels of engagement with, and frequency and intensity of exposure to, multiple forms of digital media for behavior change.}
-      \field{day}{26}
       \field{issn}{1660-4601}
       \field{journaltitle}{International Journal of Environmental Research and Public Health}
       \field{langid}{english}
-      \field{month}{7}
       \field{number}{15}
       \field{shortjournal}{{IJERPH}}
       \field{shorttitle}{Digital Media for Behavior Change}
       \field{title}{Digital Media for Behavior Change: Review of an Emerging Field of Study}
-      \field{urlday}{6}
-      \field{urlmonth}{6}
-      \field{urlyear}{2026}
       \field{volume}{19}
-      \field{year}{2022}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{9129}
       \range{pages}{1}
       \verb{doi}
@@ -1729,6 +1668,8 @@
       \verb{url}
       \verb https://www.mdpi.com/1660-4601/19/15/9129
       \endverb
+      \warn{\item article entry 'evans_digital_2022' (library.bib): Invalid format '2026-06-06' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'evans_digital_2022' (library.bib): Invalid format '2022-07-26' of date field 'date' - ignoring}
     \endentry
     \entry{basch_covid-19_2022}{article}{}{}
       \name{author}{3}{}{%
@@ -1764,15 +1705,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Objectives: {TikTok} is a popular social media platform, especially among those who are 13-24 years of age. The purpose of this cross-sectional study was to describe the content of {COVID}-19 material on {TikTok}. Methods: A total of 100 videos posted under the hashtag \#Coronavirus were included in this study along with all (n=17) posts uploaded by the World Health Organization ({WHO}). Results: Overall, these videos were viewed 1,194,081,700 times. The most commonly cited topics included anxiety (14.5\%) with more than 190.6 million views and quarantine (10.3\%) with 106.6 million views. Fewer than 10\% of videos mentioned how the virus is transmitted, symptoms, and prevention. {WHO} videos more often focused on viral transmission and symptoms but covered these topics in fewer than 10\% of the videos. Conclusions: Although research suggests that cases of {COVID}-19 may be less severe in those under 18 years of age, social distancing remains paramount due to the possibility of transmission even in those with minimal or no symptoms. For young adults in particular, the {WHO} suggests staying connected through social media and making every attempt to stay positive. {TikTok} has the potential, not only to convey important health information, but to address these aspects of the {COVID}-19 pandemic as well.}
-      \field{day}{1}
       \field{issn}{21910278}
       \field{journaltitle}{International Journal of Adolescent Medicine and Health}
-      \field{month}{10}
       \field{number}{5}
       \field{title}{{COVID}-19 on {TikTok}: harnessing an emerging social media platform to convey important public health messages}
       \field{volume}{34}
-      \field{year}{2022}
-      \field{dateera}{ce}
       \field{pages}{367\bibrangedash 369}
       \range{pages}{3}
       \verb{doi}
@@ -1782,6 +1719,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/3U5TA7TS/10.1515_ijamh-2020-0111.pdf:application/pdf
       \endverb
       \keyw{{TikTok},{COVID}-19,social media,adolescents}
+      \warn{\item article entry 'basch_covid-19_2022' (library.bib): Invalid format '2022-10-01' of date field 'date' - ignoring}
     \endentry
     \entry{chen_factors_2021}{article}{}{}
       \name{author}{5}{}{%
@@ -1824,22 +1762,14 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Background: During the {COVID}-19 pandemic, growth in citizen engagement with social media platforms has enabled public health departments to accelerate and improve health information dissemination, developing transparency and trust between governments and citizens. In light of these benefits, it is imperative to learn the antecedents and underlying mechanisms for this to maintain and enhance engagement. Objective: The aim of this study is to determine the factors and influencing mechanisms related to citizen engagement with the {TikTok} account of the National Health Commission of China during the {COVID}-19 pandemic. Methods: Using a web crawler, 355 short videos were collected from the Healthy China account on {TikTok} (with more than 3 million followers throughout China), covering the period from January 21, 2020, to April 25, 2020. The title and video length, as well as the number of likes, shares, and comments were collected for each video. After classifying them using content analysis, a series of negative binomial regression analyses were completed. Results: Among the 355 videos, 154 (43.4\%) related to guidance for clinicians, patients, and ordinary citizens, followed by information concerning the government’s handling of the pandemic (n=100, 28.2\%), the latest news about {COVID}-19 (n=61, 17.2\%), and appreciation toward frontline emergency services (n=40, 11.3\%). Video length, titles, dialogic loop, and content type all influenced the level of citizen engagement. Specifically, video length was negatively associated with the number of likes (incidence rate ratio [{IRR}]=0.19, P{<}.001) and comments ({IRR}=0.39, P{<}.001). Title length was positively related to the number of shares ({IRR}=24.25, P=.01), likes ({IRR}=8.50, P=.03), and comments ({IRR}=7.85, P=.02). Dialogic loop negatively predicted the number of shares ({IRR}=0.56, P=.03). In comparison to appreciative information, information about the government’s handling of the situation ({IRR}=5.16, P{<}.001) and guidelines information ({IRR}=7.31, P{<}.001) were positively correlated with the number of shares, while the latest news was negatively related to the number of likes received ({IRR}=0.46, P=.004). More importantly, the relationship between predictors and citizen engagement was moderated by the emotional valence of video titles. Longer videos with positive titles received a higher number of likes ({IRR}=21.72, P=.04) and comments ({IRR}=10.14, P=.047). Furthermore, for short videos related to government handling of the pandemic ({IRR}=14.48, P=.04) and guidance for stakeholders ({IRR}=7.59, P=.04), positive titles received a greater number of shares. Videos related to the latest news ({IRR}=66.69, P=.04) received more likes if the video title displayed higher levels of positive emotion. Conclusions: During the {COVID}-19 pandemic, videos were frequently published on government social media platforms. Video length, title, dialogic loop, and content type significantly influenced the level of citizen engagement. These relationships were}
-      \field{day}{4}
       \field{issn}{1438-8871}
       \field{journaltitle}{Journal of Medical Internet Research}
       \field{langid}{english}
-      \field{month}{2}
       \field{number}{2}
       \field{shortjournal}{J Med Internet Res}
       \field{shorttitle}{Factors Driving Citizen Engagement With Government {TikTok} Accounts During the {COVID}-19 Pandemic}
       \field{title}{Factors Driving Citizen Engagement With Government {TikTok} Accounts During the {COVID}-19 Pandemic: Model Development and Analysis}
-      \field{urlday}{16}
-      \field{urlmonth}{9}
-      \field{urlyear}{2026}
       \field{volume}{23}
-      \field{year}{2021}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{e21463}
       \range{pages}{-1}
       \verb{doi}
@@ -1855,6 +1785,8 @@
       \verb http://www.jmir.org/2021/2/e21463/
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'chen_factors_2021' (library.bib): Invalid format '2026-09-16' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'chen_factors_2021' (library.bib): Invalid format '2021-02-04' of date field 'date' - ignoring}
     \endentry
     \entry{zenone_tiktok_2021}{article}{}{}
       \name{author}{3}{}{%
@@ -1889,15 +1821,11 @@
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{24}
       \field{issn}{20597908}
       \field{journaltitle}{{BMJ} Global Health}
-      \field{month}{11}
       \field{number}{11}
       \field{title}{{TikTok} and public health: a proposed research agenda}
       \field{volume}{6}
-      \field{year}{2021}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.1136/bmjgh-2021-007648
       \endverb
@@ -1905,6 +1833,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/4VP96W6M/e007648.full.pdf:application/pdf
       \endverb
       \keyw{public health,child health,health policy,mental health \& psychiatry}
+      \warn{\item article entry 'zenone_tiktok_2021' (library.bib): Invalid format '2021-11-24' of date field 'date' - ignoring}
     \endentry
     \entry{debettencourt_sustained_2021}{article}{}{}
       \name{author}{4}{}{%
@@ -1942,20 +1871,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Our attention is critically important for what we remember. Prior measures of the relationship between attention and memory, however, have largely treated “attention” as a monolith. Here, across three experiments, we provide evidence for two dissociable aspects of attention that influence encoding into long-term memory. Using spatial cues together with a sensitive continuous report procedure, we find that long-term memory response error is affected by both trial-by-trial fluctuations of sustained attention and prioritization via covert spatial attention. Furthermore, using multivariate analyses of {EEG}, we track both sustained attention and spatial attention before stimulus onset. Intriguingly, even during moments of low sustained attention, there is no decline in the representation of the spatially attended location, showing that these two aspects of attention have robust but independent effects on long-term memory encoding. Finally, sustained and spatial attention predicted distinct variance in long-term memory performance across individuals. That is, the relationship between attention and long-term memory suggests a composite model, wherein distinct attentional subcomponents influence encoding into long-term memory. These results point toward a taxonomy of the distinct attentional processes that constrain our memories.}
-      \field{day}{1}
       \field{issn}{0898-929X, 1530-8898}
       \field{journaltitle}{Journal of Cognitive Neuroscience}
       \field{langid}{english}
-      \field{month}{9}
       \field{number}{10}
       \field{title}{Sustained Attention and Spatial Attention Distinctly Influence Long-term Memory Encoding}
-      \field{urlday}{6}
-      \field{urlmonth}{5}
-      \field{urlyear}{2026}
       \field{volume}{33}
-      \field{year}{2021}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{2132\bibrangedash 2148}
       \range{pages}{17}
       \verb{doi}
@@ -1971,57 +1892,8 @@
       \verb https://direct.mit.edu/jocn/article/33/10/2132/102759/Sustained-Attention-and-Spatial-Attention
       \endverb
       \keyw{★★★★★}
-    \endentry
-    \entry{moontaha_online_2023}{misc}{}{}
-      \name{author}{3}{}{%
-        {{hash=dc0c7c8ee6b10322369f443fa1b3a60b}{%
-           family={Moontaha},
-           familyi={M\bibinitperiod},
-           given={Sidratul},
-           giveni={S\bibinitperiod}}}%
-        {{hash=b7f5ceaaa4e67346334b035fbae422e1}{%
-           family={Schumann},
-           familyi={S\bibinitperiod},
-           given={Franziska\bibnamedelimb Elisabeth\bibnamedelima Friederike},
-           giveni={F\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=b01bc214f1b6015a86573cb3ee725876}{%
-           family={Arnrich},
-           familyi={A\bibinitperiod},
-           given={Bert},
-           giveni={B\bibinitperiod}}}%
-      }
-      \strng{namehash}{2ddb233266be6b51575933a9ca17e107}
-      \strng{fullhash}{02403e9daf6a505722222b7b6b030e1b}
-      \strng{fullhashraw}{02403e9daf6a505722222b7b6b030e1b}
-      \strng{bibnamehash}{02403e9daf6a505722222b7b6b030e1b}
-      \strng{authorbibnamehash}{02403e9daf6a505722222b7b6b030e1b}
-      \strng{authornamehash}{2ddb233266be6b51575933a9ca17e107}
-      \strng{authorfullhash}{02403e9daf6a505722222b7b6b030e1b}
-      \strng{authorfullhashraw}{02403e9daf6a505722222b7b6b030e1b}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{{<}p{>}Emotions are indicators of affective states and play a significant role in human daily life, behavior, and interactions. Giving emotional intelligence to the machines could, for instance, facilitate early detection and prediction of (mental) diseases and symptoms. Electroencephalography ({EEG}) -based emotion recognition is being widely applied because it measures electrical correlates directly from the brain rather than the indirect measurement of other physiological responses initiated by the brain. The recent development of non-invasive and portable {EEG} sensors makes it possible to use them in real-time applications. Therefore, this paper presents a real-time emotion classification pipeline, which trains different binary classifiers for the dimensions of Valence and Arousal from an incoming {EEG} data stream. After achieving a 23.9\% (Arousal) and 25.8\% (Valence) higher f1-score on the state-of-art {AMIGOS} dataset, this pipeline was applied to the dataset achieved by an emotion elicitation experimental framework developed within the scope of this thesis. Following two different protocols, 15 participants were recorded using two different consumer-grade {EEG} devices while watching 16 short emotional videos in a controlled environment. For an immediate label setting, the mean f1-score of 87\% and 82\% were achieved for Arousal and Valence, respectively. In a live scenario, while continuously being updated on the incoming data stream with delayed labels, the pipeline proved to be fast enough to achieve predictions in real time. However, the significant discrepancy from the readily available labels on the classification scores leads to future work to include more data with frequent delayed labels in the live settings.{<}/p{>}}
-      \field{day}{9}
-      \field{month}{1}
-      \field{note}{Preprint, not peer-reviewed}
-      \field{title}{Online Learning for Wearable {EEG}-based Emotion Classification}
-      \field{year}{2023}
-      \field{dateera}{ce}
-      \verb{doi}
-      \verb 10.20944/preprints202301.0156.v1
-      \endverb
-      \verb{file}
-      \verb PDF:/Users/gregorlederer/Zotero/storage/7G4MNK82/Online_Learning_for_Wearable_EEG-based_Emotion_Cla.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://www.preprints.org/manuscript/202301.0156/v1
-      \endverb
-      \verb{url}
-      \verb https://www.preprints.org/manuscript/202301.0156/v1
-      \endverb
-      \keyw{★★★★}
+      \warn{\item article entry 'debettencourt_sustained_2021' (library.bib): Invalid format '2026-05-06' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'debettencourt_sustained_2021' (library.bib): Invalid format '2021-09-01' of date field 'date' - ignoring}
     \endentry
     \entry{tzimourta_eeg_2019}{article}{}{}
       \name{author}{10}{}{%
@@ -2089,21 +1961,13 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Alzheimer’s Disease ({AD}) is a neurogenerative disorder and the most common type of dementia with a rapidly increasing world prevalence. In this paper, the ability of several statistical and spectral features to detect {AD} from electroencephalographic ({EEG}) recordings is evaluated. For this purpose, clinical {EEG} recordings from 14 patients with {AD} (8 with mild {AD} and 6 with moderate {AD}) and 10 healthy, age-matched individuals are analyzed. The {EEG} signals are initially segmented in nonoverlapping epochs of diﬀerent lengths ranging from 5 s to 12 s. Then, a group of statistical and spectral features calculated for each {EEG} rhythm (δ, θ, α, β, and γ) are extracted, forming the feature vector that trained and tested a Random Forests classiﬁer. Six classiﬁcation problems are addressed, including the discrimination from whole-brain dynamics and separately from speciﬁc brain regions in order to highlight any alterations of the cortical regions. The results indicated a high accuracy ranging from 88.79\% to 96.78\% for whole-brain classiﬁcation. Also, the classiﬁcation accuracy was higher at the posterior and central regions than at the frontal area and the right side of temporal lobe for all classiﬁcation problems.}
-      \field{day}{14}
       \field{issn}{2076-3425}
       \field{journaltitle}{Brain Sciences}
       \field{langid}{english}
-      \field{month}{4}
       \field{number}{4}
       \field{shortjournal}{Brain Sciences}
       \field{title}{{EEG} Window Length Evaluation for the Detection of Alzheimer’s Disease over Different Brain Regions}
-      \field{urlday}{6}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{9}
-      \field{year}{2019}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{81}
       \range{pages}{1}
       \verb{doi}
@@ -2119,6 +1983,8 @@
       \verb https://www.mdpi.com/2076-3425/9/4/81
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'tzimourta_eeg_2019' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'tzimourta_eeg_2019' (library.bib): Invalid format '2019-04-14' of date field 'date' - ignoring}
     \endentry
     \entry{mi_exploring_2026}{article}{}{}
       \name{author}{4}{}{%
@@ -2159,16 +2025,9 @@
       \field{issn}{17468094}
       \field{journaltitle}{Biomedical Signal Processing and Control}
       \field{langid}{english}
-      \field{month}{2}
       \field{shortjournal}{Biomedical Signal Processing and Control}
       \field{title}{Exploring multi-scale time group for common spatial pattern feature based motor imagery {EEG} classification}
-      \field{urlday}{6}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{112}
-      \field{year}{2026}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{108591}
       \range{pages}{1}
       \verb{doi}
@@ -2184,6 +2043,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S1746809425011024
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'mi_exploring_2026' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'mi_exploring_2026' (library.bib): Invalid format '2026-02' of date field 'date' - ignoring}
     \endentry
     \entry{rimbert_impact_2023}{inproceedings}{}{}
       \name{author}{3}{}{%
@@ -2223,18 +2084,10 @@
       \field{labeltitlesource}{title}
       \field{abstract}{Motor Imagery-based Brain-Computer Interfaces ({MI}-{BCIs}) are neurotechnologies that exploit the modulation of sensorimotor rhythms over the motor cortices, respectively known as Event-Related Desynchronization ({ERD}) and Synchronization ({ERS}). The interpretation of {ERD}/{ERS} is directly related to the selection of the baseline used to estimate them, and might result in a misleading {ERD}/{ERS} visualization. In fact, in {BCI} paradigms, if two trials are separated by a few seconds, taking a baseline close to the end of the previous trial could result in an over-estimation of the {ERD}, while taking a baseline too close to the upcoming trial could result in an under-estimation of the {ERD}. This phenomenon may cause a functional misinterpretation of the {ERD}/{ERS} phenomena in {MI}-{BCI} studies. This may also impair {BCI} performances for {MI} vs Rest classification, since such baselines are often used as resting states. In this paper, we propose to investigate the effect of several baseline time window selections on {ERD}/{ERS} modulations and {BCI} performances. Our results show that considering the selected temporal baseline effect is essential to analyze the modulations of {ERD}/{ERS} during {MI}-{BCI} use.}
       \field{booktitle}{2023 45th Annual International Conference of the {IEEE} Engineering in Medicine \& Biology Society ({EMBC})}
-      \field{day}{24}
       \field{eventtitle}{2023 45th Annual International Conference of the {IEEE} Engineering in Medicine \& Biology Society ({EMBC})}
       \field{isbn}{979-8-3503-2447-1}
       \field{langid}{english}
-      \field{month}{7}
       \field{title}{Impact of the baseline temporal selection on the {ERD}/{ERS} analysis for Motor Imagery-based {BCI}}
-      \field{urlday}{6}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
-      \field{year}{2023}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{1\bibrangedash 4}
       \range{pages}{4}
       \verb{doi}
@@ -2250,6 +2103,8 @@
       \verb https://ieeexplore.ieee.org/document/10340748/
       \endverb
       \keyw{★★★★★}
+      \warn{\item inproceedings entry 'rimbert_impact_2023' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring}
+      \warn{\item inproceedings entry 'rimbert_impact_2023' (library.bib): Invalid format '2023-07-24' of date field 'date' - ignoring}
     \endentry
     \entry{saltelli_global_2008}{collection}{}{}
       \name{editor}{1}{}{%
@@ -2282,8 +2137,6 @@
       \field{pagetotal}{1}
       \field{shorttitle}{Global sensitivity analysis}
       \field{title}{Global sensitivity analysis: the primer}
-      \field{year}{2008}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.1002/9780470725184
       \endverb
@@ -2291,6 +2144,7 @@
       \verb A_Saltelli_Marco_Ratto_Terry_Andres_Francesca_Campolongo_Jessica_Cariboni_Debora_Gatelli_Michaela_Saisana_Stefano_Tarantola_Global_Sensitivity_Analysis_The_Primer_Wiley_Interscience_2008_:/Users/gregorlederer/Zotero/storage/B4E2YMJQ/Saltelli - 2008 - ★★★★★ Global sensitivity analysis the primer.pdf:application/pdf
       \endverb
       \keyw{★★★★★}
+      \warn{\item collection entry 'saltelli_global_2008' (library.bib): Invalid format '2008' of date field 'date' - ignoring}
     \endentry
     \entry{saltelli_how_2010}{article}{}{}
       \name{author}{3}{}{%
@@ -2329,13 +2183,7 @@
       \field{number}{6}
       \field{shortjournal}{Procedia - Social and Behavioral Sciences}
       \field{title}{How to avoid a perfunctory sensitivity analysis}
-      \field{urlday}{4}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{2}
-      \field{year}{2010}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{7592\bibrangedash 7594}
       \range{pages}{3}
       \verb{doi}
@@ -2351,6 +2199,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S1877042810012747
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'saltelli_how_2010' (library.bib): Invalid format '2026-08-04' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'saltelli_how_2010' (library.bib): Invalid format '2010' of date field 'date' - ignoring}
     \endentry
     \entry{mccartney_optimal_2026}{article}{}{}
       \name{author}{4}{}{%
@@ -2388,17 +2238,9 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Motor-imagery ({MI}) {EEG} can be classified using supervised machine learning techniques such as Linear Discriminant Analysis applied to features extracted by Common Spatial Patterns. Performance of these models varies widely, possibly due to {MI} studies commonly utilising differing post-cue time windows and frequency bands to one another. This study aims to assess how the simultaneous optimisation of both these parameters impact {MI} classification performance. This is done by iteratively training and testing a series of subject-specific models on different combinations of frequency bandwidth and time window options across 109 subjects. This is followed by a statistical analysis using repeated measures {ANOVA} to uncover significant differences between different bandwidths and time windows in terms of accuracy across the patient cohort. The resulting visualisations and statistical tests show that there are, indeed, significant differences between both specific time windows and specific bandwidths in terms of accuracy. While the comparison of classification accuracies across 23 frequency bandwidths during five different time windows demonstrates an optimal temporal and spectral scale combination of (0, 4) s at the range of (4, 12) Hz across all subjects, the subjects demonstrate similar accuracies for other parameter combinations. These findings highlight the efficacy of personalised models to detect optimal temporal and spectral parameter combinations to best classify {MI} {EEG} signals that inherently vary across subjects.}
-      \field{day}{23}
       \field{eprinttype}{arxiv}
       \field{langid}{english}
-      \field{month}{3}
       \field{title}{Optimal Time Window and Frequency Bandwidth Parameter Combination for Subject-Specific Motor Imagery {EEG} Classification}
-      \field{urlday}{4}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
-      \field{year}{2026}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \verb{doi}
       \verb 10.5281/zenodo.19185778
       \endverb
@@ -2415,6 +2257,8 @@
       \verb http://arxiv.org/abs/2605.21319
       \endverb
       \keyw{★★★★★,Electrical Engineering and Systems Science - Signal Processing}
+      \warn{\item article entry 'mccartney_optimal_2026' (library.bib): Invalid format '2026-08-04' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'mccartney_optimal_2026' (library.bib): Invalid format '2026-03-23' of date field 'date' - ignoring}
     \endentry
     \entry{lew_detection_2012}{article}{}{}
       \name{author}{4}{}{%
@@ -2452,20 +2296,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Future neuroprosthetic devices, in particular upper limb, will require decoding and executing not only the user’s intended movement type, but also when the user intends to execute the movement. This work investigates the potential use of brain signals recorded non-invasively for detecting the time before a self-paced reaching movement is initiated which could contribute to the design of practical upper limb neuroprosthetics. In particular, we show the detection of self-paced reaching movement intention in single trials using the readiness potential, an electroencephalography ({EEG}) slow cortical potential ({SCP}) computed in a narrow frequency range (0.1–1 Hz). Our experiments with 12 human volunteers, two of them stroke subjects, yield high detection rates prior to the movement onset and low detection rates during the non-movement intention period. With the proposed approach, movement intention was detected around 500 ms before actual onset, which clearly matches previous literature on readiness potentials. Interestingly, the result obtained with one of the stroke subjects is coherent with those achieved in healthy subjects, with single-trial performance of up to 92\% for the paretic arm. These results suggest that, apart from contributing to our understanding of voluntary motor control for designing more advanced neuroprostheses, our work could also have a direct impact on advancing robot-assisted neurorehabilitation.}
-      \field{day}{12}
       \field{issn}{16626443}
       \field{journaltitle}{Frontiers in Neuroengineering}
       \field{langid}{english}
-      \field{month}{7}
       \field{shortjournal}{Front. Neuroeng.}
       \field{title}{Detection of self-paced reaching movement intention from {EEG} signals}
-      \field{urlday}{3}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{5}
-      \field{year}{2012}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \verb{doi}
       \verb 10.3389/fneng.2012.00013
       \endverb
@@ -2478,6 +2314,8 @@
       \verb{url}
       \verb http://journal.frontiersin.org/article/10.3389/fneng.2012.00013/abstract
       \endverb
+      \warn{\item article entry 'lew_detection_2012' (library.bib): Invalid format '2026-08-03' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'lew_detection_2012' (library.bib): Invalid format '2012-07-12' of date field 'date' - ignoring}
     \endentry
     \entry{frenay_classification_2014}{article}{}{}
       \name{author}{2}{}{%
@@ -2508,18 +2346,11 @@
       \field{issn}{2162-237X, 2162-2388}
       \field{journaltitle}{{IEEE} Transactions on Neural Networks and Learning Systems}
       \field{langid}{english}
-      \field{month}{5}
       \field{number}{5}
       \field{shortjournal}{{IEEE} Trans. Neural Netw. Learning Syst.}
       \field{shorttitle}{Classification in the Presence of Label Noise}
       \field{title}{Classification in the Presence of Label Noise: A Survey}
-      \field{urlday}{6}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{25}
-      \field{year}{2014}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{845\bibrangedash 869}
       \range{pages}{25}
       \verb{doi}
@@ -2535,6 +2366,8 @@
       \verb http://ieeexplore.ieee.org/document/6685834/
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'frenay_classification_2014' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'frenay_classification_2014' (library.bib): Invalid format '2014-05' of date field 'date' - ignoring}
     \endentry
     \entry{cohen_statistical_1988}{book}{}{}
       \name{author}{1}{}{%
@@ -2567,12 +2400,11 @@
       \field{langid}{english}
       \field{pagetotal}{567}
       \field{title}{Statistical power analysis for the behavioral sciences}
-      \field{year}{1988}
-      \field{dateera}{ce}
       \verb{file}
       \verb CohenPower:/Users/gregorlederer/Zotero/storage/THL2HAQM/Cohen - 1988 - Statistical power analysis for the behavioral sciences.pdf:application/pdf
       \endverb
       \keyw{★★★★★}
+      \warn{\item book entry 'cohen_statistical_1988' (library.bib): Invalid format '1988' of date field 'date' - ignoring}
     \endentry
     \entry{henao_isaza_comprehensive_2026}{article}{}{}
       \name{author}{5}{}{%
@@ -2626,21 +2458,13 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Objective Dementia, particularly Alzheimer’s disease ({AD}), constitutes a major global health concern, with {AD} accounting for approximately 70\% of all cases. {EEG}-based biomarkers hold promise for early identification of individuals at risk; however, small and heterogeneous samples frequently limit generalizability.}
-      \field{day}{11}
       \field{issn}{1932-6203}
       \field{journaltitle}{{PLOS} One}
       \field{langid}{english}
-      \field{month}{3}
       \field{number}{3}
       \field{shortjournal}{{PLoS} One}
       \field{title}{Comprehensive methodology for sample enrichment in {EEG} biomarker studies for Alzheimer’s risk classification}
-      \field{urlday}{6}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{21}
-      \field{year}{2026}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{e0343722}
       \range{pages}{-1}
       \verb{doi}
@@ -2656,6 +2480,8 @@
       \verb https://dx.plos.org/10.1371/journal.pone.0343722
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'henao_isaza_comprehensive_2026' (library.bib): Invalid format '2026-08-06' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'henao_isaza_comprehensive_2026' (library.bib): Invalid format '2026-03-11' of date field 'date' - ignoring}
     \endentry
     \entry{kiarashi_sleep-derived_2025}{article}{}{}
       \name{author}{6}{}{%
@@ -2703,13 +2529,9 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{{INTRODUCTION}: We investigated whether sleep features from multi-night, at-home in-ear {EEG} could distinguish mild cognitive impairment ({MCI}) from cognitively normal ({CN}) older adults, independent of demographic confounds. {METHODS}: Forty-three older adults (24 {MCI}, 19 {CN}) completed 361 overnight in-ear {EEG} recordings at home (4.44 ± 2.29 nights per participant). Deep learning-derived embeddings were compared to bandpower features. We controlled for age and sex to identify sleep-specific features of {MCI} beyond demography.}
-      \field{day}{13}
       \field{journaltitle}{{medRxiv}}
       \field{langid}{english}
-      \field{month}{11}
       \field{title}{Sleep-Derived Features From Multi-Night In-ear {EEG} Identify Patterns Linked To Mild Cognitive Impairment}
-      \field{year}{2025}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.1101/2025.11.11.25339999
       \endverb
@@ -2717,6 +2539,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/95X8663J/Kiarashi et al. - 2025 - Sleep-Derived Features From Multi-Night In-ear EEG Identify Patterns Linked To Mild Cognitive Impair.pdf:application/pdf
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'kiarashi_sleep-derived_2025' (library.bib): Invalid format '2025-11-13' of date field 'date' - ignoring}
     \endentry
     \entry{hjorth_eeg_1970}{article}{}{}
       \name{author}{1}{}{%
@@ -2739,15 +2562,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A method to describe the general characteristics of an {EEG} trace in a few quantitative terms is introduced. Its descriptive parameters are entirely based on time, but they can be derived also from the statistical moments of the power spectrum. Thus the method provides a bridge between a physical time domain interpretation and the conventional frequency domain description. Further, the parameters are based on the concept of variance, giving them an additive property so that the measured values pertain also to any basic elements from which a complex curve may be composed by superposition.}
-      \field{day}{30}
       \field{journaltitle}{Electroencephalography and Clinical Neurophysiology}
       \field{langid}{english}
-      \field{month}{1}
       \field{number}{3}
       \field{title}{{EEG} analysis based on time domain properties}
       \field{volume}{29}
-      \field{year}{1970}
-      \field{dateera}{ce}
       \field{pages}{306\bibrangedash 310}
       \range{pages}{5}
       \verb{doi}
@@ -2757,6 +2576,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/LNZ9MREI/Hjorth - 1970 - EEG analysis based on time domain properties.pdf:application/pdf
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'hjorth_eeg_1970' (library.bib): Invalid format '1970-01-30' of date field 'date' - ignoring}
     \endentry
     \entry{khambampati_frequency_2023}{inproceedings}{}{}
       \name{author}{5}{}{%
@@ -2798,17 +2618,9 @@
       \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{26}
       \field{eventtitle}{2023 Computing in Cardiology Conference}
       \field{langid}{english}
-      \field{month}{11}
       \field{title}{Frequency and Time Domain {EEG} Analysis for Prognostication of Postanoxic Comatose Patients}
-      \field{urlday}{7}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
-      \field{year}{2023}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \verb{doi}
       \verb 10.22489/CinC.2023.236
       \endverb
@@ -2822,6 +2634,8 @@
       \verb https://www.cinc.org/archives/2023/pdf/CinC2023-236.pdf
       \endverb
       \keyw{★★★★★}
+      \warn{\item inproceedings entry 'khambampati_frequency_2023' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring}
+      \warn{\item inproceedings entry 'khambampati_frequency_2023' (library.bib): Invalid format '2023-11-26' of date field 'date' - ignoring}
     \endentry
     \entry{niknazar_new_2018}{article}{}{}
       \name{author}{3}{}{%
@@ -2856,17 +2670,10 @@
       \field{issn}{03759601}
       \field{journaltitle}{Physics Letters A}
       \field{langid}{english}
-      \field{month}{2}
       \field{number}{5}
       \field{shortjournal}{Physics Letters A}
       \field{title}{A new similarity index for nonlinear signal analysis based on local extrema patterns}
-      \field{urlday}{7}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{382}
-      \field{year}{2018}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{288\bibrangedash 299}
       \range{pages}{12}
       \verb{doi}
@@ -2882,6 +2689,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S0375960117311490
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'niknazar_new_2018' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'niknazar_new_2018' (library.bib): Invalid format '2018-02' of date field 'date' - ignoring}
     \endentry
     \entry{shin_rate_2017}{article}{}{}
       \name{author}{5}{}{%
@@ -2924,19 +2733,11 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Beta oscillations (15-29Hz) are among the most prominent signatures of brain activity. Beta power is predictive of healthy and abnormal behaviors, including perception, attention and motor action. In non-averaged signals, beta can emerge as transient high-power 'events'. As such, functionally relevant differences in averaged power across time and trials can reflect changes in event number, power, duration, and/or frequency span. We show that functionally relevant differences in averaged beta power in primary somatosensory neocortex reflect a difference in the number of high-power beta events per trial, i.e. event rate. Further, beta events occurring close to the stimulus were more likely to impair perception. These results are consistent across detection and attention tasks in human magnetoencephalography, and in local field potentials from mice performing a detection task. These results imply that an increased propensity of beta events predicts the failure to effectively transmit information through specific neocortical representations.}
-      \field{day}{6}
       \field{issn}{2050-084X}
       \field{journaltitle}{{eLife}}
       \field{langid}{english}
-      \field{month}{11}
       \field{title}{The rate of transient beta frequency events predicts behavior across tasks and species}
-      \field{urlday}{28}
-      \field{urlmonth}{9}
-      \field{urlyear}{2026}
       \field{volume}{6}
-      \field{year}{2017}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{e29086}
       \range{pages}{-1}
       \verb{doi}
@@ -2948,6 +2749,8 @@
       \verb{url}
       \verb https://elifesciences.org/articles/29086
       \endverb
+      \warn{\item article entry 'shin_rate_2017' (library.bib): Invalid format '2026-09-28' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'shin_rate_2017' (library.bib): Invalid format '2017-11-06' of date field 'date' - ignoring}
     \endentry
     \entry{goncharova_emg_2003}{article}{}{}
       \name{author}{4}{}{%
@@ -2988,18 +2791,11 @@
       \field{issn}{13882457}
       \field{journaltitle}{Clinical Neurophysiology}
       \field{langid}{english}
-      \field{month}{9}
       \field{number}{9}
       \field{shortjournal}{Clinical Neurophysiology}
       \field{shorttitle}{{EMG} contamination of {EEG}}
       \field{title}{{EMG} contamination of {EEG}: spectral and topographical characteristics}
-      \field{urlday}{7}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{114}
-      \field{year}{2003}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{1580\bibrangedash 1593}
       \range{pages}{14}
       \verb{doi}
@@ -3015,6 +2811,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S1388245703000932
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'goncharova_emg_2003' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'goncharova_emg_2003' (library.bib): Invalid format '2003-09' of date field 'date' - ignoring}
     \endentry
     \entry{yilmaz_facial_2019}{article}{}{}
       \name{author}{5}{}{%
@@ -3057,22 +2855,14 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Abstract Objective . In order to reach electroencephalography ({EEG}) electrodes on the scalp, synchronized activity of neurons needs to pass thorough several tissue layers, including the skull and muscles covering the scalp. The contamination of {EEG} signal by temporalis and frontalis muscles has been well documented for voluntary muscle contraction even at low contraction levels. The extent of myogenic contamination during postural and/or rest activity of the temporalis and frontalis remains an impediment for {EEG} research. Approach . In this study, we first aimed to observe involuntary, continuous motor unit activity of the frontalis muscle at rest and evaluate motor unit level frontalis interference on the {EEG} electrodes. Second, we compared motor unit interference from the frontalis before and after artefact pruning via an independent component analysis ({ICA}) algorithm. Main results . We demonstrated that motor unit activity of the frontalis muscle produces interference potentials on the frontal electrodes at rest and the interference was significantly reduced after {ICA} on the frontal electrodes, but not completely eliminated. Likewise, the temporalis interference at rest was significantly smaller after {ICA} on the fronto-temporal electrodes, but not completely removed. Significance . We documented the existence of resting involuntary activity of the temporalis and frontalis muscles underneath {EEG} electrodes and the removal of the {EEG} signal from their contiguous interference is not possible even after the use of {ICA} technology. We recommend that {EEG} researchers readdress the definition of ‘rest’ for {EEG} recordings and the {ICA} experts should extend their electromyography removal strategies to motor unit level interference.}
-      \field{day}{1}
       \field{issn}{1741-2560, 1741-2552}
       \field{journaltitle}{Journal of Neural Engineering}
       \field{langid}{english}
-      \field{month}{12}
       \field{number}{6}
       \field{shortjournal}{J. Neural Eng.}
       \field{shorttitle}{Facial muscle activity contaminates {EEG} signal at rest}
       \field{title}{Facial muscle activity contaminates {EEG} signal at rest: evidence from frontalis and temporalis motor units}
-      \field{urlday}{7}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{16}
-      \field{year}{2019}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{066029}
       \range{pages}{1}
       \verb{doi}
@@ -3088,6 +2878,8 @@
       \verb https://iopscience.iop.org/article/10.1088/1741-2552/ab3235
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'yilmaz_facial_2019' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'yilmaz_facial_2019' (library.bib): Invalid format '2019-12-01' of date field 'date' - ignoring}
     \endentry
     \entry{whitham_scalp_2007}{article}{}{}
       \name{author}{14}{}{%
@@ -3178,18 +2970,11 @@
       \field{issn}{13882457}
       \field{journaltitle}{Clinical Neurophysiology}
       \field{langid}{english}
-      \field{month}{8}
       \field{number}{8}
       \field{shortjournal}{Clinical Neurophysiology}
       \field{shorttitle}{Scalp electrical recording during paralysis}
       \field{title}{Scalp electrical recording during paralysis: Quantitative evidence that {EEG} frequencies above 20 Hz are contaminated by {EMG}}
-      \field{urlday}{7}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{118}
-      \field{year}{2007}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{1877\bibrangedash 1888}
       \range{pages}{12}
       \verb{doi}
@@ -3205,6 +2990,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S1388245707001988
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'whitham_scalp_2007' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'whitham_scalp_2007' (library.bib): Invalid format '2007-08' of date field 'date' - ignoring}
     \endentry
     \entry{li_electromyogram_2021}{article}{}{}
       \name{author}{7}{}{%
@@ -3257,20 +3044,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Electroencephalographic ({EEG}) recordings are often contaminated by electromyographic ({EMG}) artifacts, especially when recording during movement. Existing methods to remove {EMG} artifacts include independent component analysis ({ICA}), and other high-order statistical methods. However, these methods can not effectively remove most of {EMG} artifacts. Here, we proposed a modiﬁed {ICA} model for {EMG} artifacts removal in the {EEG}, which is called {EMG} Removal by Adding Sources of {EMG} ({ERASE}). In this new approach, additional channels of real {EMG} from neck and head muscles (reference artifacts) were added as inputs to {ICA} in order to “force” the most power from {EMG} artifacts into a few independent components ({ICs}). The {ICs} containing {EMG} artifacts (the “artifact {ICs}”) were identiﬁed and rejected using an automated procedure. {ERASE} was validated ﬁrst using both simulated and experimentally-recorded {EEG} and {EMG}. Simulation results showed {ERASE} removed {EMG} artifacts from {EEG} signiﬁcantly more effectively than conventional {ICA}. Also, it had a low false positive rate and high sensitivity. Subsequently, {EEG} was collected from 8 healthy participants while they moved their hands to test the realistic efﬁcacy of this approach. Results showed that {ERASE} successfully removed {EMG} artifacts (on average, about 75\% of {EMG} artifacts were removed when using real {EMGs} as reference artifacts) while preserving the expected {EEG} features related to movement. We also tested the {ERASE} procedure using simulated {EMGs} as reference artifacts (about 63\% of {EMG} artifacts removed). Compared to conventional {ICA}, {ERASE} removed on average 26\% more {EMG} artifacts from {EEG}. These ﬁndings suggest that {ERASE} can achieve signiﬁcant separation of {EEG} signal and {EMG} artifacts without a loss of the underlying {EEG} features. These results indicate that using additional real or simulated {EMG} sources can increase the effectiveness of {ICA} in removing {EMG} artifacts from {EEG}. Combined with automated artifact {IC} rejection, {ERASE} also minimizes potential user bias. Future work will focus on improving {ERASE} so that it can also be used in real-time applications.}
-      \field{day}{15}
       \field{issn}{1662-453X}
       \field{journaltitle}{Frontiers in Neuroscience}
       \field{langid}{english}
-      \field{month}{1}
       \field{shortjournal}{Front. Neurosci.}
       \field{title}{Electromyogram ({EMG}) Removal by Adding Sources of {EMG} ({ERASE})—A Novel {ICA}-Based Algorithm for Removing Myoelectric Artifacts From {EEG}}
-      \field{urlday}{13}
-      \field{urlmonth}{9}
-      \field{urlyear}{2026}
       \field{volume}{14}
-      \field{year}{2021}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{597941}
       \range{pages}{1}
       \verb{doi}
@@ -3285,6 +3064,8 @@
       \verb{url}
       \verb https://www.frontiersin.org/articles/10.3389/fnins.2020.597941/full
       \endverb
+      \warn{\item article entry 'li_electromyogram_2021' (library.bib): Invalid format '2026-09-13' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'li_electromyogram_2021' (library.bib): Invalid format '2021-01-15' of date field 'date' - ignoring}
     \endentry
     \entry{mcmenamin_electromyogenic_2011}{article}{}{}
       \name{author}{4}{}{%
@@ -3324,17 +3105,10 @@
       \field{issn}{10538119}
       \field{journaltitle}{{NeuroImage}}
       \field{langid}{english}
-      \field{month}{1}
       \field{number}{1}
       \field{shortjournal}{{NeuroImage}}
       \field{title}{Electromyogenic artifacts and electroencephalographic inferences revisited}
-      \field{urlday}{7}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{54}
-      \field{year}{2011}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{4\bibrangedash 9}
       \range{pages}{6}
       \verb{doi}
@@ -3350,6 +3124,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S105381191001030X
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'mcmenamin_electromyogenic_2011' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'mcmenamin_electromyogenic_2011' (library.bib): Invalid format '2011-01' of date field 'date' - ignoring}
     \endentry
     \entry{guntekin_review_2016}{article}{}{}
       \name{author}{2}{}{%
@@ -3379,16 +3155,9 @@
       \field{issn}{01678760}
       \field{journaltitle}{International Journal of Psychophysiology}
       \field{langid}{english}
-      \field{month}{5}
       \field{shortjournal}{International Journal of Psychophysiology}
       \field{title}{Review of evoked and event-related delta responses in the human brain}
-      \field{urlday}{7}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{103}
-      \field{year}{2016}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{43\bibrangedash 52}
       \range{pages}{10}
       \verb{doi}
@@ -3404,6 +3173,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S0167876015000318
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'guntekin_review_2016' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'guntekin_review_2016' (library.bib): Invalid format '2016-05' of date field 'date' - ignoring}
     \endentry
     \entry{knyazev_eeg_2012}{article}{}{}
       \name{author}{1}{}{%
@@ -3429,17 +3200,10 @@
       \field{issn}{01497634}
       \field{journaltitle}{Neuroscience \& Biobehavioral Reviews}
       \field{langid}{english}
-      \field{month}{1}
       \field{number}{1}
       \field{shortjournal}{Neuroscience \& Biobehavioral Reviews}
       \field{title}{{EEG} delta oscillations as a correlate of basic homeostatic and motivational processes}
-      \field{urlday}{7}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{36}
-      \field{year}{2012}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{677\bibrangedash 695}
       \range{pages}{19}
       \verb{doi}
@@ -3455,6 +3219,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S0149763411001849
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'knyazev_eeg_2012' (library.bib): Invalid format '2026-08-07' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'knyazev_eeg_2012' (library.bib): Invalid format '2012-01' of date field 'date' - ignoring}
     \endentry
     \entry{xu_neural_2024}{report}{}{}
       \name{author}{4}{}{%
@@ -3493,8 +3259,6 @@
       \field{labeltitlesource}{title}
       \field{abstract}{Considering the widespread influence of short-video applications ({SVAs}) on adolescent learners, this study aimed to examine whether and how problematic {SVA} use predicts their executive functions from behavioral and neural perspectives. With a sample of Chinese adolescents (Mage=12.30, N=84), behavioral results show that {SVA} addiction predicted lower working memory but not cognitive control performance. Their brain activation pattern during {SVA} use was also collected and linear regression analysis generated a neural indicator of {SVA} addiction on delta band. This component is proved to be a significant negative predictor of adolescents' working memory and cognitive control performance. Both behavioral and neural evidence provide complementary perspectives on the relationship between {SVA} addiction and adolescents' executive functions. The findings suggest that though {SVAs} have played increasingly important role in adolescents' informal learning experiences, the negative association between {SVA} overuse and their cognitive functioning urges caution.}
       \field{title}{Neural Correlates of Short-Video Application Addiction and Adolescents' Executive Functions}
-      \field{year}{2024}
-      \field{dateera}{ce}
       \verb{doi}
       \verb 10.22318/icls2024.131890
       \endverb
@@ -3507,6 +3271,7 @@
       \verb{url}
       \verb https://repository.isls.org/handle/1/10727
       \endverb
+      \warn{\item report entry 'xu_neural_2024' (library.bib): Invalid format '2024' of date field 'date' - ignoring}
     \endentry
     \entry{pattisapu_stimulus-induced_2023}{article}{}{}
       \name{author}{2}{}{%
@@ -3538,8 +3303,6 @@
       \field{number}{1}
       \field{title}{Stimulus-induced narrow-band gamma oscillations in humans can be recorded using open-hardware low-cost {EEG} amplifier}
       \field{volume}{18}
-      \field{year}{2023}
-      \field{dateera}{ce}
       \field{pages}{e0279881}
       \range{pages}{-1}
       \verb{doi}
@@ -3549,6 +3312,7 @@
       \verb PDF:/Users/gregorlederer/Zotero/storage/Q2FSC9BY/Pattisapu and Ray - 2023 - Stimulus-induced narrow-band gamma oscillations in humans can be recorded using open-hardware low-co.pdf:application/pdf
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'pattisapu_stimulus-induced_2023' (library.bib): Invalid format '2023' of date field 'date' - ignoring}
     \endentry
     \entry{libet_time_1983}{article}{}{}
       \name{author}{4}{}{%
@@ -3590,14 +3354,13 @@
       \field{langid}{english}
       \field{title}{Time Of Conscious Intention To Act In Relation To Onset Of Cerebral Activity (Readiness-Potential)}
       \field{volume}{106}
-      \field{year}{1983}
-      \field{dateera}{ce}
       \field{pages}{623\bibrangedash 642}
       \range{pages}{20}
       \verb{file}
       \verb PDF:/Users/gregorlederer/Zotero/storage/MCEEQBJF/Libet et al. - 1983 - Time Of Conscious Intention To Act In Relation To Onset Of Cerebral Activity (Readiness-Potential).pdf:application/pdf
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'libet_time_1983' (library.bib): Invalid format '1983' of date field 'date' - ignoring}
     \endentry
     \entry{shakeel_review_2015}{article}{}{}
       \name{author}{6}{}{%
@@ -3650,13 +3413,7 @@
       \field{langid}{english}
       \field{shortjournal}{Computational and Mathematical Methods in Medicine}
       \field{title}{A Review of Techniques for Detection of Movement Intention Using Movement-Related Cortical Potentials}
-      \field{urlday}{30}
-      \field{urlmonth}{4}
-      \field{urlyear}{2026}
       \field{volume}{2015}
-      \field{year}{2015}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{1\bibrangedash 13}
       \range{pages}{13}
       \verb{doi}
@@ -3672,6 +3429,8 @@
       \verb http://www.hindawi.com/journals/cmmm/2015/346217/
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'shakeel_review_2015' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'shakeel_review_2015' (library.bib): Invalid format '2015' of date field 'date' - ignoring}
     \endentry
     \entry{krigolson_choosing_2017}{article}{}{}
       \name{author}{5}{}{%
@@ -3714,21 +3473,13 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{In recent years there has been an increase in the number of portable low-cost electroencephalographic ({EEG}) systems available to researchers. However, to date the validation of the use of low-cost {EEG} systems has focused on continuous recording of {EEG} data and/or the replication of large system {EEG} setups reliant on event-markers to afford examination of event-related brain potentials ({ERP}). Here, we demonstrate that it is possible to conduct {ERP} research without being reliant on event markers using a portable {MUSE} {EEG} system and a single computer. Speciﬁcally, we report the results of two experiments using data collected with the {MUSE} {EEG} system—one using the well-known visual oddball paradigm and the other using a standard reward-learning task. Our results demonstrate that we could observe and quantify the N200 and P300 {ERP} components in the visual oddball task and the reward positivity (the mirror opposite component to the feedback-related negativity) in the reward-learning task. Speciﬁcally, single sample t-tests of component existence (all p’s {<} 0.05), computation of Bayesian credible intervals, and 95\% conﬁdence intervals all statistically veriﬁed the existence of the N200, P300, and reward positivity in all analyses. We provide with this research paper an open source website with all the instructions, methods, and software to replicate our ﬁndings and to provide researchers with an easy way to use the {MUSE} {EEG} system for {ERP} research. Importantly, our work highlights that with a single computer and a portable {EEG} system such as the {MUSE} one can conduct {ERP} research with ease thus greatly extending the possible use of the {ERP} methodology to a variety of novel contexts.}
-      \field{day}{10}
       \field{issn}{1662-453X}
       \field{journaltitle}{Frontiers in Neuroscience}
       \field{langid}{english}
-      \field{month}{3}
       \field{shortjournal}{Front. Neurosci.}
       \field{shorttitle}{Choosing {MUSE}}
       \field{title}{Choosing {MUSE}: Validation of a Low-Cost, Portable {EEG} System for {ERP} Research}
-      \field{urlday}{30}
-      \field{urlmonth}{4}
-      \field{urlyear}{2026}
       \field{volume}{11}
-      \field{year}{2017}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \verb{doi}
       \verb 10.3389/fnins.2017.00109
       \endverb
@@ -3742,6 +3493,8 @@
       \verb http://journal.frontiersin.org/article/10.3389/fnins.2017.00109/full
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'krigolson_choosing_2017' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'krigolson_choosing_2017' (library.bib): Invalid format '2017-03-10' of date field 'date' - ignoring}
     \endentry
     \entry{hasson_intersubject_2004}{article}{}{}
       \name{author}{5}{}{%
@@ -3784,21 +3537,13 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{To what extent do all brains work alike during natural conditions? We explored this question by letting five subjects freely view half an hour of a popular movie while undergoing functional brain imaging. Applying an unbiased analysis in which spatiotemporal activity patterns in one brain were used to “model” activity in another brain, we found a striking level of voxel-by-voxel synchronization between individuals, not only in primary and secondary visual and auditory areas but also in association cortices. The results reveal a surprising tendency of individual brains to “tick collectively” during natural vision. The intersubject synchronization consisted of a widespread cortical activation pattern correlated with emotionally arousing scenes and regionally selective components. The characteristics of these activations were revealed with the use of an open-ended “reverse-correlation” approach, which inverts the conventional analysis by letting the brain signals themselves “pick up” the optimal stimuli for each specialized cortical area.}
-      \field{day}{12}
       \field{issn}{0036-8075, 1095-9203}
       \field{journaltitle}{Science}
       \field{langid}{english}
-      \field{month}{3}
       \field{number}{5664}
       \field{shortjournal}{Science}
       \field{title}{Intersubject Synchronization of Cortical Activity During Natural Vision}
-      \field{urlday}{30}
-      \field{urlmonth}{4}
-      \field{urlyear}{2026}
       \field{volume}{303}
-      \field{year}{2004}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{1634\bibrangedash 1640}
       \range{pages}{7}
       \verb{doi}
@@ -3814,6 +3559,8 @@
       \verb https://www.science.org/doi/10.1126/science.1089506
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'hasson_intersubject_2004' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'hasson_intersubject_2004' (library.bib): Invalid format '2004-03-12' of date field 'date' - ignoring}
     \endentry
     \entry{donoghue_electrophysiological_2020}{article}{}{}
       \name{author}{3}{}{%
@@ -3849,17 +3596,10 @@
       \field{issn}{2373-2822}
       \field{journaltitle}{eneuro}
       \field{langid}{english}
-      \field{month}{11}
       \field{number}{6}
       \field{shortjournal}{{eNeuro}}
       \field{title}{Electrophysiological Frequency Band Ratio Measures Conflate Periodic and Aperiodic Neural Activity}
-      \field{urlday}{8}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
       \field{volume}{7}
-      \field{year}{2020}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{ENEURO.0192\bibrangedash 20.2020}
       \range{pages}{-1}
       \verb{doi}
@@ -3875,6 +3615,8 @@
       \verb https://www.eneuro.org/lookup/doi/10.1523/ENEURO.0192-20.2020
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'donoghue_electrophysiological_2020' (library.bib): Invalid format '2026-08-08' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'donoghue_electrophysiological_2020' (library.bib): Invalid format '2020-11' of date field 'date' - ignoring}
     \endentry
     \entry{varoquaux_assessing_2017}{article}{}{}
       \name{author}{6}{}{%
@@ -3926,17 +3668,10 @@
       \field{issn}{10538119}
       \field{journaltitle}{{NeuroImage}}
       \field{langid}{english}
-      \field{month}{1}
       \field{shortjournal}{{NeuroImage}}
       \field{shorttitle}{Assessing and tuning brain decoders}
       \field{title}{Assessing and tuning brain decoders: cross-validation, caveats, and guidelines}
-      \field{urlday}{26}
-      \field{urlmonth}{9}
-      \field{urlyear}{2026}
       \field{volume}{145}
-      \field{year}{2017}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{166\bibrangedash 179}
       \range{pages}{14}
       \verb{doi}
@@ -3955,6 +3690,8 @@
       \verb http://arxiv.org/abs/1606.05201
       \endverb
       \keyw{Statistics - Machine Learning}
+      \warn{\item article entry 'varoquaux_assessing_2017' (library.bib): Invalid format '2026-09-26' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'varoquaux_assessing_2017' (library.bib): Invalid format '2017-01' of date field 'date' - ignoring}
     \endentry
     \entry{demsar_statistical_2006}{article}{}{}
       \name{author}{1}{}{%
@@ -3981,13 +3718,12 @@
       \field{langid}{english}
       \field{title}{Statistical Comparisons of Classiﬁers over Multiple Data Sets}
       \field{volume}{7}
-      \field{year}{2006}
-      \field{dateera}{ce}
       \field{pages}{1\bibrangedash 30}
       \range{pages}{30}
       \verb{file}
       \verb PDF:/Users/gregorlederer/Zotero/storage/SZ3HKHMJ/Demšar - 2006 - Statistical Comparisons of Classiﬁers over Multiple Data Sets.pdf:application/pdf
       \endverb
+      \warn{\item article entry 'demsar_statistical_2006' (library.bib): Invalid format '2006' of date field 'date' - ignoring}
     \endentry
     \entry{pfurtscheller_event-related_1996}{article}{}{}
       \name{author}{3}{}{%
@@ -4023,18 +3759,11 @@
       \field{issn}{01678760}
       \field{journaltitle}{International Journal of Psychophysiology}
       \field{langid}{english}
-      \field{month}{11}
       \field{number}{1}
       \field{shortjournal}{International Journal of Psychophysiology}
       \field{shorttitle}{Event-related synchronization ({ERS}) in the alpha band — an electrophysiological correlate of cortical idling}
       \field{title}{Event-related synchronization ({ERS}) in the alpha band — an electrophysiological correlate of cortical idling: A review}
-      \field{urlday}{6}
-      \field{urlmonth}{5}
-      \field{urlyear}{2026}
       \field{volume}{24}
-      \field{year}{1996}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{39\bibrangedash 46}
       \range{pages}{8}
       \verb{doi}
@@ -4050,6 +3779,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S0167876096000669
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'pfurtscheller_event-related_1996' (library.bib): Invalid format '2026-05-06' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'pfurtscheller_event-related_1996' (library.bib): Invalid format '1996-11' of date field 'date' - ignoring}
     \endentry
     \entry{ovi_frequency_2026}{article}{}{}
       \name{author}{6}{}{%
@@ -4100,15 +3831,8 @@
       \field{issn}{26668270}
       \field{journaltitle}{Machine Learning with Applications}
       \field{langid}{english}
-      \field{month}{4}
       \field{shortjournal}{Machine Learning with Applications}
       \field{title}{Frequency band dissociation between cognitive state recognition and person identification in {EEG}}
-      \field{urlday}{8}
-      \field{urlmonth}{8}
-      \field{urlyear}{2026}
-      \field{year}{2026}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{100901}
       \range{pages}{1}
       \verb{doi}
@@ -4124,6 +3848,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S2666827026000666
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'ovi_frequency_2026' (library.bib): Invalid format '2026-08-08' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'ovi_frequency_2026' (library.bib): Invalid format '2026-04' of date field 'date' - ignoring}
     \endentry
     \entry{fries_rhythms_2015}{article}{}{}
       \name{author}{1}{}{%
@@ -4148,18 +3874,11 @@
       \field{issn}{08966273}
       \field{journaltitle}{Neuron}
       \field{langid}{english}
-      \field{month}{10}
       \field{number}{1}
       \field{shortjournal}{Neuron}
       \field{shorttitle}{Rhythms for Cognition}
       \field{title}{Rhythms for Cognition: Communication through Coherence}
-      \field{urlday}{30}
-      \field{urlmonth}{4}
-      \field{urlyear}{2026}
       \field{volume}{88}
-      \field{year}{2015}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{220\bibrangedash 235}
       \range{pages}{16}
       \verb{doi}
@@ -4175,6 +3894,8 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S0896627315008235
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'fries_rhythms_2015' (library.bib): Invalid format '2026-04-30' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'fries_rhythms_2015' (library.bib): Invalid format '2015-10' of date field 'date' - ignoring}
     \endentry
     \entry{miller_integrative_2001}{article}{}{}
       \name{author}{2}{}{%
@@ -4205,17 +3926,10 @@
       \field{issn}{0147-006X, 1545-4126}
       \field{journaltitle}{Annual Review of Neuroscience}
       \field{langid}{english}
-      \field{month}{3}
       \field{number}{1}
       \field{shortjournal}{Annu. Rev. Neurosci.}
       \field{title}{An Integrative Theory of Prefrontal Cortex Function}
-      \field{urlday}{6}
-      \field{urlmonth}{5}
-      \field{urlyear}{2026}
       \field{volume}{24}
-      \field{year}{2001}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
       \field{pages}{167\bibrangedash 202}
       \range{pages}{36}
       \verb{doi}
@@ -4231,6 +3945,8 @@
       \verb https://www.annualreviews.org/doi/10.1146/annurev.neuro.24.1.167
       \endverb
       \keyw{★★★★★}
+      \warn{\item article entry 'miller_integrative_2001' (library.bib): Invalid format '2026-05-06' of date field 'urldate' - ignoring}
+      \warn{\item article entry 'miller_integrative_2001' (library.bib): Invalid format '2001-03' of date field 'date' - ignoring}
     \endentry
   \enddatalist
 \endrefsection
