@@ -983,7 +983,7 @@ Feature engineering turns each 1.0~s window (Section~\ref{sec:method_windowing})
 \end{itemize}
 The EI is computed separately from the same windows and serves as the benchmark for the 236 features.
 
-\paragraph{Why 236 features.} A review of 74 EEG studies of user engagement found ``a lack of standardized computational methods'' \cite{bellos_methods_2025}. No single feature is therefore known in advance to fit the seconds before a swipe. The present thesis computes many simple features, each with a known meaning, and lets Cohen's \(d\) rank all of them against the EI (research questions 1 and 2; Section~\ref{sec:method_feature_separation_cohen_d}). The EI uses only theta, alpha and beta, averaged over all electrodes. In a learning task, features from twelve narrow frequency bands, combined across electrodes, classified engagement clearly better than the EI \cite{apicella_eeg-based_2022}. In the adjacent study, beta and gamma were the most informative bands \cite{rahman_detection_2025}. The band features therefore cover all seven bands, and keep each electrode separate.
+\paragraph{Why 236 features.} A review of 74 EEG studies of user engagement found ``a lack of standardized computational methods'' \cite{bellos_methods_2025}. No single feature is therefore known in advance to fit the seconds before a swipe. The EI uses only theta, alpha and beta, averaged over all electrodes. In a learning task, features from twelve narrow frequency bands, combined across electrodes, classified engagement clearly better than the EI \cite{apicella_eeg-based_2022}. In the adjacent study, beta and gamma were the most informative bands \cite{rahman_detection_2025}. The present thesis therefore aims to maximise the number of simple features, each with a known meaning, across all seven bands and each electrode separately. The ranking by Cohen's \(d\) then decides which feature separates \texttt{STAY} from \texttt{SKIP} best, and how each feature compares with the EI (research questions 1 and 2; Section~\ref{sec:method_feature_separation_cohen_d}).
 
 \paragraph{From recording to one number.} Every band feature follows the same six steps, shown here for AF7 high-gamma mean, one of the three top features (Section~\ref{sec:results_feature_importance}):
 \begin{enumerate}
@@ -996,30 +996,30 @@ The EI is computed separately from the same windows and serves as the benchmark 
 \end{enumerate}
 The one number is the feature AF7 high-gamma mean of that one window. Every window gets one such number for every band, electrode and statistic: 224 band features. The window holds \(N\) samples and lasts \(T\) seconds. A full window has \(N = 256\) and \(T = 1.0\)~s. The 531 shortened windows at the end of a stretch hold fewer samples (Section~\ref{sec:method_windowing}). The raw features skip steps 2 to 4 (Section~\ref{sec:method_raw_features}). Table~\ref{tab:feature_ranges} lists, for every statistic, the one number per window, the possible range, and the value when the window behaves like the baseline.
 
-\begin{table}[!tbp]
+\begin{table}[H]
 \centering
-\small
-\renewcommand{\arraystretch}{1.15}
-\caption[One number per window for every statistic]{One number per window for every statistic. The baseline column gives the value when the window behaves like the baseline. ``None'' means that the baseline sets no fixed value. A single second of the baseline usually spreads less than the whole 90~s baseline.}
+\footnotesize
+\caption[One number per window for every statistic]{One number per window for every statistic. Baseline: the value when the window matches the baseline average (Mean) or the spread of the whole 90~s baseline (standard deviation, Activity, EI). --: no fixed baseline value. SD: standard deviation.}
 \label{tab:feature_ranges}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}X}
+\vspace{4pt}
+\begin{tabular}{llll}
 \toprule
-\textbf{Statistic} & \textbf{One number per window} & \textbf{Range} & \textbf{Value at baseline} \\
+\textbf{Statistic} & \textbf{One number} & \textbf{Range} & \textbf{Baseline} \\
 \midrule
-Mean & average of \(y(t)\) & no fixed limit & 0 \\
-Standard deviation & spread of \(y(t)\) & 0 and up & 1 = spread of the whole 90~s baseline \\
-Relative Power & band mean divided by the sum of the seven band means & no fixed limit; 0 when the sum is 0 or below & none: near the baseline, the sum lies near 0, so the value jumps or is set to 0 \\
-EI & beta variance divided by alpha plus theta variance, each averaged over four electrodes & 0 and up & 0.5 when each band spreads as much as over the whole baseline \\
-Activity & variance of \(y(t)\) & 0 and up & 1 = spread of the whole 90~s baseline \\
-Mobility & standard deviation of the slope divided by the standard deviation of \(y(t)\) & 0 to about 2 per sample & none: the z-score leaves the value unchanged \\
-Complexity & Mobility of the slope divided by Mobility of \(y(t)\) & 0 and up; 1 for a pure sine wave & none: the z-score leaves the value unchanged \\
-Peak Frequency & peaks per second & 0 to about 128 per second & none: the z-score leaves the value unchanged \\
-Macro Frequency & hills per second & 0 to about 128 per second & none: the z-score leaves the value unchanged \\
-Raw mean & average of the raw signal, in microvolts & no fixed limit & none; 0 = average of the recording file \\
-Raw standard deviation & spread of the raw signal, in microvolts & 0 and up & none \\
-Raw slope & slope of a fitted line, in microvolts per second & no fixed limit & none; 0 = no drift \\
+Mean & mean of \(y(t)\) & no fixed limit & 0 \\
+Standard deviation & SD of \(y(t)\) & \(\geq 0\) & 1 \\
+Relative Power & band \(\div\) all bands & no fixed limit & -- \\
+EI & \(\beta \div (\alpha + \theta)\) variance & \(\geq 0\) & 0.5 \\
+Activity & variance of \(y(t)\) & \(\geq 0\) & 1 \\
+Mobility & SD\((y') \div\) SD\((y)\) & 0 to \(\sim\)2 & -- \\
+Complexity & Mobility\((y') \div\) Mobility\((y)\) & \(\geq 0\) (sine: 1) & -- \\
+Peak Frequency & peaks per second & 0 to \(\sim\)128 & -- \\
+Macro Frequency & hills per second & 0 to \(\sim\)128 & -- \\
+Raw mean & mean of raw & device-limited & -- \\
+Raw standard deviation & SD of raw & \(\geq 0\) & -- \\
+Raw slope & fitted-line slope & device-limited & -- \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 \subsection{Mean, Standard Deviation and Relative Power}
