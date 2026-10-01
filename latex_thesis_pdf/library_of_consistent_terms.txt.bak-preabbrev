@@ -1,0 +1,113 @@
+LIBRARY OF CONSISTENT TERMS
+Use each term exactly as written. Do not swap in synonyms.
+Format: TERM | what it means / what it is used for | where first coined
+
+--- THE THESIS ---
+the present thesis | this thesis; used when emphasizing alone as well as alongside other things non included in this thesis to draw a clear line.
+the author | refers to the author and reasearcher and experiment lead of the present thesis
+beyond the scope of the present thesis | fixed phrase for a question the present thesis names but does not test; pair with a pointer to Future Research | Sec. Participants
+
+--- THE CONSTRUCT ---
+engagement | the primary construct label of the thesis; everything else is an indicator of it | Sec. Defining Engagement (Intro)
+working definition | the screen-and-swipe definition of engagement, boxed in the Introduction | Sec. Defining Engagement (Intro)
+indicator | a measurable sign of engagement (watch time, sustained viewing, the STAY and SKIP labels, an EEG feature, a self-report item); no indicator is engagement itself; do NOT list 'attention' (part of the definition) or 'absorption' (Baughan: normative dissociation = total cognitive absorption) as indicators | Sec. Defining Engagement (Intro) / Sec. Implication: Engagement Definition
+proposed definition | the general, instrument-free definition: 'a person's attention to a particular object, held against available alternatives, and ending at the latest at an observable exit' = the working definition with four parts swapped (viewer->person, content->object, next video->alternatives, swipe->exit); a PROPOSAL, never 'updated definition' | Sec. Implication: Engagement Definition
+exit | the observable moment at which engagement has ended AT THE LATEST (in this thesis: the swipe); engagement may fade earlier without a visible sign (dissociated viewing, autopilot swipes); observed directly, never inferred from time spent | Sec. Defining Engagement (Intro) / Sec. Implication: Engagement Definition
+exit criterion | what counts as an exit, observed directly and not inferred from time spent alone; one of the four reporting requirements (object, interval, indicator, exit criterion) | Sec. Implications for Measurement
+interval | the timescale over which engagement is claimed; a REPORTING REQUIREMENT, not part of the proposed definition (do NOT use 'declared interval') | Sec. Implications for Measurement
+occupancy | RETIRED (2026-09-28): do NOT use; say 'time spent' | Sec. The Proposed Definition
+normative dissociation | zoned-out, low-recall scrolling (Baughan et al.) | Sec. Engagement and Attention in short-form video platforms
+
+--- THE SETTING ---
+infinite feed | the short-form video feed itself, where participants are | Sec. Adjacent studies
+naturalistic use | self-paced viewing of an algorithmic feed, with a swipe possible at any moment (in this thesis: TikTok For You feed on the author's iPhone, reset before each participant; NOT 'own feed on own phone') | Sec. Adjacent studies
+swipe | the single self-paced action that moves to the next video; anchors every label | Intro / Sec. Adjacent studies
+burst / burst block | several rapid swipes merged into one block; swipes merge when their ±3.0 s burst windows overlap (closer than 6.0 s); the burst window is NOT the SKIP period | Sec. Behavioral Burst Analysis
+burst window | ±3.0 s around each swipe, used only by the burst analysis; groups swipes, changes no label; separate definition from the SKIP period, though the two can overlap in time | Sec. Behavioral Burst Analysis
+inter-swipe interval | time between two consecutive "A" keypresses, roughly the viewing time of one video (do NOT use "dwell time" for it) | Sec. Behavioral Burst Analysis
+block size | number of swipes in one burst block; a burst block of size 1 is a swipe with no other swipe within 6.0 s; do NOT write "n" for it (n is the sample size) and do NOT use "burst group"; always say whether a share counts SWIPES (40.3% stand alone at ±3.0 s) or BURST BLOCKS (67.4% have size 1 at ±3.0 s) | Sec. Behavioral Swipe-Burst Phenomenon
+fast scrollers / slow scrollers | participants with many large burst blocks vs mostly burst blocks of size 1; the two ends of one range, not two groups (do NOT use "frantic scrollers" or "careful scrollers") | Sec. Behavioral Swipe-Burst Phenomenon
+
+--- THE LITERATURE ---
+adjacent study | Rahman et al. 2025; same Muse S headband, different question | Sec. Adjacent studies
+secondary adjacent studies | the three compared EEG studies of short-form video viewing without a consumer headband: Zhang et al., Du et al., Zhang and Zhang | Sec. Secondary adjacent studies
+black box vs glass box | detection-accuracy model (adjacent study) vs model that shows which part of the signal carries the class information (this thesis) | Sec. Adjacent studies
+punching a hole | mental image for a notch filter removing 50 Hz and everything real near it | Sec. Adjacent studies
+powerline-noise | 50 Hz electrical contamination (use this, NOT "mains frequency", "line noise", "power-line noise") | Sec. Adjacent studies
+door closing | mental image for the swipe as the datable end of engagement (vs a score as a dimmer switch) | Sec. Defining Engagement: Existing Definitions and Their Gaps
+DBCI | digital behaviour change intervention, e.g. a health app or health website | Sec. Engagement in the Health Communication Literature
+health-engagement literature | DBCI research plus research on health messages on TikTok, taken together | Sec. Engagement in the Health Communication Literature
+ask route / log route / body route | the three routes to measure engagement (Perski et al.): self-report / automated usage recording / physiological or psychophysical correlates; EEG in this thesis is a body-route measure | Sec. Engagement in the Health Communication Literature
+dose | the counts from the log route (use, exposure, platform counters) | Sec. Engagement in the Health Communication Literature
+
+--- THE RECORDING ---
+baseline phase / browsing phase | the two phases of a session: 2-minute resting video / 25-minute TikTok browsing | Sec. Experimental Protocol
+scrolling task | the free TikTok browsing of the browsing phase, as explained to participants | Sec. Lessons from Running the Experiment
+briefing | the instructions the author gave participants during the session (keypress at each swipe, start and end of the scrolling task, keep scrolling after a Bluetooth dropout; pause or end only if unwell) | Sec. Lessons from Running the Experiment
+bridge | muselsl; carries the Muse Bluetooth signal to the laptop and onto LSL; mental image: a bridge between headband and laptop | Sec. Recording Software
+shared clock | LSL time; one clock on the wall that every stream (EEG, keypresses) reads | Sec. Recording Software
+recording pipeline | the thesis's own recording code (one Python file, recording_script.py): finds the headband, starts muselsl, reads EEG with pylsl, flags keypresses in LSL time, reconnects after a Bluetooth dropout (do NOT use "custom recording script", "recording architecture" or "Universal"; section title: Reproducible Recording Pipeline) | Sec. Recording Software / Reproducible Recording Pipeline
+recording file | one CSV file of the recording pipeline; a Bluetooth dropout ends one recording file and starts the next; the preprocessing pipeline processes each recording file on its own and never joins two (do NOT use "CSV file" in running text) | Sec. Reproducible Preprocessing Pipeline
+preprocessing pipeline | the thesis's own preprocessing code (step01-step03): trims, interpolates to 256 Hz, splits into bands, z-scores band envelopes against the baseline, cuts windows; runs once without and once with a 50 Hz notch filter (section title: Reproducible Preprocessing Pipeline; do NOT write "Pre-Processing") | Sec. Reproducible Preprocessing Pipeline
+full pipeline | all code of the thesis, from recording to results: reproducible recording pipeline (3.5), reproducible preprocessing pipeline (3.6), feature engineering (3.7), result synthesis pipeline (3.8); public at github.com/coffeeandcoffee/eeg_tiktok_pipeline (do NOT use "analysis and recording pipeline" or "methodological pipeline") | Sec. The Reusable Pipeline
+reconnect gap | lost time between two recording files after a Bluetooth dropout; logged, never crossed by a window, never interpolated | Sec. Recording Software
+
+--- THE LABELS ---
+STAY | the label of windows drawn from the STAY period: continuous, non-skip viewing inside the infinite feed | Sec. Operational Definition of STAY and SKIP
+SKIP | the label of windows drawn from the SKIP period before a swipe | Sec. Operational Definition of STAY and SKIP
+labeling parameters | the four values that define the STAY and SKIP labels: pre-swipe gap, SKIP period, post-swipe gap, window length; the sensitivity analysis varies the first, second and fourth, the post-swipe gap stays at 0.5 s (do NOT use "timing values" or "temporal parameters") | Sec. Labeling Strategy
+SKIP period | 3.0 s just before the pre-swipe gap, from which SKIP windows are drawn (do NOT use "imminent-skip period") | Sec. Operational Definition of Labeling Parameters
+pre-swipe gap | 2.0 s excluded right before the keypress that marks a swipe; meant to keep swipe preparation out of SKIP (do NOT use "gap length") | Sec. Operational Definition of Labeling Parameters
+window length | 1.0 s analysis window | Sec. Operational Definition of Labeling Parameters
+post-swipe gap | 0.5 s excluded right after the keypress that marks a swipe (do NOT use "grace period") | Sec. Operational Definition of Labeling Parameters
+STAY period | all remaining browsing time: starts after a post-swipe gap, ends where the next SKIP period starts | Sec. Operational Definition of STAY and SKIP
+Bereitschaftspotential (BP) | slow brain signal of movement preparation before a voluntary action | Sec. Pre-Motor Window
+
+--- THE SIGNAL AND FEATURES ---
+envelope | the strength of one band at every moment (Hilbert transform); mental image: a line traced along the tops of the waves; not squared to power; the band envelopes are z-scored, the raw signal is NOT | Sec. Baseline Extraction and Normalization
+artifact check | the 95th-percentile peak-to-peak flagging of blinks (AF7/AF8, 1-40 Hz) and EMG (TP9/TP10, 30-100 Hz) on the notch-filtered copy; flags only, removes nothing | Sec. Artifact Analysis
+slice | one view of the data: one band, one electrode, one statistic, or a combination; a slice contains multiple features | Sec. Adjacent studies
+feature | a part of a slice, defined by specific band, electrode, statistic, and or combination.
+raw signal | the undecomposed broadband signal, kept alongside the seven bands | Sec. Baseline Extraction and Normalization
+high-gamma (40-60 Hz) / very high gamma (60-100 Hz) | the two top bands, both reaching into powerline-noise territory | Sec. Baseline Extraction and Normalization
+Peak Frequency / Macro Frequency | the two self-defined time-domain frequency features | Sec. Peak and Macro Frequency Extraction
+Engagement Index (EI) | the classical ratio beta/(alpha+theta); the benchmark | Intro / Sec. Engagement Index Calculation
+Cohen's d | class separation of one feature, in units of that feature's own spread | Sec. Adjacent studies / Class Separation Metric
+top features | TP10 raw standard deviation, AF7 high-gamma mean, AF8 delta peak frequency (write the names like this in running text, NOT the table names 'TP10 raw std' etc.) | Sec. Feature Separation Analysis / Class Separation of Single Features
+Alternative Index | RETIRED (2026-09-28): do NOT use; say 'top features' / 'top-feature models' | Sec. Top-Feature Models
+coin-flip baseline | chance-level reference classifier | Sec. Logistic Regression Modeling and Baselines
+intra-subject / inter-subject | within one participant (blocked 5-fold) / across participants (Leave-One-Group-Out); do not use only Inter or Intra, not Inter-Subject and Intra-Subject, instead always say Inter-subject and Intra-subject! | Sec. Temporal Cross-Validation
+
+------------------------------------------------------------------
+NOTE:
+if a term here mentioned is used not in same chapter but later, there will be a reference to the last chapter where it was used or to chapter where was first coined to make retro reference for reader super easy, along a short refreshing explanation of term eg. mental image if available from place where first coined.
+
+sensitivity analysis | the reruns of the pipeline with other values of three labeling parameters (do NOT use "sweep") | Sec. Parameter Sensitivity Analysis
+--- THE RESULT SYNTHESIS PIPELINE (added 2026-09-26, Sec. 3.8) ---
+fold | one of five time-ordered parts of one participant's windows; each fold holds about one fifth of the SKIP windows; each fold serves once as test data | Sec. Temporal Cross-Validation and Data Balancing
+fold gap | the 3 s dropped around each fold border (every window starting within 1.5 s of the border is dropped); window starts of training and test data lie more than 3 s apart, i.e. more than 2 s without any window between them (do NOT say "3 s between windows"; do NOT use "firewall" or "safety distance") | Sec. Temporal Cross-Validation and Data Balancing
+seed | the starting number of the random generator that picks the dropped windows in balancing; five seeds (0, 1, 7, 42, 99); intra-subject results average over the five seeds, inter-subject uses the first seed only | Sec. Temporal Cross-Validation and Data Balancing
+balancing | randomly dropping windows of the LARGER class (STAY in 21 of 25 participants; SKIP in P17, P23, P24, P28), separately in every training fold and every test fold (do NOT say "STAY was undersampled per participant") | Sec. Temporal Cross-Validation and Data Balancing
+EI model / top-feature model | logistic regression with the EI, or with one top feature, as the only input | Sec. Logistic Regression Modeling and Baselines
+one-sided model | a model that calls nearly every window one class; high recall for that class, chance precision; the inter-subject EI model calls about 90% of all windows STAY (do NOT say the EI 'detects STAY well') | Sec. Metrics and Significance Testing / EI Model versus Coin-Flip Baseline
+|d| | the size of Cohen's d; the EI reaches 0.022; TP10 raw standard deviation 0.196 = about nine times the EI (do NOT say 'tenfold') | Sec. Class Separation of Single Features
+F1-train / F1-test | F1-score on training windows / on test windows; metrics are computed per participant from TP, TN, FP, FN summed over all folds and seeds (NOT "per fold") | Sec. Metrics and Significance Testing
+student who has seen the exam questions | mental image for leakage between training and test data; coined in Sec. Adjacent Study, reused in Sec. Temporal Cross-Validation | Sec. Adjacent Study
+--- DISCUSSION (added 2026-09-28, Sec. 4.5) ---
+chance-equivalent reference | RETIRED (2026-09-28): undefined in the Results; say 'the chance level of about 50%' | Sec. Discussion
+two singers | mental image for EMG and EEG sharing frequencies, so a filter cannot pull them apart; coined in Sec. EMG Artifacts in EEG, reused once in Sec. Discussion | Sec. EMG Artifacts in EEG
+height analogy | why |d| below 0.2 still predicts near chance: two groups of adults whose average height differs by one or two centimetres | Sec. Discussion
+adapted EI | the EI of this thesis (variance of z-scored envelope, AF7/AF8/TP9/TP10, beta 13-30 Hz), as opposed to Pope et al.'s band-power EI at Cz/Pz/P3/P4, beta 13-22 Hz | Sec. Engagement Index / Discussion
+
+--- PROPOSED DEFINITION (added 2026-09-28, Sec. 4.6) ---
+four findings | named, never numbered: 'Staying is no proof of engagement', 'The swipe is a datable end', 'No single signal defines engagement', 'A number means little without an interval'; each finding 'argues against' a kind of definition or report (do NOT write 'rules out'/'ruled out' for findings) | Sec. Four Findings (was 'What the Results Suggest')
+reporting requirements | object, interval, indicator, exit criterion | Sec. Implications for Measurement
+time-precise | what EEG is (records 256 times per second during viewing, unlike a questionnaire afterwards; do NOT write 'to the millisecond' for EEG); NOT 'precise measure of engagement' (the thesis's EEG models stayed near chance) | Sec. A Hypothesis for Field Measurement
+witnesses | analogy for the routes (ask, log, body): no single witness sees everything; agreement on the time of the exit adds credibility, disagreement adds information (never 'must change'); no route is ground truth | Sec. A Hypothesis for Field Measurement
+test case | what TikTok was for the proposed definition (do NOT use 'field site'; 'field' is reserved for settings where EEG is hard to use, as in 'field measures') | Sec. Scope of the Proposal
+falsifiers | TWO findings would show the proposed definition wrong: (1) an indicator that marks the change toward the exit in new people without calibration to each person; (2) dissociated viewing with the same recall and behaviour change as attentive viewing. 'effortful' and 'voluntary' were removed from both definitions 2026-09-28 (attention alone keeps dissociated viewing out; leaving out 'effortful' lets flow count as engagement). The former 'smooth decline' falsifier was cut 2026-09-28 (the definition already allows fading before the exit) | Sec. What Would Show the Proposal Wrong
+
+--- PLAIN-LANGUAGE SUMMARY (added 2026-09-29, Ch. 6) ---
+still watching / about to swipe | plain-language labels for STAY / SKIP (about to swipe = the seconds before a swipe); set in \emph each time; used only in Ch. 6 | Ch. Plain-Language Summary
+zoned-out viewing | plain-language name for normative dissociation: viewing without really paying attention (matches 'zoned-out scrolling' in Intro/Discussion) | Ch. Plain-Language Summary
+affordable for one person | how the Muse S cost is stated (no euro price appears anywhere in the thesis; source wording: 'affordable for a single consumer', Sec. Secondary Adjacent Studies) | Ch. Plain-Language Summary

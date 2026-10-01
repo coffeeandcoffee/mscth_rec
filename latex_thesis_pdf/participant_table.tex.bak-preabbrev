@@ -1,0 +1,41 @@
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tabular}{llclllcl}
+\toprule
+\textbf{ID} & \textbf{Sex} & \textbf{Age} & \textbf{Daily SFV Use} & \textbf{Sleep (h)} & \textbf{Alertness} & \textbf{Consumed} & \textbf{Status} \\
+\midrule
+P4 & F & 26 & 1-30m & 6–7 & Neutral & Caffeine & Valid \\
+P5 & F & 30 & 1–2h & 7–8 & Alert & None & Valid \\
+P6 & F & 24 & 1-30m & 7–8 & Neutral & None & Valid \\
+P7 & F & 23 & 30–60m & 6–7 & Neutral & None & Valid \\
+P8 & F & 23 & 30–60m & 6–7 & Neutral & None & Valid \\
+P9 & M & 27 & 30–60m & 6–7 & Neutral & Caffeine & Valid \\
+P10 & F & 24 & 1-30m & >8 & Neutral & Caffeine & Valid \\
+P11 & F & 26 & 30–60m & 7–8 & Neutral & Caffeine & Valid \\
+P12 & F & 20 & 30–60m & 5–6 & Neutral & Energy Dr. & Valid \\
+P13 & M & 28 & 1-30m & >8 & Neutral & Caffeine & Valid \\
+P14 & F & 22 & 1–2h & >8 & Tired & None & Valid \\
+P15 & M & 28 & 1-30m & 7–8, >8 & Neutral & Caffeine & Valid \\
+P16 & M & 32 & 1-30m & 7–8 & Alert & None & Excluded \\
+P17 & F & 30 & 30–60m & 6–7 & Neutral & Caffeine & Valid \\
+P18 & M & 27 & 1–2h & 7–8 & Alert & Caffeine & Valid \\
+P19 & F & 30 & 1-30m & 7–8 & Neutral & Caffeine & Excluded \\
+P20 & M & 20 & 1-30m & >8 & Alert & Caffeine & Valid \\
+P21 & M & 21 & 30–60m & 6–7 & Neutral & None & Valid \\
+P22 & F & 21 & 1-30m & >8 & Alert, Neutral & None & Valid \\
+P23 & M & 23 & 1–2h & >8 & Neutral & None & Valid \\
+P24 & F & 24 & 1–2h & >8 & Neutral & Caff+Nic & Valid \\
+P25 & F & 21 & >3h & >8 & Neutral & None & Valid \\
+P26 & M & 24 & 30–60m & 6–7 & Neutral, Tired & None & Valid \\
+P27 & M & 23 & 2–3h & 7–8 & Alert & None & Valid \\
+P28 & M & 28 & 30–60m & 7–8 & Very alert & None & Valid \\
+P29 & M & 22 & 1–2h & >8 & Very alert & None & Excluded \\
+P30 & M & 26 & >3h & 5–6, 6–7 & Very alert & None & Valid \\
+P31 & M & 27 & 1–2h & 6–7 & Alert & None & Valid \\
+\bottomrule
+\end{tabular}
+}
+\caption{Participant demographics and pre-session survey responses. SFV = Short-Form Video. P16, P19, and P29 were excluded from the final analysis.}
+\label{tab:participant_demographics}
+\end{table}

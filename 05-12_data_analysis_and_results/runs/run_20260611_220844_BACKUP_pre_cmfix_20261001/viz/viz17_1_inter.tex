@@ -1,0 +1,38 @@
+\begin{table}[H]
+\centering
+\providecolor{sigHigher}{HTML}{1E7B34}
+\providecolor{sigLower}{HTML}{C62828}
+\providecolor{nsGray}{gray}{0.55}
+\providecolor{classBox}{gray}{0.90}
+\providecolor{ruleGray}{gray}{0.78}
+\providecolor{headGray}{gray}{0.45}
+\small
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{2pt}
+{\raggedright\textbf{Performance across participants}\par {\footnotesize\textcolor{headGray}{(inter-subject setting: each model trained on 24 participants, tested on the 25th)}}\par}
+\vspace{3pt}
+\begin{tabularx}{\textwidth}{c l >{\centering\arraybackslash}p{2.5cm} >{\centering\arraybackslash}X >{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{2.95cm}}
+\arrayrulecolor{black}\hline
+\multicolumn{2}{l}{\footnotesize\textbf{Metric}} & {\footnotesize\textbf{Baseline}} & {\footnotesize\textbf{EI model}} & {\footnotesize\textbf{\(\Delta\)\,[pp]}} & {\footnotesize\textbf{Significance test}} \\
+\multicolumn{2}{l}{{\scriptsize\textcolor{headGray}{\textbf{Note}}}} & {\scriptsize\textcolor{headGray}{coin flip, \(\sim\)50\%}} & {\scriptsize\textcolor{headGray}{logistic regression}} &  & {\scriptsize\textcolor{headGray}{EI model\newline vs.\ baseline}} \\
+\hline
+\cellcolor{classBox} & F\(_1\)-train & 50.3\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{62.0\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+11.7}} & {\footnotesize significantly higher} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & F\(_1\)-test & 50.8\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{62.5\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+11.7}} & {\footnotesize significantly higher} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & \textcolor{nsGray}{Precision} & \textcolor{nsGray}{49.9\%} & \textcolor{nsGray}{49.4\%} & \textcolor{nsGray}{\(-\)0.5} & {\footnotesize\textcolor{nsGray}{not significant}} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{STAY}}} & Recall & 51.7\% & \cellcolor{sigHigher}\textcolor{white}{\textbf{89.2\%}} & \cellcolor{sigHigher}\textcolor{white}{\(\blacktriangle\)\,\textbf{+37.5}} & {\footnotesize significantly higher} \\
+\arrayrulecolor{black}\hline
+\cellcolor{classBox} & F\(_1\)-train & 49.6\% & \textcolor{sigLower}{\textbf{20.6\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)29.0}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & F\(_1\)-test & 48.9\% & \textcolor{sigLower}{\textbf{10.7\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)38.2}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox} & Precision & 49.9\% & \textcolor{sigLower}{\textbf{23.5\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)26.4}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{ruleGray}\cline{2-6}
+\cellcolor{classBox}\multirow{-4}{*}{\rotatebox[origin=c]{90}{\texttt{SKIP}}} & Recall & 48.0\% & \textcolor{sigLower}{\textbf{9.6\%}} & \textcolor{sigLower}{\(\blacktriangledown\)\,\textbf{\(-\)38.4}} & {\footnotesize significantly lower} \\
+\arrayrulecolor{black}\hline
+\end{tabularx}
+\caption{EI model versus coin-flip baseline, inter-subject setting. Performance is the mean over the 25 participants. \(\Delta\): compared model minus the coin-flip baseline, in percentage points (pp). Significance test: two-sided Wilcoxon signed-rank test against the coin-flip baseline (significance level 0.05, $n=25$, uncorrected). Green cells: significantly higher than the coin-flip baseline; red values: significantly lower; gray row: not significant.}
+\label{tab:metrics_1_inter}
+\end{table}
